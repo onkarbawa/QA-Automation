@@ -1,4 +1,4 @@
-package com.curbside.common;
+package com.curbside.ios.common;
 
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;

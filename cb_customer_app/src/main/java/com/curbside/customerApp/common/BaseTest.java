@@ -1,6 +1,6 @@
 package com.curbside.customerApp.common;
 
-import com.curbside.pages.Page;
+import com.curbside.ios.pages.Page;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -15,7 +15,7 @@ import java.net.URL;
 /**
  * Created by bawa.onkar on 14/06/17.
  */
-public class BasePage extends Page {
+public class BaseTest extends Page {
 
     private String platForm;
 
@@ -24,7 +24,7 @@ public class BasePage extends Page {
      *
      * @param driver
      */
-    public BasePage(AppiumDriver driver) {
+    public BaseTest(AppiumDriver driver) {
         super(driver);
     }
 
