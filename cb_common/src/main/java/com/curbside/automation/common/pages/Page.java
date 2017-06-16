@@ -1,6 +1,6 @@
-package com.curbside.automation.pages;
+package com.curbside.automation.common.pages;
 
-import com.curbside.automation.common.Utilities;
+import com.curbside.automation.common.utilities.Utilities;
 import io.appium.java_client.AppiumDriver;
 
 public class Page {
@@ -10,6 +10,7 @@ public class Page {
 
     public Page(AppiumDriver driver){
         this.driver = driver;
+        this.utilities = new Utilities(driver);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.curbside.automation.customerApp.common;
 
+import com.curbside.automation.common.configuration.Properties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -17,18 +18,10 @@ public class BaseTest {
     protected AppiumDriver driver;
     private String platForm;
 
-    /**
-     * Gets the instance of the Page
-     *
-     * @param driver
-     */
-    /*public BaseTest(AppiumDriver driver) {
-        this.driver = driver;
-    }*/
-
     @BeforeSuite
 //    @Parameters(value = "platForm")
     public void setUp(){
+        System.out.println(Properties.getPlatForm());
         URL url = null;
         try {
             url = new URL("http://127.0.0.1:4723/wd/hub");

@@ -1,12 +1,13 @@
 package com.curbside.automation.android.testClasses;
 
+import com.curbside.automation.customerApp.common.BaseTest;
 import com.curbside.automation.customerApp.ios.applicationLaunch.ApplicationLaunch;
 import org.testng.annotations.Test;
 
 /**
  * Created by Hitesh grover on 16/06/17.
  */
-public class AppLaunch {
+public class AppLaunch extends BaseTest {
 
     ApplicationLaunch a = new ApplicationLaunch(this.driver);
 
