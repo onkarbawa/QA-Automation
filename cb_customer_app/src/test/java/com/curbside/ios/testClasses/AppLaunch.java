@@ -3,6 +3,7 @@ package com.curbside.ios.testClasses;
 import com.curbside.customerApp.common.BaseTest;
 import com.curbside.customerApp.ios.applicationLaunch.ApplicationLaunch;
 import io.appium.java_client.AppiumDriver;
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.testng.annotations.Test;
 
 /**
@@ -10,15 +11,16 @@ import org.testng.annotations.Test;
  */
 public class AppLaunch extends BaseTest{
 
-    private ApplicationLaunch a = new ApplicationLaunch(this.driver);
+    ApplicationLaunch a = new ApplicationLaunch(this.driver);
     /**
      * Gets the instance of the Page
      *
      * @param driver
      */
-    public AppLaunch(AppiumDriver driver) {
+    /*public AppLaunch(AppiumDriver driver) {
         super(driver);
-    }
+    }*/
+
 
     @Test
     public void launchApp(){

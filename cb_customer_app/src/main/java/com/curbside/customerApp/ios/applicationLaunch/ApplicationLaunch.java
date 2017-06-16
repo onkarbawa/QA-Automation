@@ -11,16 +11,13 @@ import org.openqa.selenium.WebElement;
 public class ApplicationLaunch extends Page {
 
     By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
-    /**
-     * Gets the instance of the Page
-     *
-     * @param driver
-     */
+
     public ApplicationLaunch(AppiumDriver driver) {
         super(driver);
     }
 
+
     public WebElement getTapButton(){
-        return this.driver.findElement(allow);
+        return driver.findElement(allow);
     }
 }

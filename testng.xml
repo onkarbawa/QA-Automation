@@ -4,11 +4,11 @@
     <test name="Test">
         <parameter name="platForm" value="iOS"/>
         <packages>
-            <package name="com.curbside.customerApp.ios.applicationLaunch"/>
+            <!--<package name="com.curbside.customerApp.ios.applicationLaunch"/>-->
             <package name="com.curbside.ios.testClasses"/>
         </packages>
         <classes>
-
+            <class name="com."
         </classes>
    </test>
 
