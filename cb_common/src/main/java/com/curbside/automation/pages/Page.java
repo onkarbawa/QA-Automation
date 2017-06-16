@@ -1,6 +1,6 @@
-package com.curbside.ios.pages;
+package com.curbside.automation.pages;
 
-import com.curbside.ios.common.Utilities;
+import com.curbside.automation.common.Utilities;
 import io.appium.java_client.AppiumDriver;
 
 public class Page {

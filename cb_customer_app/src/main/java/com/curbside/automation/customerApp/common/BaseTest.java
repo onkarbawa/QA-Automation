@@ -1,13 +1,10 @@
-package com.curbside.customerApp.common;
+package com.curbside.automation.customerApp.common;
 
-import com.curbside.ios.pages.Page;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;

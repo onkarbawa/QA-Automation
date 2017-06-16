@@ -1,6 +1,6 @@
-package com.curbside.customerApp.ios.applicationLaunch;
+package com.curbside.automation.customerApp.ios.applicationLaunch;
 
-import com.curbside.ios.pages.Page;
+import com.curbside.automation.pages.Page;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
