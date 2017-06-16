@@ -1,6 +1,7 @@
 package com.curbside.automation.customerApp.ios.applicationLaunch;
 
-import com.curbside.automation.pages.Page;
+import com.curbside.automation.common.pages.Page;
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,9 +9,9 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by bawa.onkar on 14/06/17.
  */
-public class ApplicationLaunch extends Page {
+public class ApplicationLaunch extends CustomerBaseTest {
 
-    By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
+    private By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
 
     public ApplicationLaunch(AppiumDriver driver) {
         //super(driver);
