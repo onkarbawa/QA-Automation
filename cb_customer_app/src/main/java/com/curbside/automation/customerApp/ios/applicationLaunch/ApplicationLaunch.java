@@ -13,11 +13,11 @@ public class ApplicationLaunch extends Page {
     By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
 
     public ApplicationLaunch(AppiumDriver driver) {
-        super(driver);
+        //super(driver);
     }
 
 
     public WebElement getTapButton(){
-        return driver.findElement(allow);
+        return null;//driver.findElement(allow);
     }
 }

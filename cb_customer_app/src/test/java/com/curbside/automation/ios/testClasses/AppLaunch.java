@@ -1,6 +1,6 @@
 package com.curbside.automation.ios.testClasses;
 
-import com.curbside.automation.customerApp.common.BaseTest;
+import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.ios.applicationLaunch.ApplicationLaunch;
 import org.testng.annotations.Test;
 
