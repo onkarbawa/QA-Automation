@@ -1,0 +1,17 @@
+# Android | iOS
+platform: "Android"
+
+
+androidDeviceName: "Android device"
+androidAppLocation: "/Users/tft/Desktop/Curbside.apk"
+androidAppPackage: "com.curbside.nCurbside"
+androidAppActivity: "com.curbside.nCurbside.app.help.SplashScreenActivity"
+
+iosDeviceName: "TFT"
+iosAppLocation: "/Users/tft/Downloads/Curbside.debug.ipa"
+iosDeviceUDID: "0ddb226173711460741617d2d10e0dcd734755d9"
+iosPlatformVersion: "10.3.2"
+
+
+newCommandTimeOut: "65"
+implicitWaitInSeconds: "15"
