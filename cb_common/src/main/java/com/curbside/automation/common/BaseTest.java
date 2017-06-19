@@ -8,6 +8,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,12 +17,21 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     protected AppiumDriver driver;
-    private String platForm;
+    private String platForm = Properties.getPlatForm();
+    private int newCommandTimeout=Properties.getNewCommandTimeout();
+    private String androidDeviceName = Properties.getAndroidDeviceName();
+    private String androidAppLocation = Properties.getAndroidAppLocation();
+    private String androidAppPackage = Properties.getAndroidAppPackage();
+    private String androidAppActivity = Properties.getAndroidAppActivity();
+    private String iosDeviceName = Properties.getIosDeviceName();
+    private String iosAppLocation = Properties.getIosAppLocation();
+    private String iosUDID = Properties.getIosDeviceUDID();
+    private String iosPlatformVersion = Properties.getIosPlatformVersion();
+    private int implicitWaitInSeconds = Properties.getImplicitWaitInSeconds();
+
 
     @BeforeSuite
-//    @Parameters(value = "platForm")
     public void setUp(){
-        System.out.println(Properties.getPlatForm());
         URL url = null;
         try {
             url = new URL("http://127.0.0.1:4723/wd/hub");
@@ -29,24 +39,24 @@ public class BaseTest {
             e.printStackTrace();
         }
         DesiredCapabilities caps = new DesiredCapabilities();
-//        if (platForm.equalsIgnoreCase("iOS")) {
-//            caps.setCapability(MobileCapabilityType.DEVICE_NAME, "TFT");
-//            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-//            caps.setCapability(MobileCapabilityType.UDID, "0ddb226173711460741617d2d10e0dcd734755d9");
-//            caps.setCapability(MobileCapabilityType.APP, "/Users/tft/Downloads/Curbside.debug.ipa");
-//            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.3.2");
-//            driver = new IOSDriver(url,caps);
-//        }
-//        else if (platForm.equalsIgnoreCase("Android")){
-            caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
-            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-            caps.setCapability(MobileCapabilityType.APP, "/Users/tft/Desktop/Curbside.apk");
-            caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 65);
-            caps.setCapability("appPackage", "com.curbside.nCurbside");
-            caps.setCapability("appActivity","com.curbside.nCurbside.app.help.SplashScreenActivity");
+        if (platForm.equalsIgnoreCase("iOS")) {
+            caps.setCapability(MobileCapabilityType.DEVICE_NAME, iosDeviceName);
+            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platForm);
+            caps.setCapability(MobileCapabilityType.UDID, iosUDID);
+            caps.setCapability(MobileCapabilityType.APP, iosAppLocation);
+            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
+            driver = new IOSDriver(url,caps);
+        }
+        else if (platForm.equalsIgnoreCase("Android")){
+            caps.setCapability(MobileCapabilityType.DEVICE_NAME, androidDeviceName);
+            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platForm);
+            caps.setCapability(MobileCapabilityType.APP, androidAppLocation);
+            caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, newCommandTimeout);
+            caps.setCapability("appPackage", androidAppPackage);
+            caps.setCapability("appActivity", androidAppActivity);
             driver = new AndroidDriver<WebElement>(url,caps);
 
-//        }
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        }
+        driver.manage().timeouts().implicitlyWait(implicitWaitInSeconds, TimeUnit.SECONDS);
     }
 }

@@ -16,4 +16,84 @@ public class Properties {
   public static String getPlatForm() {
     return configuration.get("platform");
   }
+
+  /**
+   * Gets the value of New command time out property
+   * @retur value as Integer
+   */
+  public static int getNewCommandTimeout(){
+      return (Integer.parseInt(configuration.get("newCommandTimeOut")));
+  }
+
+  /**
+   * Gets the value of Android device name
+   * @return value as string
+   */
+  public static String getAndroidDeviceName(){
+      return configuration.get("androidDeviceName");
+  }
+
+  /**
+   * Gets the value of Android app location
+   * @return value as String
+   */
+  public static String getAndroidAppLocation(){
+        return configuration.get("androidAppLocation");
+    }
+
+  /**
+   * Gets the value of the IOS device name
+   * @return value as String
+   */
+  public static String getIosDeviceName(){
+      return configuration.get("iosDeviceName");
+  }
+
+  /**
+   * Gets the value of IOS app location
+   * @return value as String
+   */
+  public static String getIosAppLocation(){
+    return configuration.get("iosAppLocation");
+  }
+
+  /**
+   *  Gets Android app package name
+   *  @return value as String
+   */
+  public static String getAndroidAppPackage(){
+      return configuration.get("androidAppPackage");
+  }
+
+  /**
+   *  Gets Android app activity name
+   *  @return vaue as String
+   */
+  public static String getAndroidAppActivity(){
+      return configuration.get("androidAppActivity");
+  }
+
+  /**
+   * Gets IOS device UDID
+   * @return value as String
+   */
+  public  static String getIosDeviceUDID(){
+      return configuration.get("iosDeviceUDID");
+  }
+
+  /**
+   *  Gets IOS device platform version
+   *  @return value as String
+   */
+  public static String getIosPlatformVersion(){
+      return configuration.get("iosPlatformVersion");
+  }
+
+  /**
+   *  Gets Implicitly wait in seconds
+   *  @return value as Integer
+   */
+  public static int getImplicitWaitInSeconds(){
+      return Integer.parseInt(configuration.get("implicitWaitInSeconds"));
+  }
 }

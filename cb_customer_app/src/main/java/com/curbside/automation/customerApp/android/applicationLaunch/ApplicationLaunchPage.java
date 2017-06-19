@@ -10,23 +10,40 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by hitesh.grover on 16/06/17.
  */
-public class ApplicationLaunch extends CustomerBaseTest{
+public class ApplicationLaunchPage extends CustomerBaseTest{
 
     private AppiumDriver driver;
 
     By errorOkButton = By.id(ApplicationLaunchUIMap.ERROR_OK_BUTTON);
     By skipIntro = By.id(ApplicationLaunchUIMap.SKIP_INTRO);
-    public ApplicationLaunch(AppiumDriver driver) {
+    By allowButton = By.id(ApplicationLaunchUIMap.ALLOW_BUTTON);
+
+    public ApplicationLaunchPage(AppiumDriver driver) {
         this.driver = driver;
     }
 
 
     public WebElement getErrorOkButton(){
-        System.out.print("in error getter ok button");
         return driver.findElement(errorOkButton);
     }
+
     public WebElement getSkipIntro(){
-        System.out.print("in skip getter");
         return driver.findElement(skipIntro);
+    }
+
+    public WebElement getAllowButton(){
+        return driver.findElement(allowButton);
+    }
+
+    public void gotoHomepage(){
+        try{
+            getSkipIntro().click();
+            getErrorOkButton().click();
+            getAllowButton().click();
+            getAllowButton().click();
+        }catch(Exception e){
+
+        }
+
     }
 }

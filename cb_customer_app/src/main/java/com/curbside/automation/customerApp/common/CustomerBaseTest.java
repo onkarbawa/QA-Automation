@@ -1,19 +1,19 @@
 package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.BaseTest;
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunch;
+import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchPage;
 
 /**
  * Created by hitesh.grover on 16/06/17.
  */
 public class CustomerBaseTest extends BaseTest {
 
-    ApplicationLaunch applicationLaunch;
+    ApplicationLaunchPage applicationLaunchPage;
 
-    public ApplicationLaunch getApplicationLaunch() {
-        if (applicationLaunch == null)
-            applicationLaunch = new ApplicationLaunch(this.driver);
-        return applicationLaunch;
+    public ApplicationLaunchPage getApplicationLaunchPage() {
+        if (applicationLaunchPage == null)
+            applicationLaunchPage = new ApplicationLaunchPage(this.driver);
+        return applicationLaunchPage;
     }
 
 }

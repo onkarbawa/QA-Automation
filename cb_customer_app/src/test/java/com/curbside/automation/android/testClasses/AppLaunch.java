@@ -1,6 +1,5 @@
 package com.curbside.automation.android.testClasses;
 
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunch;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import org.testng.annotations.Test;
 
@@ -14,16 +13,17 @@ public class AppLaunch extends CustomerBaseTest {
     public void launchApp(){
 
         try {
-            this.getApplicationLaunch().getErrorOkButton().click();
+            this.getApplicationLaunchPage().getErrorOkButton().click();
 
         } catch (Exception e){
             System.out.print("In catch");
-            this.getApplicationLaunch().getSkipIntro().click();
+            this.getApplicationLaunchPage().getSkipIntro().click();
         }
 
     }
-//
-//    public ApplicationLaunch getApplicationPage() {
-//        return new ApplicationLaunch(this.driver);
-//    }
+
+    @Test
+    public void gotoHomePage(){
+        this.getApplicationLaunchPage().gotoHomepage();
+    }
 }
