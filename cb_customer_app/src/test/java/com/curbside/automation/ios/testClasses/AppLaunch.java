@@ -8,8 +8,13 @@ import org.testng.annotations.Test;
  */
 public class AppLaunch extends CustomerBaseTest {
 
-    @Test
+    /**
+     * Verify checkmark is set 'always'
+     * @author bawa.onkar
+     */
+    @Test(description = "TCS-C114937")
     public void launchApp() {
       this.getiOSApplicationLaunch().getTapButton().click();
+      this.getiOSApplicationLaunch().doSwipe("Left",500,1,2);
     }
 }

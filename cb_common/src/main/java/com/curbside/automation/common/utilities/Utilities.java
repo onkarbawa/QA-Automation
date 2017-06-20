@@ -1,21 +1,16 @@
 package com.curbside.automation.common.utilities;
 
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Utilities {
 
@@ -157,6 +152,34 @@ public class Utilities {
     }
 
     /**
+     * Swipe screen
+     *
+     * @param direction
+     * @param offset
+     * @param time
+     */
+    public void swipe(String direction, int offset, int time) {
+        int y = driver.manage().window().getSize().getHeight();
+        int x = driver.manage().window().getSize().getWidth();
+        TouchAction touchAction = new TouchAction(driver);
+            if ("right".equalsIgnoreCase(direction)) {
+                touchAction.press(x - offset, y / 2).moveTo(-(x - (2 * offset)), 0).release().perform();
+            } else if ("left".equalsIgnoreCase(direction)) {
+                touchAction.press(offset, y / 2).moveTo((x - (2 * offset)), 0).release().perform();
+            } else if ("up".equalsIgnoreCase(direction)) {
+                touchAction.press(x / 2, offset).moveTo(0, y - (2 * offset)).release().perform();
+            } else if ("down".equalsIgnoreCase(direction)) {
+                touchAction.press(x / 2, y - offset).moveTo(0, -(y - (2 * offset))).release().perform();
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
+
+    /**
      * Swipe the screen horizontally
      * @param startPercentage
      * @param finalPercentage
@@ -171,6 +194,15 @@ public class Utilities {
         int endPoint = (int) (size.width * finalPercentage);
         new TouchAction(driver).press(startPoint, anchor).waitAction(duration).moveTo(endPoint, anchor).release().perform();
     }
+
+    /**
+     * Wait for element to load
+     * @param time
+     */
+    public void implicitWait(int time){
+        driver.manage().timeouts().implicitlyWait(time, TimeUnit.MILLISECONDS);
+    }
+
 
 
 }
