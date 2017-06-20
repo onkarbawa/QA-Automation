@@ -16,4 +16,5 @@ public class ApplicationLaunchUIMap {
     static String BACK_BUTTON = "com.curbside.nCurbside:id/img_tool_back";
     static String ERROR_OK_BUTTON = "com.curbside.nCurbside:id/button_ok";
     static String ALLOW_BUTTON = "com.android.packageinstaller:id/permission_allow_button";
+    static String GET_STARTED = "com.curbside.nCurbside:id/button_got_it";
 }

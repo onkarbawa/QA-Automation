@@ -27,3 +27,4 @@ public class AppLaunch extends CustomerBaseTest {
         this.getApplicationLaunchPage().gotoHomepage();
     }
 }
+

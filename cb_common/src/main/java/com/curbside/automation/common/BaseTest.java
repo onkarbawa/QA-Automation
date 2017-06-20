@@ -7,6 +7,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
@@ -59,4 +60,10 @@ public class BaseTest {
         }
         driver.manage().timeouts().implicitlyWait(implicitWaitInSeconds, TimeUnit.SECONDS);
     }
+
+    @AfterSuite
+    public void tearDown(){
+        driver.quit();
+    }
+
 }
