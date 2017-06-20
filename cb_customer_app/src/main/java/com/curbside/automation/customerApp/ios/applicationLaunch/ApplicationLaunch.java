@@ -1,6 +1,5 @@
 package com.curbside.automation.customerApp.ios.applicationLaunch;
 
-import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
@@ -11,14 +10,20 @@ import org.openqa.selenium.WebElement;
  */
 public class ApplicationLaunch extends CustomerBaseTest {
 
-    private By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
+    private AppiumDriver driver;
+    By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
 
+    /**
+     * Gets a AppiumDriver to initialize
+     *
+     * @param driver
+     */
     public ApplicationLaunch(AppiumDriver driver) {
-        //super(driver);
+        this.driver = driver;
     }
 
 
     public WebElement getTapButton(){
-        return null;//driver.findElement(allow);
+        return driver.findElement(allow);
     }
 }

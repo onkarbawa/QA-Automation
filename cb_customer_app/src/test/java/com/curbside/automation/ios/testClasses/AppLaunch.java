@@ -1,27 +1,15 @@
 package com.curbside.automation.ios.testClasses;
 
-import com.curbside.automation.common.BaseTest;
-import com.curbside.automation.customerApp.ios.applicationLaunch.ApplicationLaunch;
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import org.testng.annotations.Test;
 
 /**
- * Created by tft on 15/06/17.
+ * Created by bawa.onkar on 15/06/17.
  */
-public class AppLaunch extends BaseTest {
-
-    ApplicationLaunch a = new ApplicationLaunch(this.driver);
-    /**
-     * Gets the instance of the Page
-     *
-     * @param driver
-     */
-    /*public AppLaunch(AppiumDriver driver) {
-        super(driver);
-    }*/
-
+public class AppLaunch extends CustomerBaseTest {
 
     @Test
-    public void launchApp(){
-      a.getTapButton().click();
+    public void launchApp() {
+      this.getiOSApplicationLaunch().getTapButton().click();
     }
 }

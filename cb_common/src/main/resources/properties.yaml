@@ -1,5 +1,5 @@
 # Android | iOS
-platform: "Android"
+platform: "iOS"
 
 
 androidDeviceName: "Android device"
