@@ -2,9 +2,7 @@ package com.curbside.automation.customerApp.android.applicationLaunch;
 
 
 import com.curbside.automation.common.utilities.Utilities;
-import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.SwipeElementDirection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -17,10 +15,11 @@ public class ApplicationLaunchPage {
     private AppiumDriver driver;
     private Utilities util ;
 
-    By errorOkButton = By.id(ApplicationLaunchUIMap.ERROR_OK_BUTTON);
+    By locationOkButton = By.id(ApplicationLaunchUIMap.LOCATION_OK_BUTTON);
     By skipIntro = By.id(ApplicationLaunchUIMap.SKIP_INTRO);
-    By allowButton = By.id(ApplicationLaunchUIMap.ALLOW_BUTTON);
+    By allowButton = By.id(ApplicationLaunchUIMap.LOCATION_ALLOW_BUTTON);
     By getStarted = By.id(ApplicationLaunchUIMap.GET_STARTED);
+    By searchButton = By.id(ApplicationLaunchUIMap.SEARCH_BUTTON);
 
     public ApplicationLaunchPage(AppiumDriver driver) {
         this.driver = driver;
@@ -28,8 +27,8 @@ public class ApplicationLaunchPage {
     }
 
 
-    public WebElement getErrorOkButton(){
-        return driver.findElement(errorOkButton);
+    public WebElement getLocationOkButton(){
+        return driver.findElement(locationOkButton);
     }
 
     public WebElement getSkipIntro(){
@@ -44,29 +43,30 @@ public class ApplicationLaunchPage {
         return driver.findElement(getStarted);
     }
 
-    public void gotoHomepage(){
-        try{
-            System.out.println(util.isElementPresent(skipIntro));
-            util.swipeHorizontal(0.7,0.03,0.5,1000);
-            //Thread.sleep(3000);
-            util.swipeHorizontal(0.9,0.01,0.5,1000);
-            //Thread.sleep(3000);
-            util.swipeHorizontal(0.9,0.01,0.5,1000);
-            Thread.sleep(3000);
-            getStartedButton().click();
+    /**
+     * Gets the Search button from Home page
+     * @return
+     */
+    public WebElement getSearchButton(){
+        return driver.findElement(searchButton);
+    }
 
-//            getSkipIntro().click();
-//            getErrorOkButton().click();
-//            getAllowButton().click();
-//            getAllowButton().click();
-        }catch(Exception e){
+    /**
+     * Scroll the page n number of times.
+     * @param numberOfTimes
+     */
+    public void scrollIntroPage( int numberOfTimes){
 
+        for (int i=0; i<numberOfTimes; ++i){
+            try {
+                util.swipeHorizontal(0.9,0.01,0.5,1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void swipe(){
 
-    }
 
 
 }

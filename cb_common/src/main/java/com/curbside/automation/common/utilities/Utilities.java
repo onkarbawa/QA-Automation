@@ -17,6 +17,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by hitesh.grover on 6/19/2017.
+ */
+
 public class Utilities {
 
     WebElement element = null;
@@ -121,6 +125,15 @@ public class Utilities {
             return false;
         }
     }
+
+    public boolean isDisplayed(WebElement element) {
+        return element.isDisplayed();
+    }
+
+    public boolean isDisplayed(By byLocator) {
+        return isDisplayed(driver.findElement(byLocator));
+    }
+
 
     /**
      * Wait for element to load

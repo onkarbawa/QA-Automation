@@ -14,7 +14,7 @@ public class ApplicationLaunchUIMap {
     static String API_HOST_TEXT_FIELD = "android:id/edit";
     static String OK_BUTTON = "android:id/button1";
     static String BACK_BUTTON = "com.curbside.nCurbside:id/img_tool_back";
-    static String ERROR_OK_BUTTON = "com.curbside.nCurbside:id/button_ok";
-    static String ALLOW_BUTTON = "com.android.packageinstaller:id/permission_allow_button";
+    static String LOCATION_OK_BUTTON = "com.curbside.nCurbside:id/button_ok";
+    static String LOCATION_ALLOW_BUTTON = "com.android.packageinstaller:id/permission_allow_button";
     static String GET_STARTED = "com.curbside.nCurbside:id/button_got_it";
 }
