@@ -1,5 +1,5 @@
-# Android | iOS
-platform: "iOS"
+# android | ios
+platform: "ios"
 
 
 androidDeviceName: "Android device"
@@ -14,4 +14,4 @@ iosPlatformVersion: "10.3.2"
 
 
 newCommandTimeOut: "65"
-implicitWaitInSeconds: "15"
+implicitWaitInSeconds: "20"

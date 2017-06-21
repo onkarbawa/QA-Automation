@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -66,7 +65,7 @@ public class BaseTest {
 
     @AfterSuite
     public void tearDown(){
-       // driver.quit();
+        driver.quit();
     }
 
     public void getIOSSettingApp(){

@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by bawa.onkar on 14/06/17.
  */
-public class ApplicationLaunch extends CustomerBaseTest {
+public class ApplicationLaunchPageIOS extends CustomerBaseTest {
 
     private AppiumDriver driver;
     private Utilities util ;
@@ -27,7 +27,7 @@ public class ApplicationLaunch extends CustomerBaseTest {
      *
      * @param driver
      */
-    public ApplicationLaunch(AppiumDriver driver) {
+    public ApplicationLaunchPageIOS(AppiumDriver driver) {
         this.driver = driver;
         util = new Utilities(this.driver);
     }
@@ -43,13 +43,11 @@ public class ApplicationLaunch extends CustomerBaseTest {
     /**
      * Swipe screen
      * @param direction
-     * @param offset
-     * @param time
      * @param noOfTimes
      */
-    public void doSwipe(String direction, int offset, int time, int noOfTimes){
+    public void doSwipe(String direction, int noOfTimes){
         for(int i = 0;i < noOfTimes;i++) {
-            util.swipe(direction, offset, time);
+            util.swipe(direction);
         }
     }
 
@@ -97,8 +95,5 @@ public class ApplicationLaunch extends CustomerBaseTest {
         return driver.findElement(locationServicesButton);
     }
 
-    public void closeCurrentSession(){
-        util.closeSession();
-    }
 
 }
