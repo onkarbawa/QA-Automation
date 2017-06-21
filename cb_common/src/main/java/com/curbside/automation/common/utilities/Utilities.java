@@ -1,15 +1,12 @@
 package com.curbside.automation.common.utilities;
 
-
+import com.curbside.automation.common.configuration.Properties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,6 +20,7 @@ import java.util.List;
 
 public class Utilities {
 
+    private String platForm = Properties.getPlatForm();
     WebElement element = null;
 
     private final Logger logger = Logger.getLogger(Utilities.class);
@@ -30,39 +28,32 @@ public class Utilities {
 
     /**
      * Gets the instance of Utilities
-     *
      * @param driver
      */
     public Utilities(AppiumDriver driver){
         this.driver = driver;
     }
-/*
-    *//**
-     * Checks if element is present or not
-     * @param locator
-     * @return
-     *//*
-    *//**
-     * To press Enter key for android native keyboard
-     *//*
-    public void hitEnter(){
-        ((AndroidDriver<WebElement>) driver).pressKeyCode(66);
-        //((AndroidDriver<WebElement>) driver).pressKeyCode(AndroidKeyCode.ENTER);
 
+    /**
+     * To press Enter key for android native keyboard
+     * @author hitesh.grover
+     */
+    public void hitEnterKeyAndriod(){
+        ((AndroidDriver<WebElement>) driver).pressKeyCode(66);
     }
 
-    *//**
+    /**
      * To press native back key for android
-     *//*
-    public void goBack(){
+     */
+    public void goBackAndroid(){
         ((AndroidDriver<WebElement>) driver).pressKeyCode(AndroidKeyCode.BACK);
     }
 
- */
     /**
      * To find element using locator
      * @param locator
      * @return
+     * @author hitesh.grover
      */
     public WebElement getElement(By locator)
     {	element = null;
@@ -78,6 +69,7 @@ public class Utilities {
      * To find list of elements using locator
      * @param locator
      * @return
+     * @author hitesh.grover
      */
     public List<WebElement> getElementList(By locator)
     {
@@ -93,6 +85,7 @@ public class Utilities {
      * Enter text into textfield
      * @param locator
      * @param data
+     * @author hitesh.grover
      */
     public void sendKeys(By locator, String data)
     {	//log.info("in sendKeys function");
@@ -113,11 +106,14 @@ public class Utilities {
     /**
      * Checks if element is present or not
      * @param locator
-     * @return
+     * @author hitesh.grover
      */
     public  boolean isElementPresent(By locator){
+        System.out.print(locator);
         List<WebElement> elementList = getElementList(locator);
+        System.out.print(elementList);
         int size = elementList.size();
+        System.out.print(size);
         if (size > 0) {
             return true;
         }
@@ -126,19 +122,11 @@ public class Utilities {
         }
     }
 
-    public boolean isDisplayed(WebElement element) {
-        return element.isDisplayed();
-    }
-
-    public boolean isDisplayed(By byLocator) {
-        return isDisplayed(driver.findElement(byLocator));
-    }
-
-
     /**
      * Wait for element to load
      * @param locator
      * @param timeout
+     * @author hitesh.grover
      */
     public void waitForElement(By locator, int timeout)
     {
@@ -156,6 +144,7 @@ public class Utilities {
      * Click on element when its ready to click
      * @param locator
      * @param timeout
+     * @author hitesh.grover
      */
     public void clickWhenReady(By locator, int timeout)
     {	element =null;
@@ -170,20 +159,61 @@ public class Utilities {
     }
 
     /**
-     * Swipe the screen horizontally
-     * @param startPercentage
-     * @param finalPercentage
-     * @param anchorPercentage
-     * @param duration
-     * @throws Exception
+     * Swipe screen using directions
+     *@param direction
+     *@author hitesh.grover
      */
-    public void swipeHorizontal( double startPercentage, double finalPercentage, double anchorPercentage, int duration) throws Exception {
+    public void swipe(String direction) {
         Dimension size = driver.manage().window().getSize();
-        int anchor = (int) (size.height * anchorPercentage);
-        int startPoint = (int) (size.width * startPercentage);
-        int endPoint = (int) (size.width * finalPercentage);
-        new TouchAction(driver).press(startPoint, anchor).waitAction(duration).moveTo(endPoint, anchor).release().perform();
-    }
+        int height = size.getHeight();
+        int width = size.getWidth();
+        int anchor;
+        int startPoint;
+        int endPoint;
 
+
+        TouchAction touchAction = new TouchAction(driver);
+            if ("right".equalsIgnoreCase(direction)) {
+                    anchor = (int) (height * 0.5);
+                    startPoint = (int) (width * 0.01);
+                    endPoint = (int) (width * 0.9);
+
+                if (platForm.equalsIgnoreCase("iOS")) {
+                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, 0).release().perform();
+                }else if (platForm.equalsIgnoreCase("Android")){
+                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
+                }
+            } else if ("left".equalsIgnoreCase(direction)) {
+                    anchor = (int) (height * 0.5);
+                    startPoint = (int) (width * 0.8);
+                    endPoint = (int) (width * 0.01);
+                    if (platForm.equalsIgnoreCase("iOS")) {
+                        touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
+                    }else if (platForm.equalsIgnoreCase("Android")){
+                        touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
+                    }
+
+            } else if ("up".equalsIgnoreCase(direction)) {
+                    anchor = (int) (width * 0.5);
+                    startPoint = (int) (height * 0.8);
+                    endPoint = (int) (height * 0.01);
+                    if (platForm.equalsIgnoreCase("iOS")) {
+                        touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
+                    }else if (platForm.equalsIgnoreCase("Android")){
+                        touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
+                    }
+            } else if ("down".equalsIgnoreCase(direction)) {
+                anchor = (int) (width * 0.5);
+                startPoint = (int) (height * 0.01);
+                endPoint = (int) (height * 0.8);
+                touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+    }
 
 }

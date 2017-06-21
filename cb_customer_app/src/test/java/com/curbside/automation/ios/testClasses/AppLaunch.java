@@ -1,27 +1,22 @@
 package com.curbside.automation.ios.testClasses;
 
-import com.curbside.automation.common.BaseTest;
-import com.curbside.automation.customerApp.ios.applicationLaunch.ApplicationLaunch;
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import org.testng.annotations.Test;
 
 /**
- * Created by tft on 15/06/17.
+ * Created by bawa.onkar on 15/06/17.
  */
-public class AppLaunch extends BaseTest {
+public class AppLaunch extends CustomerBaseTest {
 
-    ApplicationLaunch a = new ApplicationLaunch(this.driver);
     /**
-     * Gets the instance of the Page
-     *
-     * @param driver
+     * Verify checkmark is set 'always'
+     * @author bawa.onkar
      */
-    /*public AppLaunch(AppiumDriver driver) {
-        super(driver);
-    }*/
+    @Test(description = "TCS-C114937")
+    public void launchApp() {
+      this.getiOSApplicationLaunch().getTapButton().click();
+        this.getUtilities().swipe("left");
+        this.getUtilities().swipe("left");
 
-
-    @Test
-    public void launchApp(){
-      a.getTapButton().click();
     }
 }

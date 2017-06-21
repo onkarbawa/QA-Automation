@@ -3,6 +3,9 @@ package com.curbside.automation.common.pages;
 import com.curbside.automation.common.utilities.Utilities;
 import io.appium.java_client.AppiumDriver;
 
+/**
+ * Created by bawa.onkar on 14/06/17.
+ */
 public class Page {
 
     private Utilities utilities;

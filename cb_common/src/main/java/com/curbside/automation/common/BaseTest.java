@@ -15,6 +15,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Created by bawa.onkar on 14/06/17.
+ */
 public class BaseTest {
 
     protected AppiumDriver driver;
