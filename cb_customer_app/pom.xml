@@ -37,6 +37,17 @@
             <version>1.0-SNAPSHOT</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${info.cukes}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${info.cukes}</version>
+        </dependency>
     </dependencies>
 
 </project>
