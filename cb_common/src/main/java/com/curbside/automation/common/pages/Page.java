@@ -8,8 +8,8 @@ import io.appium.java_client.AppiumDriver;
  */
 public class Page {
 
-    private Utilities utilities;
-    protected AppiumDriver driver;
+    public Utilities utilities;
+    public AppiumDriver driver;
 
     public Page(AppiumDriver driver){
         this.driver = driver;

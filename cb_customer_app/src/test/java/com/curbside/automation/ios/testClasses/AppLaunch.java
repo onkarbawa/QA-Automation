@@ -22,13 +22,17 @@ public class AppLaunch extends CustomerBaseTest {
       this.getiOSApplicationLaunch().getTapOnAllowLocation().click();
         Assert.assertEquals(this.getiOSApplicationLaunch().getCurrentLocation().getText(),"Current Location",
                 "The pointer is not landing on current location page");
-      getIOSSettingApp();
-      this.getiOSApplicationLaunch().getTapOnPrivacy().click();
-      this.getiOSApplicationLaunch().getTapOnLocationService().click();
+//      getIOSSettingApp();
+//      this.getiOSApplicationLaunch().getTapOnPrivacy().click();
+//      this.getiOSApplicationLaunch().getTapOnLocationService().click();
+
+
 
     }
     @Test
     public void set(){
         getIOSSettingApp();
+        this.getUtilities().swipe("up");
+        this.getUtilities().swipe("down");
     }
 }
