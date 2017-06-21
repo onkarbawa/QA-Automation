@@ -15,5 +15,4 @@ public class Page {
         this.driver = driver;
         this.utilities = new Utilities(driver);
     }
-
 }

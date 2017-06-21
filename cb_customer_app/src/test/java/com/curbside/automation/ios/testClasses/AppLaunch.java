@@ -16,23 +16,19 @@ public class AppLaunch extends CustomerBaseTest {
     @Test(description = "TCS-C114937")
     public void launchApp() throws InterruptedException {
       this.getiOSApplicationLaunch().getTapAllow().click();
-      this.getiOSApplicationLaunch().doSwipe("Left",2);
+      this.getiOSApplicationLaunch().doSwipe(2);
       this.getiOSApplicationLaunch().getTapGetStarted().click();
       this.getiOSApplicationLaunch().getTapOnOkWithMe().click();
       this.getiOSApplicationLaunch().getTapOnAllowLocation().click();
         Assert.assertEquals(this.getiOSApplicationLaunch().getCurrentLocation().getText(),"Current Location",
                 "The pointer is not landing on current location page");
-//      getIOSSettingApp();
-//      this.getiOSApplicationLaunch().getTapOnPrivacy().click();
-//      this.getiOSApplicationLaunch().getTapOnLocationService().click();
-
-
-
+      getIOSSettingApp();
+      this.getiOSApplicationLaunch().getTapOnPrivacy().click();
+      this.getiOSApplicationLaunch().getTapOnLocationService().click();
+        //TODO
     }
     @Test
     public void set(){
         getIOSSettingApp();
-        this.getUtilities().swipe("up");
-        this.getUtilities().swipe("down");
     }
 }

@@ -2,9 +2,8 @@
 <suite name="Test Suite" verbose="1" parallel="classes" thread-count="1">
 
     <test name="Test">
-        <parameter name="platForm" value="iOS"/>
         <packages>
-            <!--<package name="com.curbside.customerApp.ios.applicationLaunch"/>-->
+            <!--<package name="com.curbside.customerApp.applicationLaunchPageunch"/>-->
             <package name="com.curbside.ios.testClasses"/>
         </packages>
         <classes>
