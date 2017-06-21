@@ -33,16 +33,16 @@ public class BaseTest {
     private String iosPlatformVersion = Properties.getIosPlatformVersion();
     private int implicitWaitInSeconds = Properties.getImplicitWaitInSeconds();
 
+    URL url = null;
+    DesiredCapabilities caps = new DesiredCapabilities();
 
     @BeforeSuite
     public void setUp(){
-        URL url = null;
         try {
             url = new URL("http://127.0.0.1:4723/wd/hub");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        DesiredCapabilities caps = new DesiredCapabilities();
         if (platForm.equalsIgnoreCase("iOS")) {
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, iosDeviceName);
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platForm);
@@ -67,6 +67,20 @@ public class BaseTest {
     @AfterSuite
     public void tearDown(){
        // driver.quit();
+    }
+
+    public void getIOSSettingApp(){
+        try {
+            url = new URL("http://127.0.0.1:4723/wd/hub");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, iosDeviceName);
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platForm);
+        caps.setCapability(MobileCapabilityType.UDID, iosUDID);
+        caps.setCapability(MobileCapabilityType.APP, "settings");
+        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
+        driver = new IOSDriver(url,caps);
     }
 
 }

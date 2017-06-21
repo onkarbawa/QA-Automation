@@ -2,12 +2,19 @@ package com.curbside.automation.common.utilities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.ios.IOSDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -203,6 +210,38 @@ public class Utilities {
         driver.manage().timeouts().implicitlyWait(time, TimeUnit.MILLISECONDS);
     }
 
+    public void clickHomeButton() {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        robot.setAutoDelay(300);
+        // Use Apple script to get focus on the simulator
+        ScriptEngineManager mgr = new ScriptEngineManager();
+        ScriptEngine engine = mgr.getEngineByName("AppleScript");
+        String script = "tell application \"Simulator\" \n activate \n end tell";
+        try {
+            engine.eval(script);
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
+        robot.keyPress(KeyEvent.VK_META);
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_H);
+        // Have to release the key press
+        robot.keyRelease(KeyEvent.VK_H);
+        robot.keyRelease(KeyEvent.VK_H);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+    }
 
+    public void closeSession() {
+        driver.quit();
+    }
+
+//    public void h(){
+//        ((IOSDriver) driver).runAppInBackground();
+//    }
 
 }

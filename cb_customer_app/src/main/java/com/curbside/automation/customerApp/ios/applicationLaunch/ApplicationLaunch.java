@@ -3,7 +3,6 @@ package com.curbside.automation.customerApp.ios.applicationLaunch;
 import com.curbside.automation.common.utilities.Utilities;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +15,12 @@ public class ApplicationLaunch extends CustomerBaseTest {
     private Utilities util ;
 
     By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
-    By info = By.xpath(ApplicationLaunchUIMap.INFO);
+    By getStartedButton = By.name(ApplicationLaunchUIMap.GET_STARTED_BUTTON);
+    By currentLocationPage = By.name(ApplicationLaunchUIMap.CURRENT_LOCATION_PAGE);
+    By okWithMe = By.xpath(ApplicationLaunchUIMap.OK_WITH_ME);
+    By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMap.ALLOW_BUTTON_TO_ACCESS_LOCATION);
+    By privacyButton = By.xpath(ApplicationLaunchUIMap.PRIVACY_BUTTON);
+    By locationServicesButton = By.name(ApplicationLaunchUIMap.LOCATION_SERVICES_BUTTON);
 
     /**
      * Gets a AppiumDriver to initialize
@@ -29,20 +33,72 @@ public class ApplicationLaunch extends CustomerBaseTest {
     }
 
     /**
-     * Gets tap on button
+     * Gets Allow button
      * @return
      */
-    public WebElement getTapButton(){
+    public WebElement getTapAllow(){
         return driver.findElement(allow);
     }
 
+    /**
+     * Swipe screen
+     * @param direction
+     * @param offset
+     * @param time
+     * @param noOfTimes
+     */
     public void doSwipe(String direction, int offset, int time, int noOfTimes){
         for(int i = 0;i < noOfTimes;i++) {
             util.swipe(direction, offset, time);
         }
     }
 
+    /**
+     * Gets started button
+     * @return
+     */
+    public WebElement getTapGetStarted(){
+        return driver.findElement(getStartedButton);
+    }
 
+    /**
+     * Gets current location
+     * @return
+     */
+    public WebElement getCurrentLocation(){
+        return driver.findElement(currentLocationPage);
+    }
 
+    /**
+     * Gets Ok with me button
+     * @return
+     */
+    public WebElement getTapOnOkWithMe(){
+        return driver.findElement(okWithMe);
+    }
+
+    /**
+     * Gets Access current location
+     * @return
+     */
+    public WebElement getTapOnAllowLocation(){
+        return driver.findElement(allowToAccessCurrentLocation);
+    }
+
+    /**
+     * Gets Privacy button
+     * @return
+     */
+    public WebElement getTapOnPrivacy(){
+        return driver.findElement(privacyButton);
+    }
+
+    public WebElement getTapOnLocationService(){
+        return driver.findElement(locationServicesButton);
+    }
+
+    public void closeCurrentSession(){
+        util.closeSession();
+    }
 
 }
