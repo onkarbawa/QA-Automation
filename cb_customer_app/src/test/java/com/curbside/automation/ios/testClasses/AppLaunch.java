@@ -16,7 +16,7 @@ public class AppLaunch extends CustomerBaseTest {
     @Test(description = "TCS-C114937")
     public void launchApp() throws InterruptedException {
       this.getiOSApplicationLaunch().getTapAllow().click();
-      this.getiOSApplicationLaunch().doSwipe("Left",2);
+      this.getiOSApplicationLaunch().doSwipe(2);
       this.getiOSApplicationLaunch().getTapGetStarted().click();
       this.getiOSApplicationLaunch().getTapOnOkWithMe().click();
       this.getiOSApplicationLaunch().getTapOnAllowLocation().click();
@@ -25,7 +25,7 @@ public class AppLaunch extends CustomerBaseTest {
       getIOSSettingApp();
       this.getiOSApplicationLaunch().getTapOnPrivacy().click();
       this.getiOSApplicationLaunch().getTapOnLocationService().click();
-
+        //TODO
     }
     @Test
     public void set(){
