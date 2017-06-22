@@ -20,10 +20,15 @@
         <log4j.version>1.2.17</log4j.version>
         <compiler.version>3.6.1</compiler.version>
         <surefire.version>2.20</surefire.version>
-        <info.cukes>1.2.5</info.cukes>
+        <cukes.version>1.2.5</cukes.version>
     </properties>
 
     <dependencies>
+    	<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cukes.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -56,18 +61,6 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.version}</version>
-                    <configuration>
-                        <!-- Suite testng xml file to consider for test execution -->
-                        <suiteXmlFiles>
-                            <suiteXmlFile>testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>
-                        <testFailureIgnore>true</testFailureIgnore>
                     </configuration>
                 </plugin>
             </plugins>

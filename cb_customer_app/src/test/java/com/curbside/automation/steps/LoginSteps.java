@@ -21,30 +21,30 @@ LoginSteps {
     @And("^I click on 'Sign in with Facebook' button$")
     public void iClickOnSignInWithFacebookButton() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @And("^I click on 'log in with Facebook App' button$")
     public void iClickOnLogInWithFacebookAppButton() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @When("^I click on 'Open'$")
     public void iClickOnOpen() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @Then("^I click on Facebook' to continue$")
     public void iClickOnFacebookToContinue() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @Then("^I add 'Facebook Account' to continue$")
     public void iAddFacebookAccountToContinue() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        //throw new PendingException();
     }
 }

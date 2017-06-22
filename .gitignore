@@ -3,3 +3,15 @@
 *.iml
 target/
 .DS_Store
+
+cb_customer_app/ cucumber-html-reports/cucumber.json
+
+cb_customer_app/ cucumber-html-reports/formatter.js
+
+cb_customer_app/ cucumber-html-reports/index.html
+
+cb_customer_app/ cucumber-html-reports/jquery-1.8.2.min.js
+
+cb_customer_app/ cucumber-html-reports/report.js
+
+cb_customer_app/ cucumber-html-reports/style.css
