@@ -3,12 +3,12 @@ Feature: Check information's and functionality's on Applaunch in Customer app
 
   @C114937
   Scenario: Verify application is able to launch and checkmark is set to 'Always'
-    Given I launched the application of Customer
+    Given I launch the Customer App
     And I clicked on 'Allow' to send notifications
-    And I click '3 times' for Scroll left
+    And I click three times for Scroll left
     And I click on 'Get Started' button
     When I click on 'Ok with me' button on access landing page
-    Then I should see the Nearby stores landing page
+    Then I should see the 'Store Selection Page'
     And I click on Home button
     And I click on 'Settings' application
     And I scroll down & click on Customer App to launch
@@ -17,13 +17,12 @@ Feature: Check information's and functionality's on Applaunch in Customer app
 
   @C114936
   Scenario: Verify click on 'Skip Intro' or 'Get Started' button should take you back to the Store Selection page
-    Given I launched the application of Customer
+    Given I launch the Customer App
     And I click on question mark icon in the top left corner
     And I click on 'Skip Intro' button
-    And I click '3 times' for Scroll left
+    And I click three times for Scroll left
     When I click on 'Get Started' button
-    Then move back to the 'Store Selection Page'
-
+    Then I should see the 'Store Selection Page'
 
   @C114996
   Scenario: Verify user should able to use the Customer App again after turn on Location Services
@@ -42,25 +41,25 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I scroll down & click on Customer App to launch
     And I click on 'Background App Refresh' to toggle 'OFF'
     And I click on Home button
-    And I launched the application of Customer
+    And I launch the Customer App
     And I click on 'Retailer partner' at nears by screen
     When I click on 'Product'
     Then I able to view product landing page
     And I click on 'Add To Cart'
     And I click on Cart icon in bottom menu
-    When I click on 'Place Order [$xx.xx]' button
+    When I click on 'Place Order' button
     Then I checked I am not able to checkout from cart
     And I click on Home button
     And I click on 'Settings' application
     And I scroll down & click on Customer App to launch
     And I click on 'Background App Refresh' to toggle 'ON'
     And I click on Home button
-    And I launched the application of Customer
+    And I launch the Customer App
     And I click on Cart icon in bottom menu
-    When I click on 'Place Order [$xx.xx]' button
+    When I click on 'Place Order' button
     Then I checked I am able to checkout from cart
 
-  @C114998  @Andorid
+  @C114998  @Android
   Scenario: Verify retailer selection page should show up after allowing permissions
     Given I click on Home button
     And I click on 'Settings' application
@@ -68,6 +67,6 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I click on 'Location'
     And I click on customer button to enable
     And I click on Home button
-    And I launched the application of Customer
+    And I launch the Customer App
     When I click on 'Allow' button
     Then the retailer selection page should show up

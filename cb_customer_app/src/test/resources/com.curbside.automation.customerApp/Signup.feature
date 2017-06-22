@@ -3,10 +3,9 @@ Feature: Check information's and functionality's on SignUp in Customer app
 
   @C114954
   Scenario: Verify on new account user should see name, email or phone number in my account
-    Given I launched the application of Customer
+    Given I launch the Customer App
     And I click on 'My Account' icon
-    And I click on 'Sign in Button' or 'Create one now'
-    And I click pn 'Create an Account'
+    And I click on 'Create an Account'
     And I enter 'email' in first box
     And I enter 'password' in second box
     And I enter 'Phone Number' in third box
@@ -17,8 +16,7 @@ Feature: Check information's and functionality's on SignUp in Customer app
   Scenario: Verify Credit card info is shown in 'Payment Info' in 'My Account'
     Given I launched the application of Customer
     And I click on 'My Account' icon
-    And I click on 'Sign in Button' or 'Create one now'
-    And I click pn 'Create an Account'
+    And I click on 'Create an Account'
     And I enter 'email' in first box
     And I enter 'password' in second box
     And I enter 'Phone Number' in third box

@@ -245,7 +245,7 @@ public class Utilities {
 
             } else if ("up".equalsIgnoreCase(direction)) {
                     anchor = (int) (width * 0.5);
-                    startPoint = (int) (height * 0.8);
+                    startPoint = (int) (height * 0.6);
                     endPoint = (int) (height * 0.01);
                     if (platForm.equalsIgnoreCase("iOS")) {
                         touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
@@ -254,7 +254,7 @@ public class Utilities {
                     }
             } else if ("down".equalsIgnoreCase(direction)) {
                 anchor = (int) (width * 0.5);
-                startPoint = (int) (height * 0.01);
+                startPoint = (int) (height * 0.4);
                 endPoint = (int) (height * 0.8);
                 touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
             }

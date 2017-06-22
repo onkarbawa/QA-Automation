@@ -34,10 +34,10 @@ public class AppLaunch extends CustomerBaseTest {
         this.getApplicationLaunchPage().getStartedButton().click();
         this.getApplicationLaunchPage().getLocationOkButton().click();
         this.getApplicationLaunchPage().getAllowButton().click();
-        if(this.getUtilities().isElementPresent(ApplicationLaunchPage.allowButton)) {
+        if(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().allowButton)) {
             this.getApplicationLaunchPage().getAllowButton().click();
         }
-        Assert.assertTrue(this.getUtilities().isElementPresent(ApplicationLaunchPage.currentLocation),"Home page is not visible yet");
+        Assert.assertTrue(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().currentLocation),"Home page is not visible yet");
 
     }
 }
