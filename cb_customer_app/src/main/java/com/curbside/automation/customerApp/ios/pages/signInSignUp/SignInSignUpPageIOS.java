@@ -18,7 +18,7 @@ public class SignInSignUpPageIOS extends Page {
     public SignInSignUpPageIOS(AppiumDriver driver) {
         super(driver);
     }
-    
+
     /**
      * Gets SignIn with mail Button
      * @return

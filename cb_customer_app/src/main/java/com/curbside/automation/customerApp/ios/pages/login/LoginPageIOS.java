@@ -10,6 +10,9 @@ import org.openqa.selenium.WebElement;
  */
 public class LoginPageIOS extends Page {
 
+    By email = By.xpath(LoginPageUIMapIOS.EMAIL);
+    By password = By.xpath(LoginPageUIMapIOS.PASSWORD);
+    By signInButton = By.xpath(LoginPageUIMapIOS.SIGN_IN_BUTTON);
 
 
     /**
@@ -20,5 +23,28 @@ public class LoginPageIOS extends Page {
         super(driver);
     }
 
+    /**
+     * Gets email field
+     * @return
+     */
+    public WebElement getEmail(){
+        return driver.findElement(email);
+    }
+
+    /**
+     * Gets password field
+     * @return
+     */
+    public WebElement getPassword(){
+        return driver.findElement(password);
+    }
+
+    /**
+     * Gets sign in field
+     * @return
+     */
+    public WebElement getSignInButton(){
+        return driver.findElement(signInButton);
+    }
 
 }
