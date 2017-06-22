@@ -7,7 +7,8 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I clicked on 'Allow' to send notifications
     And I click three times for Scroll left
     And I click on 'Get Started' button
-    When I click on 'Ok with me' button on access landing page
+    And I click on 'Ok with me' button on access landing page
+    When I click on 'Allow Access Location' button
     Then I should see the 'Store Selection Page'
     And I click on Home button
     And I click on 'Settings' application

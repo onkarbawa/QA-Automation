@@ -1,14 +1,16 @@
 package com.curbside.automation.steps;
 
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 /**
  * Created by kumar.nipun on 6/21/2017.
  */
-public class AppLaunchSteps {
+public class AppLaunchSteps extends CustomerBaseTest {
 
   @Given("^I launch the Customer App$")
   public void iLaunchTheCustomerApp() {
@@ -17,27 +19,33 @@ public class AppLaunchSteps {
 
   @And("^I clicked on 'Allow' to send notifications$")
   public void iClickedOnAllowToSendNotifications() {
-    // Write code here that turns the phrase above into concrete actions
+    this.getiOSApplicationLaunch().getAllow().click();
   }
 
   @And("^I click three times for Scroll left$")
   public void iClickTimesForScrollLeft() {
-    // Write code here that turns the phrase above into concrete actions
+    this.getiOSApplicationLaunch().doSwipe(2);
   }
 
   @And("^I click on 'Get Started' button$")
   public void iClickOnGetStartedButton() {
-    // Write code here that turns the phrase above into concrete actions
+    this.getiOSApplicationLaunch().getStarted().click();
   }
 
-  @When("^I click on 'Ok with me' button on access landing page$")
+  @And("^I click on 'Ok with me' button on access landing page$")
   public void iClickOnOkWithMeButtonOnAccessLandingPage() {
-    // Write code here that turns the phrase above into concrete actions
+    this.getiOSApplicationLaunch().getOkWithMe().click();
+  }
+
+  @When("^I click on 'Allow Access Location' button$")
+  public void iClickOnAllowAccessLocationButton()  {
+    this.getiOSApplicationLaunch().getAllowLocation().click();
   }
 
   @Then("^I should see the 'Store Selection Page'$")
   public void iShouldSeeTheStoreSelectionPage() {
-    // Write code here that turns the phrase above into concrete actions
+    Assert.assertEquals(this.getiOSApplicationLaunch().getCurrentLocation().getText(),"Current Location",
+            "The pointer is not landing on current location page");
   }
 
   @And("^I click on Home button$")

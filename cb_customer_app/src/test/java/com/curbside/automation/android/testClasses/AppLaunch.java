@@ -16,7 +16,7 @@ public class AppLaunch extends CustomerBaseTest {
      *
      * @author hitesh.grover
      */
-    @Test(groups = {"all", "applicationLaunchPage", "TCS-C114937"})
+    @Test(groups = {"all", "applicationLaunch", "TCS-C114937"})
     public void launchApp(){
         this.getApplicationLaunchPage().getSkipIntro().click();
         this.getApplicationLaunchPage().getLocationOkButton().click();
@@ -27,7 +27,7 @@ public class AppLaunch extends CustomerBaseTest {
      *
      * @author hitesh.grover
      */
-    @Test(groups = {"all", "applicationLaunchPage", "TCS-C114936"})
+    @Test(groups = {"all", "applicationLaunch", "TCS-C114936"})
     public void gotoHomePage(){
         this.getApplicationLaunchPage().getSkipIntro().isDisplayed();
         this.getApplicationLaunchPage().scrollIntroPage(2);
@@ -37,7 +37,7 @@ public class AppLaunch extends CustomerBaseTest {
         if(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().allowButton)) {
             this.getApplicationLaunchPage().getAllowButton().click();
         }
-        Assert.assertTrue(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().currentLocation),"Home page is not visible yet");
+        Assert.assertTrue(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().currentLocation),"HomePageIOS page is not visible yet");
 
     }
 }

@@ -58,7 +58,7 @@ public class ApplicationLaunchPage extends Page {
     }
 
     /**
-     * Gets the 'Search' button from Home page
+     * Gets the 'Search' button from HomePageIOS page
      * @return search button element
      */
     public WebElement getSearchButton() {
@@ -66,7 +66,7 @@ public class ApplicationLaunchPage extends Page {
     }
 
     /**
-     * Gets the 'Current location' button from Home page
+     * Gets the 'Current location' button from HomePageIOS page
      * @return current location button element
      */
     public WebElement getCurrentLocation(){

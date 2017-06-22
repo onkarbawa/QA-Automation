@@ -8,7 +8,10 @@ import cucumber.api.java.en.When;
 /**
  * Created by bawa.onkar on 22/06/17.
  */
-public class LoginSteps {
+public class
+
+
+LoginSteps {
     
     @And("^I click on 'My Account' icon$")
     public void iClickOnMyAccountIcon() {

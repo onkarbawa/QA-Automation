@@ -1,8 +1,8 @@
-package com.curbside.automation.customerApp.ios.applicationLaunchPage;
+package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
-import com.curbside.automation.customerApp.ios.settingsPage.SettingsUIMap;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsUIMap;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,11 +12,11 @@ import org.openqa.selenium.WebElement;
  */
 public class ApplicationLaunchPageIOS extends Page {
 
-    By allow = By.name(ApplicationLaunchUIMap.ALLOW_BUUTON);
-    By getStartedButton = By.name(ApplicationLaunchUIMap.GET_STARTED_BUTTON);
-    By currentLocationPage = By.name(ApplicationLaunchUIMap.CURRENT_LOCATION_PAGE);
-    By okWithMe = By.xpath(ApplicationLaunchUIMap.OK_WITH_ME);
-    By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMap.ALLOW_BUTTON_TO_ACCESS_LOCATION);
+    By allow = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUUTON);
+    By getStartedButton = By.name(ApplicationLaunchUIMapIOS.GET_STARTED_BUTTON);
+    By currentLocationPage = By.name(ApplicationLaunchUIMapIOS.CURRENT_LOCATION_PAGE);
+    By okWithMe = By.xpath(ApplicationLaunchUIMapIOS.OK_WITH_ME);
+    By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUTTON_TO_ACCESS_LOCATION);
     By privacyButton = By.xpath(SettingsUIMap.PRIVACY_BUTTON);
     By locationServicesButton = By.name(SettingsUIMap.LOCATION_SERVICES_BUTTON);
 
@@ -33,7 +33,7 @@ public class ApplicationLaunchPageIOS extends Page {
      * Gets Allow button
      * @return
      */
-    public WebElement getTapAllow(){
+    public WebElement getAllow(){
         return driver.findElement(allow);
     }
 
@@ -53,7 +53,7 @@ public class ApplicationLaunchPageIOS extends Page {
      * Gets started button
      * @return
      */
-    public WebElement getTapGetStarted(){
+    public WebElement getStarted(){
         return driver.findElement(getStartedButton);
     }
 
@@ -69,7 +69,7 @@ public class ApplicationLaunchPageIOS extends Page {
      * Gets Ok with me button
      * @return
      */
-    public WebElement getTapOnOkWithMe(){
+    public WebElement getOkWithMe(){
         return driver.findElement(okWithMe);
     }
 
@@ -77,7 +77,7 @@ public class ApplicationLaunchPageIOS extends Page {
      * Gets Access current location
      * @return
      */
-    public WebElement getTapOnAllowLocation(){
+    public WebElement getAllowLocation(){
         return driver.findElement(allowToAccessCurrentLocation);
     }
 
@@ -85,11 +85,11 @@ public class ApplicationLaunchPageIOS extends Page {
      * Gets Privacy button
      * @return
      */
-    public WebElement getTapOnPrivacy(){
+    public WebElement getPrivacy(){
         return driver.findElement(privacyButton);
     }
 
-    public WebElement getTapOnLocationService(){
+    public WebElement getLocationService(){
         return driver.findElement(locationServicesButton);
     }
 
