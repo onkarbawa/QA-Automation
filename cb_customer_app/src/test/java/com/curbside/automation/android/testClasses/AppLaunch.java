@@ -1,7 +1,5 @@
 package com.curbside.automation.android.testClasses;
 
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchPage;
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchUIMap;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,7 +18,11 @@ public class AppLaunch extends CustomerBaseTest {
     public void launchApp(){
         this.getApplicationLaunchPage().getSkipIntro().click();
         this.getApplicationLaunchPage().getLocationOkButton().click();
-
+        this.getApplicationLaunchPage().getAllowButton().click();
+        if(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().allowButton)) {
+            this.getApplicationLaunchPage().getAllowButton().click();
+        }
+        Assert.assertTrue(this.getUtilities().isElementPresent(this.getHomePage().currentLocationButton),"HomePageIOS page is not visible yet");
     }
 
     /**
@@ -34,11 +36,10 @@ public class AppLaunch extends CustomerBaseTest {
         this.getApplicationLaunchPage().getStartedButton().click();
         this.getApplicationLaunchPage().getLocationOkButton().click();
         this.getApplicationLaunchPage().getAllowButton().click();
-        //if(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().allowButton)) {
-        //   this.getApplicationLaunchPage().getAllowButton().click();
-        //}
-        //Assert.assertTrue(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().currentLocation),"HomePageIOS page is not visible yet");
-
+        if(this.getUtilities().isElementPresent(this.getApplicationLaunchPage().allowButton)) {
+           this.getApplicationLaunchPage().getAllowButton().click();
+        }
+        Assert.assertTrue(this.getUtilities().isElementPresent(this.getHomePage().currentLocationButton),"HomePageIOS page is not visible yet");
     }
 }
 

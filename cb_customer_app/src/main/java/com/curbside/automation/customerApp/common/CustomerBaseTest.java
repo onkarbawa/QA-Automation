@@ -2,7 +2,8 @@ package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.common.utilities.Utilities;
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchPage;
+import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPage;
+import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
 
 /**
@@ -16,6 +17,7 @@ public class CustomerBaseTest extends BaseTest {
     ApplicationLaunchPage applicationLaunchPage;
     Utilities utilities;
     ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
+    HomePage homePage;
 
     /**
      * Intialization of class variable with driver
@@ -44,6 +46,16 @@ public class CustomerBaseTest extends BaseTest {
         if (utilities == null)
             utilities = new Utilities(this.driver);
         return utilities;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public HomePage getHomePage(){
+        if (homePage == null)
+            homePage = new HomePage(this.driver);
+        return homePage;
     }
 
 }
