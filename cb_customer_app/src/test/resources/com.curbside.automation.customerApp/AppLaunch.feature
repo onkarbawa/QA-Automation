@@ -12,6 +12,7 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     Then I should see the 'Store Selection Page'
     And I click on Home button
     And I click on 'Settings' application
+    And I click on Privacy button
     And I scroll down & click on Customer App to launch
     When I click on 'Location' & select 'On'
     Then I saw checkmark is set 'Always'

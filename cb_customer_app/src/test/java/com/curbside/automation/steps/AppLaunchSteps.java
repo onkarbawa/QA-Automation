@@ -1,6 +1,9 @@
 package com.curbside.automation.steps;
 
+import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
+import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,41 +13,45 @@ import org.testng.Assert;
 /**
  * Created by kumar.nipun on 6/21/2017.
  */
-public class AppLaunchSteps extends CustomerBaseTest {
+public class AppLaunchSteps  {
+
+    BaseTest baseTest = new BaseTest();
+    ApplicationLaunchPageIOS applicationLaunchPageIOS;// = new ApplicationLaunchPageIOS(BaseTest.driver);
 
     @Given("^I launch the Customer App$")
     public void iLaunchTheCustomerApp () {
-      // Write code here that turns the phrase above into concrete actions
+      baseTest.setUp();
+      applicationLaunchPageIOS = new ApplicationLaunchPageIOS(BaseTest.driver);
     }
 
     @And("^I clicked on Allow to send notifications$")
     public void iClickedOnAllowToSendNotifications () {
-      this.getiOSApplicationLaunch().getAllow().click();
+       applicationLaunchPageIOS.getAllow().click();
     }
 
     @And("^I click three times for Scroll left$")
     public void iClickTimesForScrollLeft () {
-      this.getiOSApplicationLaunch().doSwipe(2);
+        applicationLaunchPageIOS.doSwipe(2);
     }
 
     @And("^I click on 'Get Started' button$")
     public void iClickOnGetStartedButton () {
-      this.getiOSApplicationLaunch().getStarted().click();
+        applicationLaunchPageIOS.getStarted().click();
     }
 
     @And("^I click on 'Ok with me' button on access landing page$")
     public void iClickOnOkWithMeButtonOnAccessLandingPage () {
-      this.getiOSApplicationLaunch().getOkWithMe().click();
+        applicationLaunchPageIOS.getOkWithMe().click();
     }
 
     @When("^I click on 'Allow Access Location' button$")
     public void iClickOnAllowAccessLocationButton () {
-      this.getiOSApplicationLaunch().getAllowLocation().click();
+        applicationLaunchPageIOS.getAllowLocation().click();
     }
 
     @Then("^I should see the 'Store Selection Page'$")
     public void iShouldSeeTheStoreSelectionPage () {
-      Assert.assertEquals(this.getiOSApplicationLaunch().getCurrentLocation().getText(), "Current Location",
+      Assert.assertEquals(applicationLaunchPageIOS.getCurrentLocation().getText(), "Current Location",
               "The pointer is not landing on current location page");
     }
 
@@ -55,12 +62,16 @@ public class AppLaunchSteps extends CustomerBaseTest {
 
     @And("^I click on 'Settings' application$")
     public void iClickOnSettingsApplication () {
-      // Write code here that turns the phrase above into concrete actions
+      baseTest.getIOSSettingApp();
     }
 
+    @And("^I click on Privacy button$")
+    public void iClickOnPrivacyButton()  {
+        applicationLaunchPageIOS.doScroll();
+    }
     @And("^I scroll down & click on Customer App to launch$")
     public void iScrollDownClickOnCustomerAppToLaunch () {
-      // Write code here that turns the phrase above into concrete actions
+
     }
 
     @When("^I click on 'Location' & select 'On'$")

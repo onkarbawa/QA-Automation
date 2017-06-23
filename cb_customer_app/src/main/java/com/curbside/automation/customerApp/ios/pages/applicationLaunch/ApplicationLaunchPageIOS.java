@@ -2,7 +2,7 @@ package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
-import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsUIMap;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.Settings;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,8 +17,8 @@ public class ApplicationLaunchPageIOS extends Page {
     By currentLocationPage = By.name(ApplicationLaunchUIMapIOS.CURRENT_LOCATION_PAGE);
     By okWithMe = By.xpath(ApplicationLaunchUIMapIOS.OK_WITH_ME);
     By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUTTON_TO_ACCESS_LOCATION);
-    By privacyButton = By.xpath(SettingsUIMap.PRIVACY_BUTTON);
-    By locationServicesButton = By.name(SettingsUIMap.LOCATION_SERVICES_BUTTON);
+    By privacyButton = By.xpath(Settings.PRIVACY_BUTTON);
+    By locationServicesButton = By.name(Settings.LOCATION_SERVICES_BUTTON);
 
     /**
      * Gets a AppiumDriver to initialize
@@ -93,5 +93,13 @@ public class ApplicationLaunchPageIOS extends Page {
         return driver.findElement(locationServicesButton);
     }
 
+    public void doScroll(){
+        for (int i=1;i<10;i++){
+            if (utilities.isElementPresent(privacyButton)){
+                getPrivacy().click();
+            }
+            break;
+        }
+    }
 
 }
