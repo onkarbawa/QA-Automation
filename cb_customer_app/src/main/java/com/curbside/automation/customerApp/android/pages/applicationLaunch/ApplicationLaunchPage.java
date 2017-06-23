@@ -68,4 +68,13 @@ public class ApplicationLaunchPage extends Page {
             }
         }
     }
+
+    public void goToHomePage(){
+        this.getSkipIntro().click();
+        this.getLocationOkButton().click();
+        this.getAllowButton().click();
+        if(utilities.isElementPresent(allowButton)){
+            this.getAllowButton().click();
+        }
+    }
 }

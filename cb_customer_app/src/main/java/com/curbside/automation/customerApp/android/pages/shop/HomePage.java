@@ -12,7 +12,7 @@ public class HomePage extends Page{
 
     public final By currentLocationButton = By.id(HomePageUIMap.CURRENT_LOCATION_BUTTON);
     public final By searchButton = By.id(HomePageUIMap.SEARCH_BUTTON);
-    public final By nearByStores = By.id(HomePageUIMap.NEARBY_STORES);
+    public final By nearByStores = By.xpath(HomePageUIMap.NEARBY_STORES);
     public final By productSearchTextField = By.id(HomePageUIMap.PRODUCT_SEARCH_TEXT_FIELD);
 
     public HomePage(AppiumDriver driver) {
@@ -48,6 +48,7 @@ public class HomePage extends Page{
      * @return
      */
     public WebElement getProductSearchTextField() {
-        return driver.findElement(nearByStores);
+        return driver.findElement(productSearchTextField);
     }
+
 }

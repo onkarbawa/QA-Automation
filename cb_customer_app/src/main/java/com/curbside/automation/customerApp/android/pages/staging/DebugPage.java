@@ -19,19 +19,34 @@ public class DebugPage extends Page {
         super(driver);
     }
 
-
-    public WebElement getLocationOkButton() {
+    /**
+     * Gets ApiHost button from Debug page
+     * @return
+     */
+    public WebElement getApiHostButton() {
         return driver.findElement(apiHostButton);
     }
 
-    public WebElement getLocationOkButton() {
+    /**
+     * Gets ApiHost Dialog text field
+     * @return
+     */
+    public WebElement getApiHostDialogTextField() {
         return driver.findElement(apiHostDialogTextField);
     }
 
-    public WebElement getaiButton() {
+    /**
+     * Gets ApiHost Dialog Ok button
+     * @return
+     */
+    public WebElement getApiHostDialogOkButton() {
         return driver.findElement(apiHostDialogOkButton);
     }
 
+    /**
+     * Gets back button from staging page/Debug page
+     * @return
+     */
     public WebElement getBackButton() {
         return driver.findElement(backButton);
     }
