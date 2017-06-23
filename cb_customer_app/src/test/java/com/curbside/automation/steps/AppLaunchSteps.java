@@ -10,9 +10,10 @@ import cucumber.api.java.en.When;
  */
 public class AppLaunchSteps {
 
-  @Given("^I launch the Customer App$")
-  public void iLaunchTheCustomerApp() {
+  @Given("^I launch the \"([^\"]*)\" Customer App$")
+  public void iLaunchTheCustomerApp(String format) {
     // Write code here that turns the phrase above into concrete actions
+    System.out.print(format);
   }
 
   @And("^I clicked on 'Allow' to send notifications$")

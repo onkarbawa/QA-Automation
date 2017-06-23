@@ -1,7 +1,5 @@
 package com.curbside.automation.android.testClasses;
 
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchPage;
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchUIMap;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;

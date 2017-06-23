@@ -1,8 +1,7 @@
-package com.curbside.automation.customerApp.android.applicationLaunch;
+package com.curbside.automation.customerApp.android.pages.applicationLaunch;
 
 
 import com.curbside.automation.common.pages.Page;
-import com.curbside.automation.common.utilities.Utilities;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,8 +17,6 @@ public class ApplicationLaunchPage extends Page {
     public final By skipIntro = By.id(ApplicationLaunchUIMap.SKIP_INTRO);
     public final By allowButton = By.id(ApplicationLaunchUIMap.LOCATION_ALLOW_BUTTON);
     public final By getStarted = By.id(ApplicationLaunchUIMap.GET_STARTED);
-    public final By searchButton = By.id(ApplicationLaunchUIMap.SEARCH_BUTTON);
-    public final By currentLocation = By.id(ApplicationLaunchUIMap.CURRENT_LOCATION_BUTTON);
 
     public ApplicationLaunchPage(AppiumDriver driver) {
         super(driver);
@@ -55,22 +52,6 @@ public class ApplicationLaunchPage extends Page {
      */
     public WebElement getStartedButton() {
         return driver.findElement(getStarted);
-    }
-
-    /**
-     * Gets the 'Search' button from Home page
-     * @return search button element
-     */
-    public WebElement getSearchButton() {
-        return driver.findElement(searchButton);
-    }
-
-    /**
-     * Gets the 'Current location' button from Home page
-     * @return current location button element
-     */
-    public WebElement getCurrentLocation(){
-        return driver.findElement(currentLocation);
     }
 
     /**

@@ -2,7 +2,7 @@ package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.common.utilities.Utilities;
-import com.curbside.automation.customerApp.android.applicationLaunch.ApplicationLaunchPage;
+import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPage;
 import com.curbside.automation.customerApp.ios.applicationLaunchPage.ApplicationLaunchPageIOS;
 
 /**
