@@ -1,14 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Test Suite" verbose="1" parallel="classes" thread-count="1">
-
     <test name="Test">
         <packages>
-            <!--<package name="com.curbside.customerApp.applicationLaunchPageunch"/>-->
-            <package name="com.curbside.ios.testClasses"/>
+            <package name="com.curbside.runners"/>
         </packages>
-        <classes>
-
-        </classes>
    </test>
-
 </suite>

@@ -1,4 +1,4 @@
-package com.curbside.automation.customerApp.ios.settingsPage;
+package com.curbside.automation.customerApp.ios.pages.settingsPage;
 
 /**
  * Created by bawa.onkar on 21/06/17.

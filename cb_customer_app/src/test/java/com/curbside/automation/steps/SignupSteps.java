@@ -10,11 +10,6 @@ import cucumber.api.java.en.When;
  */
 public class SignupSteps {
   
-  @And("^I click on 'My Account' icon$")
-  public void iClickOnMyAccountIcon() {
-    // Write code here that turns the phrase above into concrete actions
-  }
-
   @And("^I click on 'Create an Account'$")
   public void iClickOnCreateAnAccount() {
     // Write code here that turns the phrase above into concrete actions
