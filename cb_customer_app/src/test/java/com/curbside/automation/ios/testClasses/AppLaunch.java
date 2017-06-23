@@ -1,6 +1,7 @@
 package com.curbside.automation.ios.testClasses;
 
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.Settings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,12 +24,12 @@ public class AppLaunch extends CustomerBaseTest {
         Assert.assertEquals(this.getiOSApplicationLaunch().getCurrentLocation().getText(),"Current Location",
                 "The pointer is not landing on current location page");
       getIOSSettingApp();
-      this.getiOSApplicationLaunch().getPrivacy().click();
-      this.getiOSApplicationLaunch().getLocationService().click();
+//      this.getiOSApplicationLaunch().getPrivacy().click();
+//      this.getiOSApplicationLaunch().getLocationService().click();
         //TODO
     }
     @Test
     public void set(){
-        getIOSSettingApp();
+        new Settings(driver).doScroll();
     }
 }

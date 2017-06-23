@@ -1,6 +1,7 @@
 package com.curbside.automation.customerApp.ios.pages.settingsPage;
 
 import com.curbside.automation.common.pages.Page;
+import com.curbside.automation.common.utilities.SwipeOptions;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,14 @@ public class Settings extends Page {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-    
-    //public void
+
+    public void getPrivacy(){
+        privacyButton.click();
+    }
+    public void doScroll(){
+
+                utilities.swipeOptions(SwipeOptions.Up);
+
+
+    }
 }

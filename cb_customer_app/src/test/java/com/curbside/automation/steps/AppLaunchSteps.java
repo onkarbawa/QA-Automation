@@ -3,6 +3,7 @@ package com.curbside.automation.steps;
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.Settings;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -17,11 +18,12 @@ public class AppLaunchSteps  {
 
     BaseTest baseTest = new BaseTest();
     ApplicationLaunchPageIOS applicationLaunchPageIOS;// = new ApplicationLaunchPageIOS(BaseTest.driver);
-
+    Settings settings;
     @Given("^I launch the Customer App$")
     public void iLaunchTheCustomerApp () {
       baseTest.setUp();
       applicationLaunchPageIOS = new ApplicationLaunchPageIOS(BaseTest.driver);
+      settings = new Settings(BaseTest.driver);
     }
 
     @And("^I clicked on Allow to send notifications$")
@@ -67,7 +69,7 @@ public class AppLaunchSteps  {
 
     @And("^I click on Privacy button$")
     public void iClickOnPrivacyButton()  {
-        applicationLaunchPageIOS.doScroll();
+        settings.doScroll();
     }
     @And("^I scroll down & click on Customer App to launch$")
     public void iScrollDownClickOnCustomerAppToLaunch () {
@@ -166,7 +168,7 @@ public class AppLaunchSteps  {
 
     @And("^I click on 'Location'$")
     public void iClickOnLocation () {
-      // Write code here that turns the phrase above into concrete actions
+      settings.getPrivacy();
     }
 
     @And("^I click on customer button to enable$")
@@ -174,16 +176,10 @@ public class AppLaunchSteps  {
       // Write code here that turns the phrase above into concrete actions
     }
 
-    @When("^I click on 'Allow' button$")
-    public void iClickOnAllowButton () {
-      // Write code here that turns the phrase above into concrete actions
+
+    @When("^I scroll down & click on Customer App and click$")
+    public void iScrollDownClickOnCustomerAppAndClick() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
-
-    @Then("^the retailer selection page should show up$")
-    public void theRetailerSelectionPageShouldShowUp () {
-      // Write code here that turns the phrase above into concrete actions
-    }
-
-
-
 }
