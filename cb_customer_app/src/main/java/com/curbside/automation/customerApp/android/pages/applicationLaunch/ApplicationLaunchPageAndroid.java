@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by hitesh.grover on 16/06/17.
  */
-public class ApplicationLaunchPage extends Page {
+public class ApplicationLaunchPageAndroid extends Page {
 
 
     public final By locationOkButton = By.id(ApplicationLaunchUIMap.LOCATION_OK_BUTTON);
@@ -18,7 +18,7 @@ public class ApplicationLaunchPage extends Page {
     public final By allowButton = By.id(ApplicationLaunchUIMap.LOCATION_ALLOW_BUTTON);
     public final By getStarted = By.id(ApplicationLaunchUIMap.GET_STARTED);
 
-    public ApplicationLaunchPage(AppiumDriver driver) {
+    public ApplicationLaunchPageAndroid(AppiumDriver driver) {
         super(driver);
     }
 

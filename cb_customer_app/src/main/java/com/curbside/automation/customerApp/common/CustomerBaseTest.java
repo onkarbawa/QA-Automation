@@ -2,7 +2,8 @@ package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.common.utilities.Utilities;
-import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPage;
+import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
+import com.curbside.automation.customerApp.android.pages.location.LocationPage;
 import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
 
@@ -14,10 +15,11 @@ public class CustomerBaseTest extends BaseTest {
     /**
      * Reference variables of Pages(Classes)
      */
-    ApplicationLaunchPage applicationLaunchPage;
+    ApplicationLaunchPageAndroid applicationLaunchPageAndroid;
     Utilities utilities;
     ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
-    HomePage homePage;
+    HomePage homePageAndroid;
+    LocationPage locationPageAndroid;
 
     /**
      * Intialization of class variable with driver
@@ -25,10 +27,10 @@ public class CustomerBaseTest extends BaseTest {
      * Gets a Android application initialize
      * @return
      */
-    public ApplicationLaunchPage getApplicationLaunchPage() {
-        if (applicationLaunchPage == null)
-            applicationLaunchPage = new ApplicationLaunchPage(this.driver);
-        return applicationLaunchPage;
+    public ApplicationLaunchPageAndroid getApplicationLaunchPageAndroid() {
+        if (applicationLaunchPageAndroid == null)
+            applicationLaunchPageAndroid = new ApplicationLaunchPageAndroid(this.driver);
+        return applicationLaunchPageAndroid;
     }
 
     /**
@@ -52,10 +54,20 @@ public class CustomerBaseTest extends BaseTest {
      * Intialization of class variable with driver
      * @return
      */
-    public HomePage getHomePage(){
-        if (homePage == null)
-            homePage = new HomePage(this.driver);
-        return homePage;
+    public HomePage getHomePageAndroid(){
+        if (homePageAndroid == null)
+            homePageAndroid = new HomePage(this.driver);
+        return homePageAndroid;
     }
 
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public LocationPage getLocationPageAndroid(){
+        if (locationPageAndroid == null)
+            locationPageAndroid = new LocationPage(this.driver);
+        return locationPageAndroid;
+    }
 }
