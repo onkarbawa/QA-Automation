@@ -1,5 +1,6 @@
 package com.curbside.automation.common.configuration;
 
+import com.curbside.automation.common.utilities.Helpers;
 import org.apache.log4j.Logger;
 
 /**
@@ -95,5 +96,15 @@ public class Properties {
    */
   public static int getImplicitWaitInSeconds(){
       return Integer.parseInt(configuration.get("implicitWaitInSeconds"));
+  }
+
+  /**
+   * Gets the device json file path
+   * @return
+   */
+  public static String getDeviceJsonFileName() {
+    return Helpers.isPropertySpecifiedAtOsLevel("deviceFile") ?
+      System.getProperty("deviceFile") :
+      Properties.class.getClassLoader().getResource(configuration.get("deviceFile")).getPath();
   }
 }
