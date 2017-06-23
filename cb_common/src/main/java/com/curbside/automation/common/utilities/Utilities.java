@@ -37,7 +37,7 @@ public class Utilities {
 
     /**
      * To press Enter key for android native keyboard
-     *//*
+     */
     public void hitEnter(){
         ((AndroidDriver<WebElement>) driver).pressKeyCode(66);
     }
@@ -144,6 +144,7 @@ public class Utilities {
 
         try {
             element = waitObj.until(ExpectedConditions.elementToBeClickable(locator));
+            element.click();
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -152,7 +153,7 @@ public class Utilities {
 
     /**
      * Swipe screen using directions
-     *@param direction
+     *@param
      */
     public void swipeOptions(SwipeOptions option){
         Dimension size = driver.manage().window().getSize();

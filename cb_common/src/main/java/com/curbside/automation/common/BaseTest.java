@@ -35,7 +35,7 @@ public class BaseTest {
     URL url = null;
     DesiredCapabilities caps = new DesiredCapabilities();
 
-    @BeforeSuite
+   // @BeforeSuite
     public void setUp(){
         try {
             url = new URL("http://127.0.0.1:4723/wd/hub");
@@ -61,11 +61,12 @@ public class BaseTest {
 
         }
         driver.manage().timeouts().implicitlyWait(implicitWaitInSeconds, TimeUnit.SECONDS);
+
     }
 
     @AfterSuite
     public void tearDown(){
-        driver.quit();
+       // driver.quit();
     }
 
     public void getIOSSettingApp(){

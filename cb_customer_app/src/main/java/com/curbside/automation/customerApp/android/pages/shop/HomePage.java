@@ -39,7 +39,7 @@ public class HomePage extends Page{
      * Gets Nearby Stores Button element
      * @return
      */
-    public WebElement getNearByStoresButton() {
+    public WebElement getNearByStores() {
         return driver.findElement(nearByStores);
     }
 
