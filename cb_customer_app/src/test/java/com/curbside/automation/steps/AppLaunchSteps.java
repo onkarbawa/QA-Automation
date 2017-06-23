@@ -67,7 +67,7 @@ public class AppLaunchSteps  {
 
     @And("^I click on Privacy button$")
     public void iClickOnPrivacyButton()  {
-        applicationLaunchPageIOS.doScroll();
+
     }
     @And("^I scroll down & click on Customer App to launch$")
     public void iScrollDownClickOnCustomerAppToLaunch () {

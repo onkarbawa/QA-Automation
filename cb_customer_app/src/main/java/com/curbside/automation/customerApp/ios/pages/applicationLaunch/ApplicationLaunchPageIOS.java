@@ -17,8 +17,7 @@ public class ApplicationLaunchPageIOS extends Page {
     By currentLocationPage = By.name(ApplicationLaunchUIMapIOS.CURRENT_LOCATION_PAGE);
     By okWithMe = By.xpath(ApplicationLaunchUIMapIOS.OK_WITH_ME);
     By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUTTON_TO_ACCESS_LOCATION);
-    By privacyButton = By.xpath(Settings.PRIVACY_BUTTON);
-    By locationServicesButton = By.name(Settings.LOCATION_SERVICES_BUTTON);
+
 
     /**
      * Gets a AppiumDriver to initialize
@@ -81,25 +80,7 @@ public class ApplicationLaunchPageIOS extends Page {
         return driver.findElement(allowToAccessCurrentLocation);
     }
 
-    /**
-     * Gets Privacy button
-     * @return
-     */
-    public WebElement getPrivacy(){
-        return driver.findElement(privacyButton);
-    }
 
-    public WebElement getLocationService(){
-        return driver.findElement(locationServicesButton);
-    }
 
-    public void doScroll(){
-        for (int i=1;i<10;i++){
-            if (utilities.isElementPresent(privacyButton)){
-                getPrivacy().click();
-            }
-            break;
-        }
-    }
 
 }

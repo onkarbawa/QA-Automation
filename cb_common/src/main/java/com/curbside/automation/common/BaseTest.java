@@ -61,6 +61,7 @@ public class BaseTest {
 
         }
         driver.manage().timeouts().implicitlyWait(implicitWaitInSeconds, TimeUnit.SECONDS);
+
     }
 
     @AfterSuite
