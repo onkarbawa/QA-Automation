@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseTest {
 
-    protected AppiumDriver driver;
+    public AppiumDriver driver;
     private String platForm = Properties.getPlatForm();
     private int newCommandTimeout=Properties.getNewCommandTimeout();
     private String androidDeviceName = Properties.getAndroidDeviceName();

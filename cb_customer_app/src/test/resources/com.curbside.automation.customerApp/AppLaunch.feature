@@ -3,8 +3,8 @@ Feature: Check information's and functionality's on Applaunch in Customer app
 
   @C114937
   Scenario: Verify application is able to launch and checkmark is set to 'Always'
-    Given I launch the "Android" Customer App
-    And I clicked on 'Allow' to send notifications
+    Given I launch the Customer App
+    And I clicked on Allow to send notifications
     And I click three times for Scroll left
     And I click on 'Get Started' button
     And I click on 'Ok with me' button on access landing page
