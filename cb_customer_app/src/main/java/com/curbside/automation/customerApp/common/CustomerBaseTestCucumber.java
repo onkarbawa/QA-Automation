@@ -18,7 +18,6 @@ public class CustomerBaseTestCucumber {
     ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
     HomePage homePageAndroid;
     LocationPage locationPageAndroid;
-    SettingsIOS settingsIOS;
 
     public CustomerBaseTestCucumber(AppiumDriver driver) {
         this.driver = driver;
@@ -73,9 +72,4 @@ public class CustomerBaseTestCucumber {
             locationPageAndroid = new LocationPage(this.driver);
         return locationPageAndroid;
     }
-    public SettingsIOS getIosSettings(){
-        if (settingsIOS == null)
-            settingsIOS = new SettingsIOS(this.driver);
-        return settingsIOS;
-    }
-}
+   }

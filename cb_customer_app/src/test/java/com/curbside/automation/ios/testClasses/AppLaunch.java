@@ -31,7 +31,7 @@ public class AppLaunch extends CustomerBaseTest {
     @Test
     public void set(){
         getIOSSettingApp();
-        new SettingsIOS(driver).doScroll();
+        new SettingsIOS(driver).doScrollAndClickOnCurbsideApp();
 
             new SettingsIOS(driver).getPrivacy();
 

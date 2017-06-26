@@ -17,6 +17,7 @@ public class AppLaunchSteps  {
 
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber;
+    SettingsIOS settingsIOS ;
 
     @Given("^I launch the Customer App$")
     public void iLaunchTheCustomerApp () {
@@ -29,9 +30,9 @@ public class AppLaunchSteps  {
         customerBaseTestCucumber.getiOSApplicationLaunch().getAllow().click();
     }
 
-    @And("^I click three times for Scroll left$")
-    public void iClickTimesForScrollLeft () {
-        customerBaseTestCucumber.getiOSApplicationLaunch().doSwipe(2);
+    @And("^I click \"([^\"]*)\" times for Scroll left$")
+    public void iClickTimesForScrollLeft(int noOfTimes) throws Throwable {
+        customerBaseTestCucumber.getiOSApplicationLaunch().doSwipe(noOfTimes);
     }
 
     @And("^I click on 'Get Started' button$")
@@ -63,11 +64,12 @@ public class AppLaunchSteps  {
     @And("^I click on 'Settings' application$")
     public void iClickOnSettingsApplication () {
       baseTest.getIOSSettingApp();
+      settingsIOS = new SettingsIOS(BaseTest.driver);
     }
 
     @And("^I click on Privacy button$")
     public void iClickOnPrivacyButton()  {
-        customerBaseTestCucumber.getIosSettings().doScroll();
+        settingsIOS.getPrivacy();
     }
     @And("^I scroll down & click on Customer App to launch$")
     public void iScrollDownClickOnCustomerAppToLaunch () {
@@ -81,17 +83,133 @@ public class AppLaunchSteps  {
 
     @Then("^I saw checkmark is set 'Always'$")
     public void iSawCheckmarkIsSetAlways () {
-      Assert.assertTrue(customerBaseTestCucumber.getIosSettings().alwaysenabled.isDisplayed(),
+      Assert.assertTrue(settingsIOS.isCheckMarkDisplayed(),
               "Checkmark of Always is not enabled");
     }
 
     @And("^I click on 'Location'$")
     public void iClickOnLocation () {
-        customerBaseTestCucumber.getIosSettings().getLocation();
+        settingsIOS.getLocation();
     }
 
-    @When("^I scroll down & click on Customer App and click$")
-    public void iScrollDownClickOnCustomerAppAndClick()  {
-        customerBaseTestCucumber.getIosSettings().getCurbsideApp();
+    @And("^I click on Customer App$")
+    public void iClickOnCustomerApp() {
+        settingsIOS.getCurbsideApp();
+    }
+
+
+    @And("^I click on 'Skip Intro' button$")
+    public void iClickOnSkipIntroButton()  {
+       customerBaseTestCucumber.getiOSApplicationLaunch().skipInroButton.click();
+    }
+
+    @And("^I click on question mark icon in the top left corner$")
+    public void iClickOnQuestionMarkIconInTheTopLeftCorner(){
+        customerBaseTestCucumber.getiOSApplicationLaunch().tapOnHelpIcon();
+    }
+
+    @Then("^I should see 'Curbside Settings Page'$")
+    public void iShouldSeeCurbsideSettingsPage() {
+        Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.getText(),
+                "Settings", "Settings Page is not displayed");
+    }
+
+    @And("^I click on 'Settings' on curbside page$")
+    public void iClickOnSettingsOnCurbsidePage() {
+        customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.click();
+    }
+
+    @And("^I click on 'Background App Refresh' to toggle 'OFF'$")
+    public void iClickOnBackgroundAppRefreshToToggleOFF() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on 'Retailer partner' at nears by screen$")
+    public void iClickOnRetailerPartnerAtNearsByScreen() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^I click on 'Product'$")
+    public void iClickOnProduct() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I able to view product landing page$")
+    public void iAbleToViewProductLandingPage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on 'Add To Cart'$")
+    public void iClickOnAddToCart() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on Cart icon in bottom menu$")
+    public void iClickOnCartIconInBottomMenu() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^I click on 'Place Order' button$")
+    public void iClickOnPlaceOrderButton() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I checked I am not able to checkout from cart$")
+    public void iCheckedIAmNotAbleToCheckoutFromCart() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on 'Background App Refresh' to toggle 'ON'$")
+    public void iClickOnBackgroundAppRefreshToToggleON() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I checked I am able to checkout from cart$")
+    public void iCheckedIAmAbleToCheckoutFromCart() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on 'Privacy and emergency'$")
+    public void iClickOnPrivacyAndEmergency() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I click on customer button to enable$")
+    public void iClickOnCustomerButtonToEnable() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^I click on 'Allow' button$")
+    public void iClickOnAllowButton() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^the retailer selection page should show up$")
+    public void theRetailerSelectionPageShouldShowUp() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^I scroll down and click on Curbside App$")
+    public void iScrollDownAndClickOnCurbsideApp() {
+        settingsIOS.doScrollAndClickOnCurbsideApp();
+    }
+
+    @And("^I click on \"([^\"]*)\"$")
+    public void iClickOn(String element) {
+        settingsIOS.tapOnLocationSelection(element);
     }
 }

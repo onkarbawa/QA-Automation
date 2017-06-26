@@ -5,19 +5,32 @@ import com.curbside.automation.common.utilities.SwipeOptions;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by bawa.onkar on 14/06/17.
  */
 public class ApplicationLaunchPageIOS extends Page {
 
+//    @FindBy(name = "Allow")
+//    public WebElement allow;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@label='Skip Intro']")
+    public WebElement skipInroButton;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@label='HelpIconWhite']")
+    public WebElement helpIcon;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@name='Settings']")
+    public WebElement curbsideSettings;
+
     By allow = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUUTON);
     By getStartedButton = By.name(ApplicationLaunchUIMapIOS.GET_STARTED_BUTTON);
     By currentLocationPage = By.name(ApplicationLaunchUIMapIOS.CURRENT_LOCATION_PAGE);
     By okWithMe = By.xpath(ApplicationLaunchUIMapIOS.OK_WITH_ME);
     By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUTTON_TO_ACCESS_LOCATION);
-//    By privacyButton = By.xpath(SettingsIOS.PRIVACY_BUTTON);
-//    By locationServicesButton = By.name(SettingsIOS.LOCATION_SERVICES_BUTTON);
+
 
     /**
      * Gets a AppiumDriver to initialize
@@ -26,6 +39,7 @@ public class ApplicationLaunchPageIOS extends Page {
      */
     public ApplicationLaunchPageIOS(AppiumDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
     /**
@@ -80,6 +94,16 @@ public class ApplicationLaunchPageIOS extends Page {
         return driver.findElement(allowToAccessCurrentLocation);
     }
 
+    public void tapOnHelpIcon(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        helpIcon.click();
+    }
+
+
     /**
      * Gets Privacy button
      * @return
@@ -89,7 +113,7 @@ public class ApplicationLaunchPageIOS extends Page {
 //    }
 //
 //    public WebElement getLocationService(){
-//        return driver.findElement(locationServicesButton);
+//        return driver.findElement(locationButton);
 //    }
 
 
