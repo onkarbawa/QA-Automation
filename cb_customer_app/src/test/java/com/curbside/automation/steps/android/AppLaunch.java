@@ -51,4 +51,9 @@ public class AppLaunch {
     public void iShouldSeeTheCurrentLocationButton() {
         Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getHomePageAndroid().currentLocationButton),"Android : HomePage is not visible yet");
     }
+
+    @And("^I click on 'Skip Intro' button on the screen$")
+    public void iClickOnSkipIntroButtonOnTheScreen()  {
+        customerBaseTestCucumber.getApplicationLaunchPageAndroid().getSkipIntro().click();
+    }
 }
