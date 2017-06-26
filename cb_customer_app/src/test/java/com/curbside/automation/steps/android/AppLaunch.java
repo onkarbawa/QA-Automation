@@ -49,6 +49,22 @@ public class AppLaunch {
 
     @Then("^I should see the 'Current Location'  button$")
     public void iShouldSeeTheCurrentLocationButton() {
-//        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getHomePageAndroid().currentLocationButton),"Android : HomePage is not visible yet");
+        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getHomePageAndroid().currentLocationButton),"Android : HomePage is not visible yet");
+    }
+
+    @And("^I click on 'Skip Intro' button on the screen$")
+    public void iClickOnSkipIntroButtonOnTheScreen()  {
+        customerBaseTestCucumber.getApplicationLaunchPageAndroid().getSkipIntro().click();
+    }
+
+    @And("^I close the web driver session$")
+    public void iCloseTheWebdriverSession() {
+        baseTest.tearDown();
+    }
+
+    @And("^I click again if 'Allow Access Location' pop up is visible$")
+    public void iCheckAndClickOnAllowAccessLocationPopUp() {
+        if(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getApplicationLaunchPageAndroid().allowButton))
+            customerBaseTestCucumber.getApplicationLaunchPageAndroid().getAllowButton().click();
     }
 }

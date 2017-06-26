@@ -14,7 +14,7 @@ import io.appium.java_client.AppiumDriver;
 public class CustomerBaseTestCucumber {
     private AppiumDriver driver;
     ApplicationLaunchPageAndroid applicationLaunchPageAndroid;
-   // Utilities utilities;
+    Utilities utilities;
     ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
     HomePage homePageAndroid;
     LocationPage locationPageAndroid;
@@ -46,11 +46,11 @@ public class CustomerBaseTestCucumber {
         return iOSApplicationLaunchPageIOS;
     }
 
-//    public Utilities getUtilities(){
-//        if (utilities == null)
-//            utilities = new Utilities(this.driver);
-//        return utilities;
-//    }
+    public Utilities getUtilities(){
+        if (utilities == null)
+            utilities = new Utilities(this.driver);
+        return utilities;
+    }
 
     /**
      * Intialization of class variable with driver
