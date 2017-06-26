@@ -18,7 +18,6 @@ public class WebDriverListener implements IInvokedMethodListener {
             }
             catch(Exception e){}
             finally {
-				
 			}
         }
 	}
@@ -26,6 +25,5 @@ public class WebDriverListener implements IInvokedMethodListener {
 	@Override
 	public void beforeInvocation(IInvokedMethod arg0, ITestResult arg1) {
 		// TODO Auto-generated method stub
-		
 	}
 }

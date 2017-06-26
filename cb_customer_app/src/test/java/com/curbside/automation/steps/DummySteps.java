@@ -1,5 +1,7 @@
 package com.curbside.automation.steps;
 
+import com.curbside.automation.uifactory.DriverFactory;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -14,21 +16,21 @@ public class
 
 DummySteps {
     
-	@Given("^I am on the Google search page$")
-	public void i_am_on_the_Google_search_page() throws Throwable {
+	@Given("^I launch application$")
+	public void i_launch_application() throws Throwable {
+	    DriverFactory.getDriver("iOS");
+	}
+
+	@When("^I tap on something$")
+	public void i_tap_on_something() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 
-	@When("^I search for \"([^\"]*)\"$")
-	public void i_search_for(String arg1) throws Throwable {
+	@Then("^I should see screen with title$")
+	public void i_should_see_screen_with_title() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
 
-	@Then("^the page title should start with \"([^\"]*)\"$")
-	public void the_page_title_should_start_with(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
 }

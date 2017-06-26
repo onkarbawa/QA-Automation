@@ -1,0 +1,24 @@
+{
+  "android" : [
+    {
+      "deviceName" : "Emulator1",
+      "platform_version" : "6.0",
+      "UDID" : "123"
+    },
+    {
+      "deviceName" : "Emulator2",
+      "platform_version" : "5.0",
+      "UDID" : ""
+    }
+  ],
+  "iOS" : [
+    {
+      "url" : "http://127.0.0.1:4724/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.3.3",
+      "deviceName" : "Anil Kumar’s iPhone",
+      "app" : "../Curbside.ipa",
+      "udid" : "05d1e37141f8057d0b5b2acae52c359012455afe"
+    }
+  ]
+}
