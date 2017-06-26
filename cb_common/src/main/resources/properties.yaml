@@ -1,5 +1,5 @@
 # android | ios
-platform: "ios"
+platform: "android"
 
 
 androidDeviceName: "Android device"
@@ -12,6 +12,6 @@ iosAppLocation: "/Users/tft/Downloads/Curbside.debug.ipa"
 iosDeviceUDID: "0ddb226173711460741617d2d10e0dcd734755d9"
 iosPlatformVersion: "10.3.2"
 
-deviceFile: "devices.json"
+deviceFile: "tftDevices.json"
 newCommandTimeOut: "65"
 implicitWaitInSeconds: "20"

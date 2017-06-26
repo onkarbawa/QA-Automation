@@ -2,7 +2,6 @@ package com.curbside.automation.customerApp.ios.pages.settingsPage;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
-import gherkin.lexer.Th;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,14 +15,20 @@ public class SettingsIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeStaticText[@name='Privacy']")
     public WebElement privacyButton;
 
-    @FindBy(name = "Location Services")
-    public WebElement locationServicesButton;
+    @FindBy(xpath = "//XCUIElementTypeCell[@name='Location']")
+    public WebElement locationButton;
 
     @FindBy(xpath = "//XCUIElementTypeStaticText[@name='Curbside']")
     public WebElement curbsideApp;
 
-    @FindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeOther[4]")
-    public WebElement alwaysenabled;
+    @FindBy(xpath = "//XCUIElementTypeCell[@label='Always']")
+    public WebElement always;
+
+    @FindBy(xpath = "//XCUIElementTypeCell[@label='Never']")
+    public WebElement never;
+
+    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='Always']")
+    public WebElement alwaysEnabled;
 
     public SettingsIOS(AppiumDriver driver) {
         super(driver);
@@ -31,39 +36,63 @@ public class SettingsIOS extends Page {
     }
 
     public void getPrivacy()  {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        privacyButton.click();
+        utilities.clickWhenReady(privacyButton,5000);
+        System.out.print(privacyButton.getText());
     }
     public void getLocation(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        locationServicesButton.click();
+        utilities.clickWhenReady(locationButton,5000);
     }
     public void getCurbsideApp(){
+        utilities.clickWhenReady(curbsideApp,5000);
+    }
+    public boolean isCheckMarkDisplayed(){
+       boolean value = false;
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        curbsideApp.click();
-    }
-    public void isAlwaysenabled(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if(alwaysEnabled.isDisplayed()){
+            value = true;
         }
-        alwaysenabled.isDisplayed();
+
+        return value;
     }
-    public void doScroll(){
+
+    public void doScrollAndClickOnCurbsideApp(){
+        while (true) {
+            try {
+                if(curbsideApp.isDisplayed())
+
+                   curbsideApp.click();
+                   break;
+            }catch (Exception e)
+           {
                 utilities.swipeOptions(SwipeOptions.Up);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException y) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
+    public void tapOnLocationSelection(String element){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(element.equalsIgnoreCase("Never")){
+            never.click();
+        }
+        else if(element.equalsIgnoreCase("Always"))
+        {
+            always.click();
+        }
 
     }
 }

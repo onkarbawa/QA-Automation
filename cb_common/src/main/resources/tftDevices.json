@@ -1,0 +1,60 @@
+{
+  "android" : [
+    {
+      "deviceName" : "Emulator1",
+      "platform_version" : "6.0",
+      "UDID" : ""
+    },
+    {
+      "deviceName" : "Emulator2",
+      "platform_version" : "5.0",
+      "UDID" : ""
+    }
+  ],
+  "ios" : [
+    {
+      "deviceName" : "TFT",
+      "platform_version" : "10.3.2",
+      "UDID" : "0ddb226173711460741617d2d10e0dcd734755d9"
+    },
+    {
+      "deviceName" : "iPhone6",
+      "platform_version" : "10.3.2",
+      "UDID" : "302e6964cca48090dc7eedf35cb9006a90c1a324"
+    },
+    {
+      "deviceName" : "iPhone7",
+      "platform_version" : "10.1.1",
+      "UDID" : "6c5e052b7f16fbeb6f9535d81aed74e1fbe03f41"
+    },
+    {
+      "deviceName" : "iPhone6Plus",
+      "platform_version" : "10.1.1",
+      "UDID" : "bfb9ed601c9521cab4172cab431110e6161497c4"
+    },
+    {
+      "deviceName" : "iPhone6s",
+      "platform_version" : "10.2",
+      "UDID" : "8896681496fe4f16e57e58c6536b85a98e390fa"
+    },
+    {
+      "deviceName" : "iPhone6s",
+      "platform_version" : "10.2",
+      "UDID" : "0786b207c105f0a7d9c0b34f26dcfa12ae32d893"
+    },
+    {
+      "deviceName" : "AnilIphone1",
+      "platform_version" : "10.2",
+      "UDID" : "058898bd4d64df6c62f9f322c378db80c1d382c7"
+    },
+    {
+      "deviceName" : "AnilIphone2",
+      "platform_version" : "10.2",
+      "UDID" : "05d1e37141f8057d0b5b2acae52c359012455afe"
+    },
+    {
+      "comment" : "have to check and verify the name of physical IOS devices"
+    }
+
+  ]
+}

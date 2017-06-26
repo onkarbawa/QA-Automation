@@ -138,7 +138,7 @@ public class Utilities {
      * @param locator
      * @param timeout
      */
-    public void clickWhenReady(By locator, int timeout)
+    public void clickWhenReady(WebElement locator, int timeout)
     {	element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
 
@@ -162,7 +162,6 @@ public class Utilities {
         int anchor;
         int startPoint;
         int endPoint;
-
         TouchAction touchAction = new TouchAction(driver);
         switch (option){
             case Right:
@@ -265,5 +264,10 @@ public class Utilities {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+    }
+
+    public void setTouchAction(WebElement element){
+        TouchAction touchAction = new TouchAction(driver);
+        touchAction.press(element);
     }
 }
