@@ -13,8 +13,8 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I click on Home button
     And I click on 'Settings' application
     And I click on Privacy button
-    And I scroll down & click on Customer App to launch
-    When I click on 'Location' & select 'On'
+    And I click on 'Location'
+    When I scroll down & click on Customer App and click
     Then I saw checkmark is set 'Always'
 
   @C114936

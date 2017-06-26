@@ -5,6 +5,7 @@ import com.curbside.automation.customerApp.android.pages.applicationLaunch.Appli
 import com.curbside.automation.customerApp.android.pages.location.LocationPage;
 import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
 import io.appium.java_client.AppiumDriver;
 
 /**
@@ -13,10 +14,11 @@ import io.appium.java_client.AppiumDriver;
 public class CustomerBaseTestCucumber {
     private AppiumDriver driver;
     ApplicationLaunchPageAndroid applicationLaunchPageAndroid;
-    Utilities utilities;
+   // Utilities utilities;
     ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
     HomePage homePageAndroid;
     LocationPage locationPageAndroid;
+    SettingsIOS settingsIOS;
 
     public CustomerBaseTestCucumber(AppiumDriver driver) {
         this.driver = driver;
@@ -45,11 +47,11 @@ public class CustomerBaseTestCucumber {
         return iOSApplicationLaunchPageIOS;
     }
 
-    public Utilities getUtilities(){
-        if (utilities == null)
-            utilities = new Utilities(this.driver);
-        return utilities;
-    }
+//    public Utilities getUtilities(){
+//        if (utilities == null)
+//            utilities = new Utilities(this.driver);
+//        return utilities;
+//    }
 
     /**
      * Intialization of class variable with driver
@@ -70,5 +72,10 @@ public class CustomerBaseTestCucumber {
         if (locationPageAndroid == null)
             locationPageAndroid = new LocationPage(this.driver);
         return locationPageAndroid;
+    }
+    public SettingsIOS getIosSettings(){
+        if (settingsIOS == null)
+            settingsIOS = new SettingsIOS(this.driver);
+        return settingsIOS;
     }
 }
