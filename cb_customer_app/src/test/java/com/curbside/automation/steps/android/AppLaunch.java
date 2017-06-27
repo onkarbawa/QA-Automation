@@ -62,7 +62,7 @@ public class AppLaunch {
         baseTest.tearDown();
     }
 
-    @And("^I click again if 'Allow Access Location' pop up is visible$")
+    @And("^I click on 'Allow Access Location' pop up if visible again$")
     public void iCheckAndClickOnAllowAccessLocationPopUp() {
         if(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getApplicationLaunchPageAndroid().allowButton))
             customerBaseTestCucumber.getApplicationLaunchPageAndroid().getAllowButton().click();
