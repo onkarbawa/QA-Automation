@@ -15,3 +15,4 @@ cb_customer_app/ cucumber-html-reports/jquery-1.8.2.min.js
 cb_customer_app/ cucumber-html-reports/report.js
 
 cb_customer_app/ cucumber-html-reports/style.css
+cb_customer_app/logs/log.out
