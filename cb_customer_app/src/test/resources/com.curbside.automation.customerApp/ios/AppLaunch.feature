@@ -21,8 +21,6 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     Given I launch the Customer App
     And I clicked on Allow to send notifications
     And I click on 'Skip Intro' button
-    And I click on 'Ok with me' button on access landing page
-    And I click on 'Allow Access Location' button
     And I click on question mark icon in the top left corner
     And I click "2" times for Scroll left
     When I click on 'Get Started' button

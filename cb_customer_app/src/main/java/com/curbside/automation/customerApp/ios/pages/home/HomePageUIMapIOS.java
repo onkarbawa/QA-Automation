@@ -7,5 +7,5 @@ public class HomePageUIMapIOS {
     static final String SHOP = "//XCUIElementTypeButton[@name='Shop']";
     static final String MAP = "//XCUIElementTypeButton[@name='Map']";
     static final String CART = "//XCUIElementTypeButton[@name='Cart']";
-    static final String MY_ACCOUNT = "//XCUIElementTypeButton[@name='My Account']";
+    static final String MY_ACCOUNT = "";
 }

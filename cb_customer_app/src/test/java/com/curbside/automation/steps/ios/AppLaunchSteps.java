@@ -1,4 +1,4 @@
-package com.curbside.automation.steps;
+package com.curbside.automation.steps.ios;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
@@ -11,7 +11,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 /**
- * Created by kumar.nipun on 6/21/2017.
+ * Created by bawa.onkar on 6/21/2017.
  */
 public class AppLaunchSteps  {
 

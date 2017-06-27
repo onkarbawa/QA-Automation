@@ -1,19 +1,23 @@
-package com.curbside.automation.steps;
+package com.curbside.automation.steps.ios;
 
+import com.curbside.automation.common.BaseTest;
+import com.curbside.automation.customerApp.ios.pages.home.HomePageIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.MyAccountPageIOS;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 /**
- * Created by kumar.nipun on 6/21/2017.
+ * Created by bawa.onkar on 6/21/2017.
  */
 public class SignupSteps {
-  
+
+  MyAccountPageIOS myAccountPageIOS = new MyAccountPageIOS(BaseTest.driver);
+
   @And("^I click on 'Create an Account'$")
   public void iClickOnCreateAnAccount() {
-    // Write code here that turns the phrase above into concrete actions
-    
+    myAccountPageIOS.createOneNow.click();
   }
 
   @And("^I enter 'email' in first box$")
