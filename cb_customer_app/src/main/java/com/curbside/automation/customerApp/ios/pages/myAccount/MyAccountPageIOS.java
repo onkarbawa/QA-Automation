@@ -17,6 +17,15 @@ public class MyAccountPageIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeButton[@name='Create one now']")
     public WebElement createOneNow;
 
+    @FindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]")
+    public WebElement userName;
+
+    @FindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[2]")
+    public WebElement email;
+
+    @FindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[3]")
+    public WebElement phoneNumber;
+
     /**
      * Gets a AppiumDriver to initialize
      * @param driver
@@ -34,10 +43,7 @@ public class MyAccountPageIOS extends Page {
         return driver.findElement(signIn);
     }
 
-    /**
-     * Gets sign_up button
-     */
-    public void getCreateAccount(){
-
-    }
+   public void isPhoneNoDisplayed(){
+        utilities.waitForElement(phoneNumber,200);
+   }
 }

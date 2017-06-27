@@ -3,6 +3,7 @@ package com.curbside.automation.steps.ios;
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
+import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -85,6 +86,7 @@ public class AppLaunchSteps  {
     public void iSawCheckmarkIsSetAlways () {
       Assert.assertTrue(settingsIOS.isCheckMarkDisplayed(),
               "Checkmark of Always is not enabled");
+      baseTest.removeApp();
     }
 
     @And("^I click on 'Location'$")

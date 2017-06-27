@@ -1,6 +1,3 @@
-
-"""Created by bawa.onkar on 6/21/2017."""
-
 @login
 Feature: Check information's and functionality's on Login in Customer app
 
