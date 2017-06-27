@@ -56,6 +56,7 @@ public class DriverFactory {
 		WebDriver driver = webDriver.get();
         if (driver != null) {
             driver.quit();
+            webDriver.set(null);
         }
     }
 	
