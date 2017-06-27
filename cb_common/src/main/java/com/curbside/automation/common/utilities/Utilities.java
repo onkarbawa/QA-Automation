@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by hitesh.grover on 6/19/2017.
@@ -121,12 +123,12 @@ public class Utilities {
      * @param locator
      * @param timeout
      */
-    public void waitForElement(By locator, int timeout)
+    public void waitForElement(WebElement locator, int timeout)
     {
         element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
         try {
-            element = waitObj.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            element = waitObj.until(ExpectedConditions.visibilityOf(locator));
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -212,62 +214,12 @@ public class Utilities {
         }
     }
 
-
-    public void swipe(String direction) {
-        Dimension size = driver.manage().window().getSize();
-        int height = size.getHeight();
-        int width = size.getWidth();
-        int anchor;
-        int startPoint;
-        int endPoint;
-
-
-        TouchAction touchAction = new TouchAction(driver);
-            if ("right".equalsIgnoreCase(direction)) {
-                    anchor = (int) (height * 0.5);
-                    startPoint = (int) (width * 0.01);
-                    endPoint = (int) (width * 0.9);
-
-                if (platForm.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, 0).release().perform();
-                }else if (platForm.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
-                }
-            } else if ("left".equalsIgnoreCase(direction)) {
-                    anchor = (int) (height * 0.5);
-                    startPoint = (int) (width * 0.8);
-                    endPoint = (int) (width * 0.01);
-                    if (platForm.equalsIgnoreCase("iOS")) {
-                        touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
-                    }else if (platForm.equalsIgnoreCase("Android")){
-                        touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
-                    }
-
-            } else if ("up".equalsIgnoreCase(direction)) {
-                    anchor = (int) (width * 0.5);
-                    startPoint = (int) (height * 0.6);
-                    endPoint = (int) (height * 0.01);
-                    if (platForm.equalsIgnoreCase("iOS")) {
-                        touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
-                    }else if (platForm.equalsIgnoreCase("Android")){
-                        touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
-                    }
-            } else if ("down".equalsIgnoreCase(direction)) {
-                anchor = (int) (width * 0.5);
-                startPoint = (int) (height * 0.4);
-                endPoint = (int) (height * 0.8);
-                touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
-            }
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-    }
-
     public void setTouchAction(WebElement element){
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(element);
+    }
+
+    public String getRandomEmail(){
+        return "test"+ System.currentTimeMillis() +"@example.com";
     }
 }

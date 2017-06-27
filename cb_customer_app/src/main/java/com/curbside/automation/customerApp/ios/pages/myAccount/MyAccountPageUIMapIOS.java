@@ -5,5 +5,5 @@ package com.curbside.automation.customerApp.ios.pages.myAccount;
  */
 public class MyAccountPageUIMapIOS {
     static final String SIGN_IN = "//XCUIElementTypeButton[@name='Sign In']";
-    static final String SIGN_UP_BUTTON = "//XCUIElementTypeButton[@name='Create one now']";
+    static final String SIGN_UP_BUTTON = "";
 }

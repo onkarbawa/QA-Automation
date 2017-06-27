@@ -48,6 +48,7 @@ public class BaseTest {
             caps.setCapability(MobileCapabilityType.UDID, iosUDID);
             caps.setCapability(MobileCapabilityType.APP, iosAppLocation);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
+            caps.setCapability(MobileCapabilityType.NO_RESET,false);
             driver = new IOSDriver(url,caps);
         }
         else if (platForm.equalsIgnoreCase("Android")){
@@ -83,4 +84,13 @@ public class BaseTest {
         driver = new IOSDriver(url,caps);
     }
 
+    public void removeApp(){
+        try {
+            url = new URL("http://127.0.0.1:4723/wd/hub");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            driver = new IOSDriver(url,caps);
+            driver.removeApp("com.curbside.curbside");
+        }
+    }
 }
