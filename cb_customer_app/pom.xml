@@ -29,6 +29,8 @@
                     <configuration>
                         <suiteXmlFiles>
                             <suiteXmlFile>testng.xml</suiteXmlFile>
+                            <suiteXmlFile>testng-android.xml</suiteXmlFile>
+                            <suiteXmlFile>testng-ios.xml</suiteXmlFile>
                         </suiteXmlFiles>
                         <testFailureIgnore>false</testFailureIgnore>
                     </configuration>
