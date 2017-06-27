@@ -29,10 +29,14 @@
                     <configuration>
                         <suiteXmlFiles>
                             <suiteXmlFile>testng.xml</suiteXmlFile>
-                            <suiteXmlFile>testng-android.xml</suiteXmlFile>
-                            <suiteXmlFile>testng-ios.xml</suiteXmlFile>
                         </suiteXmlFiles>
                         <testFailureIgnore>false</testFailureIgnore>
+                        <properties>
+							<property>
+								<name>suitethreadpoolsize</name>
+								<value>${suitethreads}</value>
+							</property>
+						</properties>
                     </configuration>
                 </plugin>
         </plugins>

@@ -3,9 +3,9 @@
 	<listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="Test">
-        <classes>
-            <class name="com.curbside.runners.DummyTest"/>
-        </classes>
-   </test>
+    <suite-files>
+	    <suite-file path="./testng-dummy.xml" />
+	    <suite-file path="./testng-ios.xml" />
+	    <suite-file path="./testng-android.xml" />
+  	</suite-files>
 </suite>
