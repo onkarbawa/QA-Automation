@@ -1,4 +1,4 @@
-# Mobile Automation by www.tftus.com
+# Mobile Automation Machine Setup
 
 ## iOS Setup
 
@@ -44,6 +44,58 @@ $ mvn test -DdeviceStore=../devices_<name>.json
 $ mvn test -DdeviceStore=../devices_<name>.json -DsuiteFile=./testng-ios.xml
 ```
 
-## Android Setup
+## Android Setup [MAC]
+
+###### To run only iOS tests
+Download Android SDK/Studio on mac 
+SDK - https://developer.android.com/studio/index.html
+Studio - https://developer.android.com/studio/index.html
+I used Android studio.
+After downloading go to SDK manager :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Launch SDK manager to install the API level matching according to Android version.
+
+
+
+
+
+Location of Android SDK
+
+
+
+
+
+
+
+Set the Environment path :
+Add lines:
+nano ~/.bash_profile 
+export ANDROID_HOME=/YOUR_PATH_TO/android-sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+Reopen terminal and check if it worked: 
+source ~/.bash_profile 
+echo $ANDROID_HOME
+
+Go to terminal and type “adb devices” it will show the connected devices
+
+
+
+
+
 
 [Refer android setup here for now](https://docs.google.com/document/d/1-ItBphjdHUeJNhB2zkKLZ-o1C1PqWZMm_-zlaK-ytA4/edit?usp=sharing)
