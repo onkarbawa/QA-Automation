@@ -1,6 +1,7 @@
 package com.curbside.automation.common;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -49,6 +50,7 @@ public class BaseTest {
             caps.setCapability(MobileCapabilityType.APP, iosAppLocation);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
             driver = new IOSDriver(url,caps);
+
         }
         else if (platForm.equalsIgnoreCase("Android")){
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, androidDeviceName);

@@ -1,7 +1,7 @@
 @applicationLaunch
 Feature: Curbside tutorial is prompted when app is launched first time and verify tutorial flow
 
-  @C114936
+  @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
     Given I launch the Android Customer App
     And I click three times for Scroll to left
@@ -10,7 +10,7 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
     When I click on 'Allow Access Location' pop up
     And I click on 'Allow Access Location' pop up if visible again
     Then I should see the 'Current Location'  button
-    And I close the web driver session
+    And I close the Curbside app
 
   @C114936
   Scenario: Tapping 'Skip Intro' button should take you to Store Selection Page

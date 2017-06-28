@@ -4,6 +4,7 @@ import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
+import com.curbside.automation.uifactory.DriverFactory;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -22,8 +23,9 @@ public class AppLaunch {
 
 
     @Given("^I launch the Android Customer App$")
-    public void iLaunchTheAndroidCustomerApp() {
+    public void iLaunchTheAndroidCustomerApp() throws Exception {
         baseTest.setUp();
+        DriverFactory.getDriver("Android");
         customerBaseTestCucumber = new CustomerBaseTestCucumber(baseTest.driver);
     }
 
@@ -45,6 +47,11 @@ public class AppLaunch {
     @When("^I click on 'Allow Access Location' pop up$")
     public void iClickOnAllowAccessLocationPopUp() {
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getAllowButton().click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("^I should see the 'Current Location'  button$")
@@ -57,7 +64,7 @@ public class AppLaunch {
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getSkipIntro().click();
     }
 
-    @And("^I close the web driver session$")
+    @And("^I close the Curbside app$")
     public void iCloseTheWebdriverSession() {
         baseTest.tearDown();
     }
@@ -66,5 +73,15 @@ public class AppLaunch {
     public void iCheckAndClickOnAllowAccessLocationPopUp() {
         if(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getApplicationLaunchPageAndroid().allowButton))
             customerBaseTestCucumber.getApplicationLaunchPageAndroid().getAllowButton().click();
+    }
+
+    @And("^I land on store selection page$")
+    public void iLandOnStoreSelectionPage(){
+        iClickOnSkipIntroButtonOnTheScreen();
+        iClickOnOkWithMeButtonOnAccessPage();
+        iClickOnAllowAccessLocationPopUp();
+        iCheckAndClickOnAllowAccessLocationPopUp();
+
+
     }
 }

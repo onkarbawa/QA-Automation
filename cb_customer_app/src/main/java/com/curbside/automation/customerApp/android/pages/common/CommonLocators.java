@@ -11,10 +11,10 @@ import org.openqa.selenium.WebElement;
  */
 public class CommonLocators extends Page {
 
-    public final By shopTabButton = By.id(CommonLocatorsUIMap.SHOP_TAB);
-    public final By mapTabButton = By.id(CommonLocatorsUIMap.MAP_TAB);
-    public final By cartTabButton = By.id(CommonLocatorsUIMap.CART_TAB);
-    public final By accountTabButton = By.id(CommonLocatorsUIMap.ACCOUNT_TAB);
+    public final By shopTabButton = By.xpath(CommonLocatorsUIMap.SHOP_TAB);
+    public final By mapTabButton = By.xpath(CommonLocatorsUIMap.MAP_TAB);
+    public final By cartTabButton = By.xpath(CommonLocatorsUIMap.CART_TAB);
+    public final By accountTabButton = By.xpath(CommonLocatorsUIMap.ACCOUNT_TAB);
 
     public CommonLocators(AppiumDriver driver) {
         super(driver);
