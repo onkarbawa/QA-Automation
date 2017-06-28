@@ -14,6 +14,14 @@
   "iOS" : [
     {
       "url" : "http://127.0.0.1:4724/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.3.2",
+      "deviceName" : "Neetu's iPhone",
+      "app" : "../Curbside.ipa",
+      "udid" : "058898bd4d64df6c62f9f322c378db80c1d382c7"
+    },
+    {
+      "url" : "http://127.0.0.1:4724/wd/hub",
       "updatedWDABundleId" : "com.appium.tft.WebDriverAgentRunner",
       "xcodeOrgId" : "W8A45L2WMS",
       "xcodeSigningId" : "iPhone Developer",

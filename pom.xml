@@ -21,6 +21,7 @@
         <compiler.version>3.6.1</compiler.version>
         <surefire.version>2.20</surefire.version>
         <cukes.version>1.2.5</cukes.version>
+        <suitethreads>2</suitethreads>
     </properties>
 
     <dependencies>
