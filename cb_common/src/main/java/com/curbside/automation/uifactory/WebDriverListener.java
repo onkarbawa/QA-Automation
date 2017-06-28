@@ -7,18 +7,15 @@ package com.curbside.automation.uifactory;
 
 import java.net.MalformedURLException;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.Reporter;
-import org.testng.annotations.Parameters;
-
-import com.beust.jcommander.Parameter;
 import com.curbside.automation.devicefactory.DeviceStore;
 
-public class WebDriverListener implements IInvokedMethodListener {
+public class WebDriverListener implements IInvokedMethodListener, ISuiteListener {
 
 	@Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
@@ -43,5 +40,25 @@ public class WebDriverListener implements IInvokedMethodListener {
 		
 		DeviceStore.setPlatform(context.getAttribute("platform").toString());
 		
+	}
+
+	@Override
+	public void onFinish(ISuite suite) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStart(ISuite suite) {
+		String platform= suite.getXmlSuite().getParameter("platform");
+		if(platform.equalsIgnoreCase("ios"))
+		{
+			suite.getXmlSuite().setThreadCount(DeviceStore.getIOSDeviceCount());
+		}
+		
+		if(platform.equalsIgnoreCase("android"))
+		{
+			suite.getXmlSuite().setThreadCount(DeviceStore.getAndroidDeviceCount());
+		}
 	}
 }

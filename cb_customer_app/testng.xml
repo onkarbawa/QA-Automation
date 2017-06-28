@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Test Suite" verbose="1" parallel="classes" thread-count="1">
+<suite name="Test Suite" verbose="1" parallel="methods" thread-count="1">
 	<listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
     <suite-files>
-	    <suite-file path="./testng-dummy.xml" />
+	    <!-- <suite-file path="./testng-dummy.xml" /> -->
 	    <suite-file path="./testng-ios.xml" />
 	    <suite-file path="./testng-android.xml" />
   	</suite-files>
