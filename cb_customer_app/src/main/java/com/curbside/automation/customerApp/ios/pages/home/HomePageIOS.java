@@ -15,6 +15,9 @@ public class HomePageIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeButton[@name='My Account']")
     public WebElement myAccount;
 
+    @FindBy(xpath = "//XCUIElementTypeStaticText[@label='Payment Info']")
+    public WebElement paymentInfo;
+
     /**
      * Gets a AppiumDriver to initialize
      * @param driver

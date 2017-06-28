@@ -3,6 +3,7 @@ package com.curbside.automation.steps.ios;
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
+import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -211,5 +212,10 @@ public class AppLaunchSteps  {
     @And("^I click on \"([^\"]*)\"$")
     public void iClickOn(String element) {
         settingsIOS.tapOnLocationSelection(element);
+    }
+
+    @And("^I close the web driver session for ios$")
+    public void iCloseTheWebDriverSessionTt() throws Throwable {
+        baseTest.tearDown();
     }
 }

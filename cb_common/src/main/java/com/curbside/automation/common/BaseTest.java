@@ -49,6 +49,8 @@ public class BaseTest {
             caps.setCapability(MobileCapabilityType.UDID, iosUDID);
             caps.setCapability(MobileCapabilityType.APP, iosAppLocation);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
+            caps.setCapability(MobileCapabilityType.FULL_RESET,true);
+            caps.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES,true);
             driver = new IOSDriver(url,caps);
 
         }
@@ -84,5 +86,4 @@ public class BaseTest {
         caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, iosPlatformVersion);
         driver = new IOSDriver(url,caps);
     }
-
 }

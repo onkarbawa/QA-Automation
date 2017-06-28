@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by hitesh.grover on 6/19/2017.
@@ -121,12 +123,12 @@ public class Utilities {
      * @param locator
      * @param timeout
      */
-    public void waitForElement(By locator, int timeout)
+    public void waitForElement(WebElement locator, int timeout)
     {
         element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
         try {
-            element = waitObj.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            element = waitObj.until(ExpectedConditions.visibilityOf(locator));
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -215,5 +217,9 @@ public class Utilities {
     public void setTouchAction(WebElement element){
         TouchAction touchAction = new TouchAction(driver);
         touchAction.press(element);
+    }
+
+    public String getRandomEmail(){
+        return "test"+ System.currentTimeMillis() +"@example.com";
     }
 }

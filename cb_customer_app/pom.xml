@@ -31,6 +31,12 @@
                             <suiteXmlFile>testng.xml</suiteXmlFile>
                         </suiteXmlFiles>
                         <testFailureIgnore>false</testFailureIgnore>
+                        <properties>
+							<property>
+								<name>suitethreadpoolsize</name>
+								<value>${suitethreads}</value>
+							</property>
+						</properties>
                     </configuration>
                 </plugin>
         </plugins>

@@ -7,7 +7,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
 		monochrome = true,
-		features = "src/test/resources/com.curbside.automation.customerApp/Dummy.feature",
+		features = "src/test/resources/com.curbside.automation.customerApp/Sample.feature",
 		plugin = "json:target/cucumber-report.json",
 		format = { "pretty","html: cucumber-html-reports",
         "json: cucumber-html-reports/cucumber.json" },
@@ -15,6 +15,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		glue = {"com.curbside.automation.steps"})
 
 @Test
-public class DummyTest extends AbstractTestNGCucumberTests{
+public class SampleTest extends AbstractTestNGCucumberTests{
 
 }

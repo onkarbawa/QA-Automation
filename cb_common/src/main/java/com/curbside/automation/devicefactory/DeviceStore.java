@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.log4testng.Logger;
 
@@ -52,12 +52,15 @@ public class DeviceStore {
 	}
   }
 
-  public static synchronized JSONObject getDevice(String platform) {
+  public static synchronized JSONObject getDevice() {
     
 	//TODO- Wait when no device is available
+	  
+	if(lockedDevice.get() != null)
+	  return (JSONObject) lockedDevice.get();
 	
 	Object deviceToReturn;
-    switch (platform.toLowerCase()) {
+    switch (lockedPlatform.get().toLowerCase()) {
       case "ios":
     	  deviceToReturn= iOSDeviceList.get(0);
     	  break;
@@ -68,17 +71,16 @@ public class DeviceStore {
         throw new IllegalArgumentException("No Such platform");
     }
     
-	lockDevice(platform, deviceToReturn);
+	lockDevice(deviceToReturn);
 	
     return (JSONObject) deviceToReturn;
   }
   
-  private static void lockDevice(String platform, Object deviceInfo)
+  private static void lockDevice(Object deviceInfo)
   {
-	  lockedPlatform.set(platform);
 	  lockedDevice.set(deviceInfo);
 	  
-	  switch (platform.toLowerCase()) {
+	  switch (lockedPlatform.get().toLowerCase()) {
 	      case "ios":
 	    	  iOSDeviceList.remove(deviceInfo);
 	    	  break;
@@ -90,7 +92,7 @@ public class DeviceStore {
     }
   }
   
-	public static synchronized void releaseDevice() {
+  public static synchronized void releaseDevice() {
 		switch (lockedPlatform.get().toLowerCase()) {
 		case "ios":
 			iOSDeviceList.add(lockedDevice.get());
@@ -102,4 +104,14 @@ public class DeviceStore {
 		
 		lockedDevice.set(null);
 	}
+  
+  public static void setPlatform(String platform)
+  {
+	  lockedPlatform.set(platform);
+  }
+  
+  public static String getPlatform()
+  {
+	  return lockedPlatform.get();
+  }
 }
