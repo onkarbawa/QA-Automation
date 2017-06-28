@@ -10,9 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by bawa.onkar on 22/06/17.
  */
-public class MyAccountPageIOS extends Page {
-
-    By signIn = By.xpath(MyAccountPageUIMapIOS.SIGN_IN);
+public class AccountInfoIOS extends Page {
 
     @FindBy(xpath = "//XCUIElementTypeButton[@name='Create one now']")
     public WebElement createOneNow;
@@ -30,17 +28,9 @@ public class MyAccountPageIOS extends Page {
      * Gets a AppiumDriver to initialize
      * @param driver
      */
-    public MyAccountPageIOS(AppiumDriver driver) {
+    public AccountInfoIOS(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
-    }
-
-    /**
-     * Gets sign_in button
-     * @return
-     */
-    public WebElement getSignIn(){
-        return driver.findElement(signIn);
     }
 
    public void isPhoneNoDisplayed(){

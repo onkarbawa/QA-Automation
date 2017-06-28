@@ -62,7 +62,12 @@ public class SettingsIOS extends Page {
     public void doScrollAndClickOnCurbsideApp(){
         while (true) {
                 if(curbsideApp.isDisplayed()){
-                   curbsideApp.click();
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    curbsideApp.click();
                    break;
                 }
                 else

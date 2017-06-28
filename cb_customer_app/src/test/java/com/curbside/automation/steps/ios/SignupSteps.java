@@ -1,7 +1,7 @@
 package com.curbside.automation.steps.ios;
 
 import com.curbside.automation.common.BaseTest;
-import com.curbside.automation.customerApp.ios.pages.myAccount.MyAccountPageIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
 import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
 import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import cucumber.api.java.en.And;
@@ -14,7 +14,7 @@ import org.testng.Assert;
  */
 public class SignupSteps {
 
-  MyAccountPageIOS myAccountPageIOS = new MyAccountPageIOS(BaseTest.driver);
+  AccountInfoIOS accountInfoIOS = new AccountInfoIOS(BaseTest.driver);
   SignInSignUpPageIOS signInSignUpPageIOS = new SignInSignUpPageIOS(BaseTest.driver);
   SignUpPageIOS signUpPageIOS = new SignUpPageIOS(BaseTest.driver);
 
@@ -22,7 +22,7 @@ public class SignupSteps {
 
   @And("^I click on create one now$")
   public void iClickOnCreateOneNow() {
-    myAccountPageIOS.createOneNow.click();
+    accountInfoIOS.createOneNow.click();
   }
 
   @And("^I click on 'Create an Account'$")
@@ -67,8 +67,8 @@ public class SignupSteps {
 
   @Then("^I should see email or phone number in my account$")
   public void iShouldSeeEmailOrPhoneNumberInMyAccount() {
-    myAccountPageIOS.isPhoneNoDisplayed();
-    Assert.assertEquals(myAccountPageIOS.email.getText(), randomEmail,
+    accountInfoIOS.isPhoneNoDisplayed();
+    Assert.assertEquals(accountInfoIOS.email.getText(), randomEmail,
             "Entered email is not matched with Account Page");
   }
 }

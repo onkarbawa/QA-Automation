@@ -15,6 +15,7 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I scroll down and click on Curbside App
     When I click on 'Location'
     Then I saw checkmark is set 'Always'
+    And I close the web driver session for ios
 
   @C114936
   Scenario: Verify click on 'Skip Intro' or 'Get Started' button should take you back to the Store Selection page
@@ -27,6 +28,7 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I click "2" times for Scroll left
     When I click on 'Get Started' button
     Then I should see the 'Store Selection Page'
+    And I close the web driver session for ios
 
   @C114996
   Scenario: Verify user should able to use the Customer App again after turn on Location Services
@@ -43,6 +45,7 @@ Feature: Check information's and functionality's on Applaunch in Customer app
     And I click on "Always"
     When I launch the Customer App
     Then I should see the 'Store Selection Page'
+    And I close the web driver session for ios
 
 
 

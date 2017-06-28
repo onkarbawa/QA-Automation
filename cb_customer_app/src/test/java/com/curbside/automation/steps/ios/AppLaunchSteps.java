@@ -86,7 +86,6 @@ public class AppLaunchSteps  {
     public void iSawCheckmarkIsSetAlways () {
       Assert.assertTrue(settingsIOS.isCheckMarkDisplayed(),
               "Checkmark of Always is not enabled");
-      baseTest.removeApp();
     }
 
     @And("^I click on 'Location'$")
@@ -213,5 +212,10 @@ public class AppLaunchSteps  {
     @And("^I click on \"([^\"]*)\"$")
     public void iClickOn(String element) {
         settingsIOS.tapOnLocationSelection(element);
+    }
+
+    @And("^I close the web driver session for ios$")
+    public void iCloseTheWebDriverSessionTt() throws Throwable {
+        baseTest.tearDown();
     }
 }
