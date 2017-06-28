@@ -67,9 +67,3 @@ $ echo $ANDROID_HOME
 $ adb devices
 ```
 > adb devices should show all connected android devices
-
-
-
-
-
-[Refer android setup here for now](https://docs.google.com/document/d/1-ItBphjdHUeJNhB2zkKLZ-o1C1PqWZMm_-zlaK-ytA4/edit?usp=sharing)
