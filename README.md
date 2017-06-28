@@ -47,52 +47,26 @@ $ mvn test -DdeviceStore=../devices_<name>.json -DsuiteFile=./testng-ios.xml
 ## Android Setup [MAC]
 
 ###### To run only iOS tests
-Download Android SDK/Studio on mac 
-SDK - https://developer.android.com/studio/index.html
-Studio - https://developer.android.com/studio/index.html
-I used Android studio.
-After downloading go to SDK manager :
+##### Download Android SDK/Studio on mac 
+* [SDK](https://developer.android.com/studio/index.html
+* [Studio](https://developer.android.com/studio/index.html)
 
+##### Open SDK manager and install API levels required
+##### Set the Environment path :
+```sh
+$ nano ~/.bash_profile 
+$ export ANDROID_HOME=/YOUR_PATH_TO/android-sdk
+$ export PATH=$ANDROID_HOME/platform-tools:$PATH
+$ export PATH=$ANDROID_HOME/tools:$PATH
+```
+###### Reopen terminal and check if it worked
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Launch SDK manager to install the API level matching according to Android version.
-
-
-
-
-
-Location of Android SDK
-
-
-
-
-
-
-
-Set the Environment path :
-Add lines:
-nano ~/.bash_profile 
-export ANDROID_HOME=/YOUR_PATH_TO/android-sdk
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-Reopen terminal and check if it worked: 
-source ~/.bash_profile 
-echo $ANDROID_HOME
-
-Go to terminal and type “adb devices” it will show the connected devices
-
+```sh
+$ source ~/.bash_profile 
+$ echo $ANDROID_HOME
+$ adb devices
+```
+> adb devices should show all connected android devices
 
 
 
