@@ -1,42 +1,51 @@
-# Curbside Mobile Automation Android | IOS
+# Mobile Automation By www.tftus.com
 
-##Prerequisite - Android Automation
-- Appium 
-- Android SDK
+Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
 
-##Prerequisite - IOS Automation
+  - Type some Markdown on the left
+  - See HTML in the right
+  - Magic
 
-—Install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+## iOS Setup
 
--Install Xcode with command line
--This need to be done from apple app store
+##### Install homebrew
+#
+```sh
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ```
+##### Install Xcode with command line tools from apple app store
+##### Install maven if not already done
+#
+```sh
+$ brew install maven
+```
+##### Install following appium specific applications
+#
+```sh
+$ brew install node libimobiledevice ideviceinstaller carthage
+$ npm install -g appium grunt-cli wd authorize-ios ios-deploy
+$ sudo authorize-ios
+```
+> last command here will ask for a password
+##### Download and move appium app to applications folder
+##### Open following project in xcode and setup signing with apple developer account
+#
+> /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
 
--Install maven if not already done
-brew install maven
+##### Once done with above, setup a complete, start applium application and start server on default port (or change if you wish to)
 
--Install node and NPM
-brew install node
+### Setting up for execution of tests
 
--Install appium and dependencies
-npm install -g grunt-cli
-npm install -g appium
-npm install wd
-brew install libimobiledevice
-brew install ideviceinstaller
-npm install -g authorize-ios
-npm install -g ios-deploy
-brew install carthage
-sudo authorize-ios
+> Create a device store and commit at root of the project with name as devices_<name>.json
+#
+##### Start running tests
+#
+```sh
+$ cd <project_directory>
+$ mvn test -DdeviceStore=../devices_<name>.json
+```
 
--Open following in xcode and setup code sign
-/Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
-
--To start appium server on local machine
--Start appium app and select advance option Session Override and start server
-
--To run tests
-> create a device store and add devices to it
-> Run tests using following command after cd into main directory
-
-mvn test -DdeviceStore=../devices_ios.json
+###### To run only iOS tests
+```sh
+$ mvn test -DdeviceStore=../devices_<name>.json -DsuiteFile=./testng-ios.xml
+```
