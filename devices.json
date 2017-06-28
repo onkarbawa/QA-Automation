@@ -1,24 +1,23 @@
 {
   "android" : [
     {
-      "deviceName" : "Emulator1",
-      "platform_version" : "6.0",
-      "UDID" : "123"
-    },
-    {
-      "deviceName" : "Emulator2",
-      "platform_version" : "5.0",
-      "UDID" : ""
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "android",
+      "deviceName": "Android device",
+      "app": "/Users/tft/Desktop/Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     }
   ],
   "iOS" : [
     {
-      "url" : "http://127.0.0.1:4724/wd/hub",
+      "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
-      "platformVersion" : "10.3.3",
-      "deviceName" : "Anil Kumar’s iPhone",
+      "platformVersion" : "10.3.2",
+      "deviceName" : "TFT",
       "app" : "../Curbside.ipa",
-      "udid" : "05d1e37141f8057d0b5b2acae52c359012455afe"
+      "udid" : "0ddb226173711460741617d2d10e0dcd734755d9",
+      "showXcodeLog" : "true"
     }
   ]
 }

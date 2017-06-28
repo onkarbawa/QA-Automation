@@ -4,6 +4,7 @@ import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
 import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
+import com.curbside.automation.uifactory.DriverFactory;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -21,13 +22,12 @@ public class AppLaunchSteps  {
     SettingsIOS settingsIOS ;
 
     @Given("^I launch the Customer App$")
-    public void iLaunchTheCustomerApp () {
-      baseTest.setUp();
-      customerBaseTestCucumber = new CustomerBaseTestCucumber(BaseTest.driver);
+    public void iLaunchTheCustomerApp () throws Exception {
+      customerBaseTestCucumber = new CustomerBaseTestCucumber();
     }
 
     @And("^I clicked on Allow to send notifications$")
-    public void iClickedOnAllowToSendNotifications () {
+    public void iClickedOnAllowToSendNotifications () throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().getAllow().click();
     }
 
@@ -37,22 +37,22 @@ public class AppLaunchSteps  {
     }
 
     @And("^I click on 'Get Started' button$")
-    public void iClickOnGetStartedButton () {
+    public void iClickOnGetStartedButton () throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().getStarted().click();
     }
 
     @And("^I click on 'Ok with me' button on access landing page$")
-    public void iClickOnOkWithMeButtonOnAccessLandingPage () {
+    public void iClickOnOkWithMeButtonOnAccessLandingPage () throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().getOkWithMe().click();
     }
 
     @When("^I click on 'Allow Access Location' button$")
-    public void iClickOnAllowAccessLocationButton () {
+    public void iClickOnAllowAccessLocationButton () throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().getAllowLocation().click();
     }
 
     @Then("^I should see the 'Store Selection Page'$")
-    public void iShouldSeeTheStoreSelectionPage () {
+    public void iShouldSeeTheStoreSelectionPage () throws Exception {
       Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().getCurrentLocation().getText(), "Current Location",
               "The pointer is not landing on current location page");
     }
@@ -100,23 +100,23 @@ public class AppLaunchSteps  {
 
 
     @And("^I click on 'Skip Intro' button$")
-    public void iClickOnSkipIntroButton()  {
+    public void iClickOnSkipIntroButton() throws Exception {
        customerBaseTestCucumber.getiOSApplicationLaunch().skipInroButton.click();
     }
 
     @And("^I click on question mark icon in the top left corner$")
-    public void iClickOnQuestionMarkIconInTheTopLeftCorner(){
+    public void iClickOnQuestionMarkIconInTheTopLeftCorner() throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().tapOnHelpIcon();
     }
 
     @Then("^I should see 'Curbside Settings Page'$")
-    public void iShouldSeeCurbsideSettingsPage() {
+    public void iShouldSeeCurbsideSettingsPage() throws Exception {
         Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.getText(),
                 "Settings", "Settings Page is not displayed");
     }
 
     @And("^I click on 'Settings' on curbside page$")
-    public void iClickOnSettingsOnCurbsidePage() {
+    public void iClickOnSettingsOnCurbsidePage() throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.click();
     }
 

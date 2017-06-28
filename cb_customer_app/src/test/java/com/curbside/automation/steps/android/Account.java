@@ -13,7 +13,7 @@ public class Account {
     CustomerBaseTestCucumber customerBaseTestCucumber;
 
     @And("^I click on 'Sign up' button on Account page$")
-    public void iClickOnAccountPageSignUpButton() {
+    public void iClickOnAccountPageSignUpButton() throws Exception {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

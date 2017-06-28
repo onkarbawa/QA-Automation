@@ -1,16 +1,15 @@
-package com.curbside.runners;
+package com.curbside.runners.android;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
- * Created by bawa.onkar on 23/06/17.
+ * Created by hitesh.grover on 28/06/17.
  */
-
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/com.curbside.automation.customerApp/ios/AppLaunch.feature",
+        features = "src/test/resources/com.curbside.automation.customerApp/android/AppLaunch.feature",
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -18,5 +17,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.automation.steps"})
 
 @Test
-public class AppLaunchTest extends AbstractTestNGCucumberTests {
+public class AppLaunch extends AbstractTestNGCucumberTests {
 }
