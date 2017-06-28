@@ -43,3 +43,7 @@ $ mvn test -DdeviceStore=../devices_<name>.json
 ```sh
 $ mvn test -DdeviceStore=../devices_<name>.json -DsuiteFile=./testng-ios.xml
 ```
+
+## Android Setup
+
+[Refer android setup here for now](https://docs.google.com/document/d/1-ItBphjdHUeJNhB2zkKLZ-o1C1PqWZMm_-zlaK-ytA4/edit?usp=sharing)
