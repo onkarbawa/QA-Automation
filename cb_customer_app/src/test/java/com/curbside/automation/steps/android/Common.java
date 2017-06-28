@@ -16,15 +16,11 @@ import java.net.MalformedURLException;
 public class Common {
 
     BaseTest baseTest = new BaseTest();
-    CustomerBaseTestCucumber customerBaseTestCucumber;
+    CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I click on 'Account' icon$")
     public void iClickOnAccountButton() throws Exception {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(1000);
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
     }
 

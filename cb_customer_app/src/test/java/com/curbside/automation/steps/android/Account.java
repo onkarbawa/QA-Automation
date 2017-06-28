@@ -10,15 +10,11 @@ import cucumber.api.java.en.And;
 public class Account {
 
     BaseTest baseTest = new BaseTest();
-    CustomerBaseTestCucumber customerBaseTestCucumber;
+    CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I click on 'Sign up' button on Account page$")
     public void iClickOnAccountPageSignUpButton() throws Exception {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(1000);
         customerBaseTestCucumber.getAccountPageAndroid().getSignUpButton().click();
     }
 }

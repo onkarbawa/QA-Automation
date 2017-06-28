@@ -18,12 +18,12 @@ import org.testng.Assert;
 public class AppLaunchSteps  {
 
     BaseTest baseTest = new BaseTest();
-    CustomerBaseTestCucumber customerBaseTestCucumber;
+    CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
     SettingsIOS settingsIOS ;
 
     @Given("^I launch the Customer App$")
     public void iLaunchTheCustomerApp () throws Exception {
-      customerBaseTestCucumber = new CustomerBaseTestCucumber();
+      DriverFactory.getDriver();
     }
 
     @And("^I clicked on Allow to send notifications$")

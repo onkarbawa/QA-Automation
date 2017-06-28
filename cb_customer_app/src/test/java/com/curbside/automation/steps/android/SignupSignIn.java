@@ -13,7 +13,7 @@ public class SignupSignIn {
 
 
     BaseTest baseTest = new BaseTest();
-    CustomerBaseTestCucumber customerBaseTestCucumber;
+    CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I click on 'Sign up with email' button$")
     public void iClickOnSignupWithEmailButton() throws Exception {
