@@ -40,7 +40,7 @@ public class Utilities {
     /**
      * To press Enter key for android native keyboard
      */
-    public void hitEnter(){
+    public void hitEnterAndroid(){
         ((AndroidDriver<WebElement>) driver).pressKeyCode(66);
     }
 
@@ -158,7 +158,6 @@ public class Utilities {
      *@param
      */
     public void swipeOptions(SwipeOptions option){
-        System.out.print("In Swipe utilites function");
         Dimension size = driver.manage().window().getSize();
         String platform = Reporter.getCurrentTestResult().getTestContext().getAttribute("platform").toString();
         int height = size.getHeight();
@@ -184,7 +183,6 @@ public class Utilities {
                 startPoint = (int) (width * 0.8);
                 endPoint = (int) (width * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    System.out.print(platform+"-----Left-IOS");
                     touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
                 }
                 else if (platform.equalsIgnoreCase("Android")){

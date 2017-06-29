@@ -14,4 +14,4 @@ iosPlatformVersion: "10.3.2"
 
 deviceFile: "devices.json"
 newCommandTimeOut: "65"
-implicitWaitInSeconds: "20"
+implicitWaitInSeconds: "15"

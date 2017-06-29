@@ -18,7 +18,7 @@ public class Shop extends CustomerBaseTest{
         this.getApplicationLaunchPageAndroid().goToHomePage();
         this.getHomePageAndroid().getCurrentLocationButton().click();
         this.getLocationPageAndroid().getCurrentLocationTextField().sendKeys("Boston");
-        this.getUtilities().hitEnter();
+        this.getUtilities().hitEnterAndroid();
 
         Assert.assertTrue(this.getUtilities().isElementPresent(this.getHomePageAndroid().nearByStores));
     }
