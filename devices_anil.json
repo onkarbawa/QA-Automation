@@ -22,9 +22,6 @@
     },
     {
       "url" : "http://127.0.0.1:4724/wd/hub",
-      "updatedWDABundleId" : "com.appium.tft.WebDriverAgentRunner",
-      "xcodeOrgId" : "W8A45L2WMS",
-      "xcodeSigningId" : "iPhone Developer",
       "platformName" : "iOS",
       "platformVersion" : "10.3.3",
       "deviceName" : "Anil Kumar’s iPhone",

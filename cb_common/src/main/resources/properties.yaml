@@ -3,15 +3,15 @@ platform: "android"
 
 
 androidDeviceName: "Android device"
-androidAppLocation: "/Users/tft/Desktop/Curbside.apk"
+androidAppLocation: "/Users/Hitesh/Desktop/Curbside.apk"
 androidAppPackage: "com.curbside.nCurbside"
 androidAppActivity: "com.curbside.nCurbside.app.help.SplashScreenActivity"
 
-iosDeviceName: "TFT"
-iosAppLocation: "/Users/tft/Downloads/Curbside.debug.ipa"
+iosDeviceName: "Hitesh"
+iosAppLocation: "/Users/Hitesh/Downloads/Curbside.debug.ipa"
 iosDeviceUDID: "0ddb226173711460741617d2d10e0dcd734755d9"
 iosPlatformVersion: "10.3.2"
 
-deviceFile: "tftDevices.json"
+deviceFile: "devices.json"
 newCommandTimeOut: "65"
 implicitWaitInSeconds: "20"

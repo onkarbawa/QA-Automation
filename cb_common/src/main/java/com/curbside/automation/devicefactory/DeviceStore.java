@@ -103,7 +103,7 @@ public class DeviceStore {
 		}
 		
 		lockedDevice.set(null);
-	}
+  }
   
   public static void setPlatform(String platform)
   {
@@ -113,5 +113,15 @@ public class DeviceStore {
   public static String getPlatform()
   {
 	  return lockedPlatform.get();
+  }
+  
+  public static int getAndroidDeviceCount()
+  {
+	  return androidDeviceList.size();
+  }
+  
+  public static int getIOSDeviceCount()
+  {
+	  return iOSDeviceList.size();
   }
 }
