@@ -33,16 +33,6 @@ public class CustomerBaseTest extends BaseTest {
         return applicationLaunchPageAndroid;
     }
 
-    /**
-     * Gets a iOS application initialize
-     *
-     * @return
-     */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch(){
-        if (iOSApplicationLaunchPageIOS == null)
-            iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS(this.driver);
-        return iOSApplicationLaunchPageIOS;
-    }
 
     public Utilities getUtilities(){
         if (utilities == null)

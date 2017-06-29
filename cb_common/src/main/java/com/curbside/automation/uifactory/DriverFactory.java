@@ -45,8 +45,13 @@ public class DriverFactory {
         return webDriver.get();
     }
 	
-	public static WebDriver getDriver() throws Exception {
-        return getDriver(null);
+	public static WebDriver getDriver()  {
+        try{
+        	return getDriver(null);
+		}catch (Exception ex) {
+        	ex.printStackTrace();
+        	return null;
+		}
     }
 	
 	/**

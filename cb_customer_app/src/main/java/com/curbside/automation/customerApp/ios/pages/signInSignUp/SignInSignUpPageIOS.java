@@ -11,7 +11,10 @@ import org.openqa.selenium.support.PageFactory;
  * Created by bawa.onkar on 22/06/17.
  */
 public class SignInSignUpPageIOS extends Page {
-    By signInWithMail = By.xpath(SignInSignUpPageUIMapIOS.SIGN_IN_WITH_MAIL);
+
+    static final String SIGN_IN_WITH_MAIL = "//XCUIElementTypeButton[@name='Sign In with Email']";
+
+    static final String SIGN_IN_WITH_FACEBOOK = "Sign In with Facebook";
 
     @FindBy(xpath = "//XCUIElementTypeButton[@label='Create An Account']")
     public WebElement createAnAccount;
@@ -25,11 +28,4 @@ public class SignInSignUpPageIOS extends Page {
         PageFactory.initElements(driver,this);
     }
 
-    /**
-     * Gets SignIn with mail Button
-     * @return
-     */
-    public WebElement getSignWithMail(){
-        return driver.findElement(signInWithMail);
-    }
 }

@@ -2,8 +2,10 @@ package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,8 +15,20 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class ApplicationLaunchPageIOS extends Page {
 
-//    @FindBy(name = "Allow")
-//    public WebElement allow;
+    @FindBy(name = "Allow")
+    public WebElement allow;
+
+    @FindBy(name = "Get Started")
+    public WebElement getStartedButton;
+
+    @FindBy(name = "Current Location")
+    public WebElement currentLocation;
+
+    @FindBy(xpath = "//XCUIElementTypeOther[2]/XCUIElementTypeButton[@name='OK with me']")
+    public WebElement okWithMe;
+
+    @FindBy(name = "Allow")
+    public WebElement allowToAccessCurrentLocation;
 
     @FindBy(xpath = "//XCUIElementTypeButton[@label='Skip Intro']")
     public WebElement skipInroButton;
@@ -24,13 +38,6 @@ public class ApplicationLaunchPageIOS extends Page {
 
     @FindBy(xpath = "//XCUIElementTypeButton[@name='Settings']")
     public WebElement curbsideSettings;
-
-    By allow = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUUTON);
-    By getStartedButton = By.name(ApplicationLaunchUIMapIOS.GET_STARTED_BUTTON);
-    By currentLocationPage = By.name(ApplicationLaunchUIMapIOS.CURRENT_LOCATION_PAGE);
-    By okWithMe = By.xpath(ApplicationLaunchUIMapIOS.OK_WITH_ME);
-    By allowToAccessCurrentLocation = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUTTON_TO_ACCESS_LOCATION);
-
 
     /**
      * Gets a AppiumDriver to initialize
@@ -43,55 +50,15 @@ public class ApplicationLaunchPageIOS extends Page {
     }
 
     /**
-     * Gets Allow button
-     * @return
-     */
-    public WebElement getAllow(){
-        return driver.findElement(allow);
-    }
-
-    /**
      * Swipe screen
      * @param direction
      * @param noOfTimes
      */
-    public void doSwipe(int noOfTimes){
+    public void doSwipe(int noOfTimes) throws InterruptedException {
+        Thread.sleep(3000);
         for(int i = 0;i < noOfTimes;i++) {
-            //utilities.swipe(direction);
-            utilities.swipeOptions(SwipeOptions.Left);
+            utilities.swipeOptions(SwipeOptions.Down);
         }
-    }
-
-    /**
-     * Gets started button
-     * @return
-     */
-    public WebElement getStarted(){
-        return driver.findElement(getStartedButton);
-    }
-
-    /**
-     * Gets current location
-     * @return
-     */
-    public WebElement getCurrentLocation(){
-        return driver.findElement(currentLocationPage);
-    }
-
-    /**
-     * Gets Ok with me button
-     * @return
-     */
-    public WebElement getOkWithMe(){
-        return driver.findElement(okWithMe);
-    }
-
-    /**
-     * Gets Access current location
-     * @return
-     */
-    public WebElement getAllowLocation(){
-        return driver.findElement(allowToAccessCurrentLocation);
     }
 
     public void tapOnHelpIcon(){
@@ -102,20 +69,4 @@ public class ApplicationLaunchPageIOS extends Page {
         }
         helpIcon.click();
     }
-
-
-    /**
-     * Gets Privacy button
-     * @return
-     */
-//    public WebElement getPrivacy(){
-//        return driver.findElement(privacyButton);
-//    }
-//
-//    public WebElement getLocationService(){
-//        return driver.findElement(locationButton);
-//    }
-
-
-
 }

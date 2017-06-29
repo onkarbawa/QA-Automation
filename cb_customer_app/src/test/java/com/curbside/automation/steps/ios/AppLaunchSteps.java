@@ -2,14 +2,17 @@ package com.curbside.automation.steps.ios;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
+import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
 import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.appium.java_client.AppiumDriver;
 import org.testng.Assert;
 
 /**
@@ -18,42 +21,43 @@ import org.testng.Assert;
 public class AppLaunchSteps  {
 
     BaseTest baseTest = new BaseTest();
-    CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
     SettingsIOS settingsIOS ;
 
+    ApplicationLaunchPageIOS applicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
+
     @Given("^I launch the Customer App$")
-    public void iLaunchTheCustomerApp () throws Exception {
+    public void iLaunchTheCustomerApp () {
       DriverFactory.getDriver();
     }
 
     @And("^I clicked on Allow to send notifications$")
     public void iClickedOnAllowToSendNotifications () throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().getAllow().click();
+       applicationLaunchPageIOS.allow.click();
     }
 
     @And("^I click \"([^\"]*)\" times for Scroll left$")
     public void iClickTimesForScrollLeft(int noOfTimes) throws Throwable {
-        customerBaseTestCucumber.getiOSApplicationLaunch().doSwipe(noOfTimes);
+        applicationLaunchPageIOS.doSwipe(noOfTimes);
     }
 
     @And("^I click on 'Get Started' button$")
     public void iClickOnGetStartedButton () throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().getStarted().click();
+        applicationLaunchPageIOS.getStartedButton.click();
     }
 
     @And("^I click on 'Ok with me' button on access landing page$")
     public void iClickOnOkWithMeButtonOnAccessLandingPage () throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().getOkWithMe().click();
+         applicationLaunchPageIOS.okWithMe.click();
     }
 
     @When("^I click on 'Allow Access Location' button$")
     public void iClickOnAllowAccessLocationButton () throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().getAllowLocation().click();
+         applicationLaunchPageIOS.allowToAccessCurrentLocation.click();
     }
 
     @Then("^I should see the 'Store Selection Page'$")
     public void iShouldSeeTheStoreSelectionPage () throws Exception {
-      Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().getCurrentLocation().getText(), "Current Location",
+      Assert.assertEquals(applicationLaunchPageIOS.currentLocation.getText(), "Current Location",
               "The pointer is not landing on current location page");
     }
 
@@ -63,9 +67,10 @@ public class AppLaunchSteps  {
     }
 
     @And("^I click on 'Settings' application$")
-    public void iClickOnSettingsApplication () {
-      baseTest.getIOSSettingApp();
-      settingsIOS = new SettingsIOS(BaseTest.driver);
+    public void iClickOnSettingsApplication () throws Exception {
+        MobileDevice.launchSettings();
+        baseTest.getIOSSettingApp();
+      settingsIOS = new SettingsIOS((AppiumDriver) DriverFactory.getDriver());
     }
 
     @And("^I click on Privacy button$")
@@ -101,23 +106,23 @@ public class AppLaunchSteps  {
 
     @And("^I click on 'Skip Intro' button$")
     public void iClickOnSkipIntroButton() throws Exception {
-       customerBaseTestCucumber.getiOSApplicationLaunch().skipInroButton.click();
+        applicationLaunchPageIOS.skipInroButton.click();
     }
 
     @And("^I click on question mark icon in the top left corner$")
     public void iClickOnQuestionMarkIconInTheTopLeftCorner() throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().tapOnHelpIcon();
+        applicationLaunchPageIOS.tapOnHelpIcon();
     }
 
     @Then("^I should see 'Curbside Settings Page'$")
     public void iShouldSeeCurbsideSettingsPage() throws Exception {
-        Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.getText(),
+        Assert.assertEquals(applicationLaunchPageIOS.curbsideSettings.getText(),
                 "Settings", "Settings Page is not displayed");
     }
 
     @And("^I click on 'Settings' on curbside page$")
     public void iClickOnSettingsOnCurbsidePage() throws Exception {
-        customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.click();
+        applicationLaunchPageIOS.curbsideSettings.click();
     }
 
     @And("^I click on 'Background App Refresh' to toggle 'OFF'$")
