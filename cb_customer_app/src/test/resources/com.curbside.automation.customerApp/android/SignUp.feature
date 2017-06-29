@@ -1,6 +1,7 @@
 @signUp
 Feature: Verify curbside signup flow
 
+  #TODO
   @C114954
   Scenario: Verify on new account user should see name, email or phone number in my account
     Given I launch the Android Customer App

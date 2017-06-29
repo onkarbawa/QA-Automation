@@ -62,9 +62,9 @@ public class ApplicationLaunchPageAndroid extends Page {
     public void scrollIntroPage(int numberOfTimes) {
 
         for (int i = 0; i < numberOfTimes; ++i) {
-            System.out.print("scrolling times ----------------- "+i);
             try {
                 utilities.swipeOptions(SwipeOptions.Left);
+                Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();
             }
