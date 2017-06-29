@@ -23,6 +23,14 @@
       "app": "/Users/kanikambp/Desktop/Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    },
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "android",
+      "deviceName": "FA69V0309172",
+      "app": "/Users/kanikambp/Desktop/Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     }
   ],
   "iOS" : [
