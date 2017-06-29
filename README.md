@@ -27,14 +27,13 @@ $ sudo authorize-ios
 
 > /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
 
-##### Once done with above, setup a complete, start applium application and start server on default port (or change if you wish to)
+##### Once done with above, setup is complete, start appium application and start server on default port (or change if you wish to)
 
 ## Android Setup [MAC]
 
-###### To run only iOS tests
 ##### Download Android SDK/Studio on mac 
-* [SDK](https://developer.android.com/studio/index.html
-* [Studio](https://developer.android.com/studio/index.html)
+[Android SDK](https://developer.android.com/studio/index.html
+[Android Studio](https://developer.android.com/studio/index.html)
 
 ##### Open SDK manager and install API levels required
 ##### Set the Environment path :

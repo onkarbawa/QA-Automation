@@ -3,13 +3,8 @@ package com.curbside.automation.steps.android;
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.uifactory.DriverFactory;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
 
@@ -34,22 +29,25 @@ public class Common {
 
     @And("^I go to next text field$")
     public void iGoToNextTextField() throws Exception {
-        customerBaseTestCucumber.getUtilities().hitEnter();
+        customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
     @And("^I set the staging environment$")
     public void iSetTheStagingEnvironment() throws Exception {
         customerBaseTestCucumber.getHomePageAndroid().getSearchButton().click();
         Thread.sleep(1000);
-        customerBaseTestCucumber.getHomePageAndroid().getSearchButton().sendKeys("_#csndc#ena");
+        customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
+        customerBaseTestCucumber.getUtilities().hitEnterAndroid();
         Thread.sleep(2000);
-        customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
+        customerBaseTestCucumber.getUtilities().goBackAndroid();
         Thread.sleep(1000);
         customerBaseTestCucumber.getDebugPagePage().getApiHostButton().click();
+        Thread.sleep(1000);
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogTextField().clear();
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogTextField().sendKeys("https://api-s.shopcurbside.com");
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogOkButton().click();
         Thread.sleep(1000);
+        customerBaseTestCucumber.getUtilities().goBackAndroid();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
 //        AndroidDriver<WebElement>>DriverFactory.getDriver().startActivity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity");
 //        (AndroidDriver<WebElement>) DriverFactory.getDriver().startActivity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity");

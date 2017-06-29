@@ -2,11 +2,8 @@ package com.curbside.automation.steps.android;
 
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
-
-import java.util.Random;
 
 /**
  * Created by hitesh.grover on 27/06/17.
@@ -36,7 +33,7 @@ public class SignupSignIn {
     @And("^I enter 'Phone Number' in third text box$")
     public void iEnterPhoneNumberInThirdTextBox() throws Exception {
         customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("958290962");
-        customerBaseTestCucumber.getUtilities().hitEnter();
+        customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
     @When("^I click on 'Create Account' button on the page$")

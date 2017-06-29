@@ -1,0 +1,206 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Tapping \u0027Get Started\u0027 button should take you to Store Selection Page",
+        "description": "",
+        "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow;tapping-\u0027get-started\u0027-button-should-take-you-to-store-selection-page",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 32437598676,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I launch the Android Customer App",
+            "match": {
+              "location": "AppLaunch.iLaunchTheAndroidCustomerApp()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6319657505,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I scroll left 2 times",
+            "match": {
+              "location": "AppLaunch.iClickThreeTimesForScrollToLeft()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1562024167,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I click on \u0027Get Started\u0027 button on the Intro page",
+            "match": {
+              "location": "AppLaunch.iClickOnGetStartedButtonOnTheIntroPage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1687965062,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I click on \u0027Ok with me\u0027 button on access page",
+            "match": {
+              "location": "AppLaunch.iClickOnOkWithMeButtonOnAccessPage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11663465764,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I click on \u0027Allow Access Location\u0027 pop up",
+            "match": {
+              "location": "AppLaunch.iClickOnAllowAccessLocationPopUp()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2784545758,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I should see the \u0027Account tab\u0027 button",
+            "match": {
+              "location": "AppLaunch.iShouldSeeTheCurrentLocationButton()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5296589549,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I close the Curbside app",
+            "match": {
+              "location": "Common.iReleaseTheDriverSession()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@C114937"
+          }
+        ]
+      },
+      {
+        "line": 15,
+        "name": "Tapping \u0027Skip Intro\u0027 button should take you to Store Selection Page",
+        "description": "",
+        "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow;tapping-\u0027skip-intro\u0027-button-should-take-you-to-store-selection-page",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 26010474855,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I launch the Android Customer App",
+            "match": {
+              "location": "AppLaunch.iLaunchTheAndroidCustomerApp()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3235380218,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I click on \u0027Skip Intro\u0027 button on the screen",
+            "match": {
+              "location": "AppLaunch.iClickOnSkipIntroButtonOnTheScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1755928872,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I click on \u0027Ok with me\u0027 button on access page",
+            "match": {
+              "location": "AppLaunch.iClickOnOkWithMeButtonOnAccessPage()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11565732123,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I click on \u0027Allow Access Location\u0027 pop up",
+            "match": {
+              "location": "AppLaunch.iClickOnAllowAccessLocationPopUp()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 215666870,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I should see the \u0027Account tab\u0027 button",
+            "match": {
+              "location": "AppLaunch.iShouldSeeTheCurrentLocationButton()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5039407925,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I close the Curbside app",
+            "match": {
+              "location": "Common.iReleaseTheDriverSession()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 14,
+            "name": "@C114936"
+          }
+        ]
+      }
+    ],
+    "name": "Curbside tutorial is prompted when app is launched first time and verify tutorial flow",
+    "description": "",
+    "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow",
+    "keyword": "Feature",
+    "uri": "src/test/resources/com.curbside.automation.customerApp/android/AppLaunch.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@applicationLaunch"
+      }
+    ]
+  }
+]

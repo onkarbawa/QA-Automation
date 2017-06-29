@@ -1,9 +1,9 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/com.curbside.automation.customerApp/ios/AppLaunch.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/com.curbside.automation.customerApp/android/AppLaunch.feature");
 formatter.feature({
   "line": 2,
-  "name": "Check information\u0027s and functionality\u0027s on Applaunch in Customer app",
+  "name": "Curbside tutorial is prompted when app is launched first time and verify tutorial flow",
   "description": "",
-  "id": "check-information\u0027s-and-functionality\u0027s-on-applaunch-in-customer-app",
+  "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow",
   "keyword": "Feature",
   "tags": [
     {
@@ -14,9 +14,9 @@ formatter.feature({
 });
 formatter.scenario({
   "line": 5,
-  "name": "Verify application is able to launch and checkmark is set to \u0027Always\u0027",
+  "name": "Tapping \u0027Get Started\u0027 button should take you to Store Selection Page",
   "description": "",
-  "id": "check-information\u0027s-and-functionality\u0027s-on-applaunch-in-customer-app;verify-application-is-able-to-launch-and-checkmark-is-set-to-\u0027always\u0027",
+  "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow;tapping-\u0027get-started\u0027-button-should-take-you-to-store-selection-page",
   "type": "scenario",
   "keyword": "Scenario",
   "tags": [
@@ -28,131 +28,172 @@ formatter.scenario({
 });
 formatter.step({
   "line": 6,
-  "name": "I launch the Customer App",
+  "name": "I launch the Android Customer App",
   "keyword": "Given "
 });
 formatter.step({
   "line": 7,
-  "name": "I clicked on Allow to send notifications",
+  "name": "I scroll left 2 times",
   "keyword": "And "
 });
 formatter.step({
   "line": 8,
-  "name": "I click \"2\" times for Scroll left",
+  "name": "I click on \u0027Get Started\u0027 button on the Intro page",
   "keyword": "And "
 });
 formatter.step({
   "line": 9,
-  "name": "I click on \u0027Get Started\u0027 button",
+  "name": "I click on \u0027Ok with me\u0027 button on access page",
   "keyword": "And "
 });
 formatter.step({
   "line": 10,
-  "name": "I click on \u0027Ok with me\u0027 button on access landing page",
-  "keyword": "And "
+  "name": "I click on \u0027Allow Access Location\u0027 pop up",
+  "keyword": "When "
 });
 formatter.step({
   "line": 11,
-  "name": "I click on \u0027Allow Access Location\u0027 button",
-  "keyword": "When "
+  "name": "I should see the \u0027Account tab\u0027 button",
+  "keyword": "Then "
 });
 formatter.step({
   "line": 12,
-  "name": "I should see the \u0027Store Selection Page\u0027",
+  "name": "I close the Curbside app",
   "keyword": "Then "
 });
-formatter.step({
-  "line": 13,
-  "name": "I click on Home button",
-  "keyword": "And "
+formatter.match({
+  "location": "AppLaunch.iLaunchTheAndroidCustomerApp()"
 });
-formatter.step({
-  "line": 14,
-  "name": "I click on \u0027Settings\u0027 application",
-  "keyword": "And "
+formatter.result({
+  "duration": 32437598676,
+  "status": "passed"
 });
-formatter.step({
+formatter.match({
+  "location": "AppLaunch.iClickThreeTimesForScrollToLeft()"
+});
+formatter.result({
+  "duration": 6319657505,
+  "status": "passed"
+});
+formatter.match({
+  "location": "AppLaunch.iClickOnGetStartedButtonOnTheIntroPage()"
+});
+formatter.result({
+  "duration": 1562024167,
+  "status": "passed"
+});
+formatter.match({
+  "location": "AppLaunch.iClickOnOkWithMeButtonOnAccessPage()"
+});
+formatter.result({
+  "duration": 1687965062,
+  "status": "passed"
+});
+formatter.match({
+  "location": "AppLaunch.iClickOnAllowAccessLocationPopUp()"
+});
+formatter.result({
+  "duration": 11663465764,
+  "status": "passed"
+});
+formatter.match({
+  "location": "AppLaunch.iShouldSeeTheCurrentLocationButton()"
+});
+formatter.result({
+  "duration": 2784545758,
+  "status": "passed"
+});
+formatter.match({
+  "location": "Common.iReleaseTheDriverSession()"
+});
+formatter.result({
+  "duration": 5296589549,
+  "status": "passed"
+});
+formatter.scenario({
   "line": 15,
-  "name": "I scroll down and click on Curbside App",
-  "keyword": "And "
+  "name": "Tapping \u0027Skip Intro\u0027 button should take you to Store Selection Page",
+  "description": "",
+  "id": "curbside-tutorial-is-prompted-when-app-is-launched-first-time-and-verify-tutorial-flow;tapping-\u0027skip-intro\u0027-button-should-take-you-to-store-selection-page",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 14,
+      "name": "@C114936"
+    }
+  ]
 });
 formatter.step({
   "line": 16,
-  "name": "I click on \u0027Location\u0027",
-  "keyword": "When "
+  "name": "I launch the Android Customer App",
+  "keyword": "Given "
 });
 formatter.step({
   "line": 17,
-  "name": "I saw checkmark is set \u0027Always\u0027",
-  "keyword": "Then "
+  "name": "I click on \u0027Skip Intro\u0027 button on the screen",
+  "keyword": "And "
 });
 formatter.step({
   "line": 18,
-  "name": "I close the web driver session for ios",
+  "name": "I click on \u0027Ok with me\u0027 button on access page",
   "keyword": "And "
 });
+formatter.step({
+  "line": 19,
+  "name": "I click on \u0027Allow Access Location\u0027 pop up",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 20,
+  "name": "I should see the \u0027Account tab\u0027 button",
+  "keyword": "Then "
+});
+formatter.step({
+  "line": 21,
+  "name": "I close the Curbside app",
+  "keyword": "Then "
+});
 formatter.match({
-  "location": "AppLaunchSteps.iLaunchTheCustomerApp()"
+  "location": "AppLaunch.iLaunchTheAndroidCustomerApp()"
 });
 formatter.result({
-  "duration": 35102220992,
+  "duration": 26010474855,
   "status": "passed"
 });
 formatter.match({
-  "location": "AppLaunchSteps.iClickedOnAllowToSendNotifications()"
+  "location": "AppLaunch.iClickOnSkipIntroButtonOnTheScreen()"
 });
 formatter.result({
-  "duration": 2868399109,
+  "duration": 3235380218,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "2",
-      "offset": 9
-    }
-  ],
-  "location": "AppLaunchSteps.iClickTimesForScrollLeft(int)"
+  "location": "AppLaunch.iClickOnOkWithMeButtonOnAccessPage()"
 });
 formatter.result({
-  "duration": 11610190073,
+  "duration": 1755928872,
   "status": "passed"
 });
 formatter.match({
-  "location": "AppLaunchSteps.iClickOnGetStartedButton()"
+  "location": "AppLaunch.iClickOnAllowAccessLocationPopUp()"
 });
 formatter.result({
-  "duration": 2126077490,
+  "duration": 11565732123,
   "status": "passed"
 });
 formatter.match({
-  "location": "AppLaunchSteps.iClickOnOkWithMeButtonOnAccessLandingPage()"
+  "location": "AppLaunch.iShouldSeeTheCurrentLocationButton()"
 });
 formatter.result({
-  "duration": 2702502942,
+  "duration": 215666870,
   "status": "passed"
 });
 formatter.match({
-  "location": "AppLaunchSteps.iClickOnAllowAccessLocationButton()"
+  "location": "Common.iReleaseTheDriverSession()"
 });
 formatter.result({
-  "duration": 1900334449,
+  "duration": 5039407925,
   "status": "passed"
 });
-formatter.match({
-  "location": "AppLaunchSteps.iShouldSeeTheStoreSelectionPage()"
-});
-formatter.result({
-  "duration": 5150945812,
-  "status": "passed"
-});
-formatter.match({
-  "location": "AppLaunchSteps.iClickOnHomeButton()"
-});
-formatter.result({
-  "duration": 35062,
-  "status": "passed"
-});
-formatter.match({
-  "location": "AppLaunchSteps.iClickOnSettingsApplication()"
 });
