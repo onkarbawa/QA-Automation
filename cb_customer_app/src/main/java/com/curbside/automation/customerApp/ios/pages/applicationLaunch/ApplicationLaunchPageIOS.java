@@ -2,6 +2,7 @@ package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class ApplicationLaunchPageIOS extends Page {
 
 //    @FindBy(name = "Allow")
 //    public WebElement allow;
+    CustomerBaseTest customerBaseTest = new CustomerBaseTest();
 
     @FindBy(xpath = "//XCUIElementTypeButton[@label='Skip Intro']")
     public WebElement skipInroButton;
@@ -58,6 +60,7 @@ public class ApplicationLaunchPageIOS extends Page {
     public void doSwipe(int noOfTimes){
         for(int i = 0;i < noOfTimes;i++) {
             //utilities.swipe(direction);
+            System.out.print("scrolling times ----------------- "+i);
             utilities.swipeOptions(SwipeOptions.Left);
         }
     }
@@ -94,12 +97,8 @@ public class ApplicationLaunchPageIOS extends Page {
         return driver.findElement(allowToAccessCurrentLocation);
     }
 
-    public void tapOnHelpIcon(){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void tapOnHelpIcon() throws InterruptedException {
+        Thread.sleep(5000);
         helpIcon.click();
     }
 
