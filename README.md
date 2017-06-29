@@ -71,3 +71,6 @@ $ mvn test [-DdeviceStore=../devices_<name>.json] -Dsurefire.suiteXmlFiles=testn
 ```sh
 $ mvn test [-DdeviceStore=../devices_<name>.json] -Dsurefire.suiteXmlFiles=testng-android.xml
 ```
+
+##### Important links
+http://thucydides.info/docs/articles/an-introduction-to-serenity-bdd-with-cucumber.html
