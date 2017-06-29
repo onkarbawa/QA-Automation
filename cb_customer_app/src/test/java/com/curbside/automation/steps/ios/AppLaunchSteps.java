@@ -28,11 +28,13 @@ public class AppLaunchSteps  {
 
     @And("^I clicked on Allow to send notifications$")
     public void iClickedOnAllowToSendNotifications () throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getiOSApplicationLaunch().getAllow().click();
     }
 
     @And("^I click \"([^\"]*)\" times for Scroll left$")
     public void iClickTimesForScrollLeft(int noOfTimes) throws Throwable {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getiOSApplicationLaunch().doSwipe(noOfTimes);
     }
 
@@ -216,6 +218,6 @@ public class AppLaunchSteps  {
 
     @And("^I close the web driver session for ios$")
     public void iCloseTheWebDriverSessionTt() throws Throwable {
-        baseTest.tearDown();
+        DriverFactory.releaseDriver();
     }
 }
