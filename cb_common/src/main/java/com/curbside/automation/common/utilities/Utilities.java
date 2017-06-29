@@ -161,7 +161,6 @@ public class Utilities {
         System.out.print("In Swipe utilites function");
         Dimension size = driver.manage().window().getSize();
         String platform = Reporter.getCurrentTestResult().getTestContext().getAttribute("platform").toString();
-        System.out.print("-----------"+platform);
         int height = size.getHeight();
         int width = size.getWidth();
         int anchor;
