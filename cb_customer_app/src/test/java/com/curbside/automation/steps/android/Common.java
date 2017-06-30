@@ -51,12 +51,17 @@ public class Common {
         Thread.sleep(1000);
         customerBaseTestCucumber.getUtilities().goBackAndroid();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
-        AndroidDevice.launchActivity();
+        AndroidDevice.launchCurbsideActivity();
     }
 
     @Given("^I reinstall the Curbside App$")
     public void iResetTheCurbsideApp() throws Exception {
         DriverFactory.releaseDriver();
         DriverFactory.getDriver();
+    }
+
+    @And("^I open the setting app$")
+    public void iOpenTheSettingApp() throws Exception {
+        AndroidDevice.launchSettingApp();
     }
 }

@@ -1,6 +1,7 @@
 package com.curbside.automation.common.utilities;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.devicefactory.DeviceStore;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -159,7 +160,7 @@ public class Utilities {
      */
     public void swipeOptions(SwipeOptions option){
         Dimension size = driver.manage().window().getSize();
-        String platform = Reporter.getCurrentTestResult().getTestContext().getAttribute("platform").toString();
+        String platform = DeviceStore.getPlatform();
         int height = size.getHeight();
         int width = size.getWidth();
         int anchor;
