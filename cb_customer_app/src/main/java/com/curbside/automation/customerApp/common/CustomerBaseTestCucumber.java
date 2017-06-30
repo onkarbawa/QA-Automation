@@ -2,6 +2,7 @@ package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.utilities.Utilities;
 import com.curbside.automation.customerApp.android.pages.SettingsAndroid;
+import com.curbside.automation.customerApp.android.pages.SettingsAndroid;
 import com.curbside.automation.customerApp.android.pages.account.Account;
 import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
 import com.curbside.automation.customerApp.android.pages.common.CommonLocators;
@@ -10,6 +11,14 @@ import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.android.pages.signInSignUp.SignInSignUp;
 import com.curbside.automation.customerApp.android.pages.staging.DebugPage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import com.curbside.automation.customerApp.ios.pages.facebookLogin.FacebookLoginIOS;
+import com.curbside.automation.customerApp.ios.pages.home.HomePageIOS;
+import com.curbside.automation.customerApp.ios.pages.login.LoginPageIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.PaymentInfo;
+import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
+import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
+import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 
@@ -28,6 +37,13 @@ public class CustomerBaseTestCucumber {
     SignInSignUp signInSignUp;
     DebugPage debugPage;
     SettingsAndroid settingsAndroid;
+    AccountInfoIOS accountInfoIOS;
+    SignInSignUpPageIOS signInSignUpPageIOS;
+    SignUpPageIOS signUpPageIOS;
+    HomePageIOS homePageIOS;
+    LoginPageIOS loginPageIOS;
+    PaymentInfo paymentInfo;
+    FacebookLoginIOS facebookLoginIOS;
 
 
     /**
@@ -113,5 +129,39 @@ public class CustomerBaseTestCucumber {
     public SettingsAndroid getSettingsAndroid() throws Exception {
         settingsAndroid = new SettingsAndroid((AppiumDriver) DriverFactory.getDriver());
         return settingsAndroid;
+    }
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public AccountInfoIOS getAccountInfoIOS() throws Exception {
+        accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
+        return accountInfoIOS;
+    }
+
+    public SignInSignUpPageIOS getSignInSignUpPageIOS() throws Exception {
+        signInSignUpPageIOS = new SignInSignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return signInSignUpPageIOS;
+    }
+
+    public SignUpPageIOS getSignUpPageIOS() throws Exception {
+        signUpPageIOS = new SignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return signUpPageIOS;
+    }
+    public HomePageIOS getHomePageIOS() throws Exception {
+        homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
+        return homePageIOS;
+    }
+    public LoginPageIOS getLoginPageIOS() throws Exception {
+        loginPageIOS = new LoginPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return loginPageIOS;
+    }
+    public PaymentInfo getPaymentInfo() throws Exception {
+        paymentInfo = new PaymentInfo((AppiumDriver) DriverFactory.getDriver());
+        return paymentInfo;
+    }
+    public FacebookLoginIOS getFacebookLoginIOS() throws Exception {
+        facebookLoginIOS = new FacebookLoginIOS((AppiumDriver) DriverFactory.getDriver());
+        return facebookLoginIOS;
     }
    }

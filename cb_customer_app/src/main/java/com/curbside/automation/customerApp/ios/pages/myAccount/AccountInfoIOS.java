@@ -12,8 +12,15 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class AccountInfoIOS extends Page {
 
+    //Upper Section of My Account
+
     @FindBy(xpath = "//XCUIElementTypeButton[@name='Create one now']")
     public WebElement createOneNow;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@label='Sign In']")
+    public WebElement signIn;
+
+    //Lower Section of My Account
 
     @FindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]")
     public WebElement userName;

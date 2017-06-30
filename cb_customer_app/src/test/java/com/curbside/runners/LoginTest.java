@@ -5,12 +5,11 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
- * Created by bawa.onkar on 23/06/17.
+ * Created by bawa.onkar on 6/30/17.
  */
-
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/com.curbside.automation.customerApp/ios/App.feature",
+        features = "src/test/resources/com.curbside.automation.customerApp/ios/Login.feature",
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -18,5 +17,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.automation.steps"})
 
 @Test
-public class App extends AbstractTestNGCucumberTests {
+public class LoginTest extends AbstractTestNGCucumberTests {
 }

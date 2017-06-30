@@ -4,16 +4,22 @@ import com.curbside.automation.common.pages.Page;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by bawa.onkar on 22/06/17.
  */
 public class LoginPageIOS extends Page {
 
-    By email = By.xpath(LoginPageUIMapIOS.EMAIL);
-    By password = By.xpath(LoginPageUIMapIOS.PASSWORD);
-    By signInButton = By.xpath(LoginPageUIMapIOS.SIGN_IN_BUTTON);
+    @FindBy(xpath = "//XCUIElementTypeTextField[@value='Email']")
+    public WebElement email;
 
+    @FindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Password']")
+    public WebElement password;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@name='Sign In']")
+    public WebElement signInButton;
 
     /**
      * Gets a AppiumDriver to initialize
@@ -21,30 +27,7 @@ public class LoginPageIOS extends Page {
      */
     public LoginPageIOS(AppiumDriver driver) {
         super(driver);
-    }
-
-    /**
-     * Gets email field
-     * @return
-     */
-    public WebElement getEmail(){
-        return driver.findElement(email);
-    }
-
-    /**
-     * Gets password field
-     * @return
-     */
-    public WebElement getPassword(){
-        return driver.findElement(password);
-    }
-
-    /**
-     * Gets sign in field
-     * @return
-     */
-    public WebElement getSignInButton(){
-        return driver.findElement(signInButton);
+        PageFactory.initElements(driver,this);
     }
 
 }
