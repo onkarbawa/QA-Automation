@@ -38,7 +38,7 @@ public class ApplicationLaunchPageIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeButton[@label='HelpIconWhite']")
     public WebElement helpIcon;
 
-    @FindBy(xpath = "//XCUIElementTypeButton[@name='Settings']")
+    @FindBy(xpath = "//XCUIElementTypeButton[@name='SettingsAndroid']")
     public WebElement curbsideSettings;
 
     /**
@@ -57,8 +57,8 @@ public class ApplicationLaunchPageIOS extends Page {
      * @param noOfTimes
      */
     public void doSwipe(int noOfTimes) throws Exception {
-        for(int i = 0;i < noOfTimes;i++) {
-            utilities.swipeOptions(SwipeOptions.Left);
+        for(int i = 0;i <= noOfTimes;i++) {
+            AppleDevice.swipeLeft();
         }
     }
 

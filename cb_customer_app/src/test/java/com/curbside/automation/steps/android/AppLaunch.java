@@ -20,31 +20,31 @@ import org.testng.Assert;
 public class AppLaunch {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @Given("^I launch the Android Customer App$")
+    @Given("^I launch the Curbside App$")
     public void iLaunchTheAndroidCustomerApp() throws Exception {
         DriverFactory.getDriver();
     }
 
-    @And("^I scroll left 2 times$")
+    @And("^I scroll left 3 times$")
     public void iClickThreeTimesForScrollToLeft() throws Exception {
         Thread.sleep(1000);
-        customerBaseTestCucumber.getApplicationLaunchPageAndroid().scrollIntroPage(4);
+        customerBaseTestCucumber.getApplicationLaunchPageAndroid().scrollIntroPage(3);
     }
 
-    @And("^I click on 'Get Started' button on the Intro page$")
+    @And("^I tap on 'Get Started' button on the Intro screen$")
     public void iClickOnGetStartedButtonOnTheIntroPage() throws Exception {
         System.out.print("getstarted step file");
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getStartedButton().click();
     }
 
-    @And("^I click on 'Ok with me' button on access page$")
+    @And("^I tap on 'Ok with me' button on Location access screen$")
     public void iClickOnOkWithMeButtonOnAccessPage() throws Exception {
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getLocationOkButton().click();
     }
 
-    @When("^I click on 'Allow Access Location' pop up$")
+    @When("^I tap on 'Allow Access Location' pop up$")
     public void iClickOnAllowAccessLocationPopUp() throws Exception {
         try {
             Thread.sleep(1000);
@@ -54,18 +54,18 @@ public class AppLaunch {
 
     }
 
-    @Then("^I should see the 'Account tab' button$")
+    @Then("^I should see the Nearby Stores screen$")
     public void iShouldSeeTheCurrentLocationButton() throws Exception {
-        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : HomePage is not visible yet--");
+        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : Not able to land on Near by Stores screen");
     }
 
-    @And("^I click on 'Skip Intro' button on the screen$")
+    @And("^I tap on 'Skip Intro' button on the screen$")
     public void iClickOnSkipIntroButtonOnTheScreen() throws Exception {
         System.out.print("skip intro step file");
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getSkipIntro().click();
     }
 
-    @And("^I land on store selection page$")
+    @And("^I land on store selection screen$")
     public void iLandOnStoreSelectionPage() throws Exception {
         Thread.sleep(1000);
         iClickOnSkipIntroButtonOnTheScreen();

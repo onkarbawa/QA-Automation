@@ -14,7 +14,7 @@ public class SignupSignIn {
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @And("^I click on 'Sign up with email' button$")
+    @And("^I tap on 'Sign up with email' button$")
     public void iClickOnSignupWithEmailButton() throws Exception {
         customerBaseTestCucumber.getSignInSignUpPage().getSignUpWithEmailButton().click();
     }
@@ -27,17 +27,20 @@ public class SignupSignIn {
 
     @And("^I enter 'password' in second text box$")
     public void iEnterPasswordInSecondTextBox() throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getPasswordTextField().sendKeys("1234hdso6");
     }
 
     @And("^I enter 'Phone Number' in third text box$")
     public void iEnterPhoneNumberInThirdTextBox() throws Exception {
-        customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("958290962");
+        Thread.sleep(1000);
+        customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("95829096234");
         customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
-    @When("^I click on 'Create Account' button on the page$")
+    @When("^I tap on 'Create Account' button on the page$")
     public void iClickOnCreateAccountButtonOnThePage() throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getCreateAccountButton().click();
     }
 }

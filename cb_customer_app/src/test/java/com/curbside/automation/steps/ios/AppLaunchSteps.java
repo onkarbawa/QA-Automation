@@ -122,7 +122,7 @@ public class AppLaunchSteps  {
     @Then("^I should see 'Curbside Settings Page'$")
     public void iShouldSeeCurbsideSettingsPage() throws Exception {
         Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.getText(),
-                "Settings", "Settings Page is not displayed");
+                "SettingsAndroid", "SettingsAndroid Page is not displayed");
     }
 
     @And("^I click on 'Settings' on curbside page$")

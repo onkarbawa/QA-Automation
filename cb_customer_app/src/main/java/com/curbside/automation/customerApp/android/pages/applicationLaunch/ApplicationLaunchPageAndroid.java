@@ -3,6 +3,7 @@ package com.curbside.automation.customerApp.android.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.uifactory.AndroidDevice;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -61,9 +62,9 @@ public class ApplicationLaunchPageAndroid extends Page {
      */
     public void scrollIntroPage(int numberOfTimes) {
 
-        for (int i = 0; i < numberOfTimes; ++i) {
+        for (int i = 0; i <= numberOfTimes; ++i) {
             try {
-                utilities.swipeOptions(SwipeOptions.Left);
+                AndroidDevice.swipeLeft();
                 Thread.sleep(500);
             } catch (Exception e) {
                 e.printStackTrace();

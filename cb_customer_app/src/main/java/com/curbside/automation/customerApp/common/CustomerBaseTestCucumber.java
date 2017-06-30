@@ -1,6 +1,8 @@
 package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.utilities.Utilities;
+import com.curbside.automation.customerApp.android.pages.SettingsAndroid;
+import com.curbside.automation.customerApp.android.pages.SettingsAndroid;
 import com.curbside.automation.customerApp.android.pages.account.Account;
 import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
 import com.curbside.automation.customerApp.android.pages.common.CommonLocators;
@@ -34,6 +36,7 @@ public class CustomerBaseTestCucumber {
     Account account;
     SignInSignUp signInSignUp;
     DebugPage debugPage;
+    SettingsAndroid settingsAndroid;
     AccountInfoIOS accountInfoIOS;
     SignInSignUpPageIOS signInSignUpPageIOS;
     SignUpPageIOS signUpPageIOS;
@@ -121,6 +124,11 @@ public class CustomerBaseTestCucumber {
     public DebugPage getDebugPagePage() throws Exception {
         debugPage = new DebugPage((AppiumDriver) DriverFactory.getDriver());
         return debugPage;
+    }
+
+    public SettingsAndroid getSettingsAndroid() throws Exception {
+        settingsAndroid = new SettingsAndroid((AppiumDriver) DriverFactory.getDriver());
+        return settingsAndroid;
     }
     /**
      * Intialization of class variable with driver

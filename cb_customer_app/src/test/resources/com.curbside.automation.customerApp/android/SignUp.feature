@@ -1,19 +1,18 @@
 @signUp
 Feature: Verify curbside signup flow
 
-  #TODO
   @C114954
   Scenario: Verify on new account user should see name, email or phone number in my account
-    Given I launch the Android Customer App
-    And I land on store selection page
+    Given I launch the Curbside App
+    And I land on store selection screen
     And I set the staging environment
-    And I click on 'Account' icon
-    And I click on 'Sign up' button on Account page
-    And I click on 'Sign up with email' button
+    And I tap on 'Account' icon
+    And I tap on 'Sign up' button on Account page
+    And I tap on 'Sign up with email' button
     And I enter 'email' in first text box
     And I go to next text field
-    And I enter 'password' in second text box
-    And I go to next text field
     And I enter 'Phone Number' in third text box
-    When I click on 'Create Account' button on the page
-    And I close the Curbside app
+    And I go to next text field
+    And I enter 'password' in second text box
+    When I tap on 'Create Account' button on the page
+    Then I should see the Account details with Email id in it
