@@ -1,6 +1,4 @@
 package com.curbside.automation.uifactory;
-import java.net.MalformedURLException;
-
 import org.apache.commons.lang3.NotImplementedException;
 import org.json.JSONObject;
 
@@ -8,8 +6,6 @@ import org.json.JSONObject;
  * @author kumar.anil
  *
  */
-
-import org.openqa.selenium.WebDriver;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.devicefactory.IOSApps;
