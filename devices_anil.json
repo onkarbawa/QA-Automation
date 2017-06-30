@@ -1,14 +1,12 @@
 {
   "android" : [
     {
-      "deviceName" : "Emulator1",
-      "platform_version" : "6.0",
-      "UDID" : "123"
-    },
-    {
-      "deviceName" : "Emulator2",
-      "platform_version" : "5.0",
-      "UDID" : ""
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "android",
+      "deviceName": "emulator-5554",
+      "app": "../Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     }
   ],
   "iOS" : [
