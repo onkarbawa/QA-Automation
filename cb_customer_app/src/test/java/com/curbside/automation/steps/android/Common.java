@@ -31,7 +31,7 @@ public class Common {
     @And("^I go to next text field$")
     public void iGoToNextTextField() throws Exception {
         Thread.sleep(1000);
-        customerBaseTestCucumber.getUtilities().hitEnterAndroid();
+        AndroidDevice.hitEnter();
     }
 
     @And("^I set the staging environment$")
@@ -39,9 +39,9 @@ public class Common {
         customerBaseTestCucumber.getHomePageAndroid().getSearchButton().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
-        customerBaseTestCucumber.getUtilities().hitEnterAndroid();
+        AndroidDevice.hitEnter();
         Thread.sleep(2000);
-        customerBaseTestCucumber.getUtilities().goBackAndroid();
+        AndroidDevice.goBackAndroid();
         Thread.sleep(1000);
         customerBaseTestCucumber.getDebugPagePage().getApiHostButton().click();
         Thread.sleep(1000);
@@ -49,7 +49,7 @@ public class Common {
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogTextField().sendKeys("https://api-s.shopcurbside.com");
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogOkButton().click();
         Thread.sleep(1000);
-        customerBaseTestCucumber.getUtilities().goBackAndroid();
+        AndroidDevice.goBackAndroid();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
         AndroidDevice.launchCurbsideActivity();
     }
@@ -58,7 +58,7 @@ public class Common {
     public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
         customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
         customerBaseTestCucumber.getSettingsAndroid().getSearchTextField().sendKeys("App Permissions");
-        customerBaseTestCucumber.getUtilities().goBackAndroid();
+        AndroidDevice.goBackAndroid();
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
