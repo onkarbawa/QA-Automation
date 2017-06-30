@@ -6,7 +6,7 @@
     </listeners>
     <test name="Test">
         <classes>
-            <class name="com.curbside.runners.android.SignUp"/>
+            <class name="com.curbside.runners.android.AppLaunch"/>
         </classes>
     </test>
 </suite>

@@ -8,12 +8,9 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.net.MalformedURLException;
-
-import static com.curbside.automation.common.BaseTest.driver;
 
 /**
  * Created by hitesh.grover on 27/06/17.
@@ -25,12 +22,20 @@ public class Common {
 
     @And("^I tap on 'Account' icon$")
     public void iClickOnAccountButton() throws Exception {
-        Thread.sleep(1000);
+        Thread.sleep(2500);
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
+        customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
+        customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
+    }
+
+    @Then("^I close the Curbside app$")
+    public void iReleaseTheDriverSession() throws MalformedURLException {
+        DriverFactory.releaseDriver();
     }
 
     @And("^I go to next text field$")
     public void iGoToNextTextField() throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
@@ -54,17 +59,6 @@ public class Common {
         AndroidDevice.launchCurbsideActivity();
     }
 
-    @Given("^I reinstall the Curbside App$")
-    public void iResetTheCurbsideApp() throws Exception {
-        DriverFactory.releaseDriver();
-        DriverFactory.getDriver();
-    }
-
-    @And("^I open the setting app$")
-    public void iOpenTheSettingApp() throws Exception {
-        AndroidDevice.launchSettingApp();
-    }
-
     @And("^I search and tap on'App permissions' on the screen$")
     public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
         customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
@@ -75,5 +69,11 @@ public class Common {
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
 
 
+    }
+
+    @Given("^I reinstall the Curbside App$")
+    public void iReinstallTheCurbsideApp() throws Exception {
+        DriverFactory.releaseDriver();
+        DriverFactory.getDriver();
     }
 }

@@ -14,6 +14,13 @@ public class Account extends Page{
     @FindBy(id = "com.curbside.nCurbside:id/button_sign_up")
     public WebElement signUp;
 
+    @FindBy(id = "com.curbside.nCurbside:id/text_email")
+    public WebElement email;
+
+    @FindBy(xpath = "//android.widget.ListView/android.widget.RelativeLayout[@index='3']")
+    public WebElement paymentInfo;
+
+
 
     public Account(AppiumDriver driver) {
         super(driver);
@@ -22,5 +29,13 @@ public class Account extends Page{
 
     public WebElement getSignUpButton(){
         return signUp;
+    }
+
+    public WebElement getEmail(){
+        return email;
+    }
+
+    public WebElement getPaymentInfo(){
+        return paymentInfo;
     }
 }

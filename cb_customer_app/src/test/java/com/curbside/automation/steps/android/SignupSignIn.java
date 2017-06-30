@@ -27,17 +27,20 @@ public class SignupSignIn {
 
     @And("^I enter 'password' in second text box$")
     public void iEnterPasswordInSecondTextBox() throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getPasswordTextField().sendKeys("1234hdso6");
     }
 
     @And("^I enter 'Phone Number' in third text box$")
     public void iEnterPhoneNumberInThirdTextBox() throws Exception {
-        customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("958290962");
+        Thread.sleep(1000);
+        customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("95829096234");
         customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
-    @When("^I tap on 'Create Account' button on the screen$")
+    @When("^I tap on 'Create Account' button on the page$")
     public void iClickOnCreateAccountButtonOnThePage() throws Exception {
+        Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getCreateAccountButton().click();
     }
 }
