@@ -1,6 +1,4 @@
 package com.curbside.automation.uifactory;
-import java.net.MalformedURLException;
-
 import org.apache.commons.lang3.NotImplementedException;
 import org.json.JSONObject;
 
@@ -9,13 +7,14 @@ import org.json.JSONObject;
  *
  */
 
-import org.openqa.selenium.WebDriver;
-
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.devicefactory.IOSApps;
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.openqa.selenium.Dimension;
 
 public class MobileDevice {
-	
+
+    private static Dimension size;
 	public MobileDevice() {
     }
 	
@@ -38,4 +37,14 @@ public class MobileDevice {
 			throw new NotImplementedException("Not yet implemented");
 		}
 	}
+
+	public static int getHeight() throws Exception {
+        size = DriverFactory.getDriver().manage().window().getSize();
+	    return size.getHeight();
+    }
+
+    public static int getWidth() throws Exception {
+        size = DriverFactory.getDriver().manage().window().getSize();
+        return size.getWidth();
+    }
 }

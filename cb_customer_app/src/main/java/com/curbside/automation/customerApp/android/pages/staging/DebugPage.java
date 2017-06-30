@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
  */
 public class DebugPage extends Page {
 
-    public final By apiHostButton = By.id(DebugPageUIMap.API_HOST_BUTTON);
+    public final By apiHostButton = By.xpath(DebugPageUIMap.API_HOST_BUTTON);
     public final By apiHostDialogTextField = By.id(DebugPageUIMap.API_HOST_DIALOG_TEXT_FIELD);
     public final By apiHostDialogOkButton = By.id(DebugPageUIMap.API_HOST_DIALOG_OK_BUTTON);
     public final By backButton = By.id(DebugPageUIMap.BACK_BUTTON);

@@ -11,3 +11,4 @@ target/
 
 **/ cucumber-html-reports/
 **/logs/log.out
+cb_common/bin/
