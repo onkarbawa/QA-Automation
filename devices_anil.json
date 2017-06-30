@@ -27,6 +27,16 @@
       "deviceName" : "Anil Kumar’s iPhone",
       "app" : "../Curbside.ipa",
       "udid" : "05d1e37141f8057d0b5b2acae52c359012455afe"
+    },
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.2.1",
+      "deviceName" : "iPhone6",
+      "app" : "../Curbside.ipa",
+      "udid" : "bfb9ed601c9521cab4172cab431110e6161497c4",
+      "fullReset" : true,
+      "showXcodeLogs" : true
     }
   ]
 }

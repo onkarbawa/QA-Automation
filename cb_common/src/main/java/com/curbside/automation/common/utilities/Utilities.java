@@ -10,6 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 
 import java.util.ArrayList;
@@ -23,7 +24,6 @@ import java.util.UUID;
 
 public class Utilities {
 
-    private String platForm = Properties.getPlatForm();
     WebElement element = null;
 
     private final Logger logger = Logger.getLogger(Utilities.class);
@@ -158,7 +158,9 @@ public class Utilities {
      *@param
      */
     public void swipeOptions(SwipeOptions option){
+        System.out.print("In Swipe utilites function");
         Dimension size = driver.manage().window().getSize();
+        String platform = Reporter.getCurrentTestResult().getTestContext().getAttribute("platform").toString();
         int height = size.getHeight();
         int width = size.getWidth();
         int anchor;
@@ -170,10 +172,10 @@ public class Utilities {
                 anchor = (int) (height * 0.5);
                 startPoint = (int) (width * 0.01);
                 endPoint = (int) (width * 0.9);
-                if (platForm.equalsIgnoreCase("iOS")) {
+                if (platform.equalsIgnoreCase("iOS")) {
                     touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, 0).release().perform();
                  }
-                 else if (platForm.equalsIgnoreCase("Android")){
+                 else if (platform.equalsIgnoreCase("Android")){
                     touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
                  }
                  break;
@@ -181,10 +183,11 @@ public class Utilities {
                 anchor = (int) (height * 0.5);
                 startPoint = (int) (width * 0.8);
                 endPoint = (int) (width * 0.01);
-                if (platForm.equalsIgnoreCase("iOS")) {
+                if (platform.equalsIgnoreCase("iOS")) {
+                    System.out.print(platform+"-----Left-IOS");
                     touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
                 }
-                else if (platForm.equalsIgnoreCase("Android")){
+                else if (platform.equalsIgnoreCase("Android")){
                     touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
                 }
                 break;
@@ -192,9 +195,9 @@ public class Utilities {
                 anchor = (int) (width * 0.5);
                 startPoint = (int) (height * 0.8);
                 endPoint = (int) (height * 0.01);
-                if (platForm.equalsIgnoreCase("iOS")) {
+                if (platform.equalsIgnoreCase("iOS")) {
                     touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
-                }else if (platForm.equalsIgnoreCase("Android")){
+                }else if (platform.equalsIgnoreCase("Android")){
                     touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
                 }
                 break;

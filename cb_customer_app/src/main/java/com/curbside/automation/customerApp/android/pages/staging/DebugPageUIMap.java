@@ -9,4 +9,5 @@ public class DebugPageUIMap {
     static final String API_HOST_DIALOG_TEXT_FIELD = "android:id/edit";
     static final String API_HOST_DIALOG_OK_BUTTON = "android:id/button1";
     static final String BACK_BUTTON = "com.curbside.nCurbside:id/img_tool_back";
+    static final String MAP_BACK_BUTTON = "android.widget.ImageButton";
 }

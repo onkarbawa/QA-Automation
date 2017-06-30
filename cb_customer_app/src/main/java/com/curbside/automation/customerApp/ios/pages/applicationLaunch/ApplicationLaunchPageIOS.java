@@ -3,6 +3,7 @@ package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
 import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -55,9 +56,8 @@ public class ApplicationLaunchPageIOS extends Page {
      * @param noOfTimes
      */
     public void doSwipe(int noOfTimes) throws InterruptedException {
-        Thread.sleep(3000);
         for(int i = 0;i < noOfTimes;i++) {
-            utilities.swipeOptions(SwipeOptions.Down);
+            utilities.swipeOptions(SwipeOptions.Left);
         }
     }
 

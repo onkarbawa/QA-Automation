@@ -4,6 +4,10 @@ Feature: Check information's and functionality's on Login in Customer app
   @C114955-1
   Scenario: Verify user is able to login if Facebook account is linked with curbside account
     Given I launch the Customer App
+    And I clicked on Allow to send notifications
+    And I click on 'Skip Intro' button
+    And I click on 'Ok with me' button on access landing page
+    And I click on 'Allow Access Location' button
     And I click on Sign in with Facebook button
     And I click on log in with Facebook App button
     When I click on Open

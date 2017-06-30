@@ -1,9 +1,7 @@
 package com.curbside.automation.steps.ios;
 
-import com.curbside.automation.common.BaseTest;
-import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
-import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
-import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
+import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
+import com.curbside.automation.uifactory.DriverFactory;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,25 +12,24 @@ import org.testng.Assert;
  */
 public class SignupSteps {
 
-  AccountInfoIOS accountInfoIOS = new AccountInfoIOS(BaseTest.driver);
-  SignInSignUpPageIOS signInSignUpPageIOS = new SignInSignUpPageIOS(BaseTest.driver);
-  SignUpPageIOS signUpPageIOS = new SignUpPageIOS(BaseTest.driver);
+  CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-  String randomEmail = signUpPageIOS.getEmail();
+  String randomEmail = customerBaseTestCucumber.getSignUpPageIOS().getEmail();
 
   @And("^I click on create one now$")
   public void iClickOnCreateOneNow() {
-    accountInfoIOS.createOneNow.click();
+    System.out.println(DriverFactory.getDriver().getPageSource());
+    customerBaseTestCucumber.getAccountInfoIOS().createOneNow.click();
   }
 
   @And("^I click on 'Create an Account'$")
   public void iClickOnCreateAnAccount() {
-      signInSignUpPageIOS.createAnAccount.click();
+    customerBaseTestCucumber.getSignInSignUpPageIOS().createAnAccount.click();
   }
 
   @And("^I enter 'email' in first box$")
   public void iEnterEmailInFirstBox() {
-    signUpPageIOS.email.sendKeys(randomEmail);
+    customerBaseTestCucumber.getSignUpPageIOS().email.sendKeys(randomEmail);
   }
 
   @And("^I enter 'password' in second box$")
@@ -42,7 +39,7 @@ public class SignupSteps {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    signUpPageIOS.password.sendKeys("usi@123");
+    customerBaseTestCucumber.getSignUpPageIOS().password.sendKeys("usi@123");
   }
 
   @And("^I enter 'Phone Number' in third box$")
@@ -52,7 +49,7 @@ public class SignupSteps {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    signUpPageIOS.phoneNumber.sendKeys("12345678901");
+    customerBaseTestCucumber.getSignUpPageIOS().phoneNumber.sendKeys("12345678901");
   }
 
   @When("^I click on 'Create Account' button$")
@@ -62,13 +59,13 @@ public class SignupSteps {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    signUpPageIOS.createAccount.click();
+    customerBaseTestCucumber.getSignUpPageIOS().createAccount.click();
   }
 
   @Then("^I should see email or phone number in my account$")
   public void iShouldSeeEmailOrPhoneNumberInMyAccount() {
-    accountInfoIOS.isPhoneNoDisplayed();
-    Assert.assertEquals(accountInfoIOS.email.getText(), randomEmail,
+    customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
+    Assert.assertEquals(customerBaseTestCucumber.getAccountInfoIOS().email.getText(), randomEmail,
             "Entered email is not matched with Account Page");
   }
 }

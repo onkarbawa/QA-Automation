@@ -14,6 +14,7 @@ public class DebugPage extends Page {
     public final By apiHostDialogTextField = By.id(DebugPageUIMap.API_HOST_DIALOG_TEXT_FIELD);
     public final By apiHostDialogOkButton = By.id(DebugPageUIMap.API_HOST_DIALOG_OK_BUTTON);
     public final By backButton = By.id(DebugPageUIMap.BACK_BUTTON);
+    public final By mapBackButton = By.className(DebugPageUIMap.MAP_BACK_BUTTON);
 
     public DebugPage(AppiumDriver driver) {
         super(driver);
@@ -49,6 +50,10 @@ public class DebugPage extends Page {
      */
     public WebElement getBackButton() {
         return driver.findElement(backButton);
+    }
+
+    public WebElement getMapBackButton(){
+        return  driver.findElement(mapBackButton);
     }
 
 }

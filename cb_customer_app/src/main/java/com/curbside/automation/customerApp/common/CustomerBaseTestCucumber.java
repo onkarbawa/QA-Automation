@@ -7,8 +7,13 @@ import com.curbside.automation.customerApp.android.pages.common.CommonLocators;
 import com.curbside.automation.customerApp.android.pages.location.LocationPage;
 import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.android.pages.signInSignUp.SignInSignUp;
+import com.curbside.automation.customerApp.android.pages.staging.DebugPage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import com.curbside.automation.customerApp.ios.pages.home.HomePageIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
+import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
+import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 
@@ -25,7 +30,11 @@ public class CustomerBaseTestCucumber {
     CommonLocators commonLocators;
     Account account;
     SignInSignUp signInSignUp;
-
+    DebugPage debugPage;
+    AccountInfoIOS accountInfoIOS;
+    SignInSignUpPageIOS signInSignUpPageIOS;
+    SignUpPageIOS signUpPageIOS;
+    HomePageIOS homePageIOS;
 
     /**
      * Intialization of class variable with driver
@@ -43,15 +52,13 @@ public class CustomerBaseTestCucumber {
      *
      * @return
      */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch() throws Exception {
-        if (iOSApplicationLaunchPageIOS == null)
-            iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
+    public ApplicationLaunchPageIOS getiOSApplicationLaunch() {
+        iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
         return iOSApplicationLaunchPageIOS;
     }
 
     public Utilities getUtilities() throws Exception {
-        if (utilities == null)
-            utilities = new Utilities((AppiumDriver) DriverFactory.getDriver());
+        utilities = new Utilities((AppiumDriver) DriverFactory.getDriver());
         return utilities;
     }
 
@@ -60,8 +67,7 @@ public class CustomerBaseTestCucumber {
      * @return
      */
     public HomePage getHomePageAndroid() throws Exception {
-        if (homePageAndroid == null)
-            homePageAndroid = new HomePage((AppiumDriver) DriverFactory.getDriver());
+        homePageAndroid = new HomePage((AppiumDriver) DriverFactory.getDriver());
         return homePageAndroid;
     }
 
@@ -70,8 +76,7 @@ public class CustomerBaseTestCucumber {
      * @return
      */
     public LocationPage getLocationPageAndroid() throws Exception {
-        if (locationPageAndroid == null)
-            locationPageAndroid = new LocationPage((AppiumDriver) DriverFactory.getDriver());
+        locationPageAndroid = new LocationPage((AppiumDriver) DriverFactory.getDriver());
         return locationPageAndroid;
     }
 
@@ -80,8 +85,7 @@ public class CustomerBaseTestCucumber {
      * @return
      */
     public CommonLocators getCommonLocatorsPageAndroid() throws Exception {
-        if (commonLocators == null)
-            commonLocators = new CommonLocators((AppiumDriver) DriverFactory.getDriver());
+        commonLocators = new CommonLocators((AppiumDriver) DriverFactory.getDriver());
         return commonLocators;
     }
 
@@ -90,8 +94,7 @@ public class CustomerBaseTestCucumber {
      * @return
      */
     public Account getAccountPageAndroid() throws Exception {
-        if (account == null)
-            account = new Account((AppiumDriver) DriverFactory.getDriver());
+        account = new Account((AppiumDriver) DriverFactory.getDriver());
         return account;
     }
 
@@ -100,8 +103,52 @@ public class CustomerBaseTestCucumber {
      * @return
      */
     public SignInSignUp getSignInSignUpPage() throws Exception {
-        if (signInSignUp == null)
-            signInSignUp = new SignInSignUp((AppiumDriver) DriverFactory.getDriver());
+        signInSignUp = new SignInSignUp((AppiumDriver) DriverFactory.getDriver());
         return signInSignUp;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public AccountInfoIOS getAccountInfoIOS()  {
+        accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
+        return accountInfoIOS;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public DebugPage getDebugPagePage() throws Exception {
+        debugPage = new DebugPage((AppiumDriver) DriverFactory.getDriver());
+        return debugPage;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public SignInSignUpPageIOS getSignInSignUpPageIOS()  {
+        signInSignUpPageIOS = new SignInSignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return signInSignUpPageIOS;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public SignUpPageIOS getSignUpPageIOS() {
+        signUpPageIOS = new SignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return signUpPageIOS;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public HomePageIOS getHomePageIOS() {
+        homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
+        return homePageIOS;
     }
    }
