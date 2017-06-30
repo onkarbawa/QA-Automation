@@ -28,11 +28,6 @@ public class Common {
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
     }
 
-    @Then("^I close the Curbside app$")
-    public void iReleaseTheDriverSession() throws MalformedURLException {
-        DriverFactory.releaseDriver();
-    }
-
     @And("^I go to next text field$")
     public void iGoToNextTextField() throws Exception {
         Thread.sleep(1000);

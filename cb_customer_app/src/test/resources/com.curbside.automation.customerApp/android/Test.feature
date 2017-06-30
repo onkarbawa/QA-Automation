@@ -1,6 +1,7 @@
 @applicationLaunch
 Feature: Curbside tutorial is prompted when app is launched first time and verify tutorial flow
 
+  #TODO
   #This is for stock android - Working on Moto g2
   @C114998
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page

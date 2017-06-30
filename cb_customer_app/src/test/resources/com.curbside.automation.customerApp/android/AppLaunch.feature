@@ -6,16 +6,14 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
     Given I launch the Curbside App
     And I scroll left 3 times
     And I tap on 'Get Started' button on the Intro screen
-    And I tap on 'Ok with me' button on access screen
+    And I tap on 'Ok with me' button on Location access screen
     When I tap on 'Allow Access Location' pop up
-    Then I should see the 'Account tab' button
-    Then I close the Curbside app
+    Then I should see the Nearby Stores screen
 
   @C114936
   Scenario: Tapping 'Skip Intro' button should take you to Store Selection Page
     Given I reinstall the Curbside App
     And I tap on 'Skip Intro' button on the screen
-    And I tap on 'Ok with me' button on access screen
+    And I tap on 'Ok with me' button on Location access screen
     When I tap on 'Allow Access Location' pop up
-    Then I should see the 'Account tab' button
-    Then I close the Curbside app
+    Then I should see the Nearby Stores screen

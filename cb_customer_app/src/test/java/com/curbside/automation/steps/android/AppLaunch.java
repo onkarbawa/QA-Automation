@@ -38,7 +38,7 @@ public class AppLaunch {
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getStartedButton().click();
     }
 
-    @And("^I tap on 'Ok with me' button on access screen$")
+    @And("^I tap on 'Ok with me' button on Location access screen$")
     public void iClickOnOkWithMeButtonOnAccessPage() throws Exception {
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getLocationOkButton().click();
@@ -54,9 +54,9 @@ public class AppLaunch {
 
     }
 
-    @Then("^I should see the 'Account tab' button$")
+    @Then("^I should see the Nearby Stores screen$")
     public void iShouldSeeTheCurrentLocationButton() throws Exception {
-        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : HomePage is not visible yet--");
+        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : Not able to land on Near by Stores screen");
     }
 
     @And("^I tap on 'Skip Intro' button on the screen$")
