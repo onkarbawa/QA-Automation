@@ -1,6 +1,7 @@
 package com.curbside.automation.customerApp.common;
 
 import com.curbside.automation.common.utilities.Utilities;
+import com.curbside.automation.customerApp.android.pages.SettingsAndroid;
 import com.curbside.automation.customerApp.android.pages.account.Account;
 import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
 import com.curbside.automation.customerApp.android.pages.common.CommonLocators;
@@ -9,7 +10,6 @@ import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.android.pages.signInSignUp.SignInSignUp;
 import com.curbside.automation.customerApp.android.pages.staging.DebugPage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
-import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
 import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 
@@ -27,6 +27,7 @@ public class CustomerBaseTestCucumber {
     Account account;
     SignInSignUp signInSignUp;
     DebugPage debugPage;
+    SettingsAndroid settingsAndroid;
 
 
     /**
@@ -107,5 +108,10 @@ public class CustomerBaseTestCucumber {
     public DebugPage getDebugPagePage() throws Exception {
         debugPage = new DebugPage((AppiumDriver) DriverFactory.getDriver());
         return debugPage;
+    }
+
+    public SettingsAndroid getSettingsAndroid() throws Exception {
+        settingsAndroid = new SettingsAndroid((AppiumDriver) DriverFactory.getDriver());
+        return settingsAndroid;
     }
    }

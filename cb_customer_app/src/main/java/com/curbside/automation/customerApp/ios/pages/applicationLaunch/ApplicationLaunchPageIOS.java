@@ -24,7 +24,7 @@ public class ApplicationLaunchPageIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeButton[@label='HelpIconWhite']")
     public WebElement helpIcon;
 
-    @FindBy(xpath = "//XCUIElementTypeButton[@name='Settings']")
+    @FindBy(xpath = "//XCUIElementTypeButton[@name='SettingsAndroid']")
     public WebElement curbsideSettings;
 
     By allow = By.name(ApplicationLaunchUIMapIOS.ALLOW_BUUTON);

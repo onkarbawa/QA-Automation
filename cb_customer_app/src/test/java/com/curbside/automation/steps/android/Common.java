@@ -64,4 +64,16 @@ public class Common {
     public void iOpenTheSettingApp() throws Exception {
         AndroidDevice.launchSettingApp();
     }
+
+    @And("^I search and tap on'App permissions' on the screen$")
+    public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
+        customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
+        customerBaseTestCucumber.getSettingsAndroid().getSearchTextField().sendKeys("App Permissions");
+        customerBaseTestCucumber.getUtilities().goBackAndroid();
+        customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
+        Thread.sleep(1000);
+        customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
+
+
+    }
 }

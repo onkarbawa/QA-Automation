@@ -9,6 +9,9 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebElement;
+
+import static com.curbside.automation.common.BaseTest.driver;
 
 @SuppressWarnings("rawtypes")
 public class AndroidDevice extends MobileDevice {
@@ -33,6 +36,10 @@ public class AndroidDevice extends MobileDevice {
         int endPoint = (int) (MobileDevice.getWidth() * 0.01);
         touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
 
+    }
+
+    public void hitEnter(){
+        ((AndroidDriver<WebElement>) driver).pressKeyCode(66);
     }
 
 }
