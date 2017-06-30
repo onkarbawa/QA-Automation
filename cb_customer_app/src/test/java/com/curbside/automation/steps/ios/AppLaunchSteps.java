@@ -15,17 +15,20 @@ import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
 import org.testng.Assert;
 
+import java.net.MalformedURLException;
+
 /**
  * Created by bawa.onkar on 6/21/2017.
  */
 public class AppLaunchSteps  {
 
-    BaseTest baseTest = new BaseTest();
     SettingsIOS settingsIOS ;
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @Given("^I launch the Curbside App$")
-    public void iLaunchTheCurbsideApp()  {
+
+    @Given("^I launch the iOS Curbside App$")
+    public void iLaunchTheIOSCurbsideApp() throws MalformedURLException {
+        DriverFactory.releaseDriver();
         DriverFactory.getDriver();
     }
 
@@ -127,8 +130,8 @@ public class AppLaunchSteps  {
         customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.click();
     }
 
-    @And("^I click on 'Background App Refresh' to toggle 'OFF'$")
-    public void iClickOnBackgroundAppRefreshToToggleOFF() throws Throwable {
+    @And("^I tap on 'Background App Refresh' to toggle 'OFF'$")
+    public void iTapOnBackgroundAppRefreshToToggleOFF() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
@@ -222,7 +225,4 @@ public class AppLaunchSteps  {
     public void iCloseTheWebDriverSessionTt() throws Throwable {
         DriverFactory.releaseDriver();
     }
-
-
-
 }

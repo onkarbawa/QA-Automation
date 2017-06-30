@@ -12,12 +12,14 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class SignInSignUpPageIOS extends Page {
 
-    static final String SIGN_IN_WITH_MAIL = "//XCUIElementTypeButton[@name='Sign In with Email']";
-
-    static final String SIGN_IN_WITH_FACEBOOK = "Sign In with Facebook";
-
     @FindBy(xpath = "//XCUIElementTypeButton[@label='Create An Account']")
     public WebElement createAnAccount;
+
+    @FindBy(xpath = "//XCUIElementTypeButton[@name='Sign In with Email']")
+    public WebElement signWithMail;
+
+    @FindBy(name = "Sign In with Facebook")
+    public WebElement signInWithFacebook;
 
     /**
      * Gets a AppiumDriver to initialize

@@ -2,6 +2,7 @@ package com.curbside.automation.steps.ios;
 
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.uifactory.DriverFactory;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,14 +17,14 @@ public class SignupSteps {
 
   String randomEmail = customerBaseTestCucumber.getSignUpPageIOS().getEmail();
 
-  @And("^I click on create one now$")
-  public void iClickOnCreateOneNow() {
+  @And("^I tap on create one now$")
+  public void iTapOnCreateOneNow() {
     System.out.println(DriverFactory.getDriver().getPageSource());
     customerBaseTestCucumber.getAccountInfoIOS().createOneNow.click();
   }
 
-  @And("^I click on 'Create an Account'$")
-  public void iClickOnCreateAnAccount() {
+  @And("^I tap on 'Create an Account'$")
+  public void iTapOnCreateAnAccount() {
     customerBaseTestCucumber.getSignInSignUpPageIOS().createAnAccount.click();
   }
 
@@ -52,8 +53,8 @@ public class SignupSteps {
     customerBaseTestCucumber.getSignUpPageIOS().phoneNumber.sendKeys("12345678901");
   }
 
-  @When("^I click on 'Create Account' button$")
-  public void iClickOnCreateAccountButton() {
+  @When("^I tap on 'Create Account' button$")
+  public void iTapOnCreateAccountButton() {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -62,8 +63,8 @@ public class SignupSteps {
     customerBaseTestCucumber.getSignUpPageIOS().createAccount.click();
   }
 
-  @Then("^I should see email or phone number in my account$")
-  public void iShouldSeeEmailOrPhoneNumberInMyAccount() {
+  @Then("^I should see email in my account screen$")
+  public void iShouldSeeEmailInMyAccountScreen() {
     customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
     Assert.assertEquals(customerBaseTestCucumber.getAccountInfoIOS().email.getText(), randomEmail,
             "Entered email is not matched with Account Page");

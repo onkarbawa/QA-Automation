@@ -6,7 +6,8 @@
     </listeners>
     <test name="Test">
         <classes>
-            <class name="com.curbside.runners.AppLaunchTest"/>
+            <class name="com.curbside.runners.LoginTest"/>
+            <class name="com.curbside.runners.SignUpTest"/>
         </classes>
     </test>
 </suite>

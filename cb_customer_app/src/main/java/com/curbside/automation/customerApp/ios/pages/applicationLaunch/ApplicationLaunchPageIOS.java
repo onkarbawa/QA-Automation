@@ -2,6 +2,7 @@ package com.curbside.automation.customerApp.ios.pages.applicationLaunch;
 
 import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.uifactory.AppleDevice;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.customerApp.common.CustomerBaseTest;
 import io.appium.java_client.AppiumDriver;
@@ -55,9 +56,9 @@ public class ApplicationLaunchPageIOS extends Page {
      * @param direction
      * @param noOfTimes
      */
-    public void doSwipe(int noOfTimes) throws InterruptedException {
+    public void doSwipe(int noOfTimes) throws Exception {
         for(int i = 0;i < noOfTimes;i++) {
-            utilities.swipeOptions(SwipeOptions.Left);
+            AppleDevice.swipeLeft();
         }
     }
 

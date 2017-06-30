@@ -9,8 +9,11 @@ import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.android.pages.signInSignUp.SignInSignUp;
 import com.curbside.automation.customerApp.android.pages.staging.DebugPage;
 import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
+import com.curbside.automation.customerApp.ios.pages.facebookLogin.FacebookLoginIOS;
 import com.curbside.automation.customerApp.ios.pages.home.HomePageIOS;
+import com.curbside.automation.customerApp.ios.pages.login.LoginPageIOS;
 import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
+import com.curbside.automation.customerApp.ios.pages.myAccount.PaymentInfo;
 import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
 import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
 import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
@@ -35,6 +38,9 @@ public class CustomerBaseTestCucumber {
     SignInSignUpPageIOS signInSignUpPageIOS;
     SignUpPageIOS signUpPageIOS;
     HomePageIOS homePageIOS;
+    LoginPageIOS loginPageIOS;
+    PaymentInfo paymentInfo;
+    FacebookLoginIOS facebookLoginIOS;
 
     /**
      * Intialization of class variable with driver
@@ -150,5 +156,27 @@ public class CustomerBaseTestCucumber {
     public HomePageIOS getHomePageIOS() {
         homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
         return homePageIOS;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public LoginPageIOS getLoginPageIOS(){
+        loginPageIOS = new LoginPageIOS((AppiumDriver) DriverFactory.getDriver());
+        return loginPageIOS;
+    }
+
+    /**
+     * Intialization of class variable with driver
+     * @return
+     */
+    public PaymentInfo getPaymentInfo(){
+        paymentInfo = new PaymentInfo((AppiumDriver) DriverFactory.getDriver());
+        return paymentInfo;
+    }
+    public FacebookLoginIOS getFacebookLoginIOS(){
+        facebookLoginIOS = new FacebookLoginIOS((AppiumDriver) DriverFactory.getDriver());
+        return facebookLoginIOS;
     }
    }
