@@ -17,24 +17,27 @@ public class SignupSteps {
 
   String randomEmail = customerBaseTestCucumber.getSignUpPageIOS().getEmail();
 
+  public SignupSteps() throws Exception {
+  }
+
   @And("^I tap on create one now$")
-  public void iTapOnCreateOneNow() {
+  public void iTapOnCreateOneNow() throws Exception {
     System.out.println(DriverFactory.getDriver().getPageSource());
     customerBaseTestCucumber.getAccountInfoIOS().createOneNow.click();
   }
 
   @And("^I tap on 'Create an Account'$")
-  public void iTapOnCreateAnAccount() {
+  public void iTapOnCreateAnAccount() throws Exception {
     customerBaseTestCucumber.getSignInSignUpPageIOS().createAnAccount.click();
   }
 
   @And("^I enter 'email' in first box$")
-  public void iEnterEmailInFirstBox() {
+  public void iEnterEmailInFirstBox() throws Exception {
     customerBaseTestCucumber.getSignUpPageIOS().email.sendKeys(randomEmail);
   }
 
   @And("^I enter 'password' in second box$")
-  public void iEnterPasswordInSecondBox() {
+  public void iEnterPasswordInSecondBox() throws Exception {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -44,7 +47,7 @@ public class SignupSteps {
   }
 
   @And("^I enter 'Phone Number' in third box$")
-  public void iEnterPhoneNumberInThirdBox() {
+  public void iEnterPhoneNumberInThirdBox() throws Exception {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -54,7 +57,7 @@ public class SignupSteps {
   }
 
   @When("^I tap on 'Create Account' button$")
-  public void iTapOnCreateAccountButton() {
+  public void iTapOnCreateAccountButton() throws Exception {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -64,7 +67,7 @@ public class SignupSteps {
   }
 
   @Then("^I should see email in my account screen$")
-  public void iShouldSeeEmailInMyAccountScreen() {
+  public void iShouldSeeEmailInMyAccountScreen() throws Exception {
     customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
     Assert.assertEquals(customerBaseTestCucumber.getAccountInfoIOS().email.getText(), randomEmail,
             "Entered email is not matched with Account Page");

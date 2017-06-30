@@ -9,12 +9,10 @@ import org.json.JSONObject;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.devicefactory.IOSApps;
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.openqa.selenium.Dimension;
+import io.appium.java_client.AppiumDriver;
 
 public class MobileDevice {
 
-    private static Dimension size;
 	public MobileDevice() {
     }
 	
@@ -37,14 +35,30 @@ public class MobileDevice {
 			throw new NotImplementedException("Not yet implemented");
 		}
 	}
-
+	
+	public static String getDeviceId() throws Exception
+	{
+		return ((AppiumDriver)DriverFactory.getDriver())
+				.getCapabilities().asMap().get("deviceUDID").toString();
+	}
+	
+	public static String getPlatformVersion() throws Exception
+	{
+		return ((AppiumDriver)DriverFactory.getDriver())
+				.getCapabilities().asMap().get("platformVersion").toString();
+	}
+	
+	public static String getDeviceModel() throws Exception
+	{
+		return ((AppiumDriver)DriverFactory.getDriver())
+				.getCapabilities().asMap().get("deviceModel").toString();
+	}
+	
 	public static int getHeight() throws Exception {
-        size = DriverFactory.getDriver().manage().window().getSize();
-	    return size.getHeight();
+	    return DriverFactory.getDriver().manage().window().getSize().getHeight();
     }
 
     public static int getWidth() throws Exception {
-        size = DriverFactory.getDriver().manage().window().getSize();
-        return size.getWidth();
+        return DriverFactory.getDriver().manage().window().getSize().getWidth();
     }
-}
+ }

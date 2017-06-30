@@ -27,7 +27,7 @@ public class AppLaunchSteps  {
 
 
     @Given("^I launch the iOS Curbside App$")
-    public void iLaunchTheIOSCurbsideApp() throws MalformedURLException {
+    public void iLaunchTheIOSCurbsideApp() throws Exception {
         DriverFactory.releaseDriver();
         DriverFactory.getDriver();
     }
@@ -225,4 +225,7 @@ public class AppLaunchSteps  {
     public void iCloseTheWebDriverSessionTt() throws Throwable {
         DriverFactory.releaseDriver();
     }
+
+
+
 }

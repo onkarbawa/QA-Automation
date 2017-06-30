@@ -18,10 +18,6 @@ public class HomePageIOS extends Page {
     @FindBy(xpath = "//XCUIElementTypeStaticText[@label='Payment Info']")
     public WebElement paymentInfo;
 
-    static final String SHOP = "//XCUIElementTypeButton[@name='Shop']";
-    static final String MAP = "//XCUIElementTypeButton[@name='Map']";
-    static final String CART = "//XCUIElementTypeButton[@name='Cart']";
-
     /**
      * Gets a AppiumDriver to initialize
      * @param driver

@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.TestRunner;
+import org.testng.log4testng.Logger;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 
@@ -45,13 +46,8 @@ public class DriverFactory {
         return webDriver.get();
     }
 	
-	public static WebDriver getDriver()  {
-        try{
-        	return getDriver(null);
-		}catch (Exception ex) {
-        	ex.printStackTrace();
-        	return null;
-		}
+	public static WebDriver getDriver() throws Exception {
+        return getDriver(null);
     }
 	
 	/**
@@ -103,5 +99,8 @@ public class DriverFactory {
 		default:
 			throw new Exception("Unknown platform: " + platform);
 		}
+		
+		System.out.println("Actual device capabilities: " +
+						((AppiumDriver)getDriver()).getCapabilities().asMap());
 	}
 }

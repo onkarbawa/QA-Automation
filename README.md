@@ -35,6 +35,10 @@ $ sudo authorize-ios
 [Android SDK](https://developer.android.com/studio/index.html
 [Android Studio](https://developer.android.com/studio/index.html)
 
+```sh
+$ brew cask install android-platform-tools
+```
+
 ##### Open SDK manager and install API levels required
 ##### Set the Environment path :
 ```sh

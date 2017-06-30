@@ -42,6 +42,7 @@ public class CustomerBaseTestCucumber {
     PaymentInfo paymentInfo;
     FacebookLoginIOS facebookLoginIOS;
 
+
     /**
      * Intialization of class variable with driver
      *
@@ -58,7 +59,7 @@ public class CustomerBaseTestCucumber {
      *
      * @return
      */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch() {
+    public ApplicationLaunchPageIOS getiOSApplicationLaunch() throws Exception {
         iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
         return iOSApplicationLaunchPageIOS;
     }
@@ -117,65 +118,41 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public AccountInfoIOS getAccountInfoIOS()  {
-        accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
-        return accountInfoIOS;
-    }
-
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
     public DebugPage getDebugPagePage() throws Exception {
         debugPage = new DebugPage((AppiumDriver) DriverFactory.getDriver());
         return debugPage;
     }
-
     /**
      * Intialization of class variable with driver
      * @return
      */
-    public SignInSignUpPageIOS getSignInSignUpPageIOS()  {
+    public AccountInfoIOS getAccountInfoIOS() throws Exception {
+        accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
+        return accountInfoIOS;
+    }
+
+    public SignInSignUpPageIOS getSignInSignUpPageIOS() throws Exception {
         signInSignUpPageIOS = new SignInSignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
         return signInSignUpPageIOS;
     }
 
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
-    public SignUpPageIOS getSignUpPageIOS() {
+    public SignUpPageIOS getSignUpPageIOS() throws Exception {
         signUpPageIOS = new SignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
         return signUpPageIOS;
     }
-
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
-    public HomePageIOS getHomePageIOS() {
+    public HomePageIOS getHomePageIOS() throws Exception {
         homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
         return homePageIOS;
     }
-
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
-    public LoginPageIOS getLoginPageIOS(){
+    public LoginPageIOS getLoginPageIOS() throws Exception {
         loginPageIOS = new LoginPageIOS((AppiumDriver) DriverFactory.getDriver());
         return loginPageIOS;
     }
-
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
-    public PaymentInfo getPaymentInfo(){
+    public PaymentInfo getPaymentInfo() throws Exception {
         paymentInfo = new PaymentInfo((AppiumDriver) DriverFactory.getDriver());
         return paymentInfo;
     }
-    public FacebookLoginIOS getFacebookLoginIOS(){
+    public FacebookLoginIOS getFacebookLoginIOS() throws Exception {
         facebookLoginIOS = new FacebookLoginIOS((AppiumDriver) DriverFactory.getDriver());
         return facebookLoginIOS;
     }

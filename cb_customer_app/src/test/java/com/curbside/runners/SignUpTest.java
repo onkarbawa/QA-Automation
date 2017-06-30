@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/com.curbside.automation.customerApp/ios/SignUp.feature",
+        features = "src/test/resources/com.curbside.automation.customerApp/SignUp.feature",
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },

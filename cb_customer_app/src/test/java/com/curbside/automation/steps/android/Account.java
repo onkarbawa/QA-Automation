@@ -12,7 +12,7 @@ public class Account {
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @And("^I tap on 'Sign up' button on Account page$")
+    @And("^I click on 'Sign up' button on Account page$")
     public void iClickOnAccountPageSignUpButton() throws Exception {
         Thread.sleep(1000);
         customerBaseTestCucumber.getAccountPageAndroid().getSignUpButton().click();
