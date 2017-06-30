@@ -9,9 +9,6 @@ import org.json.JSONObject;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.devicefactory.IOSApps;
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.openqa.selenium.Dimension;
-
 import io.appium.java_client.AppiumDriver;
 
 public class MobileDevice {
