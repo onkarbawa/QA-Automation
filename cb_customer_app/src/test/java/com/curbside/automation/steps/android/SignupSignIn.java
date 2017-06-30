@@ -14,7 +14,7 @@ public class SignupSignIn {
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @And("^I click on 'Sign up with email' button$")
+    @And("^I tap on 'Sign up with email' button$")
     public void iClickOnSignupWithEmailButton() throws Exception {
         customerBaseTestCucumber.getSignInSignUpPage().getSignUpWithEmailButton().click();
     }
@@ -36,7 +36,7 @@ public class SignupSignIn {
         customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
-    @When("^I click on 'Create Account' button on the page$")
+    @When("^I tap on 'Create Account' button on the screen$")
     public void iClickOnCreateAccountButtonOnThePage() throws Exception {
         customerBaseTestCucumber.getSignInSignUpPage().getCreateAccountButton().click();
     }

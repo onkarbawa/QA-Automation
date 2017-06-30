@@ -14,9 +14,9 @@ public class AndroidDevice extends MobileDevice {
 	public AndroidDevice() {
 	}
 	
-	public static void launchSettings() throws Exception {
+	public static void launchActivity() throws Exception {
 		
 		// Get current device
-		((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("", ""));
+		((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity"));
 	}
 }
