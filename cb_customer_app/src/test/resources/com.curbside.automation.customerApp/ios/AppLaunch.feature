@@ -25,33 +25,7 @@ Feature: Check information's and functionality's on Applaunch in Curbside app
     And I tap on 'Settings' application
     And Scroll to Curbside App
     When I tap on 'Location'
-  Scenario: Verify application is able to launch and checkmark is set to 'Always'
-    Given I launch the Customer App
-    And I clicked on Allow to send notifications
-    And I click "2" times for Scroll left
-    And I click on 'Get Started' button
-    And I click on 'Ok with me' button on access landing page
-    When I click on 'Allow Access Location' button
-    Then I should see the 'Store Selection Page'
-    And I click on Home button
-    And I click on 'Settings' application
-    And I scroll down and click on Curbside App
-    When I click on 'Location'
     Then I saw checkmark is set 'Always'
-    And I close the web driver session for ios
-
-  @C114936
-  Scenario: Verify click on 'Skip Intro' or 'Get Started' button should take you back to the Store Selection page
-    Given I launch the Customer App
-    And I clicked on Allow to send notifications
-    And I click on 'Skip Intro' button
-    And I click on 'Ok with me' button on access landing page
-    And I click on 'Allow Access Location' button
-    And I click on question mark icon in the top left corner
-    And I click "2" times for Scroll left
-    When I click on 'Get Started' button
-    Then I should see the 'Store Selection Page'
-    And I close the web driver session for ios
 
   @C114996
   Scenario: Verify user should able to use the Curbside App again after turn on Location
@@ -61,14 +35,6 @@ Feature: Check information's and functionality's on Applaunch in Curbside app
     And I tap on "Never"
     And I launch the iOS Curbside App
     And I accept Allow to send notifications
-  Scenario: Verify user should able to use the Customer App again after turn on Location Services
-    Given I click on Home button
-    And I click on 'Settings' application
-    And I scroll down and click on Curbside App
-    And I click on 'Location'
-    And I click on "Never"
-    And I launch the Customer App
-    And I clicked on Allow to send notifications
     Then I should see 'Curbside Settings Page'
     And I click on 'Settings' on curbside page
     And I tap on 'Location'
