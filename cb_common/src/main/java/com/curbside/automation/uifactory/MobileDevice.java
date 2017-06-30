@@ -9,11 +9,13 @@ import org.json.JSONObject;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.devicefactory.IOSApps;
+import org.omg.CORBA.PUBLIC_MEMBER;
+import org.openqa.selenium.Dimension;
 
 import io.appium.java_client.AppiumDriver;
 
 public class MobileDevice {
-	
+
 	public MobileDevice() {
     }
 	
@@ -54,4 +56,12 @@ public class MobileDevice {
 		return ((AppiumDriver)DriverFactory.getDriver())
 				.getCapabilities().asMap().get("deviceModel").toString();
 	}
-}
+	
+	public static int getHeight() throws Exception {
+	    return DriverFactory.getDriver().manage().window().getSize().getHeight();
+    }
+
+    public static int getWidth() throws Exception {
+        return DriverFactory.getDriver().manage().window().getSize().getWidth();
+    }
+ }
