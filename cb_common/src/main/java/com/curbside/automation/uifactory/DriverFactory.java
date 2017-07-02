@@ -12,42 +12,43 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Reporter;
-import org.testng.TestRunner;
-import org.testng.log4testng.Logger;
-
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 
+@SuppressWarnings("rawtypes")
 public class DriverFactory {
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	
 	/**
 	 * This method must be called when creating a new driver instance
 	 * @param platform parameter should have been defined in TestNG suite file
+	 * @param additionalCaps Name Value pairs of additional capabilities that overwrites device info
 	 * @return @WebDriver
 	 * @throws Exception
 	 */
-	public static WebDriver getDriver(JSONObject deviceInfo) throws Exception {
+	public static WebDriver getDriver(JSONObject deviceInfo, Object[] additionalCaps) throws Exception {
 		if(deviceInfo != null)
 			System.out.println(deviceInfo.toString());
         
 		if (webDriver.get() == null) {
-            DriverFactory.createInstance(
-            		Reporter.getCurrentTestResult().getTestContext().getAttribute("platform").toString(), deviceInfo);
+			
+			DriverFactory.createInstance(
+            		DeviceStore.getPlatform(), deviceInfo, additionalCaps);
         }
         return webDriver.get();
     }
 	
+	public static WebDriver getDriver(Object... additionalCaps) throws Exception {
+        return getDriver(null, additionalCaps);
+    }
+	
 	public static WebDriver getDriver() throws Exception {
-        return getDriver(null);
+        return getDriver(null, new String[]{});
     }
 	
 	/**
@@ -67,7 +68,7 @@ public class DriverFactory {
         DriverFactory.webDriver.set(driver);
     }
 	
-	private static void createInstance(String platform, JSONObject deviceInfo) throws Exception
+	private static void createInstance(String platform, JSONObject deviceInfo, Object[] additionalCaps) throws Exception
 	{
 		if (deviceInfo == null)
 		{
@@ -76,17 +77,23 @@ public class DriverFactory {
 		}
 		
 		URL url= new URL(deviceInfo.get("url").toString());
-		deviceInfo.remove("url");
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
 		Iterator<?> keys = deviceInfo.keySet().iterator();
 		while( keys.hasNext() ) {
 		    String key = (String)keys.next();
 		    
+		    if(key.equalsIgnoreCase("url"))
+		    	continue;
+		    
 		    if(key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa") )
 		    	caps.setCapability(key, new File(deviceInfo.get(key).toString()).getAbsolutePath());
 		    else
 		    	caps.setCapability(key, deviceInfo.get(key));
+		}
+		
+		for (int i = 0; i < additionalCaps.length; i=i+2) {
+			caps.setCapability(additionalCaps[i].toString(), additionalCaps[i+1]);
 		}
 		
 		switch (platform.toLowerCase()) {

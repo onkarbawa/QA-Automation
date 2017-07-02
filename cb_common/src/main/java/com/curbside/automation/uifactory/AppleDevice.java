@@ -2,6 +2,8 @@ package com.curbside.automation.uifactory;
 
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
+
+import org.apache.xpath.operations.String;
 import org.json.JSONObject;
 
 /**
@@ -18,15 +20,18 @@ public class AppleDevice extends MobileDevice {
 	}
 
 	public static void launchSettings() throws Exception {
+
 		// Get current device
-		JSONObject device = DeviceStore.getDevice();
+		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
+		
 		device.remove("app");
 		device.remove("bundleId");
 		device.remove("ipa");
 
 		device.put("bundleId", IOSApps.Settings);
+		
 		DriverFactory.releaseDriver();
-		DriverFactory.getDriver(device);
+		DriverFactory.getDriver(device, new String[]{});
 	}
 
 	public static void swipeLeft() throws Exception {

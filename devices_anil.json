@@ -11,7 +11,7 @@
   ],
   "iOS" : [
     {
-      "url" : "http://127.0.0.1:4724/wd/hub",
+      "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
       "platformVersion" : "10.3.2",
       "deviceName" : "Neetu's iPhone",
@@ -19,7 +19,7 @@
       "udid" : "058898bd4d64df6c62f9f322c378db80c1d382c7"
     },
     {
-      "url" : "http://127.0.0.1:4724/wd/hub",
+      "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
       "platformVersion" : "10.3.3",
       "deviceName" : "Anil Kumar’s iPhone",
