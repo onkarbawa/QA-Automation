@@ -4,13 +4,8 @@ import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.DriverFactory;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import io.appium.java_client.android.AndroidDriver;
-
-import java.net.MalformedURLException;
 
 /**
  * Created by hitesh.grover on 27/06/17.
@@ -41,7 +36,7 @@ public class Common {
         customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
         AndroidDevice.hitEnter();
         Thread.sleep(2000);
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         Thread.sleep(1000);
         customerBaseTestCucumber.getDebugPagePage().getApiHostButton().click();
         Thread.sleep(1000);
@@ -49,7 +44,7 @@ public class Common {
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogTextField().sendKeys("https://api-s.shopcurbside.com");
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogOkButton().click();
         Thread.sleep(1000);
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
         AndroidDevice.launchCurbsideActivity();
     }
@@ -58,7 +53,7 @@ public class Common {
     public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
         customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
         customerBaseTestCucumber.getSettingsAndroid().getSearchTextField().sendKeys("App Permissions");
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();

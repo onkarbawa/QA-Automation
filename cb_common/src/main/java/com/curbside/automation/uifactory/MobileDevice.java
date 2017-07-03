@@ -84,7 +84,9 @@ public class MobileDevice {
 			} catch (Exception e) {
 			}
 
-		} else
+		} else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+		{}
+		else
 			throw new NotImplementedException("");
 
 	}

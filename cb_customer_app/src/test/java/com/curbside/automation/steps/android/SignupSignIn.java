@@ -14,7 +14,7 @@ public class SignupSignIn {
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @And("^I tap on 'Sign up with email' button$")
+    @And("^I tap on Sign up with email button$")
     public void iClickOnSignupWithEmailButton() throws Exception {
         customerBaseTestCucumber.getSignInSignUpPage().getSignUpWithEmailButton().click();
     }

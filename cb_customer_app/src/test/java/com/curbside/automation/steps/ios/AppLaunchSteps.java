@@ -42,7 +42,7 @@ public class AppLaunchSteps  {
     }
 
 
-    @And("^I tap on 'Get Started' button$")
+    @And("^I tap on Get Started button$")
     public void iTapOnGetStartedButton () throws Exception {
         customerBaseTestCucumber.getiOSApplicationLaunch().getStartedButton.click();
     }

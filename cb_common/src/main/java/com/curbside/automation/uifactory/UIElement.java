@@ -46,4 +46,8 @@ public class UIElement {
 		
 		return this;
 	}
+
+	public void sendKeys(String text) throws Throwable {
+		getElement().sendKeys(text);
+	}
 }

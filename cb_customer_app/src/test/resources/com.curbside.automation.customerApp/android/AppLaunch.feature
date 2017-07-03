@@ -3,9 +3,9 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
 
   @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
-    Given I launch the Curbside App
+    Given I launch Curbside application
     And I scroll left 3 times
-    And I tap on 'Get Started' button on the Intro screen
+    And I tap on Get Started button
     And I tap on 'Ok with me' button on Location access screen
     When I tap on 'Allow Access Location' pop up
     Then I should see the Nearby Stores screen

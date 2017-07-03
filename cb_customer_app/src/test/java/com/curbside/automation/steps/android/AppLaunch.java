@@ -20,10 +20,6 @@ import org.testng.Assert;
 public class AppLaunch {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @Given("^I launch the Curbside App$")
-    public void iLaunchTheAndroidCustomerApp() throws Exception {
-        DriverFactory.getDriver();
-    }
 
     @And("^I scroll left 3 times$")
     public void iClickThreeTimesForScrollToLeft() throws Exception {

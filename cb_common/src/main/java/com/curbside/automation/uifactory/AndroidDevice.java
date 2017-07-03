@@ -43,7 +43,7 @@ public class AndroidDevice extends MobileDevice {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(66);
     }
 
-    public static void goBackAndroid() throws Exception {
+    public static void goBack() throws Exception {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.BACK);
     }
 }
