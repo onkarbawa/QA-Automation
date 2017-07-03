@@ -1,4 +1,4 @@
-package com.curbside.runners.android;
+package com.curbside.android.runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
@@ -13,8 +13,8 @@ import org.testng.annotations.Test;
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
-        dryRun = false,
-        glue = {"com.curbside.automation.steps", "com.curbside.automation.uifactory"})
+        dryRun = false,strict= true,
+        glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.curbside.automation.steps"})
 
 @Test
 public class SignUp extends AbstractTestNGCucumberTests {

@@ -22,7 +22,7 @@ public class PaymentInfo {
 
     @Then("^I should see the card added to Payment info$")
     public void iShouldSeeTheCardAddedToPaymentInfo() throws Throwable {
-        Thread.sleep(10000);
+        Thread.sleep(15000);
 
     }
 }
