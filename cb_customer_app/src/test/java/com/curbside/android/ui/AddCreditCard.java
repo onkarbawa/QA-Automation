@@ -10,18 +10,18 @@ import org.openqa.selenium.By;
  */
 public class AddCreditCard {
 
-    static UIElement cardNumberTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_card_number"));
-    static UIElement expMonthTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_expiration"));
-    static UIElement ccvTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_ccv"));
-    static UIElement firstNameTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_first_name"));
-    static UIElement lastNameTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_last_name"));
-    static UIElement streetAddTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_street"));
-    static UIElement aptTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_apt"));
-    static UIElement cityTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_city"));
-    static UIElement state = new UIElement(By.id("com.curbside.nCurbside:id/edit_state"));
-    static UIElement stateListSelect =new UIElement(By.xpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[@index='5']"));
-    static UIElement zipTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_zip"));
-    static UIElement saveButton = new UIElement(By.id("com.curbside.nCurbside:id/action_save"));
+    UIElement cardNumberTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_card_number"));
+    UIElement expMonthTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_expiration"));
+    UIElement ccvTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_ccv"));
+    UIElement firstNameTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_first_name"));
+    UIElement lastNameTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_last_name"));
+    UIElement streetAddTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_street"));
+    UIElement aptTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_apt"));
+    UIElement cityTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_city"));
+    UIElement state = new UIElement(By.id("com.curbside.nCurbside:id/edit_state"));
+    UIElement stateListSelect =new UIElement(By.xpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[@index='5']"));
+    UIElement zipTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_zip"));
+    UIElement saveButton = new UIElement(By.id("com.curbside.nCurbside:id/action_save"));
 
     @And("^I send '(.*)' in 'card number'$")
     public void iSendInCardNumber(String cardNumber) throws Throwable {

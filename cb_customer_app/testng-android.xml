@@ -4,9 +4,19 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="Test">
+    <test name="App Launch">
         <classes>
-            <class name="com.curbside.android.runners.CreditCard"/>
+            <class name="com.curbside.android.runners.AppLaunchTest"/>
+        </classes>
+    </test>
+    <test name="Sign up">
+        <classes>
+            <class name="com.curbside.android.runners.SignUpTests"/>
+        </classes>
+    </test>
+    <test name="Credit Card">
+        <classes>
+            <class name="com.curbside.android.runners.CreditCardTests"/>
         </classes>
     </test>
 </suite>

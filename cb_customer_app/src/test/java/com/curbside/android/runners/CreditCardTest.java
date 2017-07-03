@@ -5,11 +5,11 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
- * Created by hitesh.grover on 28/06/17.
+ * Created by hitesh.grover on 03/07/17.
  */
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/com.curbside.automation.customerApp/android/SignUp.feature",
+        features = "src/test/resources/android/features/CreditCard.feature",
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -17,5 +17,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.curbside.automation.steps"})
 
 @Test
-public class SignUp extends AbstractTestNGCucumberTests {
+public class CreditCardTest extends AbstractTestNGCucumberTests {
 }
