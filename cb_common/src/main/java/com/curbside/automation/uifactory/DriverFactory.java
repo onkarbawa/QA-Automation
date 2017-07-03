@@ -110,7 +110,7 @@ public class DriverFactory {
 		System.out.println("Actual device capabilities: " +
 						((AppiumDriver)getDriver()).getCapabilities().asMap());
 		
-		System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
-		new ImageElement(new File("cb_customer_app/src/test/resources/ios/elements/DontAllow.png")).tap();
+		//System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
+		//new ImageElement(new File("../cb_customer_app/src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
 }
