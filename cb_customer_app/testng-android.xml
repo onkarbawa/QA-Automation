@@ -11,12 +11,12 @@
     </test>
     <test name="Sign up">
         <classes>
-            <class name="com.curbside.android.runners.SignUpTests"/>
+            <class name="com.curbside.android.runners.SignUpTest"/>
         </classes>
     </test>
     <test name="Credit Card">
         <classes>
-            <class name="com.curbside.android.runners.CreditCardTests"/>
+            <class name="com.curbside.android.runners.CreditCardTest"/>
         </classes>
     </test>
 </suite>
