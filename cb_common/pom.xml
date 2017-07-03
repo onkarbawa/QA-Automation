@@ -37,7 +37,7 @@
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cukes.version}</version>
-            <scope>test</scope>
+
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>

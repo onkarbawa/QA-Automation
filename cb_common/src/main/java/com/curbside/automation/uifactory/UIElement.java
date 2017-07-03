@@ -8,6 +8,8 @@ package com.curbside.automation.uifactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIElement {
 
@@ -45,5 +47,22 @@ public class UIElement {
 		}
 		
 		return this;
+	}
+
+	public void enterText(String value) throws Throwable {
+		getElement().sendKeys(value);
+	}
+
+	/**
+	 * Wait for element to load
+	 * @param timeout
+	 */
+	public void waitForElement(int timeout) throws Throwable {
+		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(),timeout);
+		try {
+			waitObj.until(ExpectedConditions.visibilityOf(getElement()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

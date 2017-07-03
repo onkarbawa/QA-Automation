@@ -38,7 +38,7 @@
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
       "platformVersion" : "10.3.2",
-      "deviceName" : "Hitesh",
+      "deviceName" : "TFT",
       "app" : "../Curbside.ipa",
       "udid" : "0ddb226173711460741617d2d10e0dcd734755d9",
       "showXcodeLog" : "true"
