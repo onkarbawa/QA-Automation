@@ -15,31 +15,31 @@ public class SignupSignIn {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I tap on Sign up with email button$")
-    public void iClickOnSignupWithEmailButton() throws Exception {
+    public void iClickOnSignupWithEmailButton() throws Throwable {
         customerBaseTestCucumber.getSignInSignUpPage().getSignUpWithEmailButton().click();
     }
 
     @And("^I enter 'email' in first text box$")
-    public void iEnterEmailInFirstTextBox() throws Exception {
+    public void iEnterEmailInFirstTextBox() throws Throwable {
         customerBaseTestCucumber.getSignInSignUpPage().getEmailTextField()
                 .sendKeys(customerBaseTestCucumber.getUtilities().getRandomEmail());
     }
 
     @And("^I enter 'password' in second text box$")
-    public void iEnterPasswordInSecondTextBox() throws Exception {
+    public void iEnterPasswordInSecondTextBox() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getPasswordTextField().sendKeys("1234hdso6");
     }
 
     @And("^I enter 'Phone Number' in third text box$")
-    public void iEnterPhoneNumberInThirdTextBox() throws Exception {
+    public void iEnterPhoneNumberInThirdTextBox() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getPhoneNumberTextField().sendKeys("95829096234");
         customerBaseTestCucumber.getUtilities().hitEnterAndroid();
     }
 
     @When("^I tap on 'Create Account' button on the page$")
-    public void iClickOnCreateAccountButtonOnThePage() throws Exception {
+    public void iClickOnCreateAccountButtonOnThePage() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getSignInSignUpPage().getCreateAccountButton().click();
     }

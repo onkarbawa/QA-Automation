@@ -1,8 +1,13 @@
 package com.curbside.automation.uifactory;
+import java.io.File;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
 
 /**
  * @author kumar.anil
@@ -20,7 +25,7 @@ public class MobileDevice {
 	public MobileDevice() {
     }
 	
-	public static void launchSettings() throws Exception
+	public static void launchSettings() throws Throwable
 	{
 		//Get current device
 		JSONObject device= DeviceStore.getDevice();
@@ -40,29 +45,29 @@ public class MobileDevice {
 		}
 	}
 	
-	public static String getDeviceId() throws Exception
+	public static String getDeviceId() throws Throwable
 	{
 		return ((AppiumDriver)DriverFactory.getDriver())
 				.getCapabilities().asMap().get("deviceUDID").toString();
 	}
 	
-	public static String getPlatformVersion() throws Exception
+	public static String getPlatformVersion() throws Throwable
 	{
 		return ((AppiumDriver)DriverFactory.getDriver())
 				.getCapabilities().asMap().get("platformVersion").toString();
 	}
 	
-	public static String getDeviceModel() throws Exception
+	public static String getDeviceModel() throws Throwable
 	{
 		return ((AppiumDriver)DriverFactory.getDriver())
 				.getCapabilities().asMap().get("deviceModel").toString();
 	}
 	
-	public static int getHeight() throws Exception {
+	public static int getHeight() throws Throwable {
 	    return DriverFactory.getDriver().manage().window().getSize().getHeight();
     }
 
-    public static int getWidth() throws Exception {
+    public static int getWidth() throws Throwable {
         return DriverFactory.getDriver().manage().window().getSize().getWidth();
     }
     
@@ -129,5 +134,14 @@ public class MobileDevice {
         int yOffset = endy - starty;
         
         new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset).release().perform();	
+	}
+	
+	public static File takeScreenshot() throws Throwable
+	{
+		return ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+	}
+
+	public static void tap(int x, int y) throws Throwable {
+		new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(x, y).release().perform();
 	}
  }

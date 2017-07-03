@@ -56,7 +56,7 @@ public class ApplicationLaunchPageIOS extends Page {
      * @param direction
      * @param noOfTimes
      */
-    public void doSwipe(int noOfTimes) throws Exception {
+    public void doSwipe(int noOfTimes) throws Throwable {
         for(int i = 0;i <= noOfTimes;i++) {
             AppleDevice.swipeLeft();
         }

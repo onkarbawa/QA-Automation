@@ -16,7 +16,7 @@ public class Common {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I tap on 'Account' icon$")
-    public void iClickOnAccountButton() throws Exception {
+    public void iClickOnAccountButton() throws Throwable {
         Thread.sleep(2500);
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
@@ -24,13 +24,13 @@ public class Common {
     }
 
     @And("^I go to next text field$")
-    public void iGoToNextTextField() throws Exception {
+    public void iGoToNextTextField() throws Throwable {
         Thread.sleep(1000);
         AndroidDevice.hitEnter();
     }
 
     @And("^I set the staging environment$")
-    public void iSetTheStagingEnvironment() throws Exception {
+    public void iSetTheStagingEnvironment() throws Throwable {
         customerBaseTestCucumber.getHomePageAndroid().getSearchButton().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
@@ -50,7 +50,7 @@ public class Common {
     }
 
     @And("^I search and tap on'App permissions' on the screen$")
-    public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
+    public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Throwable {
         customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
         customerBaseTestCucumber.getSettingsAndroid().getSearchTextField().sendKeys("App Permissions");
         AndroidDevice.goBack();
@@ -62,7 +62,7 @@ public class Common {
     }
 
     @Given("^I reinstall the Curbside App$")
-    public void iReinstallTheCurbsideApp() throws Exception {
+    public void iReinstallTheCurbsideApp() throws Throwable {
         DriverFactory.releaseDriver();
         DriverFactory.getDriver();
     }

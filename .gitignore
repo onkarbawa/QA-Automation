@@ -12,5 +12,4 @@ target/
 **/cucumber-html-reports/
 **/logs/log.out
 cb_common/bin/
-cb_customer_app/ cucumber-html-reports/cucumber.json
-cb_customer_app/ cucumber-html-reports/report.js
+cb_customer_app/ cucumber-html-reports/

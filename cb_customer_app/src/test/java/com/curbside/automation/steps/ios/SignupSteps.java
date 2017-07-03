@@ -17,27 +17,27 @@ public class SignupSteps {
 
   String randomEmail = customerBaseTestCucumber.getSignUpPageIOS().getEmail();
 
-  public SignupSteps() throws Exception {
+  public SignupSteps() throws Throwable {
   }
 
   @And("^I tap on create one now$")
-  public void iTapOnCreateOneNow() throws Exception {
+  public void iTapOnCreateOneNow() throws Throwable {
     System.out.println(DriverFactory.getDriver().getPageSource());
     customerBaseTestCucumber.getAccountInfoIOS().createOneNow.click();
   }
 
   @And("^I tap on 'Create an Account'$")
-  public void iTapOnCreateAnAccount() throws Exception {
+  public void iTapOnCreateAnAccount() throws Throwable {
     customerBaseTestCucumber.getSignInSignUpPageIOS().createAnAccount.click();
   }
 
   @And("^I enter 'email' in first box$")
-  public void iEnterEmailInFirstBox() throws Exception {
+  public void iEnterEmailInFirstBox() throws Throwable {
     customerBaseTestCucumber.getSignUpPageIOS().email.sendKeys(randomEmail);
   }
 
   @And("^I enter 'password' in second box$")
-  public void iEnterPasswordInSecondBox() throws Exception {
+  public void iEnterPasswordInSecondBox() throws Throwable {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -47,7 +47,7 @@ public class SignupSteps {
   }
 
   @And("^I enter 'Phone Number' in third box$")
-  public void iEnterPhoneNumberInThirdBox() throws Exception {
+  public void iEnterPhoneNumberInThirdBox() throws Throwable {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -57,7 +57,7 @@ public class SignupSteps {
   }
 
   @When("^I tap on 'Create Account' button$")
-  public void iTapOnCreateAccountButton() throws Exception {
+  public void iTapOnCreateAccountButton() throws Throwable {
     try {
       Thread.sleep(2000);
     } catch (InterruptedException e) {
@@ -67,7 +67,7 @@ public class SignupSteps {
   }
 
   @Then("^I should see email in my account screen$")
-  public void iShouldSeeEmailInMyAccountScreen() throws Exception {
+  public void iShouldSeeEmailInMyAccountScreen() throws Throwable {
     customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
     Assert.assertEquals(customerBaseTestCucumber.getAccountInfoIOS().email.getText(), randomEmail,
             "Entered email is not matched with Account Page");

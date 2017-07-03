@@ -22,26 +22,26 @@ public class AppLaunch {
 
 
     @And("^I scroll left 3 times$")
-    public void iClickThreeTimesForScrollToLeft() throws Exception {
+    public void iClickThreeTimesForScrollToLeft() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().scrollIntroPage(3);
     }
 
     @And("^I tap on 'Get Started' button on the Intro screen$")
-    public void iClickOnGetStartedButtonOnTheIntroPage() throws Exception {
+    public void iClickOnGetStartedButtonOnTheIntroPage() throws Throwable {
         System.out.print("getstarted step file");
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getStartedButton().click();
     }
 
     @And("^I tap on 'Ok with me' button on Location access screen$")
-    public void iClickOnOkWithMeButtonOnAccessPage() throws Exception {
+    public void iClickOnOkWithMeButtonOnAccessPage() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getLocationOkButton().click();
     }
 
     @When("^I tap on 'Allow Access Location' pop up$")
-    public void iClickOnAllowAccessLocationPopUp() throws Exception {
+    public void iClickOnAllowAccessLocationPopUp() throws Throwable {
         try {
             Thread.sleep(1000);
             customerBaseTestCucumber.getApplicationLaunchPageAndroid().getAllowButton().click();
@@ -51,18 +51,18 @@ public class AppLaunch {
     }
 
     @Then("^I should see the Nearby Stores screen$")
-    public void iShouldSeeTheCurrentLocationButton() throws Exception {
+    public void iShouldSeeTheCurrentLocationButton() throws Throwable {
         Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : Not able to land on Near by Stores screen");
     }
 
     @And("^I tap on 'Skip Intro' button on the screen$")
-    public void iClickOnSkipIntroButtonOnTheScreen() throws Exception {
+    public void iClickOnSkipIntroButtonOnTheScreen() throws Throwable {
         System.out.print("skip intro step file");
         customerBaseTestCucumber.getApplicationLaunchPageAndroid().getSkipIntro().click();
     }
 
     @And("^I land on store selection screen$")
-    public void iLandOnStoreSelectionPage() throws Exception {
+    public void iLandOnStoreSelectionPage() throws Throwable {
         Thread.sleep(1000);
         iClickOnSkipIntroButtonOnTheScreen();
         iClickOnOkWithMeButtonOnAccessPage();

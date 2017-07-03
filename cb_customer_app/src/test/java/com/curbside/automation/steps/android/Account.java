@@ -16,13 +16,13 @@ public class Account {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I tap on 'Sign up' button on Account page$")
-    public void iClickOnAccountPageSignUpButton() throws Exception {
+    public void iClickOnAccountPageSignUpButton() throws Throwable {
         Thread.sleep(1000);
         customerBaseTestCucumber.getAccountPageAndroid().getSignUpButton().click();
     }
 
     @Then("^I should see the Account details with Email id in it$")
-    public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Exception {
+    public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
         Thread.sleep(1000);
         Assert.assertTrue(customerBaseTestCucumber.getAccountPageAndroid().getEmail().isDisplayed(),"Android : User is not able to Sign up");
     }

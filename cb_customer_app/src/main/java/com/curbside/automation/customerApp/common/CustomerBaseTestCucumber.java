@@ -52,7 +52,7 @@ public class CustomerBaseTestCucumber {
      * Gets a Android application initialize
      * @return
      */
-    public ApplicationLaunchPageAndroid getApplicationLaunchPageAndroid() throws Exception {
+    public ApplicationLaunchPageAndroid getApplicationLaunchPageAndroid() throws Throwable {
         applicationLaunchPageAndroid = new ApplicationLaunchPageAndroid((AppiumDriver) DriverFactory.getDriver());
         return applicationLaunchPageAndroid;
     }
@@ -62,12 +62,12 @@ public class CustomerBaseTestCucumber {
      *
      * @return
      */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch() throws Exception {
+    public ApplicationLaunchPageIOS getiOSApplicationLaunch() throws Throwable {
         iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
         return iOSApplicationLaunchPageIOS;
     }
 
-    public Utilities getUtilities() throws Exception {
+    public Utilities getUtilities() throws Throwable {
         utilities = new Utilities((AppiumDriver) DriverFactory.getDriver());
         return utilities;
     }
@@ -76,7 +76,7 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public HomePage getHomePageAndroid() throws Exception {
+    public HomePage getHomePageAndroid() throws Throwable {
         homePageAndroid = new HomePage((AppiumDriver) DriverFactory.getDriver());
         return homePageAndroid;
     }
@@ -85,7 +85,7 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public LocationPage getLocationPageAndroid() throws Exception {
+    public LocationPage getLocationPageAndroid() throws Throwable {
         locationPageAndroid = new LocationPage((AppiumDriver) DriverFactory.getDriver());
         return locationPageAndroid;
     }
@@ -93,8 +93,9 @@ public class CustomerBaseTestCucumber {
     /**
      * Intialization of class variable with driver
      * @return
+     * @throws Throwable 
      */
-    public CommonLocators getCommonLocatorsPageAndroid() throws Exception {
+    public CommonLocators getCommonLocatorsPageAndroid() throws Throwable {
         commonLocators = new CommonLocators((AppiumDriver) DriverFactory.getDriver());
         return commonLocators;
     }
@@ -102,8 +103,9 @@ public class CustomerBaseTestCucumber {
     /**
      * Intialization of class variable with driver
      * @return
+     * @throws Throwable 
      */
-    public Account getAccountPageAndroid() throws Exception {
+    public Account getAccountPageAndroid() throws Throwable {
         account = new Account((AppiumDriver) DriverFactory.getDriver());
         return account;
     }
@@ -112,7 +114,7 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public SignInSignUp getSignInSignUpPage() throws Exception {
+    public SignInSignUp getSignInSignUpPage() throws Throwable {
         signInSignUp = new SignInSignUp((AppiumDriver) DriverFactory.getDriver());
         return signInSignUp;
     }
@@ -121,12 +123,12 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public DebugPage getDebugPagePage() throws Exception {
+    public DebugPage getDebugPagePage() throws Throwable {
         debugPage = new DebugPage((AppiumDriver) DriverFactory.getDriver());
         return debugPage;
     }
 
-    public SettingsAndroid getSettingsAndroid() throws Exception {
+    public SettingsAndroid getSettingsAndroid() throws Throwable {
         settingsAndroid = new SettingsAndroid((AppiumDriver) DriverFactory.getDriver());
         return settingsAndroid;
     }
@@ -134,33 +136,33 @@ public class CustomerBaseTestCucumber {
      * Intialization of class variable with driver
      * @return
      */
-    public AccountInfoIOS getAccountInfoIOS() throws Exception {
+    public AccountInfoIOS getAccountInfoIOS() throws Throwable {
         accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
         return accountInfoIOS;
     }
 
-    public SignInSignUpPageIOS getSignInSignUpPageIOS() throws Exception {
+    public SignInSignUpPageIOS getSignInSignUpPageIOS() throws Throwable {
         signInSignUpPageIOS = new SignInSignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
         return signInSignUpPageIOS;
     }
 
-    public SignUpPageIOS getSignUpPageIOS() throws Exception {
+    public SignUpPageIOS getSignUpPageIOS() throws Throwable {
         signUpPageIOS = new SignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
         return signUpPageIOS;
     }
-    public HomePageIOS getHomePageIOS() throws Exception {
+    public HomePageIOS getHomePageIOS() throws Throwable {
         homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
         return homePageIOS;
     }
-    public LoginPageIOS getLoginPageIOS() throws Exception {
+    public LoginPageIOS getLoginPageIOS() throws Throwable {
         loginPageIOS = new LoginPageIOS((AppiumDriver) DriverFactory.getDriver());
         return loginPageIOS;
     }
-    public PaymentInfo getPaymentInfo() throws Exception {
+    public PaymentInfo getPaymentInfo() throws Throwable {
         paymentInfo = new PaymentInfo((AppiumDriver) DriverFactory.getDriver());
         return paymentInfo;
     }
-    public FacebookLoginIOS getFacebookLoginIOS() throws Exception {
+    public FacebookLoginIOS getFacebookLoginIOS() throws Throwable {
         facebookLoginIOS = new FacebookLoginIOS((AppiumDriver) DriverFactory.getDriver());
         return facebookLoginIOS;
     }

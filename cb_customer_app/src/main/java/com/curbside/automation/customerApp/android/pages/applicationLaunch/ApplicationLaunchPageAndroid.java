@@ -59,8 +59,9 @@ public class ApplicationLaunchPageAndroid extends Page {
     /**
      * Scroll the page to left for n number of times.
      *@param numberOfTimes
+     * @throws Throwable 
      */
-    public void scrollIntroPage(int numberOfTimes) {
+    public void scrollIntroPage(int numberOfTimes) throws Throwable {
 
         for (int i = 0; i <= numberOfTimes; ++i) {
             try {
