@@ -19,7 +19,7 @@ public class AppleDevice extends MobileDevice {
 	public AppleDevice() {
 	}
 
-	public static void launchSettings() throws Exception {
+	public static void launchSettings() throws Throwable {
 
 		// Get current device
 		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
@@ -34,7 +34,7 @@ public class AppleDevice extends MobileDevice {
 		DriverFactory.getDriver(device, new String[]{});
 	}
 
-	public static void swipeLeft() throws Exception {
+	public static void swipeLeft() throws Throwable {
 		TouchAction touchAction = new TouchAction((PerformsTouchActions) DriverFactory.getDriver());
 		int anchor = (int) (MobileDevice.getHeight() * 0.5);
 		int startPoint = (int) (MobileDevice.getWidth() * 0.8);

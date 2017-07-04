@@ -58,8 +58,10 @@ public class Steps {
 	{
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Don’t Allow")).tap();
+		else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+		{}
 		else
-			throw new NotImplementedException(
+		    throw new NotImplementedException(
 					"Method declineNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
 	}
 	

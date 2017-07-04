@@ -4,13 +4,8 @@ import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.DriverFactory;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import io.appium.java_client.android.AndroidDriver;
-
-import java.net.MalformedURLException;
 
 /**
  * Created by hitesh.grover on 27/06/17.
@@ -21,7 +16,7 @@ public class Common {
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
     @And("^I tap on 'Account' icon$")
-    public void iClickOnAccountButton() throws Exception {
+    public void iClickOnAccountButton() throws Throwable {
         Thread.sleep(2500);
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
         customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
@@ -29,19 +24,19 @@ public class Common {
     }
 
     @And("^I go to next text field$")
-    public void iGoToNextTextField() throws Exception {
+    public void iGoToNextTextField() throws Throwable {
         Thread.sleep(1000);
         AndroidDevice.hitEnter();
     }
 
     @And("^I set the staging environment$")
-    public void iSetTheStagingEnvironment() throws Exception {
+    public void iSetTheStagingEnvironment() throws Throwable {
         customerBaseTestCucumber.getHomePageAndroid().getSearchButton().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
         AndroidDevice.hitEnter();
         Thread.sleep(2000);
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         Thread.sleep(1000);
         customerBaseTestCucumber.getDebugPagePage().getApiHostButton().click();
         Thread.sleep(1000);
@@ -49,16 +44,16 @@ public class Common {
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogTextField().sendKeys("https://api-s.shopcurbside.com");
         customerBaseTestCucumber.getDebugPagePage().getApiHostDialogOkButton().click();
         Thread.sleep(1000);
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
         AndroidDevice.launchCurbsideActivity();
     }
 
     @And("^I search and tap on'App permissions' on the screen$")
-    public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Exception {
+    public void iSearchAndTapOnAppPermissionsOnTheScreen() throws Throwable {
         customerBaseTestCucumber.getSettingsAndroid().getSearchButton().click();
         customerBaseTestCucumber.getSettingsAndroid().getSearchTextField().sendKeys("App Permissions");
-        AndroidDevice.goBackAndroid();
+        AndroidDevice.goBack();
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getSettingsAndroid().getAppPermissions().click();
@@ -67,7 +62,7 @@ public class Common {
     }
 
     @Given("^I reinstall the Curbside App$")
-    public void iReinstallTheCurbsideApp() throws Exception {
+    public void iReinstallTheCurbsideApp() throws Throwable {
         DriverFactory.releaseDriver();
         DriverFactory.getDriver();
     }

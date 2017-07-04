@@ -1,6 +1,10 @@
 package com.curbside.automation.common.configuration;
 
 import com.curbside.automation.common.utilities.Helpers;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -9,6 +13,22 @@ import org.apache.log4j.Logger;
 public class Properties {
   final static Logger logger = Logger.getLogger(Properties.class);
   static Configuration configuration = new Configuration();
+  
+  private static ThreadLocal<Map<String,String>> variables = new ThreadLocal<>();
+  
+  static{
+	  variables.set(new HashMap<>());
+  }
+  
+  public static void setVariable(String name, String value)
+  {
+	  variables.get().put(name, value);
+  }
+  
+  public static String getVariable(String name)
+  {
+	  return variables.get().get(name);
+  }
 
   /**
    * Gets the value of platform property

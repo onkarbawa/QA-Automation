@@ -27,7 +27,7 @@ public class AppLaunchSteps  {
 
 
     @Given("^I launch the iOS Curbside App$")
-    public void iLaunchTheIOSCurbsideApp() throws Exception {
+    public void iLaunchTheIOSCurbsideApp() throws Throwable {
         DriverFactory.releaseDriver();
         DriverFactory.getDriver();
     }
@@ -42,19 +42,19 @@ public class AppLaunchSteps  {
     }
 
 
-    @And("^I tap on 'Get Started' button$")
-    public void iTapOnGetStartedButton () throws Exception {
+    @And("^I tap on Get Started button$")
+    public void iTapOnGetStartedButton () throws Throwable {
         customerBaseTestCucumber.getiOSApplicationLaunch().getStartedButton.click();
     }
     @And("^I tap on 'Ok with me' button on access landing screen$")
-    public void iTapOnOkWithMeButtonOnAccessLandingScreen() {
+    public void iTapOnOkWithMeButtonOnAccessLandingScreen() throws Throwable {
         try {
             customerBaseTestCucumber.getiOSApplicationLaunch().okWithMe.click();
         }catch (Exception e){}
     }
 
     @When("^I accept 'Allow Access Location'$")
-    public void iAcceptAllowAccessLocation()  {
+    public void iAcceptAllowAccessLocation() throws Throwable  {
         try {
             customerBaseTestCucumber.getiOSApplicationLaunch().allowToAccessCurrentLocation.click();
         }catch (Exception e){}
@@ -68,7 +68,7 @@ public class AppLaunchSteps  {
 
 
     @And("^I tap on 'Settings' application$")
-    public void iTapOnSettingsApplication () throws Exception {
+    public void iTapOnSettingsApplication () throws Throwable {
         MobileDevice.launchSettings();
        // baseTest.getIOSSettingApp();
       settingsIOS = new SettingsIOS((AppiumDriver) DriverFactory.getDriver());
@@ -110,23 +110,23 @@ public class AppLaunchSteps  {
 
 
     @And("^I click on 'Skip Intro' button$")
-    public void iClickOnSkipIntroButton() throws Exception {
+    public void iClickOnSkipIntroButton() throws Throwable {
         customerBaseTestCucumber.getiOSApplicationLaunch().skipInroButton.click();
     }
 
     @And("^I tap on question mark icon in the top left corner$")
-    public void iTapOnQuestionMarkIconInTheTopLeftCorner() throws Exception {
+    public void iTapOnQuestionMarkIconInTheTopLeftCorner() throws Throwable {
         customerBaseTestCucumber.getiOSApplicationLaunch().tapOnHelpIcon();
     }
 
     @Then("^I should see 'Curbside Settings Page'$")
-    public void iShouldSeeCurbsideSettingsPage() throws Exception {
+    public void iShouldSeeCurbsideSettingsPage() throws Throwable {
         Assert.assertEquals(customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.getText(),
                 "SettingsAndroid", "SettingsAndroid Page is not displayed");
     }
 
     @And("^I click on 'Settings' on curbside page$")
-    public void iClickOnSettingsOnCurbsidePage() throws Exception {
+    public void iClickOnSettingsOnCurbsidePage() throws Throwable {
         customerBaseTestCucumber.getiOSApplicationLaunch().curbsideSettings.click();
     }
 

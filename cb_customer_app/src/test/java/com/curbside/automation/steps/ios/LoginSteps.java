@@ -19,7 +19,7 @@ public class LoginSteps {
     public String password = "fusic@123";
 
     @And("^I tap on 'My Account' icon$")
-    public void iTapOnMyAccountIcon() throws Exception {
+    public void iTapOnMyAccountIcon() throws Throwable {
         customerBaseTestCucumber.getHomePageIOS().myAccount.click();
     }
 
@@ -53,46 +53,46 @@ public class LoginSteps {
     }
 
     @And("^I tap on Sign In button$")
-    public void iTapOnSignInButton() throws Exception {
+    public void iTapOnSignInButton() throws Throwable {
         customerBaseTestCucumber.getAccountInfoIOS().signIn.click();
     }
 
     @And("^I tap on Sign In with e-mail button$")
-    public void iTapOnSignInWithEMailButton() throws Exception {
+    public void iTapOnSignInWithEMailButton() throws Throwable {
         customerBaseTestCucumber.getSignInSignUpPageIOS().signWithMail.click();
     }
 
     @And("^I enter email in first box$")
-    public void iEnterEmailInFirstBox() throws Exception {
+    public void iEnterEmailInFirstBox() throws Throwable {
         customerBaseTestCucumber.getLoginPageIOS().email.sendKeys(email);
     }
 
     @And("^I enter password in second box$")
-    public void iEnterPasswordInSecondBox() throws Exception {
+    public void iEnterPasswordInSecondBox() throws Throwable {
         customerBaseTestCucumber.getLoginPageIOS().password.sendKeys(password);
     }
 
     @Then("^I should see email in my account$")
-    public void iShouldSeeEmailInMyAccount() throws Exception {
+    public void iShouldSeeEmailInMyAccount() throws Throwable {
         customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
         Assert.assertEquals(customerBaseTestCucumber.getAccountInfoIOS().email.getText(), email,
                 "Entered email is not matched with Account Page");
     }
 
     @And("^I tap on Payment Info$")
-    public void iTapOnPaymentInfo() throws Exception {
+    public void iTapOnPaymentInfo() throws Throwable {
         customerBaseTestCucumber.getAccountInfoIOS().isPhoneNoDisplayed();
         customerBaseTestCucumber.getPaymentInfo().paymentInfo.click();
         System.out.println(DriverFactory.getDriver().getPageSource());
     }
 
     @And("^I tap on Sign in with facebook$")
-    public void iTapOnSignInWithFacebook() throws Exception {
+    public void iTapOnSignInWithFacebook() throws Throwable {
         customerBaseTestCucumber.getSignInSignUpPageIOS().signInWithFacebook.click();
     }
 
     @And("^I tap on Login with facebook app$")
-    public void iTapOnLoginWithFacebookApp() throws Exception {
+    public void iTapOnLoginWithFacebookApp() throws Throwable {
         customerBaseTestCucumber.getFacebookLoginIOS().isFacebookAppDisplayed();
         customerBaseTestCucumber.getFacebookLoginIOS().loginWithFacebookApp.click();
         Thread.sleep(500);
@@ -100,17 +100,17 @@ public class LoginSteps {
     }
 
     @And("^I enter facebook login email$")
-    public void iEnterFacebookLoginEmail() throws Exception {
+    public void iEnterFacebookLoginEmail() throws Throwable {
         customerBaseTestCucumber.getFacebookLoginIOS().enterFacebookEmail.sendKeys("jacktest94@gmail.com");
     }
 
     @And("^I enter facebook password$")
-    public void iEnterFacebookPassword() throws Exception {
+    public void iEnterFacebookPassword() throws Throwable {
         customerBaseTestCucumber.getFacebookLoginIOS().enterPassword.sendKeys("tftus@123");
     }
 
     @And("^I tap on login button$")
-    public void iTapOnLoginButton() throws Exception {
+    public void iTapOnLoginButton() throws Throwable {
         customerBaseTestCucumber.getFacebookLoginIOS().loginButton.click();
     }
 }

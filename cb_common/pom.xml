@@ -44,8 +44,17 @@
             <artifactId>cucumber-expressions</artifactId>
             <version>${cucumber.expression.version}</version>
         </dependency>
+		<dependency>
+			<groupId>org.sikuli</groupId>
+			<artifactId>sikuli-api</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bytedeco</groupId>
+			<artifactId>javacv-platform</artifactId>
+			<version>1.3.2</version>
+		</dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

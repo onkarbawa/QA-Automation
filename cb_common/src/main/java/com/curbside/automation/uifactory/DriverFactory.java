@@ -29,9 +29,9 @@ public class DriverFactory {
 	 * @param platform parameter should have been defined in TestNG suite file
 	 * @param additionalCaps Name Value pairs of additional capabilities that overwrites device info
 	 * @return @WebDriver
-	 * @throws Exception
+	 * @throws Throwable
 	 */
-	public static WebDriver getDriver(JSONObject deviceInfo, Object[] additionalCaps) throws Exception {
+	public static WebDriver getDriver(JSONObject deviceInfo, Object[] additionalCaps) throws Throwable {
 		if(deviceInfo != null)
 			System.out.println(deviceInfo.toString());
         
@@ -43,11 +43,11 @@ public class DriverFactory {
         return webDriver.get();
     }
 	
-	public static WebDriver getDriver(Object... additionalCaps) throws Exception {
+	public static WebDriver getDriver(Object... additionalCaps) throws Throwable {
         return getDriver(null, additionalCaps);
     }
 	
-	public static WebDriver getDriver() throws Exception {
+	public static WebDriver getDriver() throws Throwable {
         return getDriver(null, new String[]{});
     }
 	
@@ -68,7 +68,7 @@ public class DriverFactory {
         DriverFactory.webDriver.set(driver);
     }
 	
-	private static void createInstance(String platform, JSONObject deviceInfo, Object[] additionalCaps) throws Exception
+	private static void createInstance(String platform, JSONObject deviceInfo, Object[] additionalCaps) throws Throwable
 	{
 		if (deviceInfo == null)
 		{
@@ -109,5 +109,8 @@ public class DriverFactory {
 		
 		System.out.println("Actual device capabilities: " +
 						((AppiumDriver)getDriver()).getCapabilities().asMap());
+		
+		//System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
+		//new ImageElement(new File("../cb_customer_app/src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
 }

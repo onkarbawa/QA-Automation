@@ -20,17 +20,17 @@ public class AndroidDevice extends MobileDevice {
     public AndroidDevice() {
 	}
 	
-	public static void launchCurbsideActivity() throws Exception {
+	public static void launchCurbsideActivity() throws Throwable {
 		
 		// Get current device
 		((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity"));
 	}
 
-	public static void launchSettingApp() throws Exception {
+	public static void launchSettingApp() throws Throwable {
         Activity activity = new Activity("com.android.settings", "Settings");
     }
 
-    public static void swipeLeft() throws Exception {
+    public static void swipeLeft() throws Throwable {
         TouchAction touchAction = new TouchAction((PerformsTouchActions) DriverFactory.getDriver());
         int anchor = (int) (MobileDevice.getHeight() * 0.5);
         int startPoint = (int) (MobileDevice.getWidth() * 0.8);
@@ -39,11 +39,11 @@ public class AndroidDevice extends MobileDevice {
 
     }
 
-    public static void hitEnter() throws Exception {
+    public static void hitEnter() throws Throwable {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(66);
     }
 
-    public static void goBackAndroid() throws Exception {
+    public static void goBack() throws Throwable {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.BACK);
     }
 }

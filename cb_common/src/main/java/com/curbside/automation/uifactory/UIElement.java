@@ -49,6 +49,10 @@ public class UIElement {
 		return this;
 	}
 
+	public void sendKeys(String text) throws Throwable {
+		getElement().sendKeys(text);
+	}
+
 	public void enterText(String value) throws Throwable {
 		getElement().sendKeys(value);
 	}

@@ -28,9 +28,10 @@ public class AppLaunch extends CustomerBaseTest {
     /**
      *
      * @author hitesh.grover
+     * @throws Throwable 
      */
     @Test(groups = {"all", "applicationLaunch", "TCS-C114936"})
-    public void launchWithIntro(){
+    public void launchWithIntro() throws Throwable{
         this.getApplicationLaunchPageAndroid().getSkipIntro().isDisplayed();
         this.getApplicationLaunchPageAndroid().scrollIntroPage(2);
         this.getApplicationLaunchPageAndroid().getStartedButton().click();
