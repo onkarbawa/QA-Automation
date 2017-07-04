@@ -69,4 +69,8 @@ public class UIElement {
 			e.printStackTrace();
 		}
 	}
+
+  public boolean isDisplayed() throws Throwable {
+		return getElement().isDisplayed();
+  }
 }
