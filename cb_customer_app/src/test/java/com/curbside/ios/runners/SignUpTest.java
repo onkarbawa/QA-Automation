@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/ios/features/Login.feature",
+        features = "src/test/resources/ios/features/SignUp.feature",
         plugin = "json:target/cucumber-report.json",
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },

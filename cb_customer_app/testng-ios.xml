@@ -14,4 +14,9 @@
             <class name="com.curbside.ios.runners.LoginTest"/>
         </classes>
     </test>
+    <test name="Sign Up">
+        <classes>
+            <class name="com.curbside.ios.runners.SignUpTest"/>
+        </classes>
+    </test>
 </suite>
