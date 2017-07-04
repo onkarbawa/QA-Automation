@@ -41,7 +41,8 @@
       "deviceName" : "TFT",
       "app" : "../Curbside.ipa",
       "udid" : "0ddb226173711460741617d2d10e0dcd734755d9",
-      "showXcodeLog" : "true"
+      "showXcodeLog" : "true",
+      "usePrebuiltWDA" :"true"
     }
   ]
 }

@@ -20,4 +20,10 @@ public class FacebookLogin {
        enterFacebookEmail.enterText("jacktest94@gmail.com");
        enterPassword.enterText("tftus@123");
     }
+
+    @And("^I enter '(.*)' and '(.*)' for facebook$")
+    public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
+        enterFacebookEmail.enterText(emailText);
+        enterPassword.enterText(passwordText);
+    }
 }

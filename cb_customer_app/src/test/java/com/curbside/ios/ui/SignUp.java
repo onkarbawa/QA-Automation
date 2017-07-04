@@ -12,10 +12,21 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SignUp {
 
+    String randomMail = "test" + System.currentTimeMillis() + "@example.com";
+
+    static UIElement email = new UIElement(By.xpath("//XCUIElementTypeTextField[1]"));
+    static UIElement password = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[1]"));
     static UIElement phoneNumber= new UIElement(By.xpath("//XCUIElementTypeTextField[2]"));
 
-    @And("^I enter phone number$")
-    public void iEnterPhoneNumber() throws Throwable {
-       phoneNumber.enterText("12345678901");
+    @And("^I enter '(.*)' and '(.*)' and '(.*)'$")
+    public void iEnterFor(String emailText, String passwordText, String phoneNumberText) throws Throwable {
+
+    }
+
+    @And("^I enter credentials for signUp$")
+    public void iEnterCredentials() throws Throwable {
+        email.enterText(randomMail);
+        password.enterText("fusic@123");
+        phoneNumber.enterText("12345678901");
     }
 }

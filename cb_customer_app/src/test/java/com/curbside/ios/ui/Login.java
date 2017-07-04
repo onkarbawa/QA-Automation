@@ -12,23 +12,15 @@ import org.openqa.selenium.By;
  */
 public class Login {
 
-    public String emailText = "fusic.test1@gmail.com";
-    public String passwordText = "fusic@123";
-
+    String enteredEmail;
     static UIElement email = new UIElement(By.xpath("//XCUIElementTypeTextField[1]"));
     static UIElement password = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[1]"));
 
-    String randomMail = "test" + System.currentTimeMillis() + "@example.com";
 
-    @And("^I enter email and password '(.*)'$")
-    public void iEnterEmailAndPassword(String userType) throws Throwable {
-        if(userType.equalsIgnoreCase("Old User")){
-            email.enterText(emailText);
-            password.enterText(passwordText);
-        }
-        else if (userType.equalsIgnoreCase("New User")) {
-            email.enterText(randomMail);
-            password.enterText(passwordText);
-        }
+    @And("^I enter '(.*)' and '(.*)'$")
+    public void iEnterEmailAndPassword(String emailText, String passwordText) throws Throwable {
+        enteredEmail = emailText;
+        email.enterText(emailText);
+        password.enterText(passwordText);
     }
 }
