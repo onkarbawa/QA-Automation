@@ -33,6 +33,22 @@ Feature: Verify application functionality on welcome screen
     When I launch Curbside application
     Then I should see 'Nearby stores' landing page
 
+  @C114997
+    Scenario: Verify Disable background application refresh functionality
+      Given I turn 'OFF' 'Background App Refresh' for 'Curbside' app
+      When I launch Curbside application
+      And I select Metra Areas > Boston location
+      And I select 'Newton' retailer partner on Nearby screen
+      And I select 1st product from list
+      And I tap on 'Add To Cart' button
+      And I tap on 'Cart' icon in bottom menu
+      And I tap on 'Place Order' button
+      Then I should see checkout not allowed
+      When I turn 'ON' 'Background App Refresh' for 'Curbside' app
+      And I launch Curbside application
+      And I tap on 'Cart' icon in bottom menu
+      And I tap on 'Place Order' button
+      Then I should see checkout screen
 
 
     
