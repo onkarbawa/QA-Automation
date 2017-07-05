@@ -73,4 +73,5 @@ public class UIElement {
   public boolean isDisplayed() throws Throwable {
 		return getElement().isDisplayed();
   }
+
 }

@@ -1,5 +1,7 @@
 package com.curbside.automation.uifactory;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -23,6 +25,7 @@ public class Steps {
 	@Given("^I launch (.*) application$")
 	public void launchApplication(String appName) throws Throwable
 	{
+		DriverFactory.releaseDriver();
 		DriverFactory.getDriver();
 	}
 	
@@ -102,21 +105,45 @@ public class Steps {
 	{
 		new UIElement(By.name(buttonName)).tap();
 	}
-	
-	@Then("^(.*)  preference should be set as (.*)  for (.*) app$")
-	public void verifyPreference(String preferenceName, String expectedValue, String appName) throws Throwable {
+
+	@Then("^'(.*)' preference should be set as '(.*)' for '(.*)' app$")
+	public void PreferenceShouldBeSetAsForApp(String preferenceName, String expectedValue, String appName) throws Throwable {
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 		{
 			AppleDevice.launchSettings();
-			new UIElement(By.name(appName)).tap();
+			new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
+			try {
+				new UIElement(By.name("Location")).tap();
+			} catch (Exception e) {
+			}
+			System.out.println(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName + "']/following-sibling::XCUIElementTypeStaticText")));
+			//new UIElement(By.name(appName)).tap();
 			Assert.assertEquals(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName + "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
 		}
 		else
 			throw new NotImplementedException("");
+	}
 
+
+	@Given("^I turn '(.*)' '(.*)' for '(.*)' app$")
+	public void iTurnForCurbsideApp(String buttonValue, String buttonName, String appName) throws Throwable {
+		AppleDevice.launchSettings();
+
+		new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
+
+		String value = new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).getElement().getAttribute("value");
+		System.out.println(value);
+		if(buttonValue.equalsIgnoreCase("OFF") && (value.equalsIgnoreCase("true"))){
+			System.out.println("Button value is OFF");
+			new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).tap();
+		} else if(buttonValue.equalsIgnoreCase("ON") && (value.equalsIgnoreCase("false"))){
+			System.out.println("Button value is ON");
+			new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).tap();
+		}
 	}
 	
 	@After
 	public void attacheScreenshot()
 	{}
+
 }

@@ -2,7 +2,7 @@
 Feature: Verify application functionality on welcome screen
   @C114937
   Scenario: First time Curbside Launch (fresh install)
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I accept notifications alert
     And I swipe left 2 times
     And I tap on 'Get Started' button
@@ -14,37 +14,25 @@ Feature: Verify application functionality on welcome screen
   @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
     Given I launch Curbside application
-    And I tap on 'HelpIconWhite' button
+    And I accept notifications alert
     And I tap on 'Skip Intro' button
     And I tap on 'HelpIconWhite' button
     And I swipe left 2 times
     When I tap on 'Get Started' button
-    Then I should see the Store Selection Screen
-    
+    Then I should see 'Nearby stores' landing page
+
   @C114996
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'Never' for 'Curbside' app
     When I launch Curbside application
+    And I accept notifications alert
     Then I should see Location Services Disabled screen
     When I tap on 'Settings' button
-    And I tap on 'Location' cell
-    And I tap on 'Always' cell
+    And I tap on 'Location' button
+    And I tap on 'Always' button
     When I launch Curbside application
-    Then I should see the Store Selection Screen
+    Then I should see 'Nearby stores' landing page
+
+
+
     
-  @C114997
-  Scenario: Verify Disable background application refresh functionality
-    Given I turn 'OFF' 'Background App Refresh' for 'Curbside' app
-    When I launch Curbside application
-    And I select Metra Areas > Boston location
-    And I select 'Newton' retailer partner on Nearby screen
-    And I select 1st product from list
-    And I tap on 'Add To Cart' button
-    And I tap on 'Cart' icon in bottom menu
-    And I tap on 'Place Order' button
-    Then I should see checkout not allowed
-    When I turn 'ON' 'Background App Refresh' for 'Curbside' app
-    And I launch Curbside application
-    And I tap on 'Cart' icon in bottom menu
-    And I tap on 'Place Order' button
-    Then I should see checkout screen

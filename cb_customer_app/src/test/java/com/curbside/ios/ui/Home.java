@@ -15,18 +15,12 @@ import org.testng.Assert;
 
 public class Home {
 	
-	static UIElement nearBy= new UIElement(By.name("Near"));
-	static UIElement location =  new UIElement(By.name("Current Location"));
+	static UIElement nearBy= new UIElement(By.xpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]"));
+
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public boolean isDisplayed() throws Throwable
 	{
-		return nearBy.getElement().isDisplayed();
-	}
-
-	@Then("^I should see the Store Selection Screen$")
-	public void iShouldSeeTheStoreSelectionScreen() throws Throwable {
-		Assert.assertEquals(location.getText(), "Current Location",
-				"The pointer is not landing on current location page");
+		return nearBy.isDisplayed();
 	}
 }
