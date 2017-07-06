@@ -18,6 +18,8 @@ import org.testng.Assert;
 public class Settings {
 
     static UIElement settings =  new UIElement(By.name("Settings"));
+    static UIElement location =  new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
+
 
     @Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
     public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
@@ -31,13 +33,10 @@ public class Settings {
 
     @And("^I set '(.*)' as '(.*)'$")
     public void iSetAs(String appName, String newValue) throws Throwable {
-        new UIElement(By.name("Location")).waitForElement(25);
-        try {
-            new UIElement(By.name("Location")).tap();
-            new UIElement(By.name("newValue")).waitForElement(5);
+            //location.waitForElement(20);
+            location.tap();
             new UIElement(By.name(newValue)).tap();
-        } catch (Exception e) {
-        }
+
     }
 
 }

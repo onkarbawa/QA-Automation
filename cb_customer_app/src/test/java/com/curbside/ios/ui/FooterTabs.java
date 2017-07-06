@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import com.curbside.automation.uifactory.UIElement;
@@ -11,8 +12,8 @@ import com.curbside.automation.uifactory.UIElement;
 
 public class FooterTabs {
 
-	@And("^I am on '(.*)' Screen$")
-	public void iAmOnScreen(String tabName) throws Throwable {
-		new UIElement(By.name(tabName));
+	@And("^I tap on '(.*)' icon in bottom menu$")
+	public void iTapOnMyAccountIconInBottomMenu(String tabName) throws Throwable {
+		new UIElement(By.name(tabName)).tap();
 	}
 }

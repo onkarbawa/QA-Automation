@@ -4,19 +4,11 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="App Launch">
-        <classes>
-            <class name="com.curbside.ios.runners.AppLaunchTest"/>
-        </classes>
-    </test>
-    <test name="Sign In">
-        <classes>
-            <class name="com.curbside.ios.runners.LoginTest"/>
-        </classes>
-    </test>
     <test name="Sign Up">
         <classes>
             <class name="com.curbside.ios.runners.SignUpTest"/>
         </classes>
     </test>
+
+
 </suite>

@@ -1,6 +1,7 @@
 package com.curbside.ios.runners;
 
 import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
@@ -16,5 +17,5 @@ import org.testng.annotations.Test;
         dryRun = false, strict= true,
         glue = {"com.curbside.ios.ui", "com.curbside.automation.uifactory"})
 @Test
-public class SignUpTest {
+public class SignUpTest extends AbstractTestNGCucumberTests {
 }
