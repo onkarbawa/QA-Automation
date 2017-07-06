@@ -83,7 +83,7 @@ public class DriverFactory {
 		while( keys.hasNext() ) {
 		    String key = (String)keys.next();
 		    
-		    if(key.equalsIgnoreCase("url"))
+		    if(key.equalsIgnoreCase("url") || key.equalsIgnoreCase("passcode"))
 		    	continue;
 		    
 		    if(key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa") )
@@ -111,6 +111,6 @@ public class DriverFactory {
 						((AppiumDriver)getDriver()).getCapabilities().asMap());
 		
 		//System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
-		//new ImageElement(new File("../cb_customer_app/src/test/resources/ios/elements/DontAllow.png")).tap();
+		//new ImageElement(new File("src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
 }
