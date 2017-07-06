@@ -16,6 +16,8 @@ public class Welcome {
         new UIElement(By.name("Allow")).tap();
         new UIElement(By.name("Skip Intro")).tap();
         new UIElement(By.name("Search")).tap();
+        new UIElement(By.xpath("//XCUIElementTypeSearchField")).sendKeys(" _#csndc#env#s");
+        new UIElement(By.name("Search")).tap();
     }
 
 }

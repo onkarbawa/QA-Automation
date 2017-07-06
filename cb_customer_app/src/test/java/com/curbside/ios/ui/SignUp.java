@@ -29,4 +29,11 @@ public class SignUp {
         password.enterText("fusic@123");
         phoneNumber.enterText("12345678901");
     }
+
+    @And("^I signup for a new account$")
+    public void iSignupForANewAccount() throws Throwable {
+        email.enterText(randomMail);
+        password.enterText("fusic@123");
+        phoneNumber.enterText("12345678901");
+    }
 }

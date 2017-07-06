@@ -27,4 +27,17 @@ public class MyAccount {
         Assert.assertEquals(email.getText(), new SignUp().randomMail,
                 "Entered email is not matched with Account Page");
     }
+
+    @Then("^I should see my signup information under My Account$")
+    public void iShouldSeeMySignupInformationUnderMyAccount() throws Throwable {
+        phoneNumber.waitForElement(30);
+        String number = phoneNumber.getText();
+        System.out.println(number.substring(0,1));
+        System.out.println(number.substring(3,5));
+        System.out.println(number.substring(8,10));
+        System.out.println(number.substring(12,15));
+        Assert.assertEquals(email.getText(), new SignUp().randomMail,
+                "Entered email is not matched with Account Page");
+
+    }
 }
