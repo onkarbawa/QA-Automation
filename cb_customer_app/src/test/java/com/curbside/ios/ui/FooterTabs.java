@@ -14,6 +14,6 @@ public class FooterTabs {
 
 	@And("^I tap on '(.*)' icon in bottom menu$")
 	public void iTapOnMyAccountIconInBottomMenu(String tabName) throws Throwable {
-		new UIElement(By.name(tabName)).tap();
+		UIElement.byAccessibilityId(tabName).tap();
 	}
 }

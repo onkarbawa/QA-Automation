@@ -32,13 +32,13 @@ public class MyAccount {
 
     @And("^I tap on sign in button on Account page$")
     public void iTapOnSignInButtonOnAccountPage() throws Throwable {
-        signInButton.waitForElement(5);
+        signInButton.waitFor(5);
         signInButton.tap();
     }
 
     @Then("^I should be logged in$")
     public void iShouldBeLoggedIn() throws Throwable {
-        nameText.waitForElement(5);
+        nameText.waitFor(5);
         Assert.assertTrue(nameText.isDisplayed(), "User is not logged in");
     }
 }

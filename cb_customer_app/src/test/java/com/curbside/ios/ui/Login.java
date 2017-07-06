@@ -37,7 +37,7 @@ public class Login {
         steps.tapButton("Sign In with Email");
         iEnterEmailAndPassword("fusic.test1@gmail.com","fusic@123");
         steps.tapButton("Sign In");
-        myAccount.phoneNumber.waitForElement(30);
+        myAccount.phoneNumber.waitFor(30);
     }
 
 

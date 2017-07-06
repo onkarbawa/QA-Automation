@@ -50,9 +50,18 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
+	    </dependency>
+	    <dependency>
+		    <groupId>com.vimalselvam</groupId>
+		    <artifactId>cucumber-extentsreport</artifactId>
+		    <version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.0.6</version>
+		</dependency>
     </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>

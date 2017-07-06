@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Test Suite" verbose="1" parallel="methods" thread-count="1">
+<suite name="Test Suite" verbose="1" parallel="classes" thread-count="1">
 	<parameter name="platform" value="iOS"/>
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="Sign Up">
+    <test name="iOS Smoke Tests">
         <classes>
+            <class name="com.curbside.ios.runners.AppLaunchTest"/>
+            <class name="com.curbside.ios.runners.LoginTest"/>
             <class name="com.curbside.ios.runners.SignUpTest"/>
         </classes>
     </test>
-
-
 </suite>

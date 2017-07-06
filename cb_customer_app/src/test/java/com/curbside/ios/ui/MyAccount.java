@@ -30,7 +30,7 @@ public class MyAccount {
 
     @Then("^I should see my signup information under My Account$")
     public void iShouldSeeMySignupInformationUnderMyAccount() throws Throwable {
-        phoneNumber.waitForElement(30);
+        phoneNumber.waitFor(30);
         String phoneNumberText = signUp.phoneNumberText;
         String expectedNumber = phoneNumberText.substring(0, 1) + " " + "(" + phoneNumberText.substring(1, 4) + ")" + " "+ phoneNumberText.substring(4, 7) + "-" + phoneNumberText.substring(7, 11);
 

@@ -1,11 +1,14 @@
 package com.curbside.automation.uifactory;
 
+import java.nio.file.Files;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -19,6 +22,7 @@ import io.appium.java_client.AppiumDriver;
 
 @SuppressWarnings("rawtypes")
 public class Steps {
+	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "ackground App Refresh" + "']");
 	
 	@Given("^I launch (.*) application$")
 	public void launchApplication(String appName) throws Throwable
@@ -41,7 +45,7 @@ public class Steps {
 		//((AppiumDriver)DriverFactory.getDriver()).closeApp();
 		MobileDevice.resetPermissions(appName);
 		((AppiumDriver)DriverFactory.getDriver()).closeApp();
-		DeviceStore.releaseDevice();
+		//DeviceStore.releaseDevice();
 
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver();
@@ -119,26 +123,33 @@ public class Steps {
 			throw new NotImplementedException("");
 	}
 
+	@Given("^I turn '(.*)' Background App Refresh for '(.*)' app$")
+	public void changeBackgroundRefresh(String ONorOFF, String appName) throws Throwable {
 
-	@Given("^I turn '(.*)' '(.*)' for '(.*)' app$")
-	public void iTurnForCurbsideApp(String buttonValue, String buttonName, String appName) throws Throwable {
 		AppleDevice.launchSettings();
+		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
 
-		new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
-
-		String value = new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).getElement().getAttribute("value");
-		System.out.println(value);
-		if(buttonValue.equalsIgnoreCase("OFF") && (value.equalsIgnoreCase("true"))){
-			System.out.println("Button value is OFF");
-			new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).tap();
-		} else if(buttonValue.equalsIgnoreCase("ON") && (value.equalsIgnoreCase("false"))){
-			System.out.println("Button value is ON");
-			new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='" + buttonName + "']")).tap();
-		}
+		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
+		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
+		
+		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
+		
+		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
+				backgroundAppRefresh.tap();
+		
 	}
 	
 	@After
-	public void attacheScreenshot()
-	{}
+	public void embedScreenshot(Scenario scenario) {
 
+		try {
+			byte[] screenshot = MobileDevice.getScreenshotAsBytes();
+			scenario.embed(screenshot, "image/png");
+			
+			byte[] source = Files.readAllBytes(MobileDevice.getSource().toPath());
+			scenario.embed(source, "text/html");
+			
+		} catch (Throwable e) {
+		}
+	}
 }
