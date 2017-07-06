@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 import java.io.File;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -126,9 +127,29 @@ public class MobileDevice {
         new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset).release().perform();	
 	}
 	
-	public static File takeScreenshot() throws Throwable
+	@SuppressWarnings("deprecation")
+	public static File getSource() throws Throwable
+	{
+		File outputFile= null;
+		
+		String source= DriverFactory.getDriver().getPageSource();
+		if(source.startsWith("<html"))
+			outputFile= File.createTempFile("src_", ".html");
+		else
+			outputFile= File.createTempFile("src_", ".xml");
+		
+		FileUtils.write(outputFile, source);
+		return outputFile;
+	}
+	
+	public static File getScreenshot() throws Throwable
 	{
 		return ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+	}
+	
+	public static byte[] getScreenshotAsBytes() throws Throwable
+	{
+		return ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
 	}
 
 	public static void tap(int x, int y) throws Throwable {
