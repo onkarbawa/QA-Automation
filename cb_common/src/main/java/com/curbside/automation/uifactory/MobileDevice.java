@@ -27,22 +27,12 @@ public class MobileDevice {
 	
 	public static void launchSettings() throws Throwable
 	{
-		//Get current device
-		JSONObject device= DeviceStore.getDevice();
-		device.remove("app");
-		device.remove("bundleId");
-		device.remove("ipa");
-		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
-		{
-			device.put("bundleId", IOSApps.Settings);
-			DriverFactory.releaseDriver();
-			DriverFactory.getDriver(device);
-		}
+			AppleDevice.launchSettings();
+		else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			AndroidDevice.launchSettings();
 		else
-		{
 			throw new NotImplementedException("Not yet implemented");
-		}
 	}
 	
 	public static String getDeviceId() throws Throwable
@@ -143,5 +133,14 @@ public class MobileDevice {
 
 	public static void tap(int x, int y) throws Throwable {
 		new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(x, y).release().perform();
+	}
+
+	public static void resetPermissions(String appName) throws Throwable {
+		if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+			AppleDevice.resetPermissions(appName);
+		else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			AndroidDevice.resetPermissions(appName);
+		else
+			throw new NotImplementedException("Not yet implemented");
 	}
  }

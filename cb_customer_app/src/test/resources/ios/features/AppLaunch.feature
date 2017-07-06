@@ -2,7 +2,7 @@
 Feature: Verify application functionality on welcome screen
   @C114937
   Scenario: First time Curbside Launch (fresh install)
-    Given I launch Curbside application
+    Given I launch Curbside application for the first time
     And I accept notifications alert
     And I swipe left 2 times
     And I tap on 'Get Started' button
