@@ -28,8 +28,7 @@ Feature: Verify application functionality on welcome screen
     And I accept notifications alert
     Then I should see Location Services Disabled screen
     When I tap on 'Settings' button
-    And I tap on 'Location' button
-    And I tap on 'Always' button
+    And I set 'Location' as 'Always'
     When I launch Curbside application
     Then I should see 'Nearby stores' landing page
 

@@ -112,12 +112,7 @@ public class Steps {
 		{
 			AppleDevice.launchSettings();
 			new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
-			try {
-				new UIElement(By.name("Location")).tap();
-			} catch (Exception e) {
-			}
-			System.out.println(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName + "']/following-sibling::XCUIElementTypeStaticText")));
-			//new UIElement(By.name(appName)).tap();
+
 			Assert.assertEquals(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName + "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
 		}
 		else
