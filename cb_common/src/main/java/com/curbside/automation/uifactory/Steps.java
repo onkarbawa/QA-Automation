@@ -1,7 +1,5 @@
 package com.curbside.automation.uifactory;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -33,16 +31,18 @@ public class Steps {
 	public void launchApplicationClean(String appName) throws Throwable
 	{
 		//Launch app first
-		DriverFactory.getDriver("autoAcceptAlerts", false);
+		//DriverFactory.getDriver("autoAcceptAlerts", false);
 		
 		//Get application name for preferences
-		try {
-			declineNotificationAlert();
-		} catch (Exception e) {}
+		//try {
+		//	declineNotificationAlert();
+		//} catch (Exception e) {}
 		
+		//((AppiumDriver)DriverFactory.getDriver()).closeApp();
+		MobileDevice.resetPermissions(appName);
 		((AppiumDriver)DriverFactory.getDriver()).closeApp();
-		MobileDevice.setLocationPreference(appName, "Never");
-		
+		DeviceStore.releaseDevice();
+
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver();
 	}
