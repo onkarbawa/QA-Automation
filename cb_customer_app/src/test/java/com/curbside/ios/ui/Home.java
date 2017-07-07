@@ -94,4 +94,12 @@ public class Home {
 	{
 		UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage").tap();
 	}
+
+	@And("^I am on Main Screen$")
+	public void iAmOnMainScreen() throws Throwable {
+		steps.acceptLocationAlert();
+		welcome.skipIntro.tap();
+	}
+
+
 }

@@ -1,5 +1,15 @@
 @appLaunch
 Feature: Verify application functionality on welcome screen
+  @C114996
+  Scenario: Verify Disable location services functionality
+    Given 'Location' preference is set as 'Never' for 'Curbside' app
+    When I launch Curbside application
+    And I accept notifications alert
+    Then I should see Location Services Disabled screen
+    When I tap on 'Settings' button
+    And I set 'Location' permission as 'Always'
+    When I launch Curbside application
+    Then I am on Welcome Screen
   @C114937
   Scenario: First time Curbside Launch (fresh install)
     Given I launch Curbside application for the first time
@@ -22,16 +32,7 @@ Feature: Verify application functionality on welcome screen
     When I tap on 'Get Started' button
     Then I should see 'Nearby stores' landing page
 
-  @C114996
-  Scenario: Verify Disable location services functionality
-    Given 'Location' preference is set as 'Never' for 'Curbside' app
-    When I launch Curbside application
-    And I accept notifications alert
-    Then I should see Location Services Disabled screen
-    When I tap on 'Settings' button
-    And I set 'Location' permission as 'Always'
-    When I launch Curbside application
-    Then I should see 'Nearby stores' landing page
+
 
   @C114997
     Scenario: Verify Disable background application refresh functionality

@@ -58,7 +58,9 @@ public class UIElement {
 	public void enterText(String value) throws Throwable {
 		getElement().sendKeys(value);
 	}
-
+	public void clearText() throws Throwable {
+		getElement().clear();
+	}
 	/**
 	 * Wait for element to load
 	 * 
