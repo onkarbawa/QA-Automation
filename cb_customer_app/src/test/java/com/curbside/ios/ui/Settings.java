@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.AppleDevice;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
@@ -7,6 +8,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -15,26 +17,9 @@ import org.testng.Assert;
  */
 public class Settings {
 
-    static UIElement alwaysEnabled =  new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Always']"));
     static UIElement settings =  new UIElement(By.name("Settings"));
+    static UIElement location =  new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 
-
-
-//    @And("^'Location' preference should be set as 'Always' for 'Curbside' app$")
-//    public void locationPreferenceShouldBeSetAsAlwaysForCurbsideApp() throws Throwable {
-//        setLocationPreference();
-//        Assert.assertTrue(alwaysEnabled.isDisplayed(),"Checkmark of Always is not enabled");
-//    }
-
-    public static void setLocationPreference() throws Throwable {
-            AppleDevice.launchSettings();
-
-            new UIElement(By.xpath("//XCUIElementTypeCell[@name='Curbside']")).scrollTo().tap();
-            try {
-                new UIElement(By.name("Location")).tap();
-            } catch (Exception e) {
-            }
-    }
 
     @Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
     public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
@@ -46,13 +31,10 @@ public class Settings {
        settings.isDisplayed();
     }
 
-    public static void setBackgroundAppRefresh() throws Throwable {
-        AppleDevice.launchSettings();
-
-        new UIElement(By.xpath("//XCUIElementTypeCell[@name='Curbside']")).scrollTo().tap();
-        try {
-            new UIElement(By.xpath("//XCUIElementTypeSwitch[@name='Background App Refresh']")).tap();
-        } catch (Exception e) {
-        }
+    @And("^I set '(.*)' permission as '(.*)'$")
+    public void iSetAs(String appName, String newValue) throws Throwable {
+            location.waitFor(20);
+            location.tap();
+            new UIElement(By.name(newValue)).tap();
     }
 }

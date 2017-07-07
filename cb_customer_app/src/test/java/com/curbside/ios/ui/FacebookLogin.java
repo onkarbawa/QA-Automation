@@ -11,6 +11,8 @@ import org.openqa.selenium.support.FindBy;
  * Created by bawa.onkar on 7/3/17.
  */
 public class FacebookLogin {
+    static UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
+    static UIElement signWithFacebook = new UIElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeButton[4]']"));
     static UIElement enterFacebookEmail= new UIElement(By.xpath("//XCUIElementTypeTextField[@name='username-field']"));
     static UIElement enterPassword= new UIElement(By.xpath("//XCUIElementTypeSecureTextField[@name='password-field']"));
     static UIElement loginButton= new UIElement(By.xpath("//XCUIElementTypeButton[@name='login-button']"));
@@ -25,5 +27,16 @@ public class FacebookLogin {
     public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
         enterFacebookEmail.enterText(emailText);
         enterPassword.enterText(passwordText);
+    }
+
+    @And("^I tap on 'Log In with the Facebook App'$")
+    public void iTapOnLogInWithTheFacebookApp() throws Throwable {
+        facebookapp.waitFor(25);
+        facebookapp.tap();
+    }
+
+    @And("^I tap on 'Sign In with Facebook'$")
+    public void iTapOnSignInWithFacebook() throws Throwable {
+        signWithFacebook.tap();
     }
 }

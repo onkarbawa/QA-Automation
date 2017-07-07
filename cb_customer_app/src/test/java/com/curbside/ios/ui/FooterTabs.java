@@ -1,5 +1,7 @@
 package com.curbside.ios.ui;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import com.curbside.automation.uifactory.UIElement;
 
@@ -9,8 +11,9 @@ import com.curbside.automation.uifactory.UIElement;
  */
 
 public class FooterTabs {
-	FooterTabs() {
+
+	@And("^I tap on '(.*)' icon in bottom menu$")
+	public void iTapOnMyAccountIconInBottomMenu(String tabName) throws Throwable {
+		UIElement.byAccessibilityId(tabName).tap();
 	}
-	
-	UIElement shopIcon= new UIElement(By.name("Shop"));
 }

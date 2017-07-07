@@ -12,7 +12,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SignUp {
 
-    String randomMail = "test" + System.currentTimeMillis() + "@example.com";
+    static String randomMail = "test" + System.currentTimeMillis() + "@example.com";
+    String phoneNumberText = "12345678901";
 
     static UIElement email = new UIElement(By.xpath("//XCUIElementTypeTextField[1]"));
     static UIElement password = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[1]"));
@@ -28,5 +29,12 @@ public class SignUp {
         email.enterText(randomMail);
         password.enterText("fusic@123");
         phoneNumber.enterText("12345678901");
+    }
+
+    @And("^I signup for a new account$")
+    public void iSignupForANewAccount() throws Throwable {
+        email.enterText(randomMail);
+        password.enterText("fusic@123");
+        phoneNumber.enterText(phoneNumberText);
     }
 }

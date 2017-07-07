@@ -12,6 +12,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.WebElement;
 
+import com.curbside.automation.devicefactory.DeviceStore;
+
 import static com.curbside.automation.common.BaseTest.driver;
 
 @SuppressWarnings("rawtypes")
@@ -46,5 +48,8 @@ public class AndroidDevice extends MobileDevice {
     public static void goBack() throws Throwable {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.BACK);
     }
+    
+    public static void resetPermissions(String appName) throws Throwable {
+	}
 }
 

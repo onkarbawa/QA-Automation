@@ -23,7 +23,7 @@ public class Home {
 
 	@And("^I tap on My Account icon$")
 	public void iTapOnMyAccountIcon() throws Throwable {
-		myAccount.waitForElement(5);
+		myAccount.waitFor(5);
 		myAccount.tap();
 	}
 }
