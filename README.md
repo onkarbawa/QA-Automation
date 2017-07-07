@@ -78,9 +78,3 @@ $ mvn test [-DdeviceStore=../devices_<name>.json] -Dsurefire.suiteXmlFiles=testn
 
 ##### Important links
 http://thucydides.info/docs/articles/an-introduction-to-serenity-bdd-with-cucumber.html
-https://github.com/appium/appium/tree/master/docs/en
-https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/running-tests.md
-https://github.com/appium/appium/blob/master/docs/en/appium-setup/real-devices-ios.md
-https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/uiautomator_uiselector.md
-https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/ios_predicate.md
-https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/touch-actions.md
