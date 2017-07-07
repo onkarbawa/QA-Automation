@@ -15,3 +15,4 @@ cb_common/bin/
 cb_customer_app/ cucumber-html-reports/
 /GitLogin.txt
 cb_customer_app/output/report.html
+cb_customer_app/output/report copy.html

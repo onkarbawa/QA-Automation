@@ -63,13 +63,15 @@ public class UIElement {
 	 * 
 	 * @param timeout
 	 */
-	public void waitFor(int timeout) throws Throwable {
+	public UIElement waitFor(int timeout) throws Throwable {
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.visibilityOf(getElement()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return this;
 	}
 
 	public boolean isDisplayed() throws Throwable {
@@ -94,6 +96,10 @@ public class UIElement {
 	
 	public static UIElement byAccessibilityId(String locator) {
 		return new UIElement(MobileBy.AccessibilityId(locator));
+	}
+	
+	public static UIElement byClass(String locator) {
+		return new UIElement(MobileBy.className(locator));
 	}
 
 	public String getAttribute(String attrName) throws Throwable {

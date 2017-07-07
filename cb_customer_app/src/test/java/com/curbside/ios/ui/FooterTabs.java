@@ -1,8 +1,6 @@
 package com.curbside.ios.ui;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
-import org.openqa.selenium.By;
 import com.curbside.automation.uifactory.UIElement;
 
 /**

@@ -26,7 +26,7 @@ public class Home {
 	static UIElement searchNearByTextBox= UIElement.byAccessibilityId("Search All Nearby");
 	static UIElement cityZipSearchTextBox= UIElement.byAccessibilityId("City, Zip or Address");
 	
-	static UIElement currentLocation= UIElement.byXpath("//XCUIElementTypeStaticText[@name='Near']/../XCUIElementTypeButton");
+	static UIElement currentLocation= UIElement.byAccessibilityId("Current Location");
 	public static UIElement loadingIcon= UIElement.byAccessibilityId("In progress");
 
 	Steps steps = new Steps();
@@ -72,7 +72,7 @@ public class Home {
 	{
 		currentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName);
-		UIElement.byAccessibilityId(cityName).tap();
+		UIElement.byAccessibilityId(cityName).waitFor(30).tap();
 		
 		loadingIcon.waitForNot(30);
 	}
@@ -91,6 +91,13 @@ public class Home {
 	public void selectRetailerPartner(String retailerPartner) throws Throwable
 	{
 		UIElement.byAccessibilityId(retailerPartner).scrollTo().tap();
+		loadingIcon.waitForNot(30);
+	}
+	
+	@Given("I select 1st retailer partner on stores screen")
+	public void select1stRetailerPartner() throws Throwable
+	{
+		UIElement.byClass("XCUIElementTypeCell").tap();
 		loadingIcon.waitForNot(30);
 	}
 	

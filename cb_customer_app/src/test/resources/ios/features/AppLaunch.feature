@@ -31,14 +31,14 @@ Feature: Verify application functionality on welcome screen
     When I tap on 'Settings' button
     And I set 'Location' permission as 'Always'
     And I launch Curbside application
-    Then I am on Welcome Screen
+    Then I should see 'Nearby stores' landing page
 
   @C114997
     Scenario: Verify Disable background application refresh functionality
       Given I turn 'OFF' Background App Refresh for 'Curbside' app
       When I launch Curbside application
-      And I select 'Metra Areas' > 'Boston' location
-      And I select 'Newton' retailer partner on stores screen
+      And I search for 'Palo Alto' location
+      And I select 1st retailer partner on stores screen
       And I select 1st product from list
       And I tap on 'Add To Cart' button
       And I tap on 'Cart' icon in bottom menu
