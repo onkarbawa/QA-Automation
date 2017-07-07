@@ -19,14 +19,14 @@ public class FacebookLogin {
 
     @And("^I enter email and password$")
     public void iEnterEmailAndPassword() throws Throwable {
-       enterFacebookEmail.enterText("jacktest94@gmail.com");
-       enterPassword.enterText("tftus@123");
+       enterFacebookEmail.sendKeys("jacktest94@gmail.com");
+       enterPassword.sendKeys("tftus@123");
     }
 
     @And("^I enter '(.*)' and '(.*)' for facebook$")
     public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
-        enterFacebookEmail.enterText(emailText);
-        enterPassword.enterText(passwordText);
+        enterFacebookEmail.sendKeys(emailText);
+        enterPassword.sendKeys(passwordText);
     }
 
     @And("^I tap on 'Log In with the Facebook App'$")

@@ -2,18 +2,23 @@ package com.curbside.automation.uifactory;
 
 import java.nio.file.Files;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.utils.FileUtil;
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 
 /**
  * @author kumar.anil
@@ -22,33 +27,29 @@ import io.appium.java_client.AppiumDriver;
 
 @SuppressWarnings("rawtypes")
 public class Steps {
-	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "ackground App Refresh" + "']");
+	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
 	
 	@Given("^I launch (.*) application$")
 	public void launchApplication(String appName) throws Throwable
 	{
 		DriverFactory.releaseDriver();
-		DriverFactory.getDriver();
+		DriverFactory.getDriver(false);
 	}
 	
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable
 	{
-		//Launch app first
-		//DriverFactory.getDriver("autoAcceptAlerts", false);
-		
-		//Get application name for preferences
-		//try {
-		//	declineNotificationAlert();
-		//} catch (Exception e) {}
-		
-		//((AppiumDriver)DriverFactory.getDriver()).closeApp();
+		//Reset app permissions from mobile device
 		MobileDevice.resetPermissions(appName);
+		
+		//Close settings app
 		((AppiumDriver)DriverFactory.getDriver()).closeApp();
-		//DeviceStore.releaseDevice();
 
+		//Close current drive, keeping device locked
 		DriverFactory.releaseDriver();
-		DriverFactory.getDriver();
+		
+		//Install and launch application
+		DriverFactory.getDriver(true);
 	}
 	
 	@Given("^I accept notifications alert$")
@@ -99,10 +100,15 @@ public class Steps {
 	}
 	
 	@Given("^I (?:tap|click) on '(.*)' button$")
-	public void tapButton(String buttonName) throws Throwable
+	public static void tapButton(String buttonName) throws Throwable
 	{
-		new UIElement(By.name(buttonName)).tap();
+		UIElement.byAccessibilityId(buttonName).tap();
 	}
+	
+	@And("^I tap on '(.*)' text$")
+    public static void tapText(String value) throws Throwable {
+		UIElement.byAccessibilityId(value).tap();
+    }
 	
 	@Given("^I (?:tap|click) on '(.*)' button on '(.*)' .*")
 	public void tapButtonOnPage(String buttonName, String pageName) throws Throwable
@@ -139,16 +145,12 @@ public class Steps {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@After
 	public void embedScreenshot(Scenario scenario) {
 
 		try {
-			byte[] screenshot = MobileDevice.getScreenshotAsBytes();
-			scenario.embed(screenshot, "image/png");
-			
-			byte[] source = Files.readAllBytes(MobileDevice.getSource().toPath());
-			scenario.embed(source, "text/html");
-			
+			MobileDevice.getScreenshot(true);		
 		} catch (Throwable e) {
 		}
 	}

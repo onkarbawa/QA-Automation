@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -33,9 +34,13 @@ public class Home {
 	Search searchpage = new Search();
 
 	@Then("^I should see 'Nearby stores' landing page$")
-	public boolean isDisplayed() throws Throwable
+	public void isDisplayed() throws Throwable
 	{
-		return nearBy.isDisplayed();
+		try {
+			Assert.assertTrue(nearBy.isDisplayed());
+		} finally {
+			MobileDevice.getScreenshot(true);
+		}
 	}
 
 	@And("^I am on Home Screen$")

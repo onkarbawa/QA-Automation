@@ -16,9 +16,8 @@ Feature: Verify application functionality on login screen
   @C114956
   Scenario Outline: Verify Old user should login in curbside app
     Given I launch Curbside application
-    And I accept notifications alert
-    And I tap on 'Skip Intro' button
     And I have selected test environment
+    And I am not signed into application
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
@@ -33,8 +32,6 @@ Feature: Verify application functionality on login screen
   @C114955
   Scenario Outline: Verify Facebook user should login in curbside app
     Given I launch Curbside application
-    And I accept notifications alert
-    And I tap on 'Skip Intro' button
     And I have selected test environment
     And I tap on 'My Account' button
     And I tap on 'Sign In' button

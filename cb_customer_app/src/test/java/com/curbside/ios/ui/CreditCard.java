@@ -38,21 +38,22 @@ public class CreditCard {
                                             String state, String zip) throws Throwable {
         Properties.setVariable("cardExpiryDate",cardExpiry);
         Properties.setVariable("creditCardNumber",cardNumberText);
+        
         firstName.clearText();
-        firstName.enterText(firstNameText);
+        firstName.sendKeys(firstNameText);
         lastName.clearText();
-        lastName.enterText(lastNameText);
-        cardNumber.enterText(cardNumberText);
-        expiryDate.enterText(cardExpiry);
-        securityCode.enterText(cardCvv);
+        lastName.sendKeys(lastNameText);
+        cardNumber.sendKeys(cardNumberText);
+        expiryDate.sendKeys(cardExpiry);
+        securityCode.sendKeys(cardCvv);
         next.tap();
         newAddress.tap();
-        cardAdd1.enterText(add1);
-        cardAdd2.enterText(add2);
-        cardCity.enterText(city);
+        cardAdd1.sendKeys(add1);
+        cardAdd2.sendKeys(add2);
+        cardCity.sendKeys(city);
         cardState.tap();
         cardState.tap();
-        cardZip.enterText(zip);
+        cardZip.sendKeys(zip);
         save.tap();
     }
 }

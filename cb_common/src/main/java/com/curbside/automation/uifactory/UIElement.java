@@ -55,9 +55,6 @@ public class UIElement {
 		getElement().sendKeys(text);
 	}
 
-	public void enterText(String value) throws Throwable {
-		getElement().sendKeys(value);
-	}
 	public void clearText() throws Throwable {
 		getElement().clear();
 	}

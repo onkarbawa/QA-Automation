@@ -51,6 +51,13 @@ public class DriverFactory {
         return getDriver(null, new String[]{});
     }
 	
+	public static WebDriver getDriver(boolean reinstall) throws Throwable {
+		if(reinstall)
+			return getDriver(null, new Object[]{"fullReset", true, "noReset",  false});
+		else
+			return getDriver(null, new Object[]{"fullReset", false, "noReset",  true});
+    }
+	
 	/**
 	 * This method should be called when tests are exiting, usually by a test listener
 	 * @throws MalformedURLException

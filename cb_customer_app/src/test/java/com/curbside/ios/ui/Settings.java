@@ -29,6 +29,7 @@ public class Settings {
     @Then("^I should see Location Services Disabled screen$")
     public void iShouldSeeLocationServicesDisabledScreen() throws Throwable {
        settings.isDisplayed();
+       MobileDevice.getScreenshot(true);
     }
 
     @And("^I set '(.*)' permission as '(.*)'$")

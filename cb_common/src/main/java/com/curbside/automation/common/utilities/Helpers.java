@@ -14,4 +14,9 @@ public class Helpers {
   public static boolean isPropertySpecifiedAtOsLevel(String key) {
     return StringUtils.isNotBlank(System.getProperty(key));
   }
+  
+  public static String getRandomEmailId()
+  {
+	  return "test" + System.currentTimeMillis() + "@example.com";
+  }
 }

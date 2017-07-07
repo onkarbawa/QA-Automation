@@ -15,7 +15,7 @@ Feature: Verify application functionality on welcome screen
   @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
     Given I launch Curbside application
-    And I accept notifications alert
+    And I tap on 'HelpIconWhite' button
     When I tap on 'Skip Intro' button
     Then I should see 'Nearby stores' landing page
     When I tap on 'HelpIconWhite' button
@@ -27,11 +27,10 @@ Feature: Verify application functionality on welcome screen
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'Never' for 'Curbside' app
     When I launch Curbside application
-    And I accept notifications alert
     Then I should see Location Services Disabled screen
     When I tap on 'Settings' button
     And I set 'Location' permission as 'Always'
-    When I launch Curbside application
+    And I launch Curbside application
     Then I am on Welcome Screen
 
   @C114997
@@ -50,6 +49,4 @@ Feature: Verify application functionality on welcome screen
       And I tap on 'Cart' icon in bottom menu
       And I tap on 'Place Order' button
       Then I should see checkout screen
-
-
     

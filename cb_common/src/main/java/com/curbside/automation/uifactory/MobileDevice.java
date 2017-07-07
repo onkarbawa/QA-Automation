@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 import java.io.File;
+import java.nio.file.Files;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
@@ -9,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
+
+import com.cucumber.listener.Reporter;
 
 /**
  * @author kumar.anil
@@ -142,9 +145,18 @@ public class MobileDevice {
 		return outputFile;
 	}
 	
-	public static File getScreenshot() throws Throwable
+	public static File getScreenshot(boolean attachToReport) throws Throwable
 	{
-		return ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+		File scrnshot= ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+		if(attachToReport)
+		{
+			File tmpFile= File.createTempFile("scrn", ".png");
+			FileUtils.copyFile(scrnshot, tmpFile);
+			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
+			return tmpFile;
+		}
+		else
+			return scrnshot;
 	}
 	
 	public static byte[] getScreenshotAsBytes() throws Throwable

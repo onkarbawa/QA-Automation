@@ -21,9 +21,9 @@ public class LoyalityCard {
 
     @And("^I add an ExtraCare Card numbered '(.*)'$")
     public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
-        Properties.setVariable("loyalityCardNumber",cardNumber);
-        steps.tapButton("ExtraCare Card");
-        cardNumberTextBox.enterText(cardNumber);
+        Properties.setVariable("loyalityCardNumber", cardNumber);
+        Steps.tapButton("ExtraCare Card");
+        cardNumberTextBox.sendKeys(cardNumber);
         save.tap();
     }
 

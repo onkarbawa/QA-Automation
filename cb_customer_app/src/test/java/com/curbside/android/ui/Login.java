@@ -21,8 +21,8 @@ public class Login {
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
   public void iEnterEmailAndPasswordForLogin(String email, String password) throws Throwable {
     emailField.waitFor(3);
-    emailField.enterText(email);
-    passwordField.enterText(password);
+    emailField.sendKeys(email);
+    passwordField.sendKeys(password);
   }
 
   @And("^I tap on sign in with email button$")

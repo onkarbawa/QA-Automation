@@ -17,15 +17,8 @@
       "deviceName" : "Neetu's iPhone",
       "passcode" : "241984",
       "app" : "../Curbside.ipa",
+      "bundleId": "com.curbside.curbside",
       "udid" : "058898bd4d64df6c62f9f322c378db80c1d382c7"
-    },
-    {
-      "url" : "http://127.0.0.1:4723/wd/hub",
-      "platformName" : "iOS",
-      "platformVersion" : "10.3.3",
-      "deviceName" : "Anil Kumar’s iPhone",
-      "app" : "../Curbside.ipa",
-      "udid" : "05d1e37141f8057d0b5b2acae52c359012455afe"
     }
   ]
 }

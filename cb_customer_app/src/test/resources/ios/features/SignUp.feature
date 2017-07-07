@@ -10,13 +10,13 @@ Feature: Verify application functionality on SignUp screen
     And I tap on 'Create one now' button
     And I tap on 'Create An Account' button
     And I signup for a new account
-    And I tap on 'Create Account' button
-    Then I should see my signup information under My Account
+    Then I should see my signup information under Account Info
+    And I tap on 'Sign Out' button
 
   @C114958
   Scenario Outline: Add credit card
     Given I launch Curbside application
-    And I am signed in using signup information
+    And I signin in using signup information
     And I tap on 'Payment Info' text
     And I tap on 'Add a new card'
     And I add credit card information as '<first_name>', '<last_name>', '<card_number>', '<card_expiry>', '<card_cvv>', '<card_address1>', '<card_address2>', '<card_city>', '<card_state>', '<card_zip>'
@@ -30,7 +30,7 @@ Feature: Verify application functionality on SignUp screen
   @C114959
   Scenario: Add loyalty card
     Given I launch Curbside application
-    And I am signed in using signup information
+    And I signin in using signup information
     And I tap on 'Loyalty Cards' text
     And I tap on 'Add a new card'
     And I add an ExtraCare Card numbered '87676478652876'

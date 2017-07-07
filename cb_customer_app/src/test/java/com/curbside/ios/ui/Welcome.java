@@ -22,8 +22,12 @@ public class Welcome {
 
     @Then("^I am on Welcome Screen$")
     public void iAmOnWelcomeScreen() throws Throwable {
-        steps.acceptLocationAlert();
-
+        
+    	try {
+        	steps.acceptLocationAlert();			
+		} catch (Exception e) {
+		}
+    	
         Assert.assertEquals(skipIntro.getText(),"Skip Intro", "Application not launch to main screen");
     }
 }
