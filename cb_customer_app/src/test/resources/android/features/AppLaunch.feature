@@ -17,3 +17,10 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
     And I tap on 'Ok with me' button on Location access screen
     When I tap on 'Allow Access Location' pop up
     Then I should see the Nearby Stores screen
+
+  @C114998
+  Scenario: Verify Disable location services functionality
+    Given 'Location' preference is set as 'OFF' for 'Curbside' app
+    When I launch Curbside application
+    And I accept location access alert
+    Then I should see the Nearby Stores screen
