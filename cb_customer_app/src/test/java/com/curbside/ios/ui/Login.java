@@ -39,6 +39,4 @@ public class Login {
         steps.tapButton("Sign In");
         myAccount.phoneNumber.waitFor(30);
     }
-
-
 }

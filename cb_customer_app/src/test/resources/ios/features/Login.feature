@@ -38,8 +38,8 @@ Feature: Verify application functionality on login screen
     And I have selected test environment
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
-    And I tap on 'Sign In with Facebook' button
-    And I tap on 'Log In with the Facebook App' button
+    And I tap on 'Sign In with Facebook'
+    And I tap on 'Log In with the Facebook App'
     And I tap on 'Open' button
     And I enter '<Email>' and '<Password>' for facebook
     And I tap on 'login-button' button

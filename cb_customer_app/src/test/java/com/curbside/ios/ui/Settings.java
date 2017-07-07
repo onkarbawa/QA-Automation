@@ -33,7 +33,7 @@ public class Settings {
 
     @And("^I set '(.*)' permission as '(.*)'$")
     public void iSetAs(String appName, String newValue) throws Throwable {
-            //location.waitForElement(20);
+            location.waitFor(20);
             location.tap();
             new UIElement(By.name(newValue)).tap();
     }
