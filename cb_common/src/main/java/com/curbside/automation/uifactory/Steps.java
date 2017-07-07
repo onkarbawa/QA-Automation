@@ -78,7 +78,7 @@ public class Steps {
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			new UIElement(By.xpath("//*[@text='ALLOW']")).waitForElement(5);
+			new UIElement(By.xpath("//*[@text='ALLOW']")).waitFor(5);
 			new UIElement(By.xpath("//*[@text='ALLOW']")).tap();
 		}
 		else
