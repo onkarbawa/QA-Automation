@@ -24,6 +24,10 @@ $ sudo authorize-ios
 
 ##### Install Xcode with command line tools from apple app store
 ##### Open following project in xcode and setup signing with apple developer account
+```sh
+$ cd /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/
+$ ./Scripts/bootstrap.sh
+```
 
 > /Applications/Appium.app/Contents/Resources/app/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
 
@@ -56,6 +60,17 @@ $ adb devices
 ```
 > adb devices should show all connected android devices
 
+## Custom inspector
+```sh
+$ npm install macaca-cli -g
+$ macaca doctor
+$ npm install app-inspector -g
+```
+> To launch inspector, use
+```sh
+$ app-inspector -u YOUR-DEVICE-ID
+```
+
 ## Setting up for execution of tests
 
 > Create a device store and commit at root of the project with name as devices_<name>.json
@@ -84,3 +99,5 @@ https://github.com/appium/appium/blob/master/docs/en/appium-setup/real-devices-i
 https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/uiautomator_uiselector.md
 https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/ios_predicate.md
 https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/touch-actions.md
+https://github.com/SrinivasanTarget/awesome-appium	
+https://github.com/priyankshah217/AppiumCucumberTest/blob/master/src/test/java/com/test/RunCukesTest.java
