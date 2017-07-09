@@ -1,5 +1,6 @@
 package com.curbside.automation.common.utilities;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -17,6 +18,6 @@ public class Helpers {
   
   public static String getRandomEmailId()
   {
-	  return "test" + System.currentTimeMillis() + "@example.com";
+	  return RandomStringUtils.randomAlphabetic(4).toLowerCase() + "_" + RandomStringUtils.randomNumeric(6) + "@exm.com";
   }
 }
