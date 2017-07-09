@@ -23,6 +23,10 @@ public class MyAccount extends AbstractScreen {
 	UIElement phoneNumber = new UIElement(
 			By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[3]"));
 
+	public MyAccount() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Then("^I saw email on MyAccount page$")
 	public void iSawEmailOnMyAccountPage() throws Throwable {
 		Assert.assertTrue(email.isDisplayed(), "Email is not displayed in Account Page");

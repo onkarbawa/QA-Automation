@@ -6,5 +6,8 @@ package com.curbside.ios.ui;
  */
 
 public class Map extends AbstractScreen {
+	public Map() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

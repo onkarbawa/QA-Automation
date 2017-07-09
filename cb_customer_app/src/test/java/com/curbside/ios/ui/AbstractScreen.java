@@ -25,7 +25,7 @@ public class AbstractScreen {
 
 	UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
-	public AbstractScreen() {
+	AbstractScreen() {
 	}
 
 	void waitForScreenToLoad() throws Throwable {

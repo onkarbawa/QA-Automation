@@ -31,6 +31,10 @@ public class CreditCard extends AbstractScreen {
 
 	UIElement save = new UIElement(By.name("Save"));
 
+	public CreditCard() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I add credit card information as '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)'$")
 	public void iAddCreditCardInformationAs(String firstNameText, String lastNameText, String cardNumberText,
 			String cardExpiry, String cardCvv, String add1, String add2, String city, String state, String zip)

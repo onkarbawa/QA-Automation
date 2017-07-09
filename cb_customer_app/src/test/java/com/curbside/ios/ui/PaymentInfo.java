@@ -14,14 +14,18 @@ import org.testng.Assert;
  */
 public class PaymentInfo extends AbstractScreen {
 
+	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Payment Info']"));
+
+	public PaymentInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getCardExpiryValue() {
 		String cardExpiryDate = Properties.getVariable("cardExpiryDate");
 		String value = cardExpiryDate.substring(0, 2) + "/" + cardExpiryDate.substring(2, 4);
 		return value;
 
 	}
-
-	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Payment Info']"));
 
 	public String getUICreditExpiryValue() throws Throwable {
 		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Expires " + getCardExpiryValue() + "']"))

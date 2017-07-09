@@ -15,6 +15,10 @@ public class FooterTabs extends AbstractScreen {
 	UIElement btnMap = UIElement.byAccessibilityId("Map");
 	UIElement btnCart = UIElement.byAccessibilityId("Cart");
 
+	public FooterTabs() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I tap on '(.*)' icon in bottom menu$")
 	public void iTapOnMyAccountIconInBottomMenu(String tabName) throws Throwable {
 		UIElement.byAccessibilityId(tabName).tap();

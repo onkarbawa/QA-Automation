@@ -26,6 +26,9 @@ public class AccountInfo extends AbstractScreen {
 	UIElement btnAccount = UIElement.byAccessibilityId("Account");
 	UIElement btnEdit = UIElement.byAccessibilityId("Edit");
 
+	public AccountInfo() {
+	}
+
 	@Then("^I should see my signup information under Account Info$")
 	public void verifySignUpInfo() throws Throwable {
 		footerTabsScreen.tapMyAccount();

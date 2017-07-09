@@ -19,6 +19,10 @@ public class SignUp extends AbstractScreen {
 	UIElement txtPhoneNumber = UIElement.byXpath("//XCUIElementTypeTextField[2]");
 	UIElement btnCreateAccount = UIElement.byAccessibilityId("Create Account");
 
+	public SignUp() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I signup for a new account$")
 	public void iSignupForANewAccount() throws Throwable {
 		String emailId = Helpers.getRandomEmailId();

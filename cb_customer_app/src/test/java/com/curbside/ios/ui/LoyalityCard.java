@@ -21,6 +21,10 @@ public class LoyalityCard extends AbstractScreen {
 	UIElement lblLoyalityCard = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'ExtraCare Card ')]");
 	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Add ExtraCare Card']"));
 
+	public LoyalityCard() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I add an ExtraCare Card numbered '(.*)'$")
 	public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
 		Properties.setVariable("extraCareCardNumber", cardNumber);

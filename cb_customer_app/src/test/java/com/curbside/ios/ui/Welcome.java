@@ -19,6 +19,10 @@ public class Welcome extends AbstractScreen {
 
 	Steps steps = new Steps();
 
+	public Welcome() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Then("^I am on Welcome Screen$")
 	public void iAmOnWelcomeScreen() throws Throwable {
 

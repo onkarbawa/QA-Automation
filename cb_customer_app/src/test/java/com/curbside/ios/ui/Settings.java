@@ -20,6 +20,10 @@ public class Settings extends AbstractScreen {
 	UIElement settings = new UIElement(By.name("Settings"));
 	UIElement location = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 
+	public Settings() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
 	public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
 		MobileDevice.setLocationPreference(appName, value);

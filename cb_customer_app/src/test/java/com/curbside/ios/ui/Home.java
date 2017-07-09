@@ -36,6 +36,10 @@ public class Home extends AbstractScreen {
 	Welcome welcome = new Welcome();
 	Search searchpage = new Search();
 
+	public Home() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
 		try {

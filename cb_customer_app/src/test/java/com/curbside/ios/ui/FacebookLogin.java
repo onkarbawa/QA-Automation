@@ -27,6 +27,10 @@ public class FacebookLogin extends AbstractScreen {
 	UIElement enterPassword = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[@name='password-field']"));
 	UIElement loginButton = new UIElement(By.xpath("//XCUIElementTypeButton[@name='login-button']"));
 
+	public FacebookLogin() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I login to facebook in browser with '(.*)' and '(.*)'$")
 	public void i_login_via_browswr(String emailId, String password) throws Throwable {
 		btnLoginWithFacebookApp.waitFor(10).tap();

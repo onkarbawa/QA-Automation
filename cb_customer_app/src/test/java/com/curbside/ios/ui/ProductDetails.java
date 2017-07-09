@@ -14,6 +14,10 @@ public class ProductDetails extends AbstractScreen {
 	UIElement btnAddtoCart = UIElement.byAccessibilityId("Add To Cart");
 	UIElement btnRemove = UIElement.byAccessibilityId("Remove");
 
+	public ProductDetails() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
 		btnAddtoCart.tap();

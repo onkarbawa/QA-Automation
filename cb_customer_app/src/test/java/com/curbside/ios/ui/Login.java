@@ -18,6 +18,10 @@ public class Login extends AbstractScreen {
 	UIElement email = new UIElement(By.className("XCUIElementTypeTextField"));
 	UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));
 
+	public Login() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@And("^I enter '(.*)' and '(.*)'$")
 	public void signin(String emailText, String passwordText) throws Throwable {
 		email.sendKeys(emailText);
