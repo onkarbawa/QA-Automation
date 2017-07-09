@@ -7,4 +7,4 @@ import org.openqa.selenium.By;
  * Created by bawa.onkar on 06/07/17.
  */
 public class Search extends AbstractScreen {
-    }
+}

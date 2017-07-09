@@ -10,20 +10,18 @@ import cucumber.api.java.en.Given;
  */
 
 public class ProductDetails extends AbstractScreen {
-	
-	static UIElement btnAddtoCart= UIElement.byAccessibilityId("Add To Cart");
-	static UIElement btnRemove = UIElement.byAccessibilityId("Remove");
-	
+
+	UIElement btnAddtoCart = UIElement.byAccessibilityId("Add To Cart");
+	UIElement btnRemove = UIElement.byAccessibilityId("Remove");
+
 	@Given("^I add displayed product to cart$")
-	public void addToCart() throws Throwable
-	{
+	public void addToCart() throws Throwable {
 		btnAddtoCart.tap();
 		btnRemove.waitFor(10);
 	}
-	
+
 	@Given("^I removed displayed product from cart$")
-	public void removeFromCart() throws Throwable
-	{
+	public void removeFromCart() throws Throwable {
 		btnRemove.tap();
 		btnAddtoCart.waitFor(10);
 	}

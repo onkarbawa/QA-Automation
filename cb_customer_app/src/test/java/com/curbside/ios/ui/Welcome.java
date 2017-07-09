@@ -9,25 +9,24 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 /**
- * @author kumar.anil
- * This is page that appears when you launch application for first time
+ * @author kumar.anil This is page that appears when you launch application for
+ *         first time
  */
 public class Welcome extends AbstractScreen {
 
-    UIElement skipIntro = new UIElement(By.name("Skip Intro"));
-    UIElement okWithMe = new UIElement(By.name("OK with me"));
+	UIElement skipIntro = new UIElement(By.name("Skip Intro"));
+	UIElement okWithMe = new UIElement(By.name("OK with me"));
 
-    Steps steps = new Steps();
+	Steps steps = new Steps();
 
+	@Then("^I am on Welcome Screen$")
+	public void iAmOnWelcomeScreen() throws Throwable {
 
-    @Then("^I am on Welcome Screen$")
-    public void iAmOnWelcomeScreen() throws Throwable {
-        
-    	try {
-        	steps.acceptLocationAlert();			
+		try {
+			steps.acceptLocationAlert();
 		} catch (Exception e) {
 		}
-    	
-        Assert.assertEquals(skipIntro.getText(),"Skip Intro", "Application not launch to main screen");
-    }
+
+		Assert.assertEquals(skipIntro.getText(), "Skip Intro", "Application not launch to main screen");
+	}
 }

@@ -15,36 +15,36 @@ import org.testng.Assert;
  */
 public class LoyalityCard extends AbstractScreen {
 
-    UIElement cardNumberTextBox = new UIElement(By.xpath("//XCUIElementTypeTextField"));
-    UIElement save = new UIElement(By.name("Save"));
-    UIElement lblCreditCardNumber = new UIElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'DISCO ')]"));
-    UIElement lblLoyalityCard = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'ExtraCare Card ')]");
-    UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Add ExtraCare Card']"));
-    Steps steps = new Steps();
+	UIElement cardNumberTextBox = new UIElement(By.xpath("//XCUIElementTypeTextField"));
+	UIElement save = new UIElement(By.name("Save"));
+	UIElement lblCreditCardNumber = new UIElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'DISCO ')]"));
+	UIElement lblLoyalityCard = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'ExtraCare Card ')]");
+	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Add ExtraCare Card']"));
 
-    @And("^I add an ExtraCare Card numbered '(.*)'$")
-    public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
-        Properties.setVariable("extraCareCardNumber", cardNumber);
-        Steps.tapButton("ExtraCare Card");
-        cardNumberTextBox.sendKeys(cardNumber);
-        save.tap();
-        save.waitForNot(10);
-    }
+	@And("^I add an ExtraCare Card numbered '(.*)'$")
+	public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
+		Properties.setVariable("extraCareCardNumber", cardNumber);
+		Steps.tapButton("ExtraCare Card");
+		cardNumberTextBox.sendKeys(cardNumber);
+		save.tap();
+		save.waitForNot(10);
+	}
 
-    public String getCardNumber(){
-        String cardNumber = Properties.getVariable("loyalityCardNumber");
-        return "ExtraCare Card (..."+cardNumber.substring(8,12)+")";
-    }
+	public String getCardNumber() {
+		String cardNumber = Properties.getVariable("loyalityCardNumber");
+		return "ExtraCare Card (..." + cardNumber.substring(8, 12) + ")";
+	}
 
-    public String getUICardNumber() throws Throwable {
-        return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='ExtraCare Card "+getCardNumber()+"']")).getText();
+	public String getUICardNumber() throws Throwable {
+		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='ExtraCare Card " + getCardNumber() + "']"))
+				.getText();
 
-    }
+	}
 
-    @And("^I should see ExtraCare Card info on Loyalty Cards screen$")
-    public void iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen() throws Throwable {
-    	String displayedCardInfo= lblLoyalityCard.getText();
-    	String last4Chars= StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
-    	Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
-    }
+	@And("^I should see ExtraCare Card info on Loyalty Cards screen$")
+	public void iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen() throws Throwable {
+		String displayedCardInfo = lblLoyalityCard.getText();
+		String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
+		Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
+	}
 }

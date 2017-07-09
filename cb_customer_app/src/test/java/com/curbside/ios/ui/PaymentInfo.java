@@ -14,31 +14,30 @@ import org.testng.Assert;
  */
 public class PaymentInfo extends AbstractScreen {
 
+	public String getCardExpiryValue() {
+		String cardExpiryDate = Properties.getVariable("cardExpiryDate");
+		String value = cardExpiryDate.substring(0, 2) + "/" + cardExpiryDate.substring(2, 4);
+		return value;
 
-    public String  getCardExpiryValue(){
-        String cardExpiryDate = Properties.getVariable("cardExpiryDate");
-        String value = cardExpiryDate.substring(0, 2) + "/" + cardExpiryDate.substring(2, 4);
-        return value;
+	}
 
-    }
+	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Payment Info']"));
 
-    UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Payment Info']"));
+	public String getUICreditExpiryValue() throws Throwable {
+		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Expires " + getCardExpiryValue() + "']"))
+				.getText();
 
-    public String getUICreditExpiryValue() throws Throwable {
-        return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Expires "+getCardExpiryValue()+"']")).getText();
+	}
 
-    }
+	@And("^I tap on 'Add a new card'$")
+	public void iTapOnAddANewCard() throws Throwable {
+		MobileDevice.tap(162, 354);
+	}
 
-
-    @And("^I tap on 'Add a new card'$")
-    public void iTapOnAddANewCard() throws Throwable {
-        MobileDevice.tap(162,354);
-    }
-
-    @And("^I should see credit info on payment info screen$")
-    public void iShouldSeeCreditInfoOnPaymentInfoScreen() throws Throwable {
-        paymentInfoTitle.waitFor(7);
-        Assert.assertEquals(getUICreditExpiryValue(),"Expires " + getCardExpiryValue(),
-                "Credit Card information is shown in payment info screen");
-    }
+	@And("^I should see credit info on payment info screen$")
+	public void iShouldSeeCreditInfoOnPaymentInfoScreen() throws Throwable {
+		paymentInfoTitle.waitFor(7);
+		Assert.assertEquals(getUICreditExpiryValue(), "Expires " + getCardExpiryValue(),
+				"Credit Card information is shown in payment info screen");
+	}
 }

@@ -15,27 +15,28 @@ import org.openqa.selenium.By;
  */
 public class Login extends AbstractScreen {
 
-    static UIElement email = new UIElement(By.className("XCUIElementTypeTextField"));
-    static UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));
-    
-    @And("^I enter '(.*)' and '(.*)'$")
-    public void signin(String emailText, String passwordText) throws Throwable {
-        email.sendKeys(emailText);
-        password.sendKeys(passwordText);
-        Steps.tapButton("Sign In");
-    }
+	UIElement email = new UIElement(By.className("XCUIElementTypeTextField"));
+	UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));
 
-    @And("^I signin in using signup information$")
-    public void iAmSignedInUsingSignupInformation() throws Throwable {
-        MyAccount.ensureSignedOut();
-        try {
-			FooterTabs.tapMyAccount();
-			MyAccount.btnSignIn.tap();
-		} catch (Exception e) {}
+	@And("^I enter '(.*)' and '(.*)'$")
+	public void signin(String emailText, String passwordText) throws Throwable {
+		email.sendKeys(emailText);
+		password.sendKeys(passwordText);
+		Steps.tapButton("Sign In");
+	}
 
-        Steps.tapButton("Sign In with Email");
-        signin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
-        
-        MyAccount.btnAccountInfo.waitFor(30);
-    }
+	@And("^I signin in using signup information$")
+	public void iAmSignedInUsingSignupInformation() throws Throwable {
+		myAccountScreen.ensureSignedOut();
+		try {
+			footerTabsScreen.tapMyAccount();
+			myAccountScreen.tapSignIn();
+		} catch (Exception e) {
+		}
+
+		Steps.tapButton("Sign In with Email");
+		signin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
+
+		myAccountScreen.btnAccountInfo.waitFor(30);
+	}
 }

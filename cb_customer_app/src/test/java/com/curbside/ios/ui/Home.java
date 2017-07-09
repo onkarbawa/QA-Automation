@@ -17,29 +17,27 @@ import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
 /**
- * @author kumar.anil
- * Page that appears after skipping into or clicking Get Started
+ * @author kumar.anil Page that appears after skipping into or clicking Get
+ *         Started
  */
 
-public class Home extends AbstractScreen{
-	
-	static UIElement nearBy= UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
-	static UIElement iconSearch = UIElement.byAccessibilityId("Search");
-	static UIElement btnSearchKeyboard = UIElement.byAccessibilityId("Search");
-	static UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
-	static UIElement txtSearchNearBy= UIElement.byClass("XCUIElementTypeSearchField");
-	
-	static UIElement currentLocation= UIElement.byAccessibilityId("Current Location");
-	static UIElement cityZipSearchTextBox= UIElement.byAccessibilityId("City, Zip or Address");
-	public static UIElement loadingIcon= UIElement.byAccessibilityId("In progress");
+public class Home extends AbstractScreen {
+
+	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
+	UIElement iconSearch = UIElement.byAccessibilityId("Search");
+	UIElement btnSearchKeyboard = UIElement.byAccessibilityId("Search");
+	UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
+	UIElement txtSearchNearBy = UIElement.byClass("XCUIElementTypeSearchField");
+
+	UIElement currentLocation = UIElement.byAccessibilityId("Current Location");
+	UIElement cityZipSearchTextBox = UIElement.byAccessibilityId("City, Zip or Address");
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
 	Search searchpage = new Search();
 
 	@Then("^I should see 'Nearby stores' landing page$")
-	public void isDisplayed() throws Throwable
-	{
+	public void isDisplayed() throws Throwable {
 		try {
 			Assert.assertTrue(nearBy.isDisplayed());
 		} finally {
@@ -56,35 +54,33 @@ public class Home extends AbstractScreen{
 	}
 
 	@Given("I select '(.*)' > '(.*)' location")
-	public void setLocation(String category, String cityName) throws Throwable
-	{
+	public void setLocation(String category, String cityName) throws Throwable {
 		currentLocation.tap();
 		UIElement.byAccessibilityId(category).tap();
 		UIElement.byAccessibilityId(cityName).scrollTo().tap();
 	}
-	
+
 	@Given("I search for '(.*)' location")
-	public void searchForLocation(String cityName) throws Throwable
-	{
+	public void searchForLocation(String cityName) throws Throwable {
 		try {
-			FooterTabs.tapShop();
-		} catch (Exception e) {}
-		
+			footerTabsScreen.tapShop();
+		} catch (Exception e) {
+		}
+
 		currentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName);
 		UIElement.byAccessibilityId(cityName).waitFor(30).tap();
-		
+
 		loadingIcon.waitForNot(30);
 	}
-	
+
 	@Given("I search for '(.*)' product")
-	public void searchForProduct(String productName) throws Throwable
-	{
+	public void searchForProduct(String productName) throws Throwable {
 		iconSearch.tap();
 		Thread.sleep(1000);
 		txtSearchNearBy.sendKeys(productName);
 	}
-	
+
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		iconSearch.tap();
@@ -93,30 +89,26 @@ public class Home extends AbstractScreen{
 		btnSearchKeyboard.tap();
 		loadingIcon.waitForNot(30);
 	}
-	
+
 	@Given("I select '(.*)' retailer partner on stores screen")
-	public void selectRetailerPartner(String retailerPartner) throws Throwable
-	{
+	public void selectRetailerPartner(String retailerPartner) throws Throwable {
 		UIElement.byAccessibilityId(retailerPartner).scrollTo().tap();
 		loadingIcon.waitForNot(30);
 	}
-	
+
 	@Given("I select 1st retailer partner on stores screen")
-	public void select1stRetailerPartner() throws Throwable
-	{
+	public void select1stRetailerPartner() throws Throwable {
 		UIElement.byClass("XCUIElementTypeCell").tap();
 		loadingIcon.waitForNot(30);
 	}
-	
+
 	@Given("I select 1st product from list")
-	public void select1stProduct() throws Throwable
-	{
+	public void select1stProduct() throws Throwable {
 		UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage").tap();
 	}
-	
+
 	@Given("I add any product to cart in '(.*)' location")
-	public void i_add_any_product_in_location(String location) throws Throwable
-	{
+	public void i_add_any_product_in_location(String location) throws Throwable {
 		searchForLocation(location);
 		select1stRetailerPartner();
 		select1stProduct();
@@ -128,6 +120,5 @@ public class Home extends AbstractScreen{
 		steps.acceptLocationAlert();
 		welcome.skipIntro.tap();
 	}
-
 
 }

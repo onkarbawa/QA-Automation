@@ -17,25 +17,24 @@ import org.testng.Assert;
  */
 public class Settings extends AbstractScreen {
 
-    static UIElement settings =  new UIElement(By.name("Settings"));
-    static UIElement location =  new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
+	UIElement settings = new UIElement(By.name("Settings"));
+	UIElement location = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 
+	@Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
+	public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
+		MobileDevice.setLocationPreference(appName, value);
+	}
 
-    @Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
-    public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
-        MobileDevice.setLocationPreference(appName, value);
-    }
+	@Then("^I should see Location Services Disabled screen$")
+	public void iShouldSeeLocationServicesDisabledScreen() throws Throwable {
+		settings.isDisplayed();
+		MobileDevice.getScreenshot(true);
+	}
 
-    @Then("^I should see Location Services Disabled screen$")
-    public void iShouldSeeLocationServicesDisabledScreen() throws Throwable {
-       settings.isDisplayed();
-       MobileDevice.getScreenshot(true);
-    }
-
-    @And("^I set '(.*)' permission as '(.*)'$")
-    public void iSetAs(String appName, String newValue) throws Throwable {
-            location.waitFor(20);
-            location.tap();
-            new UIElement(By.name(newValue)).tap();
-    }
+	@And("^I set '(.*)' permission as '(.*)'$")
+	public void iSetAs(String appName, String newValue) throws Throwable {
+		location.waitFor(20);
+		location.tap();
+		new UIElement(By.name(newValue)).tap();
+	}
 }
