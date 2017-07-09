@@ -6,6 +6,7 @@ package com.curbside.automation.uifactory;
  */
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileBy;
@@ -110,8 +111,7 @@ public class UIElement {
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.invisibilityOf(getElement()));
-		} catch (Exception e) {
-			//e.printStackTrace();
-		}
+		} catch (NoSuchElementException e) {
+		} 
 	}
 }
