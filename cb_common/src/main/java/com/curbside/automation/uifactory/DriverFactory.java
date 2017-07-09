@@ -65,7 +65,7 @@ public class DriverFactory {
 	public static void releaseDriver() throws MalformedURLException {
 		WebDriver driver = webDriver.get();
         if (driver != null) {
-            driver.quit();
+            //driver.quit();
             webDriver.set(null);
         }
     }
