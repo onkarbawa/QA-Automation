@@ -33,8 +33,6 @@ Feature: Sign In
     And I am not signed into application
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
-    And I tap on ' Sign In with Facebook' button
-    And I tap on 'Log In with the Facebook App'
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
     

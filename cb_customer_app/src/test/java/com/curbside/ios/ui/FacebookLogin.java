@@ -12,6 +12,9 @@ import org.openqa.selenium.support.FindBy;
  * Created by bawa.onkar on 7/3/17.
  */
 public class FacebookLogin extends AbstractScreen {
+	
+	UIElement btnCurbsideSignInWithFacebook= UIElement.byXpath("//*[contains(@label,'Sign In with Facebook')]");
+	
 	UIElement btnLoginUsingEmail = UIElement.byAccessibilityId("Log In with Phone Number or Email Address");
 	UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
 
@@ -20,8 +23,7 @@ public class FacebookLogin extends AbstractScreen {
 	UIElement btnInBrowserLogin = UIElement.byAccessibilityId("Log In");
 	UIElement btnInBrowserContinueAs = UIElement.byXpath("//*[contains(@label,'Continue as')]");
 
-	UIElement facebookapp = new UIElement(
-			By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
+	UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
 	UIElement signWithFacebook = new UIElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeButton[4]']"));
 	UIElement enterFacebookEmail = new UIElement(By.xpath("//XCUIElementTypeTextField[@name='username-field']"));
 	UIElement enterPassword = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[@name='password-field']"));
@@ -33,7 +35,11 @@ public class FacebookLogin extends AbstractScreen {
 
 	@And("^I login to facebook in browser with '(.*)' and '(.*)'$")
 	public void i_login_via_browswr(String emailId, String password) throws Throwable {
-		btnLoginWithFacebookApp.waitFor(10).tap();
+		try {
+			btnCurbsideSignInWithFacebook.tap();
+		} catch (Exception e) {}
+		
+		btnLoginUsingEmail.waitFor(10).tap();
 		txtInBrowserPassword.waitFor(10).sendKeys(emailId);
 		txtInBrowserPassword.sendKeys(password);
 		btnInBrowserLogin.tap();
