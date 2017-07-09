@@ -5,6 +5,7 @@ import java.util.List;
 import com.curbside.automation.devicefactory.AndroidApps;
 import io.appium.java_client.MobileBy;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -200,9 +201,15 @@ public class MobileDevice {
 		File scrnshot= ((TakesScreenshot)DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
 		if(attachToReport)
 		{
-			File tmpFile= File.createTempFile("scrn", ".png");
+			File tmpFile= File.createTempFile("scrn_", ".png");
 			FileUtils.copyFile(scrnshot, tmpFile);
 			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
+			
+			File srcFile= getSource();
+			tmpFile= File.createTempFile("src_", "." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
+			FileUtils.copyFile(srcFile, tmpFile);
+			Reporter.addStepLog("<a href='" + tmpFile.getAbsolutePath() + "'>page source</a>");
+			
 			return tmpFile;
 		}
 		else
