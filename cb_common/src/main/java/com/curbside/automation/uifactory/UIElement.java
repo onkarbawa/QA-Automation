@@ -111,7 +111,7 @@ public class UIElement {
 		try {
 			waitObj.until(ExpectedConditions.invisibilityOf(getElement()));
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 }
