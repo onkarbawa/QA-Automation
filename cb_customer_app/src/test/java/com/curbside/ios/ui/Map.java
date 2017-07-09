@@ -5,6 +5,6 @@ package com.curbside.ios.ui;
  *
  */
 
-public class Map {
+public class Map extends AbstractScreen {
 
 }

@@ -12,7 +12,7 @@ import org.testng.Assert;
  * @author kumar.anil
  * This is page that appears when you launch application for first time
  */
-public class Welcome {
+public class Welcome extends AbstractScreen {
 
     UIElement skipIntro = new UIElement(By.name("Skip Intro"));
     UIElement okWithMe = new UIElement(By.name("OK with me"));

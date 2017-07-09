@@ -12,7 +12,7 @@ import org.testng.Assert;
 /**
  * Created by bawa.onkar on 06/07/17.
  */
-public class PaymentInfo {
+public class PaymentInfo extends AbstractScreen {
 
 
     public String  getCardExpiryValue(){

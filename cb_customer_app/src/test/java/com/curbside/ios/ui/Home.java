@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import cucumber.api.PendingException;
@@ -7,6 +8,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.touch.TouchActions;
 
 import com.curbside.automation.uifactory.UIElement;
 
@@ -18,15 +21,16 @@ import org.testng.Assert;
  * Page that appears after skipping into or clicking Get Started
  */
 
-public class Home {
+public class Home extends AbstractScreen{
 	
 	static UIElement nearBy= UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
-	static UIElement search = UIElement.byAccessibilityId("Search");
-	
-	static UIElement searchNearByTextBox= UIElement.byAccessibilityId("Search All Nearby");
-	static UIElement cityZipSearchTextBox= UIElement.byAccessibilityId("City, Zip or Address");
+	static UIElement iconSearch = UIElement.byAccessibilityId("Search");
+	static UIElement btnSearchKeyboard = UIElement.byAccessibilityId("Search");
+	static UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
+	static UIElement txtSearchNearBy= UIElement.byClass("XCUIElementTypeSearchField");
 	
 	static UIElement currentLocation= UIElement.byAccessibilityId("Current Location");
+	static UIElement cityZipSearchTextBox= UIElement.byAccessibilityId("City, Zip or Address");
 	public static UIElement loadingIcon= UIElement.byAccessibilityId("In progress");
 
 	Steps steps = new Steps();
@@ -51,14 +55,6 @@ public class Home {
 		steps.acceptLocationAlert();
 	}
 
-	@And("^I have selected test environment$")
-	public void iHaveSelectedTestEnvironment() throws Throwable {
-		//TODO: Test environment should come from suite file and JVM arguments
-		search.tap();
-		searchpage.searchField.sendKeys("_#csndc#env#s");
-		searchpage.search.tap();
-	}
-	
 	@Given("I select '(.*)' > '(.*)' location")
 	public void setLocation(String category, String cityName) throws Throwable
 	{
@@ -70,6 +66,10 @@ public class Home {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable
 	{
+		try {
+			FooterTabs.tapShop();
+		} catch (Exception e) {}
+		
 		currentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName);
 		UIElement.byAccessibilityId(cityName).waitFor(30).tap();
@@ -78,12 +78,19 @@ public class Home {
 	}
 	
 	@Given("I search for '(.*)' product")
-	public void searchForProduct(String cityName) throws Throwable
+	public void searchForProduct(String productName) throws Throwable
 	{
-		search.tap();
-		searchNearByTextBox.sendKeys(cityName);
-		UIElement.byAccessibilityId(cityName).tap();
-		
+		iconSearch.tap();
+		Thread.sleep(1000);
+		txtSearchNearBy.sendKeys(productName);
+	}
+	
+	@And("^I have selected test environment$")
+	public void iHaveSelectedTestEnvironment() throws Throwable {
+		iconSearch.tap();
+		Thread.sleep(1000);
+		txtSearchNearBy.sendKeys("_#csndc#env#s");
+		btnSearchKeyboard.tap();
 		loadingIcon.waitForNot(30);
 	}
 	
@@ -105,6 +112,15 @@ public class Home {
 	public void select1stProduct() throws Throwable
 	{
 		UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage").tap();
+	}
+	
+	@Given("I add any product to cart in '(.*)' location")
+	public void i_add_any_product_in_location(String location) throws Throwable
+	{
+		searchForLocation(location);
+		select1stRetailerPartner();
+		select1stProduct();
+		productDetailsScreen.addToCart();
 	}
 
 	@And("^I am on Main Screen$")

@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 /**
  * Created by bawa.onkar on 07/07/17.
  */
-public class CreditCard {
+public class CreditCard extends AbstractScreen {
 
     public String cardExpiryValue;
 

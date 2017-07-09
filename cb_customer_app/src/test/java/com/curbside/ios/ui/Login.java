@@ -13,7 +13,7 @@ import org.openqa.selenium.By;
 /**
  * Created by bawa.onkar on 7/3/17.
  */
-public class Login {
+public class Login extends AbstractScreen {
 
     static UIElement email = new UIElement(By.className("XCUIElementTypeTextField"));
     static UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));

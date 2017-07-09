@@ -8,12 +8,12 @@ import com.curbside.automation.uifactory.UIElement;
  * Footer tab that contains icons for Shop/ Map/ Cart and My Account
  */
 
-public class FooterTabs {
+public class FooterTabs extends AbstractScreen {
 	
-	static UIElement btnMyAccount= UIElement.byAccessibilityId("");
-	static UIElement btnShop= UIElement.byAccessibilityId("");
-	static UIElement btnMap= UIElement.byAccessibilityId("");
-	static UIElement btnCart= UIElement.byAccessibilityId("");
+	static UIElement btnMyAccount= UIElement.byAccessibilityId("My Account");
+	static UIElement btnShop= UIElement.byAccessibilityId("Shop");
+	static UIElement btnMap= UIElement.byAccessibilityId("Map");
+	static UIElement btnCart= UIElement.byAccessibilityId("Cart");
 
 	@And("^I tap on '(.*)' icon in bottom menu$")
 	public void iTapOnMyAccountIconInBottomMenu(String tabName) throws Throwable {
@@ -35,6 +35,7 @@ public class FooterTabs {
 		btnMap.tap();
 	}
 	
+	@And("^I go to Cart screen$")
 	public static void tapCart() throws Throwable
 	{
 		btnCart.tap();

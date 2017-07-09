@@ -1,5 +1,5 @@
 @appLaunch
-Feature: Verify application functionality on welcome screen
+Feature: Application Launch
 
   @C114937
   Scenario: First time Curbside Launch (fresh install)
@@ -37,11 +37,8 @@ Feature: Verify application functionality on welcome screen
     Scenario: Verify Disable background application refresh functionality
       Given I turn 'OFF' Background App Refresh for 'Curbside' app
       When I launch Curbside application
-      And I search for 'Palo Alto' location
-      And I select 1st retailer partner on stores screen
-      And I select 1st product from list
-      And I tap on 'Add To Cart' button
-      And I tap on 'Cart' icon in bottom menu
+      And I add any product to cart in 'Palo Alto' location
+      And I go to Cart screen
       And I attempt to place an order
       Then I should see checkout not allowed
       When I turn 'ON' 'Background App Refresh' for 'Curbside' app

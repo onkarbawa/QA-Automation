@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
 
@@ -12,13 +13,13 @@ import org.testng.Assert;
 /**
  * Created by bawa.onkar on 06/07/17.
  */
-public class AccountInfo {
+public class AccountInfo extends AbstractScreen{
 
-	static UIElement txtFirstName= UIElement.byXpath("//*[@Label='First Name']/following-sibling::*");
-    static UIElement txtLastName= UIElement.byXpath("//*[@Label='Last Name']/following-sibling::*");
-    static UIElement txtEmail= UIElement.byXpath("//*[@Label='Email']/following-sibling::*");
-    static UIElement txtMobile= UIElement.byXpath("//*[@Label='Mobile']/following-sibling::*");
-    static UIElement txtPassword= UIElement.byXpath("//*[@Label='Password']/following-sibling::*");
+	static UIElement txtFirstName= UIElement.byXpath("//*[@label='First Name']/following-sibling::*");
+    static UIElement txtLastName= UIElement.byXpath("//*[@label='Last Name']/following-sibling::*");
+    static UIElement txtEmail= UIElement.byXpath("//*[@label='Email']/following-sibling::*");
+    static UIElement txtMobile= UIElement.byXpath("//*[@label='Mobile']/following-sibling::*");
+    static UIElement txtPassword= UIElement.byXpath("//*[@label='Password']/following-sibling::*");
     
     static UIElement btnSignOut= UIElement.byAccessibilityId("Sign Out");
     static UIElement btnBack= UIElement.byAccessibilityId("Back");
@@ -31,8 +32,22 @@ public class AccountInfo {
     	FooterTabs.tapMyAccount();
     	MyAccount.btnAccountInfo.tap();
     	
-    	Assert.assertEquals(txtEmail.getText(), Properties.getVariable("signupEmail"));
-    	Assert.assertEquals(txtMobile.getText(), Properties.getVariable("signupPassword"));
-    	Assert.assertEquals(txtPassword.getText(), StringUtils.repeat("∙", Properties.getVariable("signupPhoneNumber").length()));    	
+    	String phoneNumber= Properties.getVariable("signupPhoneNumber");
+    	String email= Properties.getVariable("signupEmail");
+    	String password= Properties.getVariable("signupPassword");
+    	
+    	String actEmail= txtEmail.getText();
+    	String actPhoneNumber= txtMobile.getText();
+    	String actPassword= txtPassword.getText();
+    	
+    	Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
+    	Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
+    	Reporter.addStepLog(String.format("Password: actual- %s, expected- %s", actPassword, password));
+    	
+    	phoneNumber= String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6, 10));
+    	
+    	Assert.assertEquals(actEmail, email);
+    	Assert.assertEquals(actPhoneNumber, phoneNumber);
+    	Assert.assertEquals(actPassword, StringUtils.repeat("∙", password.length()));    	
     }
 }

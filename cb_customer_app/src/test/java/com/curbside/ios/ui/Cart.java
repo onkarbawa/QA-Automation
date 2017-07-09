@@ -9,12 +9,13 @@ import cucumber.api.java.en.Given;
  *
  */
 
-public class Cart {
-	static UIElement placeOrder= UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Place Order ')]");
+public class Cart extends AbstractScreen {
+	UIElement placeOrder= UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Place Order ')]");
 	
 	@Given("I attempt to place an order")
-	public void tapPlaceOrder() throws Throwable
+	public void placeOrder() throws Throwable
 	{
 		placeOrder.tap();
+		placeOrder.waitForNot(5);
 	}
 }

@@ -12,28 +12,27 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by bawa.onkar on 7/3/17.
  */
-public class SignUp {
+public class SignUp extends AbstractScreen {
 
-    static String randomMail = "test" + System.currentTimeMillis() + "@example.com";
-    String phoneNumberText = "12345678901";
-
-    static UIElement txtEmail = new UIElement(By.xpath("//XCUIElementTypeTextField[1]"));
-    static UIElement txtPassword = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[1]"));
-    static UIElement txtPhoneNumber= new UIElement(By.xpath("//XCUIElementTypeTextField[2]"));
-    static UIElement btnCreateAccount= UIElement.byAccessibilityId("Create Account");
+    UIElement txtEmail = UIElement.byXpath("//XCUIElementTypeTextField[1]");
+    UIElement txtPassword = UIElement.byXpath("//XCUIElementTypeSecureTextField[1]");
+    UIElement txtPhoneNumber= UIElement.byXpath("//XCUIElementTypeTextField[2]");
+    UIElement btnCreateAccount= UIElement.byAccessibilityId("Create Account");
 
     @And("^I signup for a new account$")
     public void iSignupForANewAccount() throws Throwable {
     	String emailId= Helpers.getRandomEmailId();
     	String password= "fusic@123";
+    	String phoneNumberText = "12345678901";
     	
     	Properties.setVariable("signupEmail", emailId);
     	Properties.setVariable("signupPassword", password);
     	Properties.setVariable("signupPhoneNumber", phoneNumberText);
         
-    	txtEmail.sendKeys(randomMail);
+    	txtEmail.sendKeys(emailId);
         txtPassword.sendKeys(password);
         txtPhoneNumber.sendKeys(phoneNumberText);
         btnCreateAccount.tap();
+        btnCreateAccount.waitFor(10);
     }
 }

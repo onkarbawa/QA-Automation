@@ -15,7 +15,7 @@ import org.testng.Assert;
 /**
  * Created by bawa.onkar on 05/07/17.
  */
-public class Settings {
+public class Settings extends AbstractScreen {
 
     static UIElement settings =  new UIElement(By.name("Settings"));
     static UIElement location =  new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
