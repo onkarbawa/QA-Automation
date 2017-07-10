@@ -66,11 +66,7 @@ public class Home extends AbstractScreen {
 
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
-		try {
-			footerTabsScreen.tapShop();
-		} catch (Exception e) {
-		}
-
+		footerTabsScreen.tapShop();
 		currentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName);
 		UIElement.byAccessibilityId(cityName).waitFor(30).tap();

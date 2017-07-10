@@ -46,6 +46,7 @@ public class AccountInfo extends AbstractScreen {
 		Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
 		Reporter.addStepLog(String.format("Password: actual- %s, expected- %s", actPassword, password));
 
+		phoneNumber = StringUtils.right(phoneNumber, 10);
 		phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6),
 				phoneNumber.substring(6, 10));
 
