@@ -18,9 +18,9 @@ public class FacebookLogin extends AbstractScreen {
 	UIElement btnLoginUsingEmail = UIElement.byAccessibilityId("Log In with Phone Number or Email Address");
 	UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
 
-	UIElement txtInBrowserUsername = UIElement.byXpath("//*[@value='Email address or phone number']");
-	UIElement txtInBrowserPassword = UIElement.byXpath("//*[@value='Facebook password']");
-	UIElement btnInBrowserLogin = UIElement.byAccessibilityId("Log In");
+	UIElement txtInBrowserUsername = UIElement.byXpath("//XCUIElementTypeSecureTextField/preceding-sibling::XCUIElementTypeTextField");
+	UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
+	UIElement btnInBrowserLogin = UIElement.byName("Log In");
 	UIElement btnInBrowserContinueAs = UIElement.byXpath("//*[contains(@label,'Continue as')]");
 
 	UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
