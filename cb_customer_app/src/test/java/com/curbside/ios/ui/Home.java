@@ -69,7 +69,7 @@ public class Home extends AbstractScreen {
 		footerTabsScreen.tapShop();
 		currentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName);
-		UIElement.byAccessibilityId(cityName).waitFor(30).tap();
+		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
 
 		loadingIcon.waitForNot(30);
 	}
@@ -98,7 +98,7 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st retailer partner on stores screen")
 	public void select1stRetailerPartner() throws Throwable {
-		UIElement.byClass("XCUIElementTypeCell").tap();
+		UIElement.byClass("XCUIElementTypeCell").waitFor(10).tap();
 		loadingIcon.waitForNot(30);
 	}
 

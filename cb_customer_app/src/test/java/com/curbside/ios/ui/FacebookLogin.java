@@ -20,7 +20,8 @@ public class FacebookLogin extends AbstractScreen {
 
 	UIElement txtInBrowserUsername = UIElement.byXpath("//XCUIElementTypeSecureTextField/preceding-sibling::XCUIElementTypeTextField");
 	UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
-	UIElement btnInBrowserLogin = UIElement.byName("Log In");
+	//UIElement btnInBrowserLogin = UIElement.byName("Log In");
+	UIElement btnInBrowserLogin = UIElement.byXpath("//XCUIElementTypeButton[@name='Log In']");
 	UIElement btnInBrowserContinueAs = UIElement.byXpath("//*[contains(@label,'Continue as')]");
 
 	UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
@@ -40,7 +41,7 @@ public class FacebookLogin extends AbstractScreen {
 		} catch (Exception e) {}
 		
 		btnLoginUsingEmail.waitFor(10).tap();
-		txtInBrowserPassword.waitFor(10).sendKeys(emailId);
+		txtInBrowserUsername.waitFor(10).sendKeys(emailId);
 		txtInBrowserPassword.sendKeys(password);
 		btnInBrowserLogin.tap();
 		btnInBrowserContinueAs.waitFor(10).tap();

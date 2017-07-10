@@ -1,4 +1,4 @@
-@appLaunch
+@signUp
 Feature: Signup
 
     @C114954
@@ -16,6 +16,7 @@ Feature: Signup
   @C114958
   Scenario Outline: Add credit card
     Given I launch Curbside application
+    And I have selected test environment
     And I signin in using signup information
     And I tap on 'Payment Info' text
     And I tap on 'Add a new card'
@@ -32,12 +33,13 @@ Feature: Signup
   @C114959
   Scenario: Add loyalty card
     Given I launch Curbside application
+    And I have selected test environment
     And I signin in using signup information
     And I tap on 'Loyalty Cards' text
     And I tap on 'Add a new card'
     And I add an ExtraCare Card numbered '87676478652876'
     And I should see ExtraCare Card info on Loyalty Cards screen
-    And I add any product to cart in 'Palo Alto' location
+    And I add any product to cart in 'Palo Alto Transit Center' location
     And I go to Cart screen
     And I should see loyalty card info on cart screen
     
