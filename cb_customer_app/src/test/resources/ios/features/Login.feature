@@ -15,6 +15,7 @@ Feature: Sign In
   @C114956
   Scenario Outline: Verify Old user should login in curbside app
     Given I launch Curbside application
+    And I have selected test environment
     And I am not signed into application
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
@@ -26,19 +27,21 @@ Feature: Sign In
       |             Email                  |     Password    |
       |      fusic.test1@gmail.com         |     fusic@123   |
 
-
   @C114955
   Scenario Outline: Verify Facebook user should login in curbside app
     Given I launch Curbside application
+    And I have selected test environment
     And I am not signed into application
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
-    
+
     Examples:
       |             Email                  |     Password    |
-      |      jacktest94@gmail.com          |     tft@123     |
+      |      ustft123@gmail.com            |     Admin2642    |
+
+
 
 
 

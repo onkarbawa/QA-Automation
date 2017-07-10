@@ -42,6 +42,6 @@ public class PaymentInfo extends AbstractScreen {
 	public void iShouldSeeCreditInfoOnPaymentInfoScreen() throws Throwable {
 		paymentInfoTitle.waitFor(7);
 		Assert.assertEquals(getUICreditExpiryValue(), "Expires " + getCardExpiryValue(),
-				"Credit Card information is shown in payment info screen");
+				"Credit Card information is not shown in payment info screen");
 	}
 }

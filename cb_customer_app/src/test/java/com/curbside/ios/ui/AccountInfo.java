@@ -28,7 +28,17 @@ public class AccountInfo extends AbstractScreen {
 
 	public AccountInfo() {
 	}
-
+	public int passwordCal(){
+		String password = Properties.getVariable("signupPassword");
+		int length;
+		if (password.length()==12){
+			length = password.length();
+		}else {
+			int x = 12 - password.length();
+			length = x + password.length();
+		}
+		return length;
+	}
 	@Then("^I should see my signup information under Account Info$")
 	public void verifySignUpInfo() throws Throwable {
 		footerTabsScreen.tapMyAccount();
@@ -50,9 +60,10 @@ public class AccountInfo extends AbstractScreen {
 		phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6),
 				phoneNumber.substring(6, 10));
 
+
 		Assert.assertEquals(actEmail, email);
 		Assert.assertEquals(actPhoneNumber, phoneNumber);
-		Assert.assertEquals(actPassword, StringUtils.repeat("∙", password.length()));
+		Assert.assertEquals(actPassword, StringUtils.repeat("∙", accountInfoScreen.passwordCal()));
 	}
 
 	public void signOut() throws Throwable {
