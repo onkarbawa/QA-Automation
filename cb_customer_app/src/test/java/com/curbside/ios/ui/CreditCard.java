@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -49,7 +50,9 @@ public class CreditCard extends AbstractScreen {
 		cardNumber.sendKeys(cardNumberText);
 		expiryDate.sendKeys(cardExpiry);
 		securityCode.sendKeys(cardCvv);
+		MobileDevice.getScreenshot(true);
 		next.tap();
+		
 		newAddress.tap();
 		cardAdd1.sendKeys(add1);
 		cardAdd2.sendKeys(add2);
@@ -57,6 +60,10 @@ public class CreditCard extends AbstractScreen {
 		cardState.tap();
 		cardState.tap();
 		cardZip.sendKeys(zip);
+		MobileDevice.getScreenshot(true);
 		save.tap();
+		
+		save.waitForNot(20);
+		MobileDevice.getScreenshot(true);
 	}
 }

@@ -75,8 +75,7 @@ public class MobileDevice {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 			AppleDevice.launchSettings();
 
-			new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
-
+			UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == '" + appName + "'").scrollTo(SwipeDirection.UP).tap();
 			try {
 				new UIElement(By.name("Location")).tap();
 				new UIElement(By.name(newValue)).tap();
@@ -179,6 +178,25 @@ public class MobileDevice {
         int yOffset = endy - starty;
         
         new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset).release().perform();	
+	}
+	
+	public static void swipe(SwipeDirection swipeDirection) throws Throwable {
+		switch (swipeDirection) {
+		case UP:
+			swipeUp();
+			break;
+		case DOWN:
+			swipeDown();
+			break;
+		case LEFT:
+			swipeLeft();
+			break;
+		case RIGHT:
+			swipeRight();
+			break;
+		default:
+			break;
+		}
 	}
 	
 	@SuppressWarnings("deprecation")

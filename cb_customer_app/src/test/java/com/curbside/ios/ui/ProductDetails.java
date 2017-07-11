@@ -20,10 +20,7 @@ public class ProductDetails extends AbstractScreen {
 
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
-		try{
-			btnAddtoCart.tap();
-		}catch (Exception e){}
-
+		btnAddtoCart.tap();
 		btnRemove.waitFor(10);
 	}
 
