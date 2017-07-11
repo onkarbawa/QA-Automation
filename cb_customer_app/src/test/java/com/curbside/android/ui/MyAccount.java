@@ -11,7 +11,7 @@ import org.testng.Assert;
  * My Account- After clicking My Account tab on footer strip
  */
 
-public class MyAccount {
+public class MyAccount extends AbstractScreen{
 
     static UIElement signUp= new UIElement(By.id("com.curbside.nCurbside:id/button_sign_up"));
     static UIElement emailField = new UIElement(By.id("com.curbside.nCurbside:id/text_email"));
@@ -40,5 +40,11 @@ public class MyAccount {
     public void iShouldBeLoggedIn() throws Throwable {
         nameText.waitFor(5);
         Assert.assertTrue(nameText.isDisplayed(), "User is not logged in");
+    }
+
+    @Then("^I should see the Account details with Email id in it$")
+    public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
+        Thread.sleep(1000);
+        Assert.assertTrue(emailField.isDisplayed(),"Android : User is not able to Sign up");
     }
 }

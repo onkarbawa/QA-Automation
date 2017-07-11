@@ -4,19 +4,15 @@ Feature: Verify Curbside add credit card flow
   #TODO
   @C114958
   Scenario: Verify user is able to add credit card details from Account section
-    Given I launch Curbside application
-    And I land on store selection screen
-    And I set the staging environment
-    And I tap on 'Account' icon
-    And I tap on 'Sign up' button on Account page
-    And I tap on Sign up with email button
-    And I enter 'email' in first text box
-    And I go to next text field
-    And I enter 'Phone Number' in third text box
-    And I go to next text field
-    And I enter 'password' in second text box
-    And I tap on 'Create Account' button on the page
-    And  I should see the Account details with Email id in it
+    Given I launch Curbside application for the first time
+    And I am on Home Screen
+    And I have selected test environment
+    And I tap on 'Account' button
+    And I tap on 'Sign Up' button
+    And I tap on 'Sign Up with Email' button
+    And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
+    When I tap on Create Account button
+    And I should see the Account details with Email id in it
     And I tap on PaymentInfo button on Account page
     And I tap on Add New Card button on Payment info page
     And I send '4012000077777777' in 'card number'

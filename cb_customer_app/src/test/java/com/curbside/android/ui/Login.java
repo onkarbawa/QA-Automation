@@ -38,7 +38,7 @@ public class Login extends AbstractScreen{
 
   @When("^I tap on sign in button$")
   public void iTapOnSignInButtonOnSignInPage() throws Throwable {
-    signInButton.waitFor(3);
+    signInButton.waitFor(5);
     signInButton.tap();
   }
 }

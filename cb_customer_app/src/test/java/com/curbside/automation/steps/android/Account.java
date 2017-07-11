@@ -21,9 +21,4 @@ public class Account {
         customerBaseTestCucumber.getAccountPageAndroid().getSignUpButton().click();
     }
 
-    @Then("^I should see the Account details with Email id in it$")
-    public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
-        Thread.sleep(1000);
-        Assert.assertTrue(customerBaseTestCucumber.getAccountPageAndroid().getEmail().isDisplayed(),"Android : User is not able to Sign up");
-    }
 }

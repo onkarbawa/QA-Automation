@@ -51,6 +51,14 @@ public class UIElement {
 
 		return this;
 	}
+	
+	public UIElement scrollTo(SwipeDirection swipeDirection) throws Throwable {
+		for (int i = 0; i < 10; i++) {
+			if(this.isDisplayed()) break;
+			MobileDevice.swipe(swipeDirection);
+		}
+		return this;
+	}
 
 	public void sendKeys(String text) throws Throwable {
 		getElement().sendKeys(text);
@@ -85,6 +93,10 @@ public class UIElement {
 
 	public static UIElement byXpath(String locator) {
 		return new UIElement(By.xpath(locator));
+	}
+	
+	public static UIElement byPredicate(String locator) {
+		return new UIElement(MobileBy.iOSNsPredicateString(locator));
 	}
 	
 	public static UIElement byCSS(String locator) {

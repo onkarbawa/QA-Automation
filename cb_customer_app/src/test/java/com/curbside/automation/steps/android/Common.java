@@ -15,19 +15,6 @@ public class Common {
     BaseTest baseTest = new BaseTest();
     CustomerBaseTestCucumber customerBaseTestCucumber = new CustomerBaseTestCucumber();
 
-    @And("^I tap on 'Account' icon$")
-    public void iClickOnAccountButton() throws Throwable {
-        Thread.sleep(2500);
-        customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
-        customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
-        customerBaseTestCucumber.getCommonLocatorsPageAndroid().getAccountTabButton().click();
-    }
-
-    @And("^I go to next text field$")
-    public void iGoToNextTextField() throws Throwable {
-        Thread.sleep(1000);
-        AndroidDevice.hitEnter();
-    }
 
     @And("^I set the staging environment$")
     public void iSetTheStagingEnvironment() throws Throwable {

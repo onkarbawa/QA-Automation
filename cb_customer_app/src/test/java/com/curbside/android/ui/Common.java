@@ -13,4 +13,8 @@ public class Common {
 
     }
 
+    @And("^I enter '<Email>' , '<PhoneNumber>' and '<Password>' for Signup$")
+    public void iEnterEmailPhoneNumberAndPasswordForSignup(String Email , String PhoneNumber , String Password) throws Throwable {
+
+    }
 }

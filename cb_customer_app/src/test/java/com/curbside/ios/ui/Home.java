@@ -86,6 +86,7 @@ public class Home extends AbstractScreen {
 		txtSearchNearBy.sendKeys("_#csndc#env#s");
 		btnSearchKeyboard.tap();
 		loadingIcon.waitForNot(30);
+		MobileDevice.getScreenshot(true);
 	}
 
 	@Given("I select '(.*)' retailer partner on stores screen")
@@ -112,6 +113,7 @@ public class Home extends AbstractScreen {
 		select1stRetailerPartner();
 		select1stProduct();
 		productDetailsScreen.addToCart();
+		MobileDevice.getScreenshot(true);
 	}
 
 	@And("^I am on Shop Screen$")
