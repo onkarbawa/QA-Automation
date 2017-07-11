@@ -17,6 +17,8 @@ import org.openqa.selenium.WebElement;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 
+import java.io.IOException;
+
 import static com.curbside.automation.common.BaseTest.driver;
 
 @SuppressWarnings("rawtypes")
@@ -68,7 +70,26 @@ public class AndroidDevice extends MobileDevice {
         ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.BACK);
     }
     
-    public static void resetPermissions(String appName) throws Throwable {
+    public static void resetPermissions(String appPackage) throws Throwable {
+      String command = "adb shell pm reset-permissions " + appPackage;
+      Runtime.getRuntime().exec(command).waitFor();
 	}
+
+    public static void grantLocationPermission(String appPackage) throws Throwable {
+      String command = "adb shell pm grant " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
+      Runtime.getRuntime().exec(command).waitFor();
+    }
+
+    public static void revokeLocationPermission(String appPackage) throws Throwable {
+      String command = "adb shell pm revoke " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
+      Process p = Runtime.getRuntime().exec(command);
+      p.waitFor();
+      System.out.println(p.exitValue());
+    }
+
+    public static void uninstallApp(String appPackage) throws Throwable {
+      String command = "adb shell pm uninstall " + appPackage;
+      Runtime.getRuntime().exec(command).waitFor();
+    }
 }
 
