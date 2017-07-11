@@ -55,7 +55,12 @@ public class DriverFactory {
 		if(reinstall)
 			return getDriver(null, new Object[]{"fullReset", true, "noReset",  false});
 		else
-			return getDriver(null, new Object[]{"fullReset", false, "noReset",  true});
+		{
+			JSONObject deviceInfo= new JSONObject(DeviceStore.getDevice().toString());
+			deviceInfo.remove("app");
+			deviceInfo.remove("ipa");
+			return getDriver(deviceInfo, new Object[]{"fullReset", false, "noReset",  true});
+		}
     }
 	
 	/**

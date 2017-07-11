@@ -4,6 +4,7 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
   @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
     Given I launch Curbside application for the first time
+    And I wait for 'Skip Intro' button
     And I swipe left 2 times on intro page
     And I tap on 'Get Started' button
     And I tap on 'OK' button on 'location access' page
@@ -13,6 +14,7 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
   @C114936
   Scenario: Tapping 'Skip Intro' button should take you to Store Selection Page
     Given I launch Curbside application for the first time
+    And I wait for 'Skip Intro' button
     And I tap on 'Skip Intro' button on intro page
     And I tap on 'OK' button on 'location access' page
     When I accept location access alert

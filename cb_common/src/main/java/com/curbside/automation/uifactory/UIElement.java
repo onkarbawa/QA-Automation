@@ -107,6 +107,10 @@ public class UIElement {
 		return new UIElement(By.id(locator));
 	}
 	
+	public static UIElement byUISelector(String locator) {
+		return new UIElement(MobileBy.AndroidUIAutomator(locator));
+	}
+	
 	public static UIElement byName(String locator) {
 		return new UIElement(By.name(locator));
 	}
