@@ -1,6 +1,7 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -46,5 +47,11 @@ public class MyAccount extends AbstractScreen{
     public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
         Thread.sleep(1000);
         Assert.assertTrue(emailField.isDisplayed(),"Android : User is not able to Sign up");
+    }
+
+    @And("^I tap on Sign up button on My Account page$")
+    public void iTapOnSignUpButtonOnMyAccountPage() throws Throwable {
+        signUp.waitFor(5);
+        signUp.tap();
     }
 }

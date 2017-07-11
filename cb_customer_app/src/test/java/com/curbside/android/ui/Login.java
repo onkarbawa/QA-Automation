@@ -18,7 +18,7 @@ public class Login extends AbstractScreen{
   static UIElement signInWithEmailButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in_email"));
   static UIElement emailField = new UIElement(By.id("com.curbside.nCurbside:id/edit_email"));
   static UIElement passwordField = new UIElement(By.id("com.curbside.nCurbside:id/edit_password"));
-  static UIElement signInButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in"));
+  static UIElement signInButton = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/button_sign_in' and @index='2']");
 
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
   public void iEnterEmailAndPasswordForLogin(String email, String password) throws Throwable {

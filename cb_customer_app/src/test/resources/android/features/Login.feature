@@ -7,9 +7,11 @@ Feature: Verify the login functionality
     And I am on Home Screen
     And I have selected test environment
     And I tap on 'Account' button
-    And I tap on 'Sign In' button
-    #And I tap on 'Create An Account' button
-    # //TODO- Next steps seems to be invalid for android
+    And I tap on Sign up button on My Account page
+    And I tap on sign up with email button on sign up page
+    And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
+    When I tap on Create Account button
+    Then I should be logged in
 
   @C114956
   Scenario Outline: Verify user should login with email

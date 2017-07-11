@@ -6,10 +6,12 @@ package com.curbside.android.ui;
 public class AbstractScreen {
   static Welcome welcomeScreen;
   static Login loginScreen;
+  static SignUp signUpScreen;
 
 
   static {
     welcomeScreen = new Welcome();
     loginScreen = new Login();
+    signUpScreen = new SignUp();
   }
 }

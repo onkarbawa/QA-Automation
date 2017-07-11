@@ -1,7 +1,10 @@
 package com.curbside.android.runners;
 
+import com.curbside.automation.uifactory.DriverFactory;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -18,4 +21,18 @@ import org.testng.annotations.Test;
 
 @Test
 public class LoginTest extends AbstractTestNGCucumberTests {
+  @BeforeMethod
+  public void setup() {
+
+  }
+
+  @AfterMethod
+  public void cleanUp() {
+    try {
+      DriverFactory.releaseDriver();
+    } catch (Throwable th) {
+      th.printStackTrace();
+    }
+
+  }
 }
