@@ -10,15 +10,6 @@ import com.curbside.automation.customerApp.android.pages.location.LocationPage;
 import com.curbside.automation.customerApp.android.pages.shop.HomePage;
 import com.curbside.automation.customerApp.android.pages.signInSignUp.SignInSignUp;
 import com.curbside.automation.customerApp.android.pages.staging.DebugPage;
-import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
-import com.curbside.automation.customerApp.ios.pages.facebookLogin.FacebookLoginIOS;
-import com.curbside.automation.customerApp.ios.pages.home.HomePageIOS;
-import com.curbside.automation.customerApp.ios.pages.login.LoginPageIOS;
-import com.curbside.automation.customerApp.ios.pages.myAccount.AccountInfoIOS;
-import com.curbside.automation.customerApp.ios.pages.myAccount.PaymentInfo;
-import com.curbside.automation.customerApp.ios.pages.settingsPage.SettingsIOS;
-import com.curbside.automation.customerApp.ios.pages.signInSignUp.SignInSignUpPageIOS;
-import com.curbside.automation.customerApp.ios.pages.signUp.SignUpPageIOS;
 import com.curbside.automation.uifactory.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 
@@ -29,7 +20,6 @@ public class CustomerBaseTestCucumber {
     private AppiumDriver driver;
     ApplicationLaunchPageAndroid applicationLaunchPageAndroid;
     Utilities utilities;
-    ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
     HomePage homePageAndroid;
     LocationPage locationPageAndroid;
     CommonLocators commonLocators;
@@ -37,13 +27,6 @@ public class CustomerBaseTestCucumber {
     SignInSignUp signInSignUp;
     DebugPage debugPage;
     SettingsAndroid settingsAndroid;
-    AccountInfoIOS accountInfoIOS;
-    SignInSignUpPageIOS signInSignUpPageIOS;
-    SignUpPageIOS signUpPageIOS;
-    HomePageIOS homePageIOS;
-    LoginPageIOS loginPageIOS;
-    PaymentInfo paymentInfo;
-    FacebookLoginIOS facebookLoginIOS;
 
 
     /**
@@ -55,16 +38,6 @@ public class CustomerBaseTestCucumber {
     public ApplicationLaunchPageAndroid getApplicationLaunchPageAndroid() throws Throwable {
         applicationLaunchPageAndroid = new ApplicationLaunchPageAndroid((AppiumDriver) DriverFactory.getDriver());
         return applicationLaunchPageAndroid;
-    }
-
-    /**
-     * Gets a iOS application initialize
-     *
-     * @return
-     */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch() throws Throwable {
-        iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS((AppiumDriver) DriverFactory.getDriver());
-        return iOSApplicationLaunchPageIOS;
     }
 
     public Utilities getUtilities() throws Throwable {
@@ -131,39 +104,5 @@ public class CustomerBaseTestCucumber {
     public SettingsAndroid getSettingsAndroid() throws Throwable {
         settingsAndroid = new SettingsAndroid((AppiumDriver) DriverFactory.getDriver());
         return settingsAndroid;
-    }
-    /**
-     * Intialization of class variable with driver
-     * @return
-     */
-    public AccountInfoIOS getAccountInfoIOS() throws Throwable {
-        accountInfoIOS = new AccountInfoIOS((AppiumDriver) DriverFactory.getDriver());
-        return accountInfoIOS;
-    }
-
-    public SignInSignUpPageIOS getSignInSignUpPageIOS() throws Throwable {
-        signInSignUpPageIOS = new SignInSignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
-        return signInSignUpPageIOS;
-    }
-
-    public SignUpPageIOS getSignUpPageIOS() throws Throwable {
-        signUpPageIOS = new SignUpPageIOS((AppiumDriver) DriverFactory.getDriver());
-        return signUpPageIOS;
-    }
-    public HomePageIOS getHomePageIOS() throws Throwable {
-        homePageIOS = new HomePageIOS((AppiumDriver) DriverFactory.getDriver());
-        return homePageIOS;
-    }
-    public LoginPageIOS getLoginPageIOS() throws Throwable {
-        loginPageIOS = new LoginPageIOS((AppiumDriver) DriverFactory.getDriver());
-        return loginPageIOS;
-    }
-    public PaymentInfo getPaymentInfo() throws Throwable {
-        paymentInfo = new PaymentInfo((AppiumDriver) DriverFactory.getDriver());
-        return paymentInfo;
-    }
-    public FacebookLoginIOS getFacebookLoginIOS() throws Throwable {
-        facebookLoginIOS = new FacebookLoginIOS((AppiumDriver) DriverFactory.getDriver());
-        return facebookLoginIOS;
     }
    }
