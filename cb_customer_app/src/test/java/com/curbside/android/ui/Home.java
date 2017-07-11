@@ -57,7 +57,6 @@ public class Home extends AbstractScreen {
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
 		steps.acceptLocationAlert();
-        //steps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
@@ -82,6 +81,5 @@ public class Home extends AbstractScreen {
 		debugBackButton.waitFor(2);
 		debugBackButton.tap();
         AndroidDevice.launchCurbsideActivity();
-		//steps.launchApplication("Curbside");
-	}
+    }
 }
