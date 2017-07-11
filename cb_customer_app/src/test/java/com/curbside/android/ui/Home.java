@@ -81,6 +81,5 @@ public class Home extends AbstractScreen {
 		debugBackButton.waitFor(2);
 		debugBackButton.tap();
         AndroidDevice.launchCurbsideActivity();
-		//steps.launchApplication("Curbside");
-	}
+    }
 }

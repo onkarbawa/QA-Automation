@@ -1,7 +1,10 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.java.en.And;
 import com.curbside.automation.uifactory.UIElement;
+
+import java.io.File;
 
 /**
  * @author kumar.anil Footer tab that contains icons for Shop/ Map/ Cart and My

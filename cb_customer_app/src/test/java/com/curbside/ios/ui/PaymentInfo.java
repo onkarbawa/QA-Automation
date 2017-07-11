@@ -3,10 +3,8 @@ package com.curbside.ios.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 /**

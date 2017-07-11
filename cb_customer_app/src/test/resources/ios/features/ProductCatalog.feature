@@ -4,9 +4,10 @@ Feature: Verify store display functionality
   @C114941
   Scenario: Verify products display in landing page
     Given I launch Curbside application for the first time
+    And I am on Home Screen
     And I have selected test environment
-    And I am on 'Stores' Screen
-    And I select 'Metro Areas' > 'Boston' location
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I select a store
     And I select 'Newton' retailer partner on Stores screen
     Then I should see following products listed on partner screen
     | product	| product_image	|
@@ -14,18 +15,18 @@ Feature: Verify store display functionality
     
   @C114942 @C114944
   Scenario: Verify product landing page
-    When I tap on '<product>' product's title from the list
+    Given I launch Curbside application
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I select a store
+    When I tap on product from the list
     Then I should see product details as below
-    | product 	| product_image | SKU	| description		| overview	|
-    | Perfume	| image.png		| khg	| This is perfume	| Excellent product by every meaning	|
+
     
   @C114943
   Scenario: Verify products variant
-    Given I am on Signed Into application
-    And I am on 'Stores' Screen
-    And I select 'Metro Areas' > 'Boston' location
-    And I select 'Newton' retailer partner on Stores screen
-    And I search for 'Perfume' product
-    And I tap on 'Perfume' product's image from the list
-    And I select a product variant 'variant'
-    Then I should see selected variant 'variant' in cart
+    Given I launch Curbside application
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I select a store
+    And I tap on product from the list
+    When I add product in cart
+    Then I saw added product in cart

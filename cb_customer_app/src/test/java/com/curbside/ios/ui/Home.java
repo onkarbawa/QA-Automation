@@ -1,15 +1,12 @@
 package com.curbside.ios.ui;
 
-import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.touch.TouchActions;
+import cucumber.api.java.en.When;
 
 import com.curbside.automation.uifactory.UIElement;
 
@@ -31,6 +28,7 @@ public class Home extends AbstractScreen {
 
 	UIElement currentLocation = UIElement.byAccessibilityId("Current Location");
 	UIElement cityZipSearchTextBox = UIElement.byAccessibilityId("City, Zip or Address");
+
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
@@ -110,6 +108,7 @@ public class Home extends AbstractScreen {
 
 	@Given("I add any product to cart in '(.*)' location")
 	public void i_add_any_product_in_location(String location) throws Throwable {
+		footerTabsScreen.tapShop();
 		searchForLocation(location);
 		select1stRetailerPartner();
 		select1stProduct();
@@ -117,10 +116,31 @@ public class Home extends AbstractScreen {
 		MobileDevice.getScreenshot(true);
 	}
 
-	@And("^I am on Main Screen$")
-	public void iAmOnMainScreen() throws Throwable {
-		steps.acceptLocationAlert();
+	@And("^I am on Shop Screen$")
+	public void iAmOnShopScreen() throws Throwable {
+		//steps.acceptLocationAlert();
 		welcome.skipIntro.tap();
 	}
 
+	@And("^I am on '(.*)' location 'Stores' Screen$")
+	public void iAmOnLocationStoresScreen(String location) throws Throwable {
+		footerTabsScreen.tapShop();
+		searchForLocation(location);
+	}
+
+	@And("^I select a store$")
+	public void iSelectAStore() throws Throwable {
+		select1stRetailerPartner();
+	}
+
+	@When("^I tap on product from the list$")
+	public void iTapOnProductFromTheList() throws Throwable {
+		select1stProduct();
+	}
+
+	@And("^I add product in cart$")
+	public void iAddProductInCart() throws Throwable {
+		Properties.setVariable("productName",productDetailsScreen.getProductName());
+		productDetailsScreen.addToCart();
+	}
 }

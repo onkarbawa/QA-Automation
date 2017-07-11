@@ -5,7 +5,6 @@ import com.curbside.automation.common.utilities.Utilities;
 import com.curbside.automation.customerApp.android.pages.applicationLaunch.ApplicationLaunchPageAndroid;
 import com.curbside.automation.customerApp.android.pages.location.LocationPage;
 import com.curbside.automation.customerApp.android.pages.shop.HomePage;
-import com.curbside.automation.customerApp.ios.pages.applicationLaunch.ApplicationLaunchPageIOS;
 
 /**
  * Created by hitesh.grover on 16/06/17.
@@ -17,7 +16,6 @@ public class CustomerBaseTest extends BaseTest {
      */
     ApplicationLaunchPageAndroid applicationLaunchPageAndroid;
     Utilities utilities;
-    ApplicationLaunchPageIOS iOSApplicationLaunchPageIOS;
     HomePage homePageAndroid;
     LocationPage locationPageAndroid;
 
@@ -31,17 +29,6 @@ public class CustomerBaseTest extends BaseTest {
         if (applicationLaunchPageAndroid == null)
             applicationLaunchPageAndroid = new ApplicationLaunchPageAndroid(this.driver);
         return applicationLaunchPageAndroid;
-    }
-
-    /**
-     * Gets a iOS application initialize
-     *
-     * @return
-     */
-    public ApplicationLaunchPageIOS getiOSApplicationLaunch(){
-        if (iOSApplicationLaunchPageIOS == null)
-            iOSApplicationLaunchPageIOS = new ApplicationLaunchPageIOS(this.driver);
-        return iOSApplicationLaunchPageIOS;
     }
 
     public Utilities getUtilities(){

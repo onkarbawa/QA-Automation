@@ -21,10 +21,10 @@ Feature: Signup
     And I tap on 'Payment Info' text
     And I tap on 'Add a new card'
     And I add credit card information as '<first_name>', '<last_name>', '<card_number>', '<card_expiry>', '<card_cvv>', '<card_address1>', '<card_address2>', '<card_city>', '<card_state>', '<card_zip>'
-    And I should see credit info on payment info screen
+    Then I should see credit info on payment info screen
     And I add any product to cart in 'Palo Alto' location
-    And I go to Cart screen
-    And I should see credit info on cart screen
+    When I go to Cart screen
+    Then I should see credit info on cart screen
 
     Examples:
       | first_name | last_name | card_number      | card_expiry | card_cvv |card_address1 | card_address2 | card_city | card_state | card_zip |
@@ -38,8 +38,7 @@ Feature: Signup
     And I tap on 'Loyalty Cards' text
     And I tap on 'Add a new card'
     And I add an ExtraCare Card numbered '87676478652876'
-    And I should see ExtraCare Card info on Loyalty Cards screen
+    Then I should see ExtraCare Card info on Loyalty Cards screen
     And I add any product to cart in 'Palo Alto Transit Center' location
-    And I go to Cart screen
-    And I should see loyalty card info on cart screen
-    
+    When I go to Cart screen
+    Then I should see loyalty card info on cart screen
