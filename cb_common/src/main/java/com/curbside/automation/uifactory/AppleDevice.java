@@ -1,11 +1,7 @@
 package com.curbside.automation.uifactory;
 
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
-
 import org.json.JSONObject;
-import org.openqa.selenium.By;
+
 
 /**
  * @author kumar.anil
@@ -17,12 +13,13 @@ import com.curbside.automation.devicefactory.IOSApps;
 
 public class AppleDevice extends MobileDevice {
 
-	static UIElement settingGeneral= new UIElement(By.xpath("//XCUIElementTypeCell[@name='General']"));
-	static UIElement settingReset= new UIElement(By.xpath("//XCUIElementTypeCell[@name='Reset']"));
-	static UIElement settingResetLocalAndPrivacy= new UIElement(By.xpath("//XCUIElementTypeCell[@name='Reset Location & Privacy']"));
-	static UIElement resetSetting= new UIElement(MobileBy.AccessibilityId("Reset Settings"));
-	static UIElement back= new UIElement(MobileBy.AccessibilityId("Back"));
-	static UIElement passcode= new UIElement(MobileBy.AccessibilityId("Passcode"));
+	//static UIElement settingGeneral= UIElement.byXpath("//XCUIElementTypeCell[@name='General']");
+	static UIElement settingGeneral= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'General'");
+	static UIElement settingReset= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'Reset'");
+	static UIElement settingResetLocalAndPrivacy= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'Reset Location & Privacy'");
+	static UIElement resetSetting= UIElement.byAccessibilityId("Reset Settings");
+	static UIElement back= UIElement.byAccessibilityId("Back");
+	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
 	
 	public AppleDevice() {
 	}
@@ -45,8 +42,8 @@ public class AppleDevice extends MobileDevice {
 	public static void resetPermissions(String appName) throws Throwable {
 		
 		launchSettings();
-		settingGeneral.scrollTo().tap();
-		settingReset.scrollTo().tap();
+		settingGeneral.scrollTo(SwipeDirection.UP).tap();
+		settingReset.scrollTo(SwipeDirection.UP).tap();
 		settingResetLocalAndPrivacy.tap();
 		try {
 			String code= DeviceStore.getDevice().get("passcode").toString();
@@ -57,12 +54,5 @@ public class AppleDevice extends MobileDevice {
 		
 		resetSetting.tap();
 		back.tap();
-	}
-
-	public static void swipeLeft() throws Throwable {
-		TouchAction touchAction = new TouchAction((PerformsTouchActions) DriverFactory.getDriver());
-		int anchor = (int) (MobileDevice.getHeight() * 0.5);
-		int startPoint = (int) (MobileDevice.getWidth() * 0.8);
-		touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
 	}
 }

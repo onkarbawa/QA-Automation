@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class FacebookLogin extends AbstractScreen {
 	
-	UIElement btnCurbsideSignInWithFacebook= UIElement.byXpath("//*[contains(@label,'Sign In with Facebook')]");
+	UIElement btnCurbsideSignInWithFacebook= UIElement.byPredicate("label CONTAINS 'Sign In with Facebook'");
 	
 	UIElement btnLoginUsingEmail = UIElement.byAccessibilityId("Log In with Phone Number or Email Address");
 	UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
@@ -21,8 +21,8 @@ public class FacebookLogin extends AbstractScreen {
 	UIElement txtInBrowserUsername = UIElement.byXpath("//XCUIElementTypeSecureTextField/preceding-sibling::XCUIElementTypeTextField");
 	UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
 	//UIElement btnInBrowserLogin = UIElement.byName("Log In");
-	UIElement btnInBrowserLogin = UIElement.byXpath("//XCUIElementTypeButton[@name='Log In']");
-	UIElement btnInBrowserContinueAs = UIElement.byXpath("//*[contains(@label,'Continue as')]");
+	UIElement btnInBrowserLogin = UIElement.byPredicate("type ='XCUIElementTypeButton' AND label == 'Log In'");
+	UIElement btnInBrowserContinueAs = UIElement.byPredicate("label CONTAINS 'Continue'");
 
 	UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
 	UIElement signWithFacebook = new UIElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeButton[4]']"));
@@ -40,10 +40,14 @@ public class FacebookLogin extends AbstractScreen {
 			btnCurbsideSignInWithFacebook.tap();
 		} catch (Exception e) {}
 		
-		btnLoginUsingEmail.waitFor(10).tap();
-		txtInBrowserUsername.waitFor(10).sendKeys(emailId);
-		txtInBrowserPassword.sendKeys(password);
-		btnInBrowserLogin.tap();
+		if(!btnInBrowserContinueAs.isDisplayed())
+		{
+			btnLoginUsingEmail.waitFor(10).tap();
+			txtInBrowserUsername.waitFor(10).sendKeys(emailId);
+			txtInBrowserPassword.sendKeys(password);
+			btnInBrowserLogin.tap();
+		}
+		
 		btnInBrowserContinueAs.waitFor(10).tap();
 		btnInBrowserContinueAs.waitForNot(10);
 

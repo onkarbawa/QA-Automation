@@ -101,3 +101,5 @@ https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/ios_
 https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/touch-actions.md
 https://github.com/SrinivasanTarget/awesome-appium	
 https://github.com/priyankshah217/AppiumCucumberTest/blob/master/src/test/java/com/test/RunCukesTest.java
+
+https://mmbs.github.io/tools/adb/2016/06/22/helpful-adb-commands/
