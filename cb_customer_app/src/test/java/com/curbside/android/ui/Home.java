@@ -57,7 +57,7 @@ public class Home extends AbstractScreen {
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
 		steps.acceptLocationAlert();
-        steps.acceptLocationAlert();
+        //steps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
