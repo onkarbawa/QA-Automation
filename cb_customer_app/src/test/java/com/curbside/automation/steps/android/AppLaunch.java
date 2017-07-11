@@ -50,10 +50,10 @@ public class AppLaunch {
 
     }
 
-    @Then("^I should see the Nearby Stores screen$")
-    public void iShouldSeeTheCurrentLocationButton() throws Throwable {
-        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : Not able to land on Near by Stores screen");
-    }
+//    @Then("^I should see the Nearby Stores screen$")
+//    public void iShouldSeeTheCurrentLocationButton() throws Throwable {
+//        Assert.assertTrue(customerBaseTestCucumber.getUtilities().isElementPresent(customerBaseTestCucumber.getCommonLocatorsPageAndroid().accountTabButton),"Android : Not able to land on Near by Stores screen");
+//    }
 
     @And("^I tap on 'Skip Intro' button on the screen$")
     public void iClickOnSkipIntroButtonOnTheScreen() throws Throwable {

@@ -1,13 +1,12 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.uifactory.DriverFactory;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 /**
  * @author hitesh.grover
@@ -37,9 +36,12 @@ public class Home extends AbstractScreen {
 
 
 	@Then("^I should see 'Nearby stores' landing page$")
-	public boolean isDisplayed() throws Throwable
-	{
-		return shopNearLabel.isDisplayed();
+	public void isDisplayed() throws Throwable
+	{	try {
+			Assert.assertTrue(shopNearLabel.isDisplayed());
+			} finally {
+			MobileDevice.getScreenshot(true);
+			}
 	}
 
 	@And("^I tap on My Account icon$")
@@ -78,7 +80,7 @@ public class Home extends AbstractScreen {
 		apiHostOkButton.tap();
 		debugBackButton.waitFor(2);
 		debugBackButton.tap();
-
-		steps.launchApplication("Curbside");
+        AndroidDevice.launchCurbsideActivity();
+		//steps.launchApplication("Curbside");
 	}
 }
