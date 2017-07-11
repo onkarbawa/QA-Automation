@@ -3,20 +3,20 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
 
   @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
-    Given I launch Curbside application
-    And I scroll left 3 times
-    And I tap on 'Get Started' button on the Intro screen
-    And I tap on 'Ok with me' button on Location access screen
-    When I tap on 'Allow Access Location' pop up
-    Then I should see the Nearby Stores screen
+    Given I launch Curbside application for the first time
+    And I swipe left 2 times on intro page
+    And I tap on 'Get Started' button
+    And I tap on 'OK' button on 'location access' page
+    When I accept location access alert
+    Then I should see 'Nearby stores' landing page
 
   @C114936
   Scenario: Tapping 'Skip Intro' button should take you to Store Selection Page
-    Given I reinstall the Curbside App
-    And I tap on 'Skip Intro' button on the screen
-    And I tap on 'Ok with me' button on Location access screen
-    When I tap on 'Allow Access Location' pop up
-    Then I should see the Nearby Stores screen
+    Given I launch Curbside application for the first time
+    And I tap on 'Skip Intro' button on intro page
+    And I tap on 'OK' button on 'location access' page
+    When I accept location access alert
+    Then I should see 'Nearby stores' landing page
 
   @C114998
   Scenario: Verify Disable location services functionality

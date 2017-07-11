@@ -65,7 +65,7 @@ public class DriverFactory {
 	public static void releaseDriver() throws MalformedURLException {
 		WebDriver driver = webDriver.get();
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
             webDriver.set(null);
         }
     }
@@ -119,5 +119,13 @@ public class DriverFactory {
 		
 		//System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
 		//new ImageElement(new File("src/test/resources/ios/elements/DontAllow.png")).tap();
+	}
+
+	public static void hideKeyboard() {
+		try {
+			((AppiumDriver) getDriver()).hideKeyboard();
+		} catch (Throwable ex) {
+			ex.printStackTrace();
+		}
 	}
 }

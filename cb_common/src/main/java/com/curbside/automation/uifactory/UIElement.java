@@ -84,7 +84,11 @@ public class UIElement {
 	}
 
 	public boolean isDisplayed() throws Throwable {
-		return getElement().isDisplayed();
+		try {
+			return getElement().isDisplayed();
+		} catch (NoSuchElementException ex) {
+			return false;
+		}
 	}
 
 	public static UIElement byXpath(String locator) {

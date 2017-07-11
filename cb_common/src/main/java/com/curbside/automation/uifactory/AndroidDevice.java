@@ -5,11 +5,14 @@ package com.curbside.automation.uifactory;
  *
  */
 
+import com.curbside.automation.devicefactory.AndroidApps;
+import com.curbside.automation.devicefactory.IOSApps;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
+import org.json.JSONObject;
 import org.openqa.selenium.WebElement;
 
 import com.curbside.automation.devicefactory.DeviceStore;
@@ -27,6 +30,22 @@ public class AndroidDevice extends MobileDevice {
 		// Get current device
 		((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity"));
 	}
+
+  public static void launchSettings() throws Throwable {
+
+    // Get current device
+    JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
+
+    device.remove("app");
+    device.remove("appPackage");
+    device.remove("appActivity");
+
+    device.put("appPackage", AndroidApps.Settings_Package);
+    device.put("appActivity", AndroidApps.Settings_Activity);
+
+    DriverFactory.releaseDriver();
+    DriverFactory.getDriver(device, new String[]{});
+  }
 
 	public static void launchSettingApp() throws Throwable {
         Activity activity = new Activity("com.android.settings", "Settings");

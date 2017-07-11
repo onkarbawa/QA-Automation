@@ -79,8 +79,11 @@ public class Steps {
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			new UIElement(By.xpath("//*[@text='ALLOW']")).waitFor(5);
-			new UIElement(By.xpath("//*[@text='ALLOW']")).tap();
+			UIElement allow = UIElement.byId("com.android.packageinstaller:id/permission_allow_button");
+			allow.waitFor(5);
+			allow.tap();
+			//new UIElement(By.xpath("//*[@text='ALLOW']")).waitFor(5);
+			//new UIElement(By.xpath("//*[@text='ALLOW']")).tap();
 		}
 		else
 			throw new NotImplementedException(
@@ -106,7 +109,13 @@ public class Steps {
 	@Given("^I (?:tap|click) on '(.*)' button$")
 	public static void tapButton(String buttonName) throws Throwable
 	{
-		UIElement.byAccessibilityId(buttonName).tap();
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			UIElement.byAccessibilityId(buttonName).tap();
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			UIElement button = UIElement.byXpath("//*[@text='" + buttonName + "']");
+			button.waitFor(3);
+			button.tap();
+		}
 	}
 	
 	@And("^I tap on '(.*)' text$")
@@ -117,7 +126,13 @@ public class Steps {
 	@Given("^I (?:tap|click) on '(.*)' button on '(.*)' .*")
 	public void tapButtonOnPage(String buttonName, String pageName) throws Throwable
 	{
-		new UIElement(By.name(buttonName)).tap();
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			new UIElement(By.name(buttonName)).tap();
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			UIElement okButton = UIElement.byXpath("//*[@text='" + buttonName + "']");
+			okButton.waitFor(3);
+			okButton.tap();
+		}
 	}
 
 	@Then("^'(.*)' preference should be set as '(.*)' for '(.*)' app$")
