@@ -55,7 +55,7 @@ public class Login extends AbstractScreen{
 
 
     commonSteps.tapButton("Sign In with Email");
-    loginScreen.iEnterEmailAndPasswordForLogin("fusic.test1@gmail.com","fusic@123  ");
+    loginScreen.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
     loginScreen.iTapOnSignInButtonOnSignInPage();
     accountScreen.userEmailField.waitFor(30);
   }

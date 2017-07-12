@@ -32,6 +32,7 @@ public class FooterTabs extends AbstractScreen {
 
     @And("^I go to Cart screen$")
     public void tapCart() throws Throwable {
+	    Thread.sleep(1000);
         commonSteps.tapButton("Cart");
     }
 }

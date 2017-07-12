@@ -53,7 +53,7 @@ public class MyAccount extends AbstractScreen{
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
 
         phoneNumber = StringUtils.right(phoneNumber, 10);
-        phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6, 10));
+        phoneNumber = String.format("1 (%s)%s%s", phoneNumber.substring(1, 4), phoneNumber.substring(4, 6), phoneNumber.substring(6, 10));
 
         System.out.print(actEmail +"----------------"+actPhoneNumber);
         Assert.assertEquals(actEmail, email);

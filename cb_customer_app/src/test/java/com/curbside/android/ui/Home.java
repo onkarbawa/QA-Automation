@@ -5,6 +5,7 @@ import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -31,7 +32,7 @@ public class Home extends AbstractScreen {
 	UIElement apiHostOkButton = UIElement.byId("android:id/button1");
 	UIElement debugBackButton = UIElement.byAccessibilityId("Navigate up");
 	UIElement myLocationButton = UIElement.byAccessibilityId("My Location");
-	UIElement firstRetailerPartner = UIElement.byXpath("//com.curbside.nCurbside:id/grid_view/android.widget.RelativeLayout[@index='0']");
+	UIElement firstRetailerPartner = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']/android.widget.RelativeLayout[@index='0']");
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable
@@ -55,7 +56,7 @@ public class Home extends AbstractScreen {
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
 		commonSteps.acceptLocationAlert();
-		//commonSteps.acceptLocationAlert();
+//		commonSteps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
@@ -101,11 +102,12 @@ public class Home extends AbstractScreen {
 
 	@Given("I add any product to cart in '(.*)' location")
 	public void i_add_any_product_in_location(String location) throws Throwable {
+		Thread.sleep(1000);
 		footerTabsScreen.tapShop();
 		searchForLocation(location);
 		select1stRetailerPartner();
 		storeDetailsScreen.select1stProduct();
 		productDetailsScreen.addToCart();
-		MobileDevice.getScreenshot(true);
+		AndroidDevice.goBack();
 	}
 }
