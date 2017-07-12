@@ -43,22 +43,22 @@ public class MyAccount extends AbstractScreen{
 
     @Then("^I should see my given information under Account Info$")
     public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
-//        String phoneNumber = Properties.getVariable("signupPhoneNumber");
-//        String email = Properties.getVariable("signupEmail");
-//
-//        String actEmail = userEmailField.getText();
-//        String actPhoneNumber = userPhoneNumberField.getText();
+        String phoneNumber = Properties.getVariable("signupPhoneNumber");
+        String email = Properties.getVariable("signupEmail");
 
-//        Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
-//        Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
-//
-//        phoneNumber = StringUtils.right(phoneNumber, 10);
-//        phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6, 10));
-//
-//        System.out.print(actEmail +"----------------"+actPhoneNumber);
-//        Assert.assertEquals(actEmail, email);
-//        Assert.assertEquals(actPhoneNumber, phoneNumber);
-//        userEmailField.waitFor(10);
+        String actEmail = userEmailField.getText();
+        String actPhoneNumber = userPhoneNumberField.getText();
+
+        Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
+        Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
+
+        phoneNumber = StringUtils.right(phoneNumber, 10);
+        phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6, 10));
+
+        System.out.print(actEmail +"----------------"+actPhoneNumber);
+        Assert.assertEquals(actEmail, email);
+        Assert.assertEquals(actPhoneNumber, phoneNumber);
+        userEmailField.waitFor(10);
         Assert.assertTrue(userEmailField.isDisplayed(), "Android user is not able to sign-in yet");
     }
 
@@ -68,20 +68,15 @@ public class MyAccount extends AbstractScreen{
         signUp.tap();
     }
 
-//    @Given("^I am not signed into application$")
-//    public void ensureSignedOut() throws Throwable {
-//        try {
-//            footerTabsScreen.tapMyAccount();
-//            btnAccountInfo.tap();
-//            accountInfoScreen.signOut();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        try {
-//            UIElement.byAccessibilityId("Cancel").tap();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Given("^I am not signed into application$")
+    public void ensureSignedOut() throws Throwable {
+        try {
+            footerTabsScreen.tapMyAccount();
+            commonSteps.tapButton("Account Info");
+            commonSteps.tapButton("Sign Out");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

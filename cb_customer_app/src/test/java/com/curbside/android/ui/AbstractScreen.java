@@ -11,6 +11,9 @@ public class AbstractScreen {
   static SignUp signUpScreen;
   static Steps commonSteps;
   static FooterTabs footerTabsScreen;
+  static MyAccount accountScreen;
+  static StoreDetails storeDetailsScreen;
+  static ProductDetails productDetailsScreen;
 
 
   static {
@@ -19,5 +22,8 @@ public class AbstractScreen {
     signUpScreen = new SignUp();
     commonSteps = new Steps();
     footerTabsScreen = new FooterTabs();
+    accountScreen = new MyAccount();
+    storeDetailsScreen = new StoreDetails();
+    productDetailsScreen = new ProductDetails();
   }
 }
