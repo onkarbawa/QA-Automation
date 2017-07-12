@@ -10,6 +10,7 @@ public class AbstractScreen {
   static Login loginScreen;
   static SignUp signUpScreen;
   static Steps commonSteps;
+  static FooterTabs footerTabsScreen;
 
 
   static {
@@ -17,5 +18,6 @@ public class AbstractScreen {
     loginScreen = new Login();
     signUpScreen = new SignUp();
     commonSteps = new Steps();
+    footerTabsScreen = new FooterTabs();
   }
 }

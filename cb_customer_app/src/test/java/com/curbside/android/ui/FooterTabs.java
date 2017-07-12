@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.uifactory.UIElement;
 import org.openqa.selenium.By;
 
 /**
@@ -21,4 +22,7 @@ public class FooterTabs {
 //			"android.widget.FrameLayout[@index='3']"));
 
 
+    public void tapMyAccount() throws Throwable {
+        UIElement.byXpath("//*[@text='Account']").waitFor(3).tap();
+    }
 }
