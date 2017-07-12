@@ -25,7 +25,7 @@ public class SignUp extends AbstractScreen {
         String password = "fusic@123";
         String phoneNumberText = "12345678901";
 
-//        Properties.setVariable("signupEmail", emailId);
+        Properties.setVariable("signupEmail", emailId);
 //        Properties.setVariable("signupPassword", password);
 //        Properties.setVariable("signupPhoneNumber", phoneNumberText);
         emailField.waitFor(3);

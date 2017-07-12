@@ -20,6 +20,7 @@ public class Cart extends AbstractScreen {
 	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[2]");
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
+	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -54,13 +55,32 @@ public class Cart extends AbstractScreen {
 		Assert.assertEquals(getAddedProductUI(), Properties.getVariable("productName"),"Added product not shown in the cart");
 	}
 
-//    @Given("^My cart is empty$")
-//    public void myCartIsEmpty() throws Throwable {
-//       footerTabsScreen.tapCart();
-//        while (productItem.isDisplayed()==true)
-//        	try {
-//				MobileDevice.swipe(238, 525, 50, 525);
-//				deleteItem.tap();
-//			}catch (Exception e){}
-//    }
+    @Given("^My cart is empty$")
+    public void myCartIsEmpty() throws Throwable {
+       footerTabsScreen.tapCart();
+       try {
+		   System.out.println(productItem.getText());
+	   }catch (Exception e){}
+
+
+			if (productItem.isDisplayed()) {
+				System.out.println("try before method");
+				MobileDevice.swipe(238, 525, 50, 525);
+				System.out.println("try after method");
+
+//				try {
+//
+//					MobileDevice.swipe(230, 525, 50, 525);
+//					System.out.println("try method");
+//				} catch (Exception e) {
+//					MobileDevice.swipe(230, 300, 50, 275);
+//					System.out.println("catch method");
+//				}
+				if (deleteItem.isDisplayed()) {
+					deleteItem.tap();
+				}
+			}
+
+
+    }
 }

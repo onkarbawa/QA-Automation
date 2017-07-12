@@ -13,6 +13,14 @@ Feature: Signup
     Then I should see my signup information under Account Info
     And I tap on 'Sign Out' button
 
+  @C1149
+  Scenario: Add loyalty card
+    Given I launch Curbside application
+    And I have selected test environment
+    And I signin in using signup information
+    And I add any product to cart in 'Palo Alto' location
+    And My cart is empty
+
   @C114958
   Scenario Outline: Add credit card
     Given I launch Curbside application
