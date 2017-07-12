@@ -36,7 +36,7 @@ public class AppleDevice extends MobileDevice {
 		device.put("bundleId", IOSApps.Settings);
 		
 		DriverFactory.releaseDriver();
-		DriverFactory.getDriver(device, new String[]{});
+		DriverFactory.getDriver(device);
 	}
 	
 	public static void resetPermissions(String appName) throws Throwable {
