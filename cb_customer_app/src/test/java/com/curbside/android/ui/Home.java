@@ -58,7 +58,7 @@ public class Home extends AbstractScreen {
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
 		commonSteps.acceptLocationAlert();
-		commonSteps.acceptLocationAlert();
+//		commonSteps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
@@ -96,8 +96,8 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
-		currentLocation.tap();
-		cityZipSearchTextBox.sendKeys(cityName);
+		currentLocation.waitFor(10).tap();
+		cityZipSearchTextBox.waitFor(10).sendKeys(cityName);
 		AndroidDevice.pressEnter();
 		currentLocation.waitFor(30);
 	}
