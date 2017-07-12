@@ -47,7 +47,7 @@ public class AndroidDevice extends MobileDevice {
 		device.put("appActivity", AndroidApps.Settings_Activity);
 
 		// DriverFactory.releaseDriver();
-		DriverFactory.getDriver(device, new String[] {});
+		DriverFactory.getDriver(device);
 	}
 
     public static void pressKey(int keyCode) throws Throwable {
