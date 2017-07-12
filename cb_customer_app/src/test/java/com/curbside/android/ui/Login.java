@@ -1,6 +1,8 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -18,7 +20,7 @@ public class Login extends AbstractScreen{
   static UIElement signInWithEmailButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in_email"));
   static UIElement emailField = new UIElement(By.id("com.curbside.nCurbside:id/edit_email"));
   static UIElement passwordField = new UIElement(By.id("com.curbside.nCurbside:id/edit_password"));
-  static UIElement signInButton = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/button_sign_in' and @index='2']");
+  UIElement signInButton = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/button_sign_in' and @index='2']");
 
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
   public void iEnterEmailAndPasswordForLogin(String email, String password) throws Throwable {
@@ -41,4 +43,21 @@ public class Login extends AbstractScreen{
     signInButton.waitFor(5);
     signInButton.tap();
   }
+
+  @And("^I signin in using signup information$")
+  public void iAmSignedInUsingSignupInformation() throws Throwable {
+    accountScreen.ensureSignedOut();
+    try {
+      footerTabsScreen.tapMyAccount();
+      commonSteps.tapButton("Sign In");
+    } catch (Exception e) {
+    }
+
+
+    commonSteps.tapButton("Sign In with Email");
+    loginScreen.iEnterEmailAndPasswordForLogin("fusic.test1@gmail.com","fusic@123  ");
+    loginScreen.iTapOnSignInButtonOnSignInPage();
+    accountScreen.userEmailField.waitFor(30);
+  }
+
 }
