@@ -33,7 +33,9 @@ public class ProductDetails extends AbstractScreen {
 
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
-		btnAddtoCart.tap();
+		try {
+			btnAddtoCart.tap();
+		}catch (Exception e){}
 		btnRemove.waitFor(10);
 	}
 
@@ -49,6 +51,7 @@ public class ProductDetails extends AbstractScreen {
 		Assert.assertTrue(productName.isDisplayed(),"Product name and price is not displayed");
 		Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
 		Assert.assertTrue(productSKU.isDisplayed(), "Product sku is not displayed");
+		productOverview.scrollTo();
 		Assert.assertTrue(productOverview.isDisplayed(),"Product overview is not displayed");
 	}
 }
