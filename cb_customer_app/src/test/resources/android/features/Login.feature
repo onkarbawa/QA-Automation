@@ -13,6 +13,17 @@ Feature: Verify the login functionality
     When I tap on Create Account button
     Then I should be logged in
 
+  @C114955
+  Scenario Outline: Verify user should login with facebook
+    Given I launch Curbside application
+    And I tap on 'Account' button
+    And I tap on 'Sign In' button
+    And I tap on 'Sign in with Facebook' button
+    And I enter "<email>" and "<password>" for facebook login
+  Examples:
+    |       email         |      password     |
+    |fusic.test1@gmail.com|fusic@123          |
+
   @C114956
   Scenario Outline: Verify user should login with email
     Given I launch Curbside application
