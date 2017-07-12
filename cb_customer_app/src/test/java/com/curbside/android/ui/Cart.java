@@ -28,6 +28,6 @@ public class Cart extends AbstractScreen {
         }
         String displayedCardInfo = loyaltyCardNumber.getText();
         String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
-        Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
+        Assert.assertEquals(displayedCardInfo, "••••" + last4Chars + "");
     }
 }

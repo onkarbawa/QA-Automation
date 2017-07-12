@@ -42,8 +42,8 @@ Feature: Verify curbside signup flow
     And I am on Home Screen
     And I have selected test environment
     And I signin in using signup information
-    And I tap on 'Loyalty Cards' text
-    And I tap on 'Add a new card'
+    And I tap on 'Loyalty Cards' button
+    And I tap on 'Add New Card' button
     And I add an ExtraCare Card numbered '87676478652876'
     Then I should see ExtraCare Card info on Loyalty Cards screen
     And I add any product to cart in 'Palo Alto Transit Center' location

@@ -12,14 +12,15 @@ import org.testng.Assert;
  */
 public class LoyaltyCard extends AbstractScreen {
 
-    static UIElement loyaltyCardText = UIElement.byId("com.curbside.nCurbside:id/edit_card_number");
-    static UIElement saveButton = UIElement.byId("com.curbside.nCurbside:id/action_save");
-    static UIElement firstLoyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/last_4_view");
+    UIElement loyaltyCardText = UIElement.byId("com.curbside.nCurbside:id/edit_card_number");
+    UIElement saveButton = UIElement.byId("com.curbside.nCurbside:id/action_save");
+    UIElement firstLoyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/last_4_view");
+    UIElement btnAddNewCard = UIElement.byId("com.curbside.nCurbside:id/button_add_card");
+
 
     @And("^I add an ExtraCare Card numbered '(.*)'$")
     public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
         Properties.setVariable("extraCareCardNumber", cardNumber);
-        Steps.tapButton("ExtraCare Card");
         loyaltyCardText.sendKeys(cardNumber);
         saveButton.tap();
         saveButton.waitForNot(10);
@@ -29,7 +30,7 @@ public class LoyaltyCard extends AbstractScreen {
     public void iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen() throws Throwable {
         String displayedCardInfo = firstLoyaltyCardNumber.getText();
         String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
-        Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
+        Assert.assertEquals(displayedCardInfo, "•••• " + last4Chars + "");
     }
 
 }
