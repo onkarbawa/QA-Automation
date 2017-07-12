@@ -27,69 +27,66 @@ public class AndroidDevice extends MobileDevice {
     public AndroidDevice() {
 	}
 	
-	public static void launchCurbsideActivity() throws Throwable {
-		
+	//public static void launchCurbsideActivity() throws Throwable {
+	//	
+	//	// Get current device
+	//	((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity"));
+	//}
+
+	public static void startApplication(String packageName, String activityName) throws Throwable {
+		((AndroidDriver)DriverFactory.getDriver()).startActivity(
+				new Activity(packageName, activityName));
+	}
+	
+	public static void launchSettings() throws Throwable {
 		// Get current device
-		((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity("com.curbside.nCurbside", "com.curbside.nCurbside.app.help.SplashScreenActivity"));
+		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
+
+		device.remove("app");
+		device.put("appPackage", AndroidApps.Settings_Package);
+		device.put("appActivity", AndroidApps.Settings_Activity);
+
+		// DriverFactory.releaseDriver();
+		DriverFactory.getDriver(device, new String[] {});
 	}
 
-  public static void launchSettings() throws Throwable {
-
-    // Get current device
-    JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
-
-    device.remove("app");
-    device.remove("appPackage");
-    device.remove("appActivity");
-
-    device.put("appPackage", AndroidApps.Settings_Package);
-    device.put("appActivity", AndroidApps.Settings_Activity);
-
-    DriverFactory.releaseDriver();
-    DriverFactory.getDriver(device, new String[]{});
-  }
-
-	public static void launchSettingApp() throws Throwable {
-        Activity activity = new Activity("com.android.settings", "Settings");
-    }
-
-    public static void swipeLeft() throws Throwable {
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) DriverFactory.getDriver());
-        int anchor = (int) (MobileDevice.getHeight() * 0.5);
-        int startPoint = (int) (MobileDevice.getWidth() * 0.8);
-        int endPoint = (int) (MobileDevice.getWidth() * 0.01);
-        touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
-
-    }
-
-    public static void hitEnter() throws Throwable {
-        ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(66);
-    }
-
-    public static void goBack() throws Throwable {
-        ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.BACK);
+    public static void pressKey(int keyCode) throws Throwable {
+        ((AndroidDriver)DriverFactory.getDriver()).pressKeyCode(keyCode);
     }
     
+    public static void pressEnter() throws Throwable {
+        pressKey(AndroidKeyCode.ENTER);
+    }
+    
+    public static void goBack() throws Throwable {
+        pressKey(AndroidKeyCode.BACK);
+    }
+
     public static void resetPermissions(String appPackage) throws Throwable {
-      String command = "adb shell pm reset-permissions " + appPackage;
+      String command = getPMPrefix() + "reset-permissions " + appPackage;
       Runtime.getRuntime().exec(command).waitFor();
 	}
 
     public static void grantLocationPermission(String appPackage) throws Throwable {
-      String command = "adb shell pm grant " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
+      String command = getPMPrefix() + "grant " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
       Runtime.getRuntime().exec(command).waitFor();
     }
 
     public static void revokeLocationPermission(String appPackage) throws Throwable {
-      String command = "adb shell pm revoke " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
+      String command = getPMPrefix() + "revoke " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
       Process p = Runtime.getRuntime().exec(command);
       p.waitFor();
       System.out.println(p.exitValue());
     }
 
     public static void uninstallApp(String appPackage) throws Throwable {
-      String command = "adb shell pm uninstall " + appPackage;
+      String command = getPMPrefix() + " uninstall " + appPackage;
       Runtime.getRuntime().exec(command).waitFor();
+    }
+    
+    private static String getPMPrefix() throws Throwable
+    {
+    	return "adb -s " + DeviceStore.getDeviceId() + " shell pm ";
     }
 }
 

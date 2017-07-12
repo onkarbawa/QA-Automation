@@ -30,19 +30,19 @@ public class CreditCard {
                                             String lastName, String cardStreetAddress, String cardAptOrSuite, String cardCity,
                                             String cardState, String cardZip) throws Throwable {
         cardNumberTextField.sendKeys(cardNumber);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         cardExpMonthTextField.sendKeys(cardExpiry);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         cardCCVTextField.sendKeys(ccv);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         firstNameTextField.sendKeys(firstName);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         lastNameTextField.sendKeys(lastName);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         cardStreetAddressTextField.sendKeys(cardStreetAddress);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         cardAptOrSuiteTextField.sendKeys(cardAptOrSuite);
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         cardCityTextField.sendKeys(cardCity);
         DriverFactory.hideKeyboard();
         cardStateDropDown.tap();

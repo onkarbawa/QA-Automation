@@ -40,6 +40,10 @@ public class Steps {
 	public void launchApplicationClean(String appName) throws Throwable
 	{
 		//Reset app permissions from mobile device
+		DeviceStore.getDevice();
+		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			appName= DeviceStore.getDevice().get("appPackage").toString();
+		
 		MobileDevice.resetPermissions(appName);
 		
 		//Close settings app
@@ -112,9 +116,17 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			UIElement.byAccessibilityId(buttonName).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			UIElement button = UIElement.byXpath("//*[@text='" + buttonName + "']");
-			button.waitFor(3);
-			button.tap();
+			UIElement.byXpath("//*[@text='" + buttonName + "']").waitFor(3).tap();
+		}
+	}
+	
+	@Given("^I wait for '(.*)' button$")
+	public static void waitForButton(String buttonName) throws Throwable
+	{
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			UIElement.byAccessibilityId(buttonName).waitFor(15);
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			UIElement.byUISelector("new UiSelector().text(\"" + buttonName + "\")").waitFor(15);
 		}
 	}
 	
@@ -169,7 +181,8 @@ public class Steps {
 	public void embedScreenshot(Scenario scenario) {
 
 		try {
-			MobileDevice.getScreenshot(true);		
+			MobileDevice.getScreenshot(true);	
+			DriverFactory.releaseDriver();
 		} catch (Throwable e) {
 		}
 	}

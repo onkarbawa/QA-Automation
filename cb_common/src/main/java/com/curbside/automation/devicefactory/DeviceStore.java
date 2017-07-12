@@ -8,6 +8,7 @@ package com.curbside.automation.devicefactory;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.json.JsonFileParser;
 import com.curbside.automation.common.json.Platform;
+import com.curbside.automation.uifactory.MobileDevice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class DeviceStore {
     
   private static ThreadLocal<Object> lockedDevice = new ThreadLocal<>();
   private static ThreadLocal<String> lockedPlatform = new ThreadLocal<>();
+  private static ThreadLocal<String> deviceID = new ThreadLocal<>();
 
   static {
 	String pDeviceStore= System.getProperty("deviceStore");
@@ -123,5 +125,13 @@ public class DeviceStore {
   public static int getIOSDeviceCount()
   {
 	  return iOSDeviceList.size();
+  }
+  
+  public static String getDeviceId() throws Throwable
+  {
+	  if(deviceID.get() == null)
+		  deviceID.set(MobileDevice.getDeviceId());
+	  
+	  return deviceID.get();
   }
 }
