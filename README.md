@@ -76,6 +76,7 @@ $ app-inspector -u YOUR-DEVICE-ID
 > Create a device store and commit at root of the project with name as devices_<name>.json
 
 ##### Start running tests
+> Start appium in session ovrride mode
 ```sh
 $ cd <project_directory>
 $ mvn test -DdeviceStore=../devices_<name>.json
