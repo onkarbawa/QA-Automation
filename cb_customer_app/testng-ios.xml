@@ -1,22 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="iOS Smoke Test Suite" verbose="1" parallel="tests" thread-count="1">
-	<parameter name="platform" value="iOS"/>
+    <parameter name="platform" value="iOS"/>
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Application Launch">
+
+    <test name="iOS- Product Catalog">
         <classes>
-            <class name="com.curbside.ios.runners.AppLaunchTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Sign up">
-        <classes>
-            <class name="com.curbside.ios.runners.SignUpTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Login">
-        <classes>
-            <class name="com.curbside.ios.runners.LoginTest"/>
+            <class name="com.curbside.ios.runners.ProductCatalog"/>
         </classes>
     </test>
 </suite>

@@ -29,6 +29,9 @@ public class Home extends AbstractScreen {
 	UIElement currentLocation = UIElement.byAccessibilityId("Current Location");
 	UIElement cityZipSearchTextBox = UIElement.byAccessibilityId("City, Zip or Address");
 
+	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
+	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText");
+
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
@@ -142,5 +145,11 @@ public class Home extends AbstractScreen {
 	public void iAddProductInCart() throws Throwable {
 		Properties.setVariable("productName",productDetailsScreen.getProductName());
 		productDetailsScreen.addToCart();
+	}
+
+	@Then("^I should see following products listed on partner screen$")
+	public void iShouldSeeFollowingProductsListedOnPartnerScreen() throws Throwable {
+		Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
+		Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
 	}
 }
