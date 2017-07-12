@@ -1,7 +1,9 @@
 package com.curbside.automation.steps.android;
 
+import com.curbside.android.ui.AbstractScreen;
 import com.curbside.automation.common.BaseTest;
 import com.curbside.automation.customerApp.common.CustomerBaseTestCucumber;
+import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.DriverFactory;
 import cucumber.api.java.en.And;
@@ -21,7 +23,7 @@ public class Common {
         customerBaseTestCucumber.getHomePageAndroid().getSearchButton().click();
         Thread.sleep(1000);
         customerBaseTestCucumber.getHomePageAndroid().getProductSearchTextField().sendKeys("_#csndc#ena");
-        AndroidDevice.hitEnter();
+        AndroidDevice.pressEnter();
         Thread.sleep(2000);
         AndroidDevice.goBack();
         Thread.sleep(1000);
@@ -33,7 +35,8 @@ public class Common {
         Thread.sleep(1000);
         AndroidDevice.goBack();
         customerBaseTestCucumber.getDebugPagePage().getBackButton().click();
-        AndroidDevice.launchCurbsideActivity();
+        AndroidDevice.startApplication(DeviceStore.getDevice().get("appPackage").toString(), 
+        		DeviceStore.getDevice().get("appActivity").toString());
     }
 
     @And("^I search and tap on'App permissions' on the screen$")
