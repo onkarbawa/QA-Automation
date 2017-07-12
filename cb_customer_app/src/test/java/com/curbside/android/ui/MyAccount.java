@@ -58,7 +58,7 @@ public class MyAccount extends AbstractScreen{
 //        Assert.assertEquals(actEmail, email);
 //        Assert.assertEquals(actPhoneNumber, phoneNumber);
         userEmailField.waitFor(10);
-        Assert.assertTrue(userEmailField.isDisplayed(), "Android user is not able to sign-in yet");
+        Assert.assertTrue(userEmailField.isDisplayed(), "User is not able to sign-in");
     }
 
     @And("^I tap on Sign up button on My Account page$")

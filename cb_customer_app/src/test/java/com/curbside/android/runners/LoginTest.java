@@ -21,18 +21,5 @@ import org.testng.annotations.Test;
 
 @Test
 public class LoginTest extends AbstractTestNGCucumberTests {
-  @BeforeMethod
-  public void setup() {
 
-  }
-
-  @AfterMethod
-  public void cleanUp() {
-    try {
-      DriverFactory.releaseDriver();
-    } catch (Throwable th) {
-      th.printStackTrace();
-    }
-
-  }
 }
