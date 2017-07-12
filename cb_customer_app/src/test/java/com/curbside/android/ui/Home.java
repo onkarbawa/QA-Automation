@@ -5,7 +5,6 @@ import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -33,6 +32,9 @@ public class Home extends AbstractScreen {
 	UIElement debugBackButton = UIElement.byAccessibilityId("Navigate up");
 	UIElement myLocationButton = UIElement.byAccessibilityId("My Location");
 	UIElement firstRetailerPartner = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']/android.widget.RelativeLayout[@index='0']");
+	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
+	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
+
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable
@@ -56,7 +58,7 @@ public class Home extends AbstractScreen {
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
 		commonSteps.acceptLocationAlert();
-//		commonSteps.acceptLocationAlert();
+		commonSteps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
@@ -86,8 +88,8 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st retailer partner on stores screen")
 	public void select1stRetailerPartner() throws Throwable {
-		firstRetailerPartner.waitFor(10).tap();
-		firstRetailerPartner.waitForNot(30);
+       firstRetailerPartner.waitFor(10).tap();
+       firstRetailerPartner.waitForNot(30);
 	}
 
 
@@ -110,4 +112,21 @@ public class Home extends AbstractScreen {
 		productDetailsScreen.addToCart();
 		AndroidDevice.goBack();
 	}
+
+	@Then("I should see nearby stores to current location")
+    public void nearbyStoresCurrentLocation() throws Throwable {
+
+	    Assert.assertFalse(noStoresInAreaText.isDisplayed(), "Curbside services are not in this area");
+	    try{
+            firstRetailerPartner.waitFor(5);
+            firstRetailerPartnerListView.waitFor(5);
+        }catch (Exception e){}
+
+	    if(firstRetailerPartnerListView.isDisplayed()){
+            Assert.assertTrue(firstRetailerPartnerListView.isDisplayed(),"Android : Not able to load the stores");
+        }else{
+            Assert.assertTrue(firstRetailerPartner.isDisplayed(),"Android : Not able to load the stores");
+        }
+
+    }
 }

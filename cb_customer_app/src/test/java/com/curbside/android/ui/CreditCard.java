@@ -50,8 +50,6 @@ public class CreditCard {
         UIElement cardStateListSelect = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView//android.widget.CheckedTextView[@text='" + cardState + "']");
         cardStateListSelect.tap();
         cardZipTextField.sendKeys(cardZip);
-        DriverFactory.hideKeyboard();
-        MobileDevice.getScreenshot(true);
         saveButton.tap();
 
     }
