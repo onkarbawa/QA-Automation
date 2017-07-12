@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -17,7 +18,7 @@ public class Home extends AbstractScreen {
 	
 	static UIElement nearBy= new UIElement(By.name("Near"));
 	static UIElement locationLink = UIElement.byId("com.curbside.nCurbside:id/button_location");
-	static UIElement shopNearLabel = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/container_linear_layout_toolbar']/android.widget.TextView");
+	static UIElement shopNearLabel = UIElement.byUISelector("new UiSelector().text(\"Nearby Stores\")");
 	static UIElement myAccount = new UIElement(By.id("com.curbside.nCurbside:id/bb_bottom_bar_icon"));
 	static UIElement sorryMessage = UIElement.byXpath("//*[@text='Sorry, we’re not in that area yet.']");
 	UIElement searchIcon = UIElement.byId("com.curbside.nCurbside:id/action_search");
@@ -30,10 +31,6 @@ public class Home extends AbstractScreen {
 	UIElement apiHostOkButton = UIElement.byId("android:id/button1");
 	UIElement debugBackButton = UIElement.byAccessibilityId("Navigate up");
 	UIElement myLocationButton = UIElement.byAccessibilityId("My Location");
-
-	Steps steps = new Steps();
-	//Welcome welcome = new Welcome();
-
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable
@@ -56,8 +53,7 @@ public class Home extends AbstractScreen {
 		welcomeScreen.skipIntro.tap();
 		welcomeScreen.okButton.waitFor(5);
 		welcomeScreen.okButton.tap();
-		steps.acceptLocationAlert();
-        //steps.acceptLocationAlert();
+		commonSteps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
@@ -66,8 +62,8 @@ public class Home extends AbstractScreen {
 		searchIcon.tap();
 		searchBox.waitFor(5);
 		searchBox.sendKeys("_#csndc#ena");
-		((AndroidDriver) DriverFactory.getDriver()).pressKeyCode(AndroidKeyCode.ENTER);
-
+		AndroidDevice.pressEnter();
+		
 		apiHost.waitFor(3);
 		if (myLocationButton.isDisplayed()) {
 			debugBackButton.tap();
@@ -81,7 +77,7 @@ public class Home extends AbstractScreen {
 		apiHostOkButton.tap();
 		debugBackButton.waitFor(2);
 		debugBackButton.tap();
-        AndroidDevice.launchCurbsideActivity();
-		//steps.launchApplication("Curbside");
+        AndroidDevice.startApplication(DeviceStore.getDevice().get("appPackage").toString(), 
+        		DeviceStore.getDevice().get("appActivity").toString());
 	}
 }

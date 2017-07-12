@@ -130,7 +130,11 @@ public class MobileDevice {
 		int xOffset = endx - startx;
         int yOffset = endy - starty;
         
-        new TouchAction((AppiumDriver)DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset).release().perform();	
+        new TouchAction((AppiumDriver)DriverFactory.getDriver())
+			        .press(startx, starty)
+			        .moveTo(xOffset, yOffset)
+			        .waitAction(1000)
+			        .release().perform();
 	}
 	
 	public static void swipe(SwipeDirection swipeDirection) throws Throwable {
@@ -155,8 +159,10 @@ public class MobileDevice {
 	@SuppressWarnings("deprecation")
 	public static File getSource() throws Throwable
 	{
+		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			return null;
+		
 		File outputFile= null;
-
 		String source= DriverFactory.getDriver().getPageSource();
 		if(source.startsWith("<html"))
 			outputFile= File.createTempFile("src_", ".html");
@@ -176,10 +182,11 @@ public class MobileDevice {
 			FileUtils.copyFile(scrnshot, tmpFile);
 			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
 			
+			
 			File srcFile= getSource();
-			tmpFile= File.createTempFile("src_", "." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
-			FileUtils.copyFile(srcFile, tmpFile);
-			Reporter.addStepLog("<a href='" + tmpFile.getAbsolutePath() + "'>page source</a>");
+			File tmpSrcFile= File.createTempFile("src_", "." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
+			FileUtils.copyFile(srcFile, tmpSrcFile);
+			Reporter.addStepLog("<a href='" + tmpSrcFile.getAbsolutePath() + "'>page source</a>");
 			
 			return tmpFile;
 		}
@@ -197,11 +204,11 @@ public class MobileDevice {
 	}
 
 	public static void resetPermissions(String appName) throws Throwable {
-		if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+		if (DeviceStore.getPlatform().equalsIgnoreCase("ios"))
 			AppleDevice.resetPermissions(appName);
-		else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
 			AndroidDevice.resetPermissions(appName);
-		else
+		} else
 			throw new NotImplementedException("Not yet implemented");
 	}
  }

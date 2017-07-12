@@ -24,7 +24,7 @@ public class PaymentInfo {
 
     @Then("^I should see the card added to Payment info$")
     public void iShouldSeeTheCardAddedToPaymentInfo() throws Throwable {
-        firstCard.waitFor(15);
+        firstCard.waitFor(20);
         Assert.assertTrue(firstCard.isDisplayed(), "Android : card is not added yet");
 
     }
