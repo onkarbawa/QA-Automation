@@ -4,6 +4,7 @@ Feature: Verify the login functionality
   @C114957
   Scenario: Verify New user should login in curbside app
     Given I launch Curbside application for the first time
+    And I wait for 'Skip Intro' button
     And I am on Home Screen
     And I have selected test environment
     And I tap on 'Account' button
@@ -31,6 +32,7 @@ Feature: Verify the login functionality
   @C114956
   Scenario Outline: Verify user should login with email
     Given I launch Curbside application
+    And I wait for 'Skip Intro' button
     And I am on Home Screen
     And I tap on 'Account' button
     And I tap on 'Sign In' button

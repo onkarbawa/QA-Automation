@@ -22,7 +22,7 @@ public class CreditCard {
     UIElement cardCityTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_city"));
     UIElement cardStateDropDown = new UIElement(By.id("com.curbside.nCurbside:id/edit_state"));
     UIElement cardZipTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_zip"));
-    UIElement saveButton = new UIElement(By.id("com.curbside.nCurbside:id/action_save"));
+    UIElement saveButton =  UIElement.byId("com.curbside.nCurbside:id/action_save");
 
 
     @And("^I add credit card information as '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)', '(.*)','(.*)', '(.*)', '(.*)'$")
@@ -52,7 +52,7 @@ public class CreditCard {
         cardZipTextField.sendKeys(cardZip);
         DriverFactory.hideKeyboard();
         MobileDevice.getScreenshot(true);
-        saveButton.waitFor(5).tap();
+        saveButton.tap();
 
     }
 
