@@ -4,11 +4,10 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
