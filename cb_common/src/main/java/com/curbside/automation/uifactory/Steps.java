@@ -105,7 +105,7 @@ public class Steps {
 	
 	@Given("^I swipe left (\\d+) time(?:s)$")
 	public void swipeLeft(int times) throws Throwable {
-		for (int i = 0; i < times; i++) {
+		for (int i = 0; i <= times; i++) {
 				MobileDevice.swipeLeft();
 			}
 	}

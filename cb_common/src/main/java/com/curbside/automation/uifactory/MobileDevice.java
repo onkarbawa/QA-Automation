@@ -2,6 +2,8 @@ package com.curbside.automation.uifactory;
 import java.io.File;
 import java.util.List;
 
+import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.common.utilities.Utilities;
 import com.curbside.automation.devicefactory.AndroidApps;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
@@ -134,23 +136,27 @@ public class MobileDevice {
         new TouchAction((AppiumDriver)DriverFactory.getDriver())
 			        .press(startx, starty)
 			        .moveTo(xOffset, yOffset)
-			        .waitAction(1000)
+			        .waitAction()
 			        .release().perform();
 	}
 	
 	public static void swipe(SwipeDirection swipeDirection) throws Throwable {
 		switch (swipeDirection) {
 		case UP:
-			swipeUp();
+			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Up);
+		//	swipeUp();
 			break;
 		case DOWN:
-			swipeDown();
+			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Down);
+		//	swipeDown();
 			break;
 		case LEFT:
-			swipeLeft();
+			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
+		//	swipeLeft();
 			break;
 		case RIGHT:
-			swipeRight();
+			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Right);
+		//	swipeRight();
 			break;
 		default:
 			break;

@@ -20,6 +20,7 @@ Feature: Curbside tutorial is prompted when app is launched first time and verif
     When I accept location access alert
     Then I should see 'Nearby stores' landing page
 
+    #TODO
   @C114998
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'OFF' for 'Curbside' app

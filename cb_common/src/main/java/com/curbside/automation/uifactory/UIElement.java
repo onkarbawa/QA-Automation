@@ -9,6 +9,8 @@ import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileBy;
@@ -139,23 +141,6 @@ public class UIElement {
 		} catch (Exception e) {
 			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
 		} 
-	}
-
-	public void swipeLeftElement() throws Throwable {
-		WebElement element = getElement();
-
-		int x = element.getLocation().getX();
-		int y = element.getLocation().getY();
-
-		int width = element.getSize().getWidth();
-		int height = element.getSize().getHeight();
-
-	//	MobileDevice.swipe((int)(width * 0.85), height/2, (int)(width * 0.15), height/2);
-		new TouchAction((AppiumDriver)DriverFactory.getDriver())
-				.press((int)(width * 0.85), height/2)
-				.moveTo((int)(width * 0.15), height/2)
-				.waitAction(1000)
-				.release().perform();
 	}
 
     public UIElement swipeUpSlow() throws Throwable {

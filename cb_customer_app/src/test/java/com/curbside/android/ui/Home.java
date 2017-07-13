@@ -3,9 +3,11 @@ package com.curbside.android.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -89,8 +91,13 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st retailer partner on stores screen")
 	public void select1stRetailerPartner() throws Throwable {
-       firstRetailerPartner.waitFor(10).tap();
-       firstRetailerPartner.waitForNot(30);
+		if (firstRetailerPartner.waitFor(10).isDisplayed()) {
+			firstRetailerPartner.tap();
+			firstRetailerPartner.waitForNot(30);
+		} else {
+			firstRetailerPartnerListView.waitFor(10).tap();
+			firstRetailerPartnerListView.waitForNot(30);
+		}
 	}
 
 
@@ -133,12 +140,10 @@ public class Home extends AbstractScreen {
             firstRetailerPartnerListView.waitFor(5);
         }catch (Exception e){}
 
-	    if(firstRetailerPartnerListView.isDisplayed()){
-            Assert.assertTrue(firstRetailerPartnerListView.isDisplayed(),"Android : Not able to load the stores");
-        }else{
-            Assert.assertTrue(firstRetailerPartner.isDisplayed(),"Android : Not able to load the stores");
-        }
-	}
+		Assert.assertTrue(firstRetailerPartnerListView.isDisplayed() || firstRetailerPartner.isDisplayed(),
+			"Android : Not able to load the stores");
+
+    }
 
 	@And("^I am on '(.*)' location 'Stores' Screen$")
 	public void iAmOnLocationStoresScreen(String location) throws Throwable {
@@ -150,4 +155,8 @@ public class Home extends AbstractScreen {
         select1stRetailerPartner();
     }
 
+	@When("^I tap on retailer on Near by stores screen$")
+	public void iTapOnRetailerOnNearByStoresScreen() throws Throwable {
+		select1stRetailerPartner();
+	}
 }
