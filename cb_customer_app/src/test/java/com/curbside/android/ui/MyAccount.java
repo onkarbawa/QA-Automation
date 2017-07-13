@@ -50,7 +50,7 @@ public class MyAccount extends AbstractScreen{
         Assert.assertTrue(userEmailField.isDisplayed(), "User is not able to sign-in");
 
         String actEmail = userEmailField.getText();
-        String actPhoneNumber = userPhoneNumberField.getText().trim().replaceAll("[()-]", "").replaceAll(" ", "");
+        String actPhoneNumber = userPhoneNumberField.getText().split("\\(")[1].replaceAll("[)-]", "").replaceAll(" ", "");
 
         Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
