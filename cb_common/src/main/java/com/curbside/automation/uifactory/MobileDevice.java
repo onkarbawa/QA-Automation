@@ -13,6 +13,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.openqa.selenium.*;
+import org.openqa.selenium.html5.Location;
 
 import com.cucumber.listener.Reporter;
 
@@ -240,5 +241,11 @@ public class MobileDevice {
                     .moveTo(0, endPoint)
                     .release().perform();
         }
+	}
+	
+	public static void setGeoLocation(double latitude, double longitude, double altitude) throws Throwable
+	{
+		Location l= new Location(latitude, longitude, altitude);
+		((AppiumDriver)DriverFactory.getDriver()).setLocation(l);
 	}
  }
