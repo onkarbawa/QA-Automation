@@ -155,6 +155,6 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see nearby stores$")
 	public void iShouldSeeNearbyStores() throws Throwable {
-		Assert.assertTrue(UIElement.byClass("XCUIElementTypeCell").isDisplayed(),"Stores are not displayed in selected location");
+		Assert.assertTrue(UIElement.byClass("XCUIElementTypeCell").waitFor(10).isDisplayed(),"Stores are not displayed in selected location");
 	}
 }

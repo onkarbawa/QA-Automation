@@ -142,22 +142,4 @@ public class UIElement {
 			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
 		} 
 	}
-
-	public void swipeLeftElement() throws Throwable {
-		WebElement element = getElement();
-
-		int x = element.getLocation().getX();
-		int y = element.getLocation().getY();
-
-		int width = element.getSize().getWidth();
-		int height = element.getSize().getHeight();
-
-	//	MobileDevice.swipe((int)(width * 0.85), height/2, (int)(width * 0.15), height/2);
-		new TouchAction((AppiumDriver)DriverFactory.getDriver())
-				.press((int)(width * 0.85), height/2)
-				.moveTo((int)(width * 0.15), height/2)
-				.waitAction(1000)
-				.release().perform();
-	}
-
 }
