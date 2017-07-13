@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
@@ -41,7 +42,7 @@ public class Home extends AbstractScreen {
 	{	try {
 				Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed());
 			} finally {
-				MobileDevice.getScreenshot(true);
+//				MobileDevice.getScreenshot(true);
 			}
 	}
 
@@ -96,7 +97,17 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
-		currentLocation.waitFor(10).tap();
+		try {
+            currentLocation.waitFor(10).tap();
+        }catch (Exception e){}
+
+        try {
+            if(searchBox.isDisplayed()){
+                searchBackButton.tap();
+                currentLocation.tap();
+            }
+        }catch(Exception ex){}
+
 		cityZipSearchTextBox.waitFor(10).sendKeys(cityName);
 		AndroidDevice.pressEnter();
 		currentLocation.waitFor(30);
@@ -127,6 +138,16 @@ public class Home extends AbstractScreen {
         }else{
             Assert.assertTrue(firstRetailerPartner.isDisplayed(),"Android : Not able to load the stores");
         }
+	}
 
+	@And("^I am on '(.*)' location 'Stores' Screen$")
+	public void iAmOnLocationStoresScreen(String location) throws Throwable {
+		searchForLocation(location);
+	}
+
+    @And("^I select a store$")
+    public void iSelectAStore() throws Throwable {
+        select1stRetailerPartner();
     }
+
 }

@@ -9,8 +9,6 @@ import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileBy;
@@ -159,5 +157,13 @@ public class UIElement {
 				.waitAction(1000)
 				.release().perform();
 	}
+
+    public UIElement swipeUpSlow() throws Throwable {
+        for (int i = 0; i < 20; i++) {
+            if(this.isDisplayed()) break;
+            MobileDevice.swipeUpSlowly();
+        }
+        return this;
+    }
 
 }

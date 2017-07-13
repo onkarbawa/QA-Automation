@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.curbside.automation.devicefactory.AndroidApps;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.PerformsTouchActions;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.NotImplementedException;
@@ -210,5 +211,28 @@ public class MobileDevice {
 			AndroidDevice.resetPermissions(appName);
 		} else
 			throw new NotImplementedException("Not yet implemented");
+	}
+
+	public static void swipeUpSlowly() throws Throwable
+	{
+        int anchor = (int) (MobileDevice.getWidth() * 0.5);
+        int startPoint = (int) (MobileDevice.getHeight() * 0.8);
+        int endPoint = (int) (MobileDevice.getHeight() * 0.6);
+
+        if(DeviceStore.getPlatform().equalsIgnoreCase("ios")){
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver())
+                    .press(anchor, startPoint)
+                    .waitAction(1000)
+                    .moveTo(0, startPoint - (2 * startPoint))
+                    .release().perform();
+
+        }
+        else if(DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver())
+                    .press(anchor, startPoint)
+                    .waitAction(1000)
+                    .moveTo(0, endPoint)
+                    .release().perform();
+        }
 	}
  }
