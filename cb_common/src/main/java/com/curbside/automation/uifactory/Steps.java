@@ -4,7 +4,9 @@ import java.nio.file.Files;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.utils.FileUtil;
@@ -28,10 +30,12 @@ import io.appium.java_client.MobileBy;
 @SuppressWarnings("rawtypes")
 public class Steps {
 	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
+	static Logger logger= Logger.getLogger(Steps.class);
 	
 	@Given("^I launch (.*) application$")
 	public void launchApplication(String appName) throws Throwable
 	{
+		logger.info("Launching application without install");
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver(false);
 	}
@@ -39,11 +43,14 @@ public class Steps {
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable
 	{
+		logger.info("Re-installing and launching application");
+		
 		//Reset app permissions from mobile device
 		DeviceStore.getDevice();
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 			appName= DeviceStore.getDevice().get("appPackage").toString();
 		
+		logger.info("Resetting permissions for " + appName);
 		MobileDevice.resetPermissions(appName);
 		
 		//Close settings app
@@ -53,12 +60,15 @@ public class Steps {
 		DriverFactory.releaseDriver();
 		
 		//Install and launch application
+		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
 	}
 	
 	@Given("^I accept notifications alert$")
 	public void acceptNotificationAlert() throws Throwable
 	{
+		logger.info("Accepting notification alert");
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
 		else
@@ -68,6 +78,8 @@ public class Steps {
 	
 	public void declineNotificationAlert() throws Throwable
 	{
+		logger.info("Denying notification alert");
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Don’t Allow")).tap();
 		else if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
@@ -80,14 +92,19 @@ public class Steps {
 	@When("^I accept location access alert$")
 	public void acceptLocationAlert() throws Throwable
 	{
+		logger.info("Accepting location alert");
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			UIElement allow = UIElement.byId("com.android.packageinstaller:id/permission_allow_button");
-			allow.waitFor(5);
-			allow.tap();
-			//new UIElement(By.xpath("//*[@text='ALLOW']")).waitFor(5);
-			//new UIElement(By.xpath("//*[@text='ALLOW']")).tap();
+			{
+				UIElement e= UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
+				for (int i = 0; i < 10; i++) {
+					if(!e.isDisplayed())
+						break;
+					e.touch();
+				}
+			};
 		}
 		else
 			throw new NotImplementedException(
@@ -96,6 +113,8 @@ public class Steps {
 	
 	public void declineLocationAlert() throws Throwable
 	{
+		logger.info("Denying location alert");
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Don’t Allow")).tap();
 		else
@@ -105,6 +124,8 @@ public class Steps {
 	
 	@Given("^I swipe left (\\d+) time(?:s)$")
 	public void swipeLeft(int times) throws Throwable {
+		logger.info("Swiping left " + times + " times");
+		
 		for (int i = 0; i <= times; i++) {
 				MobileDevice.swipeLeft();
 			}
@@ -149,6 +170,8 @@ public class Steps {
 
 	@Then("^'(.*)' preference should be set as '(.*)' for '(.*)' app$")
 	public void PreferenceShouldBeSetAsForApp(String preferenceName, String expectedValue, String appName) throws Throwable {
+		logger.info("Setting value of " + preferenceName + " to " + expectedValue);
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 		{
 			AppleDevice.launchSettings();
@@ -162,7 +185,8 @@ public class Steps {
 
 	@Given("^I turn '(.*)' Background App Refresh for '(.*)' app$")
 	public void changeBackgroundRefresh(String ONorOFF, String appName) throws Throwable {
-
+		logger.info("Turning " + ONorOFF + " background refresh for " + appName);
+		
 		AppleDevice.launchSettings();
 		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
 
