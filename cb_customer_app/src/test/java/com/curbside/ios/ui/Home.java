@@ -152,4 +152,9 @@ public class Home extends AbstractScreen {
 		Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
 		Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
 	}
+
+	@Then("^I should see nearby stores$")
+	public void iShouldSeeNearbyStores() throws Throwable {
+		Assert.assertTrue(UIElement.byClass("XCUIElementTypeCell").isDisplayed(),"Stores are not displayed in selected location");
+	}
 }

@@ -62,25 +62,20 @@ public class Cart extends AbstractScreen {
 		   System.out.println(productItem.getText());
 	   }catch (Exception e){}
 
-
+		while (true){
 			if (productItem.isDisplayed()) {
-				System.out.println("try before method");
-				MobileDevice.swipe(238, 525, 50, 525);
-				System.out.println("try after method");
+				try {
 
-//				try {
-//
-//					MobileDevice.swipe(230, 525, 50, 525);
-//					System.out.println("try method");
-//				} catch (Exception e) {
-//					MobileDevice.swipe(230, 300, 50, 275);
-//					System.out.println("catch method");
-//				}
+					MobileDevice.swipe(230, 525, 50, 525);
+					System.out.println("try method");
+				} catch (Exception e) {
+					MobileDevice.swipe(230, 300, 50, 275);
+					System.out.println("catch method");
+				}
 				if (deleteItem.isDisplayed()) {
 					deleteItem.tap();
 				}
 			}
-
-
+		}
     }
 }

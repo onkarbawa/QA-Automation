@@ -1,8 +1,10 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.java.en.Then;
 
 import java.io.File;
 
