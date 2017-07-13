@@ -151,4 +151,15 @@ public class UIElement {
         return this;
     }
 
+	public void touch() throws Throwable {
+		new TouchAction((AppiumDriver)(DriverFactory.getDriver())).tap(getElement()).perform();
+	}
+	
+	public void tapCenter() throws Throwable
+	{
+		MobileElement m= (MobileElement) getElement();
+		Point p= m.getCenter();
+		new TouchAction((AppiumDriver)(DriverFactory.getDriver())).tap(p.x, p.y).perform();
+	}
+
 }
