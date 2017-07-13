@@ -19,9 +19,15 @@
             <class name="com.curbside.android.runners.LoginTest"/>
         </classes>
     </test>
+    <test name="Product Catalog">
+        <classes>
+            <class name="com.curbside.android.runners.ProductCatalog"/>
+        </classes>
+    </test>
     <test name="Store Selection">
         <classes>
             <class name="com.curbside.android.runners.StoreSelectionTest"/>
         </classes>
     </test>
+
 </suite>

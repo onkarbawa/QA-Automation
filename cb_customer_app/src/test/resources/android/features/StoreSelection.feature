@@ -2,8 +2,9 @@
 Feature: Verify store display functionality
 
   @C114940
-  Scenario: Verify store location is displayed in map
+  Scenario: Verify nearby stores display partners/retailers
     Given I launch Curbside application for the first time
+    And I wait for 'Skip Intro' button
     And I am on Home Screen
     And I have selected test environment
     And I search for 'Palo Alto Transit Center' location

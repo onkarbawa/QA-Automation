@@ -142,4 +142,13 @@ public class UIElement {
 			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
 		} 
 	}
+
+    public UIElement swipeUpSlow() throws Throwable {
+        for (int i = 0; i < 20; i++) {
+            if(this.isDisplayed()) break;
+            MobileDevice.swipeUpSlowly();
+        }
+        return this;
+    }
+
 }
