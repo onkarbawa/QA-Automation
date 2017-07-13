@@ -4,6 +4,7 @@ import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
@@ -42,28 +43,40 @@ public class MyAccount extends AbstractScreen{
 
     @Then("^I should see my given information under Account Info$")
     public void iShouldSeeTheAccountDetailsSameAsProvidedOneS() throws Throwable {
-//        String phoneNumber = Properties.getVariable("signupPhoneNumber");
-//        String email = Properties.getVariable("signupEmail");
+        String phoneNumber = Properties.getVariable("signupPhoneNumber");
+        String email = Properties.getVariable("signupEmail");
 
-//        String actEmail = userEmailField.getText();
-//        String actPhoneNumber = userPhoneNumberField.getText();
+        String actEmail = userEmailField.getText();
+        String actPhoneNumber = userPhoneNumberField.getText();
 
-//        Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
-//        Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
-//
-//        phoneNumber = StringUtils.right(phoneNumber, 10);
-//        phoneNumber = String.format("1 (%s) %s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6, 10));
-//
-//        System.out.print(actEmail +"----------------"+actPhoneNumber);
-//        Assert.assertEquals(actEmail, email);
-//        Assert.assertEquals(actPhoneNumber, phoneNumber);
+        Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
+        Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
+
+        phoneNumber = StringUtils.right(phoneNumber, 10);
+        phoneNumber = String.format("1 (%s)%s%s", phoneNumber.substring(1, 4), phoneNumber.substring(4, 6), phoneNumber.substring(6, 10));
+
+        System.out.print(actEmail +"----------------"+actPhoneNumber);
+        Assert.assertEquals(actEmail, email);
+        Assert.assertEquals(actPhoneNumber, phoneNumber);
         userEmailField.waitFor(10);
-        Assert.assertTrue(userEmailField.isDisplayed(), "Android user is not able to sign-in yet");
+        Assert.assertTrue(userEmailField.isDisplayed(), "User is not able to sign-in");
     }
 
     @And("^I tap on Sign up button on My Account page$")
     public void iTapOnSignUpButtonOnMyAccountPage() throws Throwable {
         signUp.waitFor(5);
         signUp.tap();
+    }
+
+    @Given("^I am not signed into application$")
+    public void ensureSignedOut() throws Throwable {
+        try {
+            footerTabsScreen.tapMyAccount();
+            commonSteps.tapButton("Account Info");
+            commonSteps.tapButton("Sign Out");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

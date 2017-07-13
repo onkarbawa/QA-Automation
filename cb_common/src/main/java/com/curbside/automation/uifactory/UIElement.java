@@ -5,6 +5,7 @@ package com.curbside.automation.uifactory;
  *
  */
 
+import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
@@ -18,6 +19,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIElement {
+
+	private final Logger logger = Logger.getLogger(UIElement.class);
 
 	By locator;
 
@@ -78,18 +81,19 @@ public class UIElement {
 	public UIElement waitFor(int timeout) throws Throwable {
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
-			waitObj.until(ExpectedConditions.visibilityOf(getElement()));
+			waitObj.until(ExpectedConditions.visibilityOfElementLocated(this.locator));
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.debug("Unable to wait for visibility of element due to: " + e.getMessage());
 		}
 		
 		return this;
 	}
 
-	public boolean isDisplayed() throws Throwable {
+	public boolean isDisplayed() {
 		try {
 			return getElement().isDisplayed();
-		} catch (NoSuchElementException ex) {
+		} catch (Throwable ex) {
+			logger.debug(ex.getMessage());
 			return false;
 		}
 	}
@@ -133,8 +137,9 @@ public class UIElement {
 	public void waitForNot(int timeout) throws Throwable {
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
-			waitObj.until(ExpectedConditions.invisibilityOf(getElement()));
-		} catch (NoSuchElementException e) {
+			waitObj.until(ExpectedConditions.invisibilityOfElementLocated(this.locator));
+		} catch (Exception e) {
+			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
 		} 
 	}
 

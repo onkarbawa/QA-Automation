@@ -8,11 +8,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Created by hitesh.grover on 28/06/17.
+ * Created by hitesh.grover on 12/07/17.
  */
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/android/features/SignUp.feature",
+        features = "src/test/resources/android/features/StoreSelection.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -20,6 +20,20 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.curbside.automation.steps"})
 
 @Test
-public class SignUpTest extends AbstractTestNGCucumberTests {
+public class StoreSelection extends AbstractTestNGCucumberTests {
+    @BeforeMethod
+    public void setup() {
 
+    }
+
+    @AfterMethod
+    public void cleanUp() {
+        try {
+            DriverFactory.releaseDriver();
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+
+    }
 }
+
