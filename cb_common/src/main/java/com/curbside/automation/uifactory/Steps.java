@@ -84,10 +84,11 @@ public class Steps {
 			new UIElement(By.name("Allow")).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
 			UIElement allow = UIElement.byId("com.android.packageinstaller:id/permission_allow_button");
-			allow.waitFor(5);
-			allow.tap();
-			//new UIElement(By.xpath("//*[@text='ALLOW']")).waitFor(5);
-			//new UIElement(By.xpath("//*[@text='ALLOW']")).tap();
+			allow.waitFor(5).tap();
+			allow.waitForNot(2);
+			// Retry - in some devices it appears twice
+			if (allow.isDisplayed())
+				allow.tap();
 		}
 		else
 			throw new NotImplementedException(
