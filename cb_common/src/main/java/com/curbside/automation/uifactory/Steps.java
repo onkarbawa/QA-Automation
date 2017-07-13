@@ -91,23 +91,20 @@ public class Steps {
 	}
 	
 	@When("^I accept location access alert$")
-	public void acceptLocationAlert() throws Throwable
-	{
+	public void acceptLocationAlert() throws Throwable {
 		logger.info("Accepting location alert");
-		
-		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
-		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			{
-				UIElement e= UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
-				for (int i = 0; i < 10; i++) {
-					if(!e.isDisplayed())
-						break;
-					e.touch();
-				}
-			};
-		}
-		else
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+			UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
+			for (int i = 0; i < 10; i++) {
+				if (!e.isDisplayed())
+					break;
+				e.touch();
+			}
+
+		} else
 			throw new NotImplementedException(
 					"Method acceptLocationAlert is not implemented for platform: " + DeviceStore.getPlatform());
 	}
