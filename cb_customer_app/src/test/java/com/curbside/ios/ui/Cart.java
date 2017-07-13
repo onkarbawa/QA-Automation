@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.PendingException;
@@ -21,7 +22,7 @@ public class Cart extends AbstractScreen {
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
-
+	UIElement productaAddButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
@@ -58,24 +59,16 @@ public class Cart extends AbstractScreen {
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
        footerTabsScreen.tapCart();
-       try {
-		   System.out.println(productItem.getText());
-	   }catch (Exception e){}
-
 		while (true){
 			if (productItem.isDisplayed()) {
-				try {
-
-					MobileDevice.swipe(230, 525, 50, 525);
-					System.out.println("try method");
-				} catch (Exception e) {
-					MobileDevice.swipe(230, 300, 50, 275);
-					System.out.println("catch method");
-				}
-				if (deleteItem.isDisplayed()) {
-					deleteItem.tap();
-				}
+				productaAddButton.tap();
+				UIElement.byName("Remove").tap();
+				UIElement.byName("Remove").waitForNot(8);
+			}
+			else {
+				break;
 			}
 		}
     }
+
 }
