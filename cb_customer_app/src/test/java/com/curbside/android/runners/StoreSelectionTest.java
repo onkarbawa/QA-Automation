@@ -20,20 +20,7 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.curbside.automation.steps"})
 
 @Test
-public class StoreSelection extends AbstractTestNGCucumberTests {
-    @BeforeMethod
-    public void setup() {
+public class StoreSelectionTest extends AbstractTestNGCucumberTests {
 
-    }
-
-    @AfterMethod
-    public void cleanUp() {
-        try {
-            DriverFactory.releaseDriver();
-        } catch (Throwable th) {
-            th.printStackTrace();
-        }
-
-    }
 }
 
