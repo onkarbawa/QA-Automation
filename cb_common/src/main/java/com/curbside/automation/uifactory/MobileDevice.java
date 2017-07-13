@@ -136,7 +136,7 @@ public class MobileDevice {
         new TouchAction((AppiumDriver)DriverFactory.getDriver())
 			        .press(startx, starty)
 			        .moveTo(xOffset, yOffset)
-			        .waitAction()
+			        .waitAction(1000)
 			        .release().perform();
 	}
 	
