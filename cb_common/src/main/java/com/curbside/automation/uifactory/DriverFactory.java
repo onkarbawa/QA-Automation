@@ -54,6 +54,7 @@ public class DriverFactory {
 			deviceInfo.remove("app");
 			deviceInfo.remove("ipa");
 		}
+		deviceInfo.put("noReset", true);
 		return getDriver(deviceInfo);
     }
 	

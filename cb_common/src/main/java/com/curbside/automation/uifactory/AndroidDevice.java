@@ -84,6 +84,11 @@ public class AndroidDevice extends MobileDevice {
       Runtime.getRuntime().exec(command).waitFor();
     }
     
+    public static void clearAppData(String appPackage) throws Throwable {
+        String command = getPMPrefix() + " clear " + appPackage;
+        Runtime.getRuntime().exec(command).waitFor();
+      }
+    
     private static String getPMPrefix() throws Throwable
     {
     	return "adb -s " + DeviceStore.getDeviceId() + " shell pm ";

@@ -219,6 +219,11 @@ public class MobileDevice {
 		} else
 			throw new NotImplementedException("Not yet implemented");
 	}
+	
+	public static void clearAppData(String appName) throws Throwable {
+		if (DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			AndroidDevice.clearAppData(appName);
+	}
 
 	public static void swipeUpSlowly() throws Throwable
 	{

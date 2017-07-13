@@ -52,6 +52,7 @@ public class Steps {
 		
 		logger.info("Resetting permissions for " + appName);
 		MobileDevice.resetPermissions(appName);
+		MobileDevice.clearAppData(appName);
 		
 		//Close settings app
 		((AppiumDriver)DriverFactory.getDriver()).closeApp();
