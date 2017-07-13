@@ -1,7 +1,9 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 
 /**
@@ -10,7 +12,7 @@ import org.openqa.selenium.By;
  */
 
 public class FooterTabs extends AbstractScreen {
-	FooterTabs() {
+	public FooterTabs() {
 	}
 	//TODO
 //	UIElement shopTabButton = new UIElement(By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout[@index='0']/" +
@@ -23,15 +25,20 @@ public class FooterTabs extends AbstractScreen {
 //			"android.widget.FrameLayout[@index='3']"));
 
     public void tapMyAccount() throws Throwable {
-        commonSteps.tapButton("Account");
+        Steps.tapButton("Account");
+    }
+
+    @When("^I tap Map on footer$")
+    public void tapMap() throws Throwable {
+	    Steps.tapButton("Map");
     }
 
     public void tapShop() throws Throwable {
-        commonSteps.tapButton("Shop");
+        Steps.tapButton("Shop");
     }
 
     @And("^I go to Cart screen$")
     public void tapCart() throws Throwable {
-        commonSteps.tapButton("Cart");
+        Steps.tapButton("Cart");
     }
 }
