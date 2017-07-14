@@ -18,8 +18,7 @@ Feature: Verify the login functionality
   @C114955
   Scenario Outline: Verify user should login with facebook
     Given I launch Curbside application
-    And I am on Home Screen
-    And I have selected test environment
+    And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign in with Facebook' button
@@ -32,8 +31,7 @@ Feature: Verify the login functionality
   @C114956
   Scenario Outline: Verify user should login with email
     Given I launch Curbside application
-    And I wait for 'Skip Intro' button
-    And I am on Home Screen
+    And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button

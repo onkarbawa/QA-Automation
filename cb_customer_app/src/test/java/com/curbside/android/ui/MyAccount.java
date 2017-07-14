@@ -50,13 +50,17 @@ public class MyAccount extends AbstractScreen{
         Assert.assertTrue(userEmailField.isDisplayed(), "User is not able to sign-in");
 
         String actEmail = userEmailField.getText();
+        System.out.println(userPhoneNumberField.getText());
         String actPhoneNumber = userPhoneNumberField.getText().split("\\(")[1].replaceAll("[)-]", "").replaceAll(" ", "");
-
+        String actPhoneNumberAndroid6 = userPhoneNumberField.getText().replaceAll("[()-]", "").replaceAll(" ", "");
+        System.out.println(actPhoneNumber);
+        System.out.println(actPhoneNumberAndroid6);
         Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
+        Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumberAndroid6, phoneNumber));
 
+        Assert.assertTrue(phoneNumber.equals(actPhoneNumber) || phoneNumber.equals(actPhoneNumberAndroid6));
         Assert.assertEquals(actEmail, email);
-        Assert.assertEquals(actPhoneNumber, phoneNumber);
 
     }
 
@@ -69,6 +73,7 @@ public class MyAccount extends AbstractScreen{
     @Given("^I am not signed into application$")
     public void ensureSignedOut() throws Throwable {
         try {
+            footerTabsScreen.tapMyAccount();
             footerTabsScreen.tapMyAccount();
             commonSteps.tapButton("Account Info");
             commonSteps.tapButton("Sign Out");

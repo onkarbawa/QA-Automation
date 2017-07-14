@@ -74,9 +74,13 @@ public class AndroidDevice extends MobileDevice {
 
     public static void revokeLocationPermission(String appPackage) throws Throwable {
       String command = getPMPrefix() + "revoke " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
+      String commandForCoarse = getPMPrefix() + "revoke " + appPackage + " android.permission.ACCESS_COARSE_LOCATION";
       Process p = Runtime.getRuntime().exec(command);
       p.waitFor();
       System.out.println(p.exitValue());
+      Process p2 = Runtime.getRuntime().exec(commandForCoarse);
+      p2.waitFor();
+      System.out.println(p2.exitValue());
     }
 
     public static void uninstallApp(String appPackage) throws Throwable {
