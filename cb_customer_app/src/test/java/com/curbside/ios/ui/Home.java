@@ -11,6 +11,7 @@ import cucumber.api.java.en.When;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.java.en.Then;
+import gherkin.lexer.Th;
 import org.testng.Assert;
 
 /**
@@ -52,7 +53,7 @@ public class Home extends AbstractScreen {
 
 	@And("^I am on Home Screen$")
 	public void iAmOnHomeScreen() throws Throwable {
-		steps.acceptLocationAlert();
+//		steps.acceptLocationAlert();
 		welcome.skipIntro.tap();
 		welcome.okWithMe.tap();
 		steps.acceptLocationAlert();
@@ -121,7 +122,8 @@ public class Home extends AbstractScreen {
 
 	@And("^I am on Shop Screen$")
 	public void iAmOnShopScreen() throws Throwable {
-		//steps.acceptLocationAlert();
+		Thread.sleep(200);
+		steps.acceptLocationAlert();
 		welcome.skipIntro.tap();
 	}
 

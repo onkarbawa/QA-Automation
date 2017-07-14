@@ -1,11 +1,5 @@
 @signUp
 Feature: Signup
-  @Example
-  Scenario: Add loyalty card
-    Given I launch Curbside application
-    And My cart is empty
-    And I add any product to cart in 'Palo Alto' location
-    And My cart is empty
 
     @C114954
     Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
@@ -25,7 +19,7 @@ Feature: Signup
     And I have selected test environment
     And I signin in using signup information
     And I tap on 'Payment Info' text
-    And I tap on 'Add New Card' button
+    And I tap on 'Add a new card'
     And I add credit card information as '<first_name>', '<last_name>', '<card_number>', '<card_expiry>', '<card_cvv>', '<card_address1>', '<card_address2>', '<card_city>', '<card_state>', '<card_zip>'
     Then I should see credit info on payment info screen
     And My cart is empty
@@ -43,7 +37,7 @@ Feature: Signup
     And I have selected test environment
     And I signin in using signup information
     And I tap on 'Loyalty Cards' text
-    And I tap on 'Add New Card' button
+    And I tap on 'Add a new card'
     And I add an ExtraCare Card numbered '87676478652876'
     Then I should see ExtraCare Card info on Loyalty Cards screen
     And My cart is empty
