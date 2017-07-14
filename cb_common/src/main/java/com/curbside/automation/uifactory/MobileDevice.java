@@ -102,9 +102,16 @@ public class MobileDevice {
 		int height= getHeight();
 		int width= getWidth();
 		
-		MobileDevice.swipe(width/2, (int)(height * 0.85), width/2, (int)(height * 0.15));
+		MobileDevice.swipe(width/2, (int)(height * 0.80), width/2, (int)(height * 0.20));
 	}
-	
+//	anchor = (int) (width * 0.5);
+//	startPoint = (int) (height * 0.8);
+//	endPoint = (int) (height * 0.01);
+//                if (platform.equalsIgnoreCase("iOS")) {
+//		touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
+//	}else if (platform.equalsIgnoreCase("Android")){
+//		touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
+//	}
 	public static void swipeDown() throws Throwable
 	{
 		int height= getHeight();
@@ -145,7 +152,7 @@ public class MobileDevice {
 		switch (swipeDirection) {
 		case UP:
 			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Up);
-		//	swipeUp();
+			//swipeUp();
 			break;
 		case DOWN:
 			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Down);

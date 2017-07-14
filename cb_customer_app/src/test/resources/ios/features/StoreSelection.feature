@@ -20,9 +20,7 @@ Feature: Verify store display functionality
   Scenario: Verify store lead time is displayed
     Given I launch Curbside application
     And I am on 'Palo Alto' location 'Stores' Screen
+    When I select a store
     Then I should see lead times to places as below
-    	| place 	| lead_time	|
-      	| CVS   	| 1 hr		|
-      	| Pizza Hut | 15 min	|
-      	| Sephora 	| 3 hrs		|
+
     

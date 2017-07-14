@@ -2,6 +2,8 @@ package com.curbside.automation.uifactory;
 
 import java.nio.file.Files;
 
+import com.curbside.automation.common.utilities.SwipeOptions;
+import com.curbside.automation.common.utilities.Utilities;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
@@ -125,7 +127,8 @@ public class Steps {
 		logger.info("Swiping left " + times + " times");
 		
 		for (int i = 0; i <= times; i++) {
-				MobileDevice.swipeLeft();
+			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
+				//MobileDevice.swipeLeft();
 			}
 	}
 	

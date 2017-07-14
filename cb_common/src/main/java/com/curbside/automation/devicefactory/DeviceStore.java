@@ -5,20 +5,14 @@ package com.curbside.automation.devicefactory;
  *
  */
 
-import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.json.JsonFileParser;
-import com.curbside.automation.common.json.Platform;
 import com.curbside.automation.uifactory.MobileDevice;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.openqa.selenium.WebDriver;
-import org.testng.log4testng.Logger;
 
 /**
  * Created by kumar.nipun on 6/23/2017.

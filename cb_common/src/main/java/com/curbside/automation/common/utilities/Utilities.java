@@ -191,7 +191,7 @@ public class Utilities {
                 break;
             case Up:
                 anchor = (int) (width * 0.5);
-                startPoint = (int) (height * 0.8);
+                startPoint = (int) (height * 0.45);
                 endPoint = (int) (height * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
                     touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
