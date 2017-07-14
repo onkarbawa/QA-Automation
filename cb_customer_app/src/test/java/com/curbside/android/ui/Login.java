@@ -16,13 +16,16 @@ import org.testng.Assert;
  */
 public class Login extends AbstractScreen{
 
-  static UIElement signInWithEmailButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in_email"));
+  UIElement signInWithEmailButton = UIElement.byId("com.curbside.nCurbside:id/button_sign_in_email");
   static UIElement emailField = new UIElement(By.id("com.curbside.nCurbside:id/edit_email"));
   static UIElement passwordField = new UIElement(By.id("com.curbside.nCurbside:id/edit_password"));
   UIElement signInButton = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/button_sign_in' and @index='2']");
 
-  @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
-  public void iEnterEmailAndPasswordForLogin(String email, String password) throws Throwable {
+  @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login and \"([^\"]*)\" for verification$")
+  public void iEnterEmailAndPasswordForLogin(String email, String password, String phoneNumber) throws Throwable {
+      Properties.setVariable("signupEmail", email);
+      Properties.setVariable("signupPassword", password);
+      Properties.setVariable("signupPhoneNumber", phoneNumber);
     emailField.waitFor(3);
     emailField.sendKeys(email);
     DriverFactory.hideKeyboard();
@@ -46,15 +49,10 @@ public class Login extends AbstractScreen{
   @And("^I signin in using signup information$")
   public void iAmSignedInUsingSignupInformation() throws Throwable {
     accountScreen.ensureSignedOut();
-    try {
-      footerTabsScreen.tapMyAccount();
-      commonSteps.tapButton("Sign In");
-    } catch (Exception e) {
-    }
-
-
+    commonSteps.tapButton("Sign In");
     commonSteps.tapButton("Sign In with Email");
-    loginScreen.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
+    loginScreen.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"),
+            Properties.getVariable("signupPassword"),Properties.getVariable("signupPhoneNumber"));
     loginScreen.iTapOnSignInButtonOnSignInPage();
     accountScreen.userEmailField.waitFor(30);
   }

@@ -8,6 +8,7 @@ Feature: Verify curbside signup flow
     And I am on Home Screen
     And I have selected test environment
     And I tap on 'Account' button
+    And I ensure that I am on Account page
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
@@ -17,10 +18,8 @@ Feature: Verify curbside signup flow
 
   @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
-    Given I launch Curbside application for the first time
-    And I wait for 'Skip Intro' button
-    And I am on Home Screen
-    And I have selected test environment
+    Given I launch Curbside application
+    And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
@@ -40,9 +39,6 @@ Feature: Verify curbside signup flow
   @C114959
   Scenario: Add loyalty card
     Given I launch Curbside application
-    And I wait for 'Skip Intro' button
-    And I am on Home Screen
-    And I have selected test environment
     And I signin in using signup information
     And I tap on 'Loyalty Cards' button
     And I tap on 'Add New Card' button

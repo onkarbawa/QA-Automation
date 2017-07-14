@@ -43,9 +43,4 @@ public class SignUp extends AbstractScreen {
         createAccountButton.tap();
     }
 
-//    @And("^I tap on sign up with email button on sign up page$")
-//    public void iTapOnSignUpWithEmailButtonOnSignUpPage() throws Throwable {
-//        signUpWithEmailButton.waitFor(5);
-//        signUpWithEmailButton.tap();
-//    }
 }

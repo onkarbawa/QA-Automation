@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -50,11 +51,8 @@ public class MyAccount extends AbstractScreen{
         Assert.assertTrue(userEmailField.isDisplayed(), "User is not able to sign-in");
 
         String actEmail = userEmailField.getText();
-        System.out.println(userPhoneNumberField.getText());
         String actPhoneNumber = userPhoneNumberField.getText().split("\\(")[1].replaceAll("[)-]", "").replaceAll(" ", "");
         String actPhoneNumberAndroid6 = userPhoneNumberField.getText().replaceAll("[()-]", "").replaceAll(" ", "");
-        System.out.println(actPhoneNumber);
-        System.out.println(actPhoneNumberAndroid6);
         Reporter.addStepLog(String.format("Email: actual- %s, expected- %s", actEmail, email));
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumberAndroid6, phoneNumber));
@@ -66,20 +64,30 @@ public class MyAccount extends AbstractScreen{
 
     @And("^I tap on Sign up button on My Account page$")
     public void iTapOnSignUpButtonOnMyAccountPage() throws Throwable {
+        if(!signUp.isDisplayed()){
+            footerTabsScreen.tapMyAccount();
+        }
         signUp.waitFor(5);
         signUp.tap();
     }
 
     @Given("^I am not signed into application$")
     public void ensureSignedOut() throws Throwable {
-        try {
-            footerTabsScreen.tapMyAccount();
-            footerTabsScreen.tapMyAccount();
+        footerTabsScreen.tapMyAccount();
+        ensureAccountPage();
+        if(userEmailField.isDisplayed() || userPhoneNumberField.isDisplayed())
+        {
             commonSteps.tapButton("Account Info");
             commonSteps.tapButton("Sign Out");
-        } catch (Exception e) {
-            e.printStackTrace();
+            signUp.waitFor(5);
         }
 
+    }
+
+    @And("^I ensure that I am on Account page$")
+    public void ensureAccountPage() throws Throwable {
+        if(!paymentInfo.isDisplayed()){
+            footerTabsScreen.tapMyAccount();
+        }
     }
 }

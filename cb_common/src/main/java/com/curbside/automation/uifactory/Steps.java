@@ -138,7 +138,7 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			UIElement.byAccessibilityId(buttonName).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			UIElement.byXpath("//*[@text='" + buttonName + "']").waitFor(3).tap();
+			UIElement.byXpath("//*[@text='" + buttonName + "']").waitFor(5).tap();
 		}
 	}
 	

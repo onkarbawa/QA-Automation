@@ -1,6 +1,5 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
@@ -25,20 +24,20 @@ public class FooterTabs extends AbstractScreen {
 //			"android.widget.FrameLayout[@index='3']"));
 
     public void tapMyAccount() throws Throwable {
-        Steps.tapButton("Account");
+        commonSteps.tapButton("Account");
     }
 
     @When("^I tap Map on footer$")
     public void tapMap() throws Throwable {
-	    Steps.tapButton("Map");
+	    commonSteps.tapButton("Map");
     }
 
     public void tapShop() throws Throwable {
-        Steps.tapButton("Shop");
+        commonSteps.tapButton("Shop");
     }
 
     @And("^I go to Cart screen$")
     public void tapCart() throws Throwable {
-        Steps.tapButton("Cart");
+        commonSteps.tapButton("Cart");
     }
 }

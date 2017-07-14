@@ -107,12 +107,10 @@ public class Home extends AbstractScreen {
             currentLocation.waitFor(10).tap();
         }catch (Exception e){}
 
-        try {
-            if(searchBox.isDisplayed()){
-                searchBackButton.tap();
-                currentLocation.tap();
-            }
-        }catch(Exception ex){}
+        if(searchBox.isDisplayed()){
+            searchBackButton.tap();
+            currentLocation.tap();
+        }
 
 		cityZipSearchTextBox.waitFor(10).sendKeys(cityName);
 		AndroidDevice.pressEnter();
