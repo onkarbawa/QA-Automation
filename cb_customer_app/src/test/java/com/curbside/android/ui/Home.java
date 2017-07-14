@@ -1,9 +1,7 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -40,35 +38,27 @@ public class Home extends AbstractScreen {
 
 
 	@Then("^I should see 'Nearby stores' landing page$")
-	public void isDisplayed() throws Throwable
-	{	try {
-				Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed());
-			} finally {
-//				MobileDevice.getScreenshot(true);
-			}
+	public void isDisplayed() throws Throwable {
+		Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
+			"Near by stores page is not visible");
 	}
 
 	@And("^I tap on My Account icon$")
 	public void iTapOnMyAccountIcon() throws Throwable {
-		myAccount.waitFor(5);
-		myAccount.tap();
+		myAccount.waitFor(5).tap();
 	}
 
 	@And("^I am on Home Screen$")
 	public void iAmOnHomeScreen() throws Throwable {
-		welcomeScreen.skipIntro.waitFor(5);
-		welcomeScreen.skipIntro.tap();
-		welcomeScreen.okButton.waitFor(5);
-		welcomeScreen.okButton.tap();
+		welcomeScreen.skipIntro.waitFor(5).tap();
+		welcomeScreen.okButton.waitFor(5).tap();
 		commonSteps.acceptLocationAlert();
 	}
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
-		searchIcon.waitFor(5);
-		searchIcon.tap();
-		searchBox.waitFor(5);
-		searchBox.sendKeys("_#csndc#ena");
+		searchIcon.waitFor(5).tap();
+		searchBox.waitFor(5).sendKeys("_#csndc#ena");
 		AndroidDevice.pressEnter();
 		
 		apiHost.waitFor(3);
@@ -78,12 +68,10 @@ public class Home extends AbstractScreen {
 		}
 		apiHost.tap();
 
-		apiHostTextField.waitFor(3);
-		apiHostTextField.clearText();
+		apiHostTextField.waitFor(3).clearText();
 		apiHostTextField.sendKeys("https://api-s.shopcurbside.com");
 		apiHostOkButton.tap();
-		debugBackButton.waitFor(2);
-		debugBackButton.tap();
+		debugBackButton.waitFor(2).tap();
         AndroidDevice.startApplication(DeviceStore.getDevice().get("appPackage").toString(), 
         		DeviceStore.getDevice().get("appActivity").toString());
 	}

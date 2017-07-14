@@ -1,7 +1,6 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -18,14 +17,11 @@ public class PaymentInfo {
 
     @And("^I tap on Add New Card button on Payment info page$")
     public void iTapOnAddNewCardButtonOnPayementInfoPage() throws Throwable {
-        addNewCard.tap();
+        addNewCard.waitFor(3).tap();
     }
-
 
     @Then("^I should see the card added to Payment info$")
     public void iShouldSeeTheCardAddedToPaymentInfo() throws Throwable {
-        firstCard.waitFor(20);
-        Assert.assertTrue(firstCard.isDisplayed(), "Android : card is not added yet");
-
+        Assert.assertTrue(firstCard.waitFor(20).isDisplayed(), "Android : card is not added yet");
     }
 }

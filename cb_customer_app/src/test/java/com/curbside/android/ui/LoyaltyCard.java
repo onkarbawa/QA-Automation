@@ -1,7 +1,6 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.apache.commons.lang3.StringUtils;

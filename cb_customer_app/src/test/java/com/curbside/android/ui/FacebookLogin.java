@@ -18,15 +18,12 @@ public class FacebookLogin extends AbstractScreen {
 
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for facebook login$")
   public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
-    emailField.waitFor(30);
-
-    emailField.sendKeys(email);
+    emailField.waitFor(30).sendKeys(email);
     DriverFactory.hideKeyboard();
     passwordField.sendKeys(password);
     AndroidDevice.pressEnter();
 
-    continueButton.waitFor(20);
-    continueButton.tap();
+    continueButton.waitFor(20).tap();
   }
 
 }

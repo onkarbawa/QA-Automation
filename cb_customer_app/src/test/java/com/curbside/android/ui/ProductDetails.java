@@ -5,8 +5,6 @@ import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
 import org.testng.Assert;
 
 /**

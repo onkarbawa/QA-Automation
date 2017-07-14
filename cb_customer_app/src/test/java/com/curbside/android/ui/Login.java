@@ -5,11 +5,8 @@ import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 /**
  * Created by kumar.nipun on 7/4/2017.
@@ -26,31 +23,27 @@ public class Login extends AbstractScreen{
       Properties.setVariable("signupEmail", email);
       Properties.setVariable("signupPassword", password);
       Properties.setVariable("signupPhoneNumber", phoneNumber);
-    emailField.waitFor(3);
-    emailField.sendKeys(email);
+    emailField.waitFor(3).sendKeys(email);
     DriverFactory.hideKeyboard();
-    passwordField.waitFor(5);
-    passwordField.sendKeys(password);
+    passwordField.waitFor(5).sendKeys(password);
     DriverFactory.hideKeyboard();
   }
 
   @And("^I tap on sign in with email button$")
   public void iTapOnSignInWithEmailButton() throws Throwable {
-    signInWithEmailButton.waitFor(3);
-    signInWithEmailButton.tap();
+    signInWithEmailButton.waitFor(3).tap();
   }
 
   @When("^I tap on sign in button$")
   public void iTapOnSignInButtonOnSignInPage() throws Throwable {
-    signInButton.waitFor(5);
-    signInButton.tap();
+    signInButton.waitFor(5).tap();
   }
 
   @And("^I signin in using signup information$")
   public void iAmSignedInUsingSignupInformation() throws Throwable {
     accountScreen.ensureSignedOut();
-    commonSteps.tapButton("Sign In");
-    commonSteps.tapButton("Sign In with Email");
+    Steps.tapButton("Sign In");
+    Steps.tapButton("Sign In with Email");
     loginScreen.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"),
             Properties.getVariable("signupPassword"),Properties.getVariable("signupPhoneNumber"));
     loginScreen.iTapOnSignInButtonOnSignInPage();

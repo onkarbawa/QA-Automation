@@ -17,7 +17,7 @@ public class Welcome extends AbstractScreen {
   @And("^I swipe left (\\d+) times on intro page$")
   public void iSwipeLeftTimesOnIntroPage(int count) throws Throwable {
     pageIndicator.waitFor(5);
-    new Steps().swipeLeft(count);
+    commonSteps.swipeLeft(count);
   }
 
   @And("^I tap on '(.*)' button on intro page$")

@@ -2,9 +2,7 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.DriverFactory;
-import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 /**

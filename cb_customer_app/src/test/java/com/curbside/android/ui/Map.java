@@ -23,6 +23,7 @@ public class Map {
 			MobileDevice.setGeoLocation(MockLocations.palo_alto[0], MockLocations.palo_alto[1], MockLocations.palo_alto[2]);
 			break;
 		default:
+			new IllegalArgumentException("Not implemented for city: " + city);
 			break;
 		}
 	}

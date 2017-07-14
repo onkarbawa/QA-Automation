@@ -2,12 +2,11 @@ package com.curbside.android.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -18,28 +17,26 @@ import org.testng.Assert;
 
 public class MyAccount extends AbstractScreen{
 
-    static UIElement signUp= new UIElement(By.id("com.curbside.nCurbside:id/button_sign_up"));
-    static UIElement userEmailField = new UIElement(By.id("com.curbside.nCurbside:id/text_email"));
-    static UIElement paymentInfo= new UIElement(By.xpath("//android.widget.ListView/android.widget.RelativeLayout[@index='3']"));
+    UIElement signUp= new UIElement(By.id("com.curbside.nCurbside:id/button_sign_up"));
+    UIElement userEmailField = new UIElement(By.id("com.curbside.nCurbside:id/text_email"));
+    UIElement paymentInfo= new UIElement(By.xpath("//android.widget.ListView/android.widget.RelativeLayout[@index='3']"));
     //static UIElement paymentInfoID= new UIElement(By.id("com.curbside.nCurbside:id/textview_my_account_listitem"));
-    static UIElement signInButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in"));
-    static UIElement userNameField = new UIElement(By.id("com.curbside.nCurbside:id/text_name"));
-    static UIElement userPhoneNumberField = UIElement.byId("com.curbside.nCurbside:id/text_phone_number");
+    UIElement signInButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in"));
+    UIElement userNameField = new UIElement(By.id("com.curbside.nCurbside:id/text_name"));
+    UIElement userPhoneNumberField = UIElement.byId("com.curbside.nCurbside:id/text_phone_number");
 
     @And("^I tap on PaymentInfo button on Account page$")
     public void iTapOnPaymentInfoButtonOnAccountPage() throws Throwable {
-        try{
+        paymentInfo.waitFor(3).tap();
+        paymentInfo.waitForNot(3);
+        //Retry - In some devices it doesn't click 1st time
+        if (paymentInfo.isDisplayed())
             paymentInfo.tap();
-            Thread.sleep(1000);
-            paymentInfo.tap();
-        }catch (Exception e){}
-
     }
 
     @And("^I tap on sign in button on Account page$")
     public void iTapOnSignInButtonOnAccountPage() throws Throwable {
-        signInButton.waitFor(5);
-        signInButton.tap();
+        signInButton.waitFor(5).tap();
     }
 
     @Then("^I should see my given information under Account Info$")
@@ -57,8 +54,9 @@ public class MyAccount extends AbstractScreen{
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumber, phoneNumber));
         Reporter.addStepLog(String.format("Phone: actual- %s, expected- %s", actPhoneNumberAndroid6, phoneNumber));
 
-        Assert.assertTrue(phoneNumber.equals(actPhoneNumber) || phoneNumber.equals(actPhoneNumberAndroid6));
-        Assert.assertEquals(actEmail, email);
+        Assert.assertTrue(phoneNumber.equals(actPhoneNumber) || phoneNumber.equals(actPhoneNumberAndroid6),
+          "Phone number doesn't match");
+        Assert.assertEquals(actEmail, email, "email address doesn't match");
 
     }
 
@@ -67,8 +65,7 @@ public class MyAccount extends AbstractScreen{
         if(!signUp.isDisplayed()){
             footerTabsScreen.tapMyAccount();
         }
-        signUp.waitFor(5);
-        signUp.tap();
+        signUp.waitFor(5).tap();
     }
 
     @Given("^I am not signed into application$")
@@ -77,8 +74,8 @@ public class MyAccount extends AbstractScreen{
         ensureAccountPage();
         if(userEmailField.isDisplayed() || userPhoneNumberField.isDisplayed())
         {
-            commonSteps.tapButton("Account Info");
-            commonSteps.tapButton("Sign Out");
+            Steps.tapButton("Account Info");
+            Steps.tapButton("Sign Out");
             signUp.waitFor(5);
         }
 

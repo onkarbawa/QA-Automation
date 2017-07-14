@@ -2,10 +2,8 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.Helpers;
-import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 
 /**
@@ -28,8 +26,7 @@ public class SignUp extends AbstractScreen {
         Properties.setVariable("signupEmail", emailId);
         Properties.setVariable("signupPassword", password);
         Properties.setVariable("signupPhoneNumber", phoneNumberText);
-        emailField.waitFor(3);
-        emailField.sendKeys(emailId);
+        emailField.waitFor(3).sendKeys(emailId);
         DriverFactory.hideKeyboard();
         phoneNumberField.sendKeys(phoneNumberText);
         DriverFactory.hideKeyboard();
