@@ -44,10 +44,19 @@ public class Login extends AbstractScreen{
     accountScreen.ensureSignedOut();
     Steps.tapButton("Sign In");
     Steps.tapButton("Sign In with Email");
-    loginScreen.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"),
+    this.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"),
             Properties.getVariable("signupPassword"),Properties.getVariable("signupPhoneNumber"));
-    loginScreen.iTapOnSignInButtonOnSignInPage();
+    this.iTapOnSignInButtonOnSignInPage();
     accountScreen.userEmailField.waitFor(30);
   }
 
+  @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
+  public void iEnterAndForLogin(String email, String password) throws Throwable {
+    Properties.setVariable("signInEmail", email);
+    Properties.setVariable("signInPassword", password);
+    emailField.waitFor(3).sendKeys(email);
+    DriverFactory.hideKeyboard();
+    passwordField.waitFor(5).sendKeys(password);
+    DriverFactory.hideKeyboard();
+  }
 }

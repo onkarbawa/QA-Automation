@@ -35,9 +35,9 @@ Feature: Verify the login functionality
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
-    And I enter "<email>" and "<password>" for login and "<phoneNumber>" for verification
+    And I enter "<email>" and "<password>" for login
     When I tap on sign in button
-    Then I should see my given information under Account Info
+    Then I should be logged in to the application
   Examples:
-    |       email         |      password     | phoneNumber|
-    |fusic.test1@gmail.com|fusic@123          | 1345678901 |
+    |       email         |      password     |
+    |fusic.test1@gmail.com|fusic@123          |

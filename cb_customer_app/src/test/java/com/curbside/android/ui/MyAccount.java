@@ -87,4 +87,10 @@ public class MyAccount extends AbstractScreen{
             footerTabsScreen.tapMyAccount();
         }
     }
+
+    @Then("^I should be logged in to the application$")
+    public void iShouldBeLoggedInToTheApplication() throws Throwable {
+        Assert.assertTrue(userEmailField.waitFor(10).isDisplayed(), "User is not able to sign-in");
+        Assert.assertEquals(userEmailField.getText(), Properties.getVariable("signInEmail"), "User email doesn't match");
+    }
 }

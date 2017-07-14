@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -22,6 +23,7 @@ import io.appium.java_client.ios.IOSDriver;
 
 @SuppressWarnings("rawtypes")
 public class DriverFactory {
+	private static final Logger logger = Logger.getLogger(DriverFactory.class);
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	
 	/**
@@ -121,7 +123,7 @@ public class DriverFactory {
 		try {
 			((AppiumDriver) getDriver()).hideKeyboard();
 		} catch (Throwable ex) {
-			ex.printStackTrace();
+			logger.debug("Problem in Hiding keyboard due to: " + ex.getMessage());
 		}
 	}
 }
