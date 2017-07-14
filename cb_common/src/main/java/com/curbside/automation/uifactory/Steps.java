@@ -1,18 +1,12 @@
 package com.curbside.automation.uifactory;
 
-import java.nio.file.Files;
-
 import com.curbside.automation.common.utilities.SwipeOptions;
 import com.curbside.automation.common.utilities.Utilities;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.aventstack.extentreports.utils.FileUtil;
-import com.cucumber.listener.Reporter;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import cucumber.api.Scenario;
@@ -22,7 +16,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 /**
  * @author kumar.anil
@@ -65,6 +58,7 @@ public class Steps {
 		//Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		((AppiumDriver)DriverFactory.getDriver()).resetApp();
 	}
 	
 	@Given("^I accept notifications alert$")
