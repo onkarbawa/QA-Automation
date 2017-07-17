@@ -54,7 +54,16 @@ public class Steps {
 	public void launchApplicationClean(String appName) throws Throwable
 	{
 		logger.info("Re-installing and launching application");
-		
+
+		/**
+		 * for iOS
+		 */
+		if(DeviceStore.getPlatform().equalsIgnoreCase("ios")){
+			try {
+				acceptLocationAlert();
+			}catch (Exception e){}
+		}
+
 		//Reset app permissions from mobile device
 		DeviceStore.getDevice();
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
@@ -161,7 +170,11 @@ public class Steps {
 	public static void tapButton(String buttonName) throws Throwable
 	{
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			UIElement.byAccessibilityId(buttonName).tap();
+			try {
+				UIElement.byName(buttonName).tap();
+			}catch (Exception e){
+				UIElement.byAccessibilityId(buttonName).tap();
+			}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
 			UIElement.byUISelector("new UiSelector().text(\"" + buttonName + "\")").waitFor(5).tap();
 		}

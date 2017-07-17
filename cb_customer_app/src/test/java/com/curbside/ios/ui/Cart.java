@@ -40,7 +40,7 @@ public class Cart extends AbstractScreen {
 
 	@And("^I should see credit info on cart screen$")
 	public void iShouldSeeCreditInfoOnCartScreen() throws Throwable {
-		creditCardCell.tap();
+		creditCardCell.waitFor(10).tap();
 		paymentInfoScreen.iShouldSeeCreditInfoOnPaymentInfoScreen();
 	}
 

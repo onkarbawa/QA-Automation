@@ -48,7 +48,7 @@ public class ProductDetails extends AbstractScreen {
 
 	@Then("^I should see product details as below$")
 	public void iShouldSeeProductDetailsAsBelow() throws Throwable {
-		Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
+		Assert.assertTrue(productImage.waitFor(15).isDisplayed(),"Product Image is not displayed");
 		Assert.assertTrue(productName.isDisplayed(),"Product name and price is not displayed");
 		Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
 		Assert.assertTrue(productSKU.isDisplayed(), "Product sku is not displayed");

@@ -17,6 +17,8 @@ public class Login extends AbstractScreen {
 
 	UIElement email = new UIElement(By.className("XCUIElementTypeTextField"));
 	UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));
+	UIElement signIn = new UIElement(By.name("Sign In"));
+	UIElement signInWithEmail = new UIElement(By.name("Sign In with Email"));
 
 	public Login() {
 		// TODO Auto-generated constructor stub
@@ -42,5 +44,12 @@ public class Login extends AbstractScreen {
 		signin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
 
 		myAccountScreen.btnAccountInfo.waitFor(30);
+	}
+
+	@And("^I am on Login In screen$")
+	public void iAmOnLoginInScreen() throws Throwable {
+		footerTabsScreen.tapMyAccount();
+		signIn.tap();
+		signInWithEmail.tap();
 	}
 }

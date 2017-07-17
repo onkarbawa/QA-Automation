@@ -50,7 +50,6 @@ public class CreditCard extends AbstractScreen {
 		securityCode.sendKeys(cardCvv);
 		MobileDevice.getScreenshot(true);
 		next.tap();
-		
 		newAddress.tap();
 		cardAdd1.sendKeys(add1);
 		cardAdd2.sendKeys(add2);

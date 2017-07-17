@@ -1,16 +1,11 @@
 package com.curbside.ios.ui;
 
-import com.curbside.automation.devicefactory.DeviceStore;
-import com.curbside.automation.uifactory.AppleDevice;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 /**
  * Created by bawa.onkar on 05/07/17.
@@ -26,6 +21,9 @@ public class Settings extends AbstractScreen {
 
 	@Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
 	public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
+		try {
+			welcomeScreen.btnAllow.tapOptional();
+		}catch (Exception e){}
 		MobileDevice.setLocationPreference(appName, value);
 	}
 

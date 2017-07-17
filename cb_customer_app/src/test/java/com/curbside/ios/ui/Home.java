@@ -23,9 +23,9 @@ import org.testng.Assert;
 public class Home extends AbstractScreen {
 
 	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
-	UIElement iconSearch = UIElement.byAccessibilityId("Search");
 	UIElement btnCancel = UIElement.byName("Cancel");
-	UIElement btnSearchKeyboard = UIElement.byAccessibilityId("Search");
+	UIElement iconSearch = UIElement.byName("Search");
+	UIElement btnSearchKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Search']");
 	UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
 	UIElement txtSearchNearBy = UIElement.byClass("XCUIElementTypeSearchField");
 
@@ -60,6 +60,7 @@ public class Home extends AbstractScreen {
 			for (int i = 0; i < 10; i++) {
 				if(!footerTabsScreen.btnShop.isDisplayed())
 				{
+					welcomeScreen.btnAllow.tapOptional();
 					welcomeScreen.skipIntro.tapOptional();
 					welcomeScreen.btnGetStarted.tapOptional();
 					welcomeScreen.okWithMe.tapOptional();
@@ -108,8 +109,7 @@ public class Home extends AbstractScreen {
 		//	return;
 		
 		iconSearch.tap();
-		Thread.sleep(1000);
-		txtSearchNearBy.sendKeys("_#csndc#env#s");
+		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s");
 		btnSearchKeyboard.tap();
 		btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
@@ -177,8 +177,8 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see following products listed on partner screen$")
 	public void iShouldSeeFollowingProductsListedOnPartnerScreen() throws Throwable {
-		Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
-		Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
+		Assert.assertTrue(productImage.waitFor(15).isDisplayed(),"Product Image is not displayed");
+		Assert.assertTrue(productName.waitFor(10).isDisplayed(),"Product Name is not displayed");
 	}
 
 	@Then("^I should see nearby stores$")
