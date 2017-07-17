@@ -29,7 +29,6 @@ Feature: Android- Application Launch
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'OFF' for 'Curbside' app
     When I launch Curbside application
-    And I wait for application to be launched
     And I am currently in 'Palo Alto, CA' city
     And I wait for application to be launched
     And I tap on 'Skip Intro' button if displayed

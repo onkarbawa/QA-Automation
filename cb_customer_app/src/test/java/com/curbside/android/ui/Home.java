@@ -42,7 +42,7 @@ public class Home extends AbstractScreen {
 	public void isDisplayed() throws Throwable {
 		
 		//Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
-				Assert.assertTrue(shopNearLabel.waitFor(60).isDisplayed(),
+				Assert.assertTrue(shopNearLabel.waitFor(20).isDisplayed() || sorryMessage.isDisplayed(),
 			"Near by stores page is not visible");
 	}
 

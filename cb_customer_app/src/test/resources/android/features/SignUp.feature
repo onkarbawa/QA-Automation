@@ -17,6 +17,7 @@ Feature: Android- Signup Flow
   @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
     Given I launch Curbside application
+    And I have selected test environment
     And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
@@ -37,6 +38,7 @@ Feature: Android- Signup Flow
   @C114959
   Scenario: Add loyalty card
     Given I launch Curbside application
+    And I have selected test environment
     And I am not signed into application
     And I tap on 'Account' button
     And I signin in using signup information
