@@ -109,11 +109,10 @@ public class Home extends AbstractScreen {
 		//	return;
 		
 		iconSearch.tap();
-		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s").sendKeys("\n");
-		MobileDevice.getScreenshot(true);
+		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s");
+		btnSearchKeyboard.tap();
 		
-		//btnSearchKeyboard.tap();
-		btnCancel.tapOptional();
+		//btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
 		
 		MobileDevice.getScreenshot(true);

@@ -29,7 +29,6 @@ public class DeviceStore {
 	private static ThreadLocal<Object> lockedDevice = new ThreadLocal<>();
 	private static ThreadLocal<String> lockedPlatform = new ThreadLocal<>();
 	private static ThreadLocal<String> deviceID = new ThreadLocal<>();
-	private static ThreadLocal<String> bundleId = new ThreadLocal<>();
 	private static HashMap<String, Boolean> appInstalled = new HashMap<>();
 	private static HashMap<String, Boolean> environmentSet = new HashMap<>();
 
@@ -64,11 +63,9 @@ public class DeviceStore {
 		switch (lockedPlatform.get().toLowerCase()) {
 		case "ios":
 			deviceToReturn = (JSONObject) iOSDeviceList.get(0);
-			bundleId.set(deviceToReturn.getString("bundleId"));
 			break;
 		case "android":
 			deviceToReturn = (JSONObject) androidDeviceList.get(0);
-			bundleId.set(deviceToReturn.getString("appPackage"));
 			break;
 		default:
 			throw new IllegalArgumentException("No Such platform");
@@ -128,10 +125,6 @@ public class DeviceStore {
 			deviceID.set(MobileDevice.getDeviceId());
 
 		return deviceID.get();
-	}
-
-	public static String getBundleId() {
-		return bundleId.get();
 	}
 
 	public static String getApplicationPath() {
