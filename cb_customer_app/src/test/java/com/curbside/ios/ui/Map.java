@@ -18,6 +18,6 @@ public class Map extends AbstractScreen {
 
 	@Then("^I should see stores on map for 'Palo Alto'$")
 	public void iShouldSeeStoresOnMapForPaloAlto() throws Throwable {
-		Assert.assertTrue(nearByStore.isDisplayed(),"store is not displayed near to the selected location");
+		Assert.assertTrue(nearByStore.waitFor(15).isDisplayed(),"store is not displayed near to the selected location");
 	}
 }

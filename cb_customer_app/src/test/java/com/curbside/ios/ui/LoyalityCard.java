@@ -30,7 +30,7 @@ public class LoyalityCard extends AbstractScreen {
 	public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
 		Properties.setVariable("extraCareCardNumber", cardNumber);
 		Steps.tapButton("ExtraCare Card");
-		cardNumberTextBox.setText(cardNumber);
+		cardNumberTextBox.setText(cardNumber,false);
 		save.tap();
 		save.waitForNot(10);
 		MobileDevice.getScreenshot(true);

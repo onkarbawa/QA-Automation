@@ -4,7 +4,7 @@ Feature: iOS- Store Selection
   @C114940
   Scenario: Verify retailers are shown in store selection screen
     Given I launch Curbside application for the first time
-    And I have selected test environment
+    And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     Then I should see nearby stores
 

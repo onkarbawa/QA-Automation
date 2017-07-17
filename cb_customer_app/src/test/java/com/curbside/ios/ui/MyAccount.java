@@ -15,7 +15,7 @@ import org.testng.Assert;
 
 public class MyAccount extends AbstractScreen {
 
-	UIElement btnAccountInfo = UIElement.byAccessibilityId("Account Info");
+	UIElement btnAccountInfo = UIElement.byName("Account Info");
 	UIElement btnSignIn = UIElement.byAccessibilityId("Sign In");
 
 	UIElement email = new UIElement(
@@ -29,6 +29,7 @@ public class MyAccount extends AbstractScreen {
 
 	@Then("^I saw email on MyAccount page$")
 	public void iSawEmailOnMyAccountPage() throws Throwable {
+		email.waitFor(20);
 		Assert.assertTrue(email.isDisplayed(), "Email is not displayed in Account Page");
 		Assert.assertTrue(phoneNumber.isDisplayed(), "PhoneNumber is not displayed in Account Page");
 	}
@@ -54,6 +55,9 @@ public class MyAccount extends AbstractScreen {
 			btnAccountInfo.tap();
 			accountInfoScreen.signOut();
 		} catch (Exception e) {
+			if(UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").isDisplayed()){
+				UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").tap();
+			}
 			e.printStackTrace();
 		}
 

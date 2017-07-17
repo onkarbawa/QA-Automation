@@ -5,7 +5,7 @@ Feature: iOS-Login
   Scenario: Verify New user should login in curbside app
     Given I launch Curbside application for the first time
     And I have selected test environment
-    And I tap on 'My Account' button
+    And I tap on 'My Account' icon in bottom menu
     And I tap on 'Sign In' button
     And I tap on 'Create An Account' button
     And I signup for a new account
@@ -16,7 +16,7 @@ Feature: iOS-Login
     Given I launch Curbside application
     And I have selected test environment
     And I am not signed into application
-    And I tap on 'My Account' button
+    And I tap on 'My Account' icon in bottom menu
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
     And I enter '<Email>' and '<Password>'
@@ -31,7 +31,7 @@ Feature: iOS-Login
     Given I launch Curbside application
     And I have selected test environment
     And I am not signed into application
-    And I tap on 'My Account' button
+    And I tap on 'My Account' icon in bottom menu
     And I tap on 'Sign In' button
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
