@@ -88,6 +88,7 @@ public class Home extends AbstractScreen {
 		apiHostOkButton.tap();
 		debugBackButton.tap();
 		imageBackButton.waitFor(5).tap();
+		AndroidDevice.startApplication();
 	}
 
 	@Given("I select 1st retailer partner on stores screen")

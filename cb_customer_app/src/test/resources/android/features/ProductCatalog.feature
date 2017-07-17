@@ -11,8 +11,8 @@ Feature: Android- Product Catalog
 
   @C114942 @C114944
   Scenario: Verify product landing page
-    Given I launch Curbside application with required permissions
-    And I am on Home Screen
+    Given I launch Curbside application
+    And I wait for application to be launched
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     When I tap on product from the list
@@ -20,8 +20,8 @@ Feature: Android- Product Catalog
 
   @C114943
   Scenario: Verify products variant
-    Given I launch Curbside application with required permissions
-    And I am on Home Screen
+    Given I launch Curbside application
+    And I wait for application to be launched
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     And I tap on product from the list

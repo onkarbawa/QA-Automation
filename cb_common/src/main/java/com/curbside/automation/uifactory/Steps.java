@@ -41,7 +41,7 @@ public class Steps {
 		logger.info("Launching application with needed permissions");
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver(false, true);
-		if(DeviceStore.getPlatform().equalsIgnoreCase("andrid"))
+		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
 			AndroidDevice.grantLocationPermission();
 			((AppiumDriver)DriverFactory.getDriver()).resetApp();

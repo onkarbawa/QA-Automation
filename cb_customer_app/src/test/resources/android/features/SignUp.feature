@@ -16,7 +16,7 @@ Feature: Android- Signup Flow
 
   @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
@@ -30,13 +30,13 @@ Feature: Android- Signup Flow
     Then I should see the card added to Payment info
     Examples:
       | card_number       | card_expiry | ccv | first_name | last_name |card_street_address | apt_suite | card_city | card_state | card_zip |
-      | 4012000077777778  | 1218        | 123 | John       | miller    |1 Infinite Loop     |           | Cupertino | California |   95014  |
+      | 4012000077777777  | 1218        | 123 | John       | miller    |1 Infinite Loop     |           | Cupertino | California |   95014  |
 
 
 
   @C114959
   Scenario: Add loyalty card
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am not signed into application
     And I tap on 'Account' button
     And I signin in using signup information
