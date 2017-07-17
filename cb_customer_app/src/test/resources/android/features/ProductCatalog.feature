@@ -11,7 +11,7 @@ Feature: Android- Product Catalog
 
   @C114942 @C114944
   Scenario: Verify product landing page
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
@@ -20,7 +20,7 @@ Feature: Android- Product Catalog
 
   @C114943
   Scenario: Verify products variant
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store

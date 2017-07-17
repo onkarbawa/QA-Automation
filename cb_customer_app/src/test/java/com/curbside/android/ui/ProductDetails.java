@@ -27,8 +27,9 @@ public class ProductDetails extends AbstractScreen {
     @Given("^I add displayed product to cart$")
     public void addToCart() throws Throwable {
         try {
-            btnAddtoCart.tap();
             btnAddtoCart.waitFor(5);
+            btnAddtoCart.tap();
+            snackBarKeepShopping.isDisplayed();
         }catch (Exception e){
             btnAdd.waitFor(10);
         }
@@ -55,6 +56,8 @@ public class ProductDetails extends AbstractScreen {
 
     @And("^I add product in cart$")
     public void iAddProductInCart() throws Throwable {
+        if(!productDetailsScreen.productName.isDisplayed())
+            productDetailsScreen.productName.swipeUpSlow();
         Properties.setVariable("productName",productDetailsScreen.getProductName());
         productDetailsScreen.addToCart();
         snackBarKeepShopping.isDisplayed();

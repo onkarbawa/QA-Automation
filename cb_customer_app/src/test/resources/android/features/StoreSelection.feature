@@ -10,7 +10,7 @@ Feature: Android- Store Selection
 
   @C114999
   Scenario: Verify store lead time
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am on Home Screen
     And I search for 'Boston' location
     When I tap on retailer on Near by stores screen
@@ -18,7 +18,7 @@ Feature: Android- Store Selection
 
   @C114939
   Scenario: Verify store location is displayed in map
-    Given I launch Curbside application with required permissions
+    Given I launch Curbside application
     And I am on Home Screen
     And I search for 'Boston' location
     When I tap Map on footer
