@@ -40,7 +40,7 @@ public class Login extends AbstractScreen {
 			myAccountScreen.tapSignIn();
 		}
 		
-		signIn.tapOptional();
+		myAccountScreen.btnSignIn.tapOptional();
 			
 		
 		Steps.tapButton("Sign In with Email");
