@@ -82,17 +82,20 @@ public class Home extends AbstractScreen {
 		
 		try {
 			apiHost.waitFor(5).tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com");
+			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
 		} catch (Exception e) {
 			debugBackButton.tap();
 			apiHost.tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com");
+			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
 		}
+		
+		MobileDevice.getScreenshot(true);
 		
 		apiHostOkButton.tap();
 		debugBackButton.tap();
 		imageBackButton.waitFor(5).tap();
 		AndroidDevice.startApplication();
+		welcomeScreen.wait_for_app_launch();
 		
 		DeviceStore.setEnvironmentSelected(true);
 	}

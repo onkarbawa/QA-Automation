@@ -1,11 +1,13 @@
 @signUp
 Feature: Android- Signup Flow
 
-  @C114954
-  Scenario: Verify on new account user should see name, email or phone number in my account
+  Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
-    And I am not signed into application
+    
+  @Android @C114954
+  Scenario: Verify on new account user should see name, email or phone number in my account
+    Given I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
@@ -14,11 +16,9 @@ Feature: Android- Signup Flow
     Then I should see my given information under Account Info
 
 
-  @C114958
+  @Android @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
-    Given I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
@@ -37,9 +37,7 @@ Feature: Android- Signup Flow
 
   @C114959
   Scenario: Add loyalty card
-    Given I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I tap on 'Account' button
     And I signin in using signup information
     And I tap on 'Loyalty Cards' button

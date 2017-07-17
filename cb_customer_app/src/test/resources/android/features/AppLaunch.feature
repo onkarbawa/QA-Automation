@@ -3,7 +3,7 @@ Feature: Android- Application Launch
 
 	Curbside tutorial is prompted when app is launched first time and verify tutorial flow
 
-  @C114937
+  @Android @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
     Given I launch Curbside application for the first time
     And I am currently in 'Palo Alto, CA' city
@@ -14,7 +14,7 @@ Feature: Android- Application Launch
     When I accept location access alert
     Then I should see 'Nearby stores' landing page
 
-  @C114936
+  @Android @C114936
   Scenario: Tapping 'Skip Intro' button should take you to Store Selection Page
     Given I launch Curbside application for the first time
     And I am currently in 'Palo Alto, CA' city
@@ -25,7 +25,7 @@ Feature: Android- Application Launch
     When I accept location access alert
     Then I should see 'Nearby stores' landing page
     
-  @C114998
+  @Android @C114998
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'OFF' for 'Curbside' app
     When I launch Curbside application

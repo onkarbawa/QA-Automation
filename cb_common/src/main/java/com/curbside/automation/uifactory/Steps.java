@@ -30,6 +30,8 @@ public class Steps {
 	{
 		logger.info("Launching application without install");
 		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
+		
 		DriverFactory.getDriver(false);
 		
 		MobileDevice.getScreenshot(true);
@@ -40,6 +42,7 @@ public class Steps {
 	{
 		logger.info("Launching application with needed permissions");
 		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
 		DriverFactory.getDriver(false, true);
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
@@ -253,7 +256,7 @@ public class Steps {
 
 		try {
 			MobileDevice.getScreenshot(true);	
-			DriverFactory.releaseDriver();
+			//DriverFactory.releaseDriver();
 		} catch (Throwable e) {
 		}
 	}

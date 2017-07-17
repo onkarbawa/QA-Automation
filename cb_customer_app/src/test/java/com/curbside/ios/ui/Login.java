@@ -40,6 +40,9 @@ public class Login extends AbstractScreen {
 			myAccountScreen.tapSignIn();
 		}
 		
+		signIn.tapOptional();
+			
+		
 		Steps.tapButton("Sign In with Email");
 		signin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
 

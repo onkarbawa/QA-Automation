@@ -37,7 +37,7 @@ public class FacebookLogin extends AbstractScreen {
     logInButton.tap();
     continueButton.waitFor(20).tap();
     Thread.sleep(3000);
-    btnSignInWithFacebook.waitForNot(30);
+    btnSignInWithFacebook.waitForNot(10);
     MobileDevice.getScreenshot(true);
   }
 

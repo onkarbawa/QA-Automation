@@ -1,7 +1,7 @@
 @appLaunch
 Feature: iOS- Application Launch
 
-  @C114937
+  @iOS @C114937
   Scenario: First time Curbside Launch (fresh install)
     Given I launch Curbside application for the first time
     And I accept notifications alert
@@ -12,7 +12,7 @@ Feature: iOS- Application Launch
     Then I should see 'Nearby stores' landing page 
     And 'Location' preference should be set as 'Always' for 'Curbside' app
 
-  @C114936
+  @iOS @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
     Given I launch Curbside application
     And I am on Home Screen
@@ -24,7 +24,7 @@ Feature: iOS- Application Launch
     When I tap on 'Get Started' button
     Then I should see 'Nearby stores' landing page
 
-  @C114996
+  @iOS @C114996
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'Never' for 'Curbside' app
     When I launch Curbside application
@@ -35,7 +35,7 @@ Feature: iOS- Application Launch
     And I am on Home Screen
     Then I should see 'Nearby stores' landing page
 
-  @C114997
+  @iOS @C114997
     Scenario Outline: Verify Disable background application refresh functionality
       Given I turn 'OFF' Background App Refresh for 'Curbside' app
       When I launch Curbside application

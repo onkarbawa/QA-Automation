@@ -1,10 +1,13 @@
 @signUp
 Feature: iOS- Signup Flow
 
-    @C114954
-    Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
-    Given I launch Curbside application for the first time
+  Scenario: Setting test environment 
+    Given I launch Curbside application
     And I have selected test environment
+    
+  @iOS @C114954
+  Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
+    Given I am not signed into application
     And I tap on 'My Account' icon in bottom menu
     And I tap on 'Create one now' button
     And I tap on 'Create An Account' button
@@ -12,10 +15,9 @@ Feature: iOS- Signup Flow
     Then I should see my signup information under Account Info
     And I tap on 'Sign Out' button
 
-  @C114958
+  @iOS @C114958
   Scenario Outline: Add credit card
-    Given I launch Curbside application
-    And I have selected test environment
+    Given I am not signed into application
     And I signin in using signup information
     And I tap on 'Payment Info' text
     And I tap on 'Add a new card'
@@ -29,10 +31,9 @@ Feature: iOS- Signup Flow
       | first_name | last_name | card_number      | card_expiry | card_cvv |card_address1 | card_address2 | card_city | card_state | card_zip |
       | Test       | Data      | 6011111111111117 | 1120        | 345      |   TestData   |    Test data  |   Boston  |            |   56635  |
 
-  @C114959
+  @iOS @C114959
   Scenario: Add loyalty card
-    Given I launch Curbside application
-    And I have selected test environment
+    Given I am not signed into application
     And I signin in using signup information
     And I tap on 'Loyalty Cards' text
     And I tap on 'Add a new card'
