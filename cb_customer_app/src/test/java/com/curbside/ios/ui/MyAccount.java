@@ -58,7 +58,7 @@ public class MyAccount extends AbstractScreen {
 		}
 
 		try {
-			UIElement.byAccessibilityId("Cancel").tap();
+			UIElement.byAccessibilityId("Navigate up").tap();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

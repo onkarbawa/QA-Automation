@@ -1,5 +1,5 @@
 @ProductCatalog
-Feature: Verify store display functionality
+Feature: iOS- Product Catalog
 
   @C114941
   Scenario: Verify products display in landing page

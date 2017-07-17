@@ -1,5 +1,5 @@
 @appLaunch
-Feature: Application Launch
+Feature: iOS- Application Launch
 
   @C114937
   Scenario: First time Curbside Launch (fresh install)
@@ -15,7 +15,7 @@ Feature: Application Launch
   @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
     Given I launch Curbside application
-    And I tap on 'HelpIconWhite' button
+    And I tap on 'HelpIconWhite' button if displayed
     When I tap on 'Skip Intro' button
     Then I should see 'Nearby stores' landing page
     When I tap on 'HelpIconWhite' button

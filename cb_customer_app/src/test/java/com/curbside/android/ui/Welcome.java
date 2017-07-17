@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
@@ -11,9 +12,24 @@ import cucumber.api.java.en.And;
 public class Welcome extends AbstractScreen {
 
   UIElement pageIndicator = UIElement.byId("com.curbside.nCurbside:id/page_indicator");
-  UIElement skipIntro = UIElement.byXpath("//*[@text='Skip Intro']");
-  UIElement okButton = UIElement.byXpath("//*[@text='OK']");
-
+  UIElement skipIntro = UIElement.byUISelector("new UiSelector().text(\"Skip Intro\")");
+  UIElement btnGetStarted = UIElement.byUISelector("new UiSelector().text(\"Get Started\")");
+  UIElement btnAllow = UIElement.byUISelector("new UiSelector().text(\"Allow\")");
+  UIElement okButton = UIElement.byUISelector("new UiSelector().text(\"OK\")");
+  
+  @And("^I wait for application to be launched$")
+  public void wait_for_app_launch() throws Throwable {
+    for (int i = 0; i < 10; i++) {
+    	if(skipIntro.isDisplayed() || btnGetStarted.isDisplayed() 
+    			|| footerTabsScreen.btnMyAccount.isDisplayed() || okButton.isDisplayed()
+    			|| btnAllow.isDisplayed())
+    		break;
+    	else
+    		Thread.sleep(1000);
+	}
+    MobileDevice.getScreenshot(true);
+  }
+  
   @And("^I swipe left (\\d+) times on intro page$")
   public void iSwipeLeftTimesOnIntroPage(int count) throws Throwable {
     pageIndicator.waitFor(5);
@@ -24,5 +40,10 @@ public class Welcome extends AbstractScreen {
   public void iTapOnSkipIntroButtonOnIntroPage(String name) throws Throwable {
     pageIndicator.waitFor(5);
     Steps.tapButton(name);
+  }
+  
+  public void skipInto() throws Throwable
+  {
+	  skipIntro.tap();
   }
 }

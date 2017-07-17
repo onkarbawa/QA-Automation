@@ -1,5 +1,5 @@
 @signUp
-Feature: Signup
+Feature: iOS- Signup Flow
 
     @C114954
     Scenario: Verify on SignUp user should see name, email or phone number in My Account screen

@@ -1,7 +1,5 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.uifactory.AndroidDevice;
-import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
@@ -27,29 +25,20 @@ public class CreditCard {
     public void iAddCreditCardInformationAs(String cardNumber, String cardExpiry, String ccv, String firstName,
                                             String lastName, String cardStreetAddress, String cardAptOrSuite, String cardCity,
                                             String cardState, String cardZip) throws Throwable {
-        cardNumberTextField.sendKeys(cardNumber);
-        AndroidDevice.pressEnter();
-        cardExpMonthTextField.sendKeys(cardExpiry);
-        AndroidDevice.pressEnter();
-        cardCCVTextField.sendKeys(ccv);
-        AndroidDevice.pressEnter();
-        firstNameTextField.sendKeys(firstName);
-        AndroidDevice.pressEnter();
-        lastNameTextField.sendKeys(lastName);
-        AndroidDevice.pressEnter();
-        cardStreetAddressTextField.sendKeys(cardStreetAddress);
-        AndroidDevice.pressEnter();
-        cardAptOrSuiteTextField.sendKeys(cardAptOrSuite);
-        AndroidDevice.pressEnter();
-        cardCityTextField.sendKeys(cardCity);
-        DriverFactory.hideKeyboard();
+        cardNumberTextField.setText(cardNumber);
+        cardExpMonthTextField.setText(cardExpiry);
+        cardCCVTextField.setText(ccv);
+        firstNameTextField.setText(firstName);
+        lastNameTextField.setText(lastName);
+        cardStreetAddressTextField.setText(cardStreetAddress);
+        cardAptOrSuiteTextField.setText(cardAptOrSuite);
+        cardCityTextField.setText(cardCity);
         cardStateDropDown.tap();
         Thread.sleep(1000);
         UIElement cardStateListSelect = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView//android.widget.CheckedTextView[@text='" + cardState + "']");
         cardStateListSelect.tap();
-        cardZipTextField.sendKeys(cardZip);
+        cardZipTextField.setText(cardZip);
         saveButton.tap();
-
     }
 
 }

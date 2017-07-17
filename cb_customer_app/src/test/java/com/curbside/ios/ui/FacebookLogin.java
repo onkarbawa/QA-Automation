@@ -43,8 +43,8 @@ public class FacebookLogin extends AbstractScreen {
 		if(!btnInBrowserContinueAs.isDisplayed())
 		{
 			btnLoginUsingEmail.waitFor(10).tap();
-			txtInBrowserUsername.waitFor(10).sendKeys(emailId);
-			txtInBrowserPassword.sendKeys(password);
+			txtInBrowserUsername.waitFor(10).setText(emailId);
+			txtInBrowserPassword.setText(password);
 			btnInBrowserLogin.tap();
 		}
 		
@@ -58,14 +58,14 @@ public class FacebookLogin extends AbstractScreen {
 
 	@And("^I enter email and password$")
 	public void iEnterEmailAndPassword() throws Throwable {
-		enterFacebookEmail.sendKeys("jacktest94@gmail.com");
-		enterPassword.sendKeys("tftus@123");
+		enterFacebookEmail.setText("jacktest94@gmail.com");
+		enterPassword.setText("tftus@123");
 	}
 
 	@And("^I enter '(.*)' and '(.*)' for facebook$")
 	public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
-		enterFacebookEmail.sendKeys(emailText);
-		enterPassword.sendKeys(passwordText);
+		enterFacebookEmail.setText(emailText);
+		enterPassword.setText(passwordText);
 	}
 
 	@And("^I tap on 'Log In with the Facebook App'$")

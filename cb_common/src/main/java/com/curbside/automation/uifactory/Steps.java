@@ -33,6 +33,23 @@ public class Steps {
 		logger.info("Launching application without install");
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver(false);
+		
+		MobileDevice.getScreenshot(true);
+	}
+	
+	@Given("^I launch (.*) application with required permissions$")
+	public void launchApplicationWithPermissions(String appName) throws Throwable
+	{
+		logger.info("Launching application with needed permissions");
+		DriverFactory.releaseDriver();
+		DriverFactory.getDriver(false, true);
+		if(DeviceStore.getPlatform().equalsIgnoreCase("andrid"))
+		{
+			AndroidDevice.grantLocationPermission();
+			((AppiumDriver)DriverFactory.getDriver()).resetApp();
+		}
+		
+		MobileDevice.getScreenshot(true);
 	}
 	
 	@Given("^I launch (.*) application for the first time$")
@@ -49,16 +66,21 @@ public class Steps {
 		MobileDevice.resetPermissions(appName);
 		MobileDevice.clearAppData(appName);
 		
-		//Close settings app
-		((AppiumDriver)DriverFactory.getDriver()).closeApp();
-
-		//Close current drive, keeping device locked
-		DriverFactory.releaseDriver();
+		// Close settings app
+		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			((AppiumDriver) DriverFactory.getDriver()).closeApp();
+			DriverFactory.releaseDriver();
+		}
 		
 		//Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
-		((AppiumDriver)DriverFactory.getDriver()).resetApp();
+		
+		//if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+		//	((AppiumDriver)DriverFactory.getDriver()).resetApp();
+		
+		((AppiumDriver)DriverFactory.getDriver()).launchApp();
+		MobileDevice.getScreenshot(true);
 	}
 	
 	@Given("^I accept notifications alert$")
@@ -67,7 +89,12 @@ public class Steps {
 		logger.info("Accepting notification alert");
 		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			new UIElement(By.name("Allow")).tap();
+			try {
+				new UIElement(By.name("Allow")).tap();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		else
 			throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
@@ -121,9 +148,9 @@ public class Steps {
 		logger.info("Swiping left " + times + " times");
 		
 		for (int i = 0; i <= times; i++) {
-			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
-				//MobileDevice.swipeLeft();
-			}
+			//new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
+			MobileDevice.swipeLeft();
+		}
 	}
 	
 	@Given("^I (?:tap|click) on '(.*)' button$")
@@ -132,8 +159,16 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			UIElement.byAccessibilityId(buttonName).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			UIElement.byXpath("//*[@text='" + buttonName + "']").waitFor(5).tap();
+			UIElement.byUISelector("new UiSelector().text(\"" + buttonName + "\")").waitFor(5).tap();
 		}
+	}
+	
+	@Given("^I (?:tap|click) on '(.*)' button if displayed$")
+	public static void tapButton_optional(String buttonName) throws Throwable
+	{
+		try {
+			tapButton(buttonName);
+		} catch (Exception e) {}
 	}
 	
 	@Given("^I wait for '(.*)' button$")

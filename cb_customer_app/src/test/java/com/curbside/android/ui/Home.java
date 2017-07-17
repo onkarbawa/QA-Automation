@@ -1,6 +1,5 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -29,17 +28,20 @@ public class Home extends AbstractScreen {
 
 	UIElement apiHost = UIElement.byXpath("//*[@resource-id='android:id/list']/android.widget.LinearLayout[1]");
 	UIElement apiHostTextField = UIElement.byId("android:id/edit");
-	UIElement apiHostOkButton = UIElement.byId("android:id/button1");
+	UIElement apiHostOkButton = UIElement.byUISelector("new UiSelector().text(\"OK\")");
 	UIElement debugBackButton = UIElement.byAccessibilityId("Navigate up");
+	UIElement imageBackButton= UIElement.byId("com.curbside.nCurbside:id/img_tool_back");
 	UIElement myLocationButton = UIElement.byAccessibilityId("My Location");
 	UIElement firstRetailerPartner = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']/android.widget.RelativeLayout[@index='0']");
 	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
 	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
+	
 
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
-		Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
+		//Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
+				Assert.assertTrue(shopNearLabel.waitFor(30).isDisplayed(),
 			"Near by stores page is not visible");
 	}
 
@@ -49,31 +51,42 @@ public class Home extends AbstractScreen {
 	}
 
 	@And("^I am on Home Screen$")
-	public void iAmOnHomeScreen() throws Throwable {
-		welcomeScreen.skipIntro.waitFor(5).tap();
-		welcomeScreen.okButton.waitFor(5).tap();
-		commonSteps.acceptLocationAlert();
+	public void open() throws Throwable {
+		welcomeScreen.wait_for_app_launch();
+		try {
+			for (int i = 0; i < 10; i++) {
+				if(!footerTabsScreen.btnShop.isDisplayed())
+				{
+					welcomeScreen.skipIntro.tapOptional();
+					welcomeScreen.btnGetStarted.tapOptional();
+					welcomeScreen.okButton.tapOptional();
+					commonSteps.acceptLocationAlert();
+				}
+			}
+		} catch (Exception e) {
+		}
+		
 	}
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
+		homeScreen.open();
 		searchIcon.waitFor(5).tap();
-		searchBox.waitFor(5).sendKeys("_#csndc#ena");
+		searchBox.waitFor(5).setText("_#csndc#ena", false);
 		AndroidDevice.pressEnter();
 		
-		apiHost.waitFor(3);
-		if (myLocationButton.isDisplayed()) {
+		try {
+			apiHost.waitFor(5).tap();
+			apiHostTextField.setText("https://api-s.shopcurbside.com");
+		} catch (Exception e) {
 			debugBackButton.tap();
-			apiHost.waitFor(3);
+			apiHost.tap();
+			apiHostTextField.setText("https://api-s.shopcurbside.com");
 		}
-		apiHost.tap();
-
-		apiHostTextField.waitFor(3).clearText();
-		apiHostTextField.sendKeys("https://api-s.shopcurbside.com");
+		
 		apiHostOkButton.tap();
-		debugBackButton.waitFor(2).tap();
-        AndroidDevice.startApplication(DeviceStore.getDevice().get("appPackage").toString(), 
-        		DeviceStore.getDevice().get("appActivity").toString());
+		debugBackButton.tap();
+		imageBackButton.waitFor(5).tap();
 	}
 
 	@Given("I select 1st retailer partner on stores screen")
@@ -100,7 +113,7 @@ public class Home extends AbstractScreen {
             currentLocation.tap();
         }
 
-		cityZipSearchTextBox.waitFor(10).sendKeys(cityName);
+		cityZipSearchTextBox.waitFor(10).setText(cityName);
 		AndroidDevice.pressEnter();
 		currentLocation.waitFor(30);
 	}
@@ -113,6 +126,7 @@ public class Home extends AbstractScreen {
 		select1stRetailerPartner();
 		storeDetailsScreen.select1stProduct();
 		productDetailsScreen.addToCart();
+		MobileDevice.getScreenshot(true);
 		AndroidDevice.goBack();
 	}
 

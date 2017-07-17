@@ -15,10 +15,10 @@ import java.io.File;
 
 public class FooterTabs extends AbstractScreen {
 
-	UIElement btnMyAccount = UIElement.byAccessibilityId("My Account");
-	UIElement btnShop = UIElement.byAccessibilityId("Shop");
-	UIElement btnMap = UIElement.byAccessibilityId("Map");
-	UIElement btnCart = UIElement.byAccessibilityId("Cart");
+	public UIElement btnMyAccount = UIElement.byAccessibilityId("My Account");
+	public UIElement btnShop = UIElement.byAccessibilityId("Shop");
+	public UIElement btnMap = UIElement.byAccessibilityId("Map");
+	public UIElement btnCart = UIElement.byAccessibilityId("Cart");
 
 	public FooterTabs() {
 		// TODO Auto-generated constructor stub

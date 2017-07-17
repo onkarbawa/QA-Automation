@@ -22,6 +22,9 @@ public class Properties {
   
   public static void setVariable(String name, String value)
   {
+	  if(variables.get() == null)
+		  variables.set(new HashMap<>());
+	  
 	  variables.get().put(name, value);
   }
   

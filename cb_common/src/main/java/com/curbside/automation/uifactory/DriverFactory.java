@@ -8,11 +8,15 @@ package com.curbside.automation.uifactory;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import com.curbside.automation.devicefactory.DeviceStore;
@@ -25,6 +29,8 @@ import io.appium.java_client.ios.IOSDriver;
 public class DriverFactory {
 	private static final Logger logger = Logger.getLogger(DriverFactory.class);
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+	private static ThreadLocal<Capabilities> driverInfo = new ThreadLocal<Capabilities>();
+	public static ThreadLocal<Dimension> deviceSize = new ThreadLocal<Dimension>();
 	
 	/**
 	 * This method must be called when creating a new driver instance
@@ -50,6 +56,10 @@ public class DriverFactory {
     }
 	
 	public static WebDriver getDriver(boolean reinstall) throws Throwable {
+		return getDriver(reinstall, false);
+    }
+	
+	public static WebDriver getDriver(boolean reinstall, boolean givePermissions) throws Throwable {
 		JSONObject deviceInfo= new JSONObject(DeviceStore.getDevice().toString());
 		if(!reinstall)
 		{
@@ -57,6 +67,10 @@ public class DriverFactory {
 			deviceInfo.remove("ipa");
 		}
 		deviceInfo.put("noReset", true);
+		
+		if(givePermissions)
+			deviceInfo.put("autoGrantPermissions", true);
+		
 		return getDriver(deviceInfo);
     }
 	
@@ -73,8 +87,12 @@ public class DriverFactory {
     }
 	
 	private static void setDriver(WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         DriverFactory.webDriver.set(driver);
+    }
+	
+	public static Map<String, ?> getDriverInfo() {
+        return driverInfo.get().asMap();
     }
 	
 	private static void createInstance(String platform, JSONObject deviceInfo) throws Throwable
@@ -88,6 +106,8 @@ public class DriverFactory {
 		URL url= new URL(deviceInfo.get("url").toString());
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("sendKeyStrategy", "grouped");
+		
 		Iterator<?> keys = deviceInfo.keySet().iterator();
 		while( keys.hasNext() ) {
 		    String key = (String)keys.next();
@@ -112,18 +132,17 @@ public class DriverFactory {
 			throw new Exception("Unknown platform: " + platform);
 		}
 		
-		System.out.println("Actual device capabilities: " +
-						((AppiumDriver)getDriver()).getCapabilities().asMap());
+		driverInfo.set(((AppiumDriver)(webDriver.get())).getCapabilities());
+		System.out.println("Actual device capabilities: " +driverInfo.get().asMap());
+		deviceSize.set(webDriver.get().manage().window().getSize());
+		MobileDevice.logDeviceInfo();
 		
 		//System.out.println("Device screenshot captured at " + MobileDevice.takeScreenshot().getAbsolutePath());
 		//new ImageElement(new File("src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
-
-	public static void hideKeyboard() {
-		try {
-			((AppiumDriver) getDriver()).hideKeyboard();
-		} catch (Throwable ex) {
-			logger.debug("Problem in Hiding keyboard due to: " + ex.getMessage());
-		}
+	
+	public static Dimension getSize()
+	{
+		return deviceSize.get();
 	}
 }

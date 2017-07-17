@@ -1,5 +1,5 @@
 @StoreSelection
-Feature: Verify store display functionality
+Feature: iOS- Store Selection
 
   @C114940
   Scenario: Verify retailers are shown in store selection screen

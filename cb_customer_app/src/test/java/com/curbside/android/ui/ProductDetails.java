@@ -28,6 +28,7 @@ public class ProductDetails extends AbstractScreen {
     public void addToCart() throws Throwable {
         try {
             btnAddtoCart.tap();
+            btnAddtoCart.waitFor(5);
         }catch (Exception e){
             btnAdd.waitFor(10);
         }

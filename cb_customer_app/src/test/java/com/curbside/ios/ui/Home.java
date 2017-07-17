@@ -70,7 +70,7 @@ public class Home extends AbstractScreen {
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
 		currentLocation.tap();
-		cityZipSearchTextBox.sendKeys(cityName);
+		cityZipSearchTextBox.setText(cityName);
 		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
 
 		loadingIcon.waitForNot(30);
@@ -80,14 +80,14 @@ public class Home extends AbstractScreen {
 	public void searchForProduct(String productName) throws Throwable {
 		iconSearch.tap();
 		Thread.sleep(1000);
-		txtSearchNearBy.sendKeys(productName);
+		txtSearchNearBy.setText(productName);
 	}
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		iconSearch.tap();
 		Thread.sleep(1000);
-		txtSearchNearBy.sendKeys("_#csndc#env#s");
+		txtSearchNearBy.setText("_#csndc#env#s");
 		btnSearchKeyboard.tap();
 		loadingIcon.waitForNot(30);
 		MobileDevice.getScreenshot(true);

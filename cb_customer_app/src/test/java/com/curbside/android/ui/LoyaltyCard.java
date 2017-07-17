@@ -1,6 +1,7 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.apache.commons.lang3.StringUtils;
@@ -20,9 +21,10 @@ public class LoyaltyCard extends AbstractScreen {
     @And("^I add an ExtraCare Card numbered '(.*)'$")
     public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
         Properties.setVariable("extraCareCardNumber", cardNumber);
-        loyaltyCardText.sendKeys(cardNumber);
+        loyaltyCardText.setText(cardNumber);
         saveButton.tap();
         saveButton.waitForNot(10);
+        MobileDevice.getScreenshot(true);
     }
 
     @And("^I should see ExtraCare Card info on Loyalty Cards screen$")

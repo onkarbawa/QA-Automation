@@ -1,5 +1,5 @@
 @login
-Feature: Sign In
+Feature: iOS-Login
 
   @C114957
   Scenario: Verify New user should login in curbside app

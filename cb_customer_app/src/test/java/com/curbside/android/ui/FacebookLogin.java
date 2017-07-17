@@ -1,29 +1,41 @@
 package com.curbside.android.ui;
 
-import com.curbside.automation.uifactory.AndroidDevice;
-import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
-import io.appium.java_client.AppiumDriver;
 
 /**
  * Created by kumar.nipun on 7/11/2017.
  */
 public class FacebookLogin extends AbstractScreen {
 
-  UIElement emailField = UIElement.byXpath("//*[@text='Email address or phone number']");
-  UIElement passwordField = UIElement.byXpath("//*[@text='Facebook password']");
-  UIElement logInButton = UIElement.byXpath("//*[@content-desc='Log In']");
-  UIElement continueButton = UIElement.byId("u_0_3");
+  UIElement emailField = UIElement.byClass("android.widget.EditText");
+  UIElement passwordField = UIElement.byXpath("//android.widget.EditText[@password='true']");
+  UIElement logInButton = UIElement.byAccessibilityId("Log In ");
+  UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue \")");
+  UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
 
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for facebook login$")
   public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
-    emailField.waitFor(30).sendKeys(email);
-    DriverFactory.hideKeyboard();
-    passwordField.sendKeys(password);
-    AndroidDevice.pressEnter();
-
+    
+	/*
+	try {
+		MobileDevice.switchToWebView();
+		MobileDevice.getSource(true);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+    finally {
+    	MobileDevice.switchToNativeView();
+    }*/
+	
+	loadingIcon.waitForNot(30);
+	MobileDevice.getScreenshot(true);
+    emailField.waitFor(30).setText(email);
+    passwordField.setText(password);
+    logInButton.tap();
     continueButton.waitFor(20).tap();
+    MobileDevice.getScreenshot(true);
   }
 
 }

@@ -1,10 +1,9 @@
 @ProductCatalog
-Feature: Verify store display functionality
+Feature: Android- Product Catalog
 
   @C114941
   Scenario: Verify products display in landing page
     Given I launch Curbside application for the first time
-    And I wait for 'Skip Intro' button
     And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
@@ -12,7 +11,8 @@ Feature: Verify store display functionality
 
   @C114942 @C114944
   Scenario: Verify product landing page
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
+    And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     When I tap on product from the list
@@ -20,7 +20,8 @@ Feature: Verify store display functionality
 
   @C114943
   Scenario: Verify products variant
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
+    And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     And I tap on product from the list

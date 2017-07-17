@@ -12,24 +12,29 @@ import org.openqa.selenium.By;
  */
 
 public class FooterTabs extends AbstractScreen {
+	public UIElement btnMyAccount = UIElement.byUISelector("new UiSelector().text(\"Account\")");
+	public UIElement btnShop = UIElement.byUISelector("new UiSelector().text(\"Shop\")");
+	public UIElement btnMap = UIElement.byUISelector("new UiSelector().text(\"Map\")");
+	public UIElement btnCart = UIElement.byUISelector("new UiSelector().text(\"Cart\")");
+	
 	public FooterTabs() {
 	}
 
     public void tapMyAccount() throws Throwable {
-        Steps.tapButton("Account");
+    	btnMyAccount.tap();
     }
 
     @When("^I tap Map on footer$")
     public void tapMap() throws Throwable {
-	    Steps.tapButton("Map");
+	    btnMap.tap();
     }
 
     public void tapShop() throws Throwable {
-        Steps.tapButton("Shop");
+        btnShop.tap();
     }
 
     @And("^I go to Cart screen$")
     public void tapCart() throws Throwable {
-        Steps.tapButton("Cart");
+        btnCart.tap();
     }
 }

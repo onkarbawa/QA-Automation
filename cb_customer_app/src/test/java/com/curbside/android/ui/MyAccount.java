@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
@@ -24,6 +25,7 @@ public class MyAccount extends AbstractScreen{
     UIElement signInButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in"));
     UIElement userNameField = new UIElement(By.id("com.curbside.nCurbside:id/text_name"));
     UIElement userPhoneNumberField = UIElement.byId("com.curbside.nCurbside:id/text_phone_number");
+    UIElement btnNavigateUp= UIElement.byAccessibilityId("Navigate up");
 
     @And("^I tap on PaymentInfo button on Account page$")
     public void iTapOnPaymentInfoButtonOnAccountPage() throws Throwable {
@@ -70,15 +72,22 @@ public class MyAccount extends AbstractScreen{
 
     @Given("^I am not signed into application$")
     public void ensureSignedOut() throws Throwable {
-        footerTabsScreen.tapMyAccount();
-        ensureAccountPage();
-        if(userEmailField.isDisplayed() || userPhoneNumberField.isDisplayed())
-        {
+        try {
+        	homeScreen.open();
+			footerTabsScreen.tapMyAccount();
             Steps.tapButton("Account Info");
             Steps.tapButton("Sign Out");
             signUp.waitFor(5);
-        }
+		} catch (Exception e) {}
+        finally{}
 
+        try {
+            btnNavigateUp.tap();
+		} catch (Exception e) {}
+        finally{}
+        
+        MobileDevice.getScreenshot(true);
+        
     }
 
     @And("^I ensure that I am on Account page$")

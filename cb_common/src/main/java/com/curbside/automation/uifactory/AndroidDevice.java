@@ -38,6 +38,11 @@ public class AndroidDevice extends MobileDevice {
 				new Activity(packageName, activityName));
 	}
 	
+	public static void startApplication() throws Throwable {
+		startApplication(DeviceStore.getDevice().get("appPackage").toString(), 
+        		DeviceStore.getDevice().get("appActivity").toString());
+	}
+	
 	public static void launchSettings() throws Throwable {
 		// Get current device
 		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
@@ -71,6 +76,10 @@ public class AndroidDevice extends MobileDevice {
       String command = getPMPrefix() + "grant " + appPackage + " android.permission.ACCESS_FINE_LOCATION";
       Runtime.getRuntime().exec(command).waitFor();
     }
+    
+    public static void grantLocationPermission() throws Throwable {
+        grantLocationPermission(DeviceStore.getDevice().get("appPackage").toString());
+      }
 
     public static void revokeLocationPermission(String appPackage) throws Throwable {
       String command = getPMPrefix() + "revoke " + appPackage + " android.permission.ACCESS_FINE_LOCATION";

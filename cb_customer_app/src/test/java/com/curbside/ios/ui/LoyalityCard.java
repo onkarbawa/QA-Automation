@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -29,9 +30,10 @@ public class LoyalityCard extends AbstractScreen {
 	public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
 		Properties.setVariable("extraCareCardNumber", cardNumber);
 		Steps.tapButton("ExtraCare Card");
-		cardNumberTextBox.sendKeys(cardNumber);
+		cardNumberTextBox.setText(cardNumber);
 		save.tap();
 		save.waitForNot(10);
+		MobileDevice.getScreenshot(true);
 	}
 
 	public String getCardNumber() {

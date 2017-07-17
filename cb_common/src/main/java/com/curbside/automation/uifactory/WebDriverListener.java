@@ -7,6 +7,7 @@ package com.curbside.automation.uifactory;
 
 import java.net.MalformedURLException;
 
+import org.apache.log4j.Logger;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -50,6 +51,9 @@ public class WebDriverListener implements IInvokedMethodListener, ISuiteListener
 
 	@Override
 	public void onStart(ISuite suite) {
+		
+		System.out.println("Starting suite " + suite.getName());
+
 		String platform= suite.getXmlSuite().getParameter("platform");
 		if(platform.equalsIgnoreCase("ios"))
 		{

@@ -1,11 +1,9 @@
 @login
-Feature: Verify the login functionality
+Feature: Android- Login Feature
 
   @C114957
   Scenario: Verify New user should login in curbside app
     Given I launch Curbside application for the first time
-    And I wait for 'Skip Intro' button
-    And I am on Home Screen
     And I have selected test environment
     And I tap on 'Account' button
     And I tap on Sign up button on My Account page
@@ -17,7 +15,7 @@ Feature: Verify the login functionality
   #TODO: yet to get update on Facebook login from Seejo
   @C114955
   Scenario Outline: Verify user should login with facebook
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
     And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button
@@ -30,7 +28,7 @@ Feature: Verify the login functionality
 
   @C114956
   Scenario Outline: Verify user should login with email
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
     And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button

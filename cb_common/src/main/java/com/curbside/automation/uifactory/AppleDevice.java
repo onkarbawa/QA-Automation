@@ -50,6 +50,7 @@ public class AppleDevice extends MobileDevice {
 			if(code != null && code != "")
 				passcode.sendKeys(code);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		resetSetting.tap();

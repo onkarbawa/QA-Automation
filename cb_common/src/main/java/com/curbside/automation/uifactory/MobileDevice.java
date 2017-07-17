@@ -1,6 +1,9 @@
 package com.curbside.automation.uifactory;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.curbside.automation.common.utilities.SwipeOptions;
 import com.curbside.automation.common.utilities.Utilities;
@@ -29,6 +32,8 @@ import io.appium.java_client.TouchAction;
 
 @SuppressWarnings("rawtypes")
 public class MobileDevice {
+	
+	private static final Logger logger = Logger.getLogger(MobileDevice.class);
 
 	public MobileDevice() {
     }
@@ -45,28 +50,32 @@ public class MobileDevice {
 	
 	public static String getDeviceId() throws Throwable
 	{
-		return ((AppiumDriver)DriverFactory.getDriver())
-				.getCapabilities().asMap().get("deviceUDID").toString();
+		if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+			return DeviceStore.getDevice().get("udid").toString();
+		else
+			return DeviceStore.getDevice().get("deviceName").toString();
 	}
 	
 	public static String getPlatformVersion() throws Throwable
 	{
-		return ((AppiumDriver)DriverFactory.getDriver())
-				.getCapabilities().asMap().get("platformVersion").toString();
+		return DriverFactory.getDriverInfo().get("platformVersion").toString();
 	}
 	
 	public static String getDeviceModel() throws Throwable
 	{
-		return ((AppiumDriver)DriverFactory.getDriver())
-				.getCapabilities().asMap().get("deviceModel").toString();
+		return DriverFactory.getDriverInfo().get("deviceModel").toString();
 	}
 	
+	public static Dimension getSize() throws Throwable {
+	    return DriverFactory.getSize();
+    }
+	
 	public static int getHeight() throws Throwable {
-	    return DriverFactory.getDriver().manage().window().getSize().getHeight();
+	    return getSize().getHeight();
     }
 
     public static int getWidth() throws Throwable {
-        return DriverFactory.getDriver().manage().window().getSize().getWidth();
+        return getSize().getWidth();
     }
     
     /**
@@ -104,14 +113,7 @@ public class MobileDevice {
 		
 		MobileDevice.swipe(width/2, (int)(height * 0.80), width/2, (int)(height * 0.20));
 	}
-//	anchor = (int) (width * 0.5);
-//	startPoint = (int) (height * 0.8);
-//	endPoint = (int) (height * 0.01);
-//                if (platform.equalsIgnoreCase("iOS")) {
-//		touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
-//	}else if (platform.equalsIgnoreCase("Android")){
-//		touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
-//	}
+
 	public static void swipeDown() throws Throwable
 	{
 		int height= getHeight();
@@ -136,35 +138,45 @@ public class MobileDevice {
 		MobileDevice.swipe((int)(width * 0.15), height/2, (int)(width * 0.85), height/2);
 	}
 	
-	public static void swipe(int startx, int starty, int endx, int endy) throws Throwable
-	{
-		int xOffset = endx - startx;
-        int yOffset = endy - starty;
-        
-        new TouchAction((AppiumDriver)DriverFactory.getDriver())
-			        .press(startx, starty)
-			        .moveTo(xOffset, yOffset)
-			        .waitAction(1000)
-			        .release().perform();
+	public static void swipe(int startx, int starty, int endx, int endy) throws Throwable {
+		/*if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
+			Map<String, Object> params = new HashMap<>();
+			params.put("duration", 1.0);
+			params.put("fromX", startx);
+			params.put("fromY", starty);
+			params.put("toX", endx);
+			params.put("toY", endy);
+			js.executeScript("mobile: dragFromToForDuration", params);
+		} else */{
+			int xOffset = endx - startx;
+			int yOffset = endy - starty;
+
+			new TouchAction((AppiumDriver) DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset)
+					.release().perform();
+		}
+		
+		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			Thread.sleep(1000);
 	}
 	
 	public static void swipe(SwipeDirection swipeDirection) throws Throwable {
 		switch (swipeDirection) {
 		case UP:
-			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Up);
-			//swipeUp();
+			//new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Up);
+			swipeUp();
 			break;
 		case DOWN:
-			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Down);
-		//	swipeDown();
+			//new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Down);
+		    swipeDown();
 			break;
 		case LEFT:
-			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
-		//	swipeLeft();
+			//new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Left);
+		    swipeLeft();
 			break;
 		case RIGHT:
-			new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Right);
-		//	swipeRight();
+			//new Utilities((AppiumDriver) DriverFactory.getDriver()).swipeOptions(SwipeOptions.Right);
+		    swipeRight();
 			break;
 		default:
 			break;
@@ -174,8 +186,13 @@ public class MobileDevice {
 	@SuppressWarnings("deprecation")
 	public static File getSource() throws Throwable
 	{
-		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
-			return null;
+		return getSource(false);
+	}
+	
+	public static File getSource(boolean attachToReport) throws Throwable
+	{
+		//if(DeviceStore.getPlatform().equalsIgnoreCase("android") && !attachToReport)
+		//	return null;
 		
 		File outputFile= null;
 		String source= DriverFactory.getDriver().getPageSource();
@@ -185,6 +202,10 @@ public class MobileDevice {
 			outputFile= File.createTempFile("src_", ".xml");
 
 		FileUtils.write(outputFile, source);
+		
+		if(attachToReport)
+			Reporter.addStepLog("<a href='" + outputFile.getAbsolutePath() + "'>page source</a>");
+		
 		return outputFile;
 	}
 	
@@ -199,9 +220,12 @@ public class MobileDevice {
 			
 			
 			File srcFile= getSource();
-			File tmpSrcFile= File.createTempFile("src_", "." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
-			FileUtils.copyFile(srcFile, tmpSrcFile);
-			Reporter.addStepLog("<a href='" + tmpSrcFile.getAbsolutePath() + "'>page source</a>");
+			if(srcFile != null)
+			{
+				File tmpSrcFile= File.createTempFile("src_", "." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
+				FileUtils.copyFile(srcFile, tmpSrcFile);
+				Reporter.addStepLog("<a href='" + tmpSrcFile.getAbsolutePath() + "'>page source</a>");
+			}
 			
 			return tmpFile;
 		}
@@ -259,5 +283,48 @@ public class MobileDevice {
 	{
 		Location l= new Location(latitude, longitude, altitude);
 		((AppiumDriver)DriverFactory.getDriver()).setLocation(l);
+	}
+	
+	public static void switchToWebView() throws Throwable {
+		Set<String> contexts = ((AppiumDriver) DriverFactory.getDriver()).getContextHandles();
+		for (int i = 0; i < 10; i++) {
+			for (String context : contexts) {
+				if (context.contains("WEBVIEW")) {
+					((AppiumDriver) DriverFactory.getDriver()).context(context);
+					return;
+				}
+			}
+			
+			Thread.sleep(2);
+		}
+	}
+
+	public static void switchToNativeView() throws Throwable {
+		Set<String> contexts = ((AppiumDriver) DriverFactory.getDriver()).getContextHandles();
+		for (String context : contexts) {
+			if (context.contains("NATIVE")) {
+				((AppiumDriver) DriverFactory.getDriver()).context(context);
+				break;
+			}
+		}
+	}
+	
+	public static void hideKeyboard() {
+		try {
+			((AppiumDriver) DriverFactory.getDriver()).hideKeyboard();
+		} catch (Throwable ex) {
+			logger.debug("Problem in Hiding keyboard due to: " + ex.getMessage());
+		}
+	}
+	
+	public static void logDeviceInfo()
+	{
+		try {
+			Reporter.addStepLog("Platform: " + DeviceStore.getPlatform() + "; "
+					+ "Version: " + getPlatformVersion() + "; "
+					+ "Model: " + getDeviceModel() + "; "
+					+ "ID: " + getDeviceId() + "; ");
+		} catch (Throwable e) {
+		}
 	}
  }

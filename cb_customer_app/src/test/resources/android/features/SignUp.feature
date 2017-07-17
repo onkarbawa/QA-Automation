@@ -1,11 +1,9 @@
 @signUp
-Feature: Verify curbside signup flow
+Feature: Android- Signup Flow
 
   @C114954
   Scenario: Verify on new account user should see name, email or phone number in my account
     Given I launch Curbside application for the first time
-    And I wait for 'Skip Intro' button
-    And I am on Home Screen
     And I have selected test environment
     And I tap on 'Account' button
     And I ensure that I am on Account page
@@ -18,7 +16,7 @@ Feature: Verify curbside signup flow
 
   @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
     And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
@@ -32,13 +30,15 @@ Feature: Verify curbside signup flow
     Then I should see the card added to Payment info
     Examples:
       | card_number       | card_expiry | ccv | first_name | last_name |card_street_address | apt_suite | card_city | card_state | card_zip |
-      | 4012000077777777  | 1218        | 123 | John       | miller    |1 Infinite Loop     |           | Cupertino | California |   95014  |
+      | 4012000077777778  | 1218        | 123 | John       | miller    |1 Infinite Loop     |           | Cupertino | California |   95014  |
 
 
 
   @C114959
   Scenario: Add loyalty card
-    Given I launch Curbside application
+    Given I launch Curbside application with required permissions
+    And I am not signed into application
+    And I tap on 'Account' button
     And I signin in using signup information
     And I tap on 'Loyalty Cards' button
     And I tap on 'Add New Card' button
