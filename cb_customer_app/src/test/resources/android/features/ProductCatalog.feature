@@ -3,7 +3,7 @@ Feature: Android- Product Catalog
 
   @C114941
   Scenario: Verify products display in landing page
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store

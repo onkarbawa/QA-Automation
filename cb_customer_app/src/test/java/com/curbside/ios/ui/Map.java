@@ -16,8 +16,10 @@ public class Map extends AbstractScreen {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Then("^I should see stores on map for 'Palo Alto'$")
-	public void iShouldSeeStoresOnMapForPaloAlto() throws Throwable {
-		Assert.assertTrue(nearByStore.isDisplayed(),"store is not displayed near to the selected location");
+	@Then("^I should see stores on map for '(.*)'$")
+	public void iShouldSeeStoresOnMapForPaloAlto(String location) throws Throwable {
+		//Assert.assertTrue(nearByStore.isDisplayed(),"store is not displayed near to the selected location");
+		Assert.assertTrue(UIElement.byName("Palo Alto").isDisplayed(), "Map is not displaying location " + location);
+		Assert.assertTrue(UIElement.byName("CVS, El Camino Real, Palo Alto").isDisplayed(), "Map is not displaying store for " + location);
 	}
 }

@@ -26,9 +26,9 @@ public class SignUp extends AbstractScreen {
         Properties.setVariable("signupEmail", emailId);
         Properties.setVariable("signupPassword", password);
         Properties.setVariable("signupPhoneNumber", phoneNumberText);
-        emailField.waitFor(3).setText(emailId);
-        phoneNumberField.setText(phoneNumberText);
-        passwordField.setText(password);
+        emailField.waitFor(3).sendKeys(emailId);
+        phoneNumberField.sendKeys(phoneNumberText);
+        passwordField.sendKeys(password);
     }
 
     @And("^I tap on Create Account button$")

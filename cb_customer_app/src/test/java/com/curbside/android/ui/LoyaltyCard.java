@@ -21,7 +21,7 @@ public class LoyaltyCard extends AbstractScreen {
     @And("^I add an ExtraCare Card numbered '(.*)'$")
     public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
         Properties.setVariable("extraCareCardNumber", cardNumber);
-        loyaltyCardText.setText(cardNumber);
+        loyaltyCardText.sendKeys(cardNumber);
         saveButton.tap();
         saveButton.waitForNot(10);
         MobileDevice.getScreenshot(true);

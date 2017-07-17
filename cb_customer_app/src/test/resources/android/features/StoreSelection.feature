@@ -3,7 +3,7 @@ Feature: Android- Store Selection
 
   @C114940
   Scenario: Verify nearby stores display partners/retailers
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I am on Home Screen
     And I search for 'Palo Alto Transit Center' location
     Then I should see nearby stores to current location

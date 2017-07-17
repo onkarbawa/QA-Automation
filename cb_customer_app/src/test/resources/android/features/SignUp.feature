@@ -3,10 +3,10 @@ Feature: Android- Signup Flow
 
   @C114954
   Scenario: Verify on new account user should see name, email or phone number in my account
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected test environment
+    And I am not signed into application
     And I tap on 'Account' button
-    And I ensure that I am on Account page
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen

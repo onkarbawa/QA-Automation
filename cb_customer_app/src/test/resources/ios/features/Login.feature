@@ -1,10 +1,11 @@
 @login
-Feature: iOS-Login
+Feature: iOS- Login Feature
 
   @C114957
   Scenario: Verify New user should login in curbside app
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected test environment
+    And I am not signed into application
     And I tap on 'My Account' button
     And I tap on 'Sign In' button
     And I tap on 'Create An Account' button
@@ -39,11 +40,3 @@ Feature: iOS-Login
     Examples:
       |             Email                  |     Password    |
       |      ustft123@gmail.com            |     Admin2642    |
-
-
-
-
-
-
-
-

@@ -73,11 +73,17 @@ public class Steps {
 		//Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		DeviceStore.setAppInstalled();
 		
-		//if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
-		//	((AppiumDriver)DriverFactory.getDriver()).resetApp();
+		/*
+		if(DeviceStore.getApplicationPath() != null)
+		{
+			AppiumDriver a= ((AppiumDriver)DriverFactory.getDriver());
+			a.removeApp(DeviceStore.getBundleId());
+			a.installApp(DeviceStore.getApplicationPath());
+			a.launchApp();
+		}*/
 		
-		((AppiumDriver)DriverFactory.getDriver()).launchApp();
 		MobileDevice.getScreenshot(true);
 	}
 	

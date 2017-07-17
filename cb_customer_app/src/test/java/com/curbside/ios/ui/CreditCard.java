@@ -43,21 +43,21 @@ public class CreditCard extends AbstractScreen {
 		Properties.setVariable("cardExpiryDate", cardExpiry);
 		Properties.setVariable("creditCardNumber", cardNumberText);
 
-		firstName.setText(firstNameText);
-		lastName.setText(lastNameText);
-		cardNumber.setText(cardNumberText);
-		expiryDate.setText(cardExpiry);
-		securityCode.setText(cardCvv);
+		firstName.sendKeys(firstNameText);
+		lastName.sendKeys(lastNameText);
+		cardNumber.sendKeys(cardNumberText);
+		expiryDate.sendKeys(cardExpiry);
+		securityCode.sendKeys(cardCvv);
 		MobileDevice.getScreenshot(true);
 		next.tap();
 		
 		newAddress.tap();
-		cardAdd1.setText(add1);
-		cardAdd2.setText(add2);
-		cardCity.setText(city);
+		cardAdd1.sendKeys(add1);
+		cardAdd2.sendKeys(add2);
+		cardCity.sendKeys(city);
 		cardState.tap();
 		cardState.tap();
-		cardZip.setText(zip);
+		cardZip.sendKeys(zip);
 		MobileDevice.getScreenshot(true);
 		save.tap();
 		
