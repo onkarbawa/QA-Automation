@@ -106,8 +106,7 @@ public class UIElement {
 	public UIElement setText(String text, boolean hideKeyboardAfterTyping) throws Throwable {
 		MobileElement e = (MobileElement) getElement();
 		
-		if(e.getText() != text)
-			this.clearText().sendKeys(text);
+		this.clearText().sendKeys(text);
 		
 		if (hideKeyboardAfterTyping)
 			MobileDevice.hideKeyboard();
