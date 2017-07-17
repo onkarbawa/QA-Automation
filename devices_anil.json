@@ -1,7 +1,7 @@
 {
   "android" : [
     {
-      "url" : "http://127.0.0.1:4723/wd/hub",
+      "url" : "http://127.0.0.1:4725/wd/hub",
       "platformName" : "android",
       "deviceName": "emulator-5554",
       "app": "../Curbside.apk",
