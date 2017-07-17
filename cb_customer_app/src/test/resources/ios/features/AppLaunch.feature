@@ -15,6 +15,7 @@ Feature: iOS- Application Launch
   @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
     Given I launch Curbside application
+    And I am on Home Screen
     And I tap on 'HelpIconWhite' button if displayed
     When I tap on 'Skip Intro' button
     Then I should see 'Nearby stores' landing page
@@ -31,18 +32,21 @@ Feature: iOS- Application Launch
     When I tap on 'Settings' button
     And I set 'Location' permission as 'Always'
     And I launch Curbside application
+    And I am on Home Screen
     Then I should see 'Nearby stores' landing page
 
   @C114997
     Scenario: Verify Disable background application refresh functionality
       Given I turn 'OFF' Background App Refresh for 'Curbside' app
       When I launch Curbside application
+      And I am on Home Screen
       And I add any product to cart in 'Palo Alto' location
       And I go to Cart screen
       And I attempt to place an order
       Then I should see checkout not allowed
       When I turn 'ON' 'Background App Refresh' for 'Curbside' app
       And I launch Curbside application
+      And I am on Home Screen
       And I tap on 'Cart' icon in bottom menu
       And I tap on 'Place Order' button
       Then I should see checkout screen

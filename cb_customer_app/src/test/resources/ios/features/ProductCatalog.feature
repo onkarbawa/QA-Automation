@@ -4,7 +4,6 @@ Feature: iOS- Product Catalog
   @C114941
   Scenario: Verify products display in landing page
     Given I launch Curbside application for the first time
-    And I am on Home Screen
     And I have selected test environment
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
@@ -13,6 +12,7 @@ Feature: iOS- Product Catalog
   @C114942 @C114944
   Scenario: Verify product landing page
     Given I launch Curbside application
+    And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     When I tap on product from the list
@@ -21,6 +21,7 @@ Feature: iOS- Product Catalog
   @C114943
   Scenario: Verify products variant
     Given I launch Curbside application
+    And I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     And I tap on product from the list

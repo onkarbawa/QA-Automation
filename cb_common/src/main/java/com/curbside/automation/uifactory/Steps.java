@@ -1,7 +1,5 @@
 package com.curbside.automation.uifactory;
 
-import com.curbside.automation.common.utilities.SwipeOptions;
-import com.curbside.automation.common.utilities.Utilities;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -92,9 +90,8 @@ public class Steps {
 			try {
 				new UIElement(By.name("Allow")).tap();
 			} catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
-			
 		else
 			throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());

@@ -52,11 +52,21 @@ public class Home extends AbstractScreen {
 	}
 
 	@And("^I am on Home Screen$")
-	public void iAmOnHomeScreen() throws Throwable {
-//		steps.acceptLocationAlert();
-		welcome.skipIntro.tap();
-		welcome.okWithMe.tap();
-		steps.acceptLocationAlert();
+	public void open() throws Throwable {
+		welcomeScreen.wait_for_app_launch();
+		try {
+			for (int i = 0; i < 10; i++) {
+				if(!footerTabsScreen.btnShop.isDisplayed())
+				{
+					welcomeScreen.skipIntro.tapOptional();
+					welcomeScreen.btnGetStarted.tapOptional();
+					welcomeScreen.okWithMe.tapOptional();
+					commonSteps.acceptNotificationAlert();
+					commonSteps.acceptLocationAlert();
+				}
+			}
+		} catch (Exception e) {
+		}
 	}
 
 	@Given("I select '(.*)' > '(.*)' location")
@@ -85,6 +95,7 @@ public class Home extends AbstractScreen {
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
+		homeScreen.open();
 		iconSearch.tap();
 		Thread.sleep(1000);
 		txtSearchNearBy.setText("_#csndc#env#s");

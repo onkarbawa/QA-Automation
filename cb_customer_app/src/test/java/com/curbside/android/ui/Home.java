@@ -40,8 +40,9 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
+		
 		//Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
-				Assert.assertTrue(shopNearLabel.waitFor(30).isDisplayed(),
+				Assert.assertTrue(shopNearLabel.waitFor(60).isDisplayed(),
 			"Near by stores page is not visible");
 	}
 

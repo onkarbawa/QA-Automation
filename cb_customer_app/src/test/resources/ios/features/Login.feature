@@ -4,7 +4,6 @@ Feature: iOS-Login
   @C114957
   Scenario: Verify New user should login in curbside app
     Given I launch Curbside application for the first time
-    And I am on Home Screen
     And I have selected test environment
     And I tap on 'My Account' button
     And I tap on 'Sign In' button

@@ -45,6 +45,7 @@ public class FacebookLogin extends AbstractScreen {
 			btnLoginUsingEmail.waitFor(10).tap();
 			txtInBrowserUsername.waitFor(10).setText(emailId);
 			txtInBrowserPassword.setText(password);
+			MobileDevice.getScreenshot(true);
 			btnInBrowserLogin.tap();
 		}
 		
@@ -52,7 +53,7 @@ public class FacebookLogin extends AbstractScreen {
 		btnInBrowserContinueAs.waitForNot(10);
 
 		// Give 2 seconds for curbside to login
-		Thread.sleep(2000);
+		btnCurbsideSignInWithFacebook.waitForNot(10);
 		MobileDevice.getScreenshot(true);
 	}
 

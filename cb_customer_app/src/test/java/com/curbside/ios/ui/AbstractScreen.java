@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 
 /**
@@ -22,6 +23,8 @@ public class AbstractScreen {
 	static Settings settingsScreen;
 	static SignUp signUpScreen;
 	static Welcome welcomeScreen;
+	
+	static Steps commonSteps;
 
 	static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -42,6 +45,7 @@ public class AbstractScreen {
 		settingsScreen = new Settings();
 		signUpScreen = new SignUp();
 		welcomeScreen = new Welcome();
+		commonSteps= new Steps();
 	}
 
 	void waitForScreenToLoad() throws Throwable {

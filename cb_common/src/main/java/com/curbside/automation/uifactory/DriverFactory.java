@@ -124,6 +124,7 @@ public class DriverFactory {
 		switch (platform.toLowerCase()) {
 		case "ios":
 			setDriver(new IOSDriver(url, caps));
+			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;
 		case "android":
 			setDriver(new AndroidDriver(url, caps));

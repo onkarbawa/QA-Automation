@@ -4,7 +4,6 @@ Feature: iOS- Signup Flow
     @C114954
     Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
     Given I launch Curbside application for the first time
-    And I am on Home Screen
     And I have selected test environment
     And I tap on 'My Account' icon in bottom menu
     And I tap on 'Create one now' button
