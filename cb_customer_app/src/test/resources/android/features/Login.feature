@@ -18,7 +18,8 @@ Feature: Android- Login Feature
   #TODO: yet to get update on Facebook login from Seejo
   @Android @C114955
   Scenario Outline: Verify user should login with facebook
-    Given I am not signed into application
+    Given I open the 'Curbside' app
+    And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign in with Facebook' button
@@ -30,7 +31,8 @@ Feature: Android- Login Feature
 
   @Android @C114956
   Scenario Outline: Verify user should login with email
-    Given I am not signed into application
+    Given I open the 'Curbside' app
+    And I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
