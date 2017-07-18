@@ -5,6 +5,7 @@ Feature: Android- Product Catalog
     Given I launch Curbside application
     And I am currently in 'Palo Alto, CA' city
     And I have selected test environment
+    And My cart is empty
     
   @Android @C114941
   Scenario: Verify products display in landing page

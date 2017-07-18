@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import cucumber.api.PendingException;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -258,6 +259,14 @@ public class Steps {
 			MobileDevice.getScreenshot(true);	
 			//DriverFactory.releaseDriver();
 		} catch (Throwable e) {
+		}
+	}
+
+	@Given("^I open the '(.*)' app$")
+	public void iLaunchTheCurbisdeAppAgain(String appName) throws Throwable {
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			AndroidDevice.startApplication();
 		}
 	}
 }

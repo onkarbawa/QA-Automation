@@ -16,6 +16,7 @@ public class FooterTabs extends AbstractScreen {
 	public UIElement btnShop = UIElement.byUISelector("new UiSelector().text(\"Shop\")");
 	public UIElement btnMap = UIElement.byUISelector("new UiSelector().text(\"Map\")");
 	public UIElement btnCart = UIElement.byUISelector("new UiSelector().text(\"Cart\")");
+	public UIElement iconCart = UIElement.byXpath("//android.widget.TextView[@text='Cart']/preceding-sibling::android.widget.ImageView");
 	
 	public FooterTabs() {
 	}

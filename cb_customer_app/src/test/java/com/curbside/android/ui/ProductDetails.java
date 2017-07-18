@@ -43,6 +43,9 @@ public class ProductDetails extends AbstractScreen {
 
     @Then("^I should see product details as below$")
     public void iShouldSeeProductDetailsAsBelow() throws Throwable {
+        if(!productName.isDisplayed())
+            productName.swipeUpSlow();
+        Properties.setVariable("productName",productName.getText());
         productDescription.swipeUpSlow();
         Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
         Assert.assertTrue(productSKU.isDisplayed(), "Product sku is not displayed");
@@ -56,9 +59,6 @@ public class ProductDetails extends AbstractScreen {
 
     @And("^I add product in cart$")
     public void iAddProductInCart() throws Throwable {
-        if(!productDetailsScreen.productName.isDisplayed())
-            productDetailsScreen.productName.swipeUpSlow();
-        Properties.setVariable("productName",productDetailsScreen.getProductName());
         productDetailsScreen.addToCart();
         snackBarKeepShopping.isDisplayed();
         AndroidDevice.goBack();
