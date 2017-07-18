@@ -5,8 +5,6 @@ import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -26,6 +24,14 @@ public class Cart extends AbstractScreen {
     UIElement btnCartItemQnty = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
     UIElement btnRemove = UIElement.byId("com.curbside.nCurbside:id/button_cart_product_remove");
     
+    UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
+    UIElement firstStoreTotalPrice = UIElement.byXpath("//android.widget.LinearLayout[@index=‘1’]//*[@resource-id=‘com.curbside.nCurbside:id/price_view’]");
+    UIElement btnFirstItemQuantity = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
+    UIElement btnContinueShopping = UIElement.byId("com.curbside.nCurbside:id/button_continue_shopping");
+    UIElement textItemsAndStores = UIElement.byId("com.curbside.nCurbside:id/text_item_count");
+    UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
+
+
     @And("^I should see loyalty card info on cart screen$")
     public void iShouldSeeLoyaltyCardInfoOnCartScreen() throws Throwable {
 
@@ -55,6 +61,6 @@ public class Cart extends AbstractScreen {
 			btnCartItemQnty.tap();
 			btnRemove.waitFor(2).tap();
 			Thread.sleep(1000);
-		}
-    }
+	}
+  }
 }
