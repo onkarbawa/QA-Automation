@@ -19,6 +19,9 @@ public class SignUp extends AbstractScreen {
 	UIElement txtPhoneNumber = UIElement.byXpath("//XCUIElementTypeTextField[2]");
 	UIElement btnCreateAccount = UIElement.byAccessibilityId("Create Account");
 
+	UIElement btnCreateOneNow = UIElement.byName("Create one now");
+	UIElement btnCreateNewAccount = UIElement.byName("Create An Account");
+
 	public SignUp() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,9 +36,9 @@ public class SignUp extends AbstractScreen {
 		Properties.setVariable("signupPassword", password);
 		Properties.setVariable("signupPhoneNumber", phoneNumberText);
 
-		txtEmail.setText(emailId);
-		txtPassword.setText(password);
-		txtPhoneNumber.setText(phoneNumberText);
+		txtEmail.setText(emailId,false);
+		txtPassword.setText(password,false);
+		txtPhoneNumber.setText(phoneNumberText,false);
 		btnCreateAccount.tap();
 		btnCreateAccount.waitFor(10);
 	}

@@ -33,24 +33,21 @@ Feature: iOS- Application Launch
     Then I should see 'Nearby stores' landing page
 
   @C114997
-    Scenario Outline: Verify Disable background application refresh functionality
-      Given I turn 'OFF' Background App Refresh for 'Curbside' app
-      When I launch Curbside application
-      And I have selected test environment
-      And I am on Login In screen
-      And I enter '<Email>' and '<Password>'
-      When I tap on 'Sign In' button
-      And I add any product to cart in 'Palo Alto' location
-      And I go to Cart screen
-      And I attempt to place an order
-      Then I should see checkout not allowed
-      When I turn 'ON' 'Background App Refresh' for 'Curbside' app
-      And I launch Curbside application
-      And I am on Home Screen
-      And I tap on 'Cart' icon in bottom menu
-      And I tap on 'Place Order' button
-      Then I should see checkout screen
-
-      Examples:
-        |             Email                  |     Password    |
-        |      fusic.test1@gmail.com         |     fusic@123   |
+  Scenario: Verify Disable background application refresh functionality
+    Given I turn 'OFF' Background App Refresh for 'Curbside' app
+    When I launch Curbside application
+    And I have selected test environment
+    And I am on Sign Up screen
+    And I signup for a new account
+    And I added credit card information
+    And My cart is empty
+    And I add any product to cart in 'Palo Alto' location
+    And I go to Cart screen
+    And I attempt to place an order
+    Then I should see checkout not allowed
+    When I turn 'ON' 'Background App Refresh' for 'Curbside'
+    And I launch Curbside application
+    And I am on Home Screen
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    Then I should see checkout screen

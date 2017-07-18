@@ -15,6 +15,7 @@ public class Shop {
 
     @Then("^I should see lead times to places as below$")
     public void iShouldSeeLeadTimesToPlacesAsBelow() throws Throwable {
-        Assert.assertTrue(leadTime.waitFor(15).isDisplayed(),"lead time is not displayed in retailer store");
+        System.out.println(leadTime.getText());
+        Assert.assertTrue(leadTime.isDisplayed(),"lead time is not displayed in retailer store");
     }
 }

@@ -46,10 +46,10 @@ public class Login extends AbstractScreen {
 		myAccountScreen.btnAccountInfo.waitFor(30);
 	}
 
-	@And("^I am on Login In screen$")
-	public void iAmOnLoginInScreen() throws Throwable {
+	@And("^I am on Sign Up screen$")
+	public void iAmOnSignUpScreen() throws Throwable {
 		footerTabsScreen.tapMyAccount();
-		signIn.tap();
-		signInWithEmail.tap();
+		signUpScreen.btnCreateOneNow.tap();
+		signUpScreen.btnCreateNewAccount.tap();
 	}
 }
