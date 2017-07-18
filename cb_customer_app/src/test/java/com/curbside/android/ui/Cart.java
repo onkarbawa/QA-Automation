@@ -52,7 +52,7 @@ public class Cart extends AbstractScreen {
           "Added product not shown in the cart");
     }
     
-    @Given("^My (C|c)art is empty$")
+    @Given("^My cart is empty$")
     public void emptyCart() throws Throwable
     {
     	footerTabsScreen.tapCart();
