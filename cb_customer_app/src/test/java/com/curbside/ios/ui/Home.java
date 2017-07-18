@@ -68,6 +68,8 @@ public class Home extends AbstractScreen {
 					commonSteps.acceptNotificationAlert();
 					commonSteps.acceptLocationAlert();
 				}
+				else
+					return;
 			}
 		} catch (Exception e) {
 		}
