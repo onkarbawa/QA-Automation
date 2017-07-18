@@ -22,7 +22,7 @@ public class StoreDetails extends AbstractScreen {
 
     @Given("I select 1st product from list")
     public void select1stProduct() throws Throwable {
-        firstProduct.waitFor(10).tap();
+        firstProduct.waitFor(15).tap();
     }
 
     @Then("^I should see the lead time below the store address on Store detail page$")

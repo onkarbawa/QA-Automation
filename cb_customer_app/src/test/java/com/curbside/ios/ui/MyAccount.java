@@ -16,6 +16,8 @@ import org.testng.Assert;
 public class MyAccount extends AbstractScreen {
 
 	UIElement btnAccountInfo = UIElement.byName("Account Info");
+	UIElement btnPaymentInfo = UIElement.byName("Payment Info");
+
 	UIElement btnSignIn = UIElement.byAccessibilityId("Sign In");
 
 	UIElement email = new UIElement(

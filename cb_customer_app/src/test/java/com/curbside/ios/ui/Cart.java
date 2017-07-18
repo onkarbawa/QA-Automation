@@ -23,6 +23,11 @@ public class Cart extends AbstractScreen {
 	UIElement deleteItem = UIElement.byName("Delete");
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
 	UIElement productaAddButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
+
+	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please turn on the following']");
+	UIElement settings = UIElement.byName("Settings");
+	UIElement checkoutTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Your order has been placed.']");
+
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
@@ -70,5 +75,16 @@ public class Cart extends AbstractScreen {
 			}
 		}
     }
+
+	@Then("^I should see checkout not allowed$")
+	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
+		Assert.assertEquals(popUpHeading.getText(),"Please turn on the following");
+		settings.tap();
+	}
+
+	@Then("^I should see checkout screen$")
+	public void iShouldSeeCheckoutScreen() throws Throwable {
+		Assert.assertEquals(checkoutTitle.getText(),"Your order has been placed.");
+	}
 
 }
