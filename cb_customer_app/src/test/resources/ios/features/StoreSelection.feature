@@ -1,10 +1,10 @@
 @StoreSelection
 Feature: iOS- Store Selection
 
-  Scenario: Setting test environment 
+  Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
-    
+
   @iOS @C114940
   Scenario: Verify retailers are shown in store selection screen
     Given I am on Home Screen
