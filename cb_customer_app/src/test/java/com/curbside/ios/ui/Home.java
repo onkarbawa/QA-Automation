@@ -110,7 +110,7 @@ public class Home extends AbstractScreen {
 		//	return;
 		
 		iconSearch.tap();
-		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s");
+		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s",false);
 		btnSearchKeyboard.tap();
 		
 		//btnCancel.tapOptional();
