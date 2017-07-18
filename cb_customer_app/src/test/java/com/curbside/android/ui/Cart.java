@@ -20,7 +20,7 @@ public class Cart extends AbstractScreen {
     UIElement firstRetailer = UIElement.byXpath("//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index=‘0’]");
     UIElement loyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_last_4_view");
     UIElement productName = UIElement.byId("com.curbside.nCurbside:id/product_name");
-    UIElement firstStore = UIElement.byXpath("//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index=‘0’]");
+    UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
     UIElement firstStoreTotalPrice = UIElement.byXpath("//android.widget.LinearLayout[@index=‘1’]//*[@resource-id=‘com.curbside.nCurbside:id/price_view’]");
     UIElement btnFirstItemQuantity = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
     UIElement btnRemove = UIElement.byId("com.curbside.nCurbside:id/button_cart_product_remove");
@@ -52,17 +52,18 @@ public class Cart extends AbstractScreen {
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
         footerTabsScreen.tapCart();
+        firstRetailerIcon.waitFor(20).isDisplayed();
         if (!btnContinueShopping.isDisplayed()){
             while(!btnContinueShopping.isDisplayed()){
                 try{
-                    firstStore.tap();
+                    firstRetailerIcon.tap();
                 }catch (Exception e){}
 
-                if(textItemsAndStores.isDisplayed() && firstStoreTotalPrice.isDisplayed()){
+                if(firstStoreTotalPrice.isDisplayed() && !btnFirstItemQuantity.isDisplayed()){
                     firstStoreTotalPrice.tap();
                 }
 
-                if(estimatedPickUpTime.isDisplayed() && ! btnFirstItemQuantity.isDisplayed()){
+                if(textItemsAndStores.isDisplayed() && ! btnFirstItemQuantity.isDisplayed()){
                     btnFirstItemQuantity.swipeUpSlow();
                 }
                 btnFirstItemQuantity.tap();

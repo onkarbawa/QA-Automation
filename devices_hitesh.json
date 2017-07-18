@@ -3,7 +3,7 @@
     {
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "android",
-      "deviceName": "03734b7b093af00c",
+      "deviceName": "ZX1D63G4CS",
       "app": "/Users/tft/Desktop/Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"

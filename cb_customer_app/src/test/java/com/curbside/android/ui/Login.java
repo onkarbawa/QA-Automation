@@ -55,4 +55,18 @@ public class Login extends AbstractScreen{
     emailField.waitFor(3).sendKeys(email);
     passwordField.waitFor(5).sendKeys(password);
   }
+
+    @And("^I Sign-in with cart building credentials$")
+    public void iAmSignedIn() throws Throwable {
+      String emailId = "cartbuilding@test.com";
+      String password = "1234567890";
+      String phoneNumber = "9582909627";
+        accountScreen.ensureSignedOut();
+        Steps.tapButton("Sign In");
+        Steps.tapButton("Sign In with Email");
+        this.iEnterEmailAndPasswordForLogin(emailId,password,phoneNumber);
+        this.iTapOnSignInButtonOnSignInPage();
+        accountScreen.userEmailField.waitFor(30);
+    }
+
 }

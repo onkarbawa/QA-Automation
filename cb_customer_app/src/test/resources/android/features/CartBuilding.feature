@@ -1,15 +1,17 @@
 @cartBuilding
 Feature: Android- Cart Building
-
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I am currently in 'Palo Alto, CA' city
+    #And I have selected test environment
 
-  @Android @C114941
+    #TODO working on it, Please donot add this in testng-android.xml file
+  @Android @C114945
   Scenario: Verify products display in landing page
-    Given I signin in using signup information
-    And My cart is empty
+    Given I Sign-in with cart building credentials
     And I am on 'Palo Alto' location 'Stores' Screen
+    And My cart is empty
+    And I tap on 'Shop' button
     And I select a store
     And I tap on product from the list
     And I add product in cart
