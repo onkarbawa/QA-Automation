@@ -283,6 +283,7 @@ public class MobileDevice {
 	{
 		Location l= new Location(latitude, longitude, altitude);
 		((AppiumDriver)DriverFactory.getDriver()).setLocation(l);
+		((AppiumDriver)DriverFactory.getDriver()).launchApp();;
 	}
 	
 	public static void switchToWebView() throws Throwable {
