@@ -26,20 +26,23 @@ public class Login extends AbstractScreen {
 
 	@And("^I enter '(.*)' and '(.*)'$")
 	public void signin(String emailText, String passwordText) throws Throwable {
-		email.setText(emailText);
-		password.setText(passwordText);
+		email.sendKeys(emailText);
+		password.sendKeys(passwordText);
 		Steps.tapButton("Sign In");
 	}
 
 	@And("^I signin in using signup information$")
 	public void iAmSignedInUsingSignupInformation() throws Throwable {
 		myAccountScreen.ensureSignedOut();
-		try {
+		if(!myAccountScreen.btnSignIn.isDisplayed())
+		{
 			footerTabsScreen.tapMyAccount();
 			myAccountScreen.tapSignIn();
-		} catch (Exception e) {
 		}
-
+		
+		myAccountScreen.btnSignIn.tapOptional();
+			
+		
 		Steps.tapButton("Sign In with Email");
 		signin(Properties.getVariable("signupEmail"), Properties.getVariable("signupPassword"));
 

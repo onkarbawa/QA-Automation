@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -36,14 +37,14 @@ public class Home extends AbstractScreen {
 	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
 	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
 	
-
+	UIElement progressBar =  UIElement.byId("com.curbside.nCurbside:id/progress_bar");
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
+		progressBar.waitForNot(60);
 		
 		//Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
-				Assert.assertTrue(shopNearLabel.waitFor(20).isDisplayed() || sorryMessage.isDisplayed(),
-			"Near by stores page is not visible");
+				Assert.assertTrue(shopNearLabel.waitFor(20).isDisplayed() || sorryMessage.isDisplayed(), "Near by stores page is not visible");
 	}
 
 	@And("^I tap on My Account icon$")
@@ -66,29 +67,37 @@ public class Home extends AbstractScreen {
 			}
 		} catch (Exception e) {
 		}
-		
 	}
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		homeScreen.open();
+		
+		//if(DeviceStore.isEnvironmentSelected())
+		//	return;
+		
 		searchIcon.waitFor(5).tap();
-		searchBox.waitFor(5).setText("_#csndc#ena", false);
+		searchBox.waitFor(5).sendKeys("_#csndc#ena", false);
 		AndroidDevice.pressEnter();
 		
 		try {
 			apiHost.waitFor(5).tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com");
+			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
 		} catch (Exception e) {
 			debugBackButton.tap();
 			apiHost.tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com");
+			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
 		}
+		
+		MobileDevice.getScreenshot(true);
 		
 		apiHostOkButton.tap();
 		debugBackButton.tap();
 		imageBackButton.waitFor(5).tap();
 		AndroidDevice.startApplication();
+		welcomeScreen.wait_for_app_launch();
+		
+		DeviceStore.setEnvironmentSelected(true);
 	}
 
 	@Given("I select 1st retailer partner on stores screen")
@@ -106,6 +115,9 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
+		if(currentLocation.getText().equals(cityName))
+			return;
+		
 		try {
             currentLocation.waitFor(10).tap();
         }catch (Exception e){}
@@ -115,7 +127,7 @@ public class Home extends AbstractScreen {
             currentLocation.tap();
         }
 
-		cityZipSearchTextBox.waitFor(10).setText(cityName);
+		cityZipSearchTextBox.waitFor(10).sendKeys(cityName, false);
 		AndroidDevice.pressEnter();
 		currentLocation.waitFor(30);
 	}

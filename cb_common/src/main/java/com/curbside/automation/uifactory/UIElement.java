@@ -92,17 +92,24 @@ public class UIElement {
 		return setText(text, true);
 	}
 	
-	public void sendKeys(String keySequence) throws Throwable {
+	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
 		getElement().sendKeys(keySequence);
+		
+		if (hideKeyboardAfterTyping)
+			MobileDevice.hideKeyboard();
+		
+		return this;
+	}
+	
+	public UIElement sendKeys(String keySequence) throws Throwable {
+		return sendKeys(keySequence, true);
 	}
 
 	public UIElement setText(String text, boolean hideKeyboardAfterTyping) throws Throwable {
 		MobileElement e = (MobileElement) getElement();
-		if(e.getText() != text)
-		{
-			e.clear();
-			e.sendKeys(text);
-		}
+		
+		this.clearText();
+		this.sendKeys(text);
 		
 		if (hideKeyboardAfterTyping)
 			MobileDevice.hideKeyboard();
@@ -110,7 +117,7 @@ public class UIElement {
 		return this;
 	}
 
-	public WebElement clearText1() throws Throwable {
+	public WebElement clearText() throws Throwable {
 		WebElement e= getElement();
 		e.clear();
 		return e;

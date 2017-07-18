@@ -23,8 +23,8 @@ public class Login extends AbstractScreen{
       Properties.setVariable("signupEmail", email);
       Properties.setVariable("signupPassword", password);
       Properties.setVariable("signupPhoneNumber", phoneNumber);
-    emailField.waitFor(3).setText(email);
-    passwordField.waitFor(5).setText(password);
+    emailField.waitFor(3).sendKeys(email);
+    passwordField.waitFor(5).sendKeys(password);
   }
 
   @And("^I tap on sign in with email button$")
@@ -52,7 +52,7 @@ public class Login extends AbstractScreen{
   public void iEnterAndForLogin(String email, String password) throws Throwable {
     Properties.setVariable("signInEmail", email);
     Properties.setVariable("signInPassword", password);
-    emailField.waitFor(3).setText(email);
-    passwordField.waitFor(5).setText(password);
+    emailField.waitFor(3).sendKeys(email);
+    passwordField.waitFor(5).sendKeys(password);
   }
 }

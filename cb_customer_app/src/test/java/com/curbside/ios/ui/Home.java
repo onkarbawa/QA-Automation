@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import cucumber.api.PendingException;
@@ -23,12 +24,13 @@ import org.testng.Assert;
 public class Home extends AbstractScreen {
 
 	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
+	UIElement btnCancel = UIElement.byName("Cancel");
 	UIElement iconSearch = UIElement.byName("Search");
 	UIElement btnSearchKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Search']");
 	UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
 	UIElement txtSearchNearBy = UIElement.byClass("XCUIElementTypeSearchField");
 
-	UIElement currentLocation = UIElement.byAccessibilityId("Current Location");
+	UIElement lnkCurrentLocation = UIElement.byXpath("//XCUIElementTypeStaticText[@label='Near ']/following-sibling::XCUIElementTypeButton");
 	UIElement cityZipSearchTextBox = UIElement.byAccessibilityId("City, Zip or Address");
 
 	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
@@ -73,7 +75,10 @@ public class Home extends AbstractScreen {
 
 	@Given("I select '(.*)' > '(.*)' location")
 	public void setLocation(String category, String cityName) throws Throwable {
-		currentLocation.tap();
+		if(lnkCurrentLocation.getText().equals(cityName))
+			return;
+		
+		lnkCurrentLocation.tap();
 		UIElement.byAccessibilityId(category).tap();
 		UIElement.byAccessibilityId(cityName).scrollTo().tap();
 	}
@@ -81,8 +86,11 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
-		currentLocation.tap();
-		cityZipSearchTextBox.setText(cityName,false);
+		if(lnkCurrentLocation.getText().equals(cityName))
+			return;
+		
+		lnkCurrentLocation.tap();
+		cityZipSearchTextBox.sendKeys(cityName);
 		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
 
 		loadingIcon.waitForNot(30);
@@ -92,18 +100,24 @@ public class Home extends AbstractScreen {
 	public void searchForProduct(String productName) throws Throwable {
 		iconSearch.tap();
 		Thread.sleep(1000);
-		txtSearchNearBy.setText(productName);
+		txtSearchNearBy.sendKeys(productName);
 	}
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		homeScreen.open();
+		//if(DeviceStore.isEnvironmentSelected())
+		//	return;
+		
 		iconSearch.tap();
-		Thread.sleep(1000);
-		txtSearchNearBy.setText("_#csndc#env#s",false);
+		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s");
 		btnSearchKeyboard.tap();
+		
+		//btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
+		
 		MobileDevice.getScreenshot(true);
+		DeviceStore.setEnvironmentSelected(true);
 	}
 
 	@Given("I select '(.*)' retailer partner on stores screen")
@@ -121,6 +135,7 @@ public class Home extends AbstractScreen {
 	@Given("I select 1st product from list")
 	public void select1stProduct() throws Throwable {
 		UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage").tap();
+		productDetailsScreen.btnAddtoCart.waitFor(5);
 	}
 
 	@Given("I add any product to cart in '(.*)' location")

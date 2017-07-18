@@ -30,6 +30,8 @@ public class Steps {
 	{
 		logger.info("Launching application without install");
 		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
+		
 		DriverFactory.getDriver(false);
 		
 		MobileDevice.getScreenshot(true);
@@ -40,6 +42,7 @@ public class Steps {
 	{
 		logger.info("Launching application with needed permissions");
 		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
 		DriverFactory.getDriver(false, true);
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
@@ -82,11 +85,17 @@ public class Steps {
 		//Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		DeviceStore.setAppInstalled();
 		
-		//if(DeviceStore.getPlatform().equalsIgnoreCase("ios"))
-		//	((AppiumDriver)DriverFactory.getDriver()).resetApp();
+		/*
+		if(DeviceStore.getApplicationPath() != null)
+		{
+			AppiumDriver a= ((AppiumDriver)DriverFactory.getDriver());
+			a.removeApp(DeviceStore.getBundleId());
+			a.installApp(DeviceStore.getApplicationPath());
+			a.launchApp();
+		}*/
 		
-		((AppiumDriver)DriverFactory.getDriver()).launchApp();
 		MobileDevice.getScreenshot(true);
 	}
 	
@@ -247,7 +256,7 @@ public class Steps {
 
 		try {
 			MobileDevice.getScreenshot(true);	
-			DriverFactory.releaseDriver();
+			//DriverFactory.releaseDriver();
 		} catch (Throwable e) {
 		}
 	}

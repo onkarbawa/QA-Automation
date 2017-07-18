@@ -14,6 +14,8 @@ import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+
+import com.curbside.automation.devicefactory.AppiumService;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 public class WebDriverListener implements IInvokedMethodListener, ISuiteListener {
@@ -27,6 +29,7 @@ public class WebDriverListener implements IInvokedMethodListener, ISuiteListener
 			}
             
             DeviceStore.releaseDevice();
+            AppiumService.stop();
         }
 	}
 

@@ -1,9 +1,11 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import io.appium.java_client.AppiumDriver;
 
 /**
  * @author hitesh.grover
@@ -19,11 +21,12 @@ public class Welcome extends AbstractScreen {
   
   @And("^I wait for application to be launched$")
   public void wait_for_app_launch() throws Throwable {
-    for (int i = 0; i < 10; i++) {
-    	if(skipIntro.isDisplayed() || btnGetStarted.isDisplayed() 
-    			|| footerTabsScreen.btnMyAccount.isDisplayed() || okButton.isDisplayed()
-    			|| btnAllow.isDisplayed())
-    		break;
+	for (int i = 0; i < 10; i++) {
+    	if(skipIntro.isDisplayed()) return;
+    	if(btnGetStarted.isDisplayed()) return;
+    	if(footerTabsScreen.btnMyAccount.isDisplayed()) return;
+    	if(okButton.isDisplayed()) return;
+    	if(btnAllow.isDisplayed()) return;
     	else
     		Thread.sleep(1000);
 	}

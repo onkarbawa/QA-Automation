@@ -52,6 +52,7 @@ public class MyAccount extends AbstractScreen {
 
 	@Given("^I am not signed into application$")
 	public void ensureSignedOut() throws Throwable {
+		homeScreen.open();
 		try {
 			footerTabsScreen.tapMyAccount();
 			btnAccountInfo.tap();

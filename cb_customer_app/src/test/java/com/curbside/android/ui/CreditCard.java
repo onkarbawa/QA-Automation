@@ -25,19 +25,19 @@ public class CreditCard {
     public void iAddCreditCardInformationAs(String cardNumber, String cardExpiry, String ccv, String firstName,
                                             String lastName, String cardStreetAddress, String cardAptOrSuite, String cardCity,
                                             String cardState, String cardZip) throws Throwable {
-        cardNumberTextField.setText(cardNumber);
-        cardExpMonthTextField.setText(cardExpiry);
-        cardCCVTextField.setText(ccv);
-        firstNameTextField.setText(firstName);
-        lastNameTextField.setText(lastName);
-        cardStreetAddressTextField.setText(cardStreetAddress);
-        cardAptOrSuiteTextField.setText(cardAptOrSuite);
-        cardCityTextField.setText(cardCity);
+        cardNumberTextField.sendKeys(cardNumber);
+        cardExpMonthTextField.sendKeys(cardExpiry);
+        cardCCVTextField.sendKeys(ccv);
+        firstNameTextField.sendKeys(firstName);
+        lastNameTextField.sendKeys(lastName);
+        cardStreetAddressTextField.sendKeys(cardStreetAddress);
+        cardAptOrSuiteTextField.sendKeys(cardAptOrSuite);
+        cardCityTextField.sendKeys(cardCity);
         cardStateDropDown.tap();
         Thread.sleep(1000);
         UIElement cardStateListSelect = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView//android.widget.CheckedTextView[@text='" + cardState + "']");
         cardStateListSelect.tap();
-        cardZipTextField.setText(cardZip);
+        cardZipTextField.sendKeys(cardZip);
         saveButton.tap();
     }
 

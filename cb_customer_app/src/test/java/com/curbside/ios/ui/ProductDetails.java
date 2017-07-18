@@ -36,6 +36,7 @@ public class ProductDetails extends AbstractScreen {
 		try {
 			btnAddtoCart.tap();
 		}catch (Exception e){}
+		
 		btnRemove.waitFor(10);
 	}
 
