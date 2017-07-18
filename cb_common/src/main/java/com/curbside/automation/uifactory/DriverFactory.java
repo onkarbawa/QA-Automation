@@ -19,6 +19,8 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.curbside.automation.devicefactory.AppiumService;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import io.appium.java_client.AppiumDriver;
@@ -78,6 +80,16 @@ public class DriverFactory {
 
 		if (givePermissions)
 			deviceInfo.put("autoGrantPermissions", true);
+		
+		try {
+			if(deviceInfo.getString("url").contains("127.0.0.1")
+					&& deviceInfo.getString("platformName").equalsIgnoreCase("android"))
+			{
+				deviceInfo.put("url", AppiumService.start());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return getDriver(deviceInfo);
 	}

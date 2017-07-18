@@ -1,13 +1,35 @@
 package com.curbside.automation.devicefactory;
 
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+
 /**
  * @author kumar.anil
  *
  */
 
 public class AppiumService {
-	public void start(){}
-	public void stop(){}
-	public void getUrl(){}
-	public void setUrl(String url){}
+	static ThreadLocal<AppiumDriverLocalService> service= new ThreadLocal<>();
+	
+	public static String start(){
+		AppiumServiceBuilder b= new AppiumServiceBuilder();
+		b.usingAnyFreePort().build();
+		AppiumDriverLocalService appiumService= AppiumDriverLocalService.buildService(b);
+		appiumService.start();;
+		service.set(appiumService);
+		
+		return appiumService.getUrl().toString();
+	}
+	
+	public static void stop(){
+		if(service.get() != null)
+			service.get().stop();
+	}
+	
+	public static String getUrl(){
+		if(service.get() != null)
+			return service.get().getUrl().toString();
+		else
+			return start();
+	}
 }
