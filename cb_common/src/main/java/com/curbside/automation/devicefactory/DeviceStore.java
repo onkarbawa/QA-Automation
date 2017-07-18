@@ -60,6 +60,9 @@ public class DeviceStore {
 			return (JSONObject) lockedDevice.get();
 
 		JSONObject deviceToReturn;
+		System.out.println("There are "  + iOSDeviceList.size() + " ios devices available");
+		System.out.println("There are "  + androidDeviceList.size() + " android devices available");
+		
 		switch (lockedPlatform.get().toLowerCase()) {
 		case "ios":
 			deviceToReturn = (JSONObject) iOSDeviceList.get(0);
@@ -72,7 +75,6 @@ public class DeviceStore {
 		}
 
 		lockDevice(deviceToReturn);
-
 		return deviceToReturn;
 	}
 
@@ -92,6 +94,9 @@ public class DeviceStore {
 	}
 
 	public static synchronized void releaseDevice() {
+		if(lockedDevice.get() == null)
+			return;
+		
 		switch (lockedPlatform.get().toLowerCase()) {
 		case "ios":
 			iOSDeviceList.add(lockedDevice.get());
