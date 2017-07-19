@@ -13,7 +13,7 @@ public class AppiumService {
 	
 	public static String start(){
 		AppiumServiceBuilder b= new AppiumServiceBuilder();
-		b.usingAnyFreePort().build();
+		b.usingAnyFreePort().withIPAddress("127.0.0.1").build();
 		AppiumDriverLocalService appiumService= AppiumDriverLocalService.buildService(b);
 		appiumService.start();;
 		service.set(appiumService);

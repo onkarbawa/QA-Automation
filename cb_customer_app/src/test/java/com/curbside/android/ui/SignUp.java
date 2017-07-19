@@ -1,5 +1,7 @@
 package com.curbside.android.ui;
 
+import org.openqa.selenium.interactions.touch.TouchActions;
+
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.Helpers;
 import com.curbside.automation.uifactory.DriverFactory;
@@ -26,9 +28,20 @@ public class SignUp extends AbstractScreen {
         Properties.setVariable("signupEmail", emailId);
         Properties.setVariable("signupPassword", password);
         Properties.setVariable("signupPhoneNumber", phoneNumberText);
-        emailField.waitFor(3).sendKeys(emailId);
-        phoneNumberField.sendKeys(phoneNumberText);
-        passwordField.sendKeys(password);
+        
+        emailField.waitFor(3);
+        /*
+        new TouchActions(DriverFactory.getDriver())
+	        .sendKeys(emailField.getElement(), emailId)
+	        .sendKeys(phoneNumberField.getElement(), phoneNumberText)
+	        .sendKeys(passwordField.getElement(), password)
+	        .build().perform();
+        */
+        
+        emailField.sendKeys(emailId, false);
+        phoneNumberField.sendKeys(phoneNumberText, false);
+        passwordField.sendKeys(password, false);
+        
     }
 
     @And("^I tap on Create Account button$")

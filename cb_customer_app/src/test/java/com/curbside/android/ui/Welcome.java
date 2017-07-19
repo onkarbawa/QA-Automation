@@ -27,15 +27,12 @@ public class Welcome extends AbstractScreen {
     	if(footerTabsScreen.btnMyAccount.isDisplayed()) return;
     	if(okButton.isDisplayed()) return;
     	if(btnAllow.isDisplayed()) return;
-    	else
-    		Thread.sleep(1000);
 	}
     MobileDevice.getScreenshot(true);
   }
   
   @And("^I swipe left (\\d+) times on intro page$")
   public void iSwipeLeftTimesOnIntroPage(int count) throws Throwable {
-    pageIndicator.waitFor(5);
     commonSteps.swipeLeft(count);
   }
 

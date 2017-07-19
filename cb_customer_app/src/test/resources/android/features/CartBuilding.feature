@@ -3,7 +3,7 @@ Feature: Android- Cart Building
   Scenario: Setting test environment
     Given I launch Curbside application
     And I am currently in 'Palo Alto, CA' city
-    #And I have selected test environment
+    And I have selected test environment
 
     #TODO working on it, Please donot add this in testng-android.xml file
   @Android @C114945

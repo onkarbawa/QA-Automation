@@ -31,11 +31,15 @@ public class FacebookLogin extends AbstractScreen {
     }*/
 	
 	loadingIcon.waitForNot(30);
-	MobileDevice.getScreenshot(true);
     emailField.waitFor(30).sendKeys(email);
     passwordField.sendKeys(password);
     logInButton.tap();
-    continueButton.waitFor(20).tap();
+    continueButton.waitFor(20);
+    for (int i = 0; i < 10; i++) {
+    	if(continueButton.isDisplayed())
+    		continueButton.tap();
+	}
+    
     Thread.sleep(3000);
     btnSignInWithFacebook.waitForNot(10);
     MobileDevice.getScreenshot(true);

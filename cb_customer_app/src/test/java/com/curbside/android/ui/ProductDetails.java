@@ -59,6 +59,8 @@ public class ProductDetails extends AbstractScreen {
 
     @And("^I add product in cart$")
     public void iAddProductInCart() throws Throwable {
+        if(productName.isDisplayed())
+            Properties.setVariable("productName",productName.getText());
         productDetailsScreen.addToCart();
         snackBarKeepShopping.isDisplayed();
         AndroidDevice.goBack();
