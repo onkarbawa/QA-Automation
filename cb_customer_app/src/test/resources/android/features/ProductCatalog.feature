@@ -1,6 +1,9 @@
 @ProductCatalog
 Feature: Android- Product Catalog
 
+  # TODO We can use "I am not signed into application" instead of "My cart is empty"
+  # As feature file does not required any sign in
+  # @Anil review
   Scenario: Setting test environment
     Given I launch Curbside application
     And I am currently in 'Palo Alto, CA' city

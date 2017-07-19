@@ -70,6 +70,11 @@ public class MyAccount extends AbstractScreen{
         signUp.waitFor(5).tap();
     }
 
+    /**
+     * When there is Active order App shows a pop up to confirm the checkout
+     * therefore another Sign out added to code
+     * @throws Throwable
+     */
     @Given("^I am not signed into application$")
     public void ensureSignedOut() throws Throwable {
         try {
@@ -77,6 +82,7 @@ public class MyAccount extends AbstractScreen{
 			footerTabsScreen.tapMyAccount();
 			ensureAccountPage();
             Steps.tapButton("Account Info");
+            Steps.tapButton("Sign Out");
             Steps.tapButton("Sign Out");
             signUp.waitFor(5);
 		} catch (Exception e) {}

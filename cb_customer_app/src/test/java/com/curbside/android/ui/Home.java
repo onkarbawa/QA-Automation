@@ -36,6 +36,7 @@ public class Home extends AbstractScreen {
 	UIElement firstRetailerPartner = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']/android.widget.RelativeLayout[@index='0']");
 	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
 	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
+	UIElement westFieldStore = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/container_relative_layout_card_Store_icon' and @index='2']");
 	
 	UIElement progressBar =  UIElement.byId("com.curbside.nCurbside:id/progress_bar");
 
@@ -110,7 +111,12 @@ public class Home extends AbstractScreen {
 			firstRetailerPartnerListView.waitForNot(30);
 		}
 	}
+	public void iSelectWestFieldStore() throws Throwable {
+		westFieldStore.waitFor(10);
+		westFieldStore.tap();
+		westFieldStore.waitForNot(30);
 
+	}
 
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
