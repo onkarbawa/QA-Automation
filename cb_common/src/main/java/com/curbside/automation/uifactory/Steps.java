@@ -278,11 +278,4 @@ public class Steps {
 		}
 	}
 
-	@Given("^I open the '(.*)' app$")
-	public void iLaunchTheCurbisdeAppAgain(String appName) throws Throwable {
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
-		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			AndroidDevice.startApplication();
-		}
-	}
 }

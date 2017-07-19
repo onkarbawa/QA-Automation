@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -32,6 +33,8 @@ public class Cart extends AbstractScreen {
     UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
     UIElement loyaltyCardName = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_name");
     UIElement paymentCardName = UIElement.byId("com.curbside.nCurbside:id/text_card_name");
+    UIElement lblDeliveryInfo = UIElement.byId("com.curbside.nCurbside:id/delivery_text");
+    UIElement lblItemPriceView = UIElement.byId("com.curbside.nCurbside:id/priceView");
 
 
 
@@ -51,6 +54,7 @@ public class Cart extends AbstractScreen {
     @Then("^I saw added product in cart$")
     public void iSawAddedProductInCart() throws Throwable {
         footerTabsScreen.tapCart();
+        productName.swipeUpSlow();
         Assert.assertEquals(productName.waitFor(3).getText(), Properties.getVariable("productName"),
           "Added product not shown in the cart");
     }
@@ -78,6 +82,7 @@ public class Cart extends AbstractScreen {
      * if we are using getCount function it will only capture the selectors that are visible on screen.
      * for example if we have 7 item in the cart and we used getCount so it may show only 4 item in the cart
      * because other 3 items where not visible on the screen
+     * Will remove print statements after @Anil review
      */
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
@@ -88,7 +93,8 @@ public class Cart extends AbstractScreen {
         if (!btnContinueShopping.isDisplayed()){
             // default value
             int totalItemsInStoreCart = 1;
-            while(totalItemsInStoreCart > 0){
+            while(totalItemsInStoreCart > 0 || !btnContinueShopping.isDisplayed()){
+                footerTabsScreen.tapCart();
                 totalItemsInStoreCart = lblStoreTotalItemQnty.getCount();
 
                 /**
@@ -101,7 +107,7 @@ public class Cart extends AbstractScreen {
 
                 // if there is no sub store then also execution will go in
                 int itemsInSubStore = 1;
-                while(itemsInSubStore > 0){
+                while(itemsInSubStore > 0  ){
                     itemsInSubStore = lblSubStoreTotalItemQnty.getCount();
                     /**
                      * Clicking Sub Stores eg. Lush or GNC
@@ -113,10 +119,9 @@ public class Cart extends AbstractScreen {
                     int itemsInCart= 1;
                     while(itemsInCart > 0){
                         btnCartItemQnty.waitFor(20);
-                        if (loyaltyCardName.isDisplayed() && paymentCardName.isDisplayed() && !btnCartItemQnty.isDisplayed()) {
-                            btnCartItemQnty.swipeUpSlow();
-                        }
+                        btnCartItemQnty.swipeUpSlow();
                         itemsInCart = btnCartItemQnty.getCount();
+                        System.out.println("Internal itemInCart--"+itemsInCart);
                         /**
                          * Clicking item in the Store
                          */
@@ -126,7 +131,7 @@ public class Cart extends AbstractScreen {
                             Thread.sleep(2000);
                         }
                         // updating items dynamically and set it in while loop
-                        itemsInCart = btnCartItemQnty.getCount();
+                        itemsInCart = btnCartItemQnty.waitFor(5).getCount();
                         System.out.print("-----------total items in the list----------"+totalItemsInStoreCart);
                     }
                     // updating subStore value dynamically and set it in while loop
@@ -138,6 +143,15 @@ public class Cart extends AbstractScreen {
                 System.out.print("-----------total Stores in the list----------"+totalItemsInStoreCart);
             }
         }
+
+    }
+
+    @Then("^I should see the (\\d+) items in the cart$")
+    public void iShouldSeeTheItemsInTheCart(int noOfItems) throws Throwable {
+        footerTabsScreen.tapCart();
+        int itemCount = Integer.parseInt(lblSubStoreTotalItemQnty.getText().split("\\s+")[0]);
+        System.out.println("itemCount-Con"+itemCount);
+        Assert.assertEquals(noOfItems , itemCount, "Item count is not same");
 
     }
 }
