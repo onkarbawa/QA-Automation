@@ -56,7 +56,7 @@ public class CreditCard extends AbstractScreen {
 		cardCity.sendKeys(city,false);
 		cardState.tap();
 		cardState.tap();
-		cardZip.sendKeys(zip);
+		cardZip.sendKeys(zip,false);
 		MobileDevice.getScreenshot(true);
 		save.tap();
 		

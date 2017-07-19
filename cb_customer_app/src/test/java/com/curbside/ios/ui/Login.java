@@ -55,4 +55,13 @@ public class Login extends AbstractScreen {
 		signUpScreen.btnCreateOneNow.tap();
 		signUpScreen.btnCreateNewAccount.tap();
 	}
+
+	@And("^I Sign-in with cart building credentials$")
+	public void iAmSignedIn() throws Throwable {
+		String emailId = "cartbuilding@test.com";
+		String password = "1234567890";
+		signIn.tap();
+		signInWithEmail.tap();
+		signin(emailId,password);
+	}
 }

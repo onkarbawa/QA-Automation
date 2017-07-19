@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -36,15 +37,21 @@ public class FacebookLogin extends AbstractScreen {
 
 	@And("^I login to facebook in browser with '(.*)' and '(.*)'$")
 	public void i_login_via_browswr(String emailId, String password) throws Throwable {
+		Properties.setVariable("facebookEmail",emailId);
+		Properties.setVariable("facebookPassword",password);
 		try {
 			btnCurbsideSignInWithFacebook.tap();
 		} catch (Exception e) {}
-		
+
+		try {
+			btnInBrowserContinueAs.waitFor(15);
+		}catch (Exception e){}
+
 		if(!btnInBrowserContinueAs.isDisplayed())
 		{
 			btnLoginUsingEmail.waitFor(10).tap();
-			txtInBrowserUsername.waitFor(10).sendKeys(emailId);
-			txtInBrowserPassword.sendKeys(password);
+			txtInBrowserUsername.waitFor(10).setText(emailId,false);
+			txtInBrowserPassword.sendKeys(password,false);
 			MobileDevice.getScreenshot(true);
 			btnInBrowserLogin.tap();
 		}
@@ -53,21 +60,22 @@ public class FacebookLogin extends AbstractScreen {
 		btnInBrowserContinueAs.waitForNot(10);
 
 		// Give 2 seconds for curbside to login
-		btnCurbsideSignInWithFacebook.waitForNot(10);
+		btnCurbsideSignInWithFacebook.waitForNot(20);
 		MobileDevice.getScreenshot(true);
+
 	}
 
-	@And("^I enter email and password$")
-	public void iEnterEmailAndPassword() throws Throwable {
-		enterFacebookEmail.sendKeys("jacktest94@gmail.com");
-		enterPassword.sendKeys("tftus@123");
-	}
-
-	@And("^I enter '(.*)' and '(.*)' for facebook$")
-	public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
-		enterFacebookEmail.sendKeys(emailText);
-		enterPassword.sendKeys(passwordText);
-	}
+//	@And("^I enter email and password$")
+//	public void iEnterEmailAndPassword() throws Throwable {
+//		enterFacebookEmail.sendKeys("jacktest94@gmail.com");
+//		enterPassword.sendKeys("tftus@123");
+//	}
+//
+//	@And("^I enter '(.*)' and '(.*)' for facebook$")
+//	public void iEnterAndForFacebook(String emailText, String passwordText) throws Throwable {
+//		enterFacebookEmail.sendKeys(emailText);
+//		enterPassword.sendKeys(passwordText);
+//	}
 
 	@And("^I tap on 'Log In with the Facebook App'$")
 	public void iTapOnLogInWithTheFacebookApp() throws Throwable {

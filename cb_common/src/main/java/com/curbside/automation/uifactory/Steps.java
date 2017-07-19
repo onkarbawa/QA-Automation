@@ -245,7 +245,7 @@ public class Steps {
 		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
 		
 		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-		
+
 		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
 				backgroundAppRefresh.tap();
 		

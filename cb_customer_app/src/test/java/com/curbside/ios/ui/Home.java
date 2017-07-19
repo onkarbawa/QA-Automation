@@ -90,7 +90,7 @@ public class Home extends AbstractScreen {
 			return;
 		
 		lnkCurrentLocation.tap();
-		cityZipSearchTextBox.sendKeys(cityName);
+		cityZipSearchTextBox.sendKeys(cityName,false);
 		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
 
 		loadingIcon.waitForNot(30);
@@ -128,7 +128,9 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st retailer partner on stores screen")
 	public void select1stRetailerPartner() throws Throwable {
-		UIElement.byClass("XCUIElementTypeCell").waitFor(10).tap();
+
+		UIElement.byXpath("//XCUIElementTypeCell").waitFor(10).tap();
+		MobileDevice.getScreenshot(true);
 		loadingIcon.waitForNot(30);
 	}
 
@@ -173,8 +175,8 @@ public class Home extends AbstractScreen {
 
 	@And("^I add product in cart$")
 	public void iAddProductInCart() throws Throwable {
-		Properties.setVariable("productName",productDetailsScreen.getProductName());
 		productDetailsScreen.addToCart();
+		Properties.setVariable("productName",productDetailsScreen.getProductName());
 	}
 
 	@Then("^I should see following products listed on partner screen$")
