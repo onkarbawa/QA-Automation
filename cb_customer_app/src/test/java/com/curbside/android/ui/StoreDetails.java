@@ -1,6 +1,9 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -40,5 +43,14 @@ public class StoreDetails extends AbstractScreen {
     @When("^I tap on product from the list$")
     public void iTapOnProductFromTheList() throws Throwable {
         select1stProduct();
+    }
+
+    @And("^I add any product to the cart from store$")
+    public void iAddAnyProductToTheCartFromStore() throws Throwable {
+        footerTabsScreen.tapShop();
+        homeScreen.select1stRetailerPartner();
+        select1stProduct();
+        productDetailsScreen.addToCart();
+        AndroidDevice.goBack();
     }
 }

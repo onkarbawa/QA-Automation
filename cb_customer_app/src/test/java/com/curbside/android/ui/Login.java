@@ -4,6 +4,7 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
@@ -54,5 +55,14 @@ public class Login extends AbstractScreen{
     Properties.setVariable("signInPassword", password);
     emailField.waitFor(3).sendKeys(email);
     passwordField.waitFor(5).sendKeys(password);
+  }
+
+  @And("^I sign in into application using username \"([^\"]*)\" and password \"([^\"]*)\"$")
+  public void iSignInIntoApplicationUsingUsernameAndPassword(String username, String password) throws Throwable {
+    Steps.tapButton("Account");
+    Steps.tapButton("Sign In");
+    Steps.tapButton("Sign In with Email");
+    this.iEnterAndForLogin(username, password);
+    this.iTapOnSignInButtonOnSignInPage();
   }
 }
