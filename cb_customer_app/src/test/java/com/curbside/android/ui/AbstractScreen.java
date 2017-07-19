@@ -16,7 +16,6 @@ public class AbstractScreen {
   static StoreDetails storeDetailsScreen;
   static ProductDetails productDetailsScreen;
 
-
   static {
 	homeScreen = new Home();
     welcomeScreen = new Welcome();

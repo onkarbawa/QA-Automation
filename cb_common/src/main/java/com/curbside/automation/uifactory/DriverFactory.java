@@ -19,6 +19,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.curbside.automation.devicefactory.AppiumService;
 import com.curbside.automation.devicefactory.DeviceStore;
@@ -30,9 +31,10 @@ import io.appium.java_client.ios.IOSDriver;
 @SuppressWarnings("rawtypes")
 public class DriverFactory {
 	private static final Logger logger = Logger.getLogger(DriverFactory.class);
-	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
-	private static ThreadLocal<Capabilities> driverInfo = new ThreadLocal<Capabilities>();
-	public static ThreadLocal<Dimension> deviceSize = new ThreadLocal<Dimension>();
+	static HashMap<String, WebDriver> driverMap= new HashMap<>();
+	static HashMap<String, String> driverEnvironment= new HashMap<>();
+	static ThreadLocal<Capabilities> driverInfo = new ThreadLocal<Capabilities>();
+	static ThreadLocal<Dimension> deviceSize = new ThreadLocal<Dimension>();
 
 	/**
 	 * This method must be called when creating a new driver instance
@@ -46,18 +48,18 @@ public class DriverFactory {
 	 * @throws Throwable
 	 */
 	public static WebDriver getDriver(JSONObject deviceInfo) throws Throwable {
-		if (deviceInfo != null)
-			System.out.println(deviceInfo.toString());
+		//if (deviceInfo != null)
+		//	System.out.println(deviceInfo.toString());
 
-		if (webDriver.get() == null) {
-
+		if (!driverMap.containsKey(MobileDevice.getDeviceId(deviceInfo))) {
 			DriverFactory.createInstance(DeviceStore.getPlatform(), deviceInfo);
 		}
-		return webDriver.get();
+		
+		return driverMap.get(MobileDevice.getDeviceId(deviceInfo));
 	}
 
 	public static WebDriver getDriver() throws Throwable {
-		return getDriver(null);
+		return getDriver(new JSONObject(DeviceStore.getDevice().toString()));
 	}
 
 	public static WebDriver getDriver(boolean reinstall) throws Throwable {
@@ -73,7 +75,7 @@ public class DriverFactory {
 			deviceInfo.remove("ipa");
 			deviceInfo.put("noReset", true);
 		} else {
-			DeviceStore.setEnvironmentSelected(false);
+			DriverFactory.clearEnvironment();
 			deviceInfo.put("noReset", false);
 		}
 		deviceInfo.put("fullReset", false);
@@ -85,7 +87,7 @@ public class DriverFactory {
 			if(deviceInfo.getString("url").contains("127.0.0.1")
 					&& deviceInfo.getString("platformName").equalsIgnoreCase("android"))
 			{
-				deviceInfo.put("url", AppiumService.start());
+				deviceInfo.put("url", AppiumService.getUrl());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,23 +99,23 @@ public class DriverFactory {
 	/**
 	 * This method should be called when tests are exiting, usually by a test
 	 * listener
-	 * 
-	 * @throws MalformedURLException
+	 * @throws Throwable 
 	 */
-	public static void releaseDriver() throws MalformedURLException {
-		WebDriver driver = webDriver.get();
-		if (driver != null) {
-			driver.quit();
-			webDriver.set(null);
+	public static void releaseDriver() throws Throwable {
+		if (driverMap.containsKey(DeviceStore.getDeviceId())) {
+			driverMap.get(DeviceStore.getDeviceId()).quit();
+			driverMap.remove(DeviceStore.getDeviceId());
 		}
 	}
 
-	private static void setDriver(WebDriver driver) {
-		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		DriverFactory.webDriver.set(driver);
+	private static void setDriver(WebDriver driver) throws Throwable {
+		driverMap.put(DeviceStore.getDeviceId(), driver);
 	}
 
-	public static Map<String, ?> getDriverInfo() {
+	public static Map<String, ?> getDriverInfo() throws Throwable {
+		if(driverInfo.get() == null)
+			driverInfo.set(((RemoteWebDriver)getDriver()).getCapabilities());
+		
 		return driverInfo.get().asMap();
 	}
 
@@ -153,9 +155,9 @@ public class DriverFactory {
 			throw new Exception("Unknown platform: " + platform);
 		}
 
-		driverInfo.set(((AppiumDriver) (webDriver.get())).getCapabilities());
+		driverInfo.set(((AppiumDriver) getDriver()).getCapabilities());
 		System.out.println("Actual device capabilities: " + driverInfo.get().asMap());
-		deviceSize.set(webDriver.get().manage().window().getSize());
+		deviceSize.set(getDriver().manage().window().getSize());
 		MobileDevice.logDeviceInfo();
 
 		// System.out.println("Device screenshot captured at " +
@@ -164,7 +166,38 @@ public class DriverFactory {
 		// File("src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
 
-	public static Dimension getSize() {
+	public static Dimension getSize() throws Throwable {
+		if(deviceSize.get() == null)
+			deviceSize.set(getDriver().manage().window().getSize());
+		
 		return deviceSize.get();
+	}
+	
+	public static String getEnvironment() throws Throwable
+	{
+		String deviceId= DeviceStore.getDeviceId();
+		if(driverEnvironment.containsKey(deviceId))
+			return driverEnvironment.get(deviceId);
+		else
+			return "";
+	}
+	
+	public static void setEnvironment(String envName) throws Throwable
+	{
+		driverEnvironment.put(DeviceStore.getDeviceId(), envName);
+	}
+	
+	public static void clearEnvironment() throws Throwable
+	{
+		driverEnvironment.remove(DeviceStore.getDeviceId());
+	}
+	
+	public static String getBundleId() throws Throwable {
+		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			return getDriverInfo().get("bundleId").toString();
+		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
+			return getDriverInfo().get("appPackage").toString();
+		
+		return null;
 	}
 }

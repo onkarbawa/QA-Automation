@@ -30,10 +30,15 @@ public class Steps {
 	public void launchApplication(String appName) throws Throwable
 	{
 		logger.info("Launching application without install");
-		DriverFactory.releaseDriver();
-		DeviceStore.releaseDevice();
+		//DriverFactory.releaseDriver();
+		//DeviceStore.releaseDevice();
 		
 		DriverFactory.getDriver(false);
+		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
+		{
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+		}
 		
 		MobileDevice.getScreenshot(true);
 	}
@@ -42,9 +47,16 @@ public class Steps {
 	public void launchApplicationWithPermissions(String appName) throws Throwable
 	{
 		logger.info("Launching application with needed permissions");
-		DriverFactory.releaseDriver();
-		DeviceStore.releaseDevice();
+		//DriverFactory.releaseDriver();
+		//DeviceStore.releaseDevice();
+		
 		DriverFactory.getDriver(false, true);
+		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
+		{
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false, true);
+		}
+		
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
 			AndroidDevice.grantLocationPermission();
@@ -58,15 +70,19 @@ public class Steps {
 	public void launchApplicationClean(String appName) throws Throwable
 	{
 		logger.info("Re-installing and launching application");
-
+		
+		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
+		
 		/**
 		 * for iOS
 		 */
+		/*
 		if(DeviceStore.getPlatform().equalsIgnoreCase("ios")){
 			try {
 				acceptLocationAlert();
 			}catch (Exception e){}
-		}
+		}*/
 
 		//Reset app permissions from mobile device
 		DeviceStore.getDevice();

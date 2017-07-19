@@ -45,7 +45,7 @@ public class Login extends AbstractScreen{
     this.iEnterEmailAndPasswordForLogin(Properties.getVariable("signupEmail"),
             Properties.getVariable("signupPassword"),Properties.getVariable("signupPhoneNumber"));
     this.iTapOnSignInButtonOnSignInPage();
-    accountScreen.userEmailField.waitFor(10);
+    accountScreen.viewEmailId.waitFor(10);
   }
 
   @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for login$")
@@ -67,7 +67,7 @@ public class Login extends AbstractScreen{
         Steps.tapButton("Sign In with Email");
         this.iEnterEmailAndPasswordForLogin(emailId,password,phoneNumber);
         this.iTapOnSignInButtonOnSignInPage();
-        accountScreen.userEmailField.waitFor(30);
+        accountScreen.viewEmailId.waitFor(30);
     }
 
 }

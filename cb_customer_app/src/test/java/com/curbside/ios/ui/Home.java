@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import cucumber.api.PendingException;
@@ -108,18 +109,20 @@ public class Home extends AbstractScreen {
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		homeScreen.open();
-		//if(DeviceStore.isEnvironmentSelected())
-		//	return;
+		
+		String envAPIKey= "_#csndc#env#s";
+		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
 		
 		iconSearch.tap();
-		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s",false);
+		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey,false);
 		btnSearchKeyboard.tap();
 		
 		//btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
 		
 		MobileDevice.getScreenshot(true);
-		DeviceStore.setEnvironmentSelected(true);
+		DriverFactory.setEnvironment(envAPIKey);
 	}
 
 	@Given("I select '(.*)' retailer partner on stores screen")

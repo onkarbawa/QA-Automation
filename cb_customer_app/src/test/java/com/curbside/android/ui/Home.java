@@ -71,22 +71,24 @@ public class Home extends AbstractScreen {
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
+		String envSearchKey= "_#csndc#ena";
+		String envAPIKey= "https://api-s.shopcurbside.com";
 		homeScreen.open();
 		
-		//if(DeviceStore.isEnvironmentSelected())
-		//	return;
+		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
 		
 		searchIcon.waitFor(5).tap();
-		searchBox.waitFor(5).sendKeys("_#csndc#ena", false);
+		searchBox.waitFor(5).sendKeys(envSearchKey, false);
 		AndroidDevice.pressEnter();
 		
 		try {
 			apiHost.waitFor(5).tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
+			apiHostTextField.setText(envAPIKey, false);
 		} catch (Exception e) {
 			debugBackButton.tap();
 			apiHost.tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
+			apiHostTextField.setText(envAPIKey, false);
 		}
 		
 		MobileDevice.getScreenshot(true);
@@ -97,7 +99,7 @@ public class Home extends AbstractScreen {
 		AndroidDevice.startApplication();
 		welcomeScreen.wait_for_app_launch();
 		
-		DeviceStore.setEnvironmentSelected(true);
+		DriverFactory.setEnvironment(envAPIKey);
 	}
 
 	@Given("I select 1st retailer partner on stores screen")

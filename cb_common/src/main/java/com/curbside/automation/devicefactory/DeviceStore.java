@@ -24,14 +24,11 @@ public class DeviceStore {
 	private static volatile List<Object> androidDeviceList = new ArrayList<>();
 	private static volatile List<Object> iOSDeviceList = new ArrayList<>();
 
-	private JsonFileParser jsonFileParser;
-
 	private static ThreadLocal<Object> lockedDevice = new ThreadLocal<>();
 	private static ThreadLocal<String> lockedPlatform = new ThreadLocal<>();
 	private static ThreadLocal<String> deviceID = new ThreadLocal<>();
 	private static HashMap<String, Boolean> appInstalled = new HashMap<>();
-	private static HashMap<String, Boolean> environmentSet = new HashMap<>();
-
+	
 	static {
 		String pDeviceStore = System.getProperty("deviceStore");
 		JSONObject devices = null;
@@ -160,16 +157,5 @@ public class DeviceStore {
 
 	public static synchronized void setAppInstalled() throws Throwable {
 		appInstalled.put(getDeviceId(), true);
-	}
-
-	public static synchronized void setEnvironmentSelected(boolean set) throws Throwable {
-		environmentSet.put(getDeviceId(), set);
-	}
-
-	public static boolean isEnvironmentSelected() throws Throwable {
-		if (appInstalled.containsKey(getDeviceId()))
-			return appInstalled.get(getDeviceId());
-		else
-			return false;
 	}
 }
