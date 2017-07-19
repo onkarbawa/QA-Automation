@@ -20,10 +20,13 @@ public class Cart extends AbstractScreen {
     UIElement firstRetailer = UIElement.byXpath("//android.support.v7.widget.RecyclerView/android.widget.LinearLayout[@index=‘0’]");
     UIElement loyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_last_4_view");
     UIElement productName = UIElement.byId("com.curbside.nCurbside:id/product_name");
-    UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
-//    UIElement firstStoreTotalPrice = UIElement.byXpath("//android.widget.LinearLayout[@index=‘1’]//*[@resource-id=‘com.curbside.nCurbside:id/price_view’]");
-    UIElement btnFirstItemQuantity = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
+    UIElement lblCartCount = UIElement.byXpath("//android.widget.TextView[@text='Cart']/../../android.widget.TextView");
+    UIElement btnCartItemQnty = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
     UIElement btnRemove = UIElement.byId("com.curbside.nCurbside:id/button_cart_product_remove");
+    UIElement lblStoreTotalItemQnty = UIElement.byId("com.curbside.nCurbside:id/item_number");
+    UIElement lblSubStoreTotalItemQnty = UIElement.byId("com.curbside.nCurbside:id/item_count_view");
+
+    UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
     UIElement btnContinueShopping = UIElement.byId("com.curbside.nCurbside:id/button_continue_shopping");
     UIElement textItemsAndStores = UIElement.byId("com.curbside.nCurbside:id/text_item_count");
     UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
@@ -52,29 +55,87 @@ public class Cart extends AbstractScreen {
           "Added product not shown in the cart");
     }
 
+//    @Given("^My cart is empty$")
+//    public void emptyCart() throws Throwable
+//    {
+//    	footerTabsScreen.tapCart();
+//        int itemsInCart= btnCartItemQnty.getCount();
+//        System.out.println(itemsInCart);
+//        for (int i = 0; i < itemsInCart; i++) {
+//            btnCartItemQnty.tap();
+//            btnRemove.waitFor(2).tap();
+//            Thread.sleep(1000);
+//        }
+//  }
+
+    /**
+     * There scenario for cart goes like this :
+     * 1. Cart -> Only CVS store item in the cart and btnCartItemQnty is there on the screen.
+     * 2. Cart -> WestField -> subStore list (Lush , GNC) -> Click on SubStore and then btnCartItemQnty is visible.
+     * 3. Cart -> Have both the Store items (CVS and Westfield) ->click on CVS -> then remove
+     * 3.1 -> Have both the Store items (CVS and Westfield) ->click on Westfield -> Click subStore -> then remove
+     *
+     * if we are using getCount function it will only capture the selectors that are visible on screen.
+     * for example if we have 7 item in the cart and we used getCount so it may show only 4 item in the cart
+     * because other 3 items where not visible on the screen
+     */
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
         footerTabsScreen.tapCart();
-        firstRetailerIcon.waitFor(20).isDisplayed();
+        firstRetailerIcon.waitFor(5).isDisplayed();
         footerTabsScreen.tapCart();
+        // If there is nothing in the cart execution will not go in.
         if (!btnContinueShopping.isDisplayed()){
-            while(!btnContinueShopping.isDisplayed()){
-                try{
-                    firstRetailerIcon.tap();
-                }catch (Exception e){}
+            // default value
+            int totalItemsInStoreCart = 1;
+            while(totalItemsInStoreCart > 0){
+                totalItemsInStoreCart = lblStoreTotalItemQnty.getCount();
 
-                if(!paymentCardName.waitFor(10).isDisplayed() && firstRetailerIcon.waitFor(10).isDisplayed()){
-                    System.out.print("--------payment card is not displayes and first store Total price is displayed -------------");
+                /**
+                 * Clicking Stores eg. CVS or Westfield
+                 */
+                if(totalItemsInStoreCart != 0) {
                     firstRetailerIcon.tap();
                 }
+                paymentCardName.waitFor(10);
 
-                if(loyaltyCardName.isDisplayed() && paymentCardName.isDisplayed() && ! btnFirstItemQuantity.isDisplayed()){
-                    btnFirstItemQuantity.swipeUpSlow();
+                // if there is no sub store then also execution will go in
+                int itemsInSubStore = 1;
+                while(itemsInSubStore > 0){
+                    itemsInSubStore = lblSubStoreTotalItemQnty.getCount();
+                    /**
+                     * Clicking Sub Stores eg. Lush or GNC
+                     */
+                    if(itemsInSubStore != 0)
+                    {
+                        firstRetailerIcon.tap();
+                    }
+                    int itemsInCart= 1;
+                    while(itemsInCart > 0){
+                        btnCartItemQnty.waitFor(20);
+                        if (loyaltyCardName.isDisplayed() && paymentCardName.isDisplayed() && !btnCartItemQnty.isDisplayed()) {
+                            btnCartItemQnty.swipeUpSlow();
+                        }
+                        itemsInCart = btnCartItemQnty.getCount();
+                        /**
+                         * Clicking item in the Store
+                         */
+                        if(itemsInCart != 0) {
+                            btnCartItemQnty.tap();
+                            btnRemove.waitFor(2).tap();
+                            Thread.sleep(2000);
+                        }
+                        // updating items dynamically and set it in while loop
+                        itemsInCart = btnCartItemQnty.getCount();
+                        System.out.print("-----------total items in the list----------"+totalItemsInStoreCart);
+                    }
+                    // updating subStore value dynamically and set it in while loop
+                    itemsInSubStore = lblSubStoreTotalItemQnty.getCount();
+                    System.out.print("-----------total SubStores in the list----------"+totalItemsInStoreCart);
                 }
-                btnFirstItemQuantity.tap();
-                btnRemove.waitFor(5).tap();
-                footerTabsScreen.tapCart();
-
+                // updating Store value dynamically and set it in while loop
+                totalItemsInStoreCart = lblStoreTotalItemQnty.getCount();
+                System.out.print("-----------total Stores in the list----------"+totalItemsInStoreCart);
             }
         }
 

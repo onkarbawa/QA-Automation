@@ -43,17 +43,17 @@ public class CreditCard extends AbstractScreen {
 		Properties.setVariable("cardExpiryDate", cardExpiry);
 		Properties.setVariable("creditCardNumber", cardNumberText);
 
-		firstName.sendKeys(firstNameText);
-		lastName.sendKeys(lastNameText);
-		cardNumber.sendKeys(cardNumberText);
-		expiryDate.sendKeys(cardExpiry);
-		securityCode.sendKeys(cardCvv);
+		firstName.sendKeys(firstNameText,false);
+		lastName.sendKeys(lastNameText,false);
+		cardNumber.sendKeys(cardNumberText,false);
+		expiryDate.sendKeys(cardExpiry,false);
+		securityCode.sendKeys(cardCvv,false);
 		MobileDevice.getScreenshot(true);
 		next.tap();
 		newAddress.tap();
-		cardAdd1.sendKeys(add1);
-		cardAdd2.sendKeys(add2);
-		cardCity.sendKeys(city);
+		cardAdd1.sendKeys(add1,false);
+		cardAdd2.sendKeys(add2,false);
+		cardCity.sendKeys(city,false);
 		cardState.tap();
 		cardState.tap();
 		cardZip.sendKeys(zip);
@@ -68,21 +68,21 @@ public class CreditCard extends AbstractScreen {
 	public void iAddedCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(10).tap();
 		paymentInfoScreen.iTapOnAddANewCard();
-		firstName.setText("Test",false);
-		lastName.setText("Data",false);
-		cardNumber.setText("6011111111111117",false);
-		expiryDate.setText("1120",false);
-		securityCode.setText("345",false);
+		firstName.sendKeys("Test",false);
+		lastName.sendKeys("Data",false);
+		cardNumber.sendKeys("6011111111111117",false);
+		expiryDate.sendKeys("1120",false);
+		securityCode.sendKeys("345",false);
 		MobileDevice.getScreenshot(true);
 		next.tap();
 
 		newAddress.tap();
-		cardAdd1.setText("TestData",false);
-		cardAdd2.setText("TestData",false);
-		cardCity.setText("Boston",false);
+		cardAdd1.sendKeys("TestData",false);
+		cardAdd2.sendKeys("TestData",false);
+		cardCity.sendKeys("Boston",false);
 		cardState.tap();
 		cardState.tap();
-		cardZip.setText("56635",false);
+		cardZip.sendKeys("56635",false);
 		MobileDevice.getScreenshot(true);
 		save.tap();
 

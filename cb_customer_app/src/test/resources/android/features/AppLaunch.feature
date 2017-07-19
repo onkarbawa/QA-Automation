@@ -19,7 +19,6 @@ Feature: Android- Application Launch
     Given I launch Curbside application for the first time
     And I am currently in 'Palo Alto, CA' city
     And I wait for application to be launched
-    And I wait for 'Skip Intro' button
     And I tap on 'Skip Intro' button on intro page
     And I tap on 'OK' button on 'location access' page
     When I accept location access alert
