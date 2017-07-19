@@ -21,12 +21,15 @@ public class Cart extends AbstractScreen {
     UIElement loyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_last_4_view");
     UIElement productName = UIElement.byId("com.curbside.nCurbside:id/product_name");
     UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
-    UIElement firstStoreTotalPrice = UIElement.byXpath("//android.widget.LinearLayout[@index=‘1’]//*[@resource-id=‘com.curbside.nCurbside:id/price_view’]");
+//    UIElement firstStoreTotalPrice = UIElement.byXpath("//android.widget.LinearLayout[@index=‘1’]//*[@resource-id=‘com.curbside.nCurbside:id/price_view’]");
     UIElement btnFirstItemQuantity = UIElement.byId("com.curbside.nCurbside:id/btn_cart_item_qty");
     UIElement btnRemove = UIElement.byId("com.curbside.nCurbside:id/button_cart_product_remove");
     UIElement btnContinueShopping = UIElement.byId("com.curbside.nCurbside:id/button_continue_shopping");
     UIElement textItemsAndStores = UIElement.byId("com.curbside.nCurbside:id/text_item_count");
     UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
+    UIElement loyaltyCardName = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_name");
+    UIElement paymentCardName = UIElement.byId("com.curbside.nCurbside:id/text_card_name");
+
 
 
     @And("^I should see loyalty card info on cart screen$")
@@ -53,25 +56,24 @@ public class Cart extends AbstractScreen {
     public void myCartIsEmpty() throws Throwable {
         footerTabsScreen.tapCart();
         firstRetailerIcon.waitFor(20).isDisplayed();
+        footerTabsScreen.tapCart();
         if (!btnContinueShopping.isDisplayed()){
             while(!btnContinueShopping.isDisplayed()){
                 try{
                     firstRetailerIcon.tap();
                 }catch (Exception e){}
 
-                if(firstStoreTotalPrice.isDisplayed() && !btnFirstItemQuantity.isDisplayed()){
-                    firstStoreTotalPrice.tap();
+                if(!paymentCardName.waitFor(10).isDisplayed() && firstRetailerIcon.waitFor(10).isDisplayed()){
+                    System.out.print("--------payment card is not displayes and first store Total price is displayed -------------");
+                    firstRetailerIcon.tap();
                 }
 
-                if(textItemsAndStores.isDisplayed() && ! btnFirstItemQuantity.isDisplayed()){
+                if(loyaltyCardName.isDisplayed() && paymentCardName.isDisplayed() && ! btnFirstItemQuantity.isDisplayed()){
                     btnFirstItemQuantity.swipeUpSlow();
                 }
                 btnFirstItemQuantity.tap();
                 btnRemove.waitFor(5).tap();
-
-                if(!firstStoreTotalPrice.isDisplayed()){
-                    footerTabsScreen.tapCart();
-                }
+                footerTabsScreen.tapCart();
 
             }
         }
