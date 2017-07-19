@@ -75,6 +75,7 @@ public class MyAccount extends AbstractScreen{
         try {
         	homeScreen.open();
 			footerTabsScreen.tapMyAccount();
+			ensureAccountPage();
             Steps.tapButton("Account Info");
             Steps.tapButton("Sign Out");
             signUp.waitFor(5);

@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,7 +43,10 @@ public class UIElement {
 			MobileDevice.hideKeyboard();
 			return DriverFactory.getDriver().findElement(locator);
 		}
-		
+	}
+	
+	public List<WebElement> getElements() throws Throwable {
+		return DriverFactory.getDriver().findElements(locator);
 	}
 
 	public void tap() throws Throwable {
@@ -210,6 +214,10 @@ public class UIElement {
 		MobileElement m = (MobileElement) getElement();
 		Point p = m.getCenter();
 		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(p.x, p.y).perform();
+	}
+
+	public int getCount() throws Throwable {
+		return getElements().size();
 	}
 
 }
