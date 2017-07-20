@@ -92,4 +92,13 @@ public class StoreDetails extends AbstractScreen {
         homeScreen.searchBox.sendKeys(productName, false);
         AndroidDevice.pressEnter();
     }
+
+    @And("^I add any product to the cart from store$")
+    public void iAddAnyProductToTheCartFromStore() throws Throwable {
+        footerTabsScreen.tapShop();
+        homeScreen.select1stRetailerPartner();
+        select1stProduct();
+        productDetailsScreen.addToCart();
+        AndroidDevice.goBack();
+    }
 }

@@ -72,4 +72,14 @@ public class Login extends AbstractScreen{
     this.iTapOnSignInButtonOnSignInPage();
     accountScreen.viewEmailId.waitFor(10);
   }
+
+
+  @And("^I sign in into application using username \"([^\"]*)\" and password \"([^\"]*)\"$")
+  public void iSignInIntoApplicationUsingUsernameAndPassword(String username, String password) throws Throwable {
+    Steps.tapButton("Account");
+    Steps.tapButton("Sign In");
+    Steps.tapButton("Sign In with Email");
+    this.iEnterAndForLogin(username, password);
+    this.iTapOnSignInButtonOnSignInPage();
+  }
 }

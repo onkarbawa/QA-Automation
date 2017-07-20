@@ -32,7 +32,7 @@ public class Steps {
 		logger.info("Launching application without install");
 		//DriverFactory.releaseDriver();
 		//DeviceStore.releaseDevice();
-		
+
 		DriverFactory.getDriver(false);
 		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
 		{
@@ -49,14 +49,14 @@ public class Steps {
 		logger.info("Launching application with needed permissions");
 		//DriverFactory.releaseDriver();
 		//DeviceStore.releaseDevice();
-		
+
 		DriverFactory.getDriver(false, true);
 		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
 		{
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false, true);
 		}
-		
+
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
 			AndroidDevice.grantLocationPermission();
@@ -70,10 +70,10 @@ public class Steps {
 	public void launchApplicationClean(String appName) throws Throwable
 	{
 		logger.info("Re-installing and launching application");
-		
+
 		DriverFactory.releaseDriver();
 		DeviceStore.releaseDevice();
-		
+
 		/**
 		 * for iOS
 		 */
@@ -278,4 +278,13 @@ public class Steps {
 		}
 	}
 
+	@And("^I tap on back button$")
+	public void iTapOnBackButton() throws Throwable {
+		if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+			AndroidDevice.hideKeyboard();
+			AndroidDevice.goBack();
+		} else {
+			throw new NotImplementedException("not implemented yet!");
+		}
+	}
 }
