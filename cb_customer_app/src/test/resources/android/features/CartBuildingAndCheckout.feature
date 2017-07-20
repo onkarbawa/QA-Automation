@@ -24,3 +24,9 @@ Feature: Android- Cart Building
       |       email         |      password     |
       |cartbuilding@test.com|  1234567890       |
 
+
+  @Android @C114946
+  Scenario: Verify math and calculations are correct
+    Given I tap on 'Cart' button
+    And I refresh the sub-store details if displayed
+    Then I should see '53.29' dollars as total amount
