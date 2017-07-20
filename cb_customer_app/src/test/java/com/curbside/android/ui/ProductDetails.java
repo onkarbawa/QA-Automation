@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -21,6 +22,7 @@ public class ProductDetails extends AbstractScreen {
     UIElement productDescription = UIElement.byId("com.curbside.nCurbside:id/description_view");
     UIElement productSKU = UIElement.byId("com.curbside.nCurbside:id/sku_id");
     UIElement productOverview = UIElement.byId("com.curbside.nCurbside:id/overview_view");
+    UIElement productQnty = UIElement.byId("com.curbside.nCurbside:id/quantity_view ");
 
 
 
@@ -32,6 +34,7 @@ public class ProductDetails extends AbstractScreen {
             snackBarKeepShopping.isDisplayed();
         }catch (Exception e){
             btnAdd.waitFor(10);
+            btnAdd.tap();
         }
     }
 
@@ -63,6 +66,15 @@ public class ProductDetails extends AbstractScreen {
             Properties.setVariable("productName",productName.getText());
         productDetailsScreen.addToCart();
         snackBarKeepShopping.isDisplayed();
+        AndroidDevice.goBack();
+    }
+
+    @And("^I add (\\d+) quantity of the product$")
+    public void iAddQuantityOfIt(int noOfTimes) throws Throwable {
+        for(int i = 0; i < noOfTimes; i++){
+            addToCart();
+            Thread.sleep(1000);
+        }
         AndroidDevice.goBack();
     }
 }

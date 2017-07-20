@@ -4,7 +4,7 @@ Feature: iOS- Login Feature
   Scenario: Setting test environment 
     Given I launch Curbside application
     And I have selected test environment
-    
+
   @iOS @C114957
   Scenario: Verify New user should login in curbside app
     Given I am not signed into application
@@ -17,8 +17,6 @@ Feature: iOS- Login Feature
   @iOS @C114956
   Scenario Outline: Verify Old user should login in curbside app
     Given I am not signed into application
-    And I tap on 'My Account' icon in bottom menu
-    And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
     And I enter '<Email>' and '<Password>'
     When I tap on 'Sign In' button
@@ -30,8 +28,6 @@ Feature: iOS- Login Feature
   @iOS @C114955
   Scenario Outline: Verify Facebook user should login in curbside app
     Given I am not signed into application
-    And I tap on 'My Account' icon in bottom menu
-    And I tap on 'Sign In' button
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
 

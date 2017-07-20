@@ -55,4 +55,11 @@ public class Login extends AbstractScreen {
 		signUpScreen.btnCreateOneNow.tap();
 		signUpScreen.btnCreateNewAccount.tap();
 	}
+
+	@And("^I Sign-in with '(.*)' and '(.*)'$")
+	public void iSignInWithAnd(String emailId, String password) throws Throwable {
+		signIn.tap();
+		signInWithEmail.tap();
+		signin(emailId,password);
+	}
 }

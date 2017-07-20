@@ -29,5 +29,10 @@
             <class name="com.curbside.ios.runners.ProductCatalog"/>
         </classes>
     </test>
+    <test name="iOS- CartBuilding And Checkout">
+            <classes>
+                <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
+            </classes>
+        </test>
 
 </suite>

@@ -16,7 +16,7 @@ public class FacebookLogin extends AbstractScreen {
   UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
   UIElement btnSignInWithFacebook= UIElement.byUISelector("new UiSelector().text(\"" + "Sign in with Facebook" + "\")");
 
-  @And("^I enter \"([^\"]*)\" and \"([^\"]*)\" for facebook login$")
+  @And("^I enter '(.*)' and '(.*)' for facebook login$")
   public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
     
 	/*

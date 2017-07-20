@@ -23,13 +23,19 @@ public class WebDriverListener implements IInvokedMethodListener, ISuiteListener
 	@Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         if (method.isTestMethod()) {
-            try {
+            /*
+        	try {
 				DriverFactory.releaseDriver();
 			} catch (MalformedURLException e) {
-			}
+			}*/
             
             DeviceStore.releaseDevice();
-            AppiumService.stop();
+            
+            /*
+            try {
+				AppiumService.stop(DeviceStore.getDeviceId());
+			} catch (Throwable e) {}
+			*/
         }
 	}
 

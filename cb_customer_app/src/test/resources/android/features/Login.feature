@@ -23,11 +23,13 @@ Feature: Android- Login Feature
     And I tap on 'Account' button
     And I tap on 'Sign In' button
     And I tap on 'Sign in with Facebook' button
-    And I enter "<email>" and "<password>" for facebook login
-    Then I should see my given information under Account Info
+    And I enter '<facebook_email>' and '<facebook_password>' for facebook login
+    Then I should see email as '<facebook_email>' on Account Info page
+    And I should see name as '<facebook_name>' on Account Info page
+    And I should see phone number as '<facebook_phone>' on Account Info page
   Examples:
-    |       email         |      password     |
-    |ustft123@gmail.com   |Admin2642          |
+    | facebook_email		|	facebook_password	| facebook_name	| facebook_phone	|
+    | ustft123@gmail.com   	|	Admin2642    		| Tfttest Gigya	| 1 (134)-567-8901	|
 
   @Android @C114956
   Scenario Outline: Verify user should login with email

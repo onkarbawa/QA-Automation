@@ -36,6 +36,7 @@ public class Home extends AbstractScreen {
 	UIElement firstRetailerPartner = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']/android.widget.RelativeLayout[@index='0']");
 	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
 	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
+	UIElement westFieldStore = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/container_relative_layout_card_Store_icon' and @index='2']");
 	
 	UIElement progressBar =  UIElement.byId("com.curbside.nCurbside:id/progress_bar");
 
@@ -71,22 +72,24 @@ public class Home extends AbstractScreen {
 
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
+		String envSearchKey= "_#csndc#ena";
+		String envAPIKey= "https://api-s.shopcurbside.com";
 		homeScreen.open();
 		
-		//if(DeviceStore.isEnvironmentSelected())
-		//	return;
+		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
 		
 		searchIcon.waitFor(5).tap();
-		searchBox.waitFor(5).sendKeys("_#csndc#ena", false);
+		searchBox.waitFor(5).sendKeys(envSearchKey, false);
 		AndroidDevice.pressEnter();
 		
 		try {
 			apiHost.waitFor(5).tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
+			apiHostTextField.setText(envAPIKey, false);
 		} catch (Exception e) {
 			debugBackButton.tap();
 			apiHost.tap();
-			apiHostTextField.setText("https://api-s.shopcurbside.com", false);
+			apiHostTextField.setText(envAPIKey, false);
 		}
 		
 		MobileDevice.getScreenshot(true);
@@ -97,7 +100,7 @@ public class Home extends AbstractScreen {
 		AndroidDevice.startApplication();
 		welcomeScreen.wait_for_app_launch();
 		
-		DeviceStore.setEnvironmentSelected(true);
+		DriverFactory.setEnvironment(envAPIKey);
 	}
 
 	@Given("I select 1st retailer partner on stores screen")
@@ -110,7 +113,12 @@ public class Home extends AbstractScreen {
 			firstRetailerPartnerListView.waitForNot(30);
 		}
 	}
+	public void iSelectWestFieldStore() throws Throwable {
+		westFieldStore.waitFor(10);
+		westFieldStore.tap();
+		westFieldStore.waitForNot(30);
 
+	}
 
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {

@@ -1,7 +1,6 @@
 package com.curbside.automation.uifactory;
 
 import cucumber.api.PendingException;
-import javafx.scene.input.KeyCode;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -31,10 +30,15 @@ public class Steps {
 	public void launchApplication(String appName) throws Throwable
 	{
 		logger.info("Launching application without install");
-		DriverFactory.releaseDriver();
-		DeviceStore.releaseDevice();
-		
+		//DriverFactory.releaseDriver();
+		//DeviceStore.releaseDevice();
+
 		DriverFactory.getDriver(false);
+		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
+		{
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+		}
 		
 		MobileDevice.getScreenshot(true);
 	}
@@ -43,9 +47,16 @@ public class Steps {
 	public void launchApplicationWithPermissions(String appName) throws Throwable
 	{
 		logger.info("Launching application with needed permissions");
-		DriverFactory.releaseDriver();
-		DeviceStore.releaseDevice();
+		//DriverFactory.releaseDriver();
+		//DeviceStore.releaseDevice();
+
 		DriverFactory.getDriver(false, true);
+		if(!MobileDevice.getBundleId().equals(DriverFactory.getBundleId()))
+		{
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false, true);
+		}
+
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
 			AndroidDevice.grantLocationPermission();
@@ -60,14 +71,18 @@ public class Steps {
 	{
 		logger.info("Re-installing and launching application");
 
+		DriverFactory.releaseDriver();
+		DeviceStore.releaseDevice();
+
 		/**
 		 * for iOS
 		 */
+		/*
 		if(DeviceStore.getPlatform().equalsIgnoreCase("ios")){
 			try {
 				acceptLocationAlert();
 			}catch (Exception e){}
-		}
+		}*/
 
 		//Reset app permissions from mobile device
 		DeviceStore.getDevice();
@@ -246,7 +261,7 @@ public class Steps {
 		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
 		
 		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-		
+
 		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
 				backgroundAppRefresh.tap();
 		
@@ -260,14 +275,6 @@ public class Steps {
 			MobileDevice.getScreenshot(true);	
 			//DriverFactory.releaseDriver();
 		} catch (Throwable e) {
-		}
-	}
-
-	@Given("^I open the '(.*)' app$")
-	public void iLaunchTheCurbisdeAppAgain(String appName) throws Throwable {
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
-		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			AndroidDevice.startApplication();
 		}
 	}
 

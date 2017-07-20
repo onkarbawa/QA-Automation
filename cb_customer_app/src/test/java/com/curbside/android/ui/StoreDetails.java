@@ -21,11 +21,19 @@ public class StoreDetails extends AbstractScreen {
     UIElement productName = UIElement.byXpath("//org.lucasr.twowayview.TwoWayView/" +
             "android.widget.FrameLayout[@index='0']//*[@resource-id='com.curbside.nCurbside:id/text_product_name']");
     UIElement leadTime = UIElement.byId("com.curbside.nCurbside:id/text_status_view");
+    UIElement btnSearch = UIElement.byId("com.curbside.nCurbside:id/edit_search_view");
+    UIElement secondProduct = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index='2']");
+
 
 
     @Given("I select 1st product from list")
     public void select1stProduct() throws Throwable {
         firstProduct.waitFor(15).tap();
+    }
+
+    @And("I select 2nd product from list")
+    public void select2ndProduct() throws Throwable {
+        secondProduct.waitFor(15).tap();
     }
 
     @Then("^I should see the lead time below the store address on Store detail page$")
@@ -43,6 +51,20 @@ public class StoreDetails extends AbstractScreen {
     @When("^I tap on product from the list$")
     public void iTapOnProductFromTheList() throws Throwable {
         select1stProduct();
+    }
+
+    @And("^I search for '(.*)' product from '(.*)' Screen$")
+    public void iSearchForProductFromStoreOrHomeScreen(String product , String screenName) throws Throwable {
+        if(screenName.equalsIgnoreCase("Store")){
+            footerTabsScreen.tapShop();
+            homeScreen.iSelectWestFieldStore();
+            btnSearch.waitFor(5).tap();
+        }else if(screenName.equalsIgnoreCase("Home")){
+            footerTabsScreen.tapMyAccount();
+            homeScreen.searchIcon.tap();
+        }
+        homeScreen.searchBox.sendKeys(product, false);
+        AndroidDevice.pressEnter();
     }
 
     @And("^I add any product to the cart from store$")

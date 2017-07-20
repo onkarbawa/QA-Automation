@@ -5,11 +5,10 @@ Feature: Android- Product Catalog
     Given I launch Curbside application
     And I am currently in 'Palo Alto, CA' city
     And I have selected test environment
-    And My cart is empty
     
   @Android @C114941
   Scenario: Verify products display in landing page
-    Given I am on Home Screen
+    Given I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select a store
     Then I should see following products listed on partner screen

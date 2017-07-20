@@ -9,7 +9,7 @@ Feature: iOS- Application Launch
     And I tap on 'Get Started' button
     And I tap on 'OK with me' button on 'location access' page
     When I accept location access alert
-    Then I should see 'Nearby stores' landing page 
+    Then I should see 'Nearby stores' landing page
     And 'Location' preference should be set as 'Always' for 'Curbside' app
 
   @iOS @C114936
@@ -43,14 +43,11 @@ Feature: iOS- Application Launch
     And I am on Sign Up screen
     And I signup for a new account
     And I added credit card information
-    And My cart is empty
     And I add any product to cart in 'Palo Alto' location
     And I go to Cart screen
     And I attempt to place an order
     Then I should see checkout not allowed
     When I turn 'ON' 'Background App Refresh' for 'Curbside'
-    And I launch Curbside application
-    And I am on Home Screen
-    And I tap on 'Cart' icon in bottom menu
+    And I tap on 'Return to Curbside' button
     And I attempt to place an order
     Then I should see checkout screen

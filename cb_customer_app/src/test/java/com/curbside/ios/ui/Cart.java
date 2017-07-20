@@ -1,8 +1,6 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.PendingException;
@@ -21,12 +19,18 @@ public class Cart extends AbstractScreen {
 	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[2]");
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
-	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
-	UIElement productaAddButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
+	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
+	UIElement productaQuantityButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 
 	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please turn on the following']");
 	UIElement settings = UIElement.byName("Settings");
 	UIElement checkoutTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Your order has been placed.']");
+
+	UIElement selectedStores = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell");
+	UIElement lastProduct = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell[1]");
+	UIElement selectedProducts = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell");
+
+	UIElement totalItems = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -47,6 +51,7 @@ public class Cart extends AbstractScreen {
 	public void iShouldSeeCreditInfoOnCartScreen() throws Throwable {
 		creditCardCell.waitFor(10).tap();
 		paymentInfoScreen.iShouldSeeCreditInfoOnPaymentInfoScreen();
+		footerTabsScreen.tapMyAccount();
 	}
 
 	@And("^I should see loyalty card info on cart screen$")
@@ -63,17 +68,52 @@ public class Cart extends AbstractScreen {
 
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
-       footerTabsScreen.tapCart();
-		while (true){
-			if (productItem.isDisplayed()) {
-				productaAddButton.tap();
-				UIElement.byName("Remove").tap();
-				UIElement.byName("Remove").waitForNot(8);
-			}
-			else {
-				break;
-			}
-		}
+		footerTabsScreen.btnCart.waitFor(10).tap();
+		footerTabsScreen.tapCart();
+       try {
+		   if (selectedStores.isDisplayed()) {
+			   int totalStores = selectedStores.getCount();
+			   for (int i = 0; i < totalStores; i++) {
+				   selectedStores.tap();
+				   int totalItems = productItem.getCount();
+				   for (int j = 0; j < totalItems; j++) {
+					   productaQuantityButton.tap();
+					   UIElement.byName("Remove").tap();
+					   UIElement.byName("Remove").waitForNot(8);
+				   }
+			   }
+		   }
+	   }catch (Exception e){
+		   if (selectedStores.isDisplayed()) {
+			   int totalStores = selectedStores.getCount();
+			   for (int i = 0; i < totalStores; i++) {
+				   selectedStores.tap();
+				   int totalSelectedProducts = selectedProducts.getCount();
+				   if(totalSelectedProducts > 3) {
+					   for (int j = 0; j < totalSelectedProducts - 3; j++) {
+						   lastProduct.tap();
+						   int totalItems = productItem.getCount();
+						   for (int k = 0; k < totalItems; k++) {
+							   productaQuantityButton.tap();
+							   UIElement.byName("Remove").tap();
+							   UIElement.byName("Remove").waitForNot(8);
+						   }
+
+					   }
+				   }else {
+						   lastProduct.tap();
+						   int totalItems = productItem.getCount();
+						   for (int k = 0; k < totalItems; k++) {
+							   productaQuantityButton.tap();
+							   UIElement.byName("Remove").tap();
+							   UIElement.byName("Remove").waitForNot(8);
+						   }
+				   }
+
+			   }
+
+		   }
+	   }
     }
 
 	@Then("^I should see checkout not allowed$")
@@ -87,4 +127,14 @@ public class Cart extends AbstractScreen {
 		Assert.assertEquals(checkoutTitle.getText(),"Your order has been placed.");
 	}
 
+	@Then("^I should see the (\\d+) items in the cart$")
+	public void iShouldSeeTheItemsInTheCart(int noOfItems) throws Throwable {
+		try {
+			lastProduct.tap();
+		}catch (Exception e){}
+		int itemCount = Integer.parseInt(totalItems.getText().substring(0));
+		System.out.println("itemCount-Con"+itemCount);
+		Assert.assertEquals(noOfItems , itemCount, "Item count is not same");
+
+	}
 }

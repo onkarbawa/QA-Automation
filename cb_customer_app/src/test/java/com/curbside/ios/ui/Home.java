@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import cucumber.api.PendingException;
@@ -35,11 +36,10 @@ public class Home extends AbstractScreen {
 
 	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText");
-
+	UIElement recentLocation = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Recent Locations')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Palo Alto')]]");
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
-	Search searchpage = new Search();
 
 	public Home() {
 		// TODO Auto-generated constructor stub
@@ -88,11 +88,16 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
+		if(recentLocation.isDisplayed()){
+			if(recentLocation.getText().contains(cityName)){
+				recentLocation.tap();
+			}
+		}
 		if(lnkCurrentLocation.getText().equals(cityName))
 			return;
 		
 		lnkCurrentLocation.tap();
-		cityZipSearchTextBox.sendKeys(cityName);
+		cityZipSearchTextBox.sendKeys(cityName,false);
 		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
 
 		loadingIcon.waitForNot(30);
@@ -108,18 +113,20 @@ public class Home extends AbstractScreen {
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		homeScreen.open();
-		//if(DeviceStore.isEnvironmentSelected())
-		//	return;
+		
+		String envAPIKey= "_#csndc#env#s";
+		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
 		
 		iconSearch.tap();
-		txtSearchNearBy.waitFor(5).sendKeys("_#csndc#env#s",false);
+		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey,false);
 		btnSearchKeyboard.tap();
 		
 		//btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
 		
 		MobileDevice.getScreenshot(true);
-		DeviceStore.setEnvironmentSelected(true);
+		DriverFactory.setEnvironment(envAPIKey);
 	}
 
 	@Given("I select '(.*)' retailer partner on stores screen")
@@ -130,7 +137,9 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st retailer partner on stores screen")
 	public void select1stRetailerPartner() throws Throwable {
-		UIElement.byClass("XCUIElementTypeCell").waitFor(10).tap();
+
+		UIElement.byXpath("//XCUIElementTypeCell").waitFor(10).tap();
+		MobileDevice.getScreenshot(true);
 		loadingIcon.waitForNot(30);
 	}
 
@@ -175,8 +184,8 @@ public class Home extends AbstractScreen {
 
 	@And("^I add product in cart$")
 	public void iAddProductInCart() throws Throwable {
-		Properties.setVariable("productName",productDetailsScreen.getProductName());
 		productDetailsScreen.addToCart();
+		Properties.setVariable("productName",productDetailsScreen.getProductName());
 	}
 
 	@Then("^I should see following products listed on partner screen$")

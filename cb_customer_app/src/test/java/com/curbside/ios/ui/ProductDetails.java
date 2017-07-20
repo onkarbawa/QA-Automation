@@ -1,8 +1,10 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
@@ -23,6 +25,9 @@ public class ProductDetails extends AbstractScreen {
 	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Overview')]");
 	UIElement productSKU = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'sku')]");
 
+	UIElement incrementProduct = UIElement.byName("Increment");
+	UIElement btnBack = UIElement.byName("Back");
+
 	public ProductDetails() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,10 +38,10 @@ public class ProductDetails extends AbstractScreen {
 
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
-		try {
-			btnAddtoCart.tap();
-		}catch (Exception e){}
-		
+		if (!btnAddtoCart.isDisplayed()){
+			btnAddtoCart.scrollToUp();
+		}
+		btnAddtoCart.tap();
 		btnRemove.waitFor(10);
 	}
 
@@ -54,5 +59,16 @@ public class ProductDetails extends AbstractScreen {
 		Assert.assertTrue(productSKU.isDisplayed(), "Product sku is not displayed");
 		productOverview.scrollTo();
 		Assert.assertTrue(productOverview.isDisplayed(),"Product overview is not displayed");
+	}
+
+	@And("^I add (\\d+) quantity of the product$")
+	public void iAddQuantityOfIt(int noOfTimes) throws Throwable {
+		addToCart();
+		if (noOfTimes > 1){
+			for(int i = 0; i < noOfTimes-1; i++){
+				incrementProduct.tap();
+			}
+		}
+		btnBack.tap();
 	}
 }

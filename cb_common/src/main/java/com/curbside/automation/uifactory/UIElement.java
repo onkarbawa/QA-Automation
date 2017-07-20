@@ -80,6 +80,23 @@ public class UIElement {
 
 		return this;
 	}
+	public UIElement scrollToUp() throws Throwable {
+		MobileElement m = (MobileElement) getElement();
+
+		// Vertical scroll
+		int deviceHeight = MobileDevice.getHeight();
+		long startTime = System.currentTimeMillis();
+
+		if (m.getCenter().y < deviceHeight) {
+			System.out.println("Swiping up to make element visible...");
+			while (m.getCenter().getY() < deviceHeight && (System.currentTimeMillis() - startTime) < 60000) {
+				MobileDevice.swipeDown();
+				m = (MobileElement) getElement();
+			}
+		}
+
+		return this;
+	}
 
 	public UIElement scrollTo(SwipeDirection swipeDirection) throws Throwable {
 		for (int i = 0; i < 10; i++) {

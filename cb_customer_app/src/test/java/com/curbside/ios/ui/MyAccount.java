@@ -74,4 +74,11 @@ public class MyAccount extends AbstractScreen {
 	public void tapSignIn() throws Throwable {
 		btnSignIn.tap();
 	}
+	@Then("^I should be logged into application$")
+	public void iShouldBeLoggedIntoApplication() throws Throwable {
+		String facebookEmail = Properties.getVariable("facebookEmail");
+		String facebookPassword = Properties.getVariable("facebookPassword");
+		email.waitFor(20);
+		Assert.assertEquals(email.getText(),facebookEmail);
+	}
 }
