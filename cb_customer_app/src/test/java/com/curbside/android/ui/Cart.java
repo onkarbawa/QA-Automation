@@ -10,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 
+import java.util.Arrays;
+
 /**
  * @author hitesh.grover
  *
@@ -35,8 +37,10 @@ public class Cart extends AbstractScreen {
     UIElement paymentCardName = UIElement.byId("com.curbside.nCurbside:id/text_card_name");
     UIElement lblDeliveryInfo = UIElement.byId("com.curbside.nCurbside:id/delivery_text");
     UIElement lblItemPriceView = UIElement.byId("com.curbside.nCurbside:id/priceView");
-    UIElement btnPlaceOrder = UIElement.byId("com.curbside.nCurbside:id/button_purchase");
     UIElement btnBack = UIElement.byId("com.curbside.nCurbside:id/button_back");
+    UIElement btnPlceOrder2 =UIElement.byXpath("//android.widget.FrameLayout//*[@resource-id='com.curbside.nCurbside:id/button_purchase' and index='1']");
+    UIElement btnPlcaeOrder4 = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout/../*[resource-id='com.curbside.nCurbside:id/button_purchase'] and index='1'");
+    UIElement lblCartTitle = UIElement.byId("com.curbside.nCurbside:id/cart_title");
 
 
 
@@ -87,65 +91,34 @@ public class Cart extends AbstractScreen {
      * Will remove print statements after @Anil review
      */
     @Given("^My cart is empty$")
-    public void myCartIsEmpty() throws Throwable {
+    public void myCartIsEmpty2() throws Throwable {
         footerTabsScreen.tapCart();
-        firstRetailerIcon.waitFor(5).isDisplayed();
+        firstRetailerIcon.waitFor(10);
         footerTabsScreen.tapCart();
-        // If there is nothing in the cart execution will not go in.
-        if (!btnContinueShopping.isDisplayed()){
-            // default value
-            int totalItemsInStoreCart = 1;
-            while(totalItemsInStoreCart > 0 || !btnContinueShopping.isDisplayed()){
-                footerTabsScreen.tapCart();
-                totalItemsInStoreCart = lblItemCountOnMuilpleStoresScreen.getCount();
+        int i=0;
+        while(!btnContinueShopping.isDisplayed() && i < 40){
+            String[] cartTitleText = lblCartTitle.waitFor(3).getText().toLowerCase().split("\\s+");
+            if(Arrays.asList(cartTitleText).contains("carts")){
+                firstRetailerIcon.tap();
+            }
+            if(Arrays.asList(cartTitleText).contains("cart") && lblItemCountSubStore.waitFor(10).isDisplayed()){
+                firstRetailerIcon.tap();
+            }
+            if((Arrays.asList(cartTitleText).contains("order") || Arrays.asList(cartTitleText).contains("cart"))
+                    && paymentCardName.waitFor(5).isDisplayed()){
 
-                /**
-                 * Clicking Stores eg. CVS or Westfield
-                 */
-                if(totalItemsInStoreCart != 0) {
-                    firstRetailerIcon.tap();
+                int itemsInCart = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
+                btnCartItemQnty.waitFor(10);
+                for(int j =0 ; j < itemsInCart ; j++) {
+                    if(j > itemsInCart-2 && btnContinueShopping.isDisplayed())
+                        break;
+                    btnCartItemQnty.swipeUpSlow();
+                    btnCartItemQnty.tap();
+                    btnRemove.waitFor(2).tap();
+                    Thread.sleep(2000);
                 }
-                paymentCardName.waitFor(10);
-
-                // if there is no sub store then also execution will go in
-                int itemsInSubStore = 1;
-                while(itemsInSubStore > 0  ){
-                    itemsInSubStore = lblItemCountSubStore.getCount();
-                    /**
-                     * Clicking Sub Stores eg. Lush or GNC
-                     */
-                    if(itemsInSubStore != 0)
-                    {
-                        firstRetailerIcon.tap();
-                    }
-                    int itemsInCart= 1;
-                    while(itemsInCart > 0){
-                        btnCartItemQnty.waitFor(20);
-                        btnCartItemQnty.swipeUpSlow();
-                        itemsInCart = btnCartItemQnty.getCount();
-                        System.out.println("Internal itemInCart--"+itemsInCart);
-                        /**
-                         * Clicking item in the Store
-                         */
-                        if(itemsInCart != 0) {
-                            btnCartItemQnty.tap();
-                            btnRemove.waitFor(2).tap();
-                            Thread.sleep(2000);
-                        }
-                        // updating items dynamically and set it in while loop
-                        itemsInCart = btnCartItemQnty.waitFor(5).getCount();
-                        System.out.print("-----------total items in the list----------"+totalItemsInStoreCart);
-                    }
-                    // updating subStore value dynamically and set it in while loop
-                    itemsInSubStore = lblItemCountSubStore.getCount();
-                    System.out.print("-----------total SubStores in the list----------"+totalItemsInStoreCart);
-                }
-                // updating Store value dynamically and set it in while loop
-                totalItemsInStoreCart = lblItemCountOnMuilpleStoresScreen.getCount();
-                System.out.print("-----------total Stores in the list----------"+totalItemsInStoreCart);
             }
         }
-
     }
 
     @Then("^I should see the (\\d+) items in the cart$")
@@ -159,7 +132,8 @@ public class Cart extends AbstractScreen {
 
     @Then("^I should see '(.*)' dollars as total amount$")
     public void iShouldSee$AsTotalAmount(String totalAmount) throws Throwable {
-        String totalPrice = btnPlaceOrder.getText().split("$")[1];
+        String totalPrice = "";
+        totalPrice = UIElement.byXpath("//android.widget.FrameLayout[contains(@resource-id,'com.curbside.nCurbside:id/button_purchase')]").waitFor(5).getText().split("\\$")[1];
         Assert.assertEquals(totalPrice, totalAmount, "Total amount of the items in the store is not same");
     }
 
@@ -171,4 +145,5 @@ public class Cart extends AbstractScreen {
             btnBack.tap();
         }
     }
+
 }

@@ -36,6 +36,11 @@ public class StoreDetails extends AbstractScreen {
         secondProduct.waitFor(15).tap();
     }
 
+    @And("I select (\\d+) product from list")
+    public void selectNthProduct(int index) throws Throwable {
+        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+index+"\']").waitFor(5).tap();
+    }
+
     @Then("^I should see the lead time below the store address on Store detail page$")
     public void iShouldSeeTheLeadTimeBelowTheStoreAddressOnStoreDetailPage() throws Throwable {
         Assert.assertTrue(leadTime.waitFor(5).isDisplayed(), "Lead time is not displayed");
@@ -53,17 +58,38 @@ public class StoreDetails extends AbstractScreen {
         select1stProduct();
     }
 
-    @And("^I search for '(.*)' product from '(.*)' Screen$")
-    public void iSearchForProductFromStoreOrHomeScreen(String product , String screenName) throws Throwable {
-        if(screenName.equalsIgnoreCase("Store")){
+    @And("^I select '(.*)' store and search for '(.*)' product$")
+    public void iSearchForProductFromStoreOrHomeScreen(String storeName , String productName) throws Throwable {
+        if(!storeName.equalsIgnoreCase("No")){
+            int storeIndex =0;
+            switch (storeName.toLowerCase()){
+                case "cvs" :
+                    storeIndex = 0;
+                    System.out.println("CVS-Store-Pai");
+                    break;
+                case "pizza hut" :
+                    storeIndex = 1;
+                    break;
+                case "westfield valley fair" :
+                    storeIndex = 2;
+                    break;
+                case "sephora" :
+                    storeIndex = 3;
+                    break;
+                default: Assert.fail(" This store is not added in the code");
+
+            }
             footerTabsScreen.tapShop();
-            homeScreen.iSelectWestFieldStore();
+            UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
+                    "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
+                    .waitFor(10)
+                    .tap();
             btnSearch.waitFor(5).tap();
-        }else if(screenName.equalsIgnoreCase("Home")){
+        }else if(storeName.equalsIgnoreCase("No")){
             footerTabsScreen.tapMyAccount();
             homeScreen.searchIcon.tap();
         }
-        homeScreen.searchBox.sendKeys(product, false);
+        homeScreen.searchBox.sendKeys(productName, false);
         AndroidDevice.pressEnter();
     }
 }

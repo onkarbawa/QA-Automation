@@ -113,12 +113,6 @@ public class Home extends AbstractScreen {
 			firstRetailerPartnerListView.waitForNot(30);
 		}
 	}
-	public void iSelectWestFieldStore() throws Throwable {
-		westFieldStore.waitFor(10);
-		westFieldStore.tap();
-		westFieldStore.waitForNot(30);
-
-	}
 
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
