@@ -29,10 +29,5 @@
             <class name="com.curbside.android.runners.StoreSelectionTest"/>
         </classes>
     </test>
-    <test name="Delivery Promo">
-        <classes>
-            <class name="com.curbside.android.runners.DeliveryPromoTest"/>
-        </classes>
-    </test>
 
 </suite>

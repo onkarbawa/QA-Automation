@@ -1,13 +1,20 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 /**
  * @author hitesh.grover
@@ -32,6 +39,15 @@ public class Cart extends AbstractScreen {
     UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
     UIElement loyaltyCardName = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_name");
     UIElement paymentCardName = UIElement.byId("com.curbside.nCurbside:id/text_card_name");
+
+    UIElement addNewAddressButton = UIElement.byId("com.curbside.nCurbside:id/button_add_new_address");
+    UIElement addressSearchField = UIElement.byId("com.google.android.gms:id/edit_text");
+    UIElement addressSuggestions = UIElement.byXpath("//*[@resource-id='com.google.android.gms:id/list']/android.widget.RelativeLayout");
+    UIElement savedAddress = UIElement.byId("com.curbside.nCurbside:id/list_item_pickup");
+    UIElement verifyAddressPopup = UIElement.byUISelector("new UiSelector().text(\"Verifying Address \")");
+    UIElement addPromoCodeLink = UIElement.byId("com.curbside.nCurbside:id/button_promo");
+    UIElement promoCodeField = UIElement.byId("com.curbside.nCurbside:id/edit_promo_code");
+    UIElement applyButton = UIElement.byId("com.curbside.nCurbside:id/text_save");
 
 
 
@@ -139,5 +155,53 @@ public class Cart extends AbstractScreen {
             }
         }
 
+    }
+
+    @And("^I select the delivery address as, street:\"([^\"]*)\", city:\"([^\"]*)\",state:\"([^\"]*)\"$")
+    public void iSelectTheDeliveryAddressAsStreetCityState(String street, String city, String state) throws Throwable {
+        if (savedAddress.waitFor(5).isDisplayed()) {
+            savedAddress.tap();
+        } else {
+            addNewAddressButton.tap();
+            addressSearchField.waitFor(5).sendKeys(street, true);
+            addressSuggestions.waitFor(5);
+            List<WebElement> list = addressSuggestions.getElements();
+            for (WebElement element : list) {
+                String streetName = element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_primary_text"))
+                  .getText();
+                if (streetName.contains(street)) {
+                    String cityState =  element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_secondary_text"))
+                      .getText();
+                    if (cityState.contains(city)) {
+                       if (cityState.contains(state)) {
+                           element.click();
+                           break;
+                       }
+                    }
+                }
+            }
+        }
+        verifyAddressPopup.waitFor(5);
+        verifyAddressPopup.waitForNot(20);
+    }
+
+    @And("^I tap on Enter promo code link$")
+    public void iTapOnEnterPromoCodeLink() throws Throwable {
+        if (!addPromoCodeLink.waitFor(2).isDisplayed()) {
+            AndroidDevice.swipeUp();
+        }
+        addPromoCodeLink.tap();
+    }
+
+    @When("^I apply promo code \"([^\"]*)\" of type \"([^\"]*)\"$")
+    public void iApplyPromoCodeOfType(String promoCode, String discountType) throws Throwable {
+        Properties.setVariable("discountType", discountType);
+        promoCodeField.waitFor(5).sendKeys(promoCode);
+        applyButton.tap();
+    }
+
+    @Then("^I should see promo code is applied$")
+    public void iShouldSeePromoCodeIsApplied() throws Throwable {
+        // TODO - waiting for promocodes
     }
 }

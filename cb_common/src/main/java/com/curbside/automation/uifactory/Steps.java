@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 
 import cucumber.api.PendingException;
+import javafx.scene.input.KeyCode;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -267,6 +268,16 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
 			AndroidDevice.startApplication();
+		}
+	}
+
+	@And("^I tap on back button$")
+	public void iTapOnBackButton() throws Throwable {
+		if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+			AndroidDevice.hideKeyboard();
+			AndroidDevice.goBack();
+		} else {
+			throw new NotImplementedException("not implemented yet!");
 		}
 	}
 }

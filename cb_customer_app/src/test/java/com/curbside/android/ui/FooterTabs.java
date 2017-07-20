@@ -31,7 +31,7 @@ public class FooterTabs extends AbstractScreen {
     }
 
     public void tapShop() throws Throwable {
-        btnShop.tap();
+        btnShop.waitFor(5).tap();
     }
 
     @And("^I go to Cart screen$")
