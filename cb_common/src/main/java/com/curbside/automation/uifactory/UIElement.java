@@ -87,9 +87,9 @@ public class UIElement {
 		int deviceHeight = MobileDevice.getHeight();
 		long startTime = System.currentTimeMillis();
 
-		if (m.getCenter().y > deviceHeight) {
+		if (m.getCenter().y < deviceHeight) {
 			System.out.println("Swiping up to make element visible...");
-			while (m.getCenter().getY() > deviceHeight && (System.currentTimeMillis() - startTime) < 60000) {
+			while (m.getCenter().getY() < deviceHeight && (System.currentTimeMillis() - startTime) < 60000) {
 				MobileDevice.swipeDown();
 				m = (MobileElement) getElement();
 			}

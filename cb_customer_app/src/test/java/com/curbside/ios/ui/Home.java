@@ -36,11 +36,10 @@ public class Home extends AbstractScreen {
 
 	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText");
-
+	UIElement recentLocation = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Recent Locations')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Palo Alto')]]");
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
-	Search searchpage = new Search();
 
 	public Home() {
 		// TODO Auto-generated constructor stub
@@ -89,6 +88,11 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
+		if(recentLocation.isDisplayed()){
+			if(recentLocation.getText().contains(cityName)){
+				recentLocation.tap();
+			}
+		}
 		if(lnkCurrentLocation.getText().equals(cityName))
 			return;
 		
