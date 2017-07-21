@@ -172,16 +172,14 @@ public class Cart extends AbstractScreen {
             addressSuggestions.waitFor(5);
             List<WebElement> list = addressSuggestions.getElements();
             for (WebElement element : list) {
-                String streetName = element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_primary_text"))
-                  .getText();
+                String streetName = element.findElement(By
+                  .id("com.google.android.gms:id/place_autocomplete_prediction_primary_text")).getText();
                 if (streetName.contains(street)) {
-                    String cityState =  element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_secondary_text"))
-                      .getText();
-                    if (cityState.contains(city)) {
-                       if (cityState.contains(state)) {
-                           element.click();
-                           break;
-                       }
+                    String cityState =  element.findElement(By
+                      .id("com.google.android.gms:id/place_autocomplete_prediction_secondary_text")).getText();
+                    if (cityState.contains(city) && cityState.contains(state)) {
+                        element.click();
+                        break;
                     }
                 }
             }
