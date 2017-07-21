@@ -172,16 +172,14 @@ public class Cart extends AbstractScreen {
             addressSuggestions.waitFor(5);
             List<WebElement> list = addressSuggestions.getElements();
             for (WebElement element : list) {
-                String streetName = element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_primary_text"))
-                  .getText();
+                String streetName = element.findElement(By
+                  .id("com.google.android.gms:id/place_autocomplete_prediction_primary_text")).getText();
                 if (streetName.contains(street)) {
-                    String cityState =  element.findElement(By.id("com.google.android.gms:id/place_autocomplete_prediction_secondary_text"))
-                      .getText();
-                    if (cityState.contains(city)) {
-                       if (cityState.contains(state)) {
-                           element.click();
-                           break;
-                       }
+                    String cityState =  element.findElement(By
+                      .id("com.google.android.gms:id/place_autocomplete_prediction_secondary_text")).getText();
+                    if (cityState.contains(city) && cityState.contains(state)) {
+                        element.click();
+                        break;
                     }
                 }
             }
@@ -198,15 +196,14 @@ public class Cart extends AbstractScreen {
         addPromoCodeLink.tap();
     }
 
-    @When("^I apply promo code \"([^\"]*)\" of type \"([^\"]*)\"$")
-    public void iApplyPromoCodeOfType(String promoCode, String discountType) throws Throwable {
-        Properties.setVariable("discountType", discountType);
+    @When("^I apply promo code \"([^\"]*)\"$")
+    public void iApplyPromoCodeOfType(String promoCode) throws Throwable {
         promoCodeField.waitFor(5).sendKeys(promoCode);
         applyButton.tap();
     }
 
-    @Then("^I should see promo code is applied$")
-    public void iShouldSeePromoCodeIsApplied() throws Throwable {
+    @Then("^I should see promo code is applied and discount is given as per \"([^\"]*)\"$")
+    public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
         // TODO - waiting for promocodes
     }
 }
