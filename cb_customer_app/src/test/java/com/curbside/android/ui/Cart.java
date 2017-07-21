@@ -44,8 +44,7 @@ public class Cart extends AbstractScreen {
     UIElement lblDeliveryInfo = UIElement.byId("com.curbside.nCurbside:id/delivery_text");
     UIElement lblItemPriceView = UIElement.byId("com.curbside.nCurbside:id/priceView");
     UIElement btnBack = UIElement.byId("com.curbside.nCurbside:id/button_back");
-    UIElement btnPlceOrder2 =UIElement.byXpath("//android.widget.FrameLayout//*[@resource-id='com.curbside.nCurbside:id/button_purchase' and index='1']");
-    UIElement btnPlcaeOrder4 = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout/../*[resource-id='com.curbside.nCurbside:id/button_purchase'] and index='1'");
+    UIElement btnPlaceOrder =UIElement.byId("com.curbside.nCurbside:id/button_purchase");
     UIElement lblCartTitle = UIElement.byId("com.curbside.nCurbside:id/cart_title");
 
     UIElement addNewAddressButton = UIElement.byId("com.curbside.nCurbside:id/button_add_new_address");
@@ -121,11 +120,14 @@ public class Cart extends AbstractScreen {
             }
             if((Arrays.asList(cartTitleText).contains("order") || Arrays.asList(cartTitleText).contains("cart"))
                     && paymentCardName.waitFor(5).isDisplayed()){
-
-                int itemsInCart = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
-                btnCartItemQnty.waitFor(10);
+                int itemsInCart;
+                if(lblItemCountStoreOnTop.waitFor(10).isDisplayed()){
+                    itemsInCart = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
+                }else{
+                    itemsInCart =0 ;
+                }
                 for(int j =0 ; j < itemsInCart ; j++) {
-                    if(j > itemsInCart-2 && btnContinueShopping.isDisplayed())
+                    if(btnContinueShopping.isDisplayed())
                         break;
                     btnCartItemQnty.swipeUpSlow();
                     btnCartItemQnty.tap();
@@ -140,15 +142,13 @@ public class Cart extends AbstractScreen {
     public void iShouldSeeTheItemsInTheCart(int noOfItems) throws Throwable {
         footerTabsScreen.tapCart();
         int itemCount = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
-        System.out.println("itemCount-Con"+itemCount);
         Assert.assertEquals(noOfItems , itemCount, "Item count is not same");
 
     }
 
     @Then("^I should see '(.*)' dollars as total amount$")
     public void iShouldSee$AsTotalAmount(String totalAmount) throws Throwable {
-        String totalPrice = "";
-        totalPrice = UIElement.byXpath("//android.widget.FrameLayout[contains(@resource-id,'com.curbside.nCurbside:id/button_purchase')]").waitFor(5).getText().split("\\$")[1];
+        String totalPrice = btnPlaceOrder.waitFor(5).getText().split("\\$")[1];
         Assert.assertEquals(totalPrice, totalAmount, "Total amount of the items in the store is not same");
     }
 
