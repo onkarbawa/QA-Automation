@@ -30,7 +30,8 @@ public class Cart extends AbstractScreen {
 	UIElement lastProduct = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell[1]");
 	UIElement selectedProducts = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell");
 
-	UIElement totalItems = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]");
+	UIElement totalItems = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Estimated Total')]/preceding-sibling::XCUIElementTypeStaticText[contains(@name,'Items')]");
+	UIElement itemsTotalPrice = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[2]");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -76,7 +77,7 @@ public class Cart extends AbstractScreen {
 			   for (int i = 0; i < totalStores; i++) {
 				   selectedStores.tap();
 				   int totalItems = productItem.getCount();
-				   for (int j = 0; j < totalItems; j++) {
+				   for (int j = 0; j < totalItems -2; j++) {
 					   productaQuantityButton.tap();
 					   UIElement.byName("Remove").tap();
 					   UIElement.byName("Remove").waitForNot(8);
@@ -93,7 +94,7 @@ public class Cart extends AbstractScreen {
 					   for (int j = 0; j < totalSelectedProducts - 3; j++) {
 						   lastProduct.tap();
 						   int totalItems = productItem.getCount();
-						   for (int k = 0; k < totalItems; k++) {
+						   for (int k = 0; k < totalItems-2; k++) {
 							   productaQuantityButton.tap();
 							   UIElement.byName("Remove").tap();
 							   UIElement.byName("Remove").waitForNot(8);
@@ -103,7 +104,7 @@ public class Cart extends AbstractScreen {
 				   }else {
 						   lastProduct.tap();
 						   int totalItems = productItem.getCount();
-						   for (int k = 0; k < totalItems; k++) {
+						   for (int k = 0; k < totalItems-2; k++) {
 							   productaQuantityButton.tap();
 							   UIElement.byName("Remove").tap();
 							   UIElement.byName("Remove").waitForNot(8);
@@ -132,9 +133,26 @@ public class Cart extends AbstractScreen {
 		try {
 			lastProduct.tap();
 		}catch (Exception e){}
-		int itemCount = Integer.parseInt(totalItems.getText().substring(0));
-		System.out.println("itemCount-Con"+itemCount);
-		Assert.assertEquals(noOfItems , itemCount, "Item count is not same");
-
+		Assert.assertTrue(totalItems.getText().contains(String.valueOf(noOfItems)), "Item count is not same");
 	}
+
+	public int calculateItemPrice() throws Throwable {
+		int totalItems = productItem.getCount();
+        int totalPrice = 0;
+		for (int k = 0; k < totalItems-2; k++) {
+			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + k + 1 + "]//XCUIElementTypeStaticText[3]").getText();
+			int itemPrice = Integer.parseInt(singleItemPrice.split("\\s")[1]);
+            totalPrice = totalPrice + itemPrice;
+		}
+		return totalPrice;
+	}
+
+	@Then("^I should see added product total amount$")
+	public void iShouldSeeAddedProductTotalAmount() throws Throwable {
+        int totalPrice = Integer.parseInt(itemsTotalPrice.getText().split("\\s")[1]);
+		Assert.assertEquals(totalPrice, calculateItemPrice(),"Total amount of the items in the store is not same");
+	}
+
+	//XCUIElementTypeTable//XCUIElementTypeCell[2]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'₹')]]
+//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'₹')]]
 }

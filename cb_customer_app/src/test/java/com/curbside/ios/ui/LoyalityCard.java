@@ -30,21 +30,10 @@ public class LoyalityCard extends AbstractScreen {
 	public void iAddAnExtraCareCardNumbered(String cardNumber) throws Throwable {
 		Properties.setVariable("extraCareCardNumber", cardNumber);
 		Steps.tapButton("ExtraCare Card");
-		cardNumberTextBox.sendKeys(cardNumber);
+		cardNumberTextBox.sendKeys(cardNumber,false);
 		save.tap();
 		save.waitForNot(10);
 		MobileDevice.getScreenshot(true);
-	}
-
-	public String getCardNumber() {
-		String cardNumber = Properties.getVariable("loyalityCardNumber");
-		return "ExtraCare Card (..." + cardNumber.substring(8, 12) + ")";
-	}
-
-	public String getUICardNumber() throws Throwable {
-		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='ExtraCare Card " + getCardNumber() + "']"))
-				.getText();
-
 	}
 
 	@And("^I should see ExtraCare Card info on Loyalty Cards screen$")

@@ -5,6 +5,8 @@ import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 
+import static com.curbside.ios.ui.AbstractScreen.footerTabsScreen;
+
 /**
  * Created by bawa.onkar on 20/07/17.
  */
@@ -14,7 +16,8 @@ public class StoreDetails {
 
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
-        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(15).tap();
+        footerTabsScreen.tapShop();
+        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
         UIElement.byName("Search").tap();
@@ -22,6 +25,6 @@ public class StoreDetails {
 
     @And("^I select (\\d+)no product from list$")
     public void iSelectNoProductFromList(int number) throws Throwable {
-        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
+        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
     }
 }

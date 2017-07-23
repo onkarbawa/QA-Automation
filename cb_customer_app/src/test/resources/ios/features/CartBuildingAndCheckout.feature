@@ -4,13 +4,13 @@ Feature: iOS- Cart Building And Checkout
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
+    And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114945
   Scenario Outline: : Verify products display in landing page
     Given I am not signed into application
     And I Sign-in with '<Email>' and '<Password>'
     And My cart is empty
-    And I am on 'Palo Alto' location 'Stores' Screen
     And I select 'Westfield Valley Fair' retailer and search for 'oil'
     And I select 1no product from list
     And I add 2 quantity of the product
@@ -24,10 +24,8 @@ Feature: iOS- Cart Building And Checkout
 
   @iOS @C114946
   Scenario: Verify math and calculations are correct
-    Given I am on 'Palo Alto' location 'Stores' Screen
-    And I select a store
-    And I tap on product from the list
-    And I add product in cart
+    Then I should see added product total amount
+
 
   @iOS @C114990
   Scenario: Verify products display in landing page

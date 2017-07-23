@@ -49,6 +49,10 @@ public class UIElement {
 		return DriverFactory.getDriver().findElements(locator);
 	}
 
+	public void refershScreen() throws Throwable {
+		DriverFactory.getDriver().navigate().refresh();
+	}
+
 	public void tap() throws Throwable {
 		getElement().click();
 	}

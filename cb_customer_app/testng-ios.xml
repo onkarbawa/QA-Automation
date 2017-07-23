@@ -5,34 +5,34 @@
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
     <test name="iOS- Applaunch">
-        <classes>
-            <class name="com.curbside.ios.runners.AppLaunchTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Sign up">
-        <classes>
-            <class name="com.curbside.ios.runners.SignUpTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Sign in">
-        <classes>
-            <class name="com.curbside.ios.runners.LoginTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Store Selection">
-        <classes>
-            <class name="com.curbside.ios.runners.StoreSelection"/>
-        </classes>
-    </test>
-    <test name="iOS- Product Catelog">
-        <classes>
-            <class name="com.curbside.ios.runners.ProductCatalog"/>
-        </classes>
-    </test>
+            <classes>
+                <class name="com.curbside.ios.runners.AppLaunchTest"/>
+            </classes>
+        </test>
+        <test name="iOS- Sign up">
+            <classes>
+                <class name="com.curbside.ios.runners.SignUpTest"/>
+            </classes>
+        </test>
+        <test name="iOS- Sign in">
+            <classes>
+                <class name="com.curbside.ios.runners.LoginTest"/>
+            </classes>
+        </test>
+        <test name="iOS- Store Selection">
+            <classes>
+                <class name="com.curbside.ios.runners.StoreSelection"/>
+            </classes>
+        </test>
+        <test name="iOS- Product Catelog">
+            <classes>
+                <class name="com.curbside.ios.runners.ProductCatalog"/>
+            </classes>
+        </test>
     <test name="iOS- CartBuilding And Checkout">
             <classes>
                 <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
             </classes>
-        </test>
+       </test>
 
 </suite>

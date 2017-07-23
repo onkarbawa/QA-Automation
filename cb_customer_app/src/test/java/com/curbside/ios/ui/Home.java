@@ -88,11 +88,6 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
-		if(recentLocation.isDisplayed()){
-			if(recentLocation.getText().contains(cityName)){
-				recentLocation.tap();
-			}
-		}
 		if(lnkCurrentLocation.getText().equals(cityName))
 			return;
 		
