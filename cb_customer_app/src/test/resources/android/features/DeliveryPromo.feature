@@ -18,8 +18,8 @@ Feature: Android - Delivery Promo code
     And I select the delivery address as, street:"Palo Alto Square", city:"Palo Alto",state:"CA"
     And I tap on back button
     And I tap on Enter promo code link
-    When I apply promo code "<Promo Code>" of type "<Discount Type>"
-    Then I should see promo code is applied
+    When I apply promo code "<Promo Code>"
+    Then I should see promo code is applied and discount is given as per "<Discount Type>"
   Examples:
     |Promo Code   |Discount Type|
     |NF_DOLLAR_DS |Dollar       |

@@ -80,6 +80,7 @@ public class StoreDetails extends AbstractScreen {
 
             }
             footerTabsScreen.tapShop();
+            footerTabsScreen.tapShop();
             UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
                     "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
                     .waitFor(10)

@@ -60,7 +60,10 @@ public class Steps {
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
 		{
 			AndroidDevice.grantLocationPermission();
+//			((AppiumDriver)DriverFactory.getDriver()).resetApp();
 			((AppiumDriver)DriverFactory.getDriver()).closeApp();
+			((AppiumDriver)DriverFactory.getDriver()).launchApp();
+
 		}
 		
 		MobileDevice.getScreenshot(true);
