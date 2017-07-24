@@ -58,7 +58,7 @@ public class StoreDetails extends AbstractScreen {
         select1stProduct();
     }
 
-    @And("^I select '(.*)' store and search for '(.*)' product$")
+    @And("^I (?:select|am at) '(.*)' store and search for '(.*)' product$")
     public void iSearchForProductFromStoreOrHomeScreen(String storeName , String productName) throws Throwable {
         if(!storeName.equalsIgnoreCase("No")){
             int storeIndex =0;

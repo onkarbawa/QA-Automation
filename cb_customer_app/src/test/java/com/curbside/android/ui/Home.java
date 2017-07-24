@@ -76,8 +76,8 @@ public class Home extends AbstractScreen {
 		String envAPIKey= "https://api-s.shopcurbside.com";
 		homeScreen.open();
 		
-		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
-			return;
+//		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+//			return;
 		
 		searchIcon.waitFor(5).tap();
 		searchBox.waitFor(5).sendKeys(envSearchKey, false);
@@ -99,8 +99,8 @@ public class Home extends AbstractScreen {
 		imageBackButton.waitFor(5).tap();
 		AndroidDevice.startApplication();
 		welcomeScreen.wait_for_app_launch();
-		
-		DriverFactory.setEnvironment(envAPIKey);
+
+//		DriverFactory.setEnvironment(envAPIKey);
 	}
 
 	@Given("I select 1st retailer partner on stores screen")
