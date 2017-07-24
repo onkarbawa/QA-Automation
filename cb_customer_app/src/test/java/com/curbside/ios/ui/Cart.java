@@ -71,51 +71,52 @@ public class Cart extends AbstractScreen {
     public void myCartIsEmpty() throws Throwable {
 		footerTabsScreen.btnCart.waitFor(10).tap();
 		footerTabsScreen.tapCart();
-       try {
-		   if (selectedStores.isDisplayed()) {
-			   int totalStores = selectedStores.getCount();
-			   for (int i = 0; i < totalStores; i++) {
-				   selectedStores.tap();
-				   int totalItems = productItem.getCount();
-				   for (int j = 0; j < totalItems -2; j++) {
-					   productaQuantityButton.tap();
-					   UIElement.byName("Remove").tap();
-					   UIElement.byName("Remove").waitForNot(8);
-				   }
-			   }
-		   }
-	   }catch (Exception e){
-		   if (selectedStores.isDisplayed()) {
-			   int totalStores = selectedStores.getCount();
-			   for (int i = 0; i < totalStores; i++) {
-				   selectedStores.tap();
-				   int totalSelectedProducts = selectedProducts.getCount();
-				   if(totalSelectedProducts > 3) {
-					   for (int j = 0; j < totalSelectedProducts - 3; j++) {
-						   lastProduct.tap();
-						   int totalItems = productItem.getCount();
-						   for (int k = 0; k < totalItems-2; k++) {
-							   productaQuantityButton.tap();
-							   UIElement.byName("Remove").tap();
-							   UIElement.byName("Remove").waitForNot(8);
-						   }
+		if (selectedStores.isDisplayed()) {
+			int totalStores = selectedStores.getCount();
+			for (int i = 0; i < totalStores; i++) {
+				selectedStores.tap();
 
-					   }
-				   }else {
-						   lastProduct.tap();
-						   int totalItems = productItem.getCount();
-						   for (int k = 0; k < totalItems-2; k++) {
-							   productaQuantityButton.tap();
-							   UIElement.byName("Remove").tap();
-							   UIElement.byName("Remove").waitForNot(8);
-						   }
-				   }
 
-			   }
+			} try {
+					if (selectedProducts.isDisplayed()) {
+						int totalSelectedProducts = selectedProducts.getCount();
+						if (totalSelectedProducts > 4) {
+							for (int j = 0; j < totalSelectedProducts - 4; j++) {
+								lastProduct.tap();
+								int totalItems = productItem.getCount();
+								for (int k = 0; k < totalItems - 3; k++) {
+									productaQuantityButton.tap();
+									UIElement.byName("Remove").tap();
+									UIElement.byName("Remove").waitForNot(8);
+								}
 
-		   }
-	   }
-    }
+							}
+						}
+					 else {
+						lastProduct.tap();
+						int totalItems = productItem.getCount();
+						for (int k = 0; k < totalItems - 3; k++) {
+							productaQuantityButton.tap();
+							UIElement.byName("Remove").tap();
+							UIElement.byName("Remove").waitForNot(8);
+						}
+					}
+				}
+
+				}
+			catch (Exception e) {
+				if (productItem.isDisplayed()) {
+					int totalItems = productItem.getCount();
+					for (int j = 0; j < totalItems - 3; j++) {
+						productaQuantityButton.tap();
+						UIElement.byName("Remove").tap();
+						UIElement.byName("Remove").waitForNot(8);
+					}
+				}
+
+			}
+		}
+	}
 
 	@Then("^I should see checkout not allowed$")
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
@@ -136,12 +137,12 @@ public class Cart extends AbstractScreen {
 		Assert.assertTrue(totalItems.getText().contains(String.valueOf(noOfItems)), "Item count is not same");
 	}
 
-	public int calculateItemPrice() throws Throwable {
+	public double calculateItemPrice() throws Throwable {
 		int totalItems = productItem.getCount();
-        int totalPrice = 0;
-		for (int k = 0; k < totalItems-2; k++) {
-			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + k + 1 + "]//XCUIElementTypeStaticText[3]").getText();
-			int itemPrice = Integer.parseInt(singleItemPrice.split("\\s")[1]);
+        double totalPrice = 0;
+		for (int k = 0; k < totalItems-3; k++) {
+			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[3]").getText();
+			Double itemPrice = Double.parseDouble(singleItemPrice.split("₹")[1].substring(1));
             totalPrice = totalPrice + itemPrice;
 		}
 		return totalPrice;
@@ -149,10 +150,7 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see added product total amount$")
 	public void iShouldSeeAddedProductTotalAmount() throws Throwable {
-        int totalPrice = Integer.parseInt(itemsTotalPrice.getText().split("\\s")[1]);
+		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
 		Assert.assertEquals(totalPrice, calculateItemPrice(),"Total amount of the items in the store is not same");
 	}
-
-	//XCUIElementTypeTable//XCUIElementTypeCell[2]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'₹')]]
-//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'₹')]]
 }
