@@ -25,12 +25,6 @@ public class Login extends AbstractScreen{
     emailField.waitFor(3).sendKeys(email);
     passwordField.waitFor(5).sendKeys(password);
   }
-  public void enterEmailPassword(String email, String password ) throws Throwable {
-      Properties.setVariable("signupEmail", email);
-      Properties.setVariable("signupPassword", password);
-      emailField.waitFor(3).sendKeys(email);
-      passwordField.waitFor(5).sendKeys(password);
-  }
 
   @And("^I tap on sign in with email button$")
   public void iTapOnSignInWithEmailButton() throws Throwable {
@@ -61,19 +55,6 @@ public class Login extends AbstractScreen{
     passwordField.sendKeys(password, false);
   }
 
- @And("^I am signed in with \"([^\"]*)\" and \"([^\"]*)\"$")
-  public void iAmSignedInWithAnd(String email, String password) throws Throwable {
-    Properties.setVariable("signInEmail", email);
-    Properties.setVariable("signInPassword", password);
-    footerTabsScreen.tapMyAccount();
-    Steps.tapButton("Sign In");
-    Steps.tapButton("Sign In with Email");
-    this.enterEmailPassword(email, password);
-    this.iTapOnSignInButtonOnSignInPage();
-    accountScreen.viewEmailId.waitFor(10);
-  }
-
-
   @And("^I sign in into application using username \"([^\"]*)\" and password \"([^\"]*)\"$")
   public void iSignInIntoApplicationUsingUsernameAndPassword(String username, String password) throws Throwable {
     Steps.tapButton("Account");
@@ -81,5 +62,6 @@ public class Login extends AbstractScreen{
     Steps.tapButton("Sign In with Email");
     this.iEnterAndForLogin(username, password);
     this.iTapOnSignInButtonOnSignInPage();
+    accountScreen.viewEmailId.waitFor(10);
   }
 }
