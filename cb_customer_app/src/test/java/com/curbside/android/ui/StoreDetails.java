@@ -9,6 +9,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 
+import java.util.Arrays;
+
 /**
  * Created by hitesh.grover on 12/07/17.
  */
@@ -23,6 +25,7 @@ public class StoreDetails extends AbstractScreen {
     UIElement leadTime = UIElement.byId("com.curbside.nCurbside:id/text_status_view");
     UIElement btnSearch = UIElement.byId("com.curbside.nCurbside:id/edit_search_view");
     UIElement secondProduct = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index='2']");
+    UIElement titleStoreLocationAfterSearch = UIElement.byId("com.curbside.nCurbside:id/text_title");
 
 
 
@@ -38,7 +41,9 @@ public class StoreDetails extends AbstractScreen {
 
     @And("I select (\\d+) product from list")
     public void selectNthProduct(int index) throws Throwable {
-        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+index+"\']").waitFor(5).tap();
+        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+index+"\']")
+                .waitFor(5)
+                .tap();
     }
 
     @Then("^I should see the lead time below the store address on Store detail page$")
@@ -65,7 +70,6 @@ public class StoreDetails extends AbstractScreen {
             switch (storeName.toLowerCase()){
                 case "cvs" :
                     storeIndex = 0;
-                    System.out.println("CVS-Store-Pai");
                     break;
                 case "pizza hut" :
                     storeIndex = 1;
@@ -79,12 +83,29 @@ public class StoreDetails extends AbstractScreen {
                 default: Assert.fail(" This store is not added in the code");
 
             }
-            footerTabsScreen.tapShop();
-            footerTabsScreen.tapShop();
-            UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
-                    "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
-                    .waitFor(10)
-                    .tap();
+
+            if(titleStoreLocationAfterSearch.waitFor(3).isDisplayed()){
+                System.out.println("StoreTitleIsDisplayed");
+                String[] presentStore = titleStoreLocationAfterSearch.getText().toLowerCase().split("\\s+");
+                if(!Arrays.asList(presentStore).contains(storeName.toLowerCase())){
+                    System.out.println("StoreTitleIsNotSame");
+                    footerTabsScreen.tapShop();
+                    footerTabsScreen.tapShop();
+                    UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
+                            "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
+                            .waitFor(10)
+                            .tap();
+                }
+
+            }else {
+                footerTabsScreen.tapShop();
+                footerTabsScreen.tapShop();
+                UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
+                        "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
+                        .waitFor(10)
+                        .tap();
+            }
+
             btnSearch.waitFor(5).tap();
         }else if(storeName.equalsIgnoreCase("No")){
             footerTabsScreen.tapMyAccount();

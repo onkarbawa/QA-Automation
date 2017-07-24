@@ -8,6 +8,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
+import java.util.*;
+
 /**
  * Created by hitesh.grover on 12/07/17.
  */
@@ -23,18 +25,30 @@ public class ProductDetails extends AbstractScreen {
     UIElement productSKU = UIElement.byId("com.curbside.nCurbside:id/sku_id");
     UIElement productOverview = UIElement.byId("com.curbside.nCurbside:id/overview_view");
     UIElement productQnty = UIElement.byId("com.curbside.nCurbside:id/quantity_view ");
+    UIElement productPrice = UIElement.byId("com.curbside.nCurbside:id/text_status_view");
+    UIElement errorProductNotAvail = UIElement.byId("android:id/button3");
 
 
+    static ThreadLocal<java.util.Map<String,String>> addedProductDetails = new ThreadLocal<>();
 
     @Given("^I add displayed product to cart$")
     public void addToCart() throws Throwable {
-        try {
-            btnAddtoCart.waitFor(5);
-            btnAddtoCart.tap();
-            snackBarKeepShopping.isDisplayed();
-        }catch (Exception e){
-            btnAdd.waitFor(10);
-            btnAdd.tap();
+
+        if(!errorProductNotAvail.isDisplayed()){
+            if(addedProductDetails.get() == null)
+                addedProductDetails.set(new HashMap<>());
+
+            try {
+                btnAddtoCart.waitFor(5);
+                btnAddtoCart.tap();
+            }catch (Exception e){
+                btnAdd.tap();
+            }
+            addedProductDetails.get().put("amount", productPrice.getText().split("\\$")[1]);
+        }else{
+            addedProductDetails.get().clear();
+            MobileDevice.getScreenshot(true);
+            Assert.fail("Got the error message : This product is not available in the store now");
         }
     }
 
@@ -71,10 +85,18 @@ public class ProductDetails extends AbstractScreen {
 
     @And("^I add (\\d+) quantity of the product$")
     public void iAddQuantityOfIt(int noOfTimes) throws Throwable {
+
         for(int i = 0; i < noOfTimes; i++){
             addToCart();
             Thread.sleep(1000);
         }
         AndroidDevice.goBack();
+        Double subAmount = Double.parseDouble(addedProductDetails.get().get("amount"))*noOfTimes;
+        if(addedProductDetails.get().containsKey("totalAmount")){
+            Double totalAmount = subAmount + Double.parseDouble(addedProductDetails.get().get("totalAmount"));
+            addedProductDetails.get().put("totalAmount",String.valueOf(totalAmount));
+        }else{
+            addedProductDetails.get().put("totalAmount", String.valueOf(subAmount));
+        }
     }
 }

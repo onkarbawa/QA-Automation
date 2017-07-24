@@ -3,7 +3,6 @@ package com.curbside.android.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -37,7 +36,7 @@ public class Cart extends AbstractScreen {
 
     UIElement firstRetailerIcon = UIElement.byId("com.curbside.nCurbside:id/image_store_icon");
     UIElement btnContinueShopping = UIElement.byId("com.curbside.nCurbside:id/button_continue_shopping");
-    UIElement lblItemCountStoreOnTop = UIElement.byId("com.curbside.nCurbside:id/text_item_count");
+    UIElement lblItemCountOnTitle = UIElement.byId("com.curbside.nCurbside:id/text_item_count");
     UIElement estimatedPickUpTime = UIElement.byId("com.curbside.nCurbside:id/text_estimated_pickup_time");
     UIElement loyaltyCardName = UIElement.byId("com.curbside.nCurbside:id/text_loyalty_name");
     UIElement paymentCardName = UIElement.byId("com.curbside.nCurbside:id/text_card_name");
@@ -55,6 +54,7 @@ public class Cart extends AbstractScreen {
     UIElement addPromoCodeLink = UIElement.byId("com.curbside.nCurbside:id/button_promo");
     UIElement promoCodeField = UIElement.byId("com.curbside.nCurbside:id/edit_promo_code");
     UIElement applyButton = UIElement.byId("com.curbside.nCurbside:id/text_save");
+    UIElement itemsTotalPrice = UIElement.byId("com.curbside.nCurbside:id/text_total_price");
 
 
 
@@ -79,18 +79,6 @@ public class Cart extends AbstractScreen {
           "Added product not shown in the cart");
     }
 
-//    @Given("^My cart is empty$")
-//    public void emptyCart() throws Throwable
-//    {
-//    	footerTabsScreen.tapCart();
-//        int itemsInCart= btnCartItemQnty.getCount();
-//        System.out.println(itemsInCart);
-//        for (int i = 0; i < itemsInCart; i++) {
-//            btnCartItemQnty.tap();
-//            btnRemove.waitFor(2).tap();
-//            Thread.sleep(1000);
-//        }
-//  }
 
     /**
      * There scenario for cart goes like this :
@@ -115,19 +103,19 @@ public class Cart extends AbstractScreen {
             if(Arrays.asList(cartTitleText).contains("carts")){
                 firstRetailerIcon.tap();
             }
-            if(Arrays.asList(cartTitleText).contains("cart") && lblItemCountSubStore.waitFor(10).isDisplayed()){
+            if(Arrays.asList(cartTitleText).contains("cart") && lblItemCountSubStore.waitFor(5).isDisplayed()){
                 firstRetailerIcon.tap();
             }
             if((Arrays.asList(cartTitleText).contains("order") || Arrays.asList(cartTitleText).contains("cart"))
                     && paymentCardName.waitFor(5).isDisplayed()){
                 int itemsInCart;
-                if(lblItemCountStoreOnTop.waitFor(10).isDisplayed()){
-                    itemsInCart = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
+                if(lblItemCountOnTitle.waitFor(3).isDisplayed()){
+                    itemsInCart = Integer.parseInt(lblItemCountOnTitle.getText().split("\\s+")[0]);
                 }else{
                     itemsInCart =0 ;
                 }
                 for(int j =0 ; j < itemsInCart ; j++) {
-                    if(btnContinueShopping.isDisplayed())
+                    if(btnContinueShopping.waitFor(3).isDisplayed())
                         break;
                     btnCartItemQnty.swipeUpSlow();
                     btnCartItemQnty.tap();
@@ -141,15 +129,17 @@ public class Cart extends AbstractScreen {
     @Then("^I should see the (\\d+) items in the cart$")
     public void iShouldSeeTheItemsInTheCart(int noOfItems) throws Throwable {
         footerTabsScreen.tapCart();
-        int itemCount = Integer.parseInt(lblItemCountStoreOnTop.getText().split("\\s+")[0]);
+        int itemCount = Integer.parseInt(lblItemCountOnTitle.getText().split("\\s+")[0]);
         Assert.assertEquals(noOfItems , itemCount, "Item count is not same");
 
     }
 
-    @Then("^I should see '(.*)' dollars as total amount$")
-    public void iShouldSee$AsTotalAmount(String totalAmount) throws Throwable {
-        String totalPrice = btnPlaceOrder.waitFor(5).getText().split("\\$")[1];
-        Assert.assertEquals(totalPrice, totalAmount, "Total amount of the items in the store is not same");
+    @Then("^I verify the total amount in the cart$")
+    public void iShouldSee$AsTotalAmount() throws Throwable {
+        itemsTotalPrice.swipeUpSlow();
+        Assert.assertEquals(itemsTotalPrice.getText().split("\\$")[1],
+                productDetailsScreen.addedProductDetails.get().get("totalAmount"),
+                "Total amount of the items in the store is not same");
     }
 
     @And("^I refresh the sub-store details if displayed$")
