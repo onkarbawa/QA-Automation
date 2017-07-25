@@ -4,7 +4,7 @@
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "android",
       "deviceName": "5d55b2ac",
-      "app": "Curbside.apk",
+      "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     }
