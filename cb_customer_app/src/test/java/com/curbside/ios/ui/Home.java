@@ -15,6 +15,7 @@ import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.java.en.Then;
 import gherkin.lexer.Th;
+import io.appium.java_client.AppiumDriver;
 import org.testng.Assert;
 
 /**
@@ -122,6 +123,9 @@ public class Home extends AbstractScreen {
 		
 		MobileDevice.getScreenshot(true);
 		DriverFactory.setEnvironment(envAPIKey);
+		((AppiumDriver)DriverFactory.getDriver()).closeApp();
+		((AppiumDriver)DriverFactory.getDriver()).launchApp();
+
 	}
 
 	@Given("I select '(.*)' retailer partner on stores screen")

@@ -1,0 +1,25 @@
+{
+  "android" : [
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "android",
+      "deviceName": "5d55b2ac",
+      "app": "Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    }
+  ],
+  "iOS" : [
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.3.2",
+      "deviceName" : "TFT",
+      "app" : "../Curbside.ipa",
+      "bundleId": "com.curbside.curbside",
+      "udid" : "0ddb226173711460741617d2d10e0dcd734755d9",
+      "showXcodeLog" : "true",
+      "usePrebuiltWDA" :"true"
+    }
+  ]
+}
