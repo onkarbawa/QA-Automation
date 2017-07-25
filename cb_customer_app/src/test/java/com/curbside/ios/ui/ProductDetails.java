@@ -21,6 +21,7 @@ public class ProductDetails extends AbstractScreen {
 
 	UIElement productImage = UIElement.byXpath("//XCUIElementTypeScrollView/XCUIElementTypeScrollView/XCUIElementTypeImage");
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[1]");
+	UIElement productLocationAndPrice = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[2]");
 	UIElement productDescription = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Description')]");
 	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Overview')]");
 	UIElement productSKU = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'sku')]");
@@ -34,6 +35,11 @@ public class ProductDetails extends AbstractScreen {
 
 	public String getProductName() throws Throwable {
 		return productName.getText();
+	}
+	
+	public String getProductPrice() throws Throwable {
+		String itemPrice = productLocationAndPrice.getText().split("₹")[1].substring(1);
+		return itemPrice;
 	}
 
 	@Given("^I add displayed product to cart$")

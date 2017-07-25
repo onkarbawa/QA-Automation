@@ -11,7 +11,7 @@ Feature: iOS- Cart Building And Checkout
     Given I am not signed into application
     And I Sign-in with '<Email>' and '<Password>'
     And My cart is empty
-    And I select 'Westfield Valley Fair' retailer and search for 'oil'
+    And I select 'Westfield Valley Fair' retailer and search for 'Salmon Oil'
     And I select 1no product from list
     And I add 2 quantity of the product
     And I select 2no product from list
@@ -22,16 +22,22 @@ Feature: iOS- Cart Building And Checkout
       |             Email                  |     Password    |
       |      fusic.test1@gmail.com         |     fusic@123  |
 
+
+  @iOS @C114947
+  Scenario: Verify product pricing are correct
+    Then I should see '26.47' dollar in the cart
+
   @iOS @C114946
   Scenario: Verify math and calculations are correct
     Then I should see added product total amount
 
 
-  @iOS @C114990
-  Scenario: Verify products display in landing page
-    Given I Sign-in with cart building credentials
-    And I am on 'Palo Alto' location 'Stores' Screen
-    And I select a store
-    And I tap on product from the list
-    And I add product in cart
-    And I saw added product in cart
+  @iOS @C114990 @C115039
+  Scenario: Verify math calculations are correct as per Promo Code
+    Given I tap on 'Enter Promo Code'
+    And I apply 'UNLIMITED' promo code
+    And I verify discount is applied
+    When I attempt to place an order
+    Then I should see checkout screen
+
+

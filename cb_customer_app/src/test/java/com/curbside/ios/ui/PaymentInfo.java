@@ -31,7 +31,7 @@ public class PaymentInfo extends AbstractScreen {
 
 	}
 
-	@And("^I tap on 'Add a new card'$")
+	@And("^I tap on 'Add a new card' buton$")
 	public void iTapOnAddANewCard() throws Throwable {
 		MobileDevice.tap(162, 354);
 	}

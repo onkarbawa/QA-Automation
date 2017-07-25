@@ -111,8 +111,8 @@ public class Home extends AbstractScreen {
 		homeScreen.open();
 		
 		String envAPIKey= "_#csndc#env#s";
-		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
-			return;
+//		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+//			return;
 		
 		iconSearch.tap();
 		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey,false);
@@ -122,9 +122,9 @@ public class Home extends AbstractScreen {
 		loadingIcon.waitForNot(30);
 		
 		MobileDevice.getScreenshot(true);
-		DriverFactory.setEnvironment(envAPIKey);
-		((AppiumDriver)DriverFactory.getDriver()).closeApp();
-		((AppiumDriver)DriverFactory.getDriver()).launchApp();
+	//	DriverFactory.setEnvironment(envAPIKey);
+//		((AppiumDriver)DriverFactory.getDriver()).closeApp();
+//		((AppiumDriver)DriverFactory.getDriver()).launchApp();
 
 	}
 

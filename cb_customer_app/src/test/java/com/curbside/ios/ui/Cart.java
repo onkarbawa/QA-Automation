@@ -3,10 +3,10 @@ package com.curbside.ios.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 /**
@@ -31,7 +31,13 @@ public class Cart extends AbstractScreen {
 	UIElement selectedProducts = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell");
 
 	UIElement totalItems = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Estimated Total')]/preceding-sibling::XCUIElementTypeStaticText[contains(@name,'Items')]");
+
 	UIElement itemsTotalPrice = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[2]");
+	UIElement estimatedTax = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[4]");
+	UIElement estimatedTotal = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[10]");
+
+	UIElement promoCode = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Enter Promo Code']]//XCUIElementTypeCollectionView//XCUIElementTypeTextField");
+	UIElement discount = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Discount')]/following-sibling::XCUIElementTypeStaticText[1]");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -137,7 +143,7 @@ public class Cart extends AbstractScreen {
 		Assert.assertTrue(totalItems.getText().contains(String.valueOf(noOfItems)), "Item count is not same");
 	}
 
-	public double calculateItemPrice() throws Throwable {
+	public double calculateProductTotalItemPrice() throws Throwable {
 		int totalItems = productItem.getCount();
         double totalPrice = 0;
 		for (int k = 0; k < totalItems-3; k++) {
@@ -148,9 +154,46 @@ public class Cart extends AbstractScreen {
 		return totalPrice;
 	}
 
+	public void calculateOrignalItemPrice() throws Throwable {
+		int totalItems = productItem.getCount();
+		for (int k = 1; k < totalItems-4; k++) {
+			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[2]").getText();
+			Properties.setVariable("cart"+k, singleItemPrice.split("\\s")[1]);
+		}
+	}
+
 	@Then("^I should see added product total amount$")
 	public void iShouldSeeAddedProductTotalAmount() throws Throwable {
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
-		Assert.assertEquals(totalPrice, calculateItemPrice(),"Total amount of the items in the store is not same");
+		Assert.assertEquals(totalPrice, calculateProductTotalItemPrice(),"Total amount of the items in the store is not same");
+	}
+
+    @And("^I apply '(.*)' promo code$")
+    public void iApplyPromoCode(String promo) throws Throwable {
+        promoCode.sendKeys(promo,false);
+        UIElement.byName("Apply").tap();
+    }
+
+	@When("^I verify discount is applied$")
+	public void iVerifyDiscountIsApplied() throws Throwable {
+		Double discountedPrice = Double.parseDouble(discount.getText().split("\\s")[1]);
+		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\s")[1]);
+		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\s")[1]);
+		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\s")[1]);
+		Assert.assertEquals(((totalPrice + estimateTax) - discountedPrice), estimateTotalAmount,"Discount is not applied");
+	}
+
+    @Given("^I tap on '(.*)'$")
+    public void iTapOn(String code) throws Throwable {
+       if (UIElement.byName(code).isDisplayed()) {
+		   UIElement.byName(code).tap();
+	   }else {
+		   UIElement.byName(code).scrollTo().tap();
+	   }
+    }
+
+	@Then("^I should see '(.*)' dollar in the cart$")
+	public void iShouldSeeDollarInTheCart(String amount) throws Throwable {
+		Assert.assertEquals(Properties.getVariable("product1"),amount,"Pricing value of particular product is not matched");
 	}
 }
