@@ -94,8 +94,7 @@ public class MyAccount extends AbstractScreen {
 	@Given("^I am not signed into application$")
 	public void ensureSignedOut() throws Throwable {
 		try {
-		    if(!footerTabsScreen.btnMyAccount.isDisplayed())
-		        homeScreen.open();
+            homeScreen.open();
 			footerTabsScreen.tapMyAccount();
 			ensureAccountPage();
 			if(viewEmailId.waitFor(3).isDisplayed()){
