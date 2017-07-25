@@ -94,20 +94,24 @@ public class MyAccount extends AbstractScreen {
 	@Given("^I am not signed into application$")
 	public void ensureSignedOut() throws Throwable {
 		try {
-			homeScreen.open();
+		    if(!footerTabsScreen.btnMyAccount.isDisplayed())
+		        homeScreen.open();
 			footerTabsScreen.tapMyAccount();
 			ensureAccountPage();
-			Steps.tapButton("Account Info");
-			Steps.tapButton("Sign Out");
-			signUp.waitFor(5);
+			if(viewEmailId.waitFor(3).isDisplayed()){
+				Steps.tapButton("Account Info");
+				Steps.tapButton("Sign Out");
+				//After error pop up is there do not delete this code
+				Steps.tapButton("Sign Out");
+				signUp.waitFor(3);
+			}
+
 		} catch (Exception e) {
-		} finally {
 		}
 
 		try {
 			btnNavigateUp.tap();
 		} catch (Exception e) {
-		} finally {
 		}
 
 		MobileDevice.getScreenshot(true);

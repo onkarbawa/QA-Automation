@@ -273,8 +273,8 @@ public class MobileDevice {
 	public static void setGeoLocation(double latitude, double longitude, double altitude) throws Throwable {
 		Location l = new Location(latitude, longitude, altitude);
 		((AppiumDriver) DriverFactory.getDriver()).setLocation(l);
-		((AppiumDriver) DriverFactory.getDriver()).launchApp();
-		;
+//		((AppiumDriver) DriverFactory.getDriver()).launchApp();
+		AndroidDevice.startApplication();
 	}
 
 	public static void switchToWebView() throws Throwable {
