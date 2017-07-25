@@ -18,7 +18,7 @@ Feature: iOS- Signup Flow
   Scenario Outline: Add credit card
     Given I tap on 'My Account' icon in bottom menu
     And I tap on 'Payment Info' text
-    And I tap on 'Add a new card'
+    And I tap on 'Add a new card' buton
     And I add credit card information as '<first_name>', '<last_name>', '<card_number>', '<card_expiry>', '<card_cvv>', '<card_address1>', '<card_address2>', '<card_city>', '<card_state>', '<card_zip>'
     Then I should see credit info on payment info screen
     And I add any product to cart in 'Palo Alto' location
@@ -33,7 +33,7 @@ Feature: iOS- Signup Flow
   Scenario: Add loyalty card
     Given I tap on 'My Account' icon in bottom menu
     And I tap on 'Loyalty Cards' text
-    And I tap on 'Add a new card'
+    And I tap on 'Add a new card' buton
     And I add an ExtraCare Card numbered '87676478652876'
     Then I should see ExtraCare Card info on Loyalty Cards screen
     When I go to Cart screen

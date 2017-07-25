@@ -38,7 +38,7 @@ Feature: iOS- Application Launch
   @iOS @C114997
   Scenario: Verify Disable background application refresh functionality
     Given I turn 'OFF' Background App Refresh for 'Curbside' app
-    When I launch Curbside application
+    And I launch Curbside application
     And I have selected test environment
     And I am on Sign Up screen
     And I signup for a new account

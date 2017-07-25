@@ -1,11 +1,13 @@
 package com.curbside.ios.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 
 import static com.curbside.ios.ui.AbstractScreen.footerTabsScreen;
+import static com.curbside.ios.ui.AbstractScreen.productDetailsScreen;
 
 /**
  * Created by bawa.onkar on 20/07/17.
@@ -26,5 +28,6 @@ public class StoreDetails {
     @And("^I select (\\d+)no product from list$")
     public void iSelectNoProductFromList(int number) throws Throwable {
         UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
+        Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
     }
 }
