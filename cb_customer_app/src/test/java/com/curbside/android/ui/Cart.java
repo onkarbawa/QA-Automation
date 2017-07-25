@@ -2,7 +2,9 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.nio.DoubleBuffer;
 import java.util.Arrays;
 
 import java.util.List;
@@ -55,6 +58,11 @@ public class Cart extends AbstractScreen {
     UIElement promoCodeField = UIElement.byId("com.curbside.nCurbside:id/edit_promo_code");
     UIElement applyButton = UIElement.byId("com.curbside.nCurbside:id/text_save");
     UIElement itemsTotalPrice = UIElement.byId("com.curbside.nCurbside:id/text_total_price");
+    UIElement promoCodeDiscount = UIElement.byId("com.curbside.nCurbside:id/text_promo_discount");
+    UIElement promoCodeSuggestionDialog = UIElement.byId("android:id/button3");
+    UIElement estimatedTax = UIElement.byId("com.curbside.nCurbside:id/text_estimated_tax");
+    UIElement estimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
+
 
 
 
@@ -121,6 +129,9 @@ public class Cart extends AbstractScreen {
                     btnCartItemQnty.tap();
                     btnRemove.waitFor(2).tap();
                     Thread.sleep(2000);
+                    try{
+                        promoCodeSuggestionDialog.waitFor(2).tap();
+                    }catch (Exception e){}
                 }
             }
         }
@@ -181,7 +192,7 @@ public class Cart extends AbstractScreen {
     @And("^I tap on Enter promo code link$")
     public void iTapOnEnterPromoCodeLink() throws Throwable {
         if (!addPromoCodeLink.waitFor(2).isDisplayed()) {
-            AndroidDevice.swipeUp();
+            addPromoCodeLink.scrollTo(SwipeDirection.UP);
         }
         addPromoCodeLink.tap();
     }
@@ -192,8 +203,26 @@ public class Cart extends AbstractScreen {
         applyButton.tap();
     }
 
-    @Then("^I should see promo code is applied and discount is given as per \"([^\"]*)\"$")
-    public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
-        // TODO - waiting for promocodes
+    @Then("^I should see promo code is applied and discount is given")
+    public void iShouldSeePromoCodeIsApplied() throws Throwable {
+        if (!promoCodeDiscount.waitFor(5).isDisplayed()) {
+            promoCodeDiscount.scrollTo(SwipeDirection.UP);
+        }
+
+        System.out.println("justSplit"+promoCodeDiscount.getText().split("\\$")[1]);
+        Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
+        Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
+        Double discount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+        Double expectedTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
+        Double totalAmount = (totalItemPrice + estimatedTaxPrice) - discount;
+        Assert.assertEquals(expectedTotalAmount, totalAmount, "Promo code discount calculation is not correct");
+    }
+
+
+    @Then("^The '(.*)' of the product should be same$")
+    public void thePriceOfTheProductShouldBeSame(String price) throws Throwable {
+        System.out.println("verifyin pricing--"+productDetailsScreen.addedProductDetails.get().get("amount"));
+        Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), price,
+                "product price is not same");
     }
 }
