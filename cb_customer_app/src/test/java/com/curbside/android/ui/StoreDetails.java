@@ -53,7 +53,10 @@ public class StoreDetails extends AbstractScreen {
 
     @Then("^I should see following products listed on partner screen$")
     public void iShouldSeeFollowingProductsListedOnPartnerScreen() throws Throwable {
+        firstProduct.waitFor(10);
         Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
+        if(!productName.isDisplayed())
+            productName.swipeUpSlow();
         Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
     }
 
@@ -62,7 +65,8 @@ public class StoreDetails extends AbstractScreen {
         try{
             firstProduct.tap();
         }catch (Exception e){
-            selectNthProduct(1);
+            UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+1+"\']")
+                    .tap();
         }
     }
 

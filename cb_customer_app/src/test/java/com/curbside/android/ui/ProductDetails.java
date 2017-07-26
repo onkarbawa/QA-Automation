@@ -61,7 +61,7 @@ public class ProductDetails extends AbstractScreen {
 
     @Then("^I should see product details as below$")
     public void iShouldSeeProductDetailsAsBelow() throws Throwable {
-        if(!productName.isDisplayed())
+        if(!productName.waitFor(3).isDisplayed())
             productName.swipeUpSlow();
         Properties.setVariable("productName",productName.getText());
         productDescription.swipeUpSlow();
