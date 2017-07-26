@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.nio.DoubleBuffer;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import java.util.List;
@@ -148,8 +149,10 @@ public class Cart extends AbstractScreen {
     @Then("^I verify the total amount in the cart$")
     public void iShouldSee$AsTotalAmount() throws Throwable {
         itemsTotalPrice.swipeUpSlow();
-        Assert.assertEquals(itemsTotalPrice.getText().split("\\$")[1],
-                productDetailsScreen.addedProductDetails.get().get("totalAmount"),
+        double calculatedPrice = Double.parseDouble(productDetailsScreen.addedProductDetails.get().get("totalAmount"));
+        DecimalFormat df = new DecimalFormat("#.##");
+        calculatedPrice = Double.valueOf(df.format(calculatedPrice));
+        Assert.assertEquals(itemsTotalPrice.getText().split("\\$")[1],String.valueOf(calculatedPrice),
                 "Total amount of the items in the store is not same");
     }
 

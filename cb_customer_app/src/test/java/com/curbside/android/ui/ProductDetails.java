@@ -39,7 +39,7 @@ public class ProductDetails extends AbstractScreen {
                 addedProductDetails.set(new HashMap<>());
 
             try {
-                btnAddtoCart.waitFor(5);
+                btnAddtoCart.waitFor(10);
                 btnAddtoCart.tap();
             }catch (Exception e){
                 btnAdd.tap();

@@ -13,7 +13,7 @@ Feature: Android- Cart Building
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
     And I add 2 quantity of the product
-    And I am at 'CVS' store and search for 'Prilosec' product
+    And I am at 'CVS' store and search for 'Claritin 24hr 30oct' product
     And I select 1 product from list
     And I add 1 quantity of the product
     When I tap on 'Cart' button
@@ -28,7 +28,7 @@ Feature: Android- Cart Building
     Then The '<price>' of the product should be same
     Examples:
       | price |
-      | 28.29 |
+      | 25.79 |
 
   @Android @C114990
   Scenario: Verify math and calculations are correct as per Promo Code
