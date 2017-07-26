@@ -91,6 +91,11 @@ public class Steps {
 		// Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+		}
+		
 		DeviceStore.setAppInstalled();
 
 		MobileDevice.getScreenshot(true);
