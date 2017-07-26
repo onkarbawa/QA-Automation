@@ -2,7 +2,7 @@
 Feature: iOS- Cart Building And Checkout
 
   Scenario: Setting test environment
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected test environment
     And I am on 'Palo Alto' location 'Stores' Screen
 
@@ -20,7 +20,7 @@ Feature: iOS- Cart Building And Checkout
     Then I should see the 3 items in the cart
     Examples:
       |             Email                  |     Password    |
-      |      fusic.test1@gmail.com         |     fusic@123  |
+      |      ioscart@exam.com              |     curbside    |
 
 
   @iOS @C114947
@@ -36,8 +36,7 @@ Feature: iOS- Cart Building And Checkout
   Scenario: Verify math calculations are correct as per Promo Code
     Given I tap on 'Enter Promo Code'
     And I apply 'UNLIMITED' promo code
-    And I verify discount is applied
-    When I attempt to place an order
-    Then I should see checkout screen
+    When I verify discount is applied
+    Then I attempt to place an order
 
 

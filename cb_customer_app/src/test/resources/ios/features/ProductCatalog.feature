@@ -19,5 +19,6 @@ Feature: iOS- Product Catalog
 
   @iOS @C114943
   Scenario: Verify products variant
-    Given I add product in cart
+    Given My cart is empty
+    And I add product in cart
     Then I saw added product in cart

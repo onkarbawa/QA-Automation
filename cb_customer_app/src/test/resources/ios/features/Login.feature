@@ -26,12 +26,12 @@ Feature: iOS- Login Feature
       |             Email                  |     Password    |
       |      fusic.test1@gmail.com         |     fusic@123   |
 
-  @iOS @C114955
-  Scenario Outline: Verify Facebook user should login in curbside app
-    Given I am not signed into application
-    And I login to facebook in browser with '<Email>' and '<Password>'
-    Then I should be logged into application
-
-    Examples:
-      |             Email                  |     Password    |
-      |      ustft123@gmail.com            |     Admin2642    |
+#  @iOS @C114955
+#  Scenario Outline: Verify Facebook user should login in curbside app
+#    Given I am not signed into application
+#    And I login to facebook in browser with '<Email>' and '<Password>'
+#    Then I should be logged into application
+#
+#    Examples:
+#      |             Email                  |     Password    |
+#      |      ustft123@gmail.com            |     Admin2642    |
