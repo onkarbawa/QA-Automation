@@ -11,11 +11,12 @@ public class Shop {
     public Shop(){
         // TODO Auto-generated constructor stub
     }
-    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'hr')]");
+    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'min')]");
 
     @Then("^I should see lead times to places as below$")
     public void iShouldSeeLeadTimesToPlacesAsBelow() throws Throwable {
-     //   System.out.println(leadTime.getText());
-        Assert.assertTrue(leadTime.waitFor(8).getText().contains("hr"),"lead time is not displayed in retailer store");
+        System.out.println(leadTime.waitFor(3).getText());
+        Assert.assertTrue(leadTime.getText().contains("min")||leadTime.getText().contains("hr"),"lead time is not displayed in retailer store");
+
     }
 }
