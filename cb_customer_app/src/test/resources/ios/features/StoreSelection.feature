@@ -7,7 +7,7 @@ Feature: iOS- Store Selection
 
   @iOS @C114940
   Scenario: Verify retailers are shown in store selection screen
-    Given I am on Home Screen
+    Given I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
     Then I should see nearby stores
 
