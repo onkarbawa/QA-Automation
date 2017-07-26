@@ -83,8 +83,6 @@ public class Cart extends AbstractScreen {
 			int totalStores = selectedStores.getCount();
 			for (int i = 0; i < totalStores; i++) {
 				selectedStores.tap();
-
-
 			} try {
 					if (selectedProducts.isDisplayed()) {
 						int totalSelectedProducts = selectedProducts.getCount();
@@ -97,7 +95,6 @@ public class Cart extends AbstractScreen {
 									UIElement.byName("Remove").tap();
 									UIElement.byName("Remove").waitForNot(8);
 								}
-
 							}
 						}
 					 else {
@@ -110,8 +107,7 @@ public class Cart extends AbstractScreen {
 						}
 					}
 				}
-
-				}
+			}
 			catch (Exception e) {
 				if (productItem.isDisplayed()) {
 					int totalItems = productItem.getCount();
@@ -121,7 +117,6 @@ public class Cart extends AbstractScreen {
 						UIElement.byName("Remove").waitForNot(8);
 					}
 				}
-
 			}
 		}
 	}
