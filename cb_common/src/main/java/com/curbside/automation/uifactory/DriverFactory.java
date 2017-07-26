@@ -79,7 +79,7 @@ public class DriverFactory {
 			deviceInfo.put("noReset", false);
 		}
 		deviceInfo.put("fullReset", false);
-
+		System.out.println(deviceInfo.toString());
 		if (givePermissions)
 			deviceInfo.put("autoGrantPermissions", true);
 		

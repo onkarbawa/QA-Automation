@@ -51,7 +51,6 @@ public class Login extends AbstractScreen {
 
 	@And("^I am on Sign Up screen$")
 	public void iAmOnSignUpScreen() throws Throwable {
-		homeScreen.open();
 		footerTabsScreen.tapMyAccount();
 		signUpScreen.btnCreateOneNow.tap();
 		signUpScreen.btnCreateNewAccount.tap();
@@ -59,6 +58,9 @@ public class Login extends AbstractScreen {
 
 	@And("^I Sign-in with '(.*)' and '(.*)'$")
 	public void iSignInWithAnd(String emailId, String password) throws Throwable {
+		try {
+			signIn.tap();
+		}catch (Exception e){}
 		signIn.tap();
 		signInWithEmail.tap();
 		signin(emailId,password);

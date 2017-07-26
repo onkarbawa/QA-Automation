@@ -17,6 +17,7 @@ Feature: iOS- Login Feature
   @iOS @C114956
   Scenario Outline: Verify Old user should login in curbside app
     Given I am not signed into application
+    And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
     And I enter '<Email>' and '<Password>'
     When I tap on 'Sign In' button

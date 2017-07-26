@@ -61,5 +61,8 @@ public class AccountInfo extends AbstractScreen {
 
 	public void signOut() throws Throwable {
 		btnSignOut.tap();
+		try {
+			btnSignOut.tap();
+		}catch (Exception e){}
 	}
 }

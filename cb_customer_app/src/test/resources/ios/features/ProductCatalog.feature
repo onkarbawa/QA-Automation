@@ -9,7 +9,7 @@ Feature: iOS- Product Catalog
   Scenario: Verify products display in landing page
     Given I am on Home Screen
     And I am on 'Palo Alto' location 'Stores' Screen
-    And I select a store
+    When I select 'CVS' retailer
     Then I should see following products listed on partner screen
 
   @iOS @C114942 @C114944
