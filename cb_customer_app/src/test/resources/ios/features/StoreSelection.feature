@@ -4,6 +4,7 @@ Feature: iOS- Store Selection
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
+    And My cart is empty
 
   @iOS @C114940
   Scenario: Verify retailers are shown in store selection screen
