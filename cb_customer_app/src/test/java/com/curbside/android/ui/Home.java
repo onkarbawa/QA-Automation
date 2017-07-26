@@ -44,10 +44,8 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
-		progressBar.waitForNot(60);
-		
-		//Assert.assertTrue(shopNearLabel.isDisplayed() || sorryMessage.isDisplayed(),
-				Assert.assertTrue(shopNearLabel.waitFor(20).isDisplayed() || sorryMessage.isDisplayed(), "Near by stores page is not visible");
+		progressBar.waitForNot(20);
+		Assert.assertTrue(sorryMessage.isDisplayed() || shopNearLabel.waitFor(10).isDisplayed(), "Near by stores page is not visible");
 	}
 
 	@And("^I tap on My Account icon$")
@@ -76,8 +74,8 @@ public class Home extends AbstractScreen {
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		String envSearchKey= "_#csndc#ena";
 		String envAPIKey= "https://api-s.shopcurbside.com";
-		homeScreen.open();
-		System.out.println(DriverFactory.getEnvironment());
+		if(!footerTabsScreen.btnMyAccount.isDisplayed())
+		    homeScreen.open();
 		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
 			return;
 
@@ -111,10 +109,10 @@ public class Home extends AbstractScreen {
 	public void select1stRetailerPartner() throws Throwable {
 		if (firstRetailerPartner.waitFor(10).isDisplayed()) {
 			firstRetailerPartner.tap();
-			firstRetailerPartner.waitForNot(30);
+			firstRetailerPartner.waitForNot(20);
 		} else {
 			firstRetailerPartnerListView.waitFor(10).tap();
-			firstRetailerPartnerListView.waitForNot(30);
+			firstRetailerPartnerListView.waitForNot(20);
 		}
 	}
 

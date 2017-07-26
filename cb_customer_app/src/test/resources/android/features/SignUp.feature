@@ -3,7 +3,6 @@ Feature: Android- Signup Flow
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I am currently in 'Palo Alto, CA' city
     And I have selected test environment
     
   @Android @C114954

@@ -3,13 +3,12 @@ Feature: Android- Store Selection
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I am currently in 'Palo Alto, CA' city
     And I have selected test environment
 
   @Android @C114940
   Scenario: Verify nearby stores display partners/retailers
     Given I am not signed into application
-    And I search for 'Palo Alto Transit Center' location
+    And I search for 'Boston' location
     Then I should see nearby stores to current location
 
   @Android @C114999
