@@ -11,7 +11,7 @@ public class Shop {
     public Shop(){
         // TODO Auto-generated constructor stub
     }
-    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'min')]");
+    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'hr') or contains(@name,'min')]");
 
     @Then("^I should see lead times to places as below$")
     public void iShouldSeeLeadTimesToPlacesAsBelow() throws Throwable {
