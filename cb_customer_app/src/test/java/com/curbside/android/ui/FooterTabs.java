@@ -30,8 +30,12 @@ public class FooterTabs extends AbstractScreen {
 	    btnMap.tap();
     }
 
+    @And("^I tap Shop on footer$")
     public void tapShop() throws Throwable {
         btnShop.waitFor(5).tap();
+        if(!homeScreen.shopNearLabel.isDisplayed()){
+            btnShop.tap();
+        }
     }
 
     @And("^I go to Cart screen$")
