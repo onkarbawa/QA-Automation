@@ -8,6 +8,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 /**
@@ -177,20 +178,18 @@ public class Cart extends AbstractScreen {
 
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
-		Double discountedPrice = Double.parseDouble(discount.getText().split("\\s")[1]);
-		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\s")[1]);
-		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\s")[1]);
-		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\s")[1]);
+		discount.waitFor(10);
+		Double discountedPrice = Double.parseDouble(discount.getText().split("₹")[1].substring(1));
+		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
+		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("₹")[1].substring(1));
+		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("₹")[1].substring(1));
 		Assert.assertEquals(((totalPrice + estimateTax) - discountedPrice), estimateTotalAmount,"Discount is not applied");
+		UIElement.byName("Back").tap();
 	}
 
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
-       if (UIElement.byName(code).isDisplayed()) {
-		   UIElement.byName(code).tap();
-	   }else {
-		   UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
-	   }
+		UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
     }
 
 	@Then("^I should see '(.*)' dollar in the cart$")
