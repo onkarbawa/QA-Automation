@@ -77,7 +77,7 @@ public class Home extends AbstractScreen {
 		String envSearchKey= "_#csndc#ena";
 		String envAPIKey= "https://api-s.shopcurbside.com";
 		homeScreen.open();
-		
+		System.out.println(DriverFactory.getEnvironment());
 		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
 			return;
 
@@ -121,7 +121,8 @@ public class Home extends AbstractScreen {
 	@Given("I search for '(.*)' location")
 	public void searchForLocation(String cityName) throws Throwable {
 		footerTabsScreen.tapShop();
-		if(currentLocation.getText().equals(cityName))
+		footerTabsScreen.tapShop();
+		if(currentLocation.getText().equalsIgnoreCase(cityName))
 			return;
 		
 		try {

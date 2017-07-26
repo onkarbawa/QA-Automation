@@ -31,12 +31,12 @@ public class StoreDetails extends AbstractScreen {
 
     @Given("I select 1st product from list")
     public void select1stProduct() throws Throwable {
-        firstProduct.waitFor(15).tap();
+        firstProduct.waitFor(10).tap();
     }
 
     @And("I select 2nd product from list")
     public void select2ndProduct() throws Throwable {
-        secondProduct.waitFor(15).tap();
+        secondProduct.waitFor(10).tap();
     }
 
     @And("I select (\\d+) product from list")
@@ -53,14 +53,17 @@ public class StoreDetails extends AbstractScreen {
 
     @Then("^I should see following products listed on partner screen$")
     public void iShouldSeeFollowingProductsListedOnPartnerScreen() throws Throwable {
-        Assert.assertTrue(firstProduct.waitFor(10).isDisplayed(), "There no product in the store");
         Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
         Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
     }
 
     @When("^I tap on product from the list$")
     public void iTapOnProductFromTheList() throws Throwable {
-        select1stProduct();
+        try{
+            firstProduct.tap();
+        }catch (Exception e){
+            selectNthProduct(1);
+        }
     }
 
     @And("^I (?:select|am at) '(.*)' store and search for '(.*)' product$")

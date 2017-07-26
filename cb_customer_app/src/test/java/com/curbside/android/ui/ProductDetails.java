@@ -44,7 +44,8 @@ public class ProductDetails extends AbstractScreen {
             }catch (Exception e){
                 btnAdd.tap();
             }
-            addedProductDetails.get().put("amount", productPrice.getText().split("\\$")[1]);
+            if(productPrice.isDisplayed())
+                addedProductDetails.get().put("amount", productPrice.getText().split("\\$")[1]);
         }else{
             addedProductDetails.get().clear();
             MobileDevice.getScreenshot(true);
@@ -76,8 +77,7 @@ public class ProductDetails extends AbstractScreen {
 
     @And("^I add product in cart$")
     public void iAddProductInCart() throws Throwable {
-        if(productName.isDisplayed())
-            Properties.setVariable("productName",productName.getText());
+
         productDetailsScreen.addToCart();
         snackBarKeepShopping.isDisplayed();
         AndroidDevice.goBack();
