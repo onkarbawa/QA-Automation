@@ -99,6 +99,7 @@ public class MyAccount extends AbstractScreen {
 			ensureAccountPage();
 			Steps.tapButton("Account Info");
 			Steps.tapButton("Sign Out");
+			Steps.tapButton("Sign Out");
 			signUp.waitFor(5);
 		} catch (Exception e) {
 		} finally {
