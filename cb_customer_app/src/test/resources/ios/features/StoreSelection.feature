@@ -13,16 +13,12 @@ Feature: iOS- Store Selection
 
   @iOS @C114939
   Scenario: Verify store location is displayed in map
-    Given I am on Home Screen
-    And I am on 'Palo Alto' location 'Stores' Screen
     And I tap on 'Map' icon in bottom menu
     Then I should see stores on map for 'Palo Alto'
     
   @iOS @C114999
   Scenario: Verify store lead time is displayed
-    Given I am on Home Screen
-    And I am on 'Palo Alto' location 'Stores' Screen
-    When I select a store
+    When I select 'CVS' retailer
     Then I should see lead times to places as below
 
     

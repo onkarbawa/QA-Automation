@@ -42,7 +42,12 @@ public class AppleDevice extends MobileDevice {
 	public static void resetPermissions(String appName) throws Throwable {
 		
 		launchSettings();
-		settingGeneral.scrollTo(SwipeDirection.UP).tap();
+		settingGeneral.scrollTo(SwipeDirection.UP);
+		if(settingGeneral.isDisplayed()){
+			settingGeneral.tap();
+		}else {
+			settingGeneral.scrollTo(SwipeDirection.DOWN).tap();
+		}
 		settingReset.scrollTo(SwipeDirection.UP).tap();
 		settingResetLocalAndPrivacy.tap();
 		try {

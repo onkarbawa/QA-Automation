@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.java.en.And;
@@ -63,7 +64,7 @@ public class Cart extends AbstractScreen {
 
 	@And("^I should see loyalty card info on cart screen$")
 	public void iShouldSeeLoyaltyCardInfoOnCartScreen() throws Throwable {
-		extracareCardCell.tap();
+		extracareCardCell.waitFor(2).tap();
 		loyalityCardScreen.iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen();
 	}
 
@@ -188,7 +189,7 @@ public class Cart extends AbstractScreen {
        if (UIElement.byName(code).isDisplayed()) {
 		   UIElement.byName(code).tap();
 	   }else {
-		   UIElement.byName(code).scrollTo().tap();
+		   UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
 	   }
     }
 

@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -39,6 +40,7 @@ public class FacebookLogin extends AbstractScreen {
 	public void i_login_via_browswr(String emailId, String password) throws Throwable {
 		Properties.setVariable("facebookEmail",emailId);
 		Properties.setVariable("facebookPassword",password);
+		Steps.tapButton("Sign In");
 		try {
 			btnCurbsideSignInWithFacebook.tap();
 		} catch (Exception e) {}

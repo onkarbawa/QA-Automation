@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.PendingException;
@@ -45,7 +46,7 @@ public class ProductDetails extends AbstractScreen {
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
 		if (!btnAddtoCart.isDisplayed()){
-			btnAddtoCart.scrollToUp();
+			btnAddtoCart.scrollTo(SwipeDirection.DOWN);
 		}
 		btnAddtoCart.tap();
 		btnRemove.waitFor(10);

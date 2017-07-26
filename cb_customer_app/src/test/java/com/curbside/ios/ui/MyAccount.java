@@ -57,6 +57,7 @@ public class MyAccount extends AbstractScreen {
 			footerTabsScreen.tapMyAccount();
 			btnAccountInfo.tap();
 			accountInfoScreen.signOut();
+			UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").waitFor(10).tap();
 		} catch (Exception e) {
 			if(UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").isDisplayed()){
 				UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").tap();

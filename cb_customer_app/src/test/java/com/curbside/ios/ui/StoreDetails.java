@@ -19,7 +19,7 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
         footerTabsScreen.tapShop();
-        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
+        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
         UIElement.byName("Search").tap();
@@ -29,5 +29,10 @@ public class StoreDetails {
     public void iSelectNoProductFromList(int number) throws Throwable {
         UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
+    }
+    @And("^I select '(.*)' retailer$")
+    public void iSelectRetailer(String storeName) throws Throwable {
+        footerTabsScreen.tapShop();
+        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
     }
 }

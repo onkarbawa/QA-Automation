@@ -38,6 +38,7 @@ public class Home extends AbstractScreen {
 	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText");
 	UIElement recentLocation = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Recent Locations')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Palo Alto')]]");
+	UIElement checkEnvironment = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[8]//XCUIElementTypeStaticText");
 
 	Steps steps = new Steps();
 	Welcome welcome = new Welcome();
@@ -109,22 +110,29 @@ public class Home extends AbstractScreen {
 	@And("^I have selected test environment$")
 	public void iHaveSelectedTestEnvironment() throws Throwable {
 		homeScreen.open();
-		
-		String envAPIKey= "_#csndc#env#s";
-		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
-			return;
-		
+
+		String envAPIKey = "_#csndc#env#s";
+		if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+					return;
+
 		iconSearch.tap();
-		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey,false);
+		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey, false);
 		btnSearchKeyboard.tap();
-		
+
 		//btnCancel.tapOptional();
 		loadingIcon.waitForNot(30);
+
 		
 		MobileDevice.getScreenshot(true);
 		DriverFactory.setEnvironment(envAPIKey);
+//		footerTabsScreen.tapMyAccount();
+//		Steps.tapButton("Help");
+//		checkEnvironment.scrollTo();
+//		System.out.println("Curbside is in "+checkEnvironment.getText());
+		MobileDevice.getScreenshot(true);
 		DriverFactory.closeApp();
 		DriverFactory.launchApp();
+//		DriverFactory.getDriver(false);
 		homeScreen.open();
 	}
 
@@ -173,7 +181,10 @@ public class Home extends AbstractScreen {
 
 	@And("^I select a store$")
 	public void iSelectAStore() throws Throwable {
-		select1stRetailerPartner();
+		try {
+		    footerTabsScreen.tapShop();
+        }catch (Exception e){}
+        select1stRetailerPartner();
 	}
 
 	@When("^I tap on product from the list$")
