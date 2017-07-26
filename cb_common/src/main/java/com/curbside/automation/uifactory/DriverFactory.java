@@ -128,7 +128,7 @@ public class DriverFactory {
 		URL url = new URL(deviceInfo.get("url").toString());
 
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability("sendKeyStrategy", "grouped");
+		//caps.setCapability("sendKeyStrategy", "grouped");
 
 		Iterator<?> keys = deviceInfo.keySet().iterator();
 		while (keys.hasNext()) {
@@ -145,7 +145,7 @@ public class DriverFactory {
 
 		switch (platform.toLowerCase()) {
 		case "ios":
-			setDriver(new IOSDriver(url, caps));
+			setDriver(new AppiumDriver(url, caps));
 			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;
 		case "android":
@@ -199,5 +199,16 @@ public class DriverFactory {
 			return getDriverInfo().get("appPackage").toString();
 		
 		return null;
+	}
+
+	public static void closeApp() throws Throwable {
+		((AppiumDriver)getDriver()).closeApp();
+	}
+
+	public static void launchApp() throws Throwable {
+		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			((AppiumDriver)getDriver()).launchApp();
+		else
+			AndroidDevice.startApplication();
 	}
 }

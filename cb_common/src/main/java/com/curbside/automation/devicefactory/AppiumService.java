@@ -1,5 +1,6 @@
 package com.curbside.automation.devicefactory;
 
+import java.io.File;
 import java.util.HashMap;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -12,10 +13,17 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class AppiumService {
 	static HashMap<String, AppiumDriverLocalService> runningServices = new HashMap<>();
+	static final File nodeJsPath= new File("/Applications/Appium.app/Contents/???");
 
 	static String start(String deviceId) {
 		AppiumServiceBuilder b = new AppiumServiceBuilder();
-		b.usingAnyFreePort().withIPAddress("127.0.0.1").build();
+		b.usingAnyFreePort().withIPAddress("127.0.0.1");
+		if(nodeJsPath.exists())
+		{
+			System.out.println("Using node at " + nodeJsPath.getAbsolutePath());
+			b.usingDriverExecutable(nodeJsPath);
+		}
+		b.build();
 		AppiumDriverLocalService appiumService = AppiumDriverLocalService.buildService(b);
 		appiumService.start();
 		runningServices.put(deviceId, appiumService);

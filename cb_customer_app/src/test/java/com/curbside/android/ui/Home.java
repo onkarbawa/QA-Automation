@@ -6,6 +6,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.appium.java_client.AppiumDriver;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -97,8 +99,10 @@ public class Home extends AbstractScreen {
 		apiHostOkButton.tap();
 		debugBackButton.tap();
 		imageBackButton.waitFor(5).tap();
-		AndroidDevice.startApplication();
+		DriverFactory.closeApp();
+		DriverFactory.launchApp();
 		welcomeScreen.wait_for_app_launch();
+		homeScreen.open();
 
 		DriverFactory.setEnvironment(envAPIKey);
 	}
