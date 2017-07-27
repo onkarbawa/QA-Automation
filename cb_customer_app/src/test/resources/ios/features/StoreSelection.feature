@@ -19,7 +19,7 @@ Feature: iOS- Store Selection
     
   @iOS @C114999
   Scenario: Verify store lead time is displayed
-    When I select 'CVS' retailer
+    When I select 'CVS, at 855 El Camino Real' retailer
     Then I should see lead times to places as below
 
     

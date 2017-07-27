@@ -1,6 +1,27 @@
 @appLaunch
 Feature: iOS- Application Launch
 
+  @iOS @C114997
+  Scenario Outline: Verify Disable background application refresh functionality
+    Given I turn 'OFF' Background App Refresh for 'Curbside' app
+    And I launch Curbside application for the first time
+    And I have selected test environment
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I am not signed into application
+    And I Sign-in with '<Email>' and '<Password>'
+    And My cart is empty
+    And I select 'CVS, at 855 El Camino Real' retailer and add any product to cart
+    And I go to Cart screen
+    And I attempt to place an order
+    Then I should see checkout not allowed
+    When I turn 'ON' 'Background App Refresh' for 'Curbside'
+    And I tap on 'Return to Curbside' button
+    And I attempt to place an order
+    Then I should see checkout screen
+    Examples:
+      |             Email                  |     Password    |
+      |      applaunch@exam.com            |     applaunch    |
+
   @iOS @C114937
   Scenario: First time Curbside Launch (fresh install)
     Given I launch Curbside application for the first time
@@ -35,19 +56,21 @@ Feature: iOS- Application Launch
     And I am on Home Screen
     Then I should see 'Nearby stores' landing page
 
-#  @iOS @C114997
-#  Scenario: Verify Disable background application refresh functionality
-#    Given I turn 'OFF' Background App Refresh for 'Curbside' app
-#    And I launch Curbside application
-#    And I have selected test environment
-#    And I am on Sign Up screen
-#    And I signup for a new account
-#    And I added credit card information
-#    And I add any product to cart in 'Palo Alto' location
-#    And I go to Cart screen
-#    And I attempt to place an order
-#    Then I should see checkout not allowed
-#    When I turn 'ON' 'Background App Refresh' for 'Curbside'
-#    And I tap on 'Return to Curbside' button
-#    And I attempt to place an order
-#    Then I should see checkout screen
+  @iOS @C114997
+  Scenario Outline: Verify Disable background application refresh functionality
+    Given I turn 'OFF' Background App Refresh for 'Curbside' app
+    And I launch Curbside application
+    And I have selected test environment
+    And I Sign-in with '<Email>' and '<Password>'
+    And I add any product to cart in 'Palo Alto' location
+    And I go to Cart screen
+    And My cart is empty
+    And I attempt to place an order
+    Then I should see checkout not allowed
+    When I turn 'ON' 'Background App Refresh' for 'Curbside'
+    And I tap on 'Return to Curbside' button
+    And I attempt to place an order
+    Then I should see checkout screen
+    Examples:
+      |             Email                  |     Password    |
+      |      applaunch@exam.com            |     applaunch    |

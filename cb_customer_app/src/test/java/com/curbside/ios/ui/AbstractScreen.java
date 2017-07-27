@@ -23,6 +23,7 @@ public class AbstractScreen {
 	static Settings settingsScreen;
 	static SignUp signUpScreen;
 	static Welcome welcomeScreen;
+	static StoreDetails storeDetails;
 	
 	static Steps commonSteps;
 
@@ -45,6 +46,7 @@ public class AbstractScreen {
 		settingsScreen = new Settings();
 		signUpScreen = new SignUp();
 		welcomeScreen = new Welcome();
+		storeDetails = new StoreDetails();
 		commonSteps= new Steps();
 	}
 

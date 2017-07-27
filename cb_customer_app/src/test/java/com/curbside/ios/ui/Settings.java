@@ -46,6 +46,8 @@ public class Settings extends AbstractScreen {
 	@When("^I turn '(.*)' 'Background App Refresh' for '(.*)'$")
 	public void iTurnBackgroundAppRefreshFor(String ONorOFF, String appName) throws Throwable {
 
+		UIElement.byName("Location").tap();
+		UIElement.byName("Curbside").tap();
 		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
 		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
 
