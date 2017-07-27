@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -33,6 +34,6 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
-        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
+        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
     }
 }

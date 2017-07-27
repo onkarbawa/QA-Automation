@@ -8,7 +8,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 /**
@@ -18,7 +17,7 @@ import org.testng.Assert;
 
 public class Cart extends AbstractScreen {
 	UIElement placeOrder = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Place Order ')]");
-	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[2]");
+	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[2]");
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
@@ -30,7 +29,7 @@ public class Cart extends AbstractScreen {
 
 	UIElement selectedStores = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell");
 	UIElement lastProduct = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell[1]");
-	UIElement selectedProducts = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell");
+	UIElement substores = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]/preceding-sibling::XCUIElementTypeCell");
 
 	UIElement totalItems = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Estimated Total')]/preceding-sibling::XCUIElementTypeStaticText[contains(@name,'Items')]");
 
@@ -40,7 +39,10 @@ public class Cart extends AbstractScreen {
 
 	UIElement promoCode = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Enter Promo Code']]//XCUIElementTypeCollectionView//XCUIElementTypeTextField");
 	UIElement discount = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Discount')]/following-sibling::XCUIElementTypeStaticText[1]");
+	//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[2]
+	//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[2]
 
+	UIElement storeAddress = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[1]//XCUIElementTypeStaticText[1]");
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
@@ -52,6 +54,7 @@ public class Cart extends AbstractScreen {
 
 	@Given("I attempt to place an order")
 	public void placeOrder() throws Throwable {
+		//footerTabsScreen.btnCart.waitFor(3).tap();
 		placeOrder.tap();
 		placeOrder.waitForNot(5);
 	}
@@ -83,21 +86,44 @@ public class Cart extends AbstractScreen {
 			int totalStores = selectedStores.getCount();
 			for (int i = 0; i < totalStores; i++) {
 				selectedStores.tap();
-			} try {
-					if (selectedProducts.isDisplayed()) {
-						int totalSelectedProducts = selectedProducts.getCount();
-						if (totalSelectedProducts > 4) {
-							for (int j = 0; j < totalSelectedProducts - 4; j++) {
-								lastProduct.tap();
-								int totalItems = productItem.getCount();
-								for (int k = 0; k < totalItems - 3; k++) {
-									productaQuantityButton.tap();
-									UIElement.byName("Remove").tap();
-									UIElement.byName("Remove").waitForNot(8);
-								}
-							}
+
+				if (creditCardCell.isDisplayed()) {
+					int totalItems = productItem.getCount();
+					if (totalItems > 3) {
+						for (int j = 0; j < totalItems - 3; j++) {
+							productaQuantityButton.tap();
+							UIElement.byName("Remove").tap();
+							UIElement.byName("Remove").waitForNot(8);
 						}
-					 else {
+					} else {
+						for (int j = 0; j < totalItems - 2; j++) {
+							productaQuantityButton.tap();
+							UIElement.byName("Remove").tap();
+							UIElement.byName("Remove").waitForNot(8);
+						}
+					}
+				}
+				else {
+					int totalSelectedSubstores = substores.getCount();
+					if (totalSelectedSubstores > 4) {
+						String address = storeAddress.getText();
+						for (int j = 0; j < totalSelectedSubstores - 4; j++) {
+							Properties.setVariable("storeaddress",address);
+							lastProduct.tap();
+							int totalItems = productItem.getCount();
+							for (int k = 0; k < totalItems - 3; k++) {
+								productaQuantityButton.tap();
+								UIElement.byName("Remove").tap();
+								UIElement.byName("Remove").waitForNot(8);
+							}
+							if (j< totalSelectedSubstores - 5) {
+								String storeAddressCart = Properties.getVariable("storeaddress");
+								UIElement.byXpath("//XCUIElementTypeCell//XCUIElementTypeStaticText[contains(@name,'"+storeAddressCart+"')]").waitFor(3).tap();
+							}
+
+						}
+					}
+					else {
 						lastProduct.tap();
 						int totalItems = productItem.getCount();
 						for (int k = 0; k < totalItems - 3; k++) {
@@ -105,16 +131,6 @@ public class Cart extends AbstractScreen {
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
 						}
-					}
-				}
-			}
-			catch (Exception e) {
-				if (productItem.isDisplayed()) {
-					int totalItems = productItem.getCount();
-					for (int j = 0; j < totalItems - 3; j++) {
-						productaQuantityButton.tap();
-						UIElement.byName("Remove").tap();
-						UIElement.byName("Remove").waitForNot(8);
 					}
 				}
 			}

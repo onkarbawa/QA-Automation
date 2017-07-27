@@ -156,13 +156,12 @@ public class Home extends AbstractScreen {
 		productDetailsScreen.btnAddtoCart.waitFor(5);
 	}
 
-	@Given("I add any product to cart in '(.*)' location")
-	public void i_add_any_product_in_location(String location) throws Throwable {
+	@Given("I select ('.*') retailer and add any product to cart")
+	public void i_select_retailer_and_add_product(String retailer) throws Throwable {
 		footerTabsScreen.tapShop();
-		searchForLocation(location);
 		select1stRetailerPartner();
-		select1stProduct();
-		productDetailsScreen.addToCart();
+		storeDetails.iSelectNoProductFromList(1);
+		productDetailsScreen.iAddQuantityOfIt(1);
 		MobileDevice.getScreenshot(true);
 	}
 

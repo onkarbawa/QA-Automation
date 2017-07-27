@@ -22,7 +22,7 @@ public class AccountInfo extends AbstractScreen {
 	UIElement txtMobile = UIElement.byXpath("//*[@label='Mobile']/following-sibling::*");
 	UIElement txtPassword = UIElement.byXpath("//*[@label='Password']/following-sibling::*");
 
-	UIElement btnSignOut = UIElement.byAccessibilityId("Sign Out");
+	UIElement btnSignOut = UIElement.byName("Sign Out");
 	UIElement btnBack = UIElement.byAccessibilityId("Back");
 	UIElement btnAccount = UIElement.byAccessibilityId("Account");
 	UIElement btnEdit = UIElement.byAccessibilityId("Edit");
