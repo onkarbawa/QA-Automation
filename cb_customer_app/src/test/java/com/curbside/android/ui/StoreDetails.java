@@ -42,7 +42,7 @@ public class StoreDetails extends AbstractScreen {
     @And("I select (\\d+) product from list")
     public void selectNthProduct(int index) throws Throwable {
         UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+index+"\']")
-                .waitFor(5)
+                .waitFor(8)
                 .tap();
     }
 
@@ -79,17 +79,16 @@ public class StoreDetails extends AbstractScreen {
                     storeIndex = 1;
                     break;
                 case "westfield valley fair" :
-                    storeIndex = 2;
+                    storeIndex = 3;
                     break;
                 case "sephora" :
-                    storeIndex = 3;
+                    storeIndex = 4;
                     break;
                 default: Assert.fail(" This store is not added in the code");
 
             }
 
             if(titleStoreLocationAfterSearch.waitFor(3).isDisplayed()){
-                System.out.println("StoreTitleIsDisplayed");
                 String[] presentStore = titleStoreLocationAfterSearch.getText().toLowerCase().split("\\s+");
                 if(!Arrays.asList(presentStore).contains(storeName.toLowerCase())){
                     System.out.println("StoreTitleIsNotSame");

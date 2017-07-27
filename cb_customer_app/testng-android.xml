@@ -34,5 +34,10 @@
             <class name="com.curbside.android.runners.CartBuildingAndCheckout"/>
         </classes>
     </test>
+    <test name="Promo Code">
+        <classes>
+            <class name="com.curbside.android.runners.DeliveryPromoTest"/>
+        </classes>
+    </test>
 
 </suite>

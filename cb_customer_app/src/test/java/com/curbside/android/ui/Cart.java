@@ -63,6 +63,8 @@ public class Cart extends AbstractScreen {
     UIElement promoCodeSuggestionDialog = UIElement.byId("android:id/button3");
     UIElement estimatedTax = UIElement.byId("com.curbside.nCurbside:id/text_estimated_tax");
     UIElement estimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
+    UIElement btnCancelPromoPopUp = UIElement.byId("com.curbside.nCurbside:id/text_cancel");
+    UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
 
 
 
@@ -204,27 +206,63 @@ public class Cart extends AbstractScreen {
     public void iApplyPromoCodeOfType(String promoCode) throws Throwable {
         promoCodeField.waitFor(5).sendKeys(promoCode);
         applyButton.tap();
+
+        if(btnCancelPromoPopUp.waitFor(8).isDisplayed())
+            btnCancelPromoPopUp.tap();
     }
 
-    @Then("^I should see promo code is applied and discount is given")
-    public void iShouldSeePromoCodeIsApplied() throws Throwable {
-        if (!promoCodeDiscount.waitFor(5).isDisplayed()) {
+    @Then("^I should see promo code is applied and discount is given as per '(.*)'")
+    public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
+        DecimalFormat df = new DecimalFormat("#.##");
+        Double expectedDiscount = 0.00;
+        Double deliveryCharges = 0.00;
+
+        if (!promoCodeDiscount.isDisplayed()) {
             promoCodeDiscount.scrollTo(SwipeDirection.UP);
         }
 
-        System.out.println("justSplit"+promoCodeDiscount.getText().split("\\$")[1]);
         Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
         Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
-        Double discount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
-        Double expectedTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
-        Double totalAmount = (totalItemPrice + estimatedTaxPrice) - discount;
-        Assert.assertEquals(expectedTotalAmount, totalAmount, "Promo code discount calculation is not correct");
+        Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
+        Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+
+        switch (discountType.toLowerCase()){
+            case "unlimited":
+                expectedDiscount = 10.00;
+                Assert.assertEquals(expectedDiscount, actualDiscount,
+                        "UNLIMITED promo code is not having $10 discount");
+                break;
+
+            case "dollar":
+                break;
+            case "percent":
+                expectedDiscount = Double.valueOf(df.format(totalItemPrice * 0.20)) ;
+                Assert.assertEquals(expectedDiscount, actualDiscount,
+                        "Percent promo code is not having exact discount");
+
+                break;
+            case "free":
+                break;
+            case "fixed":
+                break;
+            default: Assert.fail(discountType.toUpperCase() + " not a discount type");
+            break;
+        }
+
+
+
+        if(deliveryCharge.isDisplayed()) {
+            deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
+        }
+
+        Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + deliveryCharges) - expectedDiscount;
+        expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
+        Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
     }
 
 
     @Then("^The '(.*)' of the product should be same$")
     public void thePriceOfTheProductShouldBeSame(String price) throws Throwable {
-        System.out.println("verifyin pricing--"+productDetailsScreen.addedProductDetails.get().get("amount"));
         Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), price,
                 "product price is not same");
     }

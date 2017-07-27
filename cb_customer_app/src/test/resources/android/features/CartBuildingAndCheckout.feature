@@ -31,8 +31,15 @@ Feature: Android- Cart Building
       | 25.79 |
 
   @Android @C114990
-  Scenario: Verify math and calculations are correct as per Promo Code
+  Scenario Outline: Verify math and calculations are correct as per Promo Code
     Given I tap on Enter promo code link
-    When I apply promo code "UNLIMITED"
-    Then I should see promo code is applied and discount is given
+    When I apply promo code "<Promo Code>"
+    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+    Examples:
+      |Promo Code   |Discount Type|
+      |UNLIMITED    |Unlimited    |
+      #|NF_DOLLAR_DS |Dollar      |
+      #|NF_PERCENT_DS|Percent     |
+      #|NF_FREE_DS   |Free        |
+      #|NF_FIXED_DS  |Fixed       |
 
