@@ -53,11 +53,8 @@ public class StoreDetails extends AbstractScreen {
 
     @Then("^I should see following products listed on partner screen$")
     public void iShouldSeeFollowingProductsListedOnPartnerScreen() throws Throwable {
-        firstProduct.waitFor(10);
+        firstProduct.waitFor(15);
         Assert.assertTrue(productImage.isDisplayed(),"Product Image is not displayed");
-        if(!productName.isDisplayed())
-            productName.swipeUpSlow();
-        Assert.assertTrue(productName.isDisplayed(),"Product Name is not displayed");
     }
 
     @When("^I tap on product from the list$")

@@ -88,15 +88,11 @@ public class Steps {
 			DriverFactory.releaseDriver();
 		}
 
-		// Install and launch application
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
-	//	System.out.println("Calling setAppInstalled");
 		DeviceStore.setAppInstalled();
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-		//	System.out.println("InIOSIFBlock");
 			DriverFactory.releaseDriver();
-		//	System.out.println("getting new driver with new capablites");
 			DriverFactory.getDriver(false);
 		}
 
