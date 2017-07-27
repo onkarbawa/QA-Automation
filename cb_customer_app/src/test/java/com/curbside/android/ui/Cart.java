@@ -71,7 +71,6 @@ public class Cart extends AbstractScreen {
 
     @And("^I should see loyalty card info on cart screen$")
     public void iShouldSeeLoyaltyCardInfoOnCartScreen() throws Throwable {
-
         try {
             firstRetailer.waitFor(10).tap();
         }catch (Exception e){
@@ -235,21 +234,22 @@ public class Cart extends AbstractScreen {
 
             case "dollar":
                 break;
+
             case "percent":
                 expectedDiscount = Double.valueOf(df.format(totalItemPrice * 0.20)) ;
                 Assert.assertEquals(expectedDiscount, actualDiscount,
                         "Percent promo code is not having exact discount");
-
                 break;
+
             case "free":
                 break;
+
             case "fixed":
                 break;
+
             default: Assert.fail(discountType.toUpperCase() + " not a discount type");
             break;
         }
-
-
 
         if(deliveryCharge.isDisplayed()) {
             deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);

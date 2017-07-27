@@ -26,11 +26,6 @@ Feature: Android - Delivery Promo code
   Examples:
     |Promo Code   |Discount Type|
     |UNLIMITED    |Unlimited    |
-    #|NF_DOLLAR_DS |Dollar      |
-    #|NF_PERCENT_DS|Percent     |
-    #|NF_FREE_DS   |Free        |
-    #|NF_FIXED_DS  |Fixed       |
-
 
   Scenario Outline: verify percentage promo code
     And I tap on Enter promo code link

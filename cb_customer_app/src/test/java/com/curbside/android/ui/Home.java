@@ -27,8 +27,6 @@ public class Home extends AbstractScreen {
 	UIElement searchBox = UIElement.byId("com.curbside.nCurbside:id/search_src_text");
 	UIElement searchBackButton = UIElement.byId("com.curbside.nCurbside:id/img_tool_back");
 	UIElement cityZipSearchTextBox = UIElement.byId("com.curbside.nCurbside:id/edit_location");
-
-
 	UIElement apiHost = UIElement.byXpath("//*[@resource-id='android:id/list']/android.widget.LinearLayout[1]");
 	UIElement apiHostTextField = UIElement.byId("android:id/edit");
 	UIElement apiHostOkButton = UIElement.byUISelector("new UiSelector().text(\"OK\")");
@@ -39,7 +37,6 @@ public class Home extends AbstractScreen {
 	UIElement firstRetailerPartnerListView = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ListView/android.widget.RelativeLayout[@index='0']");
 	UIElement noStoresInAreaText = UIElement.byId("com.curbside.nCurbside:id/textView1");
 	UIElement westFieldStore = UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/container_relative_layout_card_Store_icon' and @index='2']");
-	
 	UIElement progressBar =  UIElement.byId("com.curbside.nCurbside:id/progress_bar");
 
 	@Then("^I should see 'Nearby stores' landing page$")
