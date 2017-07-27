@@ -165,6 +165,16 @@ public class Home extends AbstractScreen {
 		MobileDevice.getScreenshot(true);
 	}
 
+	@Given("I add any product to cart in '(.*)' location")
+	public void i_add_any_product_in_location(String location) throws Throwable {
+		footerTabsScreen.tapShop();
+		searchForLocation(location);
+		select1stRetailerPartner();
+		select1stProduct();
+		productDetailsScreen.addToCart();
+		MobileDevice.getScreenshot(true);
+	}
+
 	@And("^I am on Shop Screen$")
 	public void iAmOnShopScreen() throws Throwable {
 		Thread.sleep(200);

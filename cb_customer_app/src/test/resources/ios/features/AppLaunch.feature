@@ -31,8 +31,7 @@ Feature: iOS- Application Launch
     Then I should see Location Services Disabled screen
     When I tap on 'Settings' button
     And I set 'Location' permission as 'Always'
-    And I launch Curbside application
-    And I am on Home Screen
+    And I tap on 'Return to Curbside' button
     Then I should see 'Nearby stores' landing page
 
   @iOS @C114997

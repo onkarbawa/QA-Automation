@@ -68,7 +68,7 @@ public class Cart extends AbstractScreen {
 
 	@And("^I should see loyalty card info on cart screen$")
 	public void iShouldSeeLoyaltyCardInfoOnCartScreen() throws Throwable {
-		extracareCardCell.waitFor(2).tap();
+		extracareCardCell.waitFor(5).tap();
 		loyalityCardScreen.iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen();
 	}
 
