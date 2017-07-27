@@ -49,7 +49,6 @@ Feature: iOS- Application Launch
     Then I should see checkout not allowed
     When I turn 'ON' 'Background App Refresh' for 'Curbside'
     And I tap on 'Return to Curbside' button
-    And I go to Cart screen
     And I attempt to place an order
     Then I should see checkout screen
     Examples:

@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.PendingException;
@@ -61,8 +62,12 @@ public class AccountInfo extends AbstractScreen {
 
 	public void signOut() throws Throwable {
 		btnSignOut.tap();
+		MobileDevice.getScreenshot(true);
+		MobileDevice.getSource(true);
 		try {
 			btnSignOut.tap();
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
 		}catch (Exception e){}
 	}
 }
