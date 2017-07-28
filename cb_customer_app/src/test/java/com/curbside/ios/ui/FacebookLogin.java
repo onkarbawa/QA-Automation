@@ -21,7 +21,7 @@ public class FacebookLogin extends AbstractScreen {
 	UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
 
 	UIElement txtInBrowserUsername = UIElement.byXpath("//XCUIElementTypeSecureTextField/preceding-sibling::XCUIElementTypeTextField");
-	UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
+	UIElement txtInBrowserPassword = UIElement.byXpath("//XCUIElementTypeSecureTextField");
 	//UIElement btnInBrowserLogin = UIElement.byName("Log In");
 	UIElement btnInBrowserLogin = UIElement.byPredicate("type ='XCUIElementTypeButton' AND label == 'Log In'");
 	UIElement btnInBrowserContinueAs = UIElement.byPredicate("label CONTAINS 'Continue'");
@@ -51,8 +51,9 @@ public class FacebookLogin extends AbstractScreen {
 
 		if(!btnInBrowserContinueAs.isDisplayed())
 		{
-			btnLoginUsingEmail.waitFor(10).tap();
-			txtInBrowserUsername.waitFor(10).setText(emailId,false);
+			btnLoginUsingEmail.tap();
+			txtInBrowserUsername.clearText();
+			txtInBrowserUsername.sendKeys(emailId,false);
 			txtInBrowserPassword.sendKeys(password,false);
 			MobileDevice.getScreenshot(true);
 			btnInBrowserLogin.tap();
