@@ -1,21 +1,20 @@
-package com.curbside.android.runners;
+package com.curbside.ios.runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
- * Created by hitesh.grover on 18/07/17.
+ * Created by bawa.onkar on 20/07/17.
  */
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/android/features/CartBuildingAndCheckoutTest.feature",
+        features = "src/test/resources/ios/features/CartBuildingAndCheckoutTest.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
-        dryRun = false,strict= true,
-        glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.curbside.automation.steps"})
-
+        dryRun = false, strict= true,
+        glue = {"com.curbside.ios.ui", "com.curbside.automation.uifactory"})
 @Test
-public class CartBuildingAndCheckout extends AbstractTestNGCucumberTests{
+public class CartBuildingAndCheckoutTest extends AbstractTestNGCucumberTests {
 }

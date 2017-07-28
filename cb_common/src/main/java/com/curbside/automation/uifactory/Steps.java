@@ -262,8 +262,8 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
 			AndroidDevice.hideKeyboard();
 			AndroidDevice.goBack();
-		} else {
-			throw new NotImplementedException("not implemented yet!");
+		} else if(DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+			new UIElement(By.name("Back")).tap();
 		}
 	}
 }

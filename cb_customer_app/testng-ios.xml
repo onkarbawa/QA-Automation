@@ -21,18 +21,23 @@
         </test>
         <test name="iOS- Store Selection">
             <classes>
-                <class name="com.curbside.ios.runners.StoreSelection"/>
+                <class name="com.curbside.ios.runners.StoreSelectionTest"/>
             </classes>
         </test>
         <test name="iOS- Product Catelog">
             <classes>
-                <class name="com.curbside.ios.runners.ProductCatalog"/>
+                <class name="com.curbside.ios.runners.ProductCatalogTest"/>
             </classes>
         </test>
     <test name="iOS- CartBuilding And Checkout">
             <classes>
-                <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
+                <class name="com.curbside.ios.runners.CartBuildingAndCheckoutTest"/>
             </classes>
        </test>
+    <test name="iOS- Delivery Promo code">
+        <classes>
+            <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
+        </classes>
+    </test>
 
 </suite>

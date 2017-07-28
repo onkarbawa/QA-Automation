@@ -5,11 +5,14 @@ import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+
+import java.text.DecimalFormat;
 
 /**
  * @author kumar.anil
@@ -36,14 +39,15 @@ public class Cart extends AbstractScreen {
 
 	UIElement itemsTotalPrice = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[2]");
 	UIElement estimatedTax = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[4]");
-	UIElement estimatedTotal = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Estimated Total')]]//XCUIElementTypeStaticText[10]");
+	UIElement estimatedTotal = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Estimated Total')]/following-sibling::XCUIElementTypeStaticText[1]");
 
 	UIElement promoCode = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Enter Promo Code']]//XCUIElementTypeCollectionView//XCUIElementTypeTextField");
-	UIElement discount = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Discount')]/following-sibling::XCUIElementTypeStaticText[1]");
-	//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[2]
-	//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[2]
+	UIElement promoCodeDiscount = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Discount')]/following-sibling::XCUIElementTypeStaticText[1]");
+	UIElement curbsidePickUp = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[1]");
+	UIElement deliveryCharge = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Delivery')]/following-sibling::XCUIElementTypeStaticText[1]");
 
 	UIElement storeAddress = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[1]//XCUIElementTypeStaticText[1]");
+
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
@@ -199,12 +203,12 @@ public class Cart extends AbstractScreen {
 
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
-		discount.waitFor(10);
-		Double discountedPrice = Double.parseDouble(discount.getText().split("₹")[1].substring(1));
+		promoCodeDiscount.waitFor(10);
+		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("₹")[1].substring(1));
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("₹")[1].substring(1));
 		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("₹")[1].substring(1));
-		Assert.assertEquals(((totalPrice + estimateTax) - discountedPrice), estimateTotalAmount,"Discount is not applied");
+		Assert.assertEquals(((totalPrice + estimateTax) - actualDiscount), estimateTotalAmount,"Discount is not applied");
 		UIElement.byName("Back").tap();
 	}
 
@@ -216,5 +220,58 @@ public class Cart extends AbstractScreen {
 	@Then("^I should see '(.*)' dollar in the cart$")
 	public void iShouldSeeDollarInTheCart(String amount) throws Throwable {
 		Assert.assertEquals(Properties.getVariable("product1"),amount,"Pricing value of particular product is not matched");
+	}
+
+	@And("^I select Curbside Pickup and delivery option$")
+	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
+		curbsidePickUp.tap();
+		getMyOrder.deliveryWith.tap();
+	}
+
+	@Then("^I should see promo code is applied and discount is given as per '(.*)'")
+	public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
+		promoCodeDiscount.waitFor(10);
+		DecimalFormat df = new DecimalFormat("#.##");
+		Double expectedDiscount = 0.00;
+		Double deliveryCharges = 0.00;
+
+		promoCodeDiscount.scrollTo(SwipeDirection.UP);
+
+		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("₹")[1].substring(1));
+		Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
+		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("₹")[1].substring(1));
+		Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("₹")[1].substring(1));
+
+		switch (discountType.toLowerCase()){
+			case "unlimited":
+				expectedDiscount = 10.00;
+				Assert.assertEquals(expectedDiscount, actualDiscount,
+						"UNLIMITED promo code is not having $10 discount");
+				break;
+
+			case "dollar":
+				break;
+			case "percent":
+				expectedDiscount = Double.valueOf(df.format(totalItemPrice * 0.20)) ;
+				Assert.assertEquals(expectedDiscount, actualDiscount,
+						"Percent promo code is not having exact discount");
+				break;
+			case "free":
+				break;
+			case "fixed":
+				break;
+			case "firsttime":
+				break;
+			default: Assert.fail(discountType.toUpperCase() + " not a discount type");
+				break;
+		}
+
+		if(deliveryCharge.isDisplayed()) {
+			deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("₹")[1].substring(1));
+		}
+
+		Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + deliveryCharges) - expectedDiscount;
+		expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
+		Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
 	}
 }

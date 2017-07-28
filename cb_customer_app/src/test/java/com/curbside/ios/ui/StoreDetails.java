@@ -1,7 +1,6 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -15,7 +14,7 @@ import static com.curbside.ios.ui.AbstractScreen.productDetailsScreen;
  */
 public class StoreDetails {
 
-    UIElement searchBar = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Search All Stores']");
+    UIElement searchBar = UIElement.byXpath("//XCUIElementTypeSearchField[contains(@name,'Search')]");
 
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
@@ -35,5 +34,10 @@ public class StoreDetails {
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
         UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+    }
+
+    @And("^I select '(.*)' product from list$")
+    public void iSelectProductFromList(String product) throws Throwable {
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+product+"')]").waitFor(20).scrollTo(SwipeDirection.UP).tap();
     }
 }
