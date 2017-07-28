@@ -29,39 +29,47 @@ Feature: iOS - Delivery Promo code
     #|NF_PERCENT_DS|Percent     |
     #|NF_FREE_DS   |Free        |
     #|NF_FIXED_DS  |Fixed       |
-#  |FIRSTTIME_S|
+    #  |FIRSTTIME_S|  |
 
   @iOS @C114949
   Scenario Outline: verify Repeat Promo codes
-    And I tap on 'Enter Promo Code'
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code       |Discount Type|
       |REPEAT_PERCENT_S |   Percent   |
 
-    And I tap on 'Enter Promo Code'
+  @iOS @C114949
+  Scenario Outline: verify Repeat Promo codes
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code       |Discount Type|
       |REPEAT_S         | Unlimited   |
 
-    And I tap on 'Enter Promo Code'
+  @iOS @C114949
+  Scenario Outline: verify Repeat Promo codes
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code       |Discount Type|
       |REPEAT_CVS_S     | Unlimited   |
 
-    And I tap on 'Enter Promo Code'
+  @iOS @C114949
+  Scenario Outline: verify Repeat Promo codes
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code         |Discount Type|
       |REPEAT_NTIMES_S     | Unlimited   |
 
-    And I tap on 'Enter Promo Code'
+  @iOS @C114949
+  Scenario Outline: verify Repeat Promo codes
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
