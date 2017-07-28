@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
@@ -82,37 +83,46 @@ public class Cart extends AbstractScreen {
     public void myCartIsEmpty() throws Throwable {
 		footerTabsScreen.btnCart.waitFor(10).tap();
 		footerTabsScreen.tapCart();
-		if (selectedStores.isDisplayed()) {
+		if (selectedStores.waitFor(4).isDisplayed()) {
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
 			int totalStores = selectedStores.getCount();
 			for (int i = 0; i < totalStores; i++) {
 				selectedStores.tap();
-
+				MobileDevice.getScreenshot(true);
+				MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
 					if (totalItems > 3) {
 						for (int j = 0; j < totalItems - 3; j++) {
-							productaQuantityButton.tap();
+							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
+							MobileDevice.getScreenshot(true);
+							MobileDevice.getSource(true);
 						}
 					} else {
 						for (int j = 0; j < totalItems - 2; j++) {
-							productaQuantityButton.tap();
+							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
+							MobileDevice.getScreenshot(true);
+							MobileDevice.getSource(true);
 						}
 					}
 				}
 				else {
 					int totalSelectedSubstores = substores.getCount();
 					if (totalSelectedSubstores > 4) {
+						MobileDevice.getScreenshot(true);
+						MobileDevice.getSource(true);
 						String address = storeAddress.getText();
 						for (int j = 0; j < totalSelectedSubstores - 4; j++) {
 							Properties.setVariable("storeaddress",address);
 							lastProduct.tap();
 							int totalItems = productItem.getCount();
 							for (int k = 0; k < totalItems - 3; k++) {
-								productaQuantityButton.tap();
+								productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
 								UIElement.byName("Remove").tap();
 								UIElement.byName("Remove").waitForNot(8);
 							}
@@ -127,7 +137,7 @@ public class Cart extends AbstractScreen {
 						lastProduct.tap();
 						int totalItems = productItem.getCount();
 						for (int k = 0; k < totalItems - 3; k++) {
-							productaQuantityButton.tap();
+							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
 						}
