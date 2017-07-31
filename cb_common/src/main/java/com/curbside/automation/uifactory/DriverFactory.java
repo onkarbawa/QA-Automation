@@ -137,7 +137,8 @@ public class DriverFactory {
 			if (key.equalsIgnoreCase("url") || key.equalsIgnoreCase("passcode"))
 				continue;
 
-			if (key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa"))
+			if ((key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa")) &&
+					!deviceInfo.getString(key).equalsIgnoreCase("settings"))
 				caps.setCapability(key, new File(deviceInfo.get(key).toString()).getAbsolutePath());
 			else
 				caps.setCapability(key, deviceInfo.get(key));

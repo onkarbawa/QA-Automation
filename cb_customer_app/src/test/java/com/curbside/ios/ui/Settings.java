@@ -55,5 +55,7 @@ public class Settings extends AbstractScreen {
 
 		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
 			backgroundAppRefresh.tap();
+		
+		MobileDevice.getScreenshot(true);
 	}
 }
