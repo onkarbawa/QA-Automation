@@ -31,6 +31,7 @@ Feature: iOS- Login Feature
     Given I am not signed into application
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
+    And I am not signed into application
 
     Examples:
       |             Email                  |     Password    |

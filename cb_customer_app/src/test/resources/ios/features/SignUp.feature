@@ -38,4 +38,5 @@ Feature: iOS- Signup Flow
     Then I should see ExtraCare Card info on Loyalty Cards screen
     When I go to Cart screen
     Then I should see loyalty card info on cart screen
+    And I am not signed into application
 

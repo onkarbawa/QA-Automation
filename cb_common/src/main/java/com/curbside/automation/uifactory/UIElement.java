@@ -12,11 +12,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.MobileBy;
@@ -247,4 +243,18 @@ public class UIElement {
 		return getElements().size();
 	}
 
+	public Dimension getSize() throws Throwable {
+		return getElement().getSize();
+	}
+
+	public int getHeight() throws Throwable {
+		return getSize().getHeight();
+	}
+
+	public int getWidth() throws Throwable {
+		return getSize().getWidth();
+	}
+	public Point getLocation() throws Throwable {
+		return getElement().getLocation();
+	}
 }

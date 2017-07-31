@@ -46,13 +46,16 @@ Feature: iOS- Application Launch
     And I select 'CVS, at 855 El Camino Real' retailer and add any product to cart
     And I go to Cart screen
     And I attempt to place an order
-    Then I should see checkout not allowed
+    And I should see checkout not allowed
+    Then I turn 'ON' 'Allow Notifications' for 'Curbside'
+    And I tap on back button
     When I turn 'ON' 'Background App Refresh' for 'Curbside'
     And I tap on 'Return to Curbside' button
     And I tap on 'Shop' icon in bottom menu
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     Then I should see checkout screen
+    And I am not signed into application
     Examples:
       |             Email                  |     Password    |
       |      applaunch@exam.com            |     applaunch    |

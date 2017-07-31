@@ -156,6 +156,7 @@ public class Cart extends AbstractScreen {
 		Assert.assertEquals(popUpHeading.getText(),"Please turn on the following");
 		MobileDevice.getScreenshot(true);
 		settings.tap();
+		UIElement.byName("Notifications").waitFor(3).tap();
 	}
 
 	@Then("^I should see checkout screen$")
@@ -215,7 +216,8 @@ public class Cart extends AbstractScreen {
 
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
-		UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+		//UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+		UIElement.byName(code).scrollTo().tap();
     }
 
 	@Then("^I should see '(.*)' dollar in the cart$")
