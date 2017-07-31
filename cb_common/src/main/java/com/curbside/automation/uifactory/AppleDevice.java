@@ -42,6 +42,7 @@ public class AppleDevice extends MobileDevice {
 	public static void resetPermissions(String appName) throws Throwable {
 		
 		launchSettings();
+		/*
 		settingGeneral.scrollTo(SwipeDirection.UP);
 		if(settingGeneral.isDisplayed()){
 			settingGeneral.tap();
@@ -49,6 +50,9 @@ public class AppleDevice extends MobileDevice {
 			settingGeneral.scrollTo(SwipeDirection.DOWN).tap();
 		}
 		settingReset.scrollTo(SwipeDirection.UP).tap();
+		*/
+		settingGeneral.scrollTo().tap();;
+		settingReset.scrollTo().tap();
 		settingResetLocalAndPrivacy.tap();
 		try {
 			String code= DeviceStore.getDevice().get("passcode").toString();

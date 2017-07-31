@@ -70,6 +70,12 @@ public class UIElement {
 	public UIElement scrollTo() throws Throwable {
 		MobileElement m = (MobileElement) getElement();
 
+		HashMap<String, String> scrollObject = new HashMap<String, String>();
+		scrollObject.put("element", m.getId());
+		scrollObject.put("toVisible", "true");
+		((AppiumDriver)DriverFactory.getDriver()).executeScript("mobile: scroll", scrollObject);
+	
+		/*
 		// Vertical scroll
 		int deviceHeight = MobileDevice.getHeight();
 		long startTime = System.currentTimeMillis();
@@ -80,7 +86,7 @@ public class UIElement {
 				MobileDevice.swipeUp();
 				m = (MobileElement) getElement();
 			}
-		}
+		}*/
 
 		return this;
 	}
