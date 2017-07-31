@@ -38,5 +38,6 @@ Feature: iOS- Cart Building And Checkout
     And I apply 'UNLIMITED' promo code
     When I verify discount is applied
     Then I attempt to place an order
+    And I am not signed into application
 
 

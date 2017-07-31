@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
@@ -30,6 +31,10 @@ public class ProductDetails extends AbstractScreen {
 	UIElement incrementProduct = UIElement.byName("Increment");
 	UIElement btnBack = UIElement.byName("Back");
 
+	//Product Quantity Over
+	UIElement quantityMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Sorry']");
+	UIElement quantityMessageText = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Sorry']/following-sibling::XCUIElementTypeStaticText");
+
 	public ProductDetails() {
 		// TODO Auto-generated constructor stub
 	}
@@ -46,9 +51,15 @@ public class ProductDetails extends AbstractScreen {
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
 		if (!btnAddtoCart.isDisplayed()){
-			btnAddtoCart.scrollTo(SwipeDirection.DOWN);
+			//btnAddtoCart.scrollTo(SwipeDirection.DOWN);
+			btnAddtoCart.scrollTo();
 		}
 		btnAddtoCart.tap();
+
+		if (quantityMessage.waitFor(4).isDisplayed()){
+			System.out.println(quantityMessageText.getText());
+			Steps.tapButton("OK");
+		}
 		btnRemove.waitFor(10);
 	}
 
@@ -63,8 +74,8 @@ public class ProductDetails extends AbstractScreen {
 		Assert.assertTrue(productImage.waitFor(15).isDisplayed(),"Product Image is not displayed");
 		Assert.assertTrue(productName.isDisplayed(),"Product name and price is not displayed");
 		Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
-		Assert.assertTrue(productSKU.isDisplayed(), "Product sku is not displayed");
-		productOverview.scrollTo();
+		Assert.assertTrue(productSKU.scrollTo().isDisplayed(), "Product sku is not displayed");
+		productOverview.scrollTo(SwipeDirection.UP);
 		Assert.assertTrue(productOverview.isDisplayed(),"Product overview is not displayed");
 	}
 

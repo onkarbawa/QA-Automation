@@ -97,6 +97,7 @@ public class MobileDevice {
 				new UIElement(By.name(newValue)).tap();
 			} catch (Exception e) {
 			}
+			MobileDevice.getScreenshot(true);
 
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
 			if (newValue.equalsIgnoreCase("ON"))

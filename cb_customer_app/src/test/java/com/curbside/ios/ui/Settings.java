@@ -17,6 +17,7 @@ public class Settings extends AbstractScreen {
 	UIElement settings = new UIElement(By.name("Settings"));
 	UIElement location = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
+	UIElement allowNotifications = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Allow Notifications" + "']");
 
 	public Settings() {
 		// TODO Auto-generated constructor stub
@@ -43,17 +44,26 @@ public class Settings extends AbstractScreen {
 		new UIElement(By.name(newValue)).tap();
 	}
 
-	@When("^I turn '(.*)' 'Background App Refresh' for '(.*)'$")
-	public void iTurnBackgroundAppRefreshFor(String ONorOFF, String appName) throws Throwable {
+	@When("^I turn '(.*)' '(.*)' for '(.*)'$")
+	public void iTurnFor(String ONorOFF, String button, String appName) throws Throwable {
+		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
 
-		UIElement.byName("Location").tap();
-		UIElement.byName("Curbside").tap();
-		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
-		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
+		String currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
 
-		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
+		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
 
-		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
-			backgroundAppRefresh.tap();
+		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
+			toggleButton.tap();
+
+//		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
+//		System.out.println("Current toggle value is " + currentBackgroundRefreshValue);
+//
+//		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
+//
+//		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
+//			backgroundAppRefresh.tap();
+		
+		MobileDevice.getScreenshot(true);
 	}
 }

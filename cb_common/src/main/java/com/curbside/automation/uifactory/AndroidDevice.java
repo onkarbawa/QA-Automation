@@ -17,6 +17,7 @@ import org.openqa.selenium.WebElement;
 
 import com.curbside.automation.devicefactory.DeviceStore;
 
+import java.io.File;
 import java.io.IOException;
 
 import static com.curbside.automation.common.BaseTest.driver;
@@ -24,6 +25,8 @@ import static com.curbside.automation.common.BaseTest.driver;
 @SuppressWarnings("rawtypes")
 public class AndroidDevice extends MobileDevice {
 
+	static String[] adbLocations= new String[]{"/usr/local/bin/adb"};
+	static String adbLocation= null;
     public AndroidDevice() {
 	}
 	
@@ -104,7 +107,23 @@ public class AndroidDevice extends MobileDevice {
     
     private static String getPMPrefix() throws Throwable
     {
-    	return "adb -s " + DeviceStore.getDeviceId() + " shell pm ";
+    	return getAdbLocation() + " -s " + DeviceStore.getDeviceId() + " shell pm ";
     }
+    
+    private static String getAdbLocation() {
+    	if(adbLocation != null)
+    		return adbLocation;
+    	else
+    	{
+    		for (String l : adbLocations) {
+				if(new File(l).exists())
+				{
+					adbLocation= l;
+					return adbLocation;
+				}
+			}
+    	}
+    	return "adb";
+	}
 }
 
