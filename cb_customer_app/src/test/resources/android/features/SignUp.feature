@@ -15,7 +15,6 @@ Feature: Android- Signup Flow
     When I tap on Create Account button
     Then I should see my given information under Account Info
 
-
   @Android @C114958
   Scenario Outline: Verify user is able to add credit card details from Account section
     Given I am not signed into application
@@ -32,7 +31,6 @@ Feature: Android- Signup Flow
     Examples:
       | card_number       | card_expiry | ccv | first_name | last_name |card_street_address | apt_suite | card_city | card_state | card_zip |
       | 4012000077777777  | 1218        | 123 | John       | miller    |1 Infinite Loop     |           | Cupertino | California |   95014  |
-
 
 
   @C114959

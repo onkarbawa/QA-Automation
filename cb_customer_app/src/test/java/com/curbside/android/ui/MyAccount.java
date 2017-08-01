@@ -22,14 +22,10 @@ public class MyAccount extends AbstractScreen {
 
 	UIElement paymentInfo = new UIElement(
 			By.xpath("//android.widget.ListView/android.widget.RelativeLayout[@index='3']"));
-	// static UIElement paymentInfoID= new
-	// UIElement(By.id("com.curbside.nCurbside:id/textview_my_account_listitem"));
 	UIElement signInButton = new UIElement(By.id("com.curbside.nCurbside:id/button_sign_in"));
-
 	UIElement viewEmailId = new UIElement(By.id("com.curbside.nCurbside:id/text_email"));
 	UIElement viewUserName = new UIElement(By.id("com.curbside.nCurbside:id/text_name"));
 	UIElement viewUserPhoneNumber = UIElement.byId("com.curbside.nCurbside:id/text_phone_number");
-
 	UIElement btnNavigateUp = UIElement.byAccessibilityId("Navigate up");
 
 	@And("^I tap on PaymentInfo button on Account page$")
