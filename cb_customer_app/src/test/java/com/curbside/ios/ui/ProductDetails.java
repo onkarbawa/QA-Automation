@@ -61,6 +61,7 @@ public class ProductDetails extends AbstractScreen {
 		if (quantityMessage.waitFor(4).isDisplayed()){
 			System.out.println(quantityMessageText.getText());
 			Steps.tapButton("OK");
+			btnAddtoCart.waitFor(5).tap();
 		}
 		btnRemove.waitFor(10);
 	}
