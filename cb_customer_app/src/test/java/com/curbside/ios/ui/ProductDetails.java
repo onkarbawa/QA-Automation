@@ -44,15 +44,17 @@ public class ProductDetails extends AbstractScreen {
 	}
 	
 	public String getProductPrice() throws Throwable {
-		String itemPrice = productLocationAndPrice.getText().split("₹")[1].substring(1);
+		int lengthOfArray = productLocationAndPrice.getText().split("\\$").length-1;
+		String itemPrice = productLocationAndPrice.getText().split("\\$")[lengthOfArray];
+		System.out.println(itemPrice);
 		return itemPrice;
 	}
 
 	@Given("^I add displayed product to cart$")
 	public void addToCart() throws Throwable {
 		if (!btnAddtoCart.isDisplayed()){
-			//btnAddtoCart.scrollTo(SwipeDirection.DOWN);
-			btnAddtoCart.scrollTo();
+			btnAddtoCart.scrollTo(SwipeDirection.DOWN);
+			//btnAddtoCart.scrollTo();
 		}
 		btnAddtoCart.tap();
 
