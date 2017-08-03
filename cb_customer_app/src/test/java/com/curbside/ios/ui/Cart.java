@@ -205,7 +205,7 @@ public class Cart extends AbstractScreen {
 
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
-		promoCodeDiscount.waitFor(10);
+		promoCodeDiscount.waitFor(15);
 		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
@@ -233,7 +233,7 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see promo code is applied and discount is given as per '(.*)'")
 	public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
-		promoCodeDiscount.waitFor(10);
+		promoCodeDiscount.waitFor(15);
 		DecimalFormat df = new DecimalFormat("#.##");
 		Double expectedDiscount = 0.00;
 		Double deliveryCharges = 0.00;
