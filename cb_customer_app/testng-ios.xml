@@ -9,11 +9,11 @@
                 <!--<class name="com.curbside.ios.runners.AppLaunchTest"/>-->
             <!--</classes>-->
     <!--</test>-->
-    <test name="iOS- Sign up">
+    <!-- <test name="iOS- Sign up">
             <classes>
                 <class name="com.curbside.ios.runners.SignUpTest"/>
             </classes>
-    </test>
+    </test> -->
     <!--<test name="iOS- Sign in">-->
             <!--<classes>-->
                 <!--<class name="com.curbside.ios.runners.LoginTest"/>-->
@@ -39,5 +39,10 @@
                 <!--<class name="com.curbside.ios.runners.DeliveryPromoTest"/>-->
             <!--</classes>-->
     <!--</test>-->
+    <test name="iOS- test up">
+        <classes>
+            <class name="com.curbside.ios.runners.test"/>
+        </classes>
+    </test>
 
 </suite>
