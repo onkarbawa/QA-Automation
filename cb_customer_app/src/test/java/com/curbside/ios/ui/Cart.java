@@ -156,7 +156,7 @@ public class Cart extends AbstractScreen {
 		Assert.assertEquals(popUpHeading.getText(),"Please turn on the following");
 		MobileDevice.getScreenshot(true);
 		settings.tap();
-		UIElement.byName("Notifications").waitFor(3).tap();
+		UIElement.byName("Notifications").waitFor(5).tap();
 	}
 
 	@Then("^I should see checkout screen$")
@@ -177,7 +177,7 @@ public class Cart extends AbstractScreen {
         double totalPrice = 0;
 		for (int k = 0; k < totalItems-3; k++) {
 			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[3]").getText();
-			Double itemPrice = Double.parseDouble(singleItemPrice.split("₹")[1].substring(1));
+			Double itemPrice = Double.parseDouble(singleItemPrice.split("\\$")[1]);
             totalPrice = totalPrice + itemPrice;
 		}
 		return totalPrice;
@@ -193,7 +193,7 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see added product total amount$")
 	public void iShouldSeeAddedProductTotalAmount() throws Throwable {
-		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
+		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Assert.assertEquals(totalPrice, calculateProductTotalItemPrice(),"Total amount of the items in the store is not same");
 	}
 
@@ -206,10 +206,10 @@ public class Cart extends AbstractScreen {
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
 		promoCodeDiscount.waitFor(10);
-		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("₹")[1].substring(1));
-		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
-		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("₹")[1].substring(1));
-		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("₹")[1].substring(1));
+		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
+		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
+		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
 		Assert.assertEquals(((totalPrice + estimateTax) - actualDiscount), estimateTotalAmount,"Discount is not applied");
 		UIElement.byName("Back").tap();
 	}
@@ -240,10 +240,10 @@ public class Cart extends AbstractScreen {
 
 		promoCodeDiscount.scrollTo(SwipeDirection.UP);
 
-		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("₹")[1].substring(1));
-		Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("₹")[1].substring(1));
-		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("₹")[1].substring(1));
-		Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("₹")[1].substring(1));
+		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+		Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
+		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
+		Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
 
 		switch (discountType.toLowerCase()){
 			case "unlimited":
@@ -270,7 +270,7 @@ public class Cart extends AbstractScreen {
 		}
 
 		if(deliveryCharge.isDisplayed()) {
-			deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("₹")[1].substring(1));
+			deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
 		}
 
 		Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + deliveryCharges) - expectedDiscount;
