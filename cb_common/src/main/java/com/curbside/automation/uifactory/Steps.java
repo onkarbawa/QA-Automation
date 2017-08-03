@@ -244,7 +244,7 @@ public class Steps {
 
 		if (!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
 			backgroundAppRefresh.tap();
-
+		MobileDevice.getScreenshot(true);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -291,7 +291,9 @@ public class Steps {
 
 			UIElement.byName("Notifications").tap();
 			button = button2;
+			MobileDevice.getScreenshot(true);
 		}
+		MobileDevice.getScreenshot(true);
 
 //		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
 //		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
