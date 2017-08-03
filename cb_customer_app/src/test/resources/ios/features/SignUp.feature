@@ -2,8 +2,8 @@
 Feature: iOS- Signup Flow
 
   Scenario: Setting test environment
-    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
-    And I launch Curbside application
+#    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
+    And I launch Curbside application for the first time
     And I have selected test environment
     
   @iOS @C114954
