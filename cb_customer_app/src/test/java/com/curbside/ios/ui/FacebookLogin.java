@@ -51,7 +51,7 @@ public class FacebookLogin extends AbstractScreen {
 
 		if(!btnInBrowserContinueAs.isDisplayed())
 		{
-			btnLoginUsingEmail.tap();
+		//	btnLoginUsingEmail.tap();
 			txtInBrowserUsername.clearText();
 			txtInBrowserUsername.sendKeys(emailId,false);
 			txtInBrowserPassword.sendKeys(password,false);

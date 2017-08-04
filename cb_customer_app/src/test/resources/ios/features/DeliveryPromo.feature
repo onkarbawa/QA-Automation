@@ -39,42 +39,42 @@ Feature: iOS - Delivery Promo code
     Examples:
       |Promo Code       |Discount Type|
       |REPEAT_PERCENT_S |   Percent   |
-
-  @iOS @C114949
-  Scenario Outline: verify Repeat Promo codes
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code       |Discount Type|
-      |REPEAT_S         | Unlimited   |
-
-  @iOS @C114949
-  Scenario Outline: verify Repeat Promo codes
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code       |Discount Type|
-      |REPEAT_CVS_S     | Unlimited   |
-
-  @iOS @C114949
-  Scenario Outline: verify Repeat Promo codes
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code         |Discount Type|
-      |REPEAT_NTIMES_S     | Unlimited   |
-
-  @iOS @C114949
-  Scenario Outline: verify Repeat Promo codes
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code              |Discount Type|
-      |REPEAT_CURBFRONT_S     | Unlimited   |
+#
+#  @iOS @C114949
+#  Scenario Outline: verify Repeat Promo codes
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code       |Discount Type|
+#      |REPEAT_S         | Unlimited   |
+#
+#  @iOS @C114949
+#  Scenario Outline: verify Repeat Promo codes
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code       |Discount Type|
+#      |REPEAT_CVS_S     | Unlimited   |
+#
+#  @iOS @C114949
+#  Scenario Outline: verify Repeat Promo codes
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code         |Discount Type|
+#      |REPEAT_NTIMES_S     | Unlimited   |
+#
+#  @iOS @C114949
+#  Scenario Outline: verify Repeat Promo codes
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code              |Discount Type|
+#      |REPEAT_CURBFRONT_S     | Unlimited   |
 
 
 #    And I Sign-in with 'iospromocode@exam.com' and 'promocode'

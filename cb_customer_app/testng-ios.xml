@@ -39,5 +39,10 @@
                 <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
             </classes>
     </test>
+    <test name="iOS- Applaunch1">
+        <classes>
+            <class name="com.curbside.ios.runners.AppLaunchTest1"/>
+        </classes>
+    </test>
 
 </suite>
