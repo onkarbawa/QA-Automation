@@ -68,7 +68,8 @@ public class CreditCard extends AbstractScreen {
 	@And("^I added credit card information$")
 	public void iAddedCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(10).tap();
-		paymentInfoScreen.iTapOnAddANewCard();
+		//paymentInfoScreen.iTapOnAddANewCard();
+		Steps.tapButton("Add New Card");
 		firstName.sendKeys("Test",false);
 		lastName.sendKeys("Data",false);
 		cardNumber.sendKeys("6011111111111117",false);

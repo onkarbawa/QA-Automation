@@ -3,7 +3,8 @@ Feature: iOS- Application Launch 1
 
   @iOS @C114996
   Scenario: Verify Disable location services functionality
-    Given 'Location' preference is set as 'Never' for 'Curbside' app
+    Given I am not signed into application
+    And 'Location' preference is set as 'Never' for 'Curbside' app
     When I launch Curbside application
     Then I should see Location Services Disabled screen
     When I tap on 'Settings' button
