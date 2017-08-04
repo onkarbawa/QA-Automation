@@ -5,14 +5,14 @@ Feature: iOS- Login Feature
     Given I launch Curbside application
     And I have selected test environment
 
-  @iOS @C114957
-  Scenario: Verify New user should login in curbside app
-    Given I am not signed into application
-    And I tap on 'My Account' button
-    And I tap on 'Sign In' button
-    And I tap on 'Create An Account' button
-    And I signup for a new account
-    Then I should see my signup information under My Account
+#  @iOS @C114957
+#  Scenario: Verify New user should login in curbside app
+#    Given I am not signed into application
+#    And I tap on 'My Account' button
+#    And I tap on 'Sign In' button
+#    And I tap on 'Create An Account' button
+#    And I signup for a new account
+#    Then I should see my signup information under My Account
 
   @iOS @C114956
   Scenario Outline: Verify Old user should login in curbside app
