@@ -14,35 +14,35 @@
                 <class name="com.curbside.ios.runners.SignUpTest"/>
             </classes>
     </test>
-    <!--<test name="iOS- Sign in">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.LoginTest"/>-->
-            <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- Store Selection">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.StoreSelection"/>-->
-            <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- Product Catelog">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.ProductCatalog"/>-->
-            <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- CartBuilding And Checkout">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>-->
-            <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- Delivery Promo code">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.DeliveryPromoTest"/>-->
-            <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- test up">-->
-        <!--<classes>-->
-            <!--<class name="com.curbside.ios.runners.test"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="iOS- Sign in">
+            <classes>
+                <class name="com.curbside.ios.runners.LoginTest"/>
+            </classes>
+    </test>
+    <test name="iOS- Store Selection">
+            <classes>
+                <class name="com.curbside.ios.runners.StoreSelection"/>
+            </classes>
+    </test>
+    <test name="iOS- Product Catelog">
+            <classes>
+                <class name="com.curbside.ios.runners.ProductCatalog"/>
+            </classes>
+    </test>
+    <test name="iOS- CartBuilding And Checkout">
+            <classes>
+                <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
+            </classes>
+    </test>
+    <test name="iOS- Delivery Promo code">
+            <classes>
+                <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
+            </classes>
+    </test>
+    <test name="iOS- Applaunch1">
+        <classes>
+            <class name="com.curbside.ios.runners.AppLaunchTest1"/>
+        </classes>
+    </test>
 
 </suite>

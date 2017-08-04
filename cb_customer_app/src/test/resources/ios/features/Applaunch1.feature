@@ -1,10 +1,20 @@
-@test
-Feature: iOS- Application Launch
+@appLaunch1
+Feature: iOS- Application Launch 1
+
+  @iOS @C114996
+  Scenario: Verify Disable location services functionality
+    Given 'Location' preference is set as 'Never' for 'Curbside' app
+    When I launch Curbside application
+    Then I should see Location Services Disabled screen
+    When I tap on 'Settings' button
+    And I set 'Location' permission as 'Always'
+    And I tap on 'Return to Curbside' button
+    Then I should see 'Nearby stores' landing page
 
   @iOS @C114997
   Scenario Outline: Verify Disable background application refresh functionality
     Given I turn 'OFF' Background App Refresh for 'Curbside' app
-    And I launch Curbside application for the first time
+    And I launch Curbside application
     And I have selected test environment
     And I am on 'Palo Alto' location 'Stores' Screen
     And I am not signed into application
@@ -26,12 +36,3 @@ Feature: iOS- Application Launch
     Examples:
       |             Email                  |     Password    |
       |      applaunch@exam.com            |     applaunch    |
-
-  @iOS @C114954
-  Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
-    Given I am not signed into application
-    And I tap on 'My Account' icon in bottom menu
-    And I tap on 'Create one now' button
-    And I tap on 'Create An Account' button
-    And I signup for a new account
-    Then I should see my signup information under Account Info
