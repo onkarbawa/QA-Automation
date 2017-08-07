@@ -219,7 +219,12 @@ public class Cart extends AbstractScreen {
 
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
-		UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+
+		if (UIElement.byName(code).isDisplayed())
+			UIElement.byName(code).tap();
+		else
+			UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+
 		//UIElement.byName(code).scrollTo().tap();
     }
 
@@ -236,7 +241,7 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see delivery promo code is applied and discount is given as per '(.*)'")
 	public void iShouldSeeDeliveryPromoCodeIsApplied(String discountType) throws Throwable {
-		itemsTotalPrice.waitFor(20);
+		itemsTotalPrice.waitFor(25);
 		DecimalFormat df = new DecimalFormat("#.##");
 		Double expectedDiscount = 0.00;
 		Double deliveryCharges = 0.00;
@@ -289,7 +294,7 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see repeat promo code is applied and discount is given as per '(.*)'")
 	public void iShouldSeeRepeatPromoCodeIsApplied(String discountType) throws Throwable {
-		itemsTotalPrice.waitFor(15);
+		itemsTotalPrice.waitFor(25);
 		DecimalFormat df = new DecimalFormat("#.##");
 		Double expectedDiscount = 0.00;
 		Double deliveryCharges = 0.00;

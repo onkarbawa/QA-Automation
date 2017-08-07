@@ -11,7 +11,6 @@ Feature: iOS - Delivery Promo code
     Given I am not signed into application
     And I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
     And My cart is empty
-#    And I added credit card information
     And I select 'CVS, at 855 El Camino Real' retailer and search for 'Cvs Indoor/Outdoor'
     And I select 'Cvs Allergy Relief 24 Hour Indoor/outdoor' product from list
     And I add 2 quantity of the product
