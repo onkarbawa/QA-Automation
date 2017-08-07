@@ -219,8 +219,8 @@ public class Cart extends AbstractScreen {
 
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
-		//UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
-		UIElement.byName(code).scrollTo().tap();
+		UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+		//UIElement.byName(code).scrollTo().tap();
     }
 
 	@Then("^I should see '(.*)' dollar in the cart$")
