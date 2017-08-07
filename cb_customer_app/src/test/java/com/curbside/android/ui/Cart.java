@@ -214,16 +214,22 @@ public class Cart extends AbstractScreen {
     public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
         DecimalFormat df = new DecimalFormat("#.##");
         Double expectedDiscount = 0.00;
-        Double deliveryCharges = 0.00;
+        Double actualDeliveryCharges;
+        if(Properties.getVariable("Delivery Charges") != null)
+            actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+        else
+            actualDeliveryCharges = 0.00;
 
-        if (!promoCodeDiscount.isDisplayed()) {
-            promoCodeDiscount.scrollTo(SwipeDirection.UP);
-        }
+        addPromoCodeLink.scrollTo(SwipeDirection.UP);
 
         Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
         Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
         Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
-        Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+        Double actualDiscount = 0.00;
+        if(promoCodeDiscount.isDisplayed())
+            actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
+        Double latestDeliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
+        Double expectedDeliveryCharges =0.00;
 
         switch (discountType.toLowerCase()){
             case "unlimited":
@@ -232,30 +238,42 @@ public class Cart extends AbstractScreen {
                         "UNLIMITED promo code is not having $10 discount");
                 break;
 
-            case "dollar":
+            case "dollar-delivery":
+                expectedDiscount =  4.74;
+                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
+                        "NF_DOLLAR_DS promo code is not applied to the delivery charges");
+
                 break;
 
-            case "percent":
-                expectedDiscount = Double.valueOf(df.format(totalItemPrice * 0.20)) ;
-                Assert.assertEquals(expectedDiscount, actualDiscount,
-                        "Percent promo code is not having exact discount");
+            case "percent-delivery":
+                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.0541)) ;
+                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
+                        "NF_PERCENT_DS promo code is not applied to the delivery charges");
                 break;
 
-            case "free":
+            case "free-delivery":
+                expectedDiscount = actualDeliveryCharges;
+                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
+                        "NF_FREE_DS promo code is not applied to the delivery charges");
+
                 break;
 
-            case "fixed":
+            case "fixed-delivery":
+                expectedDiscount =  4.98;
+                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
+                        "NF_FIXED_DS promo code is not applied to the delivery charges");
+
                 break;
 
             default: Assert.fail(discountType.toUpperCase() + " not a discount type");
             break;
         }
 
-        if(deliveryCharge.isDisplayed()) {
-            deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
-        }
-
-        Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + deliveryCharges) - expectedDiscount;
+        Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + actualDeliveryCharges) - expectedDiscount;
         expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
         Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
     }
@@ -265,5 +283,12 @@ public class Cart extends AbstractScreen {
     public void thePriceOfTheProductShouldBeSame(String price) throws Throwable {
         Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), price,
                 "product price is not same");
+    }
+
+    @And("^I store the value of '(.*)'$")
+    public void iStoreTheValueOf(String value) throws Throwable {
+        addPromoCodeLink.scrollTo(SwipeDirection.UP);
+        if(deliveryCharge.isDisplayed())
+            Properties.setVariable(value, deliveryCharge.getText());
     }
 }
