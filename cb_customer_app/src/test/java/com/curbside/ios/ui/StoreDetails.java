@@ -18,7 +18,7 @@ public class StoreDetails {
 
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
-        footerTabsScreen.tapShop();
+        footerTabsScreen.btnShop.tap();
         UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);

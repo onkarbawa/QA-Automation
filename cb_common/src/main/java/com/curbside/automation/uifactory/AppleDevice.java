@@ -20,6 +20,7 @@ public class AppleDevice extends MobileDevice {
 	static UIElement resetSetting= UIElement.byAccessibilityId("Reset Settings");
 	static UIElement back= UIElement.byAccessibilityId("Back");
 	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
+	static UIElement settingTitle = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Settings']");
 	
 	public AppleDevice() {
 	}
@@ -51,6 +52,15 @@ public class AppleDevice extends MobileDevice {
 		}
 		settingReset.scrollTo(SwipeDirection.UP).tap();
 		*/
+		if (!settingTitle.isDisplayed()){
+			for (int i = 0;i < 7; i++){
+				if (UIElement.byName("Back").isDisplayed()){
+					UIElement.byName("Back").tap();
+				}else {
+					break;
+				}
+			}
+		}
 		settingGeneral.scrollTo().tap();;
 		settingReset.scrollTo().tap();
 		settingResetLocalAndPrivacy.tap();
