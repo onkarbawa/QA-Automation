@@ -133,16 +133,16 @@ public class Steps {
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name("Allow")).tap();
-		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
-			// UIElement e = UIElement.byUISelector("new
-			// UiSelector().text(\"Allow\")").waitFor(10);
-			UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
-			for (int i = 0; i < 10; i++) {
-				if (!e.isDisplayed())
-					break;
-				e.touch();
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
+			// UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
+			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
+				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
+				for (int i = 0; i < 10; i++) {
+					if (!e.isDisplayed())
+						break;
+					e.touch();
+				}
 			}
-
 		} else
 			throw new NotImplementedException(
 					"Method acceptLocationAlert is not implemented for platform: " + DeviceStore.getPlatform());
@@ -209,9 +209,11 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			new UIElement(By.name(buttonName)).tap();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-			UIElement okButton = UIElement.byXpath("//*[@text='" + buttonName + "']");
-			okButton.waitFor(3);
-			okButton.tap();
+		    if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
+                UIElement okButton = UIElement.byXpath("//*[@text='" + buttonName + "']");
+                okButton.waitFor(3);
+                okButton.tap();
+            }
 		}
 	}
 
