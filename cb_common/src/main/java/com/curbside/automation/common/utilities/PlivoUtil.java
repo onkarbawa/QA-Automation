@@ -99,5 +99,29 @@ public class PlivoUtil {
 
         return count;
     }
+    public static String getInboundMessageTimeStamp(String phoneNumber) {
+        String latestSms = null;
+        List<String> smsList = new ArrayList<String>();
+        RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
+        try {
+            LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+            parameters.put("limit", "1");
+            parameters.put("offset", "0");
+            parameters.put("message_state", "received");
+            parameters.put("message_direction", "inbound");
 
+            // Setting filter
+            MessageFactory msgFactory = api.getMessages(parameters);
+            for (Message msg : msgFactory.messageList) {
+            if(msg.toNumber.equalsIgnoreCase(phoneNumber)){
+                latestSms=    msgFactory.messageList.get(0).messageTime;
+                //smsList.add(msg.messageTime);
+            }
+
+        }} catch (PlivoException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+        return latestSms;
+    }
 }
