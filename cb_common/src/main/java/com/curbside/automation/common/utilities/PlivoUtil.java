@@ -5,7 +5,6 @@ import com.plivo.helper.api.response.message.Message;
 import com.plivo.helper.api.response.message.MessageFactory;
 import com.plivo.helper.exception.PlivoException;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PlivoUtil {
@@ -78,17 +77,9 @@ public class PlivoUtil {
         return latestSms;
     }
 
-    public static int getInboundMsgCount(String phoneNumber){
+    public static int getInboundMsgCount(String phoneNumber, String GMTDate, boolean upperLimit){
         int count = 0 ;
         RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
-
-        final Calendar cal = Calendar.getInstance();
-        final Date currentTime = cal.getTime();
-//        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        String GMTDate = sdf.format(currentTime);
-        System.out.println("GMT time: " + GMTDate);
 
         try {
             LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
@@ -97,6 +88,9 @@ public class PlivoUtil {
             parameters.put("message_state", "received");
             parameters.put("message_direction", "inbound");
             parameters.put("message_time__gte", GMTDate);
+            if(upperLimit)
+                parameters.put("message_time__lte", GMTDate);
+
             // Get count off all the messages according to phone number
             MessageFactory msgFactory = api.getMessages(parameters);
 
