@@ -39,5 +39,10 @@
             <class name="com.curbside.android.runners.DeliveryPromoTest"/>
         </classes>
     </test>
+    <test name="Sms Verification">
+        <classes>
+            <class name="com.curbside.android.runners.SmsVerificationTest"/>
+        </classes>
+    </test>
 
 </suite>
