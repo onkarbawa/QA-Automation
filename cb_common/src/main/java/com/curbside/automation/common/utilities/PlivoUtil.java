@@ -79,5 +79,25 @@ public class PlivoUtil {
         return latestSms;
     }
 
+    public static int getInboundMsgCount(String phoneNumber){
+        int count = 0 ;
+        RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
+
+        try {
+            // Get count off all the messages according to phone number
+            MessageFactory msgFactory = api.getMessages();
+
+            for (Message msg : msgFactory.messageList) {
+
+                if(msg.toNumber.equalsIgnoreCase(phoneNumber)){
+                    ++count;
+                }
+            }
+        } catch (PlivoException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+        return count;
+    }
 
 }
