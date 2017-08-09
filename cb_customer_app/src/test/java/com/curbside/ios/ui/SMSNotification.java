@@ -20,7 +20,7 @@ public class SMSNotification extends AbstractScreen {
         // Argument1: authId and Argument2: authToken
         List<String> allSms = plivoUtil.getAllMessage("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3");
         for(String sms : allSms){
-            System.out.println(sms);
+          //  System.out.println(sms);
         }
     }
 }
