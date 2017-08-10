@@ -18,6 +18,6 @@ public class Helpers {
   
   public static String getRandomEmailId()
   {
-	  return RandomStringUtils.randomAlphabetic(4).toLowerCase() + "_" + RandomStringUtils.randomNumeric(7) + "@mailinator.com";
+	  return RandomStringUtils.randomAlphabetic(4).toLowerCase() + "_" + RandomStringUtils.randomNumeric(7) + "@exm.com";
   }
 }
