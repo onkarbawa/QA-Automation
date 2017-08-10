@@ -15,6 +15,7 @@ public class AbstractScreen {
   static MyAccount accountScreen;
   static StoreDetails storeDetailsScreen;
   static ProductDetails productDetailsScreen;
+  static PaymentInfo paymentInfo;
 
   static {
 	homeScreen = new Home();
@@ -26,5 +27,6 @@ public class AbstractScreen {
     accountScreen = new MyAccount();
     storeDetailsScreen = new StoreDetails();
     productDetailsScreen = new ProductDetails();
+    paymentInfo = new PaymentInfo();
   }
 }

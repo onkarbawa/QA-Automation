@@ -1,8 +1,11 @@
 package com.curbside.automation.common.utilities;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.plivo.helper.api.client.RestAPI;
 import com.plivo.helper.api.response.message.Message;
 import com.plivo.helper.api.response.message.MessageFactory;
+import com.plivo.helper.api.response.message.MessageMeta;
 import com.plivo.helper.exception.PlivoException;
 
 import java.util.*;
@@ -105,6 +108,62 @@ public class PlivoUtil {
         }
 
         return count;
+    }
+
+    public static int getInboundMsgCount(String phoneNumber, String GMTDate){
+        int total_count = 0 ;
+        RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
+
+        try {
+            LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+            parameters.put("limit", "20");
+            parameters.put("offset", "0");
+            parameters.put("message_state", "received");
+            parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", GMTDate);
+
+            // Get count off all the messages according to phone number
+            MessageFactory msgFactory = api.getMessages(parameters);
+            String response = api.request("GET", "/Message/", parameters);
+            JsonObject convertedObject = new Gson().fromJson(response, JsonObject.class);
+            total_count = Integer.parseInt(convertedObject.get("meta")
+                    .getAsJsonObject()
+                    .get("total_count"
+                    ).toString());
+
+        } catch (PlivoException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+        return total_count;
+    }
+
+    public static int isSmsReceived(String phoneNumber, String GMTDate){
+        int total_count = 0 ;
+        RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
+
+        try {
+            LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+            parameters.put("limit", "20");
+            parameters.put("offset", "0");
+            parameters.put("message_state", "received");
+            parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", GMTDate);
+
+            // Get count off all the messages according to phone number
+            MessageFactory msgFactory = api.getMessages(parameters);
+            String response = api.request("GET", "/Message/", parameters);
+            JsonObject convertedObject = new Gson().fromJson(response, JsonObject.class);
+            total_count = Integer.parseInt(convertedObject.get("meta")
+                    .getAsJsonObject()
+                    .get("total_count"
+                    ).toString());
+
+        } catch (PlivoException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+        return total_count;
     }
 
 }
