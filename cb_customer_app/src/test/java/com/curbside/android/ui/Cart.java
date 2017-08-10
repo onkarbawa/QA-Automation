@@ -295,12 +295,12 @@ public class Cart extends AbstractScreen {
     @And("^I tap on Place order button$")
     public void iTapOnPlaceOrderButton() throws Throwable {
         try{
-            btnPlaceOrderUISelector.tap();
-//         btnPlaceOrder.waitFor(2).tap();
-        }catch (Exception e){
+         btnPlaceOrder.waitFor(2).tap();
+        }catch (Exception e){}
 
+        try{
             btnPlaceOrderUISelector.tap();
-        }
+        }catch (Exception e){}
     }
 
     @Then("^I should see the successful placed order notification on the screen$")
