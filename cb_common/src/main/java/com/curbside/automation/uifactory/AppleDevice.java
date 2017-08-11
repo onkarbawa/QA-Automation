@@ -17,8 +17,10 @@ public class AppleDevice extends MobileDevice {
 	static UIElement settingGeneral= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'General'");
 	static UIElement settingReset= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'Reset'");
 	static UIElement settingResetLocalAndPrivacy= UIElement.byPredicate("type ='XCUIElementTypeCell' AND label == 'Reset Location & Privacy'");
-	static UIElement resetSetting= UIElement.byAccessibilityId("Reset Settings");
-	static UIElement back= UIElement.byAccessibilityId("Back");
+	//static UIElement resetSetting= UIElement.byAccessibilityId("Reset Settings");
+	static UIElement resetSetting= UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Reset Settings') or contains(@name,'Reset Warnings')]");
+	//static UIElement back= UIElement.byAccessibilityId("Back");
+	static UIElement back= UIElement.byName("Back");
 	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
 	static UIElement settingTitle = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Settings']");
 	
@@ -73,6 +75,6 @@ public class AppleDevice extends MobileDevice {
 		}
 		
 		resetSetting.tap();
-		back.tap();
+		back.waitFor(3).tap();
 	}
 }

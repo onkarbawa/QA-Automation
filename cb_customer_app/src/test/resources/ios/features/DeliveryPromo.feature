@@ -4,15 +4,15 @@ Feature: iOS - Delivery Promo code
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
+    And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114991
   Scenario Outline: Verify Delivery Promo - $
-    Given I am not signed into application
-    And I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
+    Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
     And My cart is empty
-    And I select 'CVS, at 855 El Camino Real' retailer and search for 'Cvs Indoor/Outdoor'
-    And I select 'Cvs Allergy Relief 24 Hour Indoor/outdoor' product from list
+    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
+    And I select 'Food Item' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
@@ -60,4 +60,4 @@ Feature: iOS - Delivery Promo code
     Then I should see repeat promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code       |Discount Type|
-      |REPEAT_PERCENT_S |   Percent   |
+      |UNLIMITED |   Unlimited   |

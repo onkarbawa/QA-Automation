@@ -30,7 +30,7 @@ public class SignUp extends AbstractScreen {
 	public void iSignupForANewAccount() throws Throwable {
 		String emailId = Helpers.getRandomEmailId();
 		String password = "fusic@123";
-		String phoneNumberText = "14089089085";
+		String phoneNumberText = "12815020029";
 
 		Properties.setVariable("signupEmail", emailId);
 		Properties.setVariable("signupPassword", password);
