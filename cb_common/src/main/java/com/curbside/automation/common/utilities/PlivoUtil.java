@@ -8,6 +8,7 @@ import com.plivo.helper.api.response.message.MessageFactory;
 import com.plivo.helper.api.response.message.MessageMeta;
 import com.plivo.helper.exception.PlivoException;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class PlivoUtil {
@@ -89,6 +90,7 @@ public class PlivoUtil {
             parameters.put("offset", "0");
             parameters.put("message_state", "received");
             parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", getDateAndTime());
 
             // Setting filter
             MessageFactory msgFactory = api.getMessages(parameters);
@@ -112,6 +114,7 @@ public class PlivoUtil {
             parameters.put("offset", "0");
             parameters.put("message_state", "received");
             parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", getDateAndTime());
 
             String response = api.request("GET", "/Message/", parameters);
             JsonObject convertedObject = new Gson().fromJson(response, JsonObject.class);
@@ -143,6 +146,16 @@ public class PlivoUtil {
 
 
         return status;
+    }
+
+    public static String getDateAndTime(){
+        String DateAndTime;
+        Calendar cal = Calendar.getInstance();
+        Date currentTime = cal.getTime();
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DateAndTime =  sdf.format(currentTime);
+
+        return DateAndTime;
     }
 
 }
