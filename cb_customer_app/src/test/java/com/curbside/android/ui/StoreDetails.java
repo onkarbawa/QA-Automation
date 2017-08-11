@@ -40,8 +40,8 @@ public class StoreDetails extends AbstractScreen {
     }
 
     @And("I select (\\d+) product from list")
-    public void selectNthProduct(int index) throws Throwable {
-        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+index+"\']")
+    public void selectNthProduct(int nthProduct) throws Throwable {
+        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/itemCard' and @index= \'"+nthProduct+"\']")
                 .waitFor(8)
                 .tap();
     }
@@ -68,52 +68,31 @@ public class StoreDetails extends AbstractScreen {
     }
 
     @And("^I (?:select|am at) '(.*)' store and search for '(.*)' product$")
-    public void iSearchForProductFromStoreOrHomeScreen(String storeName , String productName) throws Throwable {
-        if(!storeName.equalsIgnoreCase("No")){
-            int storeIndex =0;
-            switch (storeName.toLowerCase()){
-                case "cvs" :
-                    storeIndex = 0;
-                    break;
-                case "pizza hut" :
-                    storeIndex = 1;
-                    break;
-                case "westfield valley fair" :
-                    storeIndex = 3;
-                    break;
-                case "sephora" :
-                    storeIndex = 4;
-                    break;
-                default: Assert.fail(" This store is not added in the code");
+    public void iSearchForProductFromStoreOrHomeScreen(String storeName, String productName) throws Throwable {
 
-            }
+        int storeIndex = 0;
+        switch (storeName.toLowerCase()) {
+            case "cvs":
+                storeIndex = 0;
+                break;
+            case "pizza hut":
+                storeIndex = 1;
+                break;
+            case "westfield valley fair":
+                storeIndex = 3;
+                break;
+            case "sephora":
+                storeIndex = 4;
+                break;
+            default:
+                Assert.fail(" This store is not added in the code");
 
-            if(titleStoreLocationAfterSearch.waitFor(3).isDisplayed()){
-                String[] presentStore = titleStoreLocationAfterSearch.getText().toLowerCase().split("\\s+");
-                if(!Arrays.asList(presentStore).contains(storeName.toLowerCase())){
-                    System.out.println("StoreTitleIsNotSame");
-                    footerTabsScreen.tapShop();
-                    footerTabsScreen.tapShop();
-                    UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
-                            "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
-                            .waitFor(10)
-                            .tap();
-                }
-
-            }else {
-                footerTabsScreen.tapShop();
-                footerTabsScreen.tapShop();
-                UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
-                        "/android.widget.RelativeLayout[@index=\'"+storeIndex+"\']")
-                        .waitFor(10)
-                        .tap();
-            }
-
-            btnSearch.waitFor(5).tap();
-        }else if(storeName.equalsIgnoreCase("No")){
-            footerTabsScreen.tapMyAccount();
-            homeScreen.searchIcon.tap();
         }
+        footerTabsScreen.tapShop();
+        UIElement.byXpath("//*[@resource-id='com.curbside.nCurbside:id/grid_view']" +
+                "/android.widget.RelativeLayout[@index=\'" + storeIndex + "\']")
+                .waitFor(3).tap();
+        btnSearch.waitFor(2).tap();
         homeScreen.searchBox.sendKeys(productName, false);
         AndroidDevice.pressEnter();
     }
