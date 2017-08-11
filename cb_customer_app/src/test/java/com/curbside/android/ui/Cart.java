@@ -150,7 +150,7 @@ public class Cart extends AbstractScreen {
 
     @Then("^I verify the total amount in the cart$")
     public void iShouldSee$AsTotalAmount() throws Throwable {
-        itemsTotalPrice.swipeUpSlow();
+        itemsTotalPrice.scrollTo(SwipeDirection.UP);
         double calculatedPrice = Double.parseDouble(productDetailsScreen.addedProductDetails.get().get("totalAmount"));
         DecimalFormat df = new DecimalFormat("#.##");
         calculatedPrice = Double.valueOf(df.format(calculatedPrice));
@@ -215,22 +215,21 @@ public class Cart extends AbstractScreen {
     public void iShouldSeePromoCodeIsApplied(String discountType) throws Throwable {
         DecimalFormat df = new DecimalFormat("#.##");
         Double expectedDiscount = 0.00;
-        Double actualDeliveryCharges;
-        if(Properties.getVariable("Delivery Charges") != null) {
+        Double actualDeliveryCharges = 0.00;
+        Double latestDeliveryCharges = 0.00;
+        Double actualDiscount = 0.00;
+        if(Properties.getVariable("Delivery Charges") != null)
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
-        }
-        else
-            actualDeliveryCharges = 0.00;
 
         addPromoCodeLink.scrollTo(SwipeDirection.UP);
-
         Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
         Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
         Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
-        Double actualDiscount = 0.00;
+
         if(promoCodeDiscount.isDisplayed())
             actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
-        Double latestDeliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
+        if(deliveryCharge.isDisplayed())
+            latestDeliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
         Double expectedDeliveryCharges =0.00;
 
         switch (discountType.toLowerCase()){
@@ -283,7 +282,7 @@ public class Cart extends AbstractScreen {
     @Then("^The '(.*)' of the product should be same$")
     public void thePriceOfTheProductShouldBeSame(String price) throws Throwable {
         Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), price,
-                "product price is not same");
+                "product price is different now, It might be on sale or Product is not available therefore this test case fails");
     }
 
     @And("^I store the value of '(.*)'$")

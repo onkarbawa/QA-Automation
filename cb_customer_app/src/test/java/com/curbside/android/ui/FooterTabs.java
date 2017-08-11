@@ -32,7 +32,7 @@ public class FooterTabs extends AbstractScreen {
 
     @And("^I tap Shop on footer$")
     public void tapShop() throws Throwable {
-        btnShop.waitFor(5).tap();
+        btnShop.waitFor(2).tap();
         if(!homeScreen.shopNearLabel.isDisplayed()){
             btnShop.tap();
         }
