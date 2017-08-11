@@ -13,7 +13,7 @@ Feature: Android- Cart Building
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
     And I add 2 quantity of the product
-    And I am at 'CVS' store and search for 'Claritin 24hr 30oct' product
+    And I am at 'CVS' store and search for 'Rhinocort Allergy spray, 120 Spray' product
     And I select 1 product from list
     And I add 1 quantity of the product
     When I tap on 'Cart' button
@@ -28,7 +28,7 @@ Feature: Android- Cart Building
     Then The '<price>' of the product should be same
     Examples:
       | price |
-      | 25.79 |
+      | 24.79 |
 
   @Android @C114990
   Scenario Outline: Verify math and calculations are correct as per Promo Code
@@ -38,8 +38,5 @@ Feature: Android- Cart Building
     Examples:
       |Promo Code   |Discount Type|
       |UNLIMITED    |Unlimited    |
-      #|NF_DOLLAR_DS |Dollar      |
-      #|NF_PERCENT_DS|Percent     |
-      #|NF_FREE_DS   |Free        |
-      #|NF_FIXED_DS  |Fixed       |
+
 
