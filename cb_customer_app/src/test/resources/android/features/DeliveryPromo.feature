@@ -13,7 +13,7 @@ Feature: Android - Delivery Promo code
     And I tap on 'Cart' button
     And I remove and add the product again to the cart
     And I tap on 'Curbside Pickup' button
-    And I tap on 'Delivery with UBER ' button
+    And I tap on Delivery with UBER button
     And I select the delivery address as, street:"Palo Alto Square", city:"Palo Alto",state:"CA"
     And I tap on back button
     And I store the value of 'Delivery Charges'
