@@ -218,8 +218,6 @@ public class Cart extends AbstractScreen {
         Double actualDeliveryCharges;
         if(Properties.getVariable("Delivery Charges") != null) {
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
-            System.out.println("deliveryCharges--"+actualDeliveryCharges);
-
         }
         else
             actualDeliveryCharges = 0.00;
@@ -276,9 +274,7 @@ public class Cart extends AbstractScreen {
             default: Assert.fail(discountType.toUpperCase() + " not a discount type");
             break;
         }
-        System.out.println("toaItPR= "+totalItemPrice +" esiTax = "+estimatedTaxPrice+ " actualDeli = "+ actualDeliveryCharges+" expecDisount= "+expectedDiscount);
         Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + actualDeliveryCharges) - expectedDiscount;
-        System.out.println("expected Est tot = "+expectedEstimatedTotal);
         expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
         Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
     }
