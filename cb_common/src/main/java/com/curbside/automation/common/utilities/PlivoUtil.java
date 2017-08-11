@@ -1,13 +1,15 @@
 package com.curbside.automation.common.utilities;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.plivo.helper.api.client.RestAPI;
 import com.plivo.helper.api.response.message.Message;
 import com.plivo.helper.api.response.message.MessageFactory;
+import com.plivo.helper.api.response.message.MessageMeta;
 import com.plivo.helper.exception.PlivoException;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class PlivoUtil {
 
@@ -79,25 +81,81 @@ public class PlivoUtil {
         return latestSms;
     }
 
-    public static int getInboundMsgCount(String phoneNumber){
-        int count = 0 ;
-        RestAPI api = new RestAPI("MAMZQ1YWQWZDGYY2E5YT", "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "v1");
-
+    public static String getLatestMsgToNumber(String authId, String authToken) {
+        String msgToNumber = null;
+        RestAPI api = new RestAPI(authId, authToken, "v1");
         try {
-            // Get count off all the messages according to phone number
-            MessageFactory msgFactory = api.getMessages();
+            LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+            parameters.put("limit", "1");
+            parameters.put("offset", "0");
+            parameters.put("message_state", "received");
+            parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", getDateAndTime());
 
-            for (Message msg : msgFactory.messageList) {
+            // Setting filter
+            MessageFactory msgFactory = api.getMessages(parameters);
+            msgToNumber = msgFactory.messageList.get(0).toNumber;
 
-                if(msg.toNumber.equalsIgnoreCase(phoneNumber)){
-                    ++count;
-                }
-            }
         } catch (PlivoException e) {
             System.out.println(e.getLocalizedMessage());
         }
 
-        return count;
+        return msgToNumber;
+    }
+
+
+    public static int getInboundMsgCount(String authId, String authToken){
+        int total_count = 0 ;
+        RestAPI api = new RestAPI(authId, authToken, "v1");
+
+        try {
+            LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+            parameters.put("limit", "20");
+            parameters.put("offset", "0");
+            parameters.put("message_state", "received");
+            parameters.put("message_direction", "inbound");
+            parameters.put("message_time__gte", getDateAndTime());
+
+            String response = api.request("GET", "/Message/", parameters);
+            JsonObject convertedObject = new Gson().fromJson(response, JsonObject.class);
+            total_count = Integer.parseInt(convertedObject.get("meta")
+                    .getAsJsonObject()
+                    .get("total_count"
+                    ).toString());
+
+        } catch (PlivoException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+
+        return total_count;
+    }
+
+    public static boolean isSmsReceived(String authId, String authToken, String expectedPhoneNumber, int previousMsgCount){
+        int total_count;
+        String actualToNumber;
+        boolean status;
+
+        total_count = getInboundMsgCount(authId, authToken);
+        actualToNumber = getLatestMsgToNumber(authId, authToken);
+        if(!actualToNumber.equalsIgnoreCase(expectedPhoneNumber))
+            total_count = -2;
+        if(total_count == previousMsgCount+1)
+            status = true;
+        else
+            status = false;
+
+
+        return status;
+    }
+
+    public static String getDateAndTime(){
+        String DateAndTime;
+        Calendar cal = Calendar.getInstance();
+        Date currentTime = cal.getTime();
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DateAndTime =  sdf.format(currentTime);
+
+        return DateAndTime;
     }
 
 }

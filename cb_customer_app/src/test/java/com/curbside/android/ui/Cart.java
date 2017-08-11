@@ -15,7 +15,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.nio.DoubleBuffer;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
@@ -65,6 +64,8 @@ public class Cart extends AbstractScreen {
     UIElement estimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
     UIElement btnCancelPromoPopUp = UIElement.byId("com.curbside.nCurbside:id/text_cancel");
     UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
+    UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
+    UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
 
 
 
@@ -215,8 +216,9 @@ public class Cart extends AbstractScreen {
         DecimalFormat df = new DecimalFormat("#.##");
         Double expectedDiscount = 0.00;
         Double actualDeliveryCharges;
-        if(Properties.getVariable("Delivery Charges") != null)
+        if(Properties.getVariable("Delivery Charges") != null) {
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+        }
         else
             actualDeliveryCharges = 0.00;
 
@@ -239,7 +241,7 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "dollar-delivery":
-                expectedDiscount =  4.74;
+                expectedDiscount =  5.00;
                 expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_DOLLAR_DS promo code is not applied to the delivery charges");
@@ -247,7 +249,7 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "percent-delivery":
-                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.0541)) ;
+                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.10)) ;
                 expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_PERCENT_DS promo code is not applied to the delivery charges");
@@ -262,8 +264,8 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "fixed-delivery":
-                expectedDiscount =  4.98;
-                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges - 0.01));
+                expectedDeliveryCharges = 0.01;
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_FIXED_DS promo code is not applied to the delivery charges");
 
@@ -272,7 +274,6 @@ public class Cart extends AbstractScreen {
             default: Assert.fail(discountType.toUpperCase() + " not a discount type");
             break;
         }
-
         Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + actualDeliveryCharges) - expectedDiscount;
         expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
         Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
@@ -290,5 +291,43 @@ public class Cart extends AbstractScreen {
         addPromoCodeLink.scrollTo(SwipeDirection.UP);
         if(deliveryCharge.isDisplayed())
             Properties.setVariable(value, deliveryCharge.getText());
+    }
+
+    @And("^I tap on Place order button$")
+    public void iTapOnPlaceOrderButton() throws Throwable {
+        try{
+         btnPlaceOrder.waitFor(2).tap();
+        }catch (Exception e){}
+
+        try{
+            btnPlaceOrderUISelector.tap();
+        }catch (Exception e){}
+    }
+
+    @Then("^I should see the successful placed order notification on the screen$")
+    public void iShouldSeeTheSuccessfulPlacedOrderNotificationOnTheScreen() throws Throwable {
+        lblOrderPlaced.waitFor(8);
+        Assert.assertTrue(lblOrderPlaced.isDisplayed(),
+                "Still on cart screen or Order Placed notification is not visible yet");
+    }
+
+    @And("^I remove and add the product again to the cart$")
+    public void reAddTheProduct() throws Throwable {
+        productName.waitFor(2).tap();
+        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
+        for (int i = 0; i < itemQnty; i++) {
+            productDetailsScreen.btnRemove.waitFor(5).tap();
+        }
+
+        for (int i = 0; i < itemQnty; i++) {
+            try {
+                productDetailsScreen.btnAddtoCart.waitFor(4);
+                productDetailsScreen.btnAddtoCart.tap();
+            }catch (Exception e){
+                productDetailsScreen.btnAdd.tap();
+            }
+        }
+        AndroidDevice.goBack();
+        Thread.sleep(1000);
     }
 }
