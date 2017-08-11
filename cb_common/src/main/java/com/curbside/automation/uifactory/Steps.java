@@ -131,8 +131,11 @@ public class Steps {
 	public void acceptLocationAlert() throws Throwable {
 		logger.info("Accepting location alert");
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			new UIElement(By.name("Allow")).tap();
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+			try {
+				new UIElement(By.name("Allow")).tap();
+			}catch (Exception e){}
+		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
 			// UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {

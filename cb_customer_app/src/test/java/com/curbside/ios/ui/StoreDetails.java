@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -19,15 +20,18 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
         footerTabsScreen.btnShop.tap();
-        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).tap();
+        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        MobileDevice.getSource(true);
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
         UIElement.byName("Search").tap();
+        MobileDevice.getSource(true);
     }
 
     @And("^I select (\\d+)no product from list$")
     public void iSelectNoProductFromList(int number) throws Throwable {
         UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
+        productDetailsScreen.productLocationAndPrice.waitFor(3);
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
     }
     @And("^I select '(.*)' retailer$")

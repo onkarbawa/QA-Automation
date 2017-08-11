@@ -58,6 +58,9 @@ public class Login extends AbstractScreen {
 
 	@And("^I Sign-in with '(.*)' and '(.*)'$")
 	public void iSignInWithAnd(String emailId, String password) throws Throwable {
+		try {
+			footerTabsScreen.btnMyAccount.tap();
+		}catch (Exception e){}
 		signIn.tap();
 		try {
 			signIn.tap();

@@ -60,9 +60,14 @@ public class Home extends AbstractScreen {
 	public void open() throws Throwable {
 		welcomeScreen.wait_for_app_launch();
 		try {
-			for (int i = 0; i < 10; i++) {
-				if(!footerTabsScreen.btnShop.isDisplayed())
+			for (int i = 0; i < 3; i++) {
+
+//				if(!footerTabsScreen.btnShop.isDisplayed())
+//				if(!homeScreen.iconSearch.isDisplayed() && !footerTabsScreen.btnShop.isDisplayed() )
+				if(welcomeScreen.skipIntro.isDisplayed() || welcomeScreen.btnGetStarted.isDisplayed()
+						|| welcomeScreen.okWithMe.isDisplayed() || welcomeScreen.btnAllow.isDisplayed())
 				{
+					System.out.println("forLoop--"+i);
 					welcomeScreen.btnAllow.tapOptional();
 					welcomeScreen.skipIntro.tapOptional();
 					welcomeScreen.btnGetStarted.tapOptional();
@@ -74,6 +79,7 @@ public class Home extends AbstractScreen {
 					return;
 			}
 		} catch (Exception e) {
+			System.out.println("inCAtchblock"+e.getMessage());
 		}
 	}
 
@@ -95,7 +101,11 @@ public class Home extends AbstractScreen {
 		
 		lnkCurrentLocation.tap();
 		cityZipSearchTextBox.sendKeys(cityName,false);
-		UIElement.byAccessibilityId(cityName).waitFor(40).tap();
+		try {
+			UIElement.byAccessibilityId(cityName).waitFor(40).tap();
+		}catch (Exception e){
+			UIElement.byXpath("//XCUIElementTypeTable[@name='Search results']//XCUIElementTypeStaticText[@name='"+cityName+"']").waitFor(20).tap();
+		}
 
 		loadingIcon.waitForNot(30);
 	}
@@ -128,7 +138,6 @@ public class Home extends AbstractScreen {
 //		footerTabsScreen.tapMyAccount();
 //		Steps.tapButton("Help");
 //		checkEnvironment.scrollTo();
-//		System.out.println("Curbside is in "+checkEnvironment.getText());
 		MobileDevice.getScreenshot(true);
 		DriverFactory.closeApp();
 		DriverFactory.launchApp();
@@ -215,6 +224,6 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see nearby stores$")
 	public void iShouldSeeNearbyStores() throws Throwable {
-		Assert.assertTrue(UIElement.byClass("XCUIElementTypeCell").waitFor(15).isDisplayed(),"Stores are not displayed in selected location");
+		Assert.assertTrue(UIElement.byClass("XCUIElementTypeCell").waitFor(25).isDisplayed(),"Stores are not displayed in selected location");
 	}
 }

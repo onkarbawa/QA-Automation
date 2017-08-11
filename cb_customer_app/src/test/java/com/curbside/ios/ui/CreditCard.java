@@ -65,8 +65,8 @@ public class CreditCard extends AbstractScreen {
 		MobileDevice.getScreenshot(true);
 	}
 
-	@And("^I added credit card information$")
-	public void iAddedCreditCardInformation() throws Throwable {
+	@And("^I add credit card information$")
+	public void iAddCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(10).tap();
 		//paymentInfoScreen.iTapOnAddANewCard();
 		Steps.tapButton("Add New Card");
