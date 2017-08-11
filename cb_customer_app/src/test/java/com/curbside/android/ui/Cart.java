@@ -66,7 +66,7 @@ public class Cart extends AbstractScreen {
     UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
     UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
     UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
-    UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery with UBER \")");
+    UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery by UBER \")");
 
 
 
@@ -314,12 +314,17 @@ public class Cart extends AbstractScreen {
     @And("^I remove and add the product again to the cart$")
     public void reAddTheProduct() throws Throwable {
         productName.waitFor(2).tap();
-        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
-        for (int i = 0; i < itemQnty; i++) {
-            productDetailsScreen.btnRemove.waitFor(5).tap();
+        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(8).getText());
+        int i = 0;
+        while(!productDetailsScreen.btnAddtoCart.isDisplayed() && i <15)
+        {
+            try {
+                productDetailsScreen.btnRemove.waitFor(5).tap();
+            }catch (Exception e){}
+            ++i;
         }
 
-        for (int i = 0; i < itemQnty; i++) {
+        for (i = 0; i < itemQnty; i++) {
             try {
                 productDetailsScreen.btnAddtoCart.waitFor(4);
                 productDetailsScreen.btnAddtoCart.tap();
