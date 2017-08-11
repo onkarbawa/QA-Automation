@@ -24,7 +24,7 @@ public class ProductDetails extends AbstractScreen {
     UIElement productDescription = UIElement.byId("com.curbside.nCurbside:id/description_view");
     UIElement productSKU = UIElement.byId("com.curbside.nCurbside:id/sku_id");
     UIElement productOverview = UIElement.byId("com.curbside.nCurbside:id/overview_view");
-    UIElement productQnty = UIElement.byId("com.curbside.nCurbside:id/quantity_view ");
+    UIElement productQnty = UIElement.byId("com.curbside.nCurbside:id/quantity_view");
     UIElement productPrice = UIElement.byId("com.curbside.nCurbside:id/text_status_view");
     UIElement errorProductNotAvail = UIElement.byId("android:id/button3");
 

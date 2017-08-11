@@ -10,11 +10,8 @@ Feature: Android - Delivery Promo code
     Given I am not signed into application
     And I sign in into application using username "promocode@test.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
-    And My cart is empty
-    And I select 'CVS' store and search for 'children claritin non 30oct' product
-    And I select 1 product from list
-    And I add 1 quantity of the product
     And I tap on 'Cart' button
+    And I remove and add the product again to the cart
     And I tap on 'Curbside Pickup' button
     And I tap on 'Delivery with UBER ' button
     And I select the delivery address as, street:"Palo Alto Square", city:"Palo Alto",state:"CA"
