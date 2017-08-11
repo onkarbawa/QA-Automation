@@ -1,7 +1,6 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -15,7 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.nio.DoubleBuffer;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
@@ -65,6 +63,8 @@ public class Cart extends AbstractScreen {
     UIElement estimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
     UIElement btnCancelPromoPopUp = UIElement.byId("com.curbside.nCurbside:id/text_cancel");
     UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
+    UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
+    UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
 
 
 
@@ -290,5 +290,23 @@ public class Cart extends AbstractScreen {
         addPromoCodeLink.scrollTo(SwipeDirection.UP);
         if(deliveryCharge.isDisplayed())
             Properties.setVariable(value, deliveryCharge.getText());
+    }
+
+    @And("^I tap on Place order button$")
+    public void iTapOnPlaceOrderButton() throws Throwable {
+        try{
+         btnPlaceOrder.waitFor(2).tap();
+        }catch (Exception e){}
+
+        try{
+            btnPlaceOrderUISelector.tap();
+        }catch (Exception e){}
+    }
+
+    @Then("^I should see the successful placed order notification on the screen$")
+    public void iShouldSeeTheSuccessfulPlacedOrderNotificationOnTheScreen() throws Throwable {
+        lblOrderPlaced.waitFor(8);
+        Assert.assertTrue(lblOrderPlaced.isDisplayed(),
+                "Still on cart screen or Order Placed notification is not visible yet");
     }
 }

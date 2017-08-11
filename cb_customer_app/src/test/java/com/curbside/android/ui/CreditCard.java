@@ -1,12 +1,14 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import org.openqa.selenium.By;
 /**
  * Created by hitesh.grover on 03/07/17.
  */
-public class CreditCard {
+public class CreditCard extends AbstractScreen {
 
     UIElement cardNumberTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_card_number"));
     UIElement cardExpMonthTextField = new UIElement(By.id("com.curbside.nCurbside:id/edit_expiration"));
@@ -41,4 +43,15 @@ public class CreditCard {
         saveButton.tap();
     }
 
+    @Given("^I add credit card information$")
+    public void iAddedCreditCardInformations() throws Throwable {
+        footerTabsScreen.tapMyAccount();
+        accountScreen.ensureAccountPage();
+        accountScreen.iTapOnPaymentInfoButtonOnAccountPage();
+        paymentInfo.iTapOnAddNewCardButtonOnPayementInfoPage();
+        iAddCreditCardInformationAs("4012000077777777","1218","123","John",
+                "Miller","1 Infinite Loop","","Cupertino",
+                "California","95014");
+        paymentInfo.iShouldSeeTheCardAddedToPaymentInfo();
+    }
 }
