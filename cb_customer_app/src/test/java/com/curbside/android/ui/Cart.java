@@ -314,11 +314,13 @@ public class Cart extends AbstractScreen {
     @And("^I remove and add the product again to the cart$")
     public void reAddTheProduct() throws Throwable {
         productName.waitFor(2).tap();
-        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
+        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(8).getText());
         int i = 0;
         while(!productDetailsScreen.btnAddtoCart.isDisplayed() && i <15)
         {
-            productDetailsScreen.btnRemove.waitFor(5).tap();
+            try {
+                productDetailsScreen.btnRemove.waitFor(5).tap();
+            }catch (Exception e){}
             ++i;
         }
 
