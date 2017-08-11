@@ -4,12 +4,11 @@ Feature: iOS- Store Selection
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
-    And My cart is empty
+    And I am not signed into application
 
   @iOS @C114940
   Scenario: Verify retailers are shown in store selection screen
-    Given I am not signed into application
-    And I am on 'Palo Alto' location 'Stores' Screen
+    Given I am on 'Palo Alto' location 'Stores' Screen
     Then I should see nearby stores
 
   @iOS @C114939

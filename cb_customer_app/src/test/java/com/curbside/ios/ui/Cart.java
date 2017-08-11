@@ -52,6 +52,7 @@ public class Cart extends AbstractScreen {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
 
+	DecimalFormat df = new DecimalFormat("#.##");
 
 	public Cart() {
 		// TODO Auto-generated constructor stub
@@ -88,7 +89,7 @@ public class Cart extends AbstractScreen {
 
     @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
-		footerTabsScreen.btnCart.waitFor(10).tap();
+		footerTabsScreen.btnCart.waitFor(15).tap();
 		footerTabsScreen.tapCart();
 		if (selectedStores.waitFor(4).isDisplayed()) {
 			MobileDevice.getScreenshot(true);
@@ -173,6 +174,7 @@ public class Cart extends AbstractScreen {
 			lastProduct.tap();
 		}catch (Exception e){}
 		Assert.assertTrue(totalItems.getText().contains(String.valueOf(noOfItems)), "Item count is not same");
+
 	}
 
 	public double calculateProductTotalItemPrice() throws Throwable {
@@ -213,7 +215,8 @@ public class Cart extends AbstractScreen {
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
 		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
-		Assert.assertEquals(((totalPrice + estimateTax) - actualDiscount), estimateTotalAmount,"Discount is not applied");
+
+		Assert.assertEquals(Double.valueOf(df.format((totalPrice + estimateTax) - actualDiscount)), estimateTotalAmount,"Discount is not applied");
 		UIElement.byName("Back").tap();
 	}
 
@@ -237,12 +240,12 @@ public class Cart extends AbstractScreen {
 	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
 		curbsidePickUp.tap();
 		getMyOrder.deliveryWith.tap();
+		MobileDevice.getSource(true);
 	}
 
 	@Then("^I should see delivery promo code is applied and discount is given as per '(.*)'")
 	public void iShouldSeeDeliveryPromoCodeIsApplied(String discountType) throws Throwable {
 		itemsTotalPrice.waitFor(25);
-		DecimalFormat df = new DecimalFormat("#.##");
 		Double expectedDiscount = 0.00;
 		Double deliveryCharges = 0.00;
 		Double actualDeliveryCharges = 0.00;

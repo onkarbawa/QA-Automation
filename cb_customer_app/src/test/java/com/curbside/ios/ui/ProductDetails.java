@@ -44,8 +44,13 @@ public class ProductDetails extends AbstractScreen {
 	}
 	
 	public String getProductPrice() throws Throwable {
-		int lengthOfArray = productLocationAndPrice.getText().split("\\$").length-1;
-		String itemPrice = productLocationAndPrice.getText().split("\\$")[lengthOfArray];
+		String itemPrice;
+		int lengthOfArray = productLocationAndPrice.getText().split("\\$").length;
+		if (lengthOfArray>1){
+			 itemPrice = productLocationAndPrice.getText().split("\\$")[lengthOfArray-1];
+		}else {
+			 itemPrice = productLocationAndPrice.getText().split("\\$")[lengthOfArray];
+		}
 		System.out.println(itemPrice);
 		return itemPrice;
 	}
