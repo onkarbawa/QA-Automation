@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -20,9 +21,11 @@ public class StoreDetails {
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
         footerTabsScreen.btnShop.tap();
         UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        MobileDevice.getSource(true);
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
         UIElement.byName("Search").tap();
+        MobileDevice.getSource(true);
     }
 
     @And("^I select (\\d+)no product from list$")

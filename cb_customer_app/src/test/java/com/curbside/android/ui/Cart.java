@@ -1,6 +1,7 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -215,8 +216,9 @@ public class Cart extends AbstractScreen {
         DecimalFormat df = new DecimalFormat("#.##");
         Double expectedDiscount = 0.00;
         Double actualDeliveryCharges;
-        if(Properties.getVariable("Delivery Charges") != null)
+        if(Properties.getVariable("Delivery Charges") != null) {
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+        }
         else
             actualDeliveryCharges = 0.00;
 
@@ -239,7 +241,7 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "dollar-delivery":
-                expectedDiscount =  4.74;
+                expectedDiscount =  5.00;
                 expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_DOLLAR_DS promo code is not applied to the delivery charges");
@@ -247,7 +249,7 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "percent-delivery":
-                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.0541)) ;
+                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.10)) ;
                 expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_PERCENT_DS promo code is not applied to the delivery charges");
@@ -262,8 +264,8 @@ public class Cart extends AbstractScreen {
                 break;
 
             case "fixed-delivery":
-                expectedDiscount =  4.98;
-                expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+                expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges - 0.01));
+                expectedDeliveryCharges = 0.01;
                 Assert.assertEquals(expectedDeliveryCharges, latestDeliveryCharges,
                         "NF_FIXED_DS promo code is not applied to the delivery charges");
 
@@ -272,7 +274,6 @@ public class Cart extends AbstractScreen {
             default: Assert.fail(discountType.toUpperCase() + " not a discount type");
             break;
         }
-
         Double expectedEstimatedTotal = (totalItemPrice + estimatedTaxPrice + actualDeliveryCharges) - expectedDiscount;
         expectedEstimatedTotal = Double.valueOf(df.format(expectedEstimatedTotal));
         Assert.assertEquals(actualEstimatedTotal, expectedEstimatedTotal, "Promo code discount calculation is not correct");
@@ -308,5 +309,25 @@ public class Cart extends AbstractScreen {
         lblOrderPlaced.waitFor(8);
         Assert.assertTrue(lblOrderPlaced.isDisplayed(),
                 "Still on cart screen or Order Placed notification is not visible yet");
+    }
+
+    @And("^I remove and add the product again to the cart$")
+    public void reAddTheProduct() throws Throwable {
+        productName.waitFor(2).tap();
+        int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
+        for (int i = 0; i < itemQnty; i++) {
+            productDetailsScreen.btnRemove.waitFor(5).tap();
+        }
+
+        for (int i = 0; i < itemQnty; i++) {
+            try {
+                productDetailsScreen.btnAddtoCart.waitFor(4);
+                productDetailsScreen.btnAddtoCart.tap();
+            }catch (Exception e){
+                productDetailsScreen.btnAdd.tap();
+            }
+        }
+        AndroidDevice.goBack();
+        Thread.sleep(1000);
     }
 }

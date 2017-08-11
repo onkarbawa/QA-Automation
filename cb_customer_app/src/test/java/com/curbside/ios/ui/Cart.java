@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
@@ -248,7 +249,12 @@ public class Cart extends AbstractScreen {
 		itemsTotalPrice.waitFor(25);
 		Double expectedDiscount = 0.00;
 		Double deliveryCharges = 0.00;
-		Double actualDeliveryCharges = 0.00;
+		Double actualDeliveryCharges ;
+		if(Properties.getVariable("Delivery Charges") != null) {
+			actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+		}
+		else
+			actualDeliveryCharges = 0.00;
 
 		itemsTotalPrice.scrollTo(SwipeDirection.UP);
 
@@ -256,30 +262,36 @@ public class Cart extends AbstractScreen {
 		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
 		Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
 		deliveryCharges = Double.parseDouble(deliveryCharge.getText().split("\\$")[1]);
-
+		Double expectedDeliveryCharges =0.00;
 
 		switch (discountType.toLowerCase()){
 			case "dollar":
-				actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
-				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.05)) ;
+				expectedDiscount =  5.00;
+				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount)) ;
+			//	actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+			//	expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.05)) ;
 				Assert.assertEquals(expectedDiscount, deliveryCharges,
 						"NF_DOLLAR_DS promo code is not applied to the delivery charges");
 				break;
 			case "deliverypercent":
-				actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.10)) ;
+				expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+			//	actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
 				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.946)) ;
-				Assert.assertEquals(expectedDiscount, deliveryCharges,
+				Assert.assertEquals(expectedDeliveryCharges, deliveryCharges,
 						"NF_PERCENT_DS promo code is not applied to the delivery charges");
 				break;
 			case "free":
-				expectedDiscount = 0.00;
-				Assert.assertEquals(expectedDiscount, deliveryCharges,
+				expectedDiscount = actualDeliveryCharges;
+				expectedDeliveryCharges = Double.valueOf(df.format(actualDeliveryCharges - expectedDiscount));
+				Assert.assertEquals(expectedDeliveryCharges, deliveryCharges,
 						"NF_FREE_DS promo code is not applied to the delivery charges");
 				break;
 			case "fixed":
-				actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
-				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.003)) ;
-				Assert.assertEquals(expectedDiscount, deliveryCharges,
+//				actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
+//				expectedDiscount =  Double.valueOf(df.format(actualDeliveryCharges * 0.003)) ;
+				expectedDeliveryCharges = 0.01;
+				Assert.assertEquals(expectedDeliveryCharges, deliveryCharges,
 						"NF_FIXED_DS promo code is not applied to the delivery charges");
 				break;
 			case "firsttime":
@@ -342,4 +354,24 @@ public class Cart extends AbstractScreen {
 
 		Properties.setVariable(value, deliveryCharge.getText());
 	}
+
+//	@And("^I remove and add the product again to the cart$")
+//	public void reAddTheProduct() throws Throwable {
+//		productName.waitFor(2).tap();
+//		int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
+//		for (int i = 0; i < itemQnty; i++) {
+//			productDetailsScreen.btnRemove.waitFor(5).tap();
+//		}
+//
+//		for (int i = 0; i < itemQnty; i++) {
+//			try {
+//				productDetailsScreen.btnAddtoCart.waitFor(4);
+//				productDetailsScreen.btnAddtoCart.tap();
+//			}catch (Exception e){
+//				productDetailsScreen.btnAdd.tap();
+//			}
+//		}
+//		AndroidDevice.goBack();
+//		Thread.sleep(1000);
+//	}
 }
