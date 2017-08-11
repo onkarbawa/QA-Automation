@@ -66,6 +66,7 @@ public class Cart extends AbstractScreen {
     UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
     UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
     UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
+    UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery with UBER \")");
 
 
 
@@ -326,7 +327,18 @@ public class Cart extends AbstractScreen {
                 productDetailsScreen.btnAdd.tap();
             }
         }
+
+        if(Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText()) < 2)
+            productDetailsScreen.btnAdd.tap();
+
         AndroidDevice.goBack();
         Thread.sleep(1000);
+    }
+
+    @And("^I tap on Delivery with UBER button$")
+    public void iTapOnDeliveryWithUBERButton() throws Throwable {
+        btnUber.waitFor(5);
+        btnUber.swipeUpSlow();
+        btnUber.tap();
     }
 }
