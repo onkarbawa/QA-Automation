@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Reg.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewOrderPriceChangedTableViewCell" id="KGk-i7-Jjw" customClass="ReviewOrderPriceChangedTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="dga-Uu-vWQ" userLabel="Product Name Label">
+                        <rect key="frame" x="8" y="16" width="206" height="44"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-eo-7ZT" userLabel="Quantity Label">
+                        <rect key="frame" x="225" y="29" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="ReT-cF-FUn"/>
+                            <constraint firstAttribute="width" constant="25" id="zwc-KS-yOm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 10.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBa-Hc-fOz" userLabel="Expected Price Label">
+                        <rect key="frame" x="278" y="16" width="34" height="16"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wWz-yL-TeZ">
+                        <rect key="frame" x="276" y="24" width="38" height="1"/>
+                        <color key="backgroundColor" red="0.83137254901960778" green="0.34509803921568627" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="yyR-Jv-4g3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 9.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04q-a6-o2H" userLabel="Price Label">
+                        <rect key="frame" x="258" y="41" width="54" height="16"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JWf-eo-7ZT" firstAttribute="leading" secondItem="dga-Uu-vWQ" secondAttribute="trailing" constant="11" id="0HK-tc-ON9"/>
+                    <constraint firstItem="wWz-yL-TeZ" firstAttribute="centerY" secondItem="VBa-Hc-fOz" secondAttribute="centerY" id="7j8-qW-Vq8"/>
+                    <constraint firstItem="dga-Uu-vWQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="EUW-lz-zfg"/>
+                    <constraint firstItem="VBa-Hc-fOz" firstAttribute="width" secondItem="wWz-yL-TeZ" secondAttribute="width" constant="-4" id="Naj-Xg-w9r"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JWf-eo-7ZT" secondAttribute="trailing" constant="70" id="Srr-FD-B4C"/>
+                    <constraint firstItem="04q-a6-o2H" firstAttribute="leading" secondItem="JWf-eo-7ZT" secondAttribute="trailing" priority="999" constant="8" id="VF4-Cb-8zA"/>
+                    <constraint firstAttribute="trailing" secondItem="VBa-Hc-fOz" secondAttribute="trailing" constant="8" id="Xrl-dz-QNi"/>
+                    <constraint firstItem="dga-Uu-vWQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Yi6-NM-6GM"/>
+                    <constraint firstAttribute="trailing" secondItem="04q-a6-o2H" secondAttribute="trailing" constant="8" id="b9l-2O-3Av"/>
+                    <constraint firstAttribute="bottom" secondItem="dga-Uu-vWQ" secondAttribute="bottom" constant="22" id="bRB-uS-Ohz"/>
+                    <constraint firstItem="wWz-yL-TeZ" firstAttribute="centerX" secondItem="VBa-Hc-fOz" secondAttribute="centerX" id="lyW-Xb-yHF"/>
+                    <constraint firstAttribute="centerY" secondItem="JWf-eo-7ZT" secondAttribute="centerY" id="oBI-83-stv"/>
+                    <constraint firstItem="04q-a6-o2H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oV2-NS-Gpt"/>
+                    <constraint firstAttribute="centerY" secondItem="VBa-Hc-fOz" secondAttribute="bottom" constant="9" id="vYW-OB-3st"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="expectedPriceLabel" destination="VBa-Hc-fOz" id="FJz-Y4-fgo"/>
+                <outlet property="priceLabel" destination="04q-a6-o2H" id="Pqo-Jf-yJR"/>
+                <outlet property="productNameLabel" destination="dga-Uu-vWQ" id="jpy-OV-baO"/>
+                <outlet property="quantityLabel" destination="JWf-eo-7ZT" id="ZVG-IL-QqQ"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
