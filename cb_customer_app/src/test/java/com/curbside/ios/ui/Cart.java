@@ -1,12 +1,10 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -240,7 +238,7 @@ public class Cart extends AbstractScreen {
 	@And("^I select Curbside Pickup and delivery option$")
 	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
 		curbsidePickUp.tap();
-		getMyOrder.deliveryWith.tap();
+		getMyOrder.deliveryBy.tap();
 		MobileDevice.getSource(true);
 	}
 
