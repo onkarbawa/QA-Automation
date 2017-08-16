@@ -186,7 +186,7 @@ public class Cart extends AbstractScreen {
 			Double itemPrice = Double.parseDouble(singleItemPrice.split("\\$")[1]);
             totalPrice = totalPrice + itemPrice;
 		}
-		return totalPrice;
+		return Double.valueOf(df.format(totalPrice));
 	}
 
 	public void calculateOrignalItemPrice() throws Throwable {
