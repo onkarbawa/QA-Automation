@@ -21,6 +21,6 @@ public class Map extends AbstractScreen {
 	public void iShouldSeeStoresOnMapForPaloAlto(String location) throws Throwable {
 		//Assert.assertTrue(nearByStore.isDisplayed(),"store is not displayed near to the selected location");
 		Assert.assertTrue(UIElement.byName("Palo Alto").waitFor(20).isDisplayed(), "Map is not displaying location " + location);
-		Assert.assertTrue(UIElement.byName("CVS, El Camino Real, Palo Alto").waitFor(15).isDisplayed(), "Map is not displaying store for " + location);
+		Assert.assertTrue(UIElement.byName("CVS, El Camino Real, Palo Alto").waitFor(20).isDisplayed(), "Map is not displaying store for " + location);
 	}
 }

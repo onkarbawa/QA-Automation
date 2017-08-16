@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Reg.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewOrderQuantityChangedTableViewCell" rowHeight="82" id="KGk-i7-Jjw" customClass="ReviewOrderQuantityChangedTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="314" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="STF-1u-YRx" userLabel="Product Name Label">
+                        <rect key="frame" x="8" y="16" width="200" height="43"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixq-5b-Lvl" userLabel="Requested Quantity Label">
+                        <rect key="frame" x="219" y="13" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="bnU-4F-6As"/>
+                            <constraint firstAttribute="height" constant="25" id="buC-jY-85I"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tQS-um-pDv">
+                        <rect key="frame" x="216" y="25" width="31" height="1"/>
+                        <color key="backgroundColor" red="0.83137254901960778" green="0.34509803921568627" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="c5b-pm-kNh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mco-Cn-8LC" userLabel="Quantity Label">
+                        <rect key="frame" x="219" y="43" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="OVy-rF-9PZ"/>
+                            <constraint firstAttribute="height" constant="25" id="ZzK-RX-Bdi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-qq-muQ" userLabel="Price Label">
+                        <rect key="frame" x="252" y="33" width="54" height="16"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tQS-um-pDv" firstAttribute="centerX" secondItem="ixq-5b-Lvl" secondAttribute="centerX" id="4TS-qA-8z1"/>
+                    <constraint firstAttribute="centerY" secondItem="ixq-5b-Lvl" secondAttribute="bottom" constant="3" id="DUw-eC-5pZ"/>
+                    <constraint firstItem="mco-Cn-8LC" firstAttribute="centerX" secondItem="ixq-5b-Lvl" secondAttribute="centerX" id="IqQ-Fp-bhx"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mco-Cn-8LC" secondAttribute="trailing" constant="70" id="OB0-0W-hg8"/>
+                    <constraint firstItem="STF-1u-YRx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="OZh-7Y-GVL"/>
+                    <constraint firstItem="tQS-um-pDv" firstAttribute="centerY" secondItem="ixq-5b-Lvl" secondAttribute="centerY" id="RdF-d0-7aQ"/>
+                    <constraint firstItem="tQS-um-pDv" firstAttribute="width" secondItem="ixq-5b-Lvl" secondAttribute="width" constant="6" id="SE7-zu-j1c"/>
+                    <constraint firstAttribute="centerY" secondItem="2OH-qq-muQ" secondAttribute="centerY" id="V6A-h7-odM"/>
+                    <constraint firstAttribute="trailing" secondItem="2OH-qq-muQ" secondAttribute="trailing" constant="8" id="afZ-HA-Kv6"/>
+                    <constraint firstItem="2OH-qq-muQ" firstAttribute="leading" secondItem="mco-Cn-8LC" secondAttribute="trailing" priority="999" constant="8" id="cJg-gU-GKt"/>
+                    <constraint firstItem="STF-1u-YRx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="chC-qy-d6l"/>
+                    <constraint firstItem="mco-Cn-8LC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="3" id="k7U-8d-Sbl"/>
+                    <constraint firstAttribute="bottom" secondItem="STF-1u-YRx" secondAttribute="bottom" constant="22" id="oq3-4B-3PS"/>
+                    <constraint firstItem="mco-Cn-8LC" firstAttribute="leading" secondItem="STF-1u-YRx" secondAttribute="trailing" constant="11" id="tpG-vD-CNl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="priceLabel" destination="2OH-qq-muQ" id="yGW-cA-UhI"/>
+                <outlet property="productNameLabel" destination="STF-1u-YRx" id="ypu-U6-AGe"/>
+                <outlet property="quantityLabel" destination="mco-Cn-8LC" id="w9y-f9-ElB"/>
+                <outlet property="requestedQuantityLabel" destination="ixq-5b-Lvl" id="boh-Dg-B29"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

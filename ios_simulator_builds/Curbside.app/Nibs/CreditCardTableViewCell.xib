@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Reg.otf">
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+        <mutableArray key="ProximaNova-Sbold.otf">
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreditCardTableViewCell" rowHeight="50" id="AVV-IR-Ons" customClass="CreditCardTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AVV-IR-Ons" id="My2-Gy-zA6">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="99" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-dN-O4c">
+                        <rect key="frame" x="20" y="21" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="JkO-5z-ZdH"/>
+                            <constraint firstAttribute="width" constant="20" id="Kx6-OR-Hti"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCX-T3-EGn" userLabel="Card Name Label">
+                        <rect key="frame" x="124" y="11" width="188" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="Mxp-N6-PTm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newCard" translatesAutoresizingMaskIntoConstraints="NO" id="aO4-Kz-tyu">
+                        <rect key="frame" x="56" y="11" width="60" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="NpT-LS-Kwt"/>
+                            <constraint firstAttribute="height" constant="40" id="Phg-KI-u0L"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="99" placeholderIntrinsicHeight="22" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-eK-KIA" userLabel="Cart Number Label">
+                        <rect key="frame" x="124" y="31" width="188" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="vhi-8p-Oq3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xCX-T3-EGn" firstAttribute="leading" secondItem="aO4-Kz-tyu" secondAttribute="trailing" constant="8" id="5fn-ad-VpB"/>
+                    <constraint firstItem="TNV-eK-KIA" firstAttribute="leading" secondItem="aO4-Kz-tyu" secondAttribute="trailing" constant="8" id="DHU-qb-hS0"/>
+                    <constraint firstItem="aO4-Kz-tyu" firstAttribute="leading" secondItem="My2-Gy-zA6" secondAttribute="leading" priority="999" constant="15" id="G57-0H-Bx4"/>
+                    <constraint firstItem="TNV-eK-KIA" firstAttribute="top" secondItem="xCX-T3-EGn" secondAttribute="bottom" constant="1" id="Hfc-9F-9ab"/>
+                    <constraint firstItem="PlN-dN-O4c" firstAttribute="leading" secondItem="My2-Gy-zA6" secondAttribute="leading" constant="20" id="SsW-hp-Xf0"/>
+                    <constraint firstItem="xCX-T3-EGn" firstAttribute="centerY" secondItem="My2-Gy-zA6" secondAttribute="centerY" constant="-10" id="X5S-hQ-wgG"/>
+                    <constraint firstItem="aO4-Kz-tyu" firstAttribute="centerY" secondItem="My2-Gy-zA6" secondAttribute="centerY" id="X80-OE-n91"/>
+                    <constraint firstAttribute="trailing" secondItem="TNV-eK-KIA" secondAttribute="trailing" constant="8" id="hNS-je-0wh"/>
+                    <constraint firstItem="aO4-Kz-tyu" firstAttribute="leading" secondItem="PlN-dN-O4c" secondAttribute="trailing" constant="16" id="knG-2c-vFw"/>
+                    <constraint firstAttribute="trailing" secondItem="xCX-T3-EGn" secondAttribute="trailing" constant="8" id="rrv-oR-XDq"/>
+                    <constraint firstItem="PlN-dN-O4c" firstAttribute="centerY" secondItem="My2-Gy-zA6" secondAttribute="centerY" id="zHq-Yq-dAd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cardImageView" destination="aO4-Kz-tyu" id="g84-Je-uwY"/>
+                <outlet property="cardImageViewToSelectedImageViewConstraint" destination="knG-2c-vFw" id="1Ue-Mn-6lu"/>
+                <outlet property="cardName" destination="xCX-T3-EGn" id="zVL-ZV-OZK"/>
+                <outlet property="cardNumber" destination="TNV-eK-KIA" id="DyU-lt-7mj"/>
+                <outlet property="selectedImageView" destination="PlN-dN-O4c" id="g5U-Uu-14l"/>
+            </connections>
+            <point key="canvasLocation" x="667" y="97"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="newCard" width="22" height="16"/>
+    </resources>
+</document>

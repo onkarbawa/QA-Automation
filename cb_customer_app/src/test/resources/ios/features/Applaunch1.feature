@@ -33,7 +33,6 @@ Feature: iOS- Application Launch 1
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     Then I should see checkout screen
-    And I am not signed into application
     Examples:
       |             Email                  |     Password    |
       |      applaunch@exam.com            |     applaunch    |
