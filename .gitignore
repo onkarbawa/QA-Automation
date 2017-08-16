@@ -20,3 +20,4 @@ run.cmd
 Curbside.app/
 !ios_simulator_builds/Curbside.app/
 cb_customer_app/output/report_full.html
+cb_customer_app/output/screenshots

@@ -217,7 +217,6 @@ public class MobileDevice {
 			final String path = pwd+"/output/screenshots";
 			File tmpFile = File.createTempFile("scrn_", ".png", new File(path));
 			FileUtils.copyFile(scrnshot, tmpFile);
-			System.out.println("location--"+tmpFile.getAbsolutePath());
 			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
 
 			File srcFile = getSource();
