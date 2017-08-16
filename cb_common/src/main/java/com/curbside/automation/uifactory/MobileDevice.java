@@ -213,7 +213,9 @@ public class MobileDevice {
 	public static File getScreenshot(boolean attachToReport) throws Throwable {
 		File scrnshot = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
 		if (attachToReport) {
-			File tmpFile = File.createTempFile("scrn_", ".png");
+			final String pwd = System.getProperty("user.dir");
+			final String path = pwd+"/output/screenshots";
+			File tmpFile = File.createTempFile("scrn_", ".png", new File(path));
 			FileUtils.copyFile(scrnshot, tmpFile);
 			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
 
