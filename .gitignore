@@ -14,10 +14,12 @@ target/
 cb_common/bin/
 cb_customer_app/ cucumber-html-reports/
 /GitLogin.txt
-cb_customer_app/output/report.html
-cb_customer_app/output/report copy.html
 run.cmd
 Curbside.app/
 !ios_simulator_builds/Curbside.app/
-cb_customer_app/output/report_full.html
 cb_customer_app/output/screenshots
+cb_customer_app/output/report.html
+cb_customer_app/output/report_full.html
+cb_customer_app/output/report copy.html
+
+
