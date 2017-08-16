@@ -1,0 +1,1 @@
+We are taking screen shot from the devices and storing it in this folder.
