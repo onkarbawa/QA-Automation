@@ -284,7 +284,7 @@ public class Cart extends AbstractScreen {
     @Then("^The price of the product should be same$")
     public void thePriceOfTheProductShouldBeSame() throws Throwable {
         String productName = productDetailsScreen.addedProductDetails.get().get("productName");
-        String xpathExpression= "//android.widget.LinearLayout[android.widget.TextView[contains(@text,'"+productName+"')]]/" +
+        String xpathExpression= "//android.widget.LinearLayout[android.widget.TextView[contains(@text,\""+productName+"\")]]/" +
                 "following-sibling::android.widget.LinearLayout/android.widget.TextView";
         UIElement priceView = UIElement.byXpath(xpathExpression);
         priceView.swipeUpSlow();
