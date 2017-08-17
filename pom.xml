@@ -11,6 +11,7 @@
     <modules>
         <module>cb_common</module>
         <module>cb_customer_app</module>
+        <module>cp_retailer_app</module>
     </modules>
 
     <properties>

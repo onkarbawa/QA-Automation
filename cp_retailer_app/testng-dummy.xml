@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Suite" verbose="1" parallel="methods" thread-count="1">
+	<parameter name="platform" value="iOS"/>
+	<listeners>
+        <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
+    </listeners>
+    <test name="Test">
+        <classes>
+            <class name="com.curbside.runners.SampleTest"/>
+        </classes>
+   </test>
+</suite>
