@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.AndroidDevice;
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
@@ -280,10 +281,16 @@ public class Cart extends AbstractScreen {
     }
 
 
-    @Then("^The '(.*)' of the product should be same$")
-    public void thePriceOfTheProductShouldBeSame(String price) throws Throwable {
-        Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), price,
-                "product price is different now, It might be on sale or Product is not available therefore this test case fails");
+    @Then("^The price of the product should be same$")
+    public void thePriceOfTheProductShouldBeSame() throws Throwable {
+        String productName = productDetailsScreen.addedProductDetails.get().get("productName");
+        String xpathExpression= "//android.widget.LinearLayout[android.widget.TextView[contains(@text,'"+productName+"')]]/" +
+                "following-sibling::android.widget.LinearLayout/android.widget.TextView";
+        UIElement priceView = UIElement.byXpath(xpathExpression);
+        priceView.swipeUpSlow();
+        String amount = priceView.getText().split("\\$")[1];
+        Assert.assertEquals(productDetailsScreen.addedProductDetails.get().get("amount"), amount,
+                "product price is different now");
     }
 
     @And("^I store the value of '(.*)'$")
