@@ -38,10 +38,10 @@ public class LoyalityCard extends AbstractScreen {
 
 	@And("^I should see ExtraCare Card info on Loyalty Cards screen$")
 	public void iShouldSeeExtraCareCardInfoOnLoyaltyCardsScreen() throws Throwable {
-		cartScreen.iShouldSeeLoyaltyCardInfoOnCartScreen();
-//		String displayedCardInfo = lblLoyalityCard.waitFor(3).getText();
-//		String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
-//		Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
+	//	cartScreen.iShouldSeeLoyaltyCardInfoOnCartScreen();
+		String displayedCardInfo = lblLoyalityCard.waitFor(3).getText();
+		String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
+		Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
 		footerTabsScreen.tapCart();
 	}
 }

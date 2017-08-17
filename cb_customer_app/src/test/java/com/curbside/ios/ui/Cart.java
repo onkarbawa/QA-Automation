@@ -66,9 +66,8 @@ public class Cart extends AbstractScreen {
 
 	@And("^I should see credit info on cart screen$")
 	public void iShouldSeeCreditInfoOnCartScreen() throws Throwable {
-	//	Assert.assertTrue(paymentInfoScreen.paymentInfoTitle.waitFor(10).isDisplayed());
-	//	creditCardCell.waitFor(10).tap();
-	//	paymentInfoScreen.iShouldSeeCreditInfoOnPaymentInfoScreen();
+		creditCardCell.waitFor(10).tap();
+		paymentInfoScreen.iShouldSeeCreditInfoOnPaymentInfoScreen();
 		footerTabsScreen.tapMyAccount();
 	}
 

@@ -15,6 +15,7 @@ public class PaymentInfo extends AbstractScreen {
 
 	UIElement paymentInfoTitle = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Payment Info']"));
 	UIElement addNewCard = new UIElement(By.xpath("//XCUIElementTypeButton[@name='Add New Card'"));
+	UIElement creditCardExpiry = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Expires')]");
 
 	public PaymentInfo() {
 		// TODO Auto-generated constructor stub
@@ -27,33 +28,19 @@ public class PaymentInfo extends AbstractScreen {
 
 	}
 
-	public String getUICreditExpiryValue() throws Throwable {
-		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Expires " + getCardExpiryValue() + "']")).getText();
-
-	}
+//	public String getUICreditExpiryValue() throws Throwable {
+//		return new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Expires " + getCardExpiryValue() + "']")).getText();
+//
+//	}
 
 	@And("^I tap on 'Add a new card' buton$")
 	public void iTapOnAddANewCard() throws Throwable {
-//		int x = addNewCard.getLocation().getX();
-//		int y = addNewCard.getLocation().getY();
-//		int elementHeight = addNewCard.getHeight();
-//		int elementWidth = addNewCard.getWidth();
-//
-//		System.out.println(elementHeight+"height");
-//		System.out.println(elementWidth+"width");
-//		System.out.println(x+"x");
-//		System.out.println(y+"y");
-//
-//		Double height = ((y+elementHeight) * (0.90));
-//
-//		MobileDevice.tap((x+elementWidth)/2,height.intValue());
 		MobileDevice.tap(162, 354);
 	}
 
 	@And("^I should see credit info on payment info screen$")
 	public void iShouldSeeCreditInfoOnPaymentInfoScreen() throws Throwable {
-	//	Assert.assertTrue(paymentInfoTitle.waitFor(10).isDisplayed());
-//		Assert.assertEquals(getUICreditExpiryValue(), "Expires " + getCardExpiryValue(),
-//				"Credit Card information is not shown in payment info screen");
+		Assert.assertEquals(creditCardExpiry.getText(), "Expires " + getCardExpiryValue(),
+				"Credit Card information is not shown in payment info screen");
 	}
 }
