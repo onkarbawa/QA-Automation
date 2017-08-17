@@ -33,6 +33,7 @@ public class StoreDetails {
         UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
         productDetailsScreen.productLocationAndPrice.waitFor(3);
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
+        Properties.setVariable("productName"+Integer.toString(number),productDetailsScreen.productName.getText());
     }
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
