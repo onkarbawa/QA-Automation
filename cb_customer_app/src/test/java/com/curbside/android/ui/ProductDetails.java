@@ -27,6 +27,7 @@ public class ProductDetails extends AbstractScreen {
     UIElement productQnty = UIElement.byId("com.curbside.nCurbside:id/quantity_view");
     UIElement productPrice = UIElement.byId("com.curbside.nCurbside:id/text_status_view");
     UIElement errorProductNotAvail = UIElement.byId("android:id/button3");
+    UIElement productOldPrice = UIElement.byId("com.curbside.nCurbside:id/old_price");
 
 
     static ThreadLocal<java.util.Map<String,String>> addedProductDetails = new ThreadLocal<>();
@@ -46,6 +47,10 @@ public class ProductDetails extends AbstractScreen {
             }
             if(productPrice.isDisplayed())
                 addedProductDetails.get().put("amount", productPrice.getText().split("\\$")[1]);
+            if(productOldPrice.isDisplayed())
+                addedProductDetails.get().put("amount", productOldPrice.getText().split("\\$")[1].split("\\s")[0]);
+            if(productName.isDisplayed())
+                addedProductDetails.get().put("productName", productName.getText());
         }else{
             addedProductDetails.get().clear();
             MobileDevice.getScreenshot(true);

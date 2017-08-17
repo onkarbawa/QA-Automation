@@ -19,16 +19,13 @@ Feature: Android- Cart Building
     When I tap on 'Cart' button
     Then I should see the 3 items in the cart
 
+  @Android @C114947
+  Scenario: Verify product pricing
+    Then The price of the product should be same
+
   @Android @C114946
   Scenario: Verify math and calculations are correct
     Then I verify the total amount in the cart
-
-  @Android @C114947
-  Scenario Outline: Verify product pricing
-    Then The '<price>' of the product should be same
-    Examples:
-      | price |
-      | 24.79 |
 
   @Android @C114990
   Scenario Outline: Verify math and calculations are correct as per Promo Code
