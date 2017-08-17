@@ -203,7 +203,6 @@ public class DriverFactory {
 	}
 
 	public static void closeApp() throws Throwable {
-		System.out.println("in close app function");
 		((AppiumDriver)getDriver()).closeApp();
 	}
 

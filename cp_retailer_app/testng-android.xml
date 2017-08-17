@@ -1,0 +1,48 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Android Smoke Test Suite" verbose="1" parallel="methods" thread-count="1">
+	<parameter name="platform" value="Android"/>
+    <listeners>
+        <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
+    </listeners>
+    <test name="App Launch">
+        <classes>
+            <class name="com.curbside.android.runners.AppLaunchTest"/>
+        </classes>
+    </test>
+    <test name="Sign up">
+        <classes>
+            <class name="com.curbside.android.runners.SignUpTest"/>
+        </classes>
+    </test>
+    <test name="Login">
+        <classes>
+            <class name="com.curbside.android.runners.LoginTest"/>
+        </classes>
+    </test>
+    <test name="Product Catalog">
+        <classes>
+            <class name="com.curbside.android.runners.ProductCatalog"/>
+        </classes>
+    </test>
+    <test name="Store Selection">
+        <classes>
+            <class name="com.curbside.android.runners.StoreSelectionTest"/>
+        </classes>
+    </test>
+    <test name="Cart Building and Checkout">
+        <classes>
+            <class name="com.curbside.android.runners.CartBuildingAndCheckout"/>
+        </classes>
+    </test>
+    <test name="Promo Code">
+        <classes>
+            <class name="com.curbside.android.runners.DeliveryPromoTest"/>
+        </classes>
+    </test>
+    <test name="Sms Verification">
+        <classes>
+            <class name="com.curbside.android.runners.SmsVerificationTest"/>
+        </classes>
+    </test>
+
+</suite>

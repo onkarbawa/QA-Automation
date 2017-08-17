@@ -1,4 +1,4 @@
-package com.curbside.ios.ui;
+package com.cap.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.devicefactory.DeviceStore;
