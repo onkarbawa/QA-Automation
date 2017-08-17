@@ -11,7 +11,7 @@ Feature: iOS- Cart Building And Checkout
   Scenario Outline: : Verify products display in landing page
     Given I Sign-in with '<Email>' and '<Password>'
     And My cart is empty
-    And I select 'Westfield Valley Fair, at 2855 Stevens Creek Blvd' retailer and search for 'Carlson Norwegian Salmon Oil'
+    And I select 'Westfield Valley Fair, at 2855 Stevens Creek Blvd' retailer and search for 'Salmon Oil'
     And I select 1no product from list
     And I add 2 quantity of the product
     And I select 2no product from list

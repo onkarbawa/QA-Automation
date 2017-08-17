@@ -189,9 +189,15 @@ public class Cart extends AbstractScreen {
 
 	public void calculateOrignalItemPrice() throws Throwable {
 		int totalItems = productItem.getCount();
-		for (int k = 1; k < totalItems-4; k++) {
-			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[2]").getText();
-			Properties.setVariable("cart"+k, singleItemPrice.split("\\s")[1]);
+		String singleItemPrice;
+		//for (int k = 1; k < totalItems-4; k++)
+		for (int k = totalItems-4; k > 1; k--){
+			singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[2]").getText();
+			if(singleItemPrice.equalsIgnoreCase("SAVE"))
+			{
+				singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[3]").getText();
+			}
+			Properties.setVariable("cart"+k, singleItemPrice.split("\\$")[1]);
 		}
 	}
 
@@ -232,7 +238,12 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see '(.*)' dollar in the cart$")
 	public void iShouldSeeDollarInTheCart(String amount) throws Throwable {
-		Assert.assertEquals(Properties.getVariable("product1"),amount,"Pricing value of particular product is not matched");
+		//Assert.assertEquals(Properties.getVariable("product1"),amount,"Pricing value of particular product is not matched");
+		String singleItemPrice = UIElement.byXpath("//XCUIElementTypeCell//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName1") + "']/following-sibling::XCUIElementTypeStaticText[contains(@name,'ea')]").scrollTo(SwipeDirection.UP).getText();
+		String addedItemPrice = singleItemPrice.split("\\$")[1].split("\\s")[0];
+		Assert.assertEquals(Properties.getVariable("product1"),addedItemPrice,"Pricing value of particular product is not matched");
+
+
 	}
 
 	@And("^I select Curbside Pickup and delivery option$")
