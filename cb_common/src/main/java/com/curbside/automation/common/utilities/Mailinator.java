@@ -60,9 +60,8 @@ public class Mailinator {
             Thread.sleep(1000);
         }
         driver.navigate().refresh();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        driver.close();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
 
     }
