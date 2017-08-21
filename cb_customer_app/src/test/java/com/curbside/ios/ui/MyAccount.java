@@ -57,18 +57,18 @@ public class MyAccount extends AbstractScreen {
 			footerTabsScreen.tapMyAccount();
 			btnAccountInfo.tap();
 			accountInfoScreen.signOut();
-			UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").waitFor(25).tap();
+			UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").waitFor(20).tap();
 		} catch (Exception e) {
 			if(UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").isDisplayed()){
 				UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").tap();
 			}
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		try {
 			UIElement.byAccessibilityId("Navigate up").tap();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 

@@ -22,7 +22,7 @@ Feature: iOS- SMS Flow
     And I check there is no latest SMS from Curbisde
     And I select 'Westfield Valley Fair, at 2855 Stevens Creek Blvd' retailer and search for 'Salmon Oil'
     And I select 1no product from list
-    And I add 2 quantity of the product
+    And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I should receive welcome SMS from Curbside

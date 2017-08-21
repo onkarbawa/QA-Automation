@@ -6,7 +6,7 @@ Feature: iOS- Signup Flow
     Given I launch Curbside application
     And I have selected test environment
     
-  @iOS @C114954
+  @iOS @C114954 @C114957
   Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
     Given I am not signed into application
     And I tap on 'My Account' icon in bottom menu
@@ -39,5 +39,5 @@ Feature: iOS- Signup Flow
     Then I should see ExtraCare Card info on Loyalty Cards screen
     When I go to Cart screen
     Then I should see loyalty card info on cart screen
-    And I am not signed into application
+#    And I am not signed into application
 

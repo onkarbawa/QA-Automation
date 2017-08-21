@@ -62,12 +62,9 @@ public class Home extends AbstractScreen {
 		try {
 			for (int i = 0; i < 3; i++) {
 
-//				if(!footerTabsScreen.btnShop.isDisplayed())
-//				if(!homeScreen.iconSearch.isDisplayed() && !footerTabsScreen.btnShop.isDisplayed() )
 				if(welcomeScreen.skipIntro.isDisplayed() || welcomeScreen.btnGetStarted.isDisplayed()
 						|| welcomeScreen.okWithMe.isDisplayed() || welcomeScreen.btnAllow.isDisplayed())
 				{
-					System.out.println("forLoop--"+i);
 					welcomeScreen.btnAllow.tapOptional();
 					welcomeScreen.skipIntro.tapOptional();
 					welcomeScreen.btnGetStarted.tapOptional();
