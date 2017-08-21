@@ -31,6 +31,6 @@ public class Map {
   
   @Then("^I should see stores on map for '(.*)' location$")
   public void iShouldSeeStoresOnMapFor(String location) throws Throwable {
-    Assert.assertTrue(storeLocation.waitFor(20).isDisplayed(), "Stores are not visible on map");
+    Assert.assertTrue(storeLocation.waitFor(25).isDisplayed(), "Stores are not visible on map");
   }
 }
