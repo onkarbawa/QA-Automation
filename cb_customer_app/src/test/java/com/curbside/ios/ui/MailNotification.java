@@ -10,11 +10,26 @@ import org.testng.Assert;
  */
 public class MailNotification {
 
-    @Then("^I should receive welcome Email from Curbside app$")
-    public void iCheckLatestEmail() throws Throwable {
+    @Then("^I should receive '(.*)' Email from Curbside app$")
+    public void iCheckLatestEmail(String emailType) throws Throwable {
+
         String emailID = Properties.getVariable("signupEmail");
-        System.out.println("emailID--"+emailID);
         emailID = emailID.split("@")[0];
-        Assert.assertEquals(Mailinator.isMailReceived(emailID), true, "Mail not received yet");
+
+        switch (emailType.toLowerCase()) {
+            case "welcome":
+                Assert.assertEquals(Mailinator.isMailReceived(emailID, "Welcome to curbside"), true,
+                        "Signup mail not received yet");
+                break;
+
+            case "in-progress":
+                Assert.assertEquals(Mailinator.isMailReceived(emailID, "We’re Prepping Your Curbside Pickup Order"),
+                        true,"In Progress mail not received yet");
+                break;
+
+            default:
+                Assert.fail("Please rectify the correct email type in the feature file ");
+        }
+
     }
 }

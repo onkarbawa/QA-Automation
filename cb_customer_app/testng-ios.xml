@@ -44,6 +44,11 @@
             <class name="com.curbside.ios.runners.SMSTest"/>
         </classes>
     </test>
+    <test name="iOS- Mail flow">
+        <classes>
+            <class name="com.curbside.ios.runners.MailNotificationTest"/>
+        </classes>
+    </test>
     <test name="iOS- Applaunch1">
         <classes>
             <class name="com.curbside.ios.runners.AppLaunchTest1"/>
