@@ -18,12 +18,12 @@ public class MailNotification {
 
         switch (emailType.toLowerCase()) {
             case "welcome":
-                Assert.assertEquals(Mailinator.isMailReceived(emailID, "Welcome to Curbside"), true,
+                Assert.assertEquals(Mailinator.isMailReceived(emailID, "Welcome to Curbside"), true,
                         "Signup mail not received yet");
                 break;
 
             case "in-progress":
-                Assert.assertEquals(Mailinator.isMailReceived(emailID, "We’re Prepping Your Curbside Pickup Order"),
+                Assert.assertEquals(Mailinator.isMailReceived(emailID, "We’re Prepping Your Curbside Pickup Order"),
                         true,"In Progress mail not received yet");
                 break;
 
