@@ -14,7 +14,7 @@ public class MailNotification {
     public void iCheckLatestEmail() throws Throwable {
         String emailID = Properties.getVariable("signupEmail");
         System.out.println("emailID--"+emailID);
+        emailID = emailID.split("@")[0];
         Assert.assertEquals(Mailinator.isMailReceived(emailID), true, "Mail not received yet");
-        Mailinator.deleteAllMails(emailID);
     }
 }
