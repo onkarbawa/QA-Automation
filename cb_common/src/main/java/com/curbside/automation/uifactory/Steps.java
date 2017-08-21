@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import com.curbside.automation.appfactory.AppStore;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import cucumber.api.Scenario;
@@ -29,6 +30,7 @@ public class Steps {
 
 	@Given("^I launch (.*) application$")
 	public void launchApplication(String appName) throws Throwable {
+		AppStore.setAppName(appName);
 		logger.info("Launching application without install");
 		// DriverFactory.releaseDriver();
 		// DeviceStore.releaseDevice();
@@ -52,6 +54,7 @@ public class Steps {
 
 	@Given("^I launch (.*) application with required permissions$")
 	public void launchApplicationWithPermissions(String appName) throws Throwable {
+		AppStore.setAppName(appName);
 		logger.info("Launching application with needed permissions");
 		// DriverFactory.releaseDriver();
 		// DeviceStore.releaseDevice();
@@ -67,7 +70,6 @@ public class Steps {
 			// ((AppiumDriver)DriverFactory.getDriver()).resetApp();
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			((AppiumDriver) DriverFactory.getDriver()).launchApp();
-
 		}
 
 		MobileDevice.getScreenshot(true);
@@ -75,6 +77,8 @@ public class Steps {
 
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable {
+		AppStore.setAppName(appName);
+		
 		DriverFactory.releaseDriver();
 		DeviceStore.releaseDevice();
 
@@ -90,13 +94,11 @@ public class Steps {
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
-		DeviceStore.setAppInstalled();
+		DeviceStore.setAppInstalled(appName);
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false);
 		}
-
-
 
 		MobileDevice.getScreenshot(true);
 	}

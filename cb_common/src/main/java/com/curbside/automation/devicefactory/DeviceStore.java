@@ -1,5 +1,7 @@
 package com.curbside.automation.devicefactory;
 
+import com.curbside.automation.appfactory.AppStore;
+
 /**
  * @author kumar.anil
  *
@@ -10,6 +12,7 @@ import com.curbside.automation.uifactory.MobileDevice;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class DeviceStore {
 	private static ThreadLocal<Object> lockedDevice = new ThreadLocal<>();
 	private static ThreadLocal<String> lockedPlatform = new ThreadLocal<>();
 	private static ThreadLocal<String> deviceID = new ThreadLocal<>();
-	private static HashMap<String, Boolean> appInstalled = new HashMap<>();
+	private static HashMap<String, List<String>> appInstalled = new HashMap<>();
 	
 	static {
 		String pDeviceStore = System.getProperty("deviceStore");
@@ -49,7 +52,11 @@ public class DeviceStore {
 		}
 	}
 
-	public static synchronized JSONObject getDevice() {
+	public static synchronized JSONObject getDevice() throws Exception{
+		return getDevice(AppStore.getAppName());
+	}
+	
+	public static synchronized JSONObject getDevice(String appName) throws Exception {
 
 		// TODO- Wait when no device is available
 
@@ -70,7 +77,14 @@ public class DeviceStore {
 		default:
 			throw new IllegalArgumentException("No Such platform");
 		}
-
+		
+		if(appName != null)
+		{
+			JSONObject app= AppStore.getApp(appName);
+			for (String k : app.keySet())
+				deviceToReturn.append(k, app.getString(k));
+		}
+		
 		lockDevice(deviceToReturn);
 		return deviceToReturn;
 	}
@@ -137,25 +151,30 @@ public class DeviceStore {
 		}
 	}
 
+	public static boolean isAppInstalled(String appName) throws Throwable {
+		return isAppInstalled(getDeviceId(), appName);
+	}
+	
 	public static boolean isAppInstalled() throws Throwable {
-		if (appInstalled.containsKey(getDeviceId()))
-			return appInstalled.get(getDeviceId());
-		else
-			return false;
+		return isAppInstalled(getDeviceId(), AppStore.getAppName());
 	}
 
-	public static boolean isAppInstalled(String udid) {
+	public static boolean isAppInstalled(String udid, String appName) {
 		if (appInstalled.containsKey(udid))
-			return appInstalled.get(udid);
+			return appInstalled.get(udid).contains(appName);
 		else
 			return false;
 	}
 
-	public static synchronized void setAppInstalled(String udid) {
-		appInstalled.put(udid, true);
+	public static synchronized void setAppInstalled(String udid, String appName) {
+		if(!appInstalled.containsKey(udid))
+			appInstalled.put(udid, Arrays.asList(new String[]{appName}));
+		
+		if(!appInstalled.get(udid).contains(appName))
+			appInstalled.get(udid).add(appName);
 	}
 
-	public static synchronized void setAppInstalled() throws Throwable {
-		appInstalled.put(getDeviceId(), true);
+	public static synchronized void setAppInstalled(String appName) throws Throwable {
+		setAppInstalled(getDeviceId(), appName);
 	}
 }

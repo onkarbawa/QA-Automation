@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.html5.Location;
@@ -320,7 +321,7 @@ public class MobileDevice {
 		}
 	}
 
-	public static String getBundleId() {
+	public static String getBundleId() throws Exception {
 		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			return DeviceStore.getDevice().getString("bundleId");
 		if(DeviceStore.getPlatform().equalsIgnoreCase("android"))
