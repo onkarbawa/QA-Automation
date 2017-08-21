@@ -6,12 +6,11 @@ Feature: Android- Mail verification flow
     And I have selected test environment
 
   @Android @C114977
-  Scenario: Verify on new account signup user should receive a SMS on phone
+  Scenario: Verify on new account signup user should receive a E-Mail on EmailID
     Given I am not signed into application
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
-    And I check there is no latest SMS from Curbisde
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
@@ -19,7 +18,7 @@ Feature: Android- Mail verification flow
 
 
   @Android @C114969
-  Scenario: Verify SMS is in progress
+  Scenario: Verify user receives a E-Mail when order is in progress
     Given I add credit card information
     And I am on 'Palo Alto' location 'Stores' Screen
     And I select 'CVS' store and search for 'toothpaste' product
