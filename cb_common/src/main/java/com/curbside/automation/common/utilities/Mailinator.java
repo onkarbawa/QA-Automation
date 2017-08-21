@@ -35,12 +35,11 @@ public class Mailinator {
         setChromeDriver(userID);
 
         List<WebElement> allMailsSubject = driver.findElements(lblMailsSubject);
-        System.out.println("sizeee--"+allMailsSubject.size());
         for(WebElement mailSubject : allMailsSubject) {
-            System.out.println("mailSubject--"+mailSubject.getText());
             if(mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
+        deleteAllMails(userID);
         driver.quit();
 
         return isMailPresent;
@@ -63,6 +62,7 @@ public class Mailinator {
         driver.navigate().refresh();
         Thread.sleep(2000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+        driver.close();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
 
     }
