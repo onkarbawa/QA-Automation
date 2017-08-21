@@ -233,6 +233,25 @@ public class Steps {
 					+ "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
 		} else
 			throw new NotImplementedException("");
+
+		UIElement.byName("Notifications").tap();
+
+		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Allow Notifications']");
+		String currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		if(currentButtonValue.equals("false")){
+			toggleButton.tap();
+		}
+		iTapOnBackButton();
+		toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Background App Refresh']");
+		currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		if(currentButtonValue.equals("false")){
+			toggleButton.tap();
+		}
+
 	}
 
 	@Given("^I turn '(.*)' Background App Refresh for '(.*)' app$")
@@ -240,6 +259,7 @@ public class Steps {
 		logger.info("Turning " + ONorOFF + " background refresh for " + appName);
 
 		AppleDevice.launchSettings();
+
 		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
 
 		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
@@ -277,47 +297,39 @@ public class Steps {
 	//	logger.info("Turning " + ONorOFF + " background refresh for " + appName);
 
 		AppleDevice.launchSettings();
-		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
-		String button = button1;
 
-		for (int i = 0; i<2; i++){
-			UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
-			String currentButtonValue = toggleButton.getAttribute("value");
-			System.out.println("Current toggle value is " + currentButtonValue);
-
-			currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
-
-			if(!ONorOFF.equalsIgnoreCase(currentButtonValue)){
-				toggleButton.tap();
+		if (!AppleDevice.settingTitle.isDisplayed()){
+			for (int i = 0;i < 7; i++){
+				if (UIElement.byName("Back").isDisplayed()){
+					UIElement.byName("Back").tap();
+				}else {
+					break;
+				}
 			}
-			if(i==1){
-				break;
-			}
-
-			UIElement.byName("Notifications").tap();
-			button = button2;
-			MobileDevice.getScreenshot(true);
 		}
+		try {
+			UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
+			String button = button1;
+
+			for (int i = 0; i < 2; i++) {
+				UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
+				String currentButtonValue = toggleButton.getAttribute("value");
+				System.out.println("Current toggle value is " + currentButtonValue);
+
+				currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+
+				if (!ONorOFF.equalsIgnoreCase(currentButtonValue)) {
+					toggleButton.tap();
+				}
+				if (i == 1) {
+					break;
+				}
+
+				UIElement.byName("Notifications").tap();
+				button = button2;
+				MobileDevice.getScreenshot(true);
+			}
+		}catch (Exception e){}
 		MobileDevice.getScreenshot(true);
-
-//		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
-//		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
-//
-//		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-//
-//		if (!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
-//			backgroundAppRefresh.tap();
-//
-//
-//		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
-//
-//		String currentButtonValue = toggleButton.getAttribute("value");
-//		System.out.println("Current toggle value is " + currentButtonValue);
-//
-//		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
-//
-//		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
-//			toggleButton.tap();
-
 	}
 }
