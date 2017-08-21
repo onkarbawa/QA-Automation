@@ -44,5 +44,10 @@
             <class name="com.curbside.android.runners.SmsVerificationTest"/>
         </classes>
     </test>
+    <test name="Mail Verification">
+        <classes>
+            <class name="com.curbside.android.runners.MailVerificationTest"/>
+        </classes>
+    </test>
 
 </suite>

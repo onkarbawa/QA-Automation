@@ -15,4 +15,17 @@ Feature: Android- Mail verification flow
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
-    Then I should receive welcome Email from Curbside app
+    Then I should receive 'Welcome' Email from Curbside app
+
+
+  @Android @C114969
+  Scenario: Verify SMS is in progress
+    Given I add credit card information
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I select 'CVS' store and search for 'toothpaste' product
+    And I select 1 product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' button
+    When I tap on Place order button
+    Then I should see the successful placed order notification on the screen
+    Then I should receive 'In-Progress' Email from Curbside app
