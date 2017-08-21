@@ -1,4 +1,4 @@
-package com.curbside.android.ui;
+package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.Mailinator;
@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
 /**
- * Created by hitesh.grover on 21/08/17.
+ * Created by bawa.onkar on 21/08/17.
  */
 public class MailNotification {
 

@@ -18,22 +18,23 @@ public class Mailinator {
 
     public static void setChromeDriver(String userID) throws InterruptedException {
         String baseURL = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + userID + "#/#inboxpane";
-        System.out.println("baseURL--" + baseURL);
         System.setProperty("webdriver.chrome.driver", "../chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(baseURL);
-
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public static boolean isMailReceived(String userID) throws InterruptedException {
 
         setChromeDriver(userID);
 
-
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        System.out.println("number--" + noOfCheckboxes);
+        if(noOfCheckboxes <= 1) {
+            driver.navigate().refresh();
+            Thread.sleep(1000);
+            noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+        }
         driver.quit();
 
         if (noOfCheckboxes == 1)
@@ -48,7 +49,6 @@ public class Mailinator {
         setChromeDriver(userID);
 
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        System.out.println("numberss--" + noOfCheckboxes);
 
         if (noOfCheckboxes >= 1) {
 

@@ -2,7 +2,7 @@
 Feature: iOS- Application Launch
 
   Scenario: Setting test environment
-    Given I turn 'ON' Background App Refresh for 'Curbside' app
+    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
 
   @iOS @C114937
   Scenario: First time Curbside Launch (fresh install)
