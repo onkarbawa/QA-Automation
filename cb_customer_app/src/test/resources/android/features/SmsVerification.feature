@@ -1,4 +1,4 @@
-@snsVerification
+@smsVerification
 Feature: Android- SMS verification flow
 
   Scenario: Setting test environment
