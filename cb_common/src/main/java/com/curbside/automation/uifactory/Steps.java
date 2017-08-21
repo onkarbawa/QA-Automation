@@ -240,6 +240,17 @@ public class Steps {
 		logger.info("Turning " + ONorOFF + " background refresh for " + appName);
 
 		AppleDevice.launchSettings();
+
+		if (!AppleDevice.settingTitle.isDisplayed()){
+			for (int i = 0;i < 7; i++){
+				if (UIElement.byName("Back").isDisplayed()){
+					UIElement.byName("Back").tap();
+				}else {
+					break;
+				}
+			}
+		}
+
 		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
 
 		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
