@@ -233,6 +233,25 @@ public class Steps {
 					+ "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
 		} else
 			throw new NotImplementedException("");
+
+		UIElement.byName("Notifications").tap();
+
+		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Allow Notifications']");
+		String currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		if(currentButtonValue.equals("false")){
+			toggleButton.tap();
+		}
+		iTapOnBackButton();
+		toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Background App Refresh']");
+		currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		if(currentButtonValue.equals("false")){
+			toggleButton.tap();
+		}
+
 	}
 
 	@Given("^I turn '(.*)' Background App Refresh for '(.*)' app$")
