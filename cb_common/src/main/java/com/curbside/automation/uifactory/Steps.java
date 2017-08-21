@@ -288,48 +288,29 @@ public class Steps {
 				}
 			}
 		}
+		try {
+			UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
+			String button = button1;
 
-		UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
-		String button = button1;
+			for (int i = 0; i < 2; i++) {
+				UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
+				String currentButtonValue = toggleButton.getAttribute("value");
+				System.out.println("Current toggle value is " + currentButtonValue);
 
-		for (int i = 0; i<2; i++){
-			UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
-			String currentButtonValue = toggleButton.getAttribute("value");
-			System.out.println("Current toggle value is " + currentButtonValue);
+				currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
 
-			currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+				if (!ONorOFF.equalsIgnoreCase(currentButtonValue)) {
+					toggleButton.tap();
+				}
+				if (i == 1) {
+					break;
+				}
 
-			if(!ONorOFF.equalsIgnoreCase(currentButtonValue)){
-				toggleButton.tap();
+				UIElement.byName("Notifications").tap();
+				button = button2;
+				MobileDevice.getScreenshot(true);
 			}
-			if(i==1){
-				break;
-			}
-
-			UIElement.byName("Notifications").tap();
-			button = button2;
-			MobileDevice.getScreenshot(true);
-		}
+		}catch (Exception e){}
 		MobileDevice.getScreenshot(true);
-
-//		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
-//		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
-//
-//		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-//
-//		if (!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
-//			backgroundAppRefresh.tap();
-//
-//
-//		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
-//
-//		String currentButtonValue = toggleButton.getAttribute("value");
-//		System.out.println("Current toggle value is " + currentButtonValue);
-//
-//		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
-//
-//		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
-//			toggleButton.tap();
-
 	}
 }
