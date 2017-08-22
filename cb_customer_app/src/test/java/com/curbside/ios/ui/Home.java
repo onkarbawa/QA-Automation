@@ -183,9 +183,10 @@ public class Home extends AbstractScreen {
 
 	@And("^I am on Shop Screen$")
 	public void iAmOnShopScreen() throws Throwable {
-		Thread.sleep(200);
-		steps.acceptLocationAlert();
-		welcome.skipIntro.tap();
+		Thread.sleep(2000);
+		//steps.acceptLocationAlert();
+		//welcome.skipIntro.tap();
+		footerTabsScreen.btnShop.tap();
 	}
 
 	@And("^I am on '(.*)' location 'Stores' Screen$")
