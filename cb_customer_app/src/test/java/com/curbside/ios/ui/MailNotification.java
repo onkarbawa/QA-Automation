@@ -12,16 +12,11 @@ public class MailNotification {
 
     @Then("^I should receive '(.*)' Email from Curbside app$")
     public void iCheckLatestEmail(String emailType) throws Throwable {
-        String emailID = null;
-        String staticMail = null;
+        String emailID;
 
-        try {
-             emailID = Properties.getVariable("signupEmail");
-            emailID = emailID.split("@")[0];
-        }catch (Exception e){
-            staticMail ="palo_alto@mailinator.com";
-            staticMail = staticMail.split("@")[0];
-        }
+       emailID = Properties.getVariable("signupEmail");
+       emailID = emailID.split("@")[0];
+
 
 
         switch (emailType.toLowerCase()) {
@@ -31,12 +26,12 @@ public class MailNotification {
                 break;
 
             case "in-progress":
-                Assert.assertEquals(Mailinator.isMailReceived(staticMail, "We’re Prepping Your Curbside Pickup Order"),
+                Assert.assertEquals(Mailinator.isMailReceived("palo_alto", "We’re Prepping Your Curbside Pickup Order"),
                         true,"In Progress mail not received yet");
                 break;
 
             case "delivery-order":
-                Assert.assertEquals(Mailinator.isMailReceived(staticMail, "We’re Prepping Your Delivery Order"),
+                Assert.assertEquals(Mailinator.isMailReceived("palo_alto", "We’re Prepping Your Delivery Order"),
                         true,"In Progress mail not received yet");
                 break;
 

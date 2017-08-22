@@ -27,16 +27,16 @@ Feature: iOS- Mail verification flow
     And I attempt to place an order
     Then I should receive 'In-Progress' Email from Curbside app
 
-#  @iOS @C114983
-#  Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
-#    Given I am on Shop Screen
-#    And I select 'Food Item' product from list
-#    And I add 2 quantity of the product
-#    And I tap on 'Cart' icon in bottom menu
-#    And I select Curbside Pickup and delivery option
-#    And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
-#    And I tap on back button
-##    And I tap on 'Enter Promo Code'
-##    And I apply 'NF_DOLLAR_DS' promo code
-#    And I attempt to place an order
-#    Then I should receive 'Delivery-Order' Email from Curbside app
+  @iOS @C114983
+  Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
+    Given I am on Shop Screen
+    And I select 'Food Item' product from list
+    And I add 2 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I select Curbside Pickup and delivery option
+    And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
+    And I tap on back button
+#    And I tap on 'Enter Promo Code'
+#    And I apply 'NF_DOLLAR_DS' promo code
+    And I attempt to place an order
+    Then I should receive 'Delivery-Order' Email from Curbside app
