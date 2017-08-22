@@ -77,11 +77,9 @@ public class AppStore {
 		for (JSONObject appInList : appList) {
 			if(appInList.getString("name").equalsIgnoreCase(appName))
 			{
-				JSONObject app = new JSONObject(appInList.toString());
-
+				JSONObject app= new JSONObject(appInList.toString());
 				app.remove("name");
 				return app;
-					//	new JSONObject(appInList.toString());
 			}
 		}
 		

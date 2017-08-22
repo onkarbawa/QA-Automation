@@ -82,7 +82,7 @@ public class DeviceStore {
 		{
 			JSONObject app= AppStore.getApp(appName);
 			for (String k : app.keySet())
-				deviceToReturn.append(k, app.getString(k));
+				deviceToReturn.put(k, app.getString(k));
 		}
 		
 		lockDevice(deviceToReturn);
