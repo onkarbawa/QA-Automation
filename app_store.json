@@ -1,0 +1,17 @@
+{
+  "android" : [
+    {
+      "name" : "Curbside",
+      "app": "../Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    }
+  ],
+  "iOS" : [
+    {
+      "name" : "Curbside",
+      "app" : "../Curbside.ipa",
+      "bundleId": "com.curbside.curbside"
+    }
+  ]
+}
