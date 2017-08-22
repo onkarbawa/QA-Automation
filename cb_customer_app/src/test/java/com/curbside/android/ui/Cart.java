@@ -68,6 +68,7 @@ public class Cart extends AbstractScreen {
     UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
     UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
     UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery by UBER \")");
+    UIElement lblStreetName = UIElement.byId("com.google.android.gms:id/place_autocomplete_prediction_primary_text");
 
 
 
@@ -177,7 +178,7 @@ public class Cart extends AbstractScreen {
         } else {
             addNewAddressButton.tap();
             addressSearchField.waitFor(5).sendKeys(street, true);
-            addressSuggestions.waitFor(5);
+            lblStreetName.waitFor(20);
             List<WebElement> list = addressSuggestions.getElements();
             for (WebElement element : list) {
                 String streetName = element.findElement(By
