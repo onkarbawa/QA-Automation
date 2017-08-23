@@ -60,7 +60,13 @@ public class Cart extends AbstractScreen {
 	@Given("I attempt to place an order")
 	public void placeOrder() throws Throwable {
 		//footerTabsScreen.btnCart.waitFor(3).tap();
-		placeOrder.tap();
+		if (placeOrder.isDisplayed()){
+			placeOrder.tap();
+		}
+		else {
+			placeOrder.scrollTo(SwipeDirection.UP);
+			placeOrder.tap();
+		}
 		placeOrder.waitForNot(5);
 	}
 
