@@ -26,7 +26,7 @@ public class Mailinator {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(baseURL);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     public static boolean isMailReceived(String userID, String subjectLine) throws InterruptedException {
@@ -48,6 +48,9 @@ public class Mailinator {
     public static void deleteAllMails(String userID) throws InterruptedException {
 
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+        if(noOfCheckboxes >= 5)
+            noOfCheckboxes = 5;
+
         if (noOfCheckboxes >= 1) {
 
             for (int i = 1; i <= noOfCheckboxes; i++) {

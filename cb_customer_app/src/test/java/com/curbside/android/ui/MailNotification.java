@@ -2,6 +2,7 @@ package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.Mailinator;
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -18,11 +19,13 @@ public class MailNotification {
 
         switch (emailType.toLowerCase()) {
             case "welcome":
+                MobileDevice.getScreenshot(true);
                 Assert.assertEquals(Mailinator.isMailReceived(emailID, "Welcome to Curbside"), true,
                         "Signup mail not received yet");
                 break;
 
             case "in-progress":
+                MobileDevice.getScreenshot(true);
                 Assert.assertEquals(Mailinator.isMailReceived(emailID, "We’re Prepping Your Curbside Pickup Order"),
                         true,"In Progress mail not received yet");
                 break;
