@@ -62,12 +62,16 @@ public class Cart extends AbstractScreen {
 		//footerTabsScreen.btnCart.waitFor(3).tap();
 		if (placeOrder.isDisplayed()){
 			placeOrder.tap();
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
 		}
 		else {
 			placeOrder.scrollTo(SwipeDirection.UP);
 			placeOrder.tap();
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
 		}
-		placeOrder.waitForNot(5);
+		placeOrder.waitForNot(10);
 	}
 
 	@And("^I should see credit info on cart screen$")
@@ -233,10 +237,14 @@ public class Cart extends AbstractScreen {
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
 
-		if (UIElement.byName(code).isDisplayed())
+		if (UIElement.byName(code).isDisplayed()){
 			UIElement.byName(code).tap();
-		else
+			MobileDevice.getSource(true);
+		}
+		else{
 			UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+			MobileDevice.getSource(true);
+		}
 
 		//UIElement.byName(code).scrollTo().tap();
     }

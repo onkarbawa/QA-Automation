@@ -25,6 +25,7 @@ public class AbstractScreen {
 	static Welcome welcomeScreen;
 	static StoreDetails storeDetails;
 	static GetMyOrder getMyOrder;
+	static MyOrders myOrders;
 	
 	static Steps commonSteps;
 
@@ -49,6 +50,7 @@ public class AbstractScreen {
 		welcomeScreen = new Welcome();
 		storeDetails = new StoreDetails();
 		getMyOrder = new GetMyOrder();
+		myOrders = new MyOrders();
 		commonSteps= new Steps();
 	}
 

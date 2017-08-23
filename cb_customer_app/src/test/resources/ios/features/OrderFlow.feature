@@ -2,9 +2,10 @@
 Feature: iOS- Order flow verification
 
   Scenario: Setting test environment
-    Given I launch Curbside application
+    Given I launch Curbside application for the first time
     And I have selected test environment
     And I am not signed into application
+    And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114951
   Scenario: Verify that cancelled order should appear in the Cancelled section
@@ -15,3 +16,10 @@ Feature: iOS- Order flow verification
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
+    And I tap on Order In Progress
+    And I store the value of OrderId
+    And I tap on 'Cancel This Order'
+    And I tap on reason 'Changed my mind' for cancelling
+    When I tap on 'Cancel Order'
+    Then I should see cancel order information under Cancelled Order screen
+    Then I should see cancel order in My Orders Screen
