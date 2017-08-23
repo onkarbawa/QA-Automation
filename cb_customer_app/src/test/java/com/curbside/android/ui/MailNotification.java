@@ -3,6 +3,8 @@ package com.curbside.android.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.Mailinator;
 import com.curbside.automation.uifactory.MobileDevice;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -26,7 +28,7 @@ public class MailNotification {
 
             case "in-progress":
                 MobileDevice.getScreenshot(true);
-                Assert.assertEquals(Mailinator.isMailReceived(emailID, "We’re Prepping Your Curbside Pickup Order"),
+                Assert.assertEquals(Mailinator.isMailReceived("emaildeliverytest", "We’re Prepping Your Curbside Pickup Order"),
                         true,"In Progress mail not received yet");
                 break;
 
@@ -36,4 +38,8 @@ public class MailNotification {
 
     }
 
+    @Given("^The mail box of userID \"([^\"]*)\" is empty$")
+    public void theMailBoxOfUserIDIsEmpty(String userID) throws Throwable {
+        Mailinator.deleteMails(userID);
+    }
 }

@@ -19,8 +19,14 @@ Feature: Android- Mail verification flow
 
   @Android @C114979
   Scenario: Verify user receives a E-Mail when order is in progress
-    Given I add credit card information
+    Given The mail box of userID "emaildeliverytest" is empty
+    And I launch Curbside application
+    And I have selected test environment
+    And I am not signed into application
+    And I sign in into application using username "emaildeliverytest@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
+    And I cancel 'all' orders
+    And My cart is empty
     And I select 'CVS' store and search for 'toothpaste' product
     And I select 1 product from list
     And I add 1 quantity of the product

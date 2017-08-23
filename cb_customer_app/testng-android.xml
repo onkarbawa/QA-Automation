@@ -49,5 +49,10 @@
             <class name="com.curbside.android.runners.MailVerificationTest"/>
         </classes>
     </test>
+    <test name="Order flow Verification">
+        <classes>
+            <class name="com.curbside.android.runners.OrderFlowTest"/>
+        </classes>
+    </test>
 
 </suite>

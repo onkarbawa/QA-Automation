@@ -35,24 +35,22 @@ public class Mailinator {
         setChromeDriver(userID);
 
         List<WebElement> allMailsSubject = driver.findElements(lblMailsSubject);
-        for(WebElement mailSubject : allMailsSubject) {
-            if(mailSubject.getText().equalsIgnoreCase(subjectLine))
+        for (WebElement mailSubject : allMailsSubject) {
+            if (mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
-        deleteAllMails(userID);
+        deleteMails();
         driver.quit();
-
         return isMailPresent;
     }
 
-    public static void deleteAllMails(String userID) throws InterruptedException {
+    public static void deleteMails() throws InterruptedException {
 
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        if(noOfCheckboxes >= 5)
+        if (noOfCheckboxes >= 5)
             noOfCheckboxes = 5;
 
         if (noOfCheckboxes >= 1) {
-
             for (int i = 1; i <= noOfCheckboxes; i++) {
                 String checkbox =
                         "(.//*[@id='inboxpane']//div[@class = 'all_message-min-check-container'])" + '[' + i + ']';
@@ -66,8 +64,30 @@ public class Mailinator {
         Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
+    }
 
+    public static void deleteMails(String userID) throws InterruptedException {
+
+        setChromeDriver(userID);
+        int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+        if (noOfCheckboxes >= 5)
+            noOfCheckboxes = 5;
+
+        if (noOfCheckboxes >= 1) {
+            for (int i = 1; i <= noOfCheckboxes; i++) {
+                String checkbox =
+                        "(.//*[@id='inboxpane']//div[@class = 'all_message-min-check-container'])" + '[' + i + ']';
+                driver.findElement(By.xpath(checkbox)).click();
+                Thread.sleep(1000);
+            }
+            driver.findElement(btnDelete).click();
+            Thread.sleep(1000);
+        }
+        driver.navigate().refresh();
+        Thread.sleep(1000);
+        noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+        Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
+        driver.quit();
     }
 
 }
-
