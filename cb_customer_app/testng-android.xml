@@ -54,5 +54,10 @@
             <class name="com.curbside.android.runners.OrderFlowTest"/>
         </classes>
     </test>
+    <test name="My Account - Credit and Loyalty card">
+        <classes>
+            <class name="com.curbside.android.runners.MyAccountTest"/>
+        </classes>
+    </test>
 
 </suite>
