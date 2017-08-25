@@ -49,11 +49,16 @@
             <class name="com.curbside.ios.runners.MailNotificationTest"/>
         </classes>
     </test>
-    <!--<test name="iOS- Order flow">-->
-        <!--<classes>-->
-            <!--<class name="com.curbside.ios.runners.OrderFlowTest"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="iOS- Order flow">
+        <classes>
+            <class name="com.curbside.ios.runners.OrderFlowTest"/>
+        </classes>
+    </test>
+    <test name="iOS- My Account">
+        <classes>
+            <class name="com.curbside.ios.runners.MyAccountTest"/>
+        </classes>
+    </test>
     <test name="iOS- Applaunch1">
         <classes>
             <class name="com.curbside.ios.runners.AppLaunchTest1"/>

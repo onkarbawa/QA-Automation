@@ -13,19 +13,19 @@ import org.testng.Assert;
 /**
  * Created by bawa.onkar
  */
-public class CancelledOrder {
+public class CancelledOrder extends AbstractScreen {
 
     UIElement cancelOrderTitle = UIElement.byName("Cancelled Order");
     UIElement orderID = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Order ID']/following-sibling::XCUIElementTypeStaticText[6]");
 
     @Then("^I should see cancel order information under Cancelled Order screen$")
-    public void iShouldSeeCancelOrderInformationUnderCancelledOrderScreen() throws Throwable {
+    public void iShouldSeeInformationUnderCancelledOrderScreen() throws Throwable {
         MobileDevice.getSource(true);
         Assert.assertEquals(cancelOrderTitle.getText(),"Cancelled Order","Cancel Order is not in the Cancelled Order Screen");
-        System.out.println(orderID.getText());
-        System.out.println(Properties.getVariable("orderID"));
         Assert.assertEquals(orderID.getText(), Properties.getVariable("orderID"),"Cancel OrderID is not same");
         MobileDevice.getSource(true);
-        Steps.tapButton("Done");
+        try {
+            Steps.tapButton("Done");
+        }catch (Exception e){}
     }
 }

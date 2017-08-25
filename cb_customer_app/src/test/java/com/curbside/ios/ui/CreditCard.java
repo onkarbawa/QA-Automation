@@ -68,6 +68,7 @@ public class CreditCard extends AbstractScreen {
 	@And("^I add credit card information$")
 	public void iAddCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(10).tap();
+		Properties.setVariable("cardExpiryDate", "1120");
 		//paymentInfoScreen.iTapOnAddANewCard();
 		Steps.tapButton("Add New Card");
 		firstName.sendKeys("Test",false);

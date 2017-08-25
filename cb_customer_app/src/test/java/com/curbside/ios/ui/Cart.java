@@ -262,7 +262,7 @@ public class Cart extends AbstractScreen {
 	@And("^I select Curbside Pickup and delivery option$")
 	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
 		curbsidePickUp.tap();
-		getMyOrder.deliveryBy.tap();
+		getMyOrderScreen.deliveryBy.tap();
 		MobileDevice.getSource(true);
 	}
 

@@ -17,6 +17,7 @@ public class MyAccount extends AbstractScreen {
 
 	UIElement btnAccountInfo = UIElement.byName("Account Info");
 	UIElement btnPaymentInfo = UIElement.byName("Payment Info");
+	UIElement btnLoyalityCard = UIElement.byName("Loyalty Cards");
 
 	UIElement btnSignIn = UIElement.byAccessibilityId("Sign In");
 

@@ -5,7 +5,6 @@ import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,10 +17,9 @@ import org.testng.Assert;
 public class MyOrders extends AbstractScreen {
 
     UIElement orderInProgress = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Order In Progress')]");
-   // UIElement orderID = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[@name='Payment']]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeStaticText[contains(@name,'Order')]");
     UIElement myOrderTitle = UIElement.byName("My Orders");
-
     UIElement orderID = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[10]//XCUIElementTypeStaticText");
+    UIElement latestOrderCancel = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Cancelled']]/following-sibling::XCUIElementTypeCell[1]");
 
 
     @And("^I tap on Order In Progress$")
@@ -43,11 +41,8 @@ public class MyOrders extends AbstractScreen {
             orderNo = orderNo.split("\\s")[1];
         }else {
             orderID.scrollTo(SwipeDirection.UP);
-            System.out.println(orderID.getText());
             orderNo = orderID.getText();
-            System.out.println(orderNo);
             orderNo = orderNo.split("\\s")[1];
-            System.out.println(orderNo);
         }
         Properties.setVariable("orderID",orderNo);
     }
@@ -59,5 +54,7 @@ public class MyOrders extends AbstractScreen {
         MobileDevice.getSource(true);
         Assert.assertEquals(myOrderTitle.getText(),"My Orders");
         MobileDevice.getSource(true);
+        latestOrderCancel.tap();
+        cancelledOrderScreen.iShouldSeeInformationUnderCancelledOrderScreen();
     }
 }
