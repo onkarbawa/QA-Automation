@@ -30,7 +30,6 @@ public class Mailinator {
     }
 
     public static boolean isMailReceived(String userID, String subjectLine) throws InterruptedException {
-
         boolean isMailPresent = false;
         setChromeDriver(userID);
 

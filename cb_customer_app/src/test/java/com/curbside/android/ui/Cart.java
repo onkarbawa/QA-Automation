@@ -69,6 +69,7 @@ public class Cart extends AbstractScreen {
     UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
     UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery by UBER \")");
     UIElement lblStreetName = UIElement.byId("com.google.android.gms:id/place_autocomplete_prediction_primary_text");
+    UIElement creditCardNumber = UIElement.byId("com.curbside.nCurbside:id/text_last_4_view");
 
 
 
@@ -353,5 +354,17 @@ public class Cart extends AbstractScreen {
         btnUber.waitFor(5);
         btnUber.swipeUpSlow();
         btnUber.tap();
+    }
+
+    @And("^I should see credit card info on cart screen$")
+    public void iShouldSeeCreditCardInfoOnCartScreen() throws Throwable {
+        try {
+            firstRetailer.waitFor(10).tap();
+        }catch (Exception e){
+            logger.debug(e.getMessage());
+        }
+        String displayedCardInfo = creditCardNumber.getText();
+        String last4Chars = StringUtils.right(Properties.getVariable("creditCardNumber"), 4);
+        Assert.assertEquals(displayedCardInfo, "••••" + last4Chars + "", "Credit card info not match/displayed");
     }
 }

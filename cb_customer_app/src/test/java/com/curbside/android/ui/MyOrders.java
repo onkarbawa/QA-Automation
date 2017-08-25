@@ -30,6 +30,9 @@ public class MyOrders extends AbstractScreen {
         footerTabsScreen.tapMyAccount();
         accountScreen.ensureAccountPage();
         Steps.tapButton("My Orders");
+
+        MobileDevice.getScreenshot(true);
+
         if (cancel.equalsIgnoreCase("all"))
             deleteAll = true;
 
@@ -48,7 +51,7 @@ public class MyOrders extends AbstractScreen {
                 Assert.assertTrue(lblCancellationReason.isDisplayed(), "Not abe to cancel the order");
                 for (int i = 0; i < 4; i++) {
                     try {
-                        btnBack.waitFor(1).tap();
+                        btnBack.waitFor(3).tap();
                     } catch (Exception e) {
                     }
                 }
