@@ -24,10 +24,6 @@ Feature: Android- User is able to add or remove the Credit/Loyalty card
       | card_number      | card_expiry | ccv | first_name | last_name | card_street_address | apt_suite | card_city | card_state | card_zip |
       | 4012000077777777 | 1218        | 123 | John       | miller    | 1 Infinite Loop     |           | Cupertino | California | 95014    |
 
-  @Android @C114960
-  Scenario: User is able to REMOVE the Credit card
-    When I tap on 'REMOVE' button
-    Then I should see empty Payment Info screen
 
   @Android @C114961
   Scenario: User is able to ADD loyalty card
@@ -37,7 +33,23 @@ Feature: Android- User is able to add or remove the Credit/Loyalty card
     When I add an ExtraCare Card numbered '87676478652876'
     Then I should see ExtraCare Card info on Loyalty Cards screen
 
+  @Android @C114960 @C114961
+  Scenario: User is able to see Credit and Loyalty card info under Cart screen
+    Given I add any product to cart in 'Palo Alto' location
+    When I tap on 'Cart' button
+    Then I should see credit card info on cart screen
+    Then I should see loyalty card info on cart screen
+
+  @Android @C114960
+  Scenario: User is able to REMOVE the Credit card
+    Given I tap on 'Account' button
+    And I tap on 'Payment Info' button
+    When I tap on 'REMOVE' button
+    Then I should see empty Payment Info screen
+
   @Android @C114961
   Scenario: User is able to REMOVE loyalty card
+    Given I tap on 'Account' button
+    And I tap on 'Loyalty Cards' button
     When I tap on 'REMOVE' button
     Then I should see empty Loyalty Cards screen
