@@ -56,13 +56,13 @@ public class PaymentInfo extends AbstractScreen {
 		}else {
 			myAccountScreen.btnLoyalityCard.tap();
 		}
-		creditCardCell.waitFor(7);
+		creditCardCell.waitFor(9);
 		int height = creditCardCell.getHeight();
 		int width = creditCardCell.getWidth();
 		int x = creditCardCell.getX();
 		int y = creditCardCell.getY();
 
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
 
 		if(btnDelete.isDisplayed()){
