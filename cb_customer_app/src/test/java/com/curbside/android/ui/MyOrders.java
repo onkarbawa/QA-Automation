@@ -49,7 +49,7 @@ public class MyOrders extends AbstractScreen {
                 lblCancellationReason.waitFor(5);
 
                 Assert.assertTrue(lblCancellationReason.isDisplayed(), "Not abe to cancel the order");
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 10; i++) {
                     try {
                         btnBack.waitFor(3).tap();
                     } catch (Exception e) {
