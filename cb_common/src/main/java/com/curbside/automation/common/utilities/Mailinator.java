@@ -38,13 +38,15 @@ public class Mailinator {
             if (mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
-        deleteMails();
         driver.quit();
+        Assert.assertTrue(deleteMails(), "Not able to clear the Inbox after email received");
+
         return isMailPresent;
     }
 
-    public static void deleteMails() throws InterruptedException {
+    public static boolean deleteMails() throws InterruptedException {
 
+        boolean inboxCleared = false;
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         if (noOfCheckboxes >= 5)
             noOfCheckboxes = 5;
@@ -62,7 +64,11 @@ public class Mailinator {
         driver.navigate().refresh();
         Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
+
+        if(noOfCheckboxes == 0)
+            inboxCleared = true;
+
+        return inboxCleared;
     }
 
     public static void deleteMails(String userID) throws InterruptedException {
@@ -85,8 +91,8 @@ public class Mailinator {
         driver.navigate().refresh();
         Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-        Assert.assertEquals(noOfCheckboxes, 0, "Not able to empty the mailbox");
         driver.quit();
+        Assert.assertEquals(noOfCheckboxes, 0, "Not able to clear the Inbox");
     }
 
 }
