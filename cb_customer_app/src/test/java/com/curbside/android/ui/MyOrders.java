@@ -49,11 +49,9 @@ public class MyOrders extends AbstractScreen {
                 lblCancellationReason.waitFor(5);
 
                 Assert.assertTrue(lblCancellationReason.isDisplayed(), "Not abe to cancel the order");
-                for (int i = 0; i < 4; i++) {
-                    try {
-                        btnBack.waitFor(3).tap();
-                    } catch (Exception e) {
-                    }
+                for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed() ; i++) {
+                    AndroidDevice.goBack();
+                    Thread.sleep(3000);
                 }
                 footerTabsScreen.tapMyAccount();
                 Steps.tapButton("My Orders");
