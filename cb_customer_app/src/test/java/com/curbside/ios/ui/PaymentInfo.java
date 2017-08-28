@@ -1,12 +1,15 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -56,15 +59,16 @@ public class PaymentInfo extends AbstractScreen {
 		}else {
 			myAccountScreen.btnLoyalityCard.tap();
 		}
-		creditCardCell.waitFor(9);
+	//	creditCardCell.waitFor(10);
 		int height = creditCardCell.getHeight();
 		int width = creditCardCell.getWidth();
 		int x = creditCardCell.getX();
 		int y = creditCardCell.getY();
 
-		Thread.sleep(2000);
-		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
-
+		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).waitAction(1000)
+				.moveTo(-width, y+(height/2)).release().perform();
+//		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
+		btnDelete.waitFor(10);
 		if(btnDelete.isDisplayed()){
 			btnDelete.tap();
 		}
