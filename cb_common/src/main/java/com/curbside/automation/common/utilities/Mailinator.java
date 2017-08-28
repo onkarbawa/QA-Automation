@@ -31,6 +31,7 @@ public class Mailinator {
 
     public static boolean isMailReceived(String userID, String subjectLine) throws InterruptedException {
         boolean isMailPresent = false;
+        boolean inboxCleared ;
         setChromeDriver(userID);
 
         List<WebElement> allMailsSubject = driver.findElements(lblMailsSubject);
@@ -38,8 +39,9 @@ public class Mailinator {
             if (mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
+        inboxCleared = deleteMails();
         driver.quit();
-        Assert.assertTrue(deleteMails(), "Not able to clear the Inbox after email received");
+        Assert.assertTrue(inboxCleared, "Not able to clear the Inbox after email received");
 
         return isMailPresent;
     }
