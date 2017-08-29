@@ -59,5 +59,10 @@
             <class name="com.curbside.android.runners.MyAccountTest"/>
         </classes>
     </test>
+    <test name="Live orders">
+        <classes>
+            <class name="com.curbside.android.runners.LiveOrderTest"/>
+        </classes>
+    </test>
 
 </suite>
