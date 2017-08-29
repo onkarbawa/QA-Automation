@@ -69,7 +69,6 @@ public class CreditCard extends AbstractScreen {
 	public void iAddCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(10).tap();
 		Properties.setVariable("cardExpiryDate", "1120");
-		//paymentInfoScreen.iTapOnAddANewCard();
 		Steps.tapButton("Add New Card");
 		firstName.sendKeys("Test",false);
 		lastName.sendKeys("Data",false);
@@ -92,4 +91,28 @@ public class CreditCard extends AbstractScreen {
 		save.waitForNot(20);
 		MobileDevice.getScreenshot(true);
 	}
+
+    @And("^I add credit card$")
+    public void iAddCreditCard() throws Throwable {
+        firstName.sendKeys("Test",false);
+        lastName.sendKeys("Data",false);
+        cardNumber.sendKeys("6011111111111117",false);
+        expiryDate.sendKeys("1120",false);
+        securityCode.sendKeys("345",false);
+        MobileDevice.getScreenshot(true);
+        next.tap();
+
+        newAddress.tap();
+        cardAdd1.sendKeys("TestData",false);
+        cardAdd2.sendKeys("TestData",false);
+        cardCity.sendKeys("Boston",false);
+        cardState.tap();
+        cardState.tap();
+        cardZip.sendKeys("56635",false);
+        MobileDevice.getScreenshot(true);
+        save.tap();
+
+        save.waitForNot(20);
+        MobileDevice.getScreenshot(true);
+    }
 }
