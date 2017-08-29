@@ -177,8 +177,10 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			try {
 				UIElement.byName(buttonName).tap();
+				MobileDevice.getScreenshot(true);
 			} catch (Exception e) {
 				UIElement.byAccessibilityId(buttonName).tap();
+				MobileDevice.getScreenshot(true);
 			}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
 			UIElement.byUISelector("new UiSelector().text(\"" + buttonName + "\")").waitFor(5).tap();

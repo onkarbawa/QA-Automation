@@ -44,6 +44,7 @@ public class Settings extends AbstractScreen {
 		location.waitFor(20);
 		location.tap();
 		new UIElement(By.name(newValue)).tap();
+		MobileDevice.getScreenshot(true);
 	}
 
 	@When("^I turn '(.*)' '(.*)' for '(.*)'$")
@@ -68,5 +69,6 @@ public class Settings extends AbstractScreen {
 		if (locationAlwaysDescription.isDisplayed()){
 			Steps.tapButton("Never");
 		}
+		MobileDevice.getScreenshot(true);
 	}
 }
