@@ -5,6 +5,7 @@ import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -377,23 +378,4 @@ public class Cart extends AbstractScreen {
 		Properties.setVariable(value, deliveryCharge.getText());
 	}
 
-//	@And("^I remove and add the product again to the cart$")
-//	public void reAddTheProduct() throws Throwable {
-//		productName.waitFor(2).tap();
-//		int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
-//		for (int i = 0; i < itemQnty; i++) {
-//			productDetailsScreen.btnRemove.waitFor(5).tap();
-//		}
-//
-//		for (int i = 0; i < itemQnty; i++) {
-//			try {
-//				productDetailsScreen.btnAddtoCart.waitFor(4);
-//				productDetailsScreen.btnAddtoCart.tap();
-//			}catch (Exception e){
-//				productDetailsScreen.btnAdd.tap();
-//			}
-//		}
-//		AndroidDevice.goBack();
-//		Thread.sleep(1000);
-//	}
 }

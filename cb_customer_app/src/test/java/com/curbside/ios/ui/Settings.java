@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -18,6 +19,7 @@ public class Settings extends AbstractScreen {
 	UIElement location = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
 	UIElement allowNotifications = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Allow Notifications" + "']");
+	UIElement locationAlwaysDescription = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeOther[1][contains(@name,'Access to your location')]");
 
 	public Settings() {
 		// TODO Auto-generated constructor stub
@@ -55,15 +57,16 @@ public class Settings extends AbstractScreen {
 
 		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
 			toggleButton.tap();
-
-//		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
-//		System.out.println("Current toggle value is " + currentBackgroundRefreshValue);
-//
-//		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-//
-//		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
-//			backgroundAppRefresh.tap();
 		
 		MobileDevice.getScreenshot(true);
+	}
+
+	@And("^I verify that Location 'Never' is set$")
+	public void iVerifyThatLocationNeverIsSet() throws Throwable {
+		commonSteps.iTapOnBackButton();
+		Steps.tapButton("Location");
+		if (locationAlwaysDescription.isDisplayed()){
+			Steps.tapButton("Never");
+		}
 	}
 }
