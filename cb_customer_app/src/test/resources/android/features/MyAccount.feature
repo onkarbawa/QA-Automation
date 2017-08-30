@@ -1,5 +1,5 @@
 @creditAndLoyaltyCards
-Feature: Android- User is able to add or remove the Credit/Loyalty card
+Feature: Android- Account cards verification
 
   Scenario: Setting test environment
     Given I launch Curbside application

@@ -37,7 +37,10 @@ public class MyOrders extends AbstractScreen {
             deleteAll = true;
 
         do {
-            if (lblOrderState.waitFor(5).getText().equalsIgnoreCase("In Progress")) {
+            if(!lblOrderState.waitFor(5).isDisplayed())
+                break;
+
+            if (lblOrderState.getText().equalsIgnoreCase("In Progress")) {
                 latestInProgressOrder.tap();
 
                 if (cancel.equalsIgnoreCase("latest"))

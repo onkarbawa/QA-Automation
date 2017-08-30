@@ -14,7 +14,7 @@ Feature: Android- Mail verification flow
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
-    Then I should receive 'Welcome' Email from Curbside app
+    Then I should receive 'Welcome' email on 'signup' EmailID
 
 
   @Android @C114979
@@ -33,7 +33,7 @@ Feature: Android- Mail verification flow
     And I tap on 'Cart' button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
-    Then I should receive 'In-Progress pickup' Email from Curbside app
+    Then I should receive 'In-Progress pickup' email on 'emaildeliverytest' EmailID
 
   @Android @C114983
   Scenario: Verify user receives Email with mail subject - We're Prepping Your delivery Order
@@ -55,4 +55,4 @@ Feature: Android- Mail verification flow
     And I tap on back button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
-    Then I should receive 'In-Progress delivery' Email from Curbside app
+    Then I should receive 'In-Progress delivery' email on 'emaildeliverytest' EmailID

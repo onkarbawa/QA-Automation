@@ -64,7 +64,6 @@ public class Mailinator {
             Thread.sleep(1000);
         }
         driver.navigate().refresh();
-        Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
 
         if(noOfCheckboxes == 0)
@@ -91,7 +90,6 @@ public class Mailinator {
             Thread.sleep(1000);
         }
         driver.navigate().refresh();
-        Thread.sleep(1000);
         noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         driver.quit();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to clear the Inbox");
