@@ -31,7 +31,6 @@ public class Mailinator {
 
     public static boolean isMailReceived(String userID, String subjectLine) throws InterruptedException {
         boolean isMailPresent = false;
-        boolean inboxCleared ;
         setChromeDriver(userID);
 
         List<WebElement> allMailsSubject = driver.findElements(lblMailsSubject);
@@ -39,16 +38,13 @@ public class Mailinator {
             if (mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
-        inboxCleared = deleteMails();
+        deleteMails();
         driver.quit();
-        Assert.assertTrue(inboxCleared, "Not able to clear the Inbox after email received");
-
         return isMailPresent;
     }
 
-    public static boolean deleteMails() throws InterruptedException {
+    public static void deleteMails() throws InterruptedException {
 
-        boolean inboxCleared = false;
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         if (noOfCheckboxes >= 5)
             noOfCheckboxes = 5;
@@ -63,14 +59,6 @@ public class Mailinator {
             driver.findElement(btnDelete).click();
             Thread.sleep(1000);
         }
-        driver.navigate().refresh();
-        Thread.sleep(1000);
-        noOfCheckboxes = driver.findElements(mailCheckboxes).size();
-
-        if(noOfCheckboxes == 0)
-            inboxCleared = true;
-
-        return inboxCleared;
     }
 
     public static void deleteMails(String userID) throws InterruptedException {
@@ -89,10 +77,9 @@ public class Mailinator {
             }
             driver.findElement(btnDelete).click();
             Thread.sleep(1000);
+            driver.navigate().refresh();
+            noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         }
-        driver.navigate().refresh();
-        Thread.sleep(1000);
-        noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         driver.quit();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to clear the Inbox");
     }
