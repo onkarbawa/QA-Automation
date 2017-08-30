@@ -31,31 +31,31 @@ Feature: Android - Delivery Promo code
     Then I should see promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code   |Discount Type     |
-      |NF_DOLLAR_DS | Dollar-Delivery  |
+      |NF_DOLLAR_DS_NEW | Dollar-Delivery  |
 
-  @Android @C114992
-  Scenario Outline: verify percentage promo code on Delivery charges
-    And I tap on Enter promo code link
-    When I apply promo code "<Promo Code>"
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code    |Discount Type     |
-      |NF_PERCENT_DS | Percent-Delivery |
-
-  @Android @C114993
-  Scenario Outline: verify Free promo code on Delivery charges
-    And I tap on Enter promo code link
-    When I apply promo code "<Promo Code>"
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code |Discount Type    |
-      |NF_FREE_DS | Free-Delivery   |
-
-  @Android @C114994
-  Scenario Outline: verify Free promo code on Delivery charges
-    And I tap on Enter promo code link
-    When I apply promo code "<Promo Code>"
-    Then I should see promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code  |Discount Type    |
-      |NF_FIXED_DS | Fixed-Delivery  |
+#  @Android @C114992
+#  Scenario Outline: verify percentage promo code on Delivery charges
+#    And I tap on Enter promo code link
+#    When I apply promo code "<Promo Code>"
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code    |Discount Type     |
+#      |NF_PERCENT_DS | Percent-Delivery |
+#
+#  @Android @C114993
+#  Scenario Outline: verify Free promo code on Delivery charges
+#    And I tap on Enter promo code link
+#    When I apply promo code "<Promo Code>"
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code |Discount Type    |
+#      |NF_FREE_DS | Free-Delivery   |
+#
+#  @Android @C114994
+#  Scenario Outline: verify Free promo code on Delivery charges
+#    And I tap on Enter promo code link
+#    When I apply promo code "<Promo Code>"
+#    Then I should see promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code  |Discount Type    |
+#      |NF_FIXED_DS | Fixed-Delivery  |
