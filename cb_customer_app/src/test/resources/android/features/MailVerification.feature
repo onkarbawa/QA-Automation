@@ -19,14 +19,12 @@ Feature: Android- Mail verification flow
 
   @Android @C114979
   Scenario: Verify user receives Email with mail subject - We're Prepping Your Curbside Pickup Order
-    Given The mail box of userID "emaildeliverytest" is empty
-    And I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I sign in into application using username "emaildeliverytest@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I cancel 'all' orders
     And My cart is empty
+    And The mail box of userID "emaildeliverytest" is empty
     And I select 'CVS' store and search for 'cvs product' product
     And I select 1 product from list
     And I add 1 quantity of the product
@@ -37,14 +35,12 @@ Feature: Android- Mail verification flow
 
   @Android @C114983
   Scenario: Verify user receives Email with mail subject - We're Prepping Your delivery Order
-    Given The mail box of userID "emaildeliverytest" is empty
-    And I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I sign in into application using username "emaildeliverytest@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I cancel 'all' orders
     And My cart is empty
+    And The mail box of userID "emaildeliverytest" is empty
     And I select 'CVS' store and search for 'cvs product' product
     And I select 1 product from list
     And I add 1 quantity of the product

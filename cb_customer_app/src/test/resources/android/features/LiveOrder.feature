@@ -23,8 +23,8 @@ Feature: Android- Live order
     When I tap on Create Account button
     Then I should see my given information under Account Info
     Then I should receive welcome SMS from Curbside app
-    Then I should receive 'Welcome' email on 'signup' EmailID
     And I tap on PaymentInfo button on Account page
+    And I should receive 'Welcome' email on 'signup' EmailID
     And I tap on Add New Card button on Payment info page
     When I add credit card information as '<card_number>', '<card_expiry>', '<ccv>', '<first_name>', '<last_name>', '<card_street_address>', '<apt_suite>','<card_city>', '<card_state>', '<card_zip>'
     Then I should see the card added to Payment info
@@ -43,14 +43,12 @@ Feature: Android- Live order
 
   @Android @C114963
   Scenario Outline: End to End - 'UNLIMITED' promo code and Pickup order EMail verifications
-    Given The mail box of userID "end2endpickup" is empty
-    And I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I sign in into application using username "end2endpickup@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I cancel 'all' orders
     And My cart is empty
+    And The mail box of userID "end2endpickup" is empty
     And I select 'CVS' store and search for 'Sensodyne fresh' product
     And I select 1 product from list
     And I add 2 quantity of the product
@@ -74,14 +72,12 @@ Feature: Android- Live order
 
   @Android @C114964
   Scenario: End to End - Delivery order EMail verifications
-    Given The mail box of userID "end2enddelivery" is empty
-    And I launch Curbside application
-    And I have selected test environment
-    And I am not signed into application
+    Given I am not signed into application
     And I sign in into application using username "end2enddelivery@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I cancel 'all' orders
     And My cart is empty
+    And The mail box of userID "end2enddelivery" is empty
     And I select 'CVS' store and search for 'Sensodyne fresh' product
     And I select 1 product from list
     And I add 1 quantity of the product

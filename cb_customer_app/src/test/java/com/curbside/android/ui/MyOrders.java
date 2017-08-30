@@ -63,7 +63,6 @@ public class MyOrders extends AbstractScreen {
 
             orderPresent = lblOrderState.waitFor(5).getText().equalsIgnoreCase("In Progress");
         } while (orderPresent && deleteAll);
-        MobileDevice.getScreenshot(true);
     }
 
 

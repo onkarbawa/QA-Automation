@@ -367,7 +367,7 @@ public class Cart extends AbstractScreen {
 
     @Then("^I should see promo code is not applied$")
     public void iShouldSeePromoCodeIsNotApplied() throws Throwable {
-        promoCodeDiscount.swipeUpSlow();
+        lblEstimatedTotal.scrollTo(SwipeDirection.UP);
         MobileDevice.getScreenshot(true);
         Reporter.addStepLog("Item price "+ lblItemsTotalPrice.getText());
         Reporter.addStepLog("Estimated total "+ lblEstimatedTotal.getText());
