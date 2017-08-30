@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
@@ -47,6 +48,9 @@ public class Cart extends AbstractScreen {
 	UIElement deliveryCharge = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Delivery')]/following-sibling::XCUIElementTypeStaticText[1]");
 
 	UIElement storeAddress = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[1]//XCUIElementTypeStaticText[1]");
+
+	UIElement promoCodeAlert = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']");
+	UIElement promoCodeMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']/following-sibling::XCUIElementTypeStaticText");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -219,6 +223,7 @@ public class Cart extends AbstractScreen {
 
     @And("^I apply '(.*)' promo code$")
     public void iApplyPromoCode(String promo) throws Throwable {
+		Properties.setVariable("promoCode",promo);
         promoCode.sendKeys(promo,false);
         UIElement.byName("Apply").tap();
     }
@@ -232,7 +237,7 @@ public class Cart extends AbstractScreen {
 		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
 
 		Assert.assertEquals(Double.valueOf(df.format((totalPrice + estimateTax) - actualDiscount)), estimateTotalAmount,"Discount is not applied");
-		UIElement.byName("Back").tap();
+	//	UIElement.byName("Back").tap();
 	}
 
     @Given("^I tap on '(.*)'$")
@@ -378,4 +383,34 @@ public class Cart extends AbstractScreen {
 		Properties.setVariable(value, deliveryCharge.getText());
 	}
 
+	@And("^I checked threshold value for Promo code$")
+	public void iCheckedThresholdValueForPromoCode() throws Throwable {
+	//	Thread.sleep(2000);
+		while (true){
+			if(promoCodeAlert.isDisplayed()){
+				String message = promoCodeMessage.getText();
+
+				Double amountToBeAdded = Double.parseDouble(message.split("\\$")[1].split("\\s")[0]);
+				amountToBeAdded = Double.valueOf(df.format(amountToBeAdded));
+				Steps.tapButton("OK");
+
+
+				if (amountToBeAdded <= 20.00){
+					productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
+					productDetailsScreen.incrementProduct.tap();
+					MobileDevice.tap(188,42);
+				}
+				else {
+					break;
+				}
+				
+				iTapOn("Enter Promo Code");
+				iApplyPromoCode(Properties.getVariable("promoCode"));
+			//	Thread.sleep(2000);
+			}
+			else {
+				break;
+			}
+		}
+	}
 }
