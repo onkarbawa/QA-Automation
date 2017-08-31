@@ -46,7 +46,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Aug 31, 2017 06:02:23 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Aug 31, 2017 06:04:13 PM</span>
 				</a>
 			</li>
 			<li>
@@ -73,7 +73,6 @@
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
-						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -166,10 +165,10 @@
 					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>2</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>2</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -186,12 +185,12 @@
 				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>iOS- Application Launch</span>
-						<span class='test-time'>Aug 31, 2017 06:02:24 PM</span>
+						<span class='test-time'>Aug 31, 2017 06:04:13 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='scenariooutline node' test-id='2' status='fail'>
-	<span class='duration right label'>0h 1m 11s+541ms</span>
+	<span class='duration right label'>0h 1m 20s+816ms</span>
 	<div class='desc'>
 		<b>ScenarioOutline</b>
 		<span class="desc-text">First time Curbside Launch (fresh install)</span>
@@ -212,9 +211,9 @@
 					<li test-id='4' class='node given pass' status='pass'><b>Given</b>
 						<span class="bdd-step-name">Given I launch CAP application</span>
 						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4058713440302510829.png"><i class='material-icons'>panorama</i></a></li>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_7111677984680924218.png"><i class='material-icons'>panorama</i></a></li>
 						</ul>
-							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8352535069430182353.xml'>page source</a></div>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_6551724583631180656.xml'>page source</a></div>
 							<div class='pre'>passed</div>
 					</li>
 					<li test-id='5' class='node and pass' status='pass'><b>And</b>
@@ -222,16 +221,16 @@
 							<div class='pre'>passed</div>
 					</li>
 					<li test-id='6' class='node and fail' status='fail'><b>And</b>
-						<span class="bdd-step-name">And I accept remote notifications alert</span>
+						<span class="bdd-step-name">And I enter 'curbside','qaautomation_initium' and 'curbside'</span>
 							<div class='pre'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 481 milliseconds
+Command duration or timeout: 49 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: 'tfts-MacBook-Air.local', ip: 'fe80:0:0:0:806:98f0:b296:841a%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.4', java.version: '1.8.0_131'
 Driver info: io.appium.java_client.AppiumDriver
 Capabilities [{app=/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/../CAP.ipa, networkConnectionEnabled=false, noReset=false, bundleId=com.curbside.CAP, databaseEnabled=false, deviceName=TFT, fullReset=false, usePrebuiltWDA=true, platform=MAC, showXcodeLog=true, platformVersion=10.3.3, webStorageEnabled=false, locationContextEnabled=false, browserName=, takesScreenshot=true, javascriptEnabled=true, platformName=iOS, udid=302e6964cca48090dc7eedf35cb9006a90c1a324}]
-Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
-*** Element info: {Using=name, value=OK}
+Session ID: f8e4c4b3-65aa-433a-9ae0-6a56c4a82f34
+*** Element info: {Using=xpath, value=//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[2]/XCUIElementTypeTextField}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -244,26 +243,19 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:485)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementByName(DefaultGenericMobileDriver.java:110)
-	at io.appium.java_client.AppiumDriver.findElementByName(AppiumDriver.java:1)
-	at org.openqa.selenium.By$ByName.findElement(By.java:303)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:140)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
 	at com.curbside.automation.uifactory.UIElement.getElement(UIElement.java:40)
-	at com.curbside.automation.uifactory.UIElement.tap(UIElement.java:53)
-	at com.curbside.automation.uifactory.Steps.acceptRemoteNotificationAlert(Steps.java:345)
-	at ✽.And I accept remote notifications alert(src/test/resources/cap/features/ios/features/TaskManagement.feature:11)
+	at com.curbside.automation.uifactory.UIElement.sendKeys(UIElement.java:123)
+	at com.curbside.automation.uifactory.UIElement.sendKeys(UIElement.java:132)
+	at com.cap.ios.ui.Login.iEnterAnd(Login.java:22)
+	at ✽.And I enter 'curbside','qaautomation_initium' and 'curbside'(src/test/resources/cap/features/ios/features/TaskManagement.feature:12)
 </pre></div>
-					</li>
-					<li test-id='7' class='node and skip' status='skip'><b>And</b>
-						<span class="bdd-step-name">And I enter 'curbside','qaautomation_initium' and 'curbside'</span>
-						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2988768347715338417.png"><i class='material-icons'>panorama</i></a></li>
-						</ul>
-							<div class='pre'>skipped</div>
-							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8513647039027680578.xml'>page source</a></div>
 					</li>
 				</ul>
 		</li>
@@ -346,12 +338,12 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 31, 2017 06:02:24 PM</td>
+										<td>Aug 31, 2017 06:04:13 PM</td>
 										<td class='linked' test-id='1'>iOS- Application Launch</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
 									<tr>
-										<td>Aug 31, 2017 06:02:24 PM</td>
+										<td>Aug 31, 2017 06:04:13 PM</td>
 										<td class='linked' test-id='3'>iOS- Application Launch.First time Curbside Launch (fresh install).First time Curbside Launch (fresh install)</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
@@ -385,7 +377,7 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 31, 2017 06:02:24 PM</td>
+										<td>Aug 31, 2017 06:04:13 PM</td>
 										<td class='linked' test-id='3'>iOS- Application Launch.First time Curbside Launch (fresh install).First time Curbside Launch (fresh install)</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
@@ -419,7 +411,7 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 31, 2017 06:02:24 PM</td>
+										<td>Aug 31, 2017 06:04:13 PM</td>
 										<td class='linked' test-id='3'>iOS- Application Launch.First time Curbside Launch (fresh install).First time Curbside Launch (fresh install)</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
@@ -482,17 +474,17 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Aug 31, 2017 06:03:31 PM</td>
-                                                        <td class='linked' test-id='6'>iOS- Application Launch.First time Curbside Launch (fresh install).First time Curbside Launch (fresh install).And I accept remote notifications alert</td>
+                                                        <td>Aug 31, 2017 06:05:23 PM</td>
+                                                        <td class='linked' test-id='6'>iOS- Application Launch.First time Curbside Launch (fresh install).First time Curbside Launch (fresh install).And I enter 'curbside','qaautomation_initium' and 'curbside'</td>
                                                         <td><pre><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 481 milliseconds
+Command duration or timeout: 49 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
 System info: host: 'tfts-MacBook-Air.local', ip: 'fe80:0:0:0:806:98f0:b296:841a%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.4', java.version: '1.8.0_131'
 Driver info: io.appium.java_client.AppiumDriver
 Capabilities [{app=/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/../CAP.ipa, networkConnectionEnabled=false, noReset=false, bundleId=com.curbside.CAP, databaseEnabled=false, deviceName=TFT, fullReset=false, usePrebuiltWDA=true, platform=MAC, showXcodeLog=true, platformVersion=10.3.3, webStorageEnabled=false, locationContextEnabled=false, browserName=, takesScreenshot=true, javascriptEnabled=true, platformName=iOS, udid=302e6964cca48090dc7eedf35cb9006a90c1a324}]
-Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
-*** Element info: {Using=name, value=OK}
+Session ID: f8e4c4b3-65aa-433a-9ae0-6a56c4a82f34
+*** Element info: {Using=xpath, value=//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[2]/XCUIElementTypeTextField}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -505,17 +497,18 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:485)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementByName(DefaultGenericMobileDriver.java:110)
-	at io.appium.java_client.AppiumDriver.findElementByName(AppiumDriver.java:1)
-	at org.openqa.selenium.By$ByName.findElement(By.java:303)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:140)
+	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
 	at com.curbside.automation.uifactory.UIElement.getElement(UIElement.java:40)
-	at com.curbside.automation.uifactory.UIElement.tap(UIElement.java:53)
-	at com.curbside.automation.uifactory.Steps.acceptRemoteNotificationAlert(Steps.java:345)
-	at ✽.And I accept remote notifications alert(src/test/resources/cap/features/ios/features/TaskManagement.feature:11)
+	at com.curbside.automation.uifactory.UIElement.sendKeys(UIElement.java:123)
+	at com.curbside.automation.uifactory.UIElement.sendKeys(UIElement.java:132)
+	at com.cap.ios.ui.Login.iEnterAnd(Login.java:22)
+	at ✽.And I enter 'curbside','qaautomation_initium' and 'curbside'(src/test/resources/cap/features/ios/features/TaskManagement.feature:12)
 </pre></pre></td>
                                                     </tr>
                                         </tbody>
@@ -554,25 +547,25 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>4</div>
+					<div class='panel-lead'>3</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Aug 31, 2017 06:02:23 PM</div>
+					<div class='panel-lead'>Aug 31, 2017 06:04:13 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Aug 31, 2017 06:03:35 PM</div>
+			 		<div class='panel-lead'>Aug 31, 2017 06:05:56 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>72,153ms</div>
+					<div class='panel-lead'>103,432ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -639,9 +632,9 @@ Session ID: 6f17eedc-438c-4a2c-9092-49e350b4d37a
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 1,
+				skipGrandChild: 0,
 				infoGrandChild: 0,
-				exceptionsGrandChild: 2,
+				exceptionsGrandChild: 1,
 			};
 		</script>
 		
