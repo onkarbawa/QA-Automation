@@ -5,6 +5,12 @@
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    },
+    {
+      "name" : "CAP",
+      "app": "../CAP.apk",
+      "appPackage": "com.curbside.nCap",
+      "appActivity": "com.curbside.nCap.activity.MainActivity"
     }
   ],
   "iOS" : [
