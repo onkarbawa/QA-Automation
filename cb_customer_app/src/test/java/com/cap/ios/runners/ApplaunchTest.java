@@ -1,20 +1,22 @@
-package com.curbside.ios.runners;
+package com.cap.ios.runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 /**
- * Created by bawa.onkar on 20/07/17.
+ * Created by bawa.onkar
  */
+
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/curbside/features/ios/features/CartBuildingAndCheckout.feature",
+        features = "src/test/resources/cap/features/ios/features/AppLaunch.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
         dryRun = false, strict= true,
-        glue = {"com.curbside.ios.ui", "com.curbside.automation.uifactory"})
+        glue = {"com.cap.ios.ui", "com.curbside.automation.uifactory"})
+
 @Test
-public class CartBuildingAndCheckout extends AbstractTestNGCucumberTests {
+public class ApplaunchTest extends AbstractTestNGCucumberTests {
 }

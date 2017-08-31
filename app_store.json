@@ -12,6 +12,11 @@
       "name" : "Curbside",
       "app" : "../Curbside.ipa",
       "bundleId": "com.curbside.curbside"
+    },
+    {
+      "name" : "CAP",
+      "app" : "../CAP.ipa",
+      "bundleId": "com.curbside.CAP"
     }
   ]
 }
