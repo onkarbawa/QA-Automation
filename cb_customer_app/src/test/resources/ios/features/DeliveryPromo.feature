@@ -26,32 +26,32 @@ Feature: iOS - Delivery Promo code
       |Promo Code   |Discount Type|
       |NF_DOLLAR_DS_NEW  |  Dollar     |
 
-  @iOS @C114992
-  Scenario Outline: Verify Delivery Promo - %
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code       |Discount Type|
-      |NF_PERCENT_DS |   DeliveryPercent   |
-
-  @iOS @C114993
-  Scenario Outline: Verify Delivery Promo - Free
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code       |Discount Type|
-      |NF_FREE_DS|   Free   |
-
-  @iOS @C114994
-  Scenario Outline: Verify Delivery Promo - Fixed
-    Given I tap on 'Enter Promo Code'
-    When I apply '<Promo Code>' promo code
-    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
-    Examples:
-      |Promo Code       |Discount Type|
-      |NF_FIXED_DS|   Fixed   |
+#  @iOS @C114992
+#  Scenario Outline: Verify Delivery Promo - %
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code       |Discount Type|
+#      |NF_PERCENT_DS |   DeliveryPercent   |
+#
+#  @iOS @C114993
+#  Scenario Outline: Verify Delivery Promo - Free
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code       |Discount Type|
+#      |NF_FREE_DS|   Free   |
+#
+#  @iOS @C114994
+#  Scenario Outline: Verify Delivery Promo - Fixed
+#    Given I tap on 'Enter Promo Code'
+#    When I apply '<Promo Code>' promo code
+#    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
+#    Examples:
+#      |Promo Code       |Discount Type|
+#      |NF_FIXED_DS|   Fixed   |
 
   @iOS @C114949
   Scenario Outline: verify Repeat Promo codes
