@@ -48,6 +48,8 @@ public class MyAccount extends AbstractScreen {
 		String email = Properties.getVariable("signupEmail");
 
 		viewEmailId.waitFor(10);
+		footerTabsScreen.tapMyAccount();
+		accountScreen.ensureAccountPage();
 		Assert.assertTrue(viewEmailId.isDisplayed(), "User is not able to sign-in");
 
 		String actEmail = viewEmailId.getText();

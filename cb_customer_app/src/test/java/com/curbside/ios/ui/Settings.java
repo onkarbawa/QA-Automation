@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -8,6 +9,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 /**
  * Created by bawa.onkar on 05/07/17.
@@ -18,6 +20,7 @@ public class Settings extends AbstractScreen {
 	UIElement location = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Location']"));
 	UIElement backgroundAppRefresh= UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
 	UIElement allowNotifications = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + "Allow Notifications" + "']");
+	UIElement locationAlwaysDescription = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeOther[1][contains(@name,'Access to your location')]");
 
 	public Settings() {
 		// TODO Auto-generated constructor stub
@@ -31,9 +34,13 @@ public class Settings extends AbstractScreen {
 		MobileDevice.setLocationPreference(appName, value);
 	}
 
-	@Then("^I should see Location Services Disabled screen$")
-	public void iShouldSeeLocationServicesDisabledScreen() throws Throwable {
-		settings.isDisplayed();
+	@Then("^I should see Location as '(.*)'$")
+	public void iShouldSeeLocationAs(String currentLocation) throws Throwable {
+
+		Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeButton[@name='"+currentLocation+"']").isDisplayed(),
+				"Mentioned location is not displayed");
+
+		//settings.isDisplayed();
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -42,6 +49,7 @@ public class Settings extends AbstractScreen {
 		location.waitFor(20);
 		location.tap();
 		new UIElement(By.name(newValue)).tap();
+		MobileDevice.getScreenshot(true);
 	}
 
 	@When("^I turn '(.*)' '(.*)' for '(.*)'$")
@@ -55,15 +63,17 @@ public class Settings extends AbstractScreen {
 
 		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
 			toggleButton.tap();
-
-//		String currentBackgroundRefreshValue= backgroundAppRefresh.getAttribute("value");
-//		System.out.println("Current toggle value is " + currentBackgroundRefreshValue);
-//
-//		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
-//
-//		if(!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
-//			backgroundAppRefresh.tap();
 		
+		MobileDevice.getScreenshot(true);
+	}
+
+	@And("^I verify that Location 'Never' is set$")
+	public void iVerifyThatLocationNeverIsSet() throws Throwable {
+		commonSteps.iTapOnBackButton();
+		Steps.tapButton("Location");
+		if (locationAlwaysDescription.isDisplayed()){
+			Steps.tapButton("Never");
+		}
 		MobileDevice.getScreenshot(true);
 	}
 }

@@ -14,17 +14,41 @@ Feature: Android- Mail verification flow
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
-    Then I should receive 'Welcome' Email from Curbside app
+    Then I should receive 'Welcome' email on 'signup' EmailID
 
 
   @Android @C114979
-  Scenario: Verify user receives a E-Mail when order is in progress
-    Given I add credit card information
+  Scenario: Verify user receives Email with mail subject - We're Prepping Your Curbside Pickup Order
+    Given I am not signed into application
+    And I sign in into application using username "emaildeliverytest@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
-    And I select 'CVS' store and search for 'toothpaste' product
+    And I cancel 'all' orders
+    And My cart is empty
+    And The mail box of userID "emaildeliverytest" is empty
+    And I select 'CVS' store and search for 'cvs product' product
     And I select 1 product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
-    Then I should receive 'In-Progress' Email from Curbside app
+    Then I should receive 'In-Progress pickup' email on 'emaildeliverytest' EmailID
+
+  @Android @C114983
+  Scenario: Verify user receives Email with mail subject - We're Prepping Your delivery Order
+    Given I am not signed into application
+    And I sign in into application using username "emaildeliverytest@mailinator.com" and password "1234567890"
+    And I am on 'Palo Alto' location 'Stores' Screen
+    And I cancel 'all' orders
+    And My cart is empty
+    And The mail box of userID "emaildeliverytest" is empty
+    And I select 'CVS' store and search for 'cvs product' product
+    And I select 1 product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' button
+    And I tap on 'Curbside Pickup' button
+    And I tap on Delivery with UBER button
+    And I select the delivery address as, street:"Palo Alto Square", city:"Palo Alto",state:"CA"
+    And I tap on back button
+    When I tap on Place order button
+    Then I should see the successful placed order notification on the screen
+    Then I should receive 'In-Progress delivery' email on 'emaildeliverytest' EmailID

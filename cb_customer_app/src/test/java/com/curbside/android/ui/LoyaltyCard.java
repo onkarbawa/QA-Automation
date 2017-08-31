@@ -3,7 +3,9 @@ package com.curbside.android.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 
@@ -16,6 +18,7 @@ public class LoyaltyCard extends AbstractScreen {
     UIElement saveButton = UIElement.byId("com.curbside.nCurbside:id/action_save");
     UIElement firstLoyaltyCardNumber = UIElement.byId("com.curbside.nCurbside:id/last_4_view");
     UIElement btnAddNewCard = UIElement.byId("com.curbside.nCurbside:id/button_add_card");
+    UIElement lblNoLoyaltyCards = UIElement.byId("com.curbside.nCurbside:id/text_empty_message");
 
 
     @And("^I add an ExtraCare Card numbered '(.*)'$")
@@ -34,4 +37,9 @@ public class LoyaltyCard extends AbstractScreen {
         Assert.assertEquals(displayedCardInfo, "•••• " + last4Chars + "");
     }
 
+    @Then("^I should see empty Loyalty Cards screen$")
+    public void iShouldSeeEmptyLoyaltyCardScreen() throws Throwable {
+        lblNoLoyaltyCards.waitFor(15);
+        Assert.assertTrue(lblNoLoyaltyCards.isDisplayed(), "Not able to remove the Loyalty card");
+    }
 }

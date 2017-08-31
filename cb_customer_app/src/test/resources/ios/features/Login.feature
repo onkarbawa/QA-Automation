@@ -20,7 +20,6 @@ Feature: iOS- Login Feature
     And I tap on 'Sign In' button
     And I tap on 'Sign In with Email' button
     And I enter '<Email>' and '<Password>'
-#    When I tap on 'Sign In' button
     Then I saw email on MyAccount page
     Examples:
       |             Email                  |     Password    |
@@ -31,7 +30,6 @@ Feature: iOS- Login Feature
     Given I am not signed into application
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
-#    And I am not signed into application
 
     Examples:
       |             Email                  |     Password    |

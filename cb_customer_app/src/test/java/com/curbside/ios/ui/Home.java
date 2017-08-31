@@ -1,11 +1,9 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.devicefactory.DeviceStore;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 
@@ -14,8 +12,6 @@ import cucumber.api.java.en.When;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.java.en.Then;
-import gherkin.lexer.Th;
-import io.appium.java_client.AppiumDriver;
 import org.testng.Assert;
 
 /**
@@ -166,7 +162,7 @@ public class Home extends AbstractScreen {
 	public void i_select_retailer_and_add_product(String retailer) throws Throwable {
 		footerTabsScreen.tapShop();
 		select1stRetailerPartner();
-		storeDetails.iSelectNoProductFromList(1);
+		storeDetailsScreen.iSelectNoProductFromList(1);
 		productDetailsScreen.iAddQuantityOfIt(1);
 		MobileDevice.getScreenshot(true);
 	}
@@ -183,9 +179,10 @@ public class Home extends AbstractScreen {
 
 	@And("^I am on Shop Screen$")
 	public void iAmOnShopScreen() throws Throwable {
-		Thread.sleep(200);
-		steps.acceptLocationAlert();
-		welcome.skipIntro.tap();
+		Thread.sleep(2000);
+		//steps.acceptLocationAlert();
+		//welcome.skipIntro.tap();
+		footerTabsScreen.btnShop.tap();
 	}
 
 	@And("^I am on '(.*)' location 'Stores' Screen$")

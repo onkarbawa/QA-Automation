@@ -24,7 +24,7 @@ Feature: iOS - Delivery Promo code
     Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
     Examples:
       |Promo Code   |Discount Type|
-      |NF_DOLLAR_DS |  Dollar     |
+      |NF_DOLLAR_DS_NEW  |  Dollar     |
 
   @iOS @C114992
   Scenario Outline: Verify Delivery Promo - %

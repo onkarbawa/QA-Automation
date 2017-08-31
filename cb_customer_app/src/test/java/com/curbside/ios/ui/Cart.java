@@ -2,9 +2,11 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -26,7 +28,7 @@ public class Cart extends AbstractScreen {
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
 	UIElement productaQuantityButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 
-	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please turn on the following']");
+	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please Turn on the Following in Settings']");
 	UIElement settings = UIElement.byName("Settings");
 	UIElement checkoutTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Your order has been placed.']");
 
@@ -47,6 +49,9 @@ public class Cart extends AbstractScreen {
 
 	UIElement storeAddress = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[1]//XCUIElementTypeStaticText[1]");
 
+	UIElement promoCodeAlert = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']");
+	UIElement promoCodeMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']/following-sibling::XCUIElementTypeStaticText");
+
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
 	}
@@ -60,8 +65,18 @@ public class Cart extends AbstractScreen {
 	@Given("I attempt to place an order")
 	public void placeOrder() throws Throwable {
 		//footerTabsScreen.btnCart.waitFor(3).tap();
-		placeOrder.tap();
-		placeOrder.waitForNot(5);
+		if (placeOrder.isDisplayed()){
+			placeOrder.tap();
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
+		}
+		else {
+			placeOrder.scrollTo(SwipeDirection.UP);
+			placeOrder.tap();
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
+		}
+		placeOrder.waitForNot(10);
 	}
 
 	@And("^I should see credit info on cart screen$")
@@ -155,10 +170,10 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see checkout not allowed$")
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
-		Assert.assertEquals(popUpHeading.getText(),"Please turn on the following");
+		Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
 		MobileDevice.getScreenshot(true);
 		settings.tap();
-		UIElement.byName("Notifications").waitFor(5).tap();
+	//	UIElement.byName("Notifications").waitFor(5).tap();
 	}
 
 	@Then("^I should see checkout screen$")
@@ -208,6 +223,7 @@ public class Cart extends AbstractScreen {
 
     @And("^I apply '(.*)' promo code$")
     public void iApplyPromoCode(String promo) throws Throwable {
+		Properties.setVariable("promoCode",promo);
         promoCode.sendKeys(promo,false);
         UIElement.byName("Apply").tap();
     }
@@ -221,16 +237,20 @@ public class Cart extends AbstractScreen {
 		Double estimateTotalAmount = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
 
 		Assert.assertEquals(Double.valueOf(df.format((totalPrice + estimateTax) - actualDiscount)), estimateTotalAmount,"Discount is not applied");
-		UIElement.byName("Back").tap();
+	//	UIElement.byName("Back").tap();
 	}
 
     @Given("^I tap on '(.*)'$")
     public void iTapOn(String code) throws Throwable {
 
-		if (UIElement.byName(code).isDisplayed())
+		if (UIElement.byName(code).isDisplayed()){
 			UIElement.byName(code).tap();
-		else
+			MobileDevice.getSource(true);
+		}
+		else{
 			UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
+			MobileDevice.getSource(true);
+		}
 
 		//UIElement.byName(code).scrollTo().tap();
     }
@@ -248,7 +268,7 @@ public class Cart extends AbstractScreen {
 	@And("^I select Curbside Pickup and delivery option$")
 	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
 		curbsidePickUp.tap();
-		getMyOrder.deliveryBy.tap();
+		getMyOrderScreen.deliveryBy.tap();
 		MobileDevice.getSource(true);
 	}
 
@@ -363,23 +383,32 @@ public class Cart extends AbstractScreen {
 		Properties.setVariable(value, deliveryCharge.getText());
 	}
 
-//	@And("^I remove and add the product again to the cart$")
-//	public void reAddTheProduct() throws Throwable {
-//		productName.waitFor(2).tap();
-//		int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(5).getText());
-//		for (int i = 0; i < itemQnty; i++) {
-//			productDetailsScreen.btnRemove.waitFor(5).tap();
-//		}
-//
-//		for (int i = 0; i < itemQnty; i++) {
-//			try {
-//				productDetailsScreen.btnAddtoCart.waitFor(4);
-//				productDetailsScreen.btnAddtoCart.tap();
-//			}catch (Exception e){
-//				productDetailsScreen.btnAdd.tap();
-//			}
-//		}
-//		AndroidDevice.goBack();
-//		Thread.sleep(1000);
-//	}
+	@And("^I checked threshold value for Promo code$")
+	public void iCheckedThresholdValueForPromoCode() throws Throwable {
+		while (true){
+			if(promoCodeAlert.isDisplayed()){
+				String message = promoCodeMessage.getText();
+
+				Double amountToBeAdded = Double.parseDouble(message.split("\\$")[1].split("\\s")[0]);
+				amountToBeAdded = Double.valueOf(df.format(amountToBeAdded));
+				Steps.tapButton("OK");
+
+
+				if (amountToBeAdded <= 20.00){
+					productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
+					productDetailsScreen.incrementProduct.tap();
+					MobileDevice.tap(188,42);
+				}
+				else {
+					break;
+				}
+				
+				iTapOn("Enter Promo Code");
+				iApplyPromoCode(Properties.getVariable("promoCode"));
+			}
+			else {
+				break;
+			}
+		}
+	}
 }
