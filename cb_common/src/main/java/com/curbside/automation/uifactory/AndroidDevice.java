@@ -18,9 +18,7 @@ import org.openqa.selenium.WebElement;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import java.io.File;
-import java.io.IOException;
 
-import static com.curbside.automation.common.BaseTest.driver;
 
 @SuppressWarnings("rawtypes")
 public class AndroidDevice extends MobileDevice {
