@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Android Smoke Test Suite" verbose="1" parallel="methods" thread-count="1">
+	<parameter name="platform" value="Android"/>
+    <listeners>
+        <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
+    </listeners>
+    <test name="App Launch">
+        <classes>
+            <class name="com.cap.android.runners.AppLaunchTest"/>
+        </classes>
+    </test>
+</suite>
