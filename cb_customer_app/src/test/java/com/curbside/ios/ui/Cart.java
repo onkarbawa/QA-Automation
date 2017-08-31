@@ -28,7 +28,7 @@ public class Cart extends AbstractScreen {
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
 	UIElement productaQuantityButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 
-	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please turn on the following']");
+	UIElement popUpHeading = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Please Turn on the Following in Settings']");
 	UIElement settings = UIElement.byName("Settings");
 	UIElement checkoutTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Your order has been placed.']");
 
@@ -170,10 +170,10 @@ public class Cart extends AbstractScreen {
 
 	@Then("^I should see checkout not allowed$")
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
-		Assert.assertEquals(popUpHeading.getText(),"Please turn on the following");
+		Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
 		MobileDevice.getScreenshot(true);
 		settings.tap();
-		UIElement.byName("Notifications").waitFor(5).tap();
+	//	UIElement.byName("Notifications").waitFor(5).tap();
 	}
 
 	@Then("^I should see checkout screen$")
@@ -385,7 +385,6 @@ public class Cart extends AbstractScreen {
 
 	@And("^I checked threshold value for Promo code$")
 	public void iCheckedThresholdValueForPromoCode() throws Throwable {
-	//	Thread.sleep(2000);
 		while (true){
 			if(promoCodeAlert.isDisplayed()){
 				String message = promoCodeMessage.getText();
@@ -406,7 +405,6 @@ public class Cart extends AbstractScreen {
 				
 				iTapOn("Enter Promo Code");
 				iApplyPromoCode(Properties.getVariable("promoCode"));
-			//	Thread.sleep(2000);
 			}
 			else {
 				break;
