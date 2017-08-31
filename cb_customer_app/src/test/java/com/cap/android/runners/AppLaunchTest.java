@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/cap/features/android/AppLaunch.feature",
+        features = "src/test/resources/cap/features/android/TaskManagement.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report-Cap.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },

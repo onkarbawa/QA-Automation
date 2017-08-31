@@ -336,4 +336,16 @@ public class Steps {
 		}catch (Exception e){}
 		MobileDevice.getScreenshot(true);
 	}
+
+	@Given("^I accept remote notifications alert$")
+	public void acceptRemoteNotificationAlert() throws Throwable {
+		logger.info("Accept remote notification alert");
+
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			new UIElement(By.name("OK")).tap();
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+		} else
+			throw new NotImplementedException(
+					"Method declineNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
+	}
 }

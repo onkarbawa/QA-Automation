@@ -5,9 +5,15 @@ Feature: iOS- Application Launch
 #    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
 
   @iOS @C114937
-  Scenario: First time Curbside Launch (fresh install)
+  Scenario Outline: First time Curbside Launch (fresh install)
     Given I launch CAP application
     And I accept notifications alert
+#    And I accept remote notifications alert
+    And I enter '<accountName>','<userName>' and '<password>'
+    Examples:
+      | accountName | userName | password |
+      | curbside    | qaautomation_initium | curbside|
+
 #    And I swipe left 2 times
 #    And I tap on 'Get Started' button
 #    And I tap on 'OK with me' button on 'location access' page

@@ -10,13 +10,13 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/cap/features/ios/features/AppLaunch.feature",
-        plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
+        features = "src/test/resources/cap/features/ios/features/TaskManagement.feature",
+        plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report_cap.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
         dryRun = false, strict= true,
         glue = {"com.cap.ios.ui", "com.curbside.automation.uifactory"})
 
 @Test
-public class ApplaunchTest extends AbstractTestNGCucumberTests {
+public class TaskManagementTest extends AbstractTestNGCucumberTests {
 }
