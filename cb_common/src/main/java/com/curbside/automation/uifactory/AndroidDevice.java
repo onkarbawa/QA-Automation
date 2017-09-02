@@ -37,8 +37,14 @@ public class AndroidDevice extends MobileDevice {
 	//}
 
 	public static void startApplication(String packageName, String activityName) throws Throwable {
-		((AndroidDriver)DriverFactory.getDriver()).startActivity(
-				new Activity(packageName, activityName));
+		try {
+			((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity(packageName, activityName));
+		} catch (Exception e) {
+			if(e.getMessage().contains("Activity never started"))
+				((AndroidDriver)DriverFactory.getDriver()).startActivity(new Activity(packageName, activityName));
+			else
+				throw e;
+		}
 	}
 	
 	public static void startApplication() throws Throwable {
