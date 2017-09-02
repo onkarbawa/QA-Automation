@@ -7,6 +7,7 @@ import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 
+import cucumber.api.java.en.Given;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -43,5 +44,13 @@ public class LoyalityCard extends AbstractScreen {
 		String last4Chars = StringUtils.right(Properties.getVariable("extraCareCardNumber"), 4);
 		Assert.assertEquals(displayedCardInfo, "ExtraCare Card (..." + last4Chars + ")");
 		footerTabsScreen.tapCart();
+	}
+
+	@Given("^I add loyality card information$")
+	public void iAddLoyalityCardInformation() throws Throwable {
+		footerTabsScreen.btnMyAccount.tap();
+		myAccountScreen.btnLoyalityCard.tap();
+		Steps.tapButton("Add New Card");
+		loyalityCardScreen.iAddAnExtraCareCardNumbered("87676478652876");
 	}
 }

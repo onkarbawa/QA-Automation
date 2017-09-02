@@ -17,6 +17,7 @@ public class MyAccount extends AbstractScreen {
 
 	UIElement btnAccountInfo = UIElement.byName("Account Info");
 	UIElement btnPaymentInfo = UIElement.byName("Payment Info");
+	UIElement btnLoyalityCard = UIElement.byName("Loyalty Cards");
 
 	UIElement btnSignIn = UIElement.byAccessibilityId("Sign In");
 
@@ -55,6 +56,9 @@ public class MyAccount extends AbstractScreen {
 		homeScreen.open();
 		try {
 			footerTabsScreen.tapMyAccount();
+			try{
+				footerTabsScreen.tapMyAccount();
+			}catch (Exception e){}
 			btnAccountInfo.tap();
 			accountInfoScreen.signOut();
 			UIElement.byXpath("//XCUIElementTypeButton[@name='Cancel']").waitFor(20).tap();

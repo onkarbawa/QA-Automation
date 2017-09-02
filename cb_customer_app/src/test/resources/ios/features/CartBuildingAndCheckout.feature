@@ -37,6 +37,7 @@ Feature: iOS- Cart Building And Checkout
     Given I tap on 'Enter Promo Code'
     And I apply 'UNLIMITED' promo code
     When I verify discount is applied
+    And I tap on back button
     Then I attempt to place an order
 
 

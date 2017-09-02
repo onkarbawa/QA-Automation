@@ -23,8 +23,10 @@ public class AbstractScreen {
 	static Settings settingsScreen;
 	static SignUp signUpScreen;
 	static Welcome welcomeScreen;
-	static StoreDetails storeDetails;
-	static GetMyOrder getMyOrder;
+	static StoreDetails storeDetailsScreen;
+	static GetMyOrder getMyOrderScreen;
+	static MyOrders myOrdersScreen;
+	static CancelledOrder cancelledOrderScreen;
 	
 	static Steps commonSteps;
 
@@ -47,8 +49,10 @@ public class AbstractScreen {
 		settingsScreen = new Settings();
 		signUpScreen = new SignUp();
 		welcomeScreen = new Welcome();
-		storeDetails = new StoreDetails();
-		getMyOrder = new GetMyOrder();
+		storeDetailsScreen = new StoreDetails();
+		getMyOrderScreen = new GetMyOrder();
+		myOrdersScreen = new MyOrders();
+		cancelledOrderScreen = new CancelledOrder();
 		commonSteps= new Steps();
 	}
 

@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -27,6 +28,7 @@ public class CreditCard extends AbstractScreen {
     public void iAddCreditCardInformationAs(String cardNumber, String cardExpiry, String ccv, String firstName,
                                             String lastName, String cardStreetAddress, String cardAptOrSuite, String cardCity,
                                             String cardState, String cardZip) throws Throwable {
+        Properties.setVariable("creditCardNumber", cardNumber);
         cardNumberTextField.sendKeys(cardNumber);
         cardExpMonthTextField.sendKeys(cardExpiry);
         cardCCVTextField.sendKeys(ccv);

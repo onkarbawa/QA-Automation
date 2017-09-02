@@ -1,11 +1,8 @@
 package com.curbside.android.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
-import com.curbside.automation.uifactory.DriverFactory;
-import com.curbside.automation.uifactory.SwipeDirection;
-import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -58,16 +55,18 @@ public class Cart extends AbstractScreen {
     UIElement addPromoCodeLink = UIElement.byId("com.curbside.nCurbside:id/button_promo");
     UIElement promoCodeField = UIElement.byId("com.curbside.nCurbside:id/edit_promo_code");
     UIElement applyButton = UIElement.byId("com.curbside.nCurbside:id/text_save");
-    UIElement itemsTotalPrice = UIElement.byId("com.curbside.nCurbside:id/text_total_price");
+    UIElement lblItemsTotalPrice = UIElement.byId("com.curbside.nCurbside:id/text_total_price");
     UIElement promoCodeDiscount = UIElement.byId("com.curbside.nCurbside:id/text_promo_discount");
     UIElement promoCodeSuggestionDialog = UIElement.byId("android:id/button3");
     UIElement estimatedTax = UIElement.byId("com.curbside.nCurbside:id/text_estimated_tax");
-    UIElement estimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
+    UIElement lblEstimatedTotal = UIElement.byId("com.curbside.nCurbside:id/text_estimated_total");
     UIElement btnCancelPromoPopUp = UIElement.byId("com.curbside.nCurbside:id/text_cancel");
     UIElement deliveryCharge = UIElement.byId("com.curbside.nCurbside:id/price_delivery");
     UIElement btnPlaceOrderUISelector = UIElement.byUISelector("new UiSelector().textStartsWith(\"PLACE ORDER\")");
     UIElement lblOrderPlaced = UIElement.byId("com.curbside.nCurbside:id/order_placed");
     UIElement btnUber = UIElement.byUISelector("new UiSelector().text(\"Delivery by UBER \")");
+    UIElement lblStreetName = UIElement.byId("com.google.android.gms:id/place_autocomplete_prediction_primary_text");
+    UIElement creditCardNumber = UIElement.byId("com.curbside.nCurbside:id/text_last_4_view");
 
 
 
@@ -152,11 +151,11 @@ public class Cart extends AbstractScreen {
 
     @Then("^I verify the total amount in the cart$")
     public void iShouldSee$AsTotalAmount() throws Throwable {
-        itemsTotalPrice.scrollTo(SwipeDirection.UP);
+        lblItemsTotalPrice.scrollTo(SwipeDirection.UP);
         double calculatedPrice = Double.parseDouble(productDetailsScreen.addedProductDetails.get().get("totalAmount"));
         DecimalFormat df = new DecimalFormat("#.##");
         calculatedPrice = Double.valueOf(df.format(calculatedPrice));
-        Assert.assertEquals(itemsTotalPrice.getText().split("\\$")[1],String.valueOf(calculatedPrice),
+        Assert.assertEquals(lblItemsTotalPrice.getText().split("\\$")[1],String.valueOf(calculatedPrice),
                 "Total amount of the items in the store is not same");
     }
 
@@ -177,7 +176,7 @@ public class Cart extends AbstractScreen {
         } else {
             addNewAddressButton.tap();
             addressSearchField.waitFor(5).sendKeys(street, true);
-            addressSuggestions.waitFor(5);
+            lblStreetName.waitFor(20);
             List<WebElement> list = addressSuggestions.getElements();
             for (WebElement element : list) {
                 String streetName = element.findElement(By
@@ -224,9 +223,9 @@ public class Cart extends AbstractScreen {
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
 
         addPromoCodeLink.scrollTo(SwipeDirection.UP);
-        Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
+        Double totalItemPrice = Double.parseDouble(lblItemsTotalPrice.getText().split("\\$")[1]);
         Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
-        Double actualEstimatedTotal = Double.parseDouble(estimatedTotal.getText().split("\\$")[1]);
+        Double actualEstimatedTotal = Double.parseDouble(lblEstimatedTotal.getText().split("\\$")[1]);
 
         if(promoCodeDiscount.isDisplayed())
             actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
@@ -352,5 +351,27 @@ public class Cart extends AbstractScreen {
         btnUber.waitFor(5);
         btnUber.swipeUpSlow();
         btnUber.tap();
+    }
+
+    @And("^I should see credit card info on cart screen$")
+    public void iShouldSeeCreditCardInfoOnCartScreen() throws Throwable {
+        try {
+            firstRetailer.waitFor(10).tap();
+        }catch (Exception e){
+            logger.debug(e.getMessage());
+        }
+        String displayedCardInfo = creditCardNumber.getText();
+        String last4Chars = StringUtils.right(Properties.getVariable("creditCardNumber"), 4);
+        Assert.assertEquals(displayedCardInfo, "••••" + last4Chars + "", "Credit card info not match/displayed");
+    }
+
+    @Then("^I should see promo code is not applied$")
+    public void iShouldSeePromoCodeIsNotApplied() throws Throwable {
+        lblEstimatedTotal.scrollTo(SwipeDirection.UP);
+        MobileDevice.getScreenshot(true);
+        Reporter.addStepLog("Item price "+ lblItemsTotalPrice.getText());
+        Reporter.addStepLog("Estimated total "+ lblEstimatedTotal.getText());
+
+        Assert.assertFalse(promoCodeDiscount.isDisplayed(), "Promo code is applied");
     }
 }

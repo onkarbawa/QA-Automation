@@ -257,4 +257,10 @@ public class UIElement {
 	public Point getLocation() throws Throwable {
 		return getElement().getLocation();
 	}
+	public int getX() throws Throwable {
+		return getLocation().getX();
+	}
+	public int getY() throws Throwable {
+		return getLocation().getY();
+	}
 }

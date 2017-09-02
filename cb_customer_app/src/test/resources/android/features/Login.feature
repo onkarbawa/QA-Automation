@@ -15,6 +15,19 @@ Feature: Android- Login Feature
     When I tap on Create Account button
     Then I should see my given information under Account Info
 
+  @Android @C114956
+  Scenario Outline: Verify user should login with email
+    Given I am not signed into application
+    And I tap on 'Account' button
+    And I tap on 'Sign In' button
+    And I tap on 'Sign In with Email' button
+    And I enter "<email>" and "<password>" for login
+    When I tap on sign in button
+    Then I should be logged in to the application
+    Examples:
+      |       email         |      password     |
+      |fusic.test1@gmail.com|fusic@123          |
+
   @Android @C114955
   Scenario Outline: Verify user should login with facebook
     Given I am not signed into application
@@ -29,15 +42,3 @@ Feature: Android- Login Feature
     | facebook_email		|	facebook_password	| facebook_name	| facebook_phone	|
     | ustft123@gmail.com   	|	Admin2642    		| Tfttest Gigya	| 1 (134)-567-8901	|
 
-  @Android @C114956
-  Scenario Outline: Verify user should login with email
-    Given I am not signed into application
-    And I tap on 'Account' button
-    And I tap on 'Sign In' button
-    And I tap on 'Sign In with Email' button
-    And I enter "<email>" and "<password>" for login
-    When I tap on sign in button
-    Then I should be logged in to the application
-  Examples:
-    |       email         |      password     |
-    |fusic.test1@gmail.com|fusic@123          |
