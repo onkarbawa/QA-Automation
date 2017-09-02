@@ -4,14 +4,16 @@
       "name" : "Curbside",
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity",
+      "newCommandTimeOut": "120"
     }
   ],
   "iOS" : [
     {
       "name" : "Curbside",
       "app" : "../Curbside.ipa",
-      "bundleId": "com.curbside.curbside"
+      "bundleId": "com.curbside.curbside",
+      "newCommandTimeOut": "120"
     }
   ]
 }
