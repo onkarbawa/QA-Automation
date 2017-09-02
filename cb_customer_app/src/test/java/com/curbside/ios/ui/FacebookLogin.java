@@ -54,6 +54,10 @@ public class FacebookLogin extends AbstractScreen {
 		//	btnLoginUsingEmail.tap();
 			txtInBrowserUsername.clearText();
 			txtInBrowserUsername.sendKeys(emailId,false);
+			//if(!txtInBrowserPassword.isDisplayed()){
+				btnInBrowserLogin.tap();
+			//}
+		//	Thread.sleep(2000);
 			txtInBrowserPassword.sendKeys(password,false);
 			MobileDevice.getScreenshot(true);
 			btnInBrowserLogin.tap();
