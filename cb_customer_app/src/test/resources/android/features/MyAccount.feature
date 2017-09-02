@@ -1,5 +1,5 @@
 @creditAndLoyaltyCards
-Feature: Android- Account cards verification
+Feature: Android- My Account
 
   Scenario: Setting test environment
     Given I launch Curbside application

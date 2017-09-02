@@ -37,9 +37,9 @@ public class SignUp extends AbstractScreen {
 	        .build().perform();
         */
         
-        emailField.sendKeys(emailId, false);
-        phoneNumberField.sendKeys(phoneNumberText, false);
-        passwordField.sendKeys(password, false);
+        emailField.sendKeys(emailId, true);
+        phoneNumberField.sendKeys(phoneNumberText, true);
+        passwordField.sendKeys(password, true);
         
     }
 
