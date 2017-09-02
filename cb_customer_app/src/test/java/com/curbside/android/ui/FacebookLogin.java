@@ -16,6 +16,7 @@ public class FacebookLogin extends AbstractScreen {
   UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue \")");
   UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
   UIElement btnSignInWithFacebook= UIElement.byUISelector("new UiSelector().text(\"" + "Sign in with Facebook" + "\")");
+  UIElement passwordFieldUI = UIElement.byUISelector("new UiSelector().description(\"Facebook Password\")");
 
   @And("^I enter '(.*)' and '(.*)' for facebook login$")
   public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
@@ -36,7 +37,11 @@ public class FacebookLogin extends AbstractScreen {
 
     if(btnNext.isDisplayed())
       btnNext.tap();
-    passwordField.waitFor(5).sendKeys(password);
+    try{
+      passwordField.waitFor(5).sendKeys(password, true);
+    }catch (Exception e){
+      passwordFieldUI.sendKeys(password, true);
+    }
     logInButton.tap();
     continueButton.waitFor(20);
     for (int i = 0; i < 10; i++) {
