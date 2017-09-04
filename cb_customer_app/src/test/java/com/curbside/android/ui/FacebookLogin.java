@@ -19,16 +19,16 @@ public class FacebookLogin extends AbstractScreen {
     UIElement passwordFieldUI = UIElement.byUISelector("new UiSelector().description(\"Facebook Password\")");
     UIElement cancel = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ImageView[1]");
 
+
     @And("^I enter '(.*)' and '(.*)' for facebook login$")
     public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
-        MobileDevice.getScreenshot(true);
         try {
             fbLogin(email, password);
-        }catch (Exception e){
+        } catch (Exception e) {
+            MobileDevice.getScreenshot(true);
             cancel.tap();
-            fbLogin(email,password);
+            fbLogin(email, password);
         }
-        MobileDevice.getScreenshot(true);
     }
 
     public void fbLogin(String email, String password) throws Throwable {
