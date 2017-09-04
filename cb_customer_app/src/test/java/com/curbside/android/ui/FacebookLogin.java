@@ -9,44 +9,47 @@ import cucumber.api.java.en.And;
  */
 public class FacebookLogin extends AbstractScreen {
 
-  UIElement emailField = UIElement.byClass("android.widget.EditText");
-  UIElement passwordField = UIElement.byXpath("//android.widget.EditText[@password='true']");
-  UIElement logInButton = UIElement.byAccessibilityId("Log In ");
-  UIElement btnNext = UIElement.byAccessibilityId("Next ");
-  UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue \")");
-  UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
-  UIElement btnSignInWithFacebook= UIElement.byUISelector("new UiSelector().text(\"" + "Sign in with Facebook" + "\")");
+    UIElement emailField = UIElement.byClass("android.widget.EditText");
+    UIElement passwordField = UIElement.byXpath("//android.widget.EditText[@password='true']");
+    UIElement logInButton = UIElement.byAccessibilityId("Log In ");
+    UIElement btnNext = UIElement.byAccessibilityId("Next ");
+    UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue \")");
+    UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
+    UIElement btnSignInWithFacebook = UIElement.byUISelector("new UiSelector().text(\"" + "Sign in with Facebook" + "\")");
+    UIElement passwordFieldUI = UIElement.byUISelector("new UiSelector().description(\"Facebook Password\")");
+    UIElement cancel = UIElement.byXpath("//android.widget.FrameLayout/android.widget.ImageView[1]");
 
-  @And("^I enter '(.*)' and '(.*)' for facebook login$")
-  public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
-    
-	/*
-	try {
-		MobileDevice.switchToWebView();
-		MobileDevice.getSource(true);
-	} catch (Exception e) {
-		// TODO: handle exception
-	}
-    finally {
-    	MobileDevice.switchToNativeView();
-    }*/
-	
-	loadingIcon.waitForNot(30);
-    emailField.waitFor(30).sendKeys(email);
 
-    if(btnNext.isDisplayed())
-      btnNext.tap();
-    passwordField.waitFor(5).sendKeys(password);
-    logInButton.tap();
-    continueButton.waitFor(20);
-    for (int i = 0; i < 10; i++) {
-    	if(continueButton.isDisplayed())
-    		continueButton.tap();
-	}
-    
-    Thread.sleep(3000);
-    btnSignInWithFacebook.waitForNot(10);
-    MobileDevice.getScreenshot(true);
-  }
+    @And("^I enter '(.*)' and '(.*)' for facebook login$")
+    public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
+        try {
+            fbLogin(email, password);
+        } catch (Exception e) {
+            MobileDevice.getScreenshot(true);
+            cancel.tap();
+            fbLogin(email, password);
+        }
+    }
+
+    public void fbLogin(String email, String password) throws Throwable {
+        loadingIcon.waitForNot(30);
+        emailField.waitFor(30).sendKeys(email);
+
+        if (btnNext.isDisplayed())
+            btnNext.tap();
+        try {
+            passwordField.waitFor(5).sendKeys(password, true);
+        } catch (Exception e) {
+            passwordFieldUI.sendKeys(password, true);
+        }
+        logInButton.tap();
+        continueButton.waitFor(20);
+        for (int i = 0; i < 10; i++) {
+            if (continueButton.isDisplayed())
+                continueButton.tap();
+        }
+        Thread.sleep(3000);
+        btnSignInWithFacebook.waitForNot(10);
+    }
 
 }

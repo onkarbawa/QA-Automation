@@ -37,12 +37,10 @@
     {
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
-      "platformVersion" : "10.2.1",
+      "platformVersion" : "10.3.3",
       "deviceName" : "TFT",
-      "app" : "../Curbside.ipa",
-      "bundleId": "com.curbside.curbside",
-      "udid" : "302e6964cca48090dc7eedf35cb9006a90c1a324",
       "showXcodeLog" : "true",
+      "udid" : "302e6964cca48090dc7eedf35cb9006a90c1a324",
       "usePrebuiltWDA" :"true"
     }
   ]
