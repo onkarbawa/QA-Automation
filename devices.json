@@ -3,44 +3,17 @@
     {
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "android",
-      "deviceName": "1015faf967cc1505",
-      "app": "/Users/kanikambp/Desktop/Curbside.apk",
-      "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
-    },
-    {
-      "url" : "http://127.0.0.1:4723/wd/hub",
-      "platformName" : "android",
-      "deviceName": "00a0f9d9378894f2",
-      "app": "/Users/kanikambp/Desktop/Curbside.apk",
-      "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
-    },
-    {
-      "url" : "http://127.0.0.1:4723/wd/hub",
-      "platformName" : "android",
-      "deviceName": "5d55b2ac",
-      "app": "/Users/kanikambp/Desktop/Curbside.apk",
-      "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
-    },
-    {
-      "url" : "http://127.0.0.1:4723/wd/hub",
-      "platformName" : "android",
-      "deviceName": "FA69V0309172",
-      "app": "/Users/kanikambp/Desktop/Curbside.apk",
-      "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+      "deviceName": "ZX1D63G4CS"
     }
   ],
   "iOS" : [
     {
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "iOS",
-      "platformVersion" : "10.3.3",
+      "platformVersion" : "10.3.2",
       "deviceName" : "TFT",
+      "udid" : "0ddb226173711460741617d2d10e0dcd734755d9",
       "showXcodeLog" : "true",
-      "udid" : "302e6964cca48090dc7eedf35cb9006a90c1a324",
       "usePrebuiltWDA" :"true"
     }
   ]

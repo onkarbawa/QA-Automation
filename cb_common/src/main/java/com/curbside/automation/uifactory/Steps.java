@@ -36,7 +36,7 @@ public class Steps {
 		// DeviceStore.releaseDevice();
 
 		DriverFactory.getDriver(false);
-		
+
 		if (!MobileDevice.getBundleId().equals(DriverFactory.getBundleId())) {
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false);
@@ -48,7 +48,7 @@ public class Steps {
 			else
 				DriverFactory.launchApp();
 		}
-		
+
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -78,7 +78,7 @@ public class Steps {
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable {
 		AppStore.setAppName(appName);
-		
+
 		DriverFactory.releaseDriver();
 		DeviceStore.releaseDevice();
 
@@ -139,9 +139,9 @@ public class Steps {
 			}catch (Exception e){}
 		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			// UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
-				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
+//				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
+				UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 				for (int i = 0; i < 10; i++) {
 					if (!e.isDisplayed())
 						break;

@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -262,5 +263,9 @@ public class UIElement {
 	}
 	public int getY() throws Throwable {
 		return getLocation().getY();
+	}
+
+	public void longPress(int seconds) throws Throwable {
+		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).longPress(getElement(), Duration.ofSeconds(seconds)).release().perform();
 	}
 }
