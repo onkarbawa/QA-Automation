@@ -20,7 +20,7 @@ Curbside.app/
 cb_customer_app/output/screenshots
 cb_customer_app/output/report.html
 cb_customer_app/output/report_cap.html
-
+cb_customer_app/npm-debug*
 
 0001-added-app-store-to-add-capability-to-test-multiple-a.patch
 Curbside.7.12.17.ipa

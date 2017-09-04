@@ -1,13 +1,14 @@
 package com.cap.android.ui;
 
 import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 
 /**
  * Created by hitesh.grover on 04/09/17.
  */
-public class CapLaunch {
+public class CapLaunch extends AbstractScreenCap{
 
     UIElement fieldAccountName = UIElement.byId("com.curbside.nCap:id/etAccountName");
     UIElement fieldUserName = UIElement.byId("com.curbside.nCap:id/etUsername");
@@ -28,6 +29,7 @@ public class CapLaunch {
 
     @And("^I have selected test environment for CAP$")
     public void iSelectCapEnv() throws Throwable {
+        commonSteps.acceptLocationAlert();
         for (int i = 0; i < 4; i++) {
             btnVersionNumber.tap();
         }
