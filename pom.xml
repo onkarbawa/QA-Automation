@@ -12,7 +12,6 @@
         <module>cb_common</module>
         <module>cb_customer_app</module>
     </modules>
-
     <properties>
         <selenium.version>3.4.0</selenium.version>
         <appium.version>5.0.0-BETA9</appium.version>
@@ -24,7 +23,6 @@
         <cucumber.expression.version>4.0.0</cucumber.expression.version>
         <suitethreads>2</suitethreads>
     </properties>
-
     <dependencies>
     	<dependency>
 			<groupId>info.cukes</groupId>

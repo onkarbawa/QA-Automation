@@ -3,7 +3,7 @@
     {
       "url" : "http://127.0.0.1:4723/wd/hub",
       "platformName" : "android",
-      "deviceName": "ZX1D63G4CS",
+      "deviceName": "ZX1D63G4CS"
     }
   ],
   "iOS" : [

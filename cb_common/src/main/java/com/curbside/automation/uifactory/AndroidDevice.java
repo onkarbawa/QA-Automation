@@ -35,8 +35,18 @@ public class AndroidDevice extends MobileDevice {
 	//}
 
 	public static void startApplication(String packageName, String activityName) throws Throwable {
-		((AndroidDriver)DriverFactory.getDriver()).startActivity(
-				new Activity(packageName, activityName));
+		AndroidDriver d= ((AndroidDriver)DriverFactory.getDriver());
+		try {
+			d.startActivity(new Activity(packageName, activityName));
+//			String a= d.currentActivity();
+//			String p= d.getCurrentPackage();
+//			if(p.startsWith(packageName) || a.endsWith(activityName))
+//				return;
+//			else
+//				d.startActivity(new Activity(packageName, activityName));
+		} catch (Exception e) {
+//			d.startActivity(new Activity(packageName, activityName));
+		}
 	}
 	
 	public static void startApplication() throws Throwable {

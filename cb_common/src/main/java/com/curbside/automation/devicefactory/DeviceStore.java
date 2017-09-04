@@ -55,7 +55,7 @@ public class DeviceStore {
 	public static synchronized JSONObject getDevice() throws Exception{
 		return getDevice(AppStore.getAppName());
 	}
-	
+
 	public static synchronized JSONObject getDevice(String appName) throws Exception {
 
 		// TODO- Wait when no device is available
@@ -77,14 +77,14 @@ public class DeviceStore {
 		default:
 			throw new IllegalArgumentException("No Such platform");
 		}
-		
+
 		if(appName != null)
 		{
 			JSONObject app= AppStore.getApp(appName);
 			for (String k : app.keySet())
 				deviceToReturn.put(k, app.getString(k));
 		}
-		
+
 		lockDevice(deviceToReturn);
 		return deviceToReturn;
 	}
@@ -154,7 +154,7 @@ public class DeviceStore {
 	public static boolean isAppInstalled(String appName) throws Throwable {
 		return isAppInstalled(getDeviceId(), appName);
 	}
-	
+
 	public static boolean isAppInstalled() throws Throwable {
 		return isAppInstalled(getDeviceId(), AppStore.getAppName());
 	}
@@ -169,7 +169,7 @@ public class DeviceStore {
 	public static synchronized void setAppInstalled(String udid, String appName) {
 		if(!appInstalled.containsKey(udid))
 			appInstalled.put(udid, Arrays.asList(new String[]{appName}));
-		
+
 		if(!appInstalled.get(udid).contains(appName))
 			appInstalled.get(udid).add(appName);
 	}
