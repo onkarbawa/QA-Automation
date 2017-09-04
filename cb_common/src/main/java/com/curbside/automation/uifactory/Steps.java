@@ -1,6 +1,5 @@
 package com.curbside.automation.uifactory;
 
-import cucumber.api.PendingException;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
