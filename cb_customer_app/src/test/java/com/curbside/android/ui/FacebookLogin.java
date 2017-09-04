@@ -25,10 +25,10 @@ public class FacebookLogin extends AbstractScreen {
         try {
             fbLogin(email, password);
         } catch (Exception e) {
+            MobileDevice.getScreenshot(true);
             cancel.tap();
             fbLogin(email, password);
         }
-        MobileDevice.getScreenshot(true);
     }
 
     public void fbLogin(String email, String password) throws Throwable {
