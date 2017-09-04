@@ -37,16 +37,22 @@ public class AndroidDevice extends MobileDevice {
 	public static void startApplication(String packageName, String activityName) throws Throwable {
 		AndroidDriver d= ((AndroidDriver)DriverFactory.getDriver());
 		try {
-			d.startActivity(new Activity(packageName, activityName));
+			Activity activity = new Activity(packageName, activityName);
+			activity.setAppWaitPackage(packageName);
+			activity.setAppWaitActivity(activityName);
+			((AndroidDriver)DriverFactory.getDriver()).startActivity(activity);
+		} catch (Exception e) {
+		}
+//		try {
 //			String a= d.currentActivity();
 //			String p= d.getCurrentPackage();
 //			if(p.startsWith(packageName) || a.endsWith(activityName))
 //				return;
 //			else
 //				d.startActivity(new Activity(packageName, activityName));
-		} catch (Exception e) {
+//		} catch (Exception e) {
 //			d.startActivity(new Activity(packageName, activityName));
-		}
+//		}
 	}
 	
 	public static void startApplication() throws Throwable {
