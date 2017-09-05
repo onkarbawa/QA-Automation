@@ -174,4 +174,40 @@ public class Home extends AbstractScreen {
 	public void iTapOnRetailerOnNearByStoresScreen() throws Throwable {
 		select1stRetailerPartner();
 	}
+
+	@And("^I have selected Experimental test environment$")
+	public void iSelectedExpTestEnvironment() throws Throwable {
+		String envSearchKey= "_#csndc#ena";
+		String envAPIKey= "https://api-s.shopcurbside.com";
+		if(!footerTabsScreen.btnMyAccount.isDisplayed())
+			homeScreen.open();
+		if(DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
+
+		searchIcon.waitFor(5).tap();
+		searchBox.waitFor(5).sendKeys(envSearchKey, false);
+		AndroidDevice.pressEnter();
+
+		try {
+			apiHost.waitFor(5).tap();
+			apiHostTextField.setText(envAPIKey, false);
+		} catch (Exception e) {
+			debugBackButton.tap();
+			apiHost.tap();
+			apiHostTextField.setText(envAPIKey, false);
+		}
+		apiHostOkButton.tap();
+		Steps.tapButton("Experimental Retailers and Products");
+
+		MobileDevice.getScreenshot(true);
+
+		debugBackButton.tap();
+		imageBackButton.waitFor(5).tap();
+		DriverFactory.closeApp();
+		DriverFactory.launchApp();
+		welcomeScreen.wait_for_app_launch();
+		homeScreen.open();
+
+		DriverFactory.setEnvironment(envAPIKey);
+	}
 }

@@ -9,8 +9,10 @@ import com.curbside.automation.uifactory.Steps;
 public class AbstractScreenCap {
 
   static Steps commonSteps;
+  static FooterTabsCap footerTabsCap;
 
   static {
     commonSteps = new Steps();
+    footerTabsCap = new FooterTabsCap();
   }
 }

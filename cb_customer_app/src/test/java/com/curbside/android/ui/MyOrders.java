@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -12,6 +13,7 @@ public class MyOrders extends AbstractScreen {
 
     UIElement lblOrderState = UIElement.byId("com.curbside.nCurbside:id/heading_view");
     UIElement latestInProgressOrder = UIElement.byXpath("//android.widget.TextView[@text='In Progress']/following-sibling::android.widget.RelativeLayout[1]");
+    UIElement latestInputNeededOrder = UIElement.byXpath("//android.widget.TextView[@text='Your Input Needed']/following-sibling::android.widget.RelativeLayout[1]");
     UIElement btnCancelOrder = UIElement.byId("com.curbside.nCurbside:id/view_cancel_Pickup");
     UIElement btnCnfrmCancelOrder = UIElement.byId("com.curbside.nCurbside:id/button_submit");
     UIElement lblCancellationReason = UIElement.byId("com.curbside.nCurbside:id/text_cancellation_reason");
@@ -26,7 +28,7 @@ public class MyOrders extends AbstractScreen {
     @And("^I cancel '(.*)' (?:order|orders)")
     public void iCancelAllOrders(String cancel) throws Throwable {
         boolean deleteAll = false;
-        boolean orderPresent;
+        boolean isOrderPresent;
         footerTabsScreen.tapMyAccount();
         accountScreen.ensureAccountPage();
         Steps.tapButton("My Orders");
@@ -40,8 +42,13 @@ public class MyOrders extends AbstractScreen {
             if(!lblOrderState.waitFor(5).isDisplayed())
                 break;
 
-            if (lblOrderState.getText().equalsIgnoreCase("In Progress")) {
-                latestInProgressOrder.tap();
+            if (latestInProgressOrder.isDisplayed() ||
+                    latestInputNeededOrder.isDisplayed()) {
+                try{
+                    latestInProgressOrder.tap();
+                }catch (Exception e){
+                    latestInputNeededOrder.tap();
+                }
 
                 if (cancel.equalsIgnoreCase("latest"))
                     saveOrderId();
@@ -61,8 +68,8 @@ public class MyOrders extends AbstractScreen {
 
             } else break;
 
-            orderPresent = lblOrderState.waitFor(5).getText().equalsIgnoreCase("In Progress");
-        } while (orderPresent && deleteAll);
+            isOrderPresent = (latestInProgressOrder.isDisplayed() || latestInputNeededOrder.isDisplayed());
+        } while (isOrderPresent && deleteAll);
     }
 
 
@@ -78,5 +85,33 @@ public class MyOrders extends AbstractScreen {
         latestCancelledOrder.tap();
         MobileDevice.getScreenshot(true);
         Assert.assertEquals(expectedOrderID, lblCancelledOrderID.getText(), "Cancelled order is not showing under cancelled section");
+    }
+
+    @And("^I save Order Id of the product and named as '(.*)'")
+    public void iSaveOrderId(String orderID) throws Throwable {
+        footerTabsScreen.tapMyAccount();
+        accountScreen.ensureAccountPage();
+        Steps.tapButton("My Orders");
+
+        MobileDevice.getScreenshot(true);
+
+
+        if (!lblOrderState.waitFor(5).isDisplayed())
+            return;
+
+        if (lblOrderState.getText().equalsIgnoreCase("In Progress")) {
+            latestInProgressOrder.tap();
+            lblOrderInfo.scrollTo(SwipeDirection.UP);
+            String orderInfo = lblOrderInfo.getText();
+            System.out.println("SAVED ORDERID - "+orderInfo);
+            System.out.println("REGEX--"+orderInfo.split(",")[0].split("\\s+")[2]);
+            Properties.setVariable(orderID, orderInfo.split(",")[0].split("\\s+")[2]);
+
+            for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
+                AndroidDevice.goBack();
+                Thread.sleep(3000);
+            }
+            footerTabsScreen.tapMyAccount();
+        }
     }
 }
