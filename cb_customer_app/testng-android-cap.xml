@@ -6,7 +6,7 @@
     </listeners>
     <test name="App Launch">
         <classes>
-            <class name="com.cap.android.runners.TaskManagement"/>
+            <class name="com.cap.android.runners.ErrorMessage"/>
         </classes>
     </test>
 </suite>

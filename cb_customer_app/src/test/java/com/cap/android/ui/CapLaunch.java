@@ -1,9 +1,11 @@
 package com.cap.android.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import org.testng.Assert;
 
 /**
  * Created by hitesh.grover on 04/09/17.
@@ -18,6 +20,7 @@ public class CapLaunch extends AbstractScreenCap{
     UIElement btnStaging = UIElement.byId("com.curbside.nCap:id/rbStaging");
     UIElement btnOK = UIElement.byId("com.curbside.nCap:id/bOK");
     UIElement btnpopUpOK = UIElement.byId("android:id/button1");
+    UIElement lblLoginErrorMsg = UIElement.byId("com.curbside.nCap:id/tvAuthorizationFailed");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterCredentials(String accountName, String userName, String password) throws Throwable {
@@ -40,5 +43,11 @@ public class CapLaunch extends AbstractScreenCap{
         btnpopUpOK.tap();
         DriverFactory.closeApp();
         DriverFactory.launchApp();
+    }
+
+    @And("^I should see this \"([^\"]*)\" on the screen$")
+    public void iShouldSeeErrorMsg(String expectedErrorMsg) throws Throwable {
+        String actualErrorMsg = lblLoginErrorMsg.waitFor(2).getText();
+        Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
     }
 }
