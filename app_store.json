@@ -13,7 +13,6 @@
       "name" : "Curbside",
       "app" : "../Curbside.ipa",
       "bundleId": "com.curbside.curbside",
-      "newCommandTimeOut": "120"
     }
   ]
 }
