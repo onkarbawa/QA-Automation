@@ -6,7 +6,7 @@
     </listeners>
     <test name="iOS- Applaunch">
             <classes>
-                <class name="com.cap.ios.runners.TaskManagementTest"/>
+                <class name="com.cap.ios.runners.ErrorMessage"/>
             </classes>
     </test>
 
