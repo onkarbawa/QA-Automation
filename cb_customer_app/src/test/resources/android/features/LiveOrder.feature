@@ -73,7 +73,7 @@ Feature: Android- Live order
   @Android @C114964
   Scenario: End to End - Delivery order EMail verifications
     Given I am not signed into application
-    And I sign in into application using username "end2enddelivery@mailinator.com" and password "1234567890"
+    And I sign in into application using username "end2enddelivery2@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I cancel 'all' orders
     And My cart is empty
