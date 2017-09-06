@@ -1,11 +1,12 @@
 package com.cap.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.SwipeDirection;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class HomeCap extends AbstractScreenCap {
     UIElement lblOrderTitle = UIElement.byId("com.curbside.nCap:id/tvTitle");
     UIElement btnClaim = UIElement.byId("com.curbside.nCap:id/bClaimTask");
     UIElement lblTotalTasks = UIElement.byId("com.curbside.nCap:id/toolbar_title");
-    UIElement tasks = UIElement.byXpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout");
+    UIElement tasks = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvTitle']" +
+            "/../parent::android.widget.RelativeLayout");
     UIElement btnMineTasks = UIElement.byId("com.curbside.nCap:id/rbMine");
 
 
@@ -33,10 +35,12 @@ public class HomeCap extends AbstractScreenCap {
 
     @And("^I search for Order Id named as '(.*)' and claim it$")
     public void iSearchForOrderId(String orderIdName) throws Throwable {
+        Properties.setVariable("outOfStock", "NUQXNSCD");
+        orderIdName = "outOfStock";
         int totalTasks;
         int startingTask;
+        boolean orderFound = false;
         noOfTasks = lblTotalTasks.getText().split("\\s")[0];
-        System.out.println("noOFTASKS--"+noOfTasks);
         totalTasks = Integer.parseInt(noOfTasks);
 
         if( totalTasks > 7)
@@ -45,25 +49,35 @@ public class HomeCap extends AbstractScreenCap {
             startingTask = 0;
 
         while(startingTask < totalTasks) {
-
-            UIElement nthTask = UIElement.byXpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout["+startingTask+"]");
+            UIElement nthTask = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvTitle']" +
+                    "/../parent::android.widget.RelativeLayout[@index='"+startingTask+"']");
             nthTask.swipeUpSlow();
 
             List<WebElement> listOfTasks = tasks.getElements();
-
             for (WebElement task : listOfTasks) {
                 String orderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId")).getText();
-                System.out.println("CAPordrid task--"+orderID);
-                System.out.println("propertiesGet--"+Properties.getVariable(orderIdName));
                 if (orderID.contains(Properties.getVariable(orderIdName))) {
-                    task.findElement(By.id("com.curbside.nCap:id/bClaimTask")).click();
+
+                    try{
+                        MobileDevice.getScreenshot(true);
+                        task.findElement(By.id("com.curbside.nCap:id/bClaimTask")).click();
+                        MobileDevice.getScreenshot(true);
+                    }catch (Exception e)
+                    {
+                        MobileDevice.getScreenshot(true);
+                        task.click();
+                        MobileDevice.getScreenshot(true);
+                    }
+                    orderFound = true;
                     break;
                 }
             }
             startingTask = startingTask + 2;
+            if (startingTask == totalTasks)
+                startingTask = totalTasks-1;
         }
 
-
+        Assert.assertTrue(orderFound, "Not able to find the Order in the list");
     }
 
     @And("^I tap on Mine tab$")
@@ -77,7 +91,6 @@ public class HomeCap extends AbstractScreenCap {
         List<WebElement> listOfTasks = tasks.getElements();
 
         for (WebElement task : listOfTasks) {
-            System.out.println("--inwebelement--");
             WebElement lblOrderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId"));
             String orderID = lblOrderID.getText();
 
