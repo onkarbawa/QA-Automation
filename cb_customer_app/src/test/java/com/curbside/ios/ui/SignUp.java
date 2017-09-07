@@ -36,7 +36,7 @@ public class SignUp extends AbstractScreen {
 		Properties.setVariable("signupPassword", password);
 		Properties.setVariable("signupPhoneNumber", phoneNumberText);
 
-		txtEmail.sendKeys(emailId);
+		txtEmail.waitFor(2).sendKeys(emailId);
 		txtPassword.sendKeys(password);
 		txtPhoneNumber.sendKeys(phoneNumberText);
 		btnCreateAccount.tap();
