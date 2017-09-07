@@ -178,10 +178,10 @@ public class Steps {
 	public static void tapButton(String buttonName) throws Throwable {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			try {
-				UIElement.byName(buttonName).tap();
+				UIElement.byName(buttonName).waitFor(5).tap();
 				MobileDevice.getScreenshot(true);
 			} catch (Exception e) {
-				UIElement.byAccessibilityId(buttonName).tap();
+				UIElement.byAccessibilityId(buttonName).waitFor(5).tap();
 				MobileDevice.getScreenshot(true);
 			}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
@@ -238,7 +238,9 @@ public class Steps {
 		} else
 			throw new NotImplementedException("");
 
+		MobileDevice.getScreenshot(true);
 		UIElement.byName("Notifications").tap();
+		MobileDevice.getScreenshot(true);
 
 		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Allow Notifications']");
 		String currentButtonValue = toggleButton.getAttribute("value");
@@ -252,6 +254,7 @@ public class Steps {
 		currentButtonValue = toggleButton.getAttribute("value");
 		System.out.println("Current toggle value is " + currentButtonValue);
 
+		MobileDevice.getScreenshot(true);
 		if(currentButtonValue.equals("false")){
 			toggleButton.tap();
 		}
