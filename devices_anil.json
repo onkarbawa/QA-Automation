@@ -16,7 +16,7 @@
       "platformVersion" : "10.3.2",
       "deviceName" : "Neetu's iPhone",
       "passcode" : "241984",
-      "showXcodeLog" : true,
+      "showXcodeLog" : false,
       "usePrebuiltWDA" : true,
       "app" : "../Curbside.ipa",
       "bundleId": "com.curbside.curbside",
