@@ -13,6 +13,7 @@ Feature: iOS- Application Launch 1
     When I launch Curbside application
     Then I should see Location as 'Palo Alto'
     And I Sign-in with '<Email>' and '<Password>'
+    And I saw email on MyAccount page
     And My cart is empty
     And I select 'CVS, at 855 El Camino Real' retailer and add any product to cart
     And I go to Cart screen

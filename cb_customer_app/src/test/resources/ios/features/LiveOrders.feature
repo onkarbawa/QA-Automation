@@ -30,6 +30,7 @@ Feature: iOS- End to End flow verification
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order(without Delivery Promo Code)
     Given I am not signed into application
     And I Sign-in with 'live_order@mailinator.com' and 'curbside'
+    And I saw email on MyAccount page
     And My cart is empty
     And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
     And I select 'Food Item' product from list
