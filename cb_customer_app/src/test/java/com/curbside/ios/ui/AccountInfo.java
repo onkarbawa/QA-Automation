@@ -62,12 +62,9 @@ public class AccountInfo extends AbstractScreen {
 
 	public void signOut() throws Throwable {
 		btnSignOut.tap();
-		MobileDevice.getScreenshot(true);
-		MobileDevice.getSource(true);
 		try {
 			UIElement.byName(" Sign out").waitFor(7).tap();
 			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
 		}catch (Exception e){}
 	}
 }
