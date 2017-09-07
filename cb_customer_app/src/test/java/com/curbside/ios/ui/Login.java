@@ -28,7 +28,10 @@ public class Login extends AbstractScreen {
 	public void signin(String emailText, String passwordText) throws Throwable {
 		email.waitFor(2).sendKeys(emailText);
 		password.sendKeys(passwordText);
-		Steps.tapButton("Sign In");
+		try {
+			Steps.tapButton("Sign In");
+		}catch (Exception e){
+		}
 	}
 
 	@And("^I signin in using signup information$")
