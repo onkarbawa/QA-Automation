@@ -63,8 +63,8 @@ public class FacebookLogin extends AbstractScreen {
 			btnInBrowserLogin.tap();
 		}
 		
-		btnInBrowserContinueAs.waitFor(10).tap();
-		btnInBrowserContinueAs.waitForNot(10);
+		btnInBrowserContinueAs.waitFor(20).tap();
+		btnInBrowserContinueAs.waitForNot(25);
 
 		// Give 2 seconds for curbside to login
 		btnCurbsideSignInWithFacebook.waitForNot(20);
