@@ -15,13 +15,15 @@ public class Login {
     UIElement accountName = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[1]/XCUIElementTypeTextField");
     UIElement userName = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[2]/XCUIElementTypeTextField");
     UIElement password = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[3]/XCUIElementTypeSecureTextField");
-    UIElement lblLoginErrorMsg = UIElement.byXpath("//XCUIElementTypeButton[@name='Login']/following-sibling::XCUIElementTypeStaticText");
+    UIElement lblLoginErrorMsg = UIElement.byXpath("//XCUIElementTypeImage[@name='ErrorIcon']/following-sibling::XCUIElementTypeStaticText");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterAnd(String account, String user, String pass) throws Throwable {
-        accountName.sendKeys(account);
-        userName.sendKeys(user);
-        password.sendKeys(pass, true);
+        accountName.clearText();
+        accountName.sendKeys(account, false);
+        userName.clearText();
+        userName.sendKeys(user, false);
+        password.sendKeys(pass, false);
     }
 
     @Given("^I accept CAP notifications alerts$")
