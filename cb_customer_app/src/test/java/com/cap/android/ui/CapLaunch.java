@@ -27,6 +27,7 @@ public class CapLaunch extends AbstractScreenCap{
         fieldAccountName.waitFor(5);
         fieldAccountName.sendKeys(accountName, true);
         fieldUserName.sendKeys(userName, true);
+        fieldPassword.clearText();
         fieldPassword.sendKeys(password, true);
     }
 
