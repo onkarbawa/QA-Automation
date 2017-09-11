@@ -10,6 +10,7 @@ Feature: iOS - Delivery Promo code
   @iOS @C114991
   Scenario Outline: Verify Delivery Promo - $
     Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
+    And I saw email on MyAccount page
     And My cart is empty
     And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
     And I select 'Food Item' product from list

@@ -2,6 +2,7 @@ package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.PlivoUtil;
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
@@ -66,6 +67,6 @@ public class SMSNotification extends AbstractScreen {
         Assert.assertTrue(PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
                 "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3","12815020029", previousMsgCount),
                 "User has not received the SMS yet");
-
+        MobileDevice.getScreenshot(true);
     }
 }

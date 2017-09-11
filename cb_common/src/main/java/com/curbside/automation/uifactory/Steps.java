@@ -1,5 +1,7 @@
 package com.curbside.automation.uifactory;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.eo.Do;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -178,10 +180,10 @@ public class Steps {
 	public static void tapButton(String buttonName) throws Throwable {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			try {
-				UIElement.byName(buttonName).tap();
+				UIElement.byName(buttonName).waitFor(5).tap();
 				MobileDevice.getScreenshot(true);
 			} catch (Exception e) {
-				UIElement.byAccessibilityId(buttonName).tap();
+				UIElement.byAccessibilityId(buttonName).waitFor(5).tap();
 				MobileDevice.getScreenshot(true);
 			}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
@@ -238,7 +240,9 @@ public class Steps {
 		} else
 			throw new NotImplementedException("");
 
+		MobileDevice.getScreenshot(true);
 		UIElement.byName("Notifications").tap();
+		MobileDevice.getScreenshot(true);
 
 		UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='Allow Notifications']");
 		String currentButtonValue = toggleButton.getAttribute("value");
@@ -252,6 +256,7 @@ public class Steps {
 		currentButtonValue = toggleButton.getAttribute("value");
 		System.out.println("Current toggle value is " + currentButtonValue);
 
+		MobileDevice.getScreenshot(true);
 		if(currentButtonValue.equals("false")){
 			toggleButton.tap();
 		}
@@ -347,5 +352,27 @@ public class Steps {
 		} else
 			throw new NotImplementedException(
 					"Method declineNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
+	}
+
+	@And("^I turn '(.*)' '(.*)' through Control Center$")
+	public void iTurnThroughControlCenter(String ONorOFF, String button) throws Throwable {
+		int height = UIElement.byClass("UIAWindow").getSize().getHeight();
+		int width = UIElement.byClass("UIAWindow").getSize().getWidth();
+		System.out.println(height);
+		System.out.println(width);
+		MobileDevice.swipe(width-100, height-5, width-100,0);
+
+		//UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
+		UIElement toggleButton = UIElement.byAccessibilityId(button);
+
+		String currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+
+		if(ONorOFF.equalsIgnoreCase(currentButtonValue))
+			toggleButton.tap();
+
+		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
 	}
 }

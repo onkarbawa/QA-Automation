@@ -10,7 +10,7 @@ Feature: iOS- Error Message
   Scenario Outline: Validating valid username
     Given I enter "<account>", "<userName>" and "<password>" for login
     When I tap on 'Login' button
-    Then I should see this "<errorMessage>" on the screen
+    Then I should see this "<errorMessage>" on the 'Login' screen
     Examples:
       | account  | userName | password | errorMessage                  |
       | curbside |          | curbside | Please enter a valid username |
@@ -19,7 +19,7 @@ Feature: iOS- Error Message
   Scenario Outline: Validating password should be at least 7 characters
     Given I enter "<account>", "<username>" and "<password>" for login
     When I tap on 'Login' button
-    Then I should see this "<errorMessage>" on the screen
+    Then I should see this "<errorMessage>" on the 'Login' screen
     Examples:
       | account | username | password | errorMessage                             |
       | cvs     | 1234567  | 123456   | Password should be at least 7 characters |
@@ -28,7 +28,19 @@ Feature: iOS- Error Message
   Scenario Outline: Validating EmpId should be of 7 digits
     Given I enter "<account>", "<username>" and "<password>" for login
     When I tap on 'Login' button
-    Then I should see this "<errorMessage>" on the screen
+    Then I should see this "<errorMessage>" on the 'Login' screen
+    Examples:
+      | account | username | password | errorMessage                             |
+      | cvs     | 1234567  | 123456   | Password should be at least 7 characters |
+
+  @iOS @TCS04
+  Scenario Outline: Validating EmpId should be of 7 digits
+    Given I enter "<account>", "<username>" and "<password>" for login
+    And I tap on 'Login' button
+    And I should see 'Task' screen
+    And I turn 'OFF' 'Airplane Mode' through Control Center
+    And I accept CAP notifications alerts
+    Then I should see this "<errorMessage>" on the 'Tasks' screen
     Examples:
       | account | username | password | errorMessage                            |
-      | cvs     | 123456   | curbside | Please enter 7-digit EMP ID ex. 0001234 |
+      | curbside     | qaautomation_initium   | curbside | Offline - Not all features are available |

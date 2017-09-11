@@ -19,6 +19,7 @@ Feature: iOS- Mail verification flow
   @iOS @C114979
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order(without Delivery Promo Code)
     Given I Sign-in with 'palo_alto@mailinator.com' and 'curbside'
+    And I saw email on MyAccount page
     And My cart is empty
     And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
     And I select 'Food Item' product from list
@@ -30,6 +31,7 @@ Feature: iOS- Mail verification flow
   @iOS @C114983
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
+    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
     And I select 'Food Item' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu

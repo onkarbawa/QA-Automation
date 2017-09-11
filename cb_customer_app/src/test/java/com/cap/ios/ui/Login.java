@@ -1,8 +1,10 @@
 package com.cap.ios.ui;
 
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -10,7 +12,7 @@ import org.testng.Assert;
  * Created by bawa.onkar
  */
 
-public class Login {
+public class Login extends AbstractScreen{
 
     UIElement accountName = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[1]/XCUIElementTypeTextField");
     UIElement userName = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[2]/XCUIElementTypeTextField");
@@ -41,9 +43,16 @@ public class Login {
 
     }
 
-    @And("^I should see this \"([^\"]*)\" on the screen$")
-    public void iShouldSeeErrorMsg(String expectedErrorMsg) throws Throwable {
-        String actualErrorMsg = lblLoginErrorMsg.waitFor(2).getText();
+    @And("^I should see this \"([^\"]*)\" on the '(.*)' screen$")
+    public void iShouldSeeErrorMsgOn(String expectedErrorMsg,String screen) throws Throwable {
+        String actualErrorMsg = null;
+        if (screen.equalsIgnoreCase("Login")){
+            actualErrorMsg = lblLoginErrorMsg.waitFor(2).getText();
+        }else {
+            actualErrorMsg =  tasksScreen.errorMessage.waitFor(3).getText();
+            actualErrorMsg = actualErrorMsg.substring(3,43);
+        }
+
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
     }
 }
