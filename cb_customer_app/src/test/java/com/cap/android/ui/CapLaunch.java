@@ -5,6 +5,7 @@ import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
 /**
@@ -50,5 +51,10 @@ public class CapLaunch extends AbstractScreenCap{
     public void iShouldSeeErrorMsg(String expectedErrorMsg) throws Throwable {
         String actualErrorMsg = lblLoginErrorMsg.waitFor(2).getText();
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
+    }
+
+    @Then("^I should see Login Screen of CAP$")
+    public void iShouldSeeLoginScreenCap() throws Throwable {
+        Assert.assertTrue(fieldAccountName.waitFor(1).isDisplayed(), "Not able to Signout from CAP");
     }
 }

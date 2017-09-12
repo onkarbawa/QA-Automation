@@ -4,9 +4,14 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="App Launch">
+    <test name="Error Message">
         <classes>
             <class name="com.cap.android.runners.ErrorMessage"/>
+        </classes>
+    </test>
+    <test name="My Account">
+        <classes>
+            <class name="com.cap.android.runners.MyAccount"/>
         </classes>
     </test>
 </suite>
