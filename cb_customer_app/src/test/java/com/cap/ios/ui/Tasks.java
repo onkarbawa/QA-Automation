@@ -19,7 +19,8 @@ public class Tasks {
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
-        taskBar.waitFor(10);
-        Assert.assertTrue(taskBar.getText().contains("Tasks"));
+        UIElement screenName = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+screen+"')]");
+        screenName.waitFor(10);
+        Assert.assertTrue(screenName.getText().contains(screen));
     }
 }

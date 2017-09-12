@@ -1,0 +1,46 @@
+package com.cap.ios.ui;
+
+import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.java.en.And;
+
+/**
+ * Created by bawa.onkar
+ */
+
+public class FooterTabs extends AbstractScreen{
+
+    public UIElement btnTask = UIElement.byAccessibilityId("Tasks");
+    public UIElement btnPickUp = UIElement.byAccessibilityId("Pickups");
+    public UIElement btnPickUpScan = UIElement.byAccessibilityId("Pickup Scan");
+    public UIElement btnMyAccount = UIElement.byAccessibilityId("My Account");
+    public UIElement btnMore = UIElement.byAccessibilityId("More");
+
+    public FooterTabs() {
+        // TODO Auto-generated constructor stub
+    }
+
+    @And("^I tap on '(.*)' icon in bottom menu$")
+    public void iTapOnIconInBottomMenu(String tabName) throws Throwable {
+        UIElement.byAccessibilityId(tabName).tap();
+    }
+
+    public void tapMyAccount() throws Throwable {
+        btnMyAccount.tap();
+    }
+
+    public void tapTask() throws Throwable {
+        btnTask.tap();
+    }
+
+    public void tapPickUp() throws Throwable {
+        btnPickUp.tap();
+    }
+
+    public void tapPickUpScan() throws Throwable {
+        btnPickUpScan.tap();
+    }
+
+    public void tapMore() throws Throwable {
+        btnMore.tap();
+    }
+}

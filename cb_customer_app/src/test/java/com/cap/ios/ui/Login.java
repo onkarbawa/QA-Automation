@@ -1,11 +1,16 @@
 package com.cap.ios.ui;
 
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HidesKeyboardWithKeyName;
+import io.appium.java_client.MobileCommand;
+import io.appium.java_client.remote.HideKeyboardStrategy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 /**
@@ -18,6 +23,9 @@ public class Login extends AbstractScreen{
     UIElement userName = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[2]/XCUIElementTypeTextField");
     UIElement password = UIElement.byXpath("//XCUIElementTypeImage[@name='LogoIcon']/following-sibling::XCUIElementTypeOther[3]/XCUIElementTypeSecureTextField");
     UIElement lblLoginErrorMsg = UIElement.byXpath("//XCUIElementTypeImage[@name='ErrorIcon']/following-sibling::XCUIElementTypeStaticText");
+    UIElement stagingVariable = UIElement.byXpath("//XCUIElementTypeButton[@name='Login']/following-sibling::XCUIElementTypeButton");
+    UIElement storeID = UIElement.byClass("XCUIElementTypeTextField");
+    UIElement btnReturnKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Return']");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterAnd(String account, String user, String pass) throws Throwable {
@@ -54,6 +62,33 @@ public class Login extends AbstractScreen{
         }
 
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
+    }
+
+    @And("^I have selected test environment$")
+    public void iHaveSelectedTestEnvironment() throws Throwable {
+       // homeScreen.open();
+
+        String envAPIKey = "cvs_9945";
+        if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+            return;
+
+        for (int i = 0;i<4;i++){
+            stagingVariable.tapCenter();
+        }
+        stagingVariable.longPress(10);
+        storeID.clearText();
+        storeID.sendKeys(envAPIKey,false);
+      //  storeID.sendKeys(Keys.ENTER);
+   //     MobileCommand.hideKeyboardCommand("Return");
+        btnReturnKeyboard.tap();
+        Steps.tapButton("OK");
+        storeID.waitForNot(20);
+        MobileDevice.getScreenshot(true);
+        DriverFactory.setEnvironment(envAPIKey);
+        DriverFactory.closeApp();
+        DriverFactory.launchApp();
+
+
     }
 }
 
