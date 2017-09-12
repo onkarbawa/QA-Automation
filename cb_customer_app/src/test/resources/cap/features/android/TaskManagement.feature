@@ -25,7 +25,7 @@ Feature: Android- Task Management
 
   @Android @C114937
   Scenario: Mark an item out of stock
-    And I wait for Tasks screen to get loaded
+    And I wait for Tasks to get loaded
     And I search for Order Id named as 'outOfStock' and claim it
     And I tap on Mine tab
     And I search for Order Id named as 'outOfStock' and tap it

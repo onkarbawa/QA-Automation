@@ -4,6 +4,7 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -26,8 +27,8 @@ public class HomeCap extends AbstractScreenCap {
 
     String noOfTasks;
 
-    @And("^I wait for Tasks screen to get loaded$")
-    public void iWaitForScreenLoaded() throws Throwable {
+    @And("^I wait for Tasks to get loaded$")
+    public void iWaitForTasksToLoad() throws Throwable {
         lblOrderId.waitFor(15);
         if (!lblOrderId.isDisplayed())
             lblOrderId.waitFor(10);
@@ -99,5 +100,11 @@ public class HomeCap extends AbstractScreenCap {
                 break;
             }
         }
+    }
+
+    @Then("^I should see Home screen of CAP$")
+    public void iShouldSeeHomeScreen() throws Throwable {
+        this.iWaitForTasksToLoad();
+        Assert.assertTrue(btnMineTasks.isDisplayed(), "Home Screen not visible");
     }
 }
