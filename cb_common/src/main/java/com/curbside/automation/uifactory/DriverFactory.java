@@ -147,6 +147,8 @@ public class DriverFactory {
 		if(caps.getBrowserName() == null)
 			caps.setBrowserName("");
 
+		System.out.println("Requesting new session with capabilities as: \n" + caps.asMap());
+		
 		switch (platform.toLowerCase()) {
 		case "ios":
 			setDriver(new AppiumDriver(url, caps));
@@ -160,7 +162,7 @@ public class DriverFactory {
 		}
 
 		driverInfo.set(((AppiumDriver) getDriver()).getCapabilities());
-		System.out.println("Actual device capabilities: " + driverInfo.get().asMap());
+		System.out.println("Actual device capabilities: \n" + driverInfo.get().asMap());
 		deviceSize.set(getDriver().manage().window().getSize());
 		MobileDevice.logDeviceInfo();
 
