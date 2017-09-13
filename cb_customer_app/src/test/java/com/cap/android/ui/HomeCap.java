@@ -34,10 +34,8 @@ public class HomeCap extends AbstractScreenCap {
             lblOrderId.waitFor(10);
     }
 
-    @And("^I search for Order Id named as '(.*)' and claim it$")
-    public void iSearchForOrderId(String orderIdName) throws Throwable {
-        Properties.setVariable("outOfStock", "NUQXNSCD");
-        orderIdName = "outOfStock";
+    @And("^I search for Order Id named as '(.*)' and '(.*)' it$")
+    public void iSearchForOrderId(String orderIdName, String action) throws Throwable {
         int totalTasks;
         int startingTask;
         boolean orderFound = false;
@@ -59,15 +57,12 @@ public class HomeCap extends AbstractScreenCap {
                 String orderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId")).getText();
                 if (orderID.contains(Properties.getVariable(orderIdName))) {
 
-                    try{
+                    if(action.equalsIgnoreCase("claim")) {
                         MobileDevice.getScreenshot(true);
                         task.findElement(By.id("com.curbside.nCap:id/bClaimTask")).click();
-                        MobileDevice.getScreenshot(true);
-                    }catch (Exception e)
-                    {
+                    } else if(action.equalsIgnoreCase("tap")) {
                         MobileDevice.getScreenshot(true);
                         task.click();
-                        MobileDevice.getScreenshot(true);
                     }
                     orderFound = true;
                     break;

@@ -1,5 +1,5 @@
-@applicationLaunch
-Feature: Android- Task Management
+@productDetail
+Feature: Android- Product Detail
 
   Scenario: Standard Orders
     Given I launch Curbside application for the first time
@@ -12,10 +12,10 @@ Feature: Android- Task Management
     And I tap on 'Cart' button
     And I tap on Place order button
     And I should see the successful placed order notification on the screen
-    And I save Order Id of the product and named as 'outOfStock'
+    And I save Order Id of the product and named as 'productDetail'
 
   Scenario Outline: Setting test environment for CAP
-    Given I launch Cap application for the first time
+    Given I launch Cap application
     And I have selected test environment for CAP
     And I enter "<account>", "<username>" and "<password>" for login
     And I tap on 'Login' button
@@ -23,16 +23,9 @@ Feature: Android- Task Management
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
-  @Android
-  Scenario: Mark an item out of stock
+  @Android @TCS06
+  Scenario: Detail screen
     And I wait for Tasks to get loaded
-    And I search for Order Id named as 'outOfStock' and 'claim' it
-    And I tap on Mine tab
-    And I search for Order Id named as 'outOfStock' and tap it
-    And I tap on 'Issue' button
-    And I tap on Items not available toggle button
-    And I tap on 'Done' button
-    And I tap on 'Finish' button
-
-
-
+    And I search for Order Id named as 'productDetail' and 'tap' it
+    When I click on a product from the order list
+    Then I should see product details on the screen

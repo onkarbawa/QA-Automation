@@ -35,6 +35,10 @@ public class CapLaunch extends AbstractScreenCap{
     @And("^I have selected test environment for CAP$")
     public void iSelectCapEnv() throws Throwable {
         commonSteps.acceptLocationAlert();
+
+        if( footerTabsCap.btnTasks.isDisplayed())
+            return;
+
         for (int i = 0; i < 4; i++) {
             btnVersionNumber.tap();
         }
