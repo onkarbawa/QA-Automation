@@ -4,7 +4,7 @@
       "name" : "Curbside",
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     }
   ],
   "iOS" : [
