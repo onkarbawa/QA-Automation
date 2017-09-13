@@ -358,8 +358,7 @@ public class Steps {
 	public void iTurnThroughControlCenter(String ONorOFF, String button) throws Throwable {
 		int height = UIElement.byClass("UIAWindow").getSize().getHeight();
 		int width = UIElement.byClass("UIAWindow").getSize().getWidth();
-		System.out.println(height);
-		System.out.println(width);
+
 		MobileDevice.swipe(width-100, height-5, width-100,0);
 
 		//UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");

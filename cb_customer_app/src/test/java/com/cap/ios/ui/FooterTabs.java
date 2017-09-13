@@ -19,8 +19,8 @@ public class FooterTabs extends AbstractScreen{
         // TODO Auto-generated constructor stub
     }
 
-    @And("^I tap on '(.*)' icon in bottom menu$")
-    public void iTapOnIconInBottomMenu(String tabName) throws Throwable {
+    @And("^I tap on '(.*)' icon in bottom menu for cap$")
+    public void iTapOnIconInBottomMenuForCap(String tabName) throws Throwable {
         UIElement.byAccessibilityId(tabName).tap();
     }
 

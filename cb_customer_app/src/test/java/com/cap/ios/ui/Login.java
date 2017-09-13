@@ -27,6 +27,10 @@ public class Login extends AbstractScreen{
     UIElement storeID = UIElement.byClass("XCUIElementTypeTextField");
     UIElement btnReturnKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Return']");
 
+    UIElement btnAllow = UIElement.byName("Allow");
+    UIElement btnOK = UIElement.byName("OK");
+
+
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterAnd(String account, String user, String pass) throws Throwable {
         accountName.clearText();
@@ -38,15 +42,18 @@ public class Login extends AbstractScreen{
 
     @Given("^I accept CAP notifications alerts$")
     public void acceptNotificationAlert() throws Throwable {
-        for (int i = 0; i < 5; i++) {
-            try {
+        for (int i = 0; i < 7; i++) {
+            if (btnAllow.isDisplayed()||btnOK.isDisplayed()){
                 try {
-                    new UIElement(By.name("Allow")).tap();
+                    try {
+                        new UIElement(By.name("Allow")).tap();
+                    } catch (Exception e) {
+                        new UIElement(By.name("OK")).tap();
+                    }
                 } catch (Exception e) {
-                    new UIElement(By.name("OK")).tap();
                 }
-            } catch (Exception e) {
             }
+
         }
 
     }
@@ -64,9 +71,9 @@ public class Login extends AbstractScreen{
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
     }
 
-    @And("^I have selected test environment$")
-    public void iHaveSelectedTestEnvironment() throws Throwable {
-       // homeScreen.open();
+    @And("^I have selected test environment for cap$")
+    public void iHaveSelectedTestEnvironmentForCap() throws Throwable {
+        loginScreen.acceptNotificationAlert();
 
         String envAPIKey = "cvs_9945";
         if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
@@ -88,7 +95,7 @@ public class Login extends AbstractScreen{
         DriverFactory.closeApp();
         DriverFactory.launchApp();
 
-
+        loginScreen.acceptNotificationAlert();
     }
 }
 

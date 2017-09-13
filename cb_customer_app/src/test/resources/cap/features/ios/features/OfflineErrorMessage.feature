@@ -4,8 +4,7 @@ Feature: iOS- Offline Error Message
   @iOS
   Scenario: First time Curbside Launch
     Given I launch CAP application
-    And I accept CAP notifications alerts
-    And I have selected test environment
+    And I have selected test environment for cap
 
   @iOS @TCS04
   Scenario Outline: Verifying Offline error message on Airplane Mode

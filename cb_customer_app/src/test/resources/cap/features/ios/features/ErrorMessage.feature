@@ -4,7 +4,6 @@ Feature: iOS- Error Message
   @iOS
   Scenario: First time Curbside Launch
     Given I launch CAP application for the first time
-    And I accept CAP notifications alerts
     And I have selected test environment
 
   @iOS @TCS01

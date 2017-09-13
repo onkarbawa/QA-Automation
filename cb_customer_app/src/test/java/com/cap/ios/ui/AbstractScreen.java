@@ -14,6 +14,7 @@ public class AbstractScreen {
     static Tasks tasksScreen;
     static MyAccount myAccountScreen;
     static FooterTabs footerTabsScreen;
+    static ProductDetail productDetailScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -22,5 +23,7 @@ public class AbstractScreen {
         tasksScreen = new Tasks();
         myAccountScreen = new MyAccount();
         footerTabsScreen = new FooterTabs();
+        productDetailScreen = new ProductDetail();
+        commonSteps = new Steps();
     }
 }

@@ -11,8 +11,8 @@ public class MyAccount extends AbstractScreen {
     UIElement btnSignOut = UIElement.byName("Sign Out");
     UIElement btnSignOutConfirm = UIElement.byXpath("//XCUIElementTypeStaticText[@name='You have tasks that have not been completed']/following-sibling::XCUIElementTypeButton[@name='Sign Out']");
 
-    @Given("^I am not signed into application$")
-    public void ensureSignedOut() throws Throwable {
+    @Given("^I am not signed into application cap$")
+    public void ensureSignedOutCap() throws Throwable {
         //homeScreen.open();
         try {
             footerTabsScreen.tapMyAccount();
