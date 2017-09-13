@@ -143,6 +143,9 @@ public class DriverFactory {
 			else
 				caps.setCapability(key, deviceInfo.get(key));
 		}
+		
+		if(caps.getBrowserName() == null)
+			caps.setBrowserName("");
 
 		switch (platform.toLowerCase()) {
 		case "ios":
