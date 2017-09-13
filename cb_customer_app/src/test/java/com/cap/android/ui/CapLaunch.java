@@ -61,4 +61,14 @@ public class CapLaunch extends AbstractScreenCap{
     public void iShouldSeeLoginScreenCap() throws Throwable {
         Assert.assertTrue(fieldAccountName.waitFor(1).isDisplayed(), "Not able to Signout from CAP");
     }
+
+    @And("^I am logged in to the CAP with \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void mustBeLoggedIn(String accountName, String userName, String password) throws Throwable {
+
+        if( footerTabsCap.btnTasks.isDisplayed())
+            return;
+
+        iEnterCredentials(accountName, userName, password);
+        Steps.tapButton("Login");
+    }
 }

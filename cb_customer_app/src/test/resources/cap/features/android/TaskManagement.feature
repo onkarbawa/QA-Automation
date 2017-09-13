@@ -2,7 +2,7 @@
 Feature: Android- Task Management
 
   Scenario: Standard Orders
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I sign in into application using username "capautomation@test.com" and password "1234567890"
     Then I should be logged in to the application
