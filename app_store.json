@@ -5,7 +5,6 @@
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity",
-      "newCommandTimeOut": "120"
     }
   ],
   "iOS" : [
