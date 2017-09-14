@@ -138,6 +138,39 @@ public class Home extends AbstractScreen {
 		homeScreen.open();
 	}
 
+	@And("^I have selected Experimental test environment$")
+	public void iHaveSelectedExperimentalTestEnvironment() throws Throwable {
+		homeScreen.open();
+
+		String envAPIKey = "_#csndc#env#s";
+		String envSearchKey= "_#csndc#str#eon";
+		if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
+
+		iconSearch.tap();
+		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey, false);
+		btnSearchKeyboard.tap();
+
+		//btnCancel.tapOptional();
+		loadingIcon.waitForNot(30);
+
+		iconSearch.tap();
+		txtSearchNearBy.waitFor(5).sendKeys(envSearchKey, false);
+		btnSearchKeyboard.tap();
+		loadingIcon.waitForNot(30);
+
+		MobileDevice.getScreenshot(true);
+		DriverFactory.setEnvironment(envAPIKey);
+//		footerTabsScreen.tapMyAccount();
+//		Steps.tapButton("Help");
+//		checkEnvironment.scrollTo();
+		MobileDevice.getScreenshot(true);
+		DriverFactory.closeApp();
+		DriverFactory.launchApp();
+//		DriverFactory.getDriver(false);
+		homeScreen.open();
+	}
+
 	@Given("I select '(.*)' retailer partner on stores screen")
 	public void selectRetailerPartner(String retailerPartner) throws Throwable {
 		UIElement.byAccessibilityId(retailerPartner).scrollTo().tap();

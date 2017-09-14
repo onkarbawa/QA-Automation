@@ -4,10 +4,25 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Applaunch">
+    <test name="iOS- Error-Message">
             <classes>
                 <class name="com.cap.ios.runners.ErrorMessage"/>
             </classes>
+    </test>
+    <test name="iOS- My-Account">
+        <classes>
+            <class name="com.cap.ios.runners.MyAccount"/>
+        </classes>
+    </test>
+    <test name="iOS- ProductDetails">
+        <classes>
+            <class name="com.cap.ios.runners.ProductDetailsTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Offline Error-Message">
+        <classes>
+            <class name="com.cap.ios.runners.OfflineErrorMessageTest"/>
+        </classes>
     </test>
 
 </suite>
