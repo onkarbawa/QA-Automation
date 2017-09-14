@@ -24,6 +24,7 @@ public class HomeCap extends AbstractScreenCap {
     UIElement tasks = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvTitle']" +
             "/../parent::android.widget.RelativeLayout");
     UIElement btnMineTasks = UIElement.byId("com.curbside.nCap:id/rbMine");
+    UIElement btnAllTasks = UIElement.byId("com.curbside.nCap:id/rbAll");
 
 
     String noOfTasks;
@@ -49,6 +50,7 @@ public class HomeCap extends AbstractScreenCap {
         boolean orderFound = false;
 
         if (tabName.equalsIgnoreCase("All")) {
+            btnAllTasks.tap();
             noOfTasks = lblTotalTasks.getText().split("\\s")[0];
             totalTasks = Integer.parseInt(noOfTasks);
             if (totalTasks > 7)
