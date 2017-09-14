@@ -22,6 +22,7 @@ public class Tasks extends AbstractScreen {
     UIElement errorMessage = UIElement.byXpath("//XCUIElementTypeTable[1]/XCUIElementTypeStaticText[1]");
     UIElement btnClaim = UIElement.byName("Claim");
     UIElement btnMineTasks = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Mine')]");
+    UIElement btnAll = UIElement.byName("All");
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
@@ -32,8 +33,9 @@ public class Tasks extends AbstractScreen {
 
     @Given("^I search for selected Order ID and claim it$")
     public void iSearchForSelectedOrderIDAndClaimIt() throws Throwable {
-      //  String orderID = Properties.getVariable("orderID");
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'E0GRFTW8')]").scrollTo().tap();
+        btnAll.waitFor(10);
+        String orderID = Properties.getVariable("orderID");
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
         btnClaim.tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
@@ -46,10 +48,10 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for selected Order$")
     public void iSearchForSelectedOrder() throws Throwable {
-        //  String orderID = Properties.getVariable("orderID");
+        String orderID = Properties.getVariable("orderID");
         footerTabsScreen.tapMyAccount();
         footerTabsScreen.tapTask();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'E0GRFTW8')]").scrollTo().tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
     }
 
     @Then("^I should see product details as below for CAP$")
@@ -63,6 +65,6 @@ public class Tasks extends AbstractScreen {
         Assert.assertTrue(productDetailScreen.productSKU.isDisplayed(),"Product sku is not displayed");
         Assert.assertTrue(productDetailScreen.productDescription.isDisplayed(),"Product description is not displayed");
         productDetailScreen.productOverview.scrollTo();
-        Assert.assertTrue(productDetailScreen.productOverview.isDisplayed(),"Product overview is not displayed");
+        Assert.assertEquals(productDetailScreen.productOverview.getText(),"Overview","Product overview is not displayed");
     }
 }

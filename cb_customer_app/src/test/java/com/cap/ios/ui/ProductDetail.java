@@ -13,5 +13,5 @@ public class ProductDetail extends AbstractScreen {
     UIElement redirectLinkPage = UIElement.byName("Product at Retailer");
     UIElement productSKU = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[5]//XCUIElementTypeStaticText");
     UIElement productDescription = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[7]//XCUIElementTypeTextView");
-    UIElement productOverview = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[@name='Overview']]");
+    UIElement productOverview = UIElement.byXpath("//XCUIElementTypeCell//XCUIElementTypeStaticText[@name='Overview']");
 }
