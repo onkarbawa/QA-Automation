@@ -25,6 +25,6 @@ Feature: Android- Product Detail
   @Android @TCS06
   Scenario: Product detail screen
     And I wait for Tasks to get loaded
-    And I search for Order Id named as 'productDetail' and 'tap' it
+    And I search for 'productDetail' Order Id under 'All' tab and 'tap' it
     When I click on a product from the order list
     Then I should see product details on the screen

@@ -19,4 +19,9 @@
             <class name="com.cap.android.runners.ProductDetail"/>
         </classes>
     </test>
+    <test name="Task Management">
+        <classes>
+            <class name="com.cap.android.runners.TaskManagement"/>
+        </classes>
+    </test>
 </suite>

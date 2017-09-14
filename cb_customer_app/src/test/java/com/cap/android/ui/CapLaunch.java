@@ -22,6 +22,7 @@ public class CapLaunch extends AbstractScreenCap{
     UIElement btnOK = UIElement.byId("com.curbside.nCap:id/bOK");
     UIElement btnpopUpOK = UIElement.byId("android:id/button1");
     UIElement lblLoginErrorMsg = UIElement.byId("com.curbside.nCap:id/tvAuthorizationFailed");
+    UIElement lblReleaseVersion = UIElement.byId("com.curbside.nCap:id/tvReleaseVersion");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterCredentials(String accountName, String userName, String password) throws Throwable {
@@ -36,7 +37,7 @@ public class CapLaunch extends AbstractScreenCap{
     public void iSelectCapEnv() throws Throwable {
         commonSteps.acceptLocationAlert();
 
-        if( footerTabsCap.btnTasks.isDisplayed())
+        if( footerTabsCap.btnTasks.isDisplayed() || lblReleaseVersion.getText().contains(".s EE (cvs_9945)"))
             return;
 
         for (int i = 0; i < 4; i++) {
@@ -66,9 +67,9 @@ public class CapLaunch extends AbstractScreenCap{
     public void mustBeLoggedIn(String accountName, String userName, String password) throws Throwable {
 
         if( footerTabsCap.btnTasks.isDisplayed())
-            return;
+            myAccount.iSignOutCap();
 
-        iEnterCredentials(accountName, userName, password);
+        this.iEnterCredentials(accountName, userName, password);
         Steps.tapButton("Login");
     }
 }
