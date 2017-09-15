@@ -223,6 +223,7 @@ public class UIElement {
 
 	public UIElement swipeUpSlow() throws Throwable {
 		for (int i = 0; i < 40; i++) {
+			System.out.println("FORLOOP i --"+i);
 			if (this.isDisplayed())
 				break;
 			MobileDevice.swipeUpSlowly();

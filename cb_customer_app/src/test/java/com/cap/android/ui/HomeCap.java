@@ -28,91 +28,71 @@ public class HomeCap extends AbstractScreenCap {
     UIElement btnAllTasks = UIElement.byId("com.curbside.nCap:id/rbAll");
 
 
-    String noOfTasks;
-    String orderID;
 
     @And("^I wait for Tasks to get loaded$")
     public void iWaitForTasksToLoad() throws Throwable {
         lblOrderId.waitFor(15);
         if (!lblOrderId.isDisplayed())
             lblOrderId.waitFor(10);
+
+        Properties.setVariable("claimOrder", "7QC8C96O");
+        Properties.setVariable("outOfStock", "93JMJJUB");
     }
 
     /**
-     * @param orderAlias This is used to check the value stored in Properties files
-     * @param tabName    All or Mine
-     * @param action     claim, tap, confirm(By default)
+     * @param orderIdAlias This is used to check the value stored in Properties files
+     * @param tabName      All or Mine
+     * @param action       claim, tap, confirm(By default)
      * @throws Throwable
      */
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
-    public void iSearchForOrderId(String orderAlias, String tabName, String action) throws Throwable {
-        int totalTasks = 0;
+    public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
+        int totalTasks ;
         int startingTask = 0;
-        boolean orderFound = false;
+        UIElement lblOrderId;
+        UIElement btnClaim;
 
-        Reporter.addStepLog("OrderID in Curbside : "+Properties.getVariable(orderAlias));
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
 
-        if (tabName.equalsIgnoreCase("All")) {
-            btnAllTasks.tap();
-            noOfTasks = lblTotalTasks.getText().split("\\s")[0];
-            totalTasks = Integer.parseInt(noOfTasks);
-            if (totalTasks > 7)
-                startingTask = totalTasks - 6;
-        } else if (tabName.equalsIgnoreCase("Mine")) {
-            btnMineTasks.tap();
-            noOfTasks = btnMineTasks.getText();
-            noOfTasks = noOfTasks.substring(noOfTasks.indexOf("(") + 1, noOfTasks.lastIndexOf(")"));
-            totalTasks = Integer.parseInt(noOfTasks);
-            footerTabsCap.btnTasks.tap();
-        }
+        tabName = tabName.toLowerCase();
 
-        while (startingTask < totalTasks) {
-            UIElement nthTask = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvOrderId']" +
-                    "/../parent::android.widget.RelativeLayout[@index='" + startingTask + "']");
-            nthTask.swipeUpSlow();
-            List<WebElement> listOfTasks = tasks.getElements();
-
-            for (WebElement task : listOfTasks) {
-                try {
-                    orderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId")).getText();
-                } catch (Exception e) {
-                    orderID = "ElementNotVisibleYet";
-                }
-
-                if (orderID.contains(Properties.getVariable(orderAlias))) {
-                    Reporter.addStepLog("OrderID in CAP : "+orderID);
-                    if (action.equalsIgnoreCase("claim")) {
-                        MobileDevice.getScreenshot(true);
-                        WebElement btnClaim = task.findElement(By.id("com.curbside.nCap:id/bClaimTask"));
-                        btnClaim.click();
-                        Thread.sleep(4000);
-                        Assert.assertEquals(btnClaim.getText(), "Unclaim",
-                                "Text doesn't change to 'Unclaim' after pressing 'Claim' button");
-
-                    } else if (action.equalsIgnoreCase("tap")) {
-                        MobileDevice.getScreenshot(true);
-                        task.click();
-                    }
-                    orderFound = true;
-                    break;
-                }
-            }
-
-            if (orderFound)
+        switch (tabName) {
+            case "all":
+                btnAllTasks.tap();
+                totalTasks = Integer.parseInt(lblTotalTasks.getText().split("\\s")[0]);
+                if (totalTasks > 18)
+                    startingTask = totalTasks - 17;
+                UIElement nthTask = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + startingTask + "']");
+                nthTask.swipeUpSlow();
                 break;
-
-            startingTask = startingTask + 2;
-
-            if (startingTask == totalTasks) {
-                startingTask = totalTasks - 1;
-                MobileDevice.swipe(SwipeDirection.UP);
-            }
-
-            if (startingTask == (totalTasks - 1)) {
-                MobileDevice.swipe(SwipeDirection.UP);
-            }
+            case "mine":
+                btnMineTasks.tap();
+                footerTabsCap.btnTasks.tap();
+                break;
+            default:
+                Assert.fail("Please enter correct 'Tab name'");
+                break;
         }
-        Assert.assertTrue(orderFound, "Not able to find the Order in the list");
+
+        lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
+        lblOrderId.swipeUpSlow();
+        Assert.assertTrue(lblOrderId.isDisplayed(), orderIdAlias + " order is not present");
+        MobileDevice.getScreenshot(true);
+
+        if (action.equalsIgnoreCase("claim")) {
+            btnClaim = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]" +
+                    "/../android.widget.Button");
+            btnClaim.tap();
+            btnClaim.waitFor(4);
+            Assert.assertEquals(btnClaim.getText(), "Unclaim",
+                    "Text doesn't change to 'Unclaim' after pressing 'Claim' button");
+            MobileDevice.getScreenshot(true);
+
+        } else if (action.equalsIgnoreCase("tap")) {
+            lblOrderId.tap();
+            MobileDevice.getScreenshot(true);
+        }
+
     }
 
     @And("^I tap on Mine tab$")

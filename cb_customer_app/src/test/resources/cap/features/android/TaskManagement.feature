@@ -39,7 +39,7 @@ Feature: Android- Task Management
 
   @Android @TCS08
   Scenario: Mark an item out of stock
-    And I search for 'outOfStock' Order Id under 'All' tab and 'claim' it
+    And I search for 'outOfStock' Order Id under 'All' tab and 'Claim' it
     And I look for 'outOfStock' Order Id under 'Mine' tab and 'tap' it
     And I tap on 'Issue' button
     And I tap on Items not available toggle button
