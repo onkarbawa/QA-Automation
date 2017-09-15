@@ -96,6 +96,7 @@ public class Steps {
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
 			DriverFactory.releaseDriver();

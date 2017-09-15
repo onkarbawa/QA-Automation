@@ -1,10 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.SwipeDirection;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -410,5 +407,11 @@ public class Cart extends AbstractScreen {
 				break;
 			}
 		}
+	}
+
+	@And("^I go to the shop screen to add any product$")
+	public void iGoToTheShopScreenToAddAnyProduct() throws Throwable {
+		Steps.tapButton("Done");
+		footerTabsScreen.tapShop();
 	}
 }
