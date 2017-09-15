@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/cap/features/ios/features/ProductDetails.feature",
+        features = "src/test/resources/cap/features/ios/features/ProductDetailAndTaskManagement.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report_cap.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -18,5 +18,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.ios.ui", "com.curbside.automation.uifactory","com.cap.ios.ui"})
 
 @Test
-public class ProductDetailsTest extends AbstractTestNGCucumberTests {
+public class ProductDetailAndTaskManagementTest extends AbstractTestNGCucumberTests{
 }

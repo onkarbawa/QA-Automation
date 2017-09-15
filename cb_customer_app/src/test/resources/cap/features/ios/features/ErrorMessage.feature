@@ -4,7 +4,8 @@ Feature: iOS- Error Message
   @iOS
   Scenario: First time Curbside Launch
     Given I launch CAP application for the first time
-    And I have selected test environment
+    And I have selected test environment for cap
+    When I am not signed into application cap
 
   @iOS @TCS01
   Scenario Outline: Validating valid username

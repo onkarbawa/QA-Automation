@@ -14,9 +14,9 @@
             <class name="com.cap.ios.runners.MyAccount"/>
         </classes>
     </test>
-    <test name="iOS- ProductDetails">
+    <test name="iOS- ProductDetail And TaskManagement">
         <classes>
-            <class name="com.cap.ios.runners.ProductDetailsTest"/>
+            <class name="com.cap.ios.runners.ProductDetailAndTaskManagementTest"/>
         </classes>
     </test>
     <test name="iOS- Offline Error-Message">

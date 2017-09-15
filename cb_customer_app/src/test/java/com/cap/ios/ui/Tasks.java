@@ -67,4 +67,15 @@ public class Tasks extends AbstractScreen {
         productDetailScreen.productOverview.scrollTo();
         Assert.assertEquals(productDetailScreen.productOverview.getText(),"Overview","Product overview is not displayed");
     }
+
+    @And("^I should see claim product in Mine tab$")
+    public void iShouldSeeClaimProductInMineTab() throws Throwable {
+        String orderID = Properties.getVariable("orderID");
+        footerTabsScreen.tapMyAccount();
+        footerTabsScreen.tapTask();
+
+        Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]")
+                .scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
+
+    }
 }

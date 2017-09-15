@@ -5,6 +5,7 @@ Feature: iOS- Login and Logout
   Scenario: Setting test environment
     Given I launch CAP application
     And I have selected test environment for cap
+    And I am not signed into application cap
 
   @iOS @TCS05
   Scenario Outline: Verify that on Logout User should brought back to login page
