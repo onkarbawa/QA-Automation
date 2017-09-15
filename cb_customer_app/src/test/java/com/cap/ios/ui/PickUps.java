@@ -10,13 +10,13 @@ import org.testng.Assert;
  */
 public class PickUps extends AbstractScreen{
 
-    UIElement attentionMessage = UIElement.byName("Needs customer attention");
+    UIElement alertMessage = UIElement.byName("Needs customer attention");
 
     @Then("^I should see particular order in Task tab with '(.*)'$")
     public void iShouldSeeParticularOrderInTaskTabWith(String message) throws Throwable {
         footerTabsScreen.tapPickUp();
         String orderID = Properties.getVariable("orderID");
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-        Assert.assertEquals(attentionMessage.getText(),message,"Attention message is not shown");
+        Assert.assertEquals(alertMessage.getText(),message,"Attention message is not shown");
     }
 }

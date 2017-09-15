@@ -1,10 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.SwipeDirection;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -19,7 +16,9 @@ public class MyOrders extends AbstractScreen {
 
     UIElement orderInProgress = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Order In Progress')]");
     UIElement myOrderTitle = UIElement.byName("My Orders");
-    UIElement orderID = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[10]//XCUIElementTypeStaticText");
+    UIElement orderID = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText");
+    //XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText
+    //XCUIElementTypeTable//XCUIElementTypeCell[10]//XCUIElementTypeStaticText
     UIElement latestOrderCancel = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Cancelled']]/following-sibling::XCUIElementTypeCell[1]");
     UIElement yourInputNeeded = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Your Input Needed')]");
 
@@ -46,6 +45,20 @@ public class MyOrders extends AbstractScreen {
             orderNo = orderNo.split("\\s")[1];
         }
         Properties.setVariable("orderID",orderNo);
+    }
+
+    @And("^I save Order Id of the product and named as '(.*)'")
+    public void iSaveOrderId(String orderName) throws Throwable {
+        String orderNo;
+        if (orderID.isDisplayed()){
+            orderNo = orderID.getText();
+            orderNo = orderNo.split("\\s")[1];
+        }else {
+            orderID.scrollTo(SwipeDirection.UP);
+            orderNo = orderID.getText();
+            orderNo = orderNo.split("\\s")[1];
+        }
+        Properties.setVariable(orderName,orderNo);
     }
 
     @Then("^I should see cancel order in My Orders Screen$")

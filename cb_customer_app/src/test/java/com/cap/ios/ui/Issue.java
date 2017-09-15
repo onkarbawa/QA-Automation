@@ -9,7 +9,7 @@ import cucumber.api.java.en.When;
 /**
  * Created by bawa.onkar
  */
-public class Issue {
+public class Issue extends AbstractScreen{
 
     @And("^I turn '(.*)' '(.*)'$")
     public void iTurnONItemNotAvailable(String ONorOFF,String button) throws Throwable {

@@ -6,17 +6,32 @@ Feature: iOS- Product Details
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen
-    And I Sign-in with 'gilroy_cvs@curbside.com' and 'curbside'
-    And I saw email on MyAccount page
-    And I checked there is any user attention message
-    And My cart is empty
+    And I tap on 'My Account' icon in bottom menu
+    And I tap on 'Create one now' button
+    And I tap on 'Create An Account' button
+    And I signup for a new account
+    And I add credit card information
+#    And I Sign-in with 'gilroy_cvs@curbside.com' and 'curbside'
+#    And I saw email on MyAccount page
+#    And I checked there is any user attention message
+#    And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
-    And I store the value of OrderId
+    And I save Order Id of the product and named as 'claimOrder'
+    And I go to the shop screen to add any product
+    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I add 1 quantity of the product
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+    And I select 'CVS Indoor & Outdoor 24-Hour Allergy Relief Cetirizine Hydrochloride Tablets 10Mg, 60 CT' product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'outOfStock'
 
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application for the first time
@@ -29,14 +44,15 @@ Feature: iOS- Product Details
       | curbside | qaautomation_initium | curbside |
 
   @iOS @TCS07
-  Scenario: Verify that on Product Details are shown with selected product from curbside
-    Given I search for selected Order ID and claim it
-    And I tap on Mine tab
-    And I should see claim product in Mine tab
+  Scenario: Validating Claim button functionality
+    Given I search for 'claimOrder' Order ID and claim it
+    And I tap on 'Mine' tab
+#    And I should see claim product in Mine tab list with 'Unclaim' button
+    Then I look for 'claimOrder' Order Id under 'Mine' tab with 'Unclaim' button
 
   @iOS @TCS06
   Scenario: Verify that on Product Details are shown with selected product from curbside
-    And I search for selected Order
+    And I search for 'claimOrder' OrderID
     Then I should see product details as below for CAP
 
   @iOS @TCS08
@@ -50,3 +66,16 @@ Feature: iOS- Product Details
     Examples:
       | Message |
     |     Needs customer attention    |
+
+
+  @iOS @TCS09
+  Scenario Outline: Verify that when we Mark All item out of stock and Order should be cancelled
+    Given I tap on 'All' tab
+    And I search for 'outOfStock' Order ID and claim it
+    And I tap on 'Mine' tab
+    And I search for 'outOfStock' OrderID
+    And I mark all items as 'Item not Available'
+    Then I should see particular order in Cancelled pickups with '<Message>'
+    Examples:
+      | Message |
+      |Pickup is Cancelled|

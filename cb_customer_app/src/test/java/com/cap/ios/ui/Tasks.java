@@ -10,7 +10,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.apache.xpath.SourceTree;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 /**
  * Created by bawa.onkar
@@ -21,8 +25,9 @@ public class Tasks extends AbstractScreen {
     UIElement taskBar = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Tasks')]");
     UIElement errorMessage = UIElement.byXpath("//XCUIElementTypeTable[1]/XCUIElementTypeStaticText[1]");
     UIElement btnClaim = UIElement.byName("Claim");
-    UIElement btnMineTasks = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Mine')]");
+
     UIElement btnAll = UIElement.byName("All");
+    UIElement btnIssue = UIElement.byName("Issue");
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
@@ -31,26 +36,27 @@ public class Tasks extends AbstractScreen {
         Assert.assertTrue(screenName.getText().contains(screen));
     }
 
-    @Given("^I search for selected Order ID and claim it$")
-    public void iSearchForSelectedOrderIDAndClaimIt() throws Throwable {
+    @Given("^I search for '(.*)' Order ID and claim it$")
+    public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         btnAll.waitFor(10);
-        String orderID = Properties.getVariable("orderID");
+        String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
         btnClaim.tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
     }
 
-    @And("^I tap on Mine tab$")
-    public void iTapOnMineTab() throws Throwable {
-        btnMineTasks.waitFor(2).tap();
+    @And("^I tap on '(.*)' tab$")
+    public void iTapOnTab(String button) throws Throwable {
+        UIElement btnTasks = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'"+button+"')]");
+        btnTasks.waitFor(2).tap();
     }
 
-    @And("^I search for selected Order$")
-    public void iSearchForSelectedOrder() throws Throwable {
-        String orderID = Properties.getVariable("orderID");
-        footerTabsScreen.tapMyAccount();
-        footerTabsScreen.tapTask();
+    @And("^I search for (.*) OrderID$")
+    public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
+        String orderID = Properties.getVariable(orderAlias);
+     //   footerTabsScreen.tapMyAccount();
+      //  footerTabsScreen.tapTask();
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
     }
 
@@ -68,8 +74,8 @@ public class Tasks extends AbstractScreen {
         Assert.assertEquals(productDetailScreen.productOverview.getText(),"Overview","Product overview is not displayed");
     }
 
-    @And("^I should see claim product in Mine tab$")
-    public void iShouldSeeClaimProductInMineTab() throws Throwable {
+    @And("^I should see claim product in Mine tab list with '(.*)' button$")
+    public void iShouldSeeClaimProductInMineTabListWithButton(String button) throws Throwable {
         String orderID = Properties.getVariable("orderID");
         footerTabsScreen.tapMyAccount();
         footerTabsScreen.tapTask();
@@ -77,5 +83,34 @@ public class Tasks extends AbstractScreen {
         Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]")
                 .scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
 
+        Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]/following-sibling::XCUIElementTypeButton").getText(),
+                button,"Unclaim button is not present in list");
+
+    }
+
+    @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab with '(.*)' button")
+    public void iSearchForOrderId(String orderAlias, String tabName, String button) throws Throwable {
+        String orderID = Properties.getVariable(orderAlias);
+        footerTabsScreen.tapMyAccount();
+        footerTabsScreen.tapTask();
+
+        Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]")
+                .scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
+
+        Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]/following-sibling::XCUIElementTypeButton").getText(),
+                button,"Unclaim button is not present in list");
+    }
+
+    @Given("^I mark all items as '(.*)'$")
+    public void iMarkAllItemsAs(String button) throws Throwable {
+        if (btnIssue.isDisplayed()){
+            int totalIssueButton = btnIssue.getCount();
+            for (int i = 1; i <= totalIssueButton; i++){
+                UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell["+i+"]//XCUIElementTypeButton[@name='Issue']").scrollTo(SwipeDirection.UP).tap();
+                issueScreen.iTurnONItemNotAvailable("ON",button);
+                Steps.tapButton("Done");
+            }
+            Steps.tapButton("Finish");
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.cap.ios.ui;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import com.curbside.ios.ui.AccountInfo;
+import org.testng.internal.MethodInvocationHelper;
 
 /**
  * Created by bawa.onkar
@@ -15,6 +16,8 @@ public class AbstractScreen {
     static MyAccount myAccountScreen;
     static FooterTabs footerTabsScreen;
     static ProductDetail productDetailScreen;
+    static Issue issueScreen;
+    static MoreTab moreTabScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -25,5 +28,7 @@ public class AbstractScreen {
         footerTabsScreen = new FooterTabs();
         productDetailScreen = new ProductDetail();
         commonSteps = new Steps();
+        issueScreen = new Issue();
+        moreTabScreen = new MoreTab();
     }
 }
