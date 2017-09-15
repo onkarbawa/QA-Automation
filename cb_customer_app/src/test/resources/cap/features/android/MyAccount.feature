@@ -3,9 +3,10 @@ Feature: Android- My Account
 
   @Android
   Scenario: Setting test environment for CAP
-    Given I launch Cap application for the first time
+    Given I launch Cap application
     And I have selected test environment for CAP
 
+  @Android @TCS05
   Scenario Outline: Setting test environment for CAP
     Given I enter "<account>", "<username>" and "<password>" for login
     When I tap on 'Login' button

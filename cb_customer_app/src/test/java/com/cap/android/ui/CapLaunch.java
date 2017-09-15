@@ -22,6 +22,7 @@ public class CapLaunch extends AbstractScreenCap{
     UIElement btnOK = UIElement.byId("com.curbside.nCap:id/bOK");
     UIElement btnpopUpOK = UIElement.byId("android:id/button1");
     UIElement lblLoginErrorMsg = UIElement.byId("com.curbside.nCap:id/tvAuthorizationFailed");
+    UIElement lblReleaseVersion = UIElement.byId("com.curbside.nCap:id/tvReleaseVersion");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterCredentials(String accountName, String userName, String password) throws Throwable {
@@ -35,6 +36,10 @@ public class CapLaunch extends AbstractScreenCap{
     @And("^I have selected test environment for CAP$")
     public void iSelectCapEnv() throws Throwable {
         commonSteps.acceptLocationAlert();
+
+        if( footerTabsCap.btnTasks.isDisplayed() || lblReleaseVersion.getText().contains(".s EE (cvs_9945)"))
+            return;
+
         for (int i = 0; i < 4; i++) {
             btnVersionNumber.tap();
         }
@@ -56,5 +61,15 @@ public class CapLaunch extends AbstractScreenCap{
     @Then("^I should see Login Screen of CAP$")
     public void iShouldSeeLoginScreenCap() throws Throwable {
         Assert.assertTrue(fieldAccountName.waitFor(1).isDisplayed(), "Not able to Signout from CAP");
+    }
+
+    @And("^I am logged in to the CAP with \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void mustBeLoggedIn(String accountName, String userName, String password) throws Throwable {
+
+        if( footerTabsCap.btnTasks.isDisplayed())
+            myAccount.iSignOutCap();
+
+        this.iEnterCredentials(accountName, userName, password);
+        Steps.tapButton("Login");
     }
 }

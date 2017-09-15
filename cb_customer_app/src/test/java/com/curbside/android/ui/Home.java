@@ -177,6 +177,7 @@ public class Home extends AbstractScreen {
 
 	@And("^I have selected Experimental test environment$")
 	public void iSelectedExpTestEnvironment() throws Throwable {
+		System.out.println("Intest Env");
 		String envSearchKey= "_#csndc#ena";
 		String envAPIKey= "https://api-s.shopcurbside.com";
 		if(!footerTabsScreen.btnMyAccount.isDisplayed())

@@ -2,6 +2,7 @@ package com.cap.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -23,9 +24,11 @@ public class HomeCap extends AbstractScreenCap {
     UIElement tasks = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvTitle']" +
             "/../parent::android.widget.RelativeLayout");
     UIElement btnMineTasks = UIElement.byId("com.curbside.nCap:id/rbMine");
+    UIElement btnAllTasks = UIElement.byId("com.curbside.nCap:id/rbAll");
 
 
     String noOfTasks;
+    String orderID;
 
     @And("^I wait for Tasks to get loaded$")
     public void iWaitForTasksToLoad() throws Throwable {
@@ -34,50 +37,78 @@ public class HomeCap extends AbstractScreenCap {
             lblOrderId.waitFor(10);
     }
 
-    @And("^I search for Order Id named as '(.*)' and claim it$")
-    public void iSearchForOrderId(String orderIdName) throws Throwable {
-        Properties.setVariable("outOfStock", "NUQXNSCD");
-        orderIdName = "outOfStock";
-        int totalTasks;
-        int startingTask;
+    /**
+     * @param orderAlias This is used to check the value stored in Properties files
+     * @param tabName    All or Mine
+     * @param action     claim, tap, confirm(By default)
+     * @throws Throwable
+     */
+    @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
+    public void iSearchForOrderId(String orderAlias, String tabName, String action) throws Throwable {
+        int totalTasks = 0;
+        int startingTask = 0;
         boolean orderFound = false;
-        noOfTasks = lblTotalTasks.getText().split("\\s")[0];
-        totalTasks = Integer.parseInt(noOfTasks);
 
-        if( totalTasks > 7)
-            startingTask = totalTasks - 6;
-        else
-            startingTask = 0;
+        if (tabName.equalsIgnoreCase("All")) {
+            btnAllTasks.tap();
+            noOfTasks = lblTotalTasks.getText().split("\\s")[0];
+            totalTasks = Integer.parseInt(noOfTasks);
+            if (totalTasks > 7)
+                startingTask = totalTasks - 6;
+        } else if (tabName.equalsIgnoreCase("Mine")) {
+            btnMineTasks.tap();
+            noOfTasks = btnMineTasks.getText();
+            noOfTasks = noOfTasks.substring(noOfTasks.indexOf("(") + 1, noOfTasks.lastIndexOf(")"));
+            totalTasks = Integer.parseInt(noOfTasks);
+            footerTabsCap.btnTasks.tap();
+        }
 
-        while(startingTask < totalTasks) {
-            UIElement nthTask = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvTitle']" +
-                    "/../parent::android.widget.RelativeLayout[@index='"+startingTask+"']");
+        while (startingTask < totalTasks) {
+            UIElement nthTask = UIElement.byXpath("//android.widget.TextView[@resource-id='com.curbside.nCap:id/tvOrderId']" +
+                    "/../parent::android.widget.RelativeLayout[@index='" + startingTask + "']");
             nthTask.swipeUpSlow();
-
             List<WebElement> listOfTasks = tasks.getElements();
-            for (WebElement task : listOfTasks) {
-                String orderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId")).getText();
-                if (orderID.contains(Properties.getVariable(orderIdName))) {
 
-                    try{
+            for (WebElement task : listOfTasks) {
+                try {
+                    orderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId")).getText();
+                } catch (Exception e) {
+                    orderID = "ElementNotVisibleYet";
+                }
+
+                if (orderID.contains(Properties.getVariable(orderAlias))) {
+
+                    if (action.equalsIgnoreCase("claim")) {
                         MobileDevice.getScreenshot(true);
-                        task.findElement(By.id("com.curbside.nCap:id/bClaimTask")).click();
-                        MobileDevice.getScreenshot(true);
-                    }catch (Exception e)
-                    {
+                        WebElement btnClaim = task.findElement(By.id("com.curbside.nCap:id/bClaimTask"));
+                        btnClaim.click();
+                        Thread.sleep(4000);
+                        Assert.assertEquals(btnClaim.getText(), "Unclaim",
+                                "Text doesn't change to 'Unclaim' after pressing 'Claim' button");
+
+                    } else if (action.equalsIgnoreCase("tap")) {
                         MobileDevice.getScreenshot(true);
                         task.click();
-                        MobileDevice.getScreenshot(true);
                     }
                     orderFound = true;
                     break;
                 }
             }
-            startingTask = startingTask + 2;
-            if (startingTask == totalTasks)
-                startingTask = totalTasks-1;
-        }
 
+            if (orderFound)
+                break;
+
+            startingTask = startingTask + 2;
+
+            if (startingTask == totalTasks) {
+                startingTask = totalTasks - 1;
+                MobileDevice.swipe(SwipeDirection.UP);
+            }
+
+            if (startingTask == (totalTasks - 1)) {
+                MobileDevice.swipe(SwipeDirection.UP);
+            }
+        }
         Assert.assertTrue(orderFound, "Not able to find the Order in the list");
     }
 
@@ -87,15 +118,13 @@ public class HomeCap extends AbstractScreenCap {
     }
 
     @And("^I search for Order Id named as '(.*)' and tap it$")
-    public void iSearchOrderMineTab(String orderIdName) throws Throwable {
-
+    public void iSearchOrderMineTab(String orderAlias) throws Throwable {
         List<WebElement> listOfTasks = tasks.getElements();
-
         for (WebElement task : listOfTasks) {
             WebElement lblOrderID = task.findElement(By.id("com.curbside.nCap:id/tvOrderId"));
             String orderID = lblOrderID.getText();
 
-            if (orderID.contains(Properties.getVariable(orderIdName))) {
+            if (orderID.contains(Properties.getVariable(orderAlias))) {
                 lblOrderID.click();
                 break;
             }
