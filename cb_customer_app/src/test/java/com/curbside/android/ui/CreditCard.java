@@ -1,6 +1,7 @@
 package com.curbside.android.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.common.utilities.Helpers;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -47,12 +48,17 @@ public class CreditCard extends AbstractScreen {
 
     @Given("^I add credit card information$")
     public void iAddedCreditCardInformations() throws Throwable {
+        String firstName = Helpers.getRandomFirstName();
+        String lastName = Helpers.getRandomLastName();
+        Properties.setVariable("firstNameCredit", firstName);
+        Properties.setVariable("lastNameCredit", lastName);
+
         footerTabsScreen.tapMyAccount();
         accountScreen.ensureAccountPage();
         accountScreen.iTapOnPaymentInfoButtonOnAccountPage();
         paymentInfo.iTapOnAddNewCardButtonOnPayementInfoPage();
-        iAddCreditCardInformationAs("4012000077777777","1218","123","John",
-                "Miller","1 Infinite Loop","","Cupertino",
+        iAddCreditCardInformationAs("4012000077777777","1218","123",firstName,
+                lastName,"1 Infinite Loop","","Cupertino",
                 "California","95014");
         paymentInfo.iShouldSeeTheCardAddedToPaymentInfo();
     }

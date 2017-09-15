@@ -1,5 +1,6 @@
 package com.cap.android.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.SwipeDirection;
@@ -49,6 +50,8 @@ public class HomeCap extends AbstractScreenCap {
         int startingTask = 0;
         boolean orderFound = false;
 
+        Reporter.addStepLog("OrderID in Curbside : "+Properties.getVariable(orderAlias));
+
         if (tabName.equalsIgnoreCase("All")) {
             btnAllTasks.tap();
             noOfTasks = lblTotalTasks.getText().split("\\s")[0];
@@ -77,7 +80,7 @@ public class HomeCap extends AbstractScreenCap {
                 }
 
                 if (orderID.contains(Properties.getVariable(orderAlias))) {
-
+                    Reporter.addStepLog("OrderID in CAP : "+orderID);
                     if (action.equalsIgnoreCase("claim")) {
                         MobileDevice.getScreenshot(true);
                         WebElement btnClaim = task.findElement(By.id("com.curbside.nCap:id/bClaimTask"));

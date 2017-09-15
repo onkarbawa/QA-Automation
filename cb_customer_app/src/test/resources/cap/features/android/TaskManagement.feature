@@ -5,11 +5,14 @@ Feature: Android- Task Management
     Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
-    When I sign in into application using username "capautomation@test.com" and password "1234567890"
-    Then I should be logged in to the application
-    And My cart is empty
+    And I tap on 'Account' button
+    And I tap on 'Sign Up' button
+    And I tap on 'Sign Up with Email' button
+    And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
+    When I tap on Create Account button
+    Then I should see my given information under Account Info
+    And I add credit card information
     And I add any product to cart in 'Gilroy' location
-    And I cancel 'all' orders
     And I tap on 'Cart' button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
@@ -42,6 +45,7 @@ Feature: Android- Task Management
     And I tap on Items not available toggle button
     And I tap on 'Done' button
     And I tap on 'Finish' button
-
-
-
+    And I tap on 'Pickups' button
+    And I search by customer name to sort the orders
+    And I search for 'outOfStock' order id under Pickups tab
+    And I validate 'outOfStock' order marked as 'Customer Action Needed'
