@@ -116,8 +116,9 @@ public class Steps {
 			} catch (Exception e) {
 				// e.printStackTrace();
 			}
-		else
-			throw new NotImplementedException(
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+        } else
+            throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
 	}
 
