@@ -53,7 +53,7 @@ public class Tasks extends AbstractScreen {
         btnTasks.waitFor(2).tap();
     }
 
-    @And("^I search for (.*) OrderID$")
+    @And("^I search for '(.*)' OrderID$")
     public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
         String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();

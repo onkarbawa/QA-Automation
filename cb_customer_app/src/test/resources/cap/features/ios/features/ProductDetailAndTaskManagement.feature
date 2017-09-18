@@ -6,15 +6,15 @@ Feature: iOS- Product Details
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen
-#    And I tap on 'My Account' icon in bottom menu
-#    And I tap on 'Create one now' button
-#    And I tap on 'Create An Account' button
-#    And I signup for a new account
-#    And I add credit card information
-    And I Sign-in with 'gilroy_cvs@curbside.com' and 'curbside'
-    And I saw email on MyAccount page
-    And I checked there is any user attention message
-    And My cart is empty
+    And I tap on 'My Account' icon in bottom menu
+    And I tap on 'Create one now' button
+    And I tap on 'Create An Account' button
+    And I signup for a new account
+    And I add credit card information
+#    And I Sign-in with 'gilroy_cvs@curbside.com' and 'curbside'
+#    And I saw email on MyAccount page
+#    And I checked there is any user attention message
+#    And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
     And I add 1 quantity of the product
