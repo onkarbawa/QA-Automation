@@ -21,6 +21,7 @@ public class MyOrders extends AbstractScreen {
     UIElement lblOrderInfo = UIElement.byId("com.curbside.nCurbside:id/order_info");
     UIElement lblCancelledOrderID = UIElement.byId("com.curbside.nCurbside:id/text_pickup_id");
     UIElement latestCancelledOrder = UIElement.byXpath("//android.widget.TextView[@text='Cancelled']/following-sibling::android.widget.RelativeLayout[1]");
+    UIElement lblTopMostOrder = UIElement.byXpath("//android.widget.ListView[@resource-id='com.curbside.nCurbside:id/list']/*/android.widget.TextView");
 
 
     String expectedOrderID;
@@ -39,14 +40,14 @@ public class MyOrders extends AbstractScreen {
             deleteAll = true;
 
         do {
-            if(!lblOrderState.waitFor(5).isDisplayed())
+            if (!lblOrderState.waitFor(5).isDisplayed())
                 break;
 
             if (latestInProgressOrder.isDisplayed() ||
                     latestInputNeededOrder.isDisplayed()) {
-                try{
+                try {
                     latestInProgressOrder.tap();
-                }catch (Exception e){
+                } catch (Exception e) {
                     latestInputNeededOrder.tap();
                 }
 
@@ -59,7 +60,7 @@ public class MyOrders extends AbstractScreen {
                 lblCancellationReason.waitFor(5);
 
                 Assert.assertTrue(lblCancellationReason.isDisplayed(), "Not abe to cancel the order");
-                for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed() ; i++) {
+                for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
                     AndroidDevice.goBack();
                     Thread.sleep(3000);
                 }
@@ -99,19 +100,66 @@ public class MyOrders extends AbstractScreen {
         if (!lblOrderState.waitFor(5).isDisplayed())
             return;
 
-        if (lblOrderState.getText().equalsIgnoreCase("In Progress")) {
-            latestInProgressOrder.tap();
-            lblOrderInfo.scrollTo(SwipeDirection.UP);
-            String orderInfo = lblOrderInfo.getText();
-            System.out.println("SAVED ORDERID - "+orderInfo);
-            System.out.println("REGEX--"+orderInfo.split(",")[0].split("\\s+")[2]);
-            Properties.setVariable(orderID, orderInfo.split(",")[0].split("\\s+")[2]);
+        latestInProgressOrder.swipeUpSlow();
+        latestInProgressOrder.tap();
+        lblOrderInfo.scrollTo(SwipeDirection.UP);
+        String orderInfo = lblOrderInfo.getText();
+        Properties.setVariable(orderID, orderInfo.split(",")[0].split("\\s+")[2]);
 
-            for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
-                AndroidDevice.goBack();
-                Thread.sleep(3000);
-            }
-            footerTabsScreen.tapMyAccount();
+        for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
+            AndroidDevice.goBack();
+            Thread.sleep(3000);
         }
+        footerTabsScreen.tapMyAccount();
+
     }
+
+    @And("^I cancel all orders")
+    public void iCancelsAllOrders() throws Throwable {
+        String orderState;
+        footerTabsScreen.tapMyAccount();
+        accountScreen.ensureAccountPage();
+        Steps.tapButton("My Orders");
+        MobileDevice.getScreenshot(true);
+
+
+        do {
+            if (!lblOrderState.isDisplayed())
+                return;
+
+            orderState = lblTopMostOrder.getText();
+            switch (orderState) {
+                case "Your Input Needed":
+                    latestInputNeededOrder.tap();
+                    Steps.tapButton("REMOVE");
+                    Steps.tapButton("Proceed");
+                    for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
+                        AndroidDevice.goBack();
+                        Thread.sleep(3000);
+                    }
+                    break;
+                case "In Progress":
+                    latestInProgressOrder.tap();
+                    btnCancelOrder.scrollTo(SwipeDirection.UP);
+                    btnCancelOrder.tap();
+                    btnCnfrmCancelOrder.waitFor(5).tap();
+                    lblCancellationReason.waitFor(5);
+                    Assert.assertTrue(lblCancellationReason.isDisplayed(), "Not abe to cancel the order");
+                    for (int i = 0; i < 3 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
+                        AndroidDevice.goBack();
+                        Thread.sleep(3000);
+                    }
+                    break;
+                case "Cancelled":
+                    return;
+                default:
+                    break;
+            }
+
+            footerTabsScreen.tapMyAccount();
+            Steps.tapButton("My Orders");
+        } while (!lblTopMostOrder.waitFor(5).getText().equalsIgnoreCase("Cancelled"));
+
+    }
+
 }

@@ -222,7 +222,7 @@ public class UIElement {
 	}
 
 	public UIElement swipeUpSlow() throws Throwable {
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 40; i++) {
 			if (this.isDisplayed())
 				break;
 			MobileDevice.swipeUpSlowly();

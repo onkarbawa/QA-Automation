@@ -20,4 +20,12 @@ public class Helpers {
   {
 	  return RandomStringUtils.randomAlphabetic(4).toLowerCase() + "_" + RandomStringUtils.randomNumeric(7) + "@mailinator.com";
   }
+
+  public static String getRandomFirstName() {
+    return RandomStringUtils.randomAlphabetic(5).toLowerCase();
+  }
+
+  public static String getRandomLastName() {
+    return RandomStringUtils.randomAlphabetic(5).toLowerCase();
+  }
 }
