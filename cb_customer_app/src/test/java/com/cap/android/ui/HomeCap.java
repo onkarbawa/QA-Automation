@@ -34,9 +34,6 @@ public class HomeCap extends AbstractScreenCap {
         lblOrderId.waitFor(15);
         if (!lblOrderId.isDisplayed())
             lblOrderId.waitFor(10);
-
-        Properties.setVariable("claimOrder", "7QC8C96O");
-        Properties.setVariable("outOfStock", "93JMJJUB");
     }
 
     /**
