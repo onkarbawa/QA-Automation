@@ -34,7 +34,7 @@ public class AccountInfo extends AbstractScreen {
 	@Then("^I should see my signup information under Account Info$")
 	public void verifySignUpInfo() throws Throwable {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(20000);
 			footerTabsScreen.tapMyAccount();
 		}catch (Exception e){}
 		myAccountScreen.btnAccountInfo.waitFor(20).tap();

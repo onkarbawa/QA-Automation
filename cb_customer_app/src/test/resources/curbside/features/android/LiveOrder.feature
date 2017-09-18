@@ -75,7 +75,6 @@ Feature: Android- Live order
     Given I am not signed into application
     And I sign in into application using username "end2enddelivery2@mailinator.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
-    And I cancel 'all' orders
     And My cart is empty
     And The mail box of userID "end2enddelivery" is empty
     And I select 'CVS' store and search for 'Sensodyne fresh' product
@@ -88,4 +87,4 @@ Feature: Android- Live order
     And I tap on back button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
-    Then I should receive 'In-Progress delivery' email on 'end2enddelivery' EmailID
+    Then I should receive 'In-Progress delivery' email on 'end2enddelivery2' EmailID

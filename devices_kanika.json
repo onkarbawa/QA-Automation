@@ -6,7 +6,8 @@
       "deviceName": "5d55b2ac",
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
-      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity",
+      "newCommandTimeOut": 120
     }
   ],
   "iOS" : [
