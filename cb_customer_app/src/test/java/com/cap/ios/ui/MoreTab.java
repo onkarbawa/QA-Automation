@@ -18,6 +18,7 @@ public class MoreTab extends AbstractScreen {
     @Then("^I should see '(.*)' orderId in Cancelled pickups with '(.*)'$")
     public void iShouldSeeParticularOrderInCancelledPickups(String orderAlias,String message) throws Throwable {
        footerTabsScreen.tapMore();
+        footerTabsScreen.tapMore();
        btnCancelledPickUp.tap();
        String orderID = Properties.getVariable(orderAlias);
        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();

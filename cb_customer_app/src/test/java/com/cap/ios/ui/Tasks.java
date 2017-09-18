@@ -41,7 +41,7 @@ public class Tasks extends AbstractScreen {
         btnAll.waitFor(10);
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
- //       UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'IWTR31R7')]").scrollTo().tap();
+  //      UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'2MYC20AQ')]").scrollTo().tap();
         btnClaim.tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
@@ -59,7 +59,7 @@ public class Tasks extends AbstractScreen {
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'IWTR31R7')]").scrollTo().tap();
+    //    UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'2MYC20AQ')]").scrollTo().tap();
     }
 
     @Then("^I should see product details as below for CAP$")
