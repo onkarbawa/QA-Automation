@@ -15,11 +15,11 @@ public class MoreTab extends AbstractScreen {
     UIElement btnCancelledPickUp = UIElement.byName("Cancelled Pickups");
     UIElement alertMessage = UIElement.byName("Pickup is Cancelled");
 
-    @Then("^I should see particular order in Cancelled pickups with '(.*)'$")
-    public void iShouldSeeParticularOrderInCancelledPickups(String message) throws Throwable {
+    @Then("^I should see '(.*)' orderId in Cancelled pickups with '(.*)'$")
+    public void iShouldSeeParticularOrderInCancelledPickups(String orderAlias,String message) throws Throwable {
        footerTabsScreen.tapMore();
        btnCancelledPickUp.tap();
-       String orderID = Properties.getVariable("orderID");
+       String orderID = Properties.getVariable(orderAlias);
        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
        Assert.assertEquals(alertMessage.waitFor(10).getText(),message,"PickUp is not Cancelled");
     }

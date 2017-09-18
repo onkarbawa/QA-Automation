@@ -41,6 +41,7 @@ public class Tasks extends AbstractScreen {
         btnAll.waitFor(10);
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+ //       UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'IWTR31R7')]").scrollTo().tap();
         btnClaim.tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
@@ -58,6 +59,7 @@ public class Tasks extends AbstractScreen {
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'IWTR31R7')]").scrollTo().tap();
     }
 
     @Then("^I should see product details as below for CAP$")
@@ -88,17 +90,15 @@ public class Tasks extends AbstractScreen {
 
     }
 
-    @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab with '(.*)' button")
-    public void iSearchForOrderId(String orderAlias, String tabName, String button) throws Throwable {
+    @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab")
+    public void iSearchForOrderId(String orderAlias, String tabName) throws Throwable {
         String orderID = Properties.getVariable(orderAlias);
         footerTabsScreen.tapMyAccount();
         footerTabsScreen.tapTask();
 
-        Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]")
-                .scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
+        Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
 
-        Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]/following-sibling::XCUIElementTypeButton").getText(),
-                button,"Unclaim button is not present in list");
+        Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]/following-sibling::XCUIElementTypeButton").getText(),"Unclaim","Unclaim button is not present in list");
     }
 
     @Given("^I mark all items as '(.*)'$")
