@@ -32,6 +32,20 @@ Feature: iOS- Product Details
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'outOfStock'
+    And I go to the shop screen to add any product
+    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I add 2 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'insufficientQuantity'
+    And I go to the shop screen to add any product
+    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'readyPickUpOrder'
 
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application for the first time
@@ -81,3 +95,49 @@ Feature: iOS- Product Details
     Examples:
       | Message |
       |Pickup is Cancelled|
+
+  @iOS @TCS11
+  Scenario Outline: Verify that when change the quantity of multiple items it shows user review message and updated item quantity
+    Given I tap on 'Close' button
+    And I tap on 'Tasks' icon in bottom menu for cap
+    And I tap on 'All' tab
+    And I search for 'insufficientQuantity' Order ID and claim it
+    And I tap on 'Mine' tab
+    And I search for 'insufficientQuantity' OrderID
+    And I tap on 'Insufficient Quantity' and enter quantity '1'
+    And I 'Go To Payment' screen
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I should see 'insufficientQuantity' orderId in Task tab with '<Message>'
+    Then I should see total Order quantity '2' and updated order quantity '1'
+    Examples:
+      | Message |
+      |     Needs customer attention    |
+
+  @iOS @TCS12
+  Scenario Outline: Verify that when we complete order it shows Ready message
+    Given I tap on 'Close' button
+    And I tap on 'Tasks' icon in bottom menu for cap
+    And I tap on 'All' tab
+    And I search for 'readyOrder' Order ID and claim it
+    And I tap on 'Mine' tab
+    And I search for 'readyOrder' OrderID
+    And I tap on 'Got It' button
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    Then I should see alert '<Message>'
+    Examples:
+      | Message |
+      |     Transfer complete.    |
+
