@@ -1,5 +1,5 @@
-@applicationLaunch
-Feature: Android- Task Management
+@productDetailsAndTaskManagement
+Feature: Android- Product detail and Task Management
 
   Scenario: Standard Orders
     Given I launch Curbside application
@@ -22,6 +22,11 @@ Feature: Android- Task Management
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'outOfStock'
+    And I add any product to the cart from store
+    And I tap on 'Cart' button
+    When I tap on Place order button
+    Then I should see the successful placed order notification on the screen
+    And I save Order Id of the product and named as 'productDetail'
 
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application
@@ -30,6 +35,13 @@ Feature: Android- Task Management
     Examples:
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
+
+  @Android @TCS06
+  Scenario: Product detail screen
+    And I wait for Tasks to get loaded
+    And I search for 'productDetail' Order Id under 'All' tab and 'tap' it
+    When I click on a product from the order list
+    Then I should see product details on the screen
 
   @Android @TCS07
   Scenario: Validating Claim button functionality
