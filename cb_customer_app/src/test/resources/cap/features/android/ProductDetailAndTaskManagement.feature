@@ -17,7 +17,11 @@ Feature: Android- Product detail and Task Management
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'claimOrder'
-    And I add any product to the cart from store
+    And I select 'CVS' store and search for 'cvs products' product
+    And I select 1 product from list
+    And I add 1 quantity of the product
+    And I select 2 product from list
+    And I add 1 quantity of the product
     And I tap on 'Cart' button
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
@@ -50,14 +54,22 @@ Feature: Android- Product detail and Task Management
     Then I look for 'claimOrder' Order Id under 'Mine' tab and 'confirm' it
 
   @Android @TCS08
-  Scenario: Mark an item out of stock
+  Scenario: Mark first item out of stock and process second(2 items)
     And I search for 'outOfStock' Order Id under 'All' tab and 'Claim' it
     And I look for 'outOfStock' Order Id under 'Mine' tab and 'tap' it
-    And I tap on 'Issue' button
-    And I tap on Items not available toggle button
-    And I tap on 'Done' button
+    And I mark '1' item not available
     And I tap on 'Finish' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
     And I search for 'outOfStock' order id under Pickups tab
     And I validate 'outOfStock' order marked as 'Customer Action Needed'
+
+  @Android @TCS09
+  Scenario: Mark all items out of stock (2 items)
+    And I search for 'outOfStockAll' Order Id under 'All' tab and 'Claim' it
+    And I look for 'outOfStockAll' Order Id under 'Mine' tab and 'tap' it
+    And I mark 'all' items not available
+    And I tap on 'Finish' button
+    And I go to Cancelled pickups screen
+    And I search by customer name to sort the orders
+    And I search for 'outOfStockAll' order id under Cancelled Pickups tab

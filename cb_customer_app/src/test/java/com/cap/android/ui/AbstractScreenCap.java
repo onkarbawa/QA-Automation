@@ -11,10 +11,12 @@ public class AbstractScreenCap {
   static Steps commonSteps;
   static FooterTabsCap footerTabsCap;
   static MyAccount myAccount;
+  static Issue issue;
 
   static {
     commonSteps = new Steps();
     footerTabsCap = new FooterTabsCap();
     myAccount = new MyAccount();
+    issue = new Issue();
   }
 }
