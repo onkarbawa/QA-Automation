@@ -18,6 +18,7 @@ public class AbstractScreen {
     static ProductDetail productDetailScreen;
     static Issue issueScreen;
     static MoreTab moreTabScreen;
+    static Payment paymentScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -30,5 +31,6 @@ public class AbstractScreen {
         commonSteps = new Steps();
         issueScreen = new Issue();
         moreTabScreen = new MoreTab();
+        paymentScreen = new Payment();
     }
 }
