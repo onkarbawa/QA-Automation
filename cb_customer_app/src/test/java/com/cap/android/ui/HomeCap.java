@@ -44,14 +44,14 @@ public class HomeCap extends AbstractScreenCap {
      */
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
+        footerTabsCap.btnTasks.tap();
+
         int totalTasks ;
         int startingTask = 0;
         UIElement lblOrderId;
         UIElement btnClaim;
-
-        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
-
         tabName = tabName.toLowerCase();
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
 
         switch (tabName) {
             case "all":

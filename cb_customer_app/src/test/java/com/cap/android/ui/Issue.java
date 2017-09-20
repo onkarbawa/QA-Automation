@@ -6,7 +6,7 @@ import cucumber.api.java.en.And;
 /**
  * Created by hitesh.grover on 05/09/17.
  */
-public class Issue {
+public class Issue extends AbstractScreenCap {
 
     UIElement btnItemNotAvail = UIElement.byId("com.curbside.nCap:id/swItemsNotAvailable");
     UIElement btnDone = UIElement.byId("com.curbside.nCap:id/tvDone");
