@@ -16,31 +16,31 @@ Feature: iOS- Product Details
 #    And I checked there is any user attention message
 #    And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'claimOrder'
     And I go to the shop screen to add any product
-    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Indoor & Outdoor 24-Hour Allergy Relief Cetirizine Hydrochloride Tablets 10Mg, 60 CT' product from list
+##    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+    And I select 'CVS Health Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets 10Mg, 120 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'outOfStock'
     And I go to the shop screen to add any product
-    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'insufficientQuantity'
     And I go to the shop screen to add any product
-    And I select 'CVS Allergy Relief 24 Hour Indoor/Outdoor' product from list
+    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -104,7 +104,8 @@ Feature: iOS- Product Details
     And I search for 'insufficientQuantity' Order ID and claim it
     And I tap on 'Mine' tab
     And I search for 'insufficientQuantity' OrderID
-    And I tap on 'Insufficient Quantity' and enter quantity '1'
+    And I tap on 'Issue' button
+    And I enter insufficient quantity '1'
     And I 'Go To Payment' screen
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
@@ -133,6 +134,7 @@ Feature: iOS- Product Details
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I tap on 'Pickups' icon in bottom menu for cap
+    And I search for 'readyOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
