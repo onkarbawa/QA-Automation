@@ -32,9 +32,8 @@ public class Issue extends AbstractScreen{
         MobileDevice.getScreenshot(true);
     }
 
-    @And("^I tap on '(.*)' and enter quantity '(.*)'$")
-    public void iTapOnInsufficientQuantityAndEnter(String button, String quantity) throws Throwable {
-        Steps.tapButton("Issue");
+    @And("^I enter insufficient quantity '(.*)'$")
+    public void iEnterInsufficientQuantity(String quantity) throws Throwable {
         insufficientQuantity.sendKeys(quantity,false);
         Steps.tapButton("Done");
     }

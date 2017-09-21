@@ -1,9 +1,11 @@
 package com.cap.ios.ui;
 
+
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -21,13 +23,14 @@ public class PickUps extends AbstractScreen{
         footerTabsScreen.tapPickUp();
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+  //      UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'UAPAB13N')]").scrollTo().tap();
         Assert.assertEquals(alertMessage.getText(),message,"Attention message is not shown");
     }
 
     @Then("^I should see total Order quantity '(.*)' and updated order quantity '(.*)'$")
-    public void iShouldSeeTotalOrderQuantityAndUpdatedOrderQuantity(String totalQuantity, int updatedQuantity) throws Throwable {
-       String totalQty = pickUpQty.getText().split("\\s")[0];
-       String updatedQty = pickUpQty.getText().split("\\s")[1];
+    public void iShouldSeeTotalOrderQuantityAndUpdatedOrderQuantity(String totalQuantity, String updatedQuantity) throws Throwable {
+       String totalQty = pickUpQty.getText().split("\\s")[1];
+       String updatedQty = pickUpQty.getText().split("\\s")[3];
        Assert.assertEquals(totalQty,totalQuantity,"Total quantity does not match with orignal total quantity");
        Assert.assertEquals(updatedQty,updatedQuantity,"Quantity does not match with updated quantity");
     }

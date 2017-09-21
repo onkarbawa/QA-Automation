@@ -1,6 +1,7 @@
 package com.cap.ios.ui;
 
 import com.curbside.automation.uifactory.Steps;
+import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -35,8 +36,15 @@ public class Payment extends AbstractScreen {
 
     @And("^I tap on '(.*)' button and '(.*)' to scan barcode$")
     public void iTapOnButtonAndUsePhotoToScanBarcode(String button1,String button2) throws Throwable {
-        Steps.tapButton(button1);
-        commonSteps.acceptNotificationAlert();
+        if (UIElement.byName(button1).isDisplayed()) {
+            UIElement.byName(button1).tap();
+        }else {
+            UIElement.byName(button1).scrollTo().tap();
+        }
+       // Steps.tapButton(button1);
+        try {
+            UIElement.byName("OK").tap();
+        }catch (Exception e){}
         Steps.tapButton("PhotoCapture");
         Steps.tapButton(button2);
         Thread.sleep(3000);
