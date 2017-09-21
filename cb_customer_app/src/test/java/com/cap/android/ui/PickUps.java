@@ -67,7 +67,6 @@ public class PickUps extends AbstractScreenCap {
     public void iMarkItemsOutOfStock(String selectedOption) throws Throwable {
 
         String totalItems = lblItemsToPick.getText();
-        System.out.println("noOfItem--" + totalItems);
         int totalNoOfItems = Integer.parseInt(totalItems.substring(totalItems.indexOf("(") + 1, totalItems.lastIndexOf(")")));
         Reporter.addStepLog("Pick the "+totalItems+" items below");
 
@@ -89,7 +88,6 @@ public class PickUps extends AbstractScreenCap {
                 Steps.tapButton("Done");
             }
         }
-
 
     }
 }
