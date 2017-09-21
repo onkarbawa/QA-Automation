@@ -16,31 +16,36 @@ Feature: iOS- Product Details
 #    And I checked there is any user attention message
 #    And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
+    And I select 1no product from 'CVS' store
+#    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'claimOrder'
     And I go to the shop screen to add any product
-    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
+    And I select 1no product from 'CVS' store
+#    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
-##    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets 10Mg, 120 CT' product from list
+###    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+    And I select 2no product from 'CVS' store
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets 10Mg, 120 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'outOfStock'
     And I go to the shop screen to add any product
-    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
+    And I select 1no product from 'CVS' store
+#    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'insufficientQuantity'
     And I go to the shop screen to add any product
-    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
+    And I select 1no product from 'CVS' store
+#    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets, 10Mg, 14 CT' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -70,20 +75,17 @@ Feature: iOS- Product Details
     Then I should see product details as below for CAP
 
   @iOS @TCS08
-  Scenario Outline: Mark an item out of stock
+  Scenario: Mark an item out of stock
     And I tap on back button
     And I tap on 'Issue' button
     And I turn 'ON' 'Item not Available'
     And I tap on 'Done' button
     And I tap on 'Finish' button
-    Then I should see 'claimOrder' orderId in Task tab with '<Message>'
-    Examples:
-      | Message |
-    |     Needs customer attention    |
+    Then I should see 'claimOrder' orderId in Task tab with 'Needs customer attention'
 
 
   @iOS @TCS09
-  Scenario Outline: Verify that when we Mark All item out of stock and Order should be cancelled
+  Scenario: Verify that when we Mark All item out of stock and Order should be cancelled
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
@@ -91,13 +93,10 @@ Feature: iOS- Product Details
     And I tap on 'Mine' tab
     And I search for 'outOfStock' OrderID
     And I mark all items as 'Item not Available'
-    Then I should see 'outOfStock' orderId in Cancelled pickups with '<Message>'
-    Examples:
-      | Message |
-      |Pickup is Cancelled|
+    Then I should see 'outOfStock' orderId in Cancelled pickups with 'Pickup is Cancelled'
 
   @iOS @TCS11
-  Scenario Outline: Verify that when change the quantity of multiple items it shows user review message and updated item quantity
+  Scenario: Verify that when change the quantity of multiple items it shows user review message and updated item quantity
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
@@ -113,14 +112,11 @@ Feature: iOS- Product Details
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I tap on 'Pickups' icon in bottom menu for cap
-    And I should see 'insufficientQuantity' orderId in Task tab with '<Message>'
+    And I should see 'insufficientQuantity' orderId in Task tab with 'Needs customer attention'
     Then I should see total Order quantity '2' and updated order quantity '1'
-    Examples:
-      | Message |
-      |     Needs customer attention    |
 
   @iOS @TCS12
-  Scenario Outline: Verify that when we complete order it shows Ready message
+  Scenario: Verify that when we complete order it shows Ready message
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
@@ -138,8 +134,5 @@ Feature: iOS- Product Details
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
-    Then I should see alert '<Message>'
-    Examples:
-      | Message |
-      |     Transfer complete.    |
+    Then I should see alert 'Transfer complete.'
 

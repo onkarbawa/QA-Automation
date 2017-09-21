@@ -40,8 +40,22 @@ public class Tasks extends AbstractScreen {
     public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         btnAll.waitFor(10);
         String orderID = Properties.getVariable(orderAlias);
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'T6TXUOL5')]").scrollTo().tap();
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'FQYS1DDC')]");
+        for (int i = 1;i < 50;i++){
+            if (orderNumber.isDisplayed()){
+                orderNumber.tap();
+                break;
+            }else {
+                if (orderNumber.isDisplayed()){
+                    orderNumber.tap();
+                    break;
+                }
+                MobileDevice.swipe(180,550,180,50);
+
+            }
+        }
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'8QE8CSQM')]").scrollForCap(SwipeDirection.UP).tap();
         btnClaim.tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
@@ -58,7 +72,7 @@ public class Tasks extends AbstractScreen {
         String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
 //        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'T6TXUOL5')]").scrollTo().tap();
     }
 
