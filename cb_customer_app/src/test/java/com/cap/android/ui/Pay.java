@@ -37,6 +37,10 @@ public class Pay {
         btnTakePicture.tap();
         Thread.sleep(2000);
         AndroidDevice.goBack();
+
+        if (!(btnShowBarCodes.waitFor(2).isDisplayed() || btnTakePicture.isDisplayed()))
+            AndroidDevice.goBack();
+
         MobileDevice.getScreenshot(true);
     }
 }

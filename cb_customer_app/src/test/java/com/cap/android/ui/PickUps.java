@@ -56,9 +56,9 @@ public class PickUps extends AbstractScreenCap {
         Assert.assertEquals(lblOrderCaption.getText(), expectedOrderCaption, orderIdAlias + " order status is not same as " + expectedOrderCaption);
     }
 
-    @And("^I tap on (\\d+) item Issue button$")
+    @And("^I tap on (\\d+)(?:st|nd|rd|th) item Issue button$")
     public void iTapNthIssueButton(int nthItemIssueButton) throws Throwable {
-        UIElement btnIssueNth = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + nthItemIssueButton + "']/android.widget.Button[@text='Issue']");
+        UIElement btnIssueNth = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + (nthItemIssueButton - 1) + "']/android.widget.Button[@text='Issue']");
         btnIssueNth.swipeUpSlow();
         btnIssueNth.tap();
     }
@@ -71,7 +71,7 @@ public class PickUps extends AbstractScreenCap {
         Reporter.addStepLog("Pick the "+totalItems+" items below");
 
         if (selectedOption.equalsIgnoreCase("all")) {
-            for (int i = 0; i < totalNoOfItems; i++) {
+            for (int i = 1; i <= totalNoOfItems; i++) {
                 iTapNthIssueButton(i);
                 issue.iTapItemNotAvail();
                 Steps.tapButton("Done");
@@ -82,12 +82,24 @@ public class PickUps extends AbstractScreenCap {
             if (!(noOfItems <= totalNoOfItems))
                 Assert.fail("Total items available in the order is  "+totalItems+" and your are using step for "+noOfItems+" items");
 
-            for (int i = 0; i < noOfItems; i++) {
+            for (int i = 1; i <= noOfItems; i++) {
                 iTapNthIssueButton(i);
                 issue.iTapItemNotAvail();
                 Steps.tapButton("Done");
             }
         }
 
+    }
+
+    @And("^I tap on (\\d+)(?:st|nd|rd|th) item Got It button$")
+    public void iTapNthGotItButton(int nthGotItButton) throws Throwable {
+        UIElement btnGotItNth = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + (nthGotItButton - 1) + "']/android.widget.Button[@text='Got It']");
+        btnGotItNth.swipeUpSlow();
+        btnGotItNth.tap();
+        try {
+            btnGotItNth.tap();
+        } catch (Exception e) {
+        }
+        MobileDevice.getScreenshot(true);
     }
 }

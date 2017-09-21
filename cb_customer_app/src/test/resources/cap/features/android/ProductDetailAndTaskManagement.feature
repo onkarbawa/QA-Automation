@@ -80,19 +80,24 @@ Feature: Android- Product detail and Task Management
     Then I look for 'claimOrder' Order Id under 'Mine' tab and 'confirm' it
 
   @Android @TCS08
-  Scenario: Mark first item out of stock and process second(2 items)
+  Scenario: Mark first item out of stock and process second(2 items, 1 quantity each)
     Given I am at CAP home screen
     And I search for 'outOfStock' Order Id under 'All' tab and 'Claim' it
     And I look for 'outOfStock' Order Id under 'Mine' tab and 'tap' it
     And I mark '1' item not available
-    And I tap on 'Finish' button
+    And I tap on 2nd item Got It button
+    And I scan the barcode that is visible on my screen
+    And I pay and enter total price
+    And I take the picture of receipt
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish Packing' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
     And I search for 'outOfStock' order id under Pickups tab
     And I validate 'outOfStock' order marked as 'Customer Action Needed'
 
   @Android @TCS09
-  Scenario: Mark all items out of stock (2 items)
+  Scenario: Mark all items out of stock (2 items, 1 quantity each)
     Given I am at CAP home screen
     And I search for 'outOfStockAll' Order Id under 'All' tab and 'Claim' it
     And I look for 'outOfStockAll' Order Id under 'Mine' tab and 'tap' it
@@ -103,7 +108,7 @@ Feature: Android- Product detail and Task Management
     And I search for 'outOfStockAll' order id under Cancelled Pickups tab
 
   @Android @TCS10
-  Scenario: Mark all items out of stock (2 items)
+  Scenario: Mark item Quantity not available (1 item, 2 quantities)
     Given I am at CAP home screen
     And I search for 'insufficientQnty' Order Id under 'All' tab and 'Claim' it
     And I look for 'insufficientQnty' Order Id under 'Mine' tab and 'tap' it
