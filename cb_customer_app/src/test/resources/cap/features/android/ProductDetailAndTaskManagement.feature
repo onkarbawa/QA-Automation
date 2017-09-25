@@ -58,6 +58,15 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'insufficientQnty'
 
+  Scenario: Order placed to check - Insufficient Quantity
+    And I select 'CVS' store and search for 'cvs products' product
+    And I select 1 product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' button
+    When I tap on Place order button
+    Then I should see the successful placed order notification on the screen
+    And I save Order Id of the product and named as 'standardOrder'
+
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application
     And I have selected test environment for CAP
@@ -93,7 +102,7 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Finish Packing' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
-    And I search for 'outOfStock' order id under Pickups tab
+    And I search for 'outOfStock' order id under Pickups tab and 'confirm' it
     And I validate 'outOfStock' order marked as 'Customer Action Needed'
 
   @Android @TCS09
@@ -105,9 +114,9 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Finish' button
     And I go to Cancelled pickups screen
     And I search by customer name to sort the orders
-    And I search for 'outOfStockAll' order id under Cancelled Pickups tab
+    And I search for 'outOfStockAll' order id under Cancelled Pickups tab and 'confirm' it
 
-  @Android @TCS10
+  @Android @TCS11
   Scenario: Mark item Quantity not available (1 item, 2 quantities)
     Given I am at CAP home screen
     And I search for 'insufficientQnty' Order Id under 'All' tab and 'Claim' it
@@ -123,4 +132,24 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Finish Packing' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
-    And I search for 'insufficientQnty' order id under Cancelled Pickups tab
+    And I search for 'insufficientQnty' order id under Cancelled Pickups tab and 'confirm' it
+
+  @Android @TCS12
+  Scenario: Process standard order (1 item, 1 quantities)
+    Given I am at CAP home screen
+    And I search for 'standardOrder' Order Id under 'All' tab and 'Claim' it
+    And I look for 'standardOrder' Order Id under 'Mine' tab and 'tap' it
+    And I tap on 'Got It' button
+    And I scan the barcode that is visible on my screen
+    And I pay and enter total price
+    And I take the picture of receipt
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish Packing' button
+    And I tap on 'Pickups' button
+    And I search by customer name to sort the orders
+    And I search for 'standardOrder' order id under Pickups tab and 'tap' it
+    And The order status should be 'Ready for Pickup'
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    And I tap on 'OK' button
