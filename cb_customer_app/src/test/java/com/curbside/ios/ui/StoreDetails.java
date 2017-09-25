@@ -45,4 +45,10 @@ public class StoreDetails {
     public void iSelectProductFromList(String product) throws Throwable {
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+product+"')]").waitFor(20).scrollTo(SwipeDirection.UP).tap();
     }
+
+    @And("^I select (\\d+)no product from '(.*)' store$")
+    public void iSelectNoProductFromCVSStore(int number, String store) throws Throwable {
+       UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeOther[XCUIElementTypeButton[@name='Refine']]]/following-sibling::XCUIElementTypeCell["+number+"]//XCUIElementTypeImage").waitFor(20).scrollTo().tap();
+    }
+
 }

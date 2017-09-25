@@ -30,6 +30,7 @@ public class Login extends AbstractScreen{
     UIElement btnAllow = UIElement.byName("Allow");
     UIElement btnOK = UIElement.byName("OK");
 
+    UIElement btnStaging = UIElement.byName("Staging");
 
     @And("^I enter \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" for login$")
     public void iEnterAnd(String account, String user, String pass) throws Throwable {
@@ -83,6 +84,7 @@ public class Login extends AbstractScreen{
             stagingVariable.tapCenter();
         }
         stagingVariable.longPress(10);
+        btnStaging.tap();
         storeID.clearText();
         storeID.sendKeys(envAPIKey,false);
       //  storeID.sendKeys(Keys.ENTER);
@@ -90,6 +92,7 @@ public class Login extends AbstractScreen{
         btnReturnKeyboard.tap();
         Steps.tapButton("OK");
         storeID.waitForNot(20);
+        Steps.tapButton("OK");
         MobileDevice.getScreenshot(true);
         DriverFactory.setEnvironment(envAPIKey);
         DriverFactory.closeApp();
