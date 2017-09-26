@@ -17,6 +17,7 @@ public class PickUps extends AbstractScreenCap {
 
     UIElement searchField = UIElement.byId("com.curbside.nCap:id/search_src_text");
     UIElement lblItemsToPick = UIElement.byXpath("//android.widget.TextView[contains(@text,'to Pick ')]");
+    UIElement lblOrderStatus = UIElement.byId("com.curbside.nCap:id/tvPickupStatus");
     UIElement lblOrderId;
     UIElement lblOrderCaption;
 
@@ -31,12 +32,17 @@ public class PickUps extends AbstractScreenCap {
         AndroidDevice.pressEnter();
     }
 
-    @And("^I search for '(.*)' order id under (?:Pickups|Cancelled Pickups) tab$")
-    public void iSearchPickupsOrder(String orderIdAlias) throws Throwable {
+    @And("^I search for '(.*)' order id under (?:Pickups|Cancelled Pickups) tab and '(.*)' it$")
+    public void iSearchPickupsOrder(String orderIdAlias, String actionPerformed) throws Throwable {
         lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
         lblOrderId.waitFor(2).swipeUpSlow();
 
         Assert.assertTrue(lblOrderId.isDisplayed(), orderIdAlias + " order is not present");
+
+        if (actionPerformed.equalsIgnoreCase("tap"))
+            lblOrderId.tap();
+        else if (!(actionPerformed.equalsIgnoreCase("confirm")))
+            Assert.fail("Code cannot perform this action");
     }
 
     @And("^I validate '(.*)' order marked as '(.*)'$")
@@ -101,5 +107,11 @@ public class PickUps extends AbstractScreenCap {
         } catch (Exception e) {
         }
         MobileDevice.getScreenshot(true);
+    }
+
+    @And("^The order status should be '(.*)'$")
+    public void iConfirmStatus(String expectedOrderStatus) throws Throwable {
+        lblOrderStatus.waitFor(2);
+        Assert.assertEquals(lblOrderStatus.getText(), expectedOrderStatus, "The order status is not same");
     }
 }
