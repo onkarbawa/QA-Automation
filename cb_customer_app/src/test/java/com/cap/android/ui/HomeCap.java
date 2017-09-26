@@ -29,6 +29,7 @@ public class HomeCap extends AbstractScreenCap {
     UIElement btnClose = UIElement.byId("com.curbside.nCap:id/tvClose");
     UIElement btnCancelCross = UIElement.byId("com.curbside.nCap:id/imgIssueClose");
     UIElement btnBack = UIElement.byId("com.curbside.nCap:id/imgBack");
+    UIElement lblOrderDetailScreenTitle = UIElement.byId("com.curbside.nCap:id/toolbarTitle");
 
 
 
@@ -147,5 +148,11 @@ public class HomeCap extends AbstractScreenCap {
             Steps.tapButton_optional("Close");
         }
         MobileDevice.getScreenshot(true);
+    }
+
+    @Then("^I should see order title as '(.*)'$")
+    public void iShouldSeeOrderHeading(String expectedTitle) throws Throwable {
+        lblOrderDetailScreenTitle.waitFor(3);
+        Assert.assertEquals(lblOrderDetailScreenTitle.getText(),expectedTitle,"Title on the Order Detail screen is not same");
     }
 }
