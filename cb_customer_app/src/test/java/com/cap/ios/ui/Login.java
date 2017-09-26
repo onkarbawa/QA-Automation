@@ -92,7 +92,9 @@ public class Login extends AbstractScreen{
         btnReturnKeyboard.tap();
         Steps.tapButton("OK");
         storeID.waitForNot(20);
-        Steps.tapButton("OK");
+        try {
+            Steps.tapButton("OK");
+        }catch (Exception e){}
         MobileDevice.getScreenshot(true);
         DriverFactory.setEnvironment(envAPIKey);
         DriverFactory.closeApp();

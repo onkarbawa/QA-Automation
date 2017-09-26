@@ -101,6 +101,7 @@ public class Home extends AbstractScreen {
 		}
 
 		loadingIcon.waitForNot(30);
+		welcomeScreen.skipIntro.tapOptional();
 	}
 
 	@Given("I search for '(.*)' product")

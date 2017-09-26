@@ -29,6 +29,8 @@ public class Tasks extends AbstractScreen {
     UIElement btnAll = UIElement.byName("All");
     UIElement btnIssue = UIElement.byName("Issue");
 
+    UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
+
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
         UIElement screenName = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+screen+"')]");
@@ -127,4 +129,22 @@ public class Tasks extends AbstractScreen {
             Steps.tapButton("Finish");
         }
     }
+
+    @Then("^I should see '(.*)' orderId in Tasks screen under '(.*)'")
+    public void iShouldSeeOrderIdInTaskUnder(String orderAlias,String message) throws Throwable {
+        footerTabsScreen.btnTask.waitFor(7).tap();
+        iTapOnTab("All");
+        String orderID = Properties.getVariable(orderAlias);
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+        Assert.assertEquals(cancelledPickUp.waitFor(5).getText(),message,"PickUp is not Cancelled");
+    }
+
+
+    /*@Then("^I search and should not see '(.*)' OrderID in pickUp tab$")
+    public void iSearchAndShouldNotSeeInPickUpTab(String orderAlias) throws Throwable {
+        footerTabsScreen.tapTask();
+        String orderID = Properties.getVariable(orderAlias);
+        Assert.
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+    }*/
 }

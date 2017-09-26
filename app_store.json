@@ -17,13 +17,13 @@
   "iOS" : [
     {
       "name" : "Curbside",
-      "app" : "../Curbside.ipa",
+      "app" : "../ios_simulator_builds/Curbside.app",
       "bundleId": "com.curbside.curbside",
       "newCommandTimeOut": "120"
     },
     {
       "name" : "CAP",
-      "app" : "../CAP.ipa",
+      "app" : "../ios_simulator_builds/CAP.app",
       "bundleId": "com.curbside.CAP"
     }
   ]
