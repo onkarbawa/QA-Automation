@@ -11,6 +11,9 @@ import cucumber.api.java.en.And;
  */
 public class Payment extends AbstractScreen {
 
+    UIElement btnCamera = UIElement.byXpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextField");
+    UIElement firstPhoto = UIElement.byXpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther");
+
 
     @And("^I '(.*)' screen$")
     public void iGoToPaymentScreen(String button) throws Throwable {
@@ -45,9 +48,16 @@ public class Payment extends AbstractScreen {
         try {
             UIElement.byName("OK").tap();
         }catch (Exception e){}
-        Steps.tapButton("PhotoCapture");
-        Steps.tapButton(button2);
-        Thread.sleep(3000);
-        Steps.tapButton("Cancel");
+        try {
+            Steps.tapButton("PhotoCapture");
+            Steps.tapButton(button2);
+            Thread.sleep(3000);
+            Steps.tapButton("Cancel");
+        }catch (Exception e){
+            btnCamera.tap();
+            firstPhoto.tap();
+            Thread.sleep(7000);
+            commonSteps.iTapOnBackButton();
+        }
     }
 }
