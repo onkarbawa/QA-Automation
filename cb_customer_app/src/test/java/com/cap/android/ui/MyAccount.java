@@ -3,6 +3,7 @@ package com.cap.android.ui;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
 /**
@@ -20,5 +21,14 @@ public class MyAccount extends AbstractScreenCap{
         btnSignOut.waitFor(2).tap();
         if (btnSignOutPopUp.waitFor(1).isDisplayed())
             btnSignOutPopUp.tap();
+    }
+
+    @Given("^I am not signed in to the CAP$")
+    public void iAmNotSignedIn() throws Throwable {
+        capLaunch.fieldPassword.waitFor(3);
+        if(capLaunch.fieldPassword.isDisplayed())
+            return;
+        homeCap.iAmAtHome();
+        this.iSignOutCap();
     }
 }

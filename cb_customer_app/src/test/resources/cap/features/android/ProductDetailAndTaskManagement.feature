@@ -1,6 +1,7 @@
 @productDetailsAndTaskManagement
 Feature: Android- Product detail and Task Management
 
+  @Android
   Scenario: Setting up user account with credit card
     Given I launch Curbside application
     And I have selected Experimental test environment
@@ -13,6 +14,7 @@ Feature: Android- Product detail and Task Management
     Then I should see my given information under Account Info
     And I add credit card information
 
+  @Android
   Scenario: Order placed to check - Product detail screen
     And I add any product to cart in 'Gilroy' location
     And I tap on 'Cart' button
@@ -20,6 +22,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'productDetail'
 
+  @Android
   Scenario: Order placed to check - Claim button
     And I add any product to the cart from store
     And I tap on 'Cart' button
@@ -27,6 +30,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'claimOrder'
 
+  @Android
   Scenario: Order placed to check - Item not available (one out of two)
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
@@ -38,6 +42,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'outOfStock'
 
+  @Android
   Scenario: Order placed to check - Item not available (two out of two)
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
@@ -49,6 +54,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'outOfStockAll'
 
+  @Android
   Scenario: Order placed to check - Insufficient Quantity
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
@@ -58,6 +64,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'insufficientQnty'
 
+  @Android
   Scenario: Order placed to check - Insufficient Quantity
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
@@ -67,6 +74,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'standardOrder'
 
+  @Android
   Scenario: Order placed to check - Insufficient Quantity
     And I select 'CVS' store and search for 'cvs products' product
     And I select 1 product from list
@@ -76,6 +84,7 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'cancelledPickup'
 
+  @Android
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application
     And I have selected test environment for CAP
@@ -114,6 +123,7 @@ Feature: Android- Product detail and Task Management
     And I search for 'outOfStock' order id under Pickups tab and 'confirm' it
     And I validate 'outOfStock' order marked as 'Customer Action Needed'
 
+  #TODO This should either come under pickup tab as TCS08 or this is a bug 'Reported to Seejo'
   @Android @TCS09
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
     Given I am at CAP home screen
@@ -141,7 +151,7 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Finish Packing' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
-    Then I search for 'insufficientQnty' order id under Cancelled Pickups tab and 'confirm' it
+    Then I search for 'insufficientQnty' order id under Pickups tab and 'confirm' it
 
   @Android @TCS12
   Scenario: Process standard order (1 item, 1 quantities)
