@@ -28,6 +28,7 @@ public class Tasks extends AbstractScreen {
 
     UIElement btnAll = UIElement.byName("All");
     UIElement btnIssue = UIElement.byName("Issue");
+    UIElement btnOK = UIElement.byName("OK");
 
     UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
 
@@ -41,9 +42,9 @@ public class Tasks extends AbstractScreen {
     @Given("^I search for '(.*)' Order ID and claim it$")
     public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         btnAll.waitFor(10);
-        String orderID = Properties.getVariable(orderAlias);
-        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'FQYS1DDC')]");
+//        String orderID = Properties.getVariable(orderAlias);
+//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'B49ESYMM')]");
         for (int i = 1;i < 50;i++){
             if (orderNumber.isDisplayed()){
                 orderNumber.tap();
@@ -71,11 +72,11 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for '(.*)' OrderID$")
     public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
-        String orderID = Properties.getVariable(orderAlias);
+     //   String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'T6TXUOL5')]").scrollTo().tap();
+     //   UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'B49ESYMM')]").scrollTo().tap();
     }
 
     @Then("^I should see product details as below for CAP$")
@@ -137,6 +138,20 @@ public class Tasks extends AbstractScreen {
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
         Assert.assertEquals(cancelledPickUp.waitFor(5).getText(),message,"PickUp is not Cancelled");
+    }
+
+    @And("^I ckecked order is ready$")
+    public void iCkeckOrderIsReady() throws Throwable {
+        if (btnOK.isDisplayed()){
+            for (int i = 0;i < 5;i++){
+                if (btnOK.isDisplayed()){
+                    btnOK.tap();
+                    Steps.tapButton("Finish");
+                }else {
+                    break;
+                }
+            }
+        }
     }
 
 
