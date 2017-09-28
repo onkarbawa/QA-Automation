@@ -3,7 +3,7 @@ Feature: Android- Product detail and Task Management
 
   @Android
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application
+    Given I launch Curbside application for the first time
     And I have selected Experimental test environment
     And I am not signed into application
     And I tap on 'Account' button
@@ -108,7 +108,7 @@ Feature: Android- Product detail and Task Management
 
   @Android
   Scenario Outline: Setting test environment for CAP
-    Given I launch Cap application
+    Given I launch Cap application for the first time
     And I have selected test environment for CAP
     And I am logged in to the CAP with "<account>", "<username>" and "<password>"
     Examples:
@@ -142,8 +142,7 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Finish Packing' button
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
-    And I search for 'outOfStock' order id under Pickups tab and 'confirm' it
-    And I validate 'outOfStock' order marked as 'Customer Action Needed'
+    And I validate 'outOfStock' order marked as 'Customer Action Needed' under pickup tab
 
   @Android @TCS09
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
@@ -215,40 +214,40 @@ Feature: Android- Product detail and Task Management
     When I search for 'cancelledPickup' Order Id under 'All' tab and 'tap' it
     Then I should see order title as 'Cancelled Pickup'
 
-    @Android @TCS14
-    Scenario: Accept substitution order - order out of stock(1 items, 1 quantity)
-      Given I am at CAP home screen
-      And I search for 'substitution' Order Id under 'All' tab and 'Claim' it
-      And I look for 'substitution' Order Id under 'Mine' tab and 'tap' it
-      And I mark 'all' items not available
-      And I tap on 'Finish' button
-      And I tap on 'Pickups' button
-      And I search by customer name to sort the orders
-      When I search for 'substitution' order id under Pickups tab and 'confirm' it
-      Then I validate 'substitution' order marked as 'Customer Action Needed'
-      Given I launch Curbside application
-      And I am on Home Screen
-      And I tap on 'Account' button
-      When I tap on 'My Orders' button
-      Then I review the order and 'accept' the substitution
-      Given I launch Cap application
-      And I am at CAP home screen
-      And I search for 'substitution' Order Id under 'All' tab and 'Claim' it
-      And I look for 'substitution' Order Id under 'Mine' tab and 'tap' it
-      And I tap on 'Got It' button
-      And I scan the barcode that is visible on my screen
-      And I pay and enter total price
-      And I take the picture of receipt
-      And I tap on 'Go To Pack' button
-      And I tap on 'Finish Packing' button
-      And I tap on 'Pickups' button
-      And I search by customer name to sort the orders
-      When I search for 'substitution' order id under Pickups tab and 'tap' it
-      Then The order status should be 'Ready for Pickup'
-      And I tap on 'Packages Retrieved' button
-      And I tap on 'Begin Transfer' button
-      And I tap on 'Confirm' button
-      And I tap on 'OK' button
+  @Android @TCS14
+  Scenario: Accept substitution order - order out of stock(1 items, 1 quantity)
+    Given I am at CAP home screen
+    And I search for 'substitution' Order Id under 'All' tab and 'Claim' it
+    And I look for 'substitution' Order Id under 'Mine' tab and 'tap' it
+    And I mark 'all' items not available
+    And I tap on 'Finish' button
+    When I tap on 'Pickups' button
+    And I search by customer name to sort the orders
+    Then I validate 'substitution' order marked as 'Customer Action Needed' under pickup tab
+    Given I launch Curbside application
+    And I am on Home Screen
+    And I tap on 'Account' button
+    When I tap on 'My Orders' button
+    Then I review the order and 'accept' the substitution
+    Given I launch Cap application
+    And I am at CAP home screen
+    And I wait for Tasks to get loaded
+    And I search for 'substitution' Order Id under 'All' tab and 'Claim' it
+    And I look for 'substitution' Order Id under 'Mine' tab and 'tap' it
+    And I tap on 'Got It' button
+    And I scan the barcode that is visible on my screen
+    And I pay and enter total price
+    And I take the picture of receipt
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish Packing' button
+    And I tap on 'Pickups' button
+    And I search by customer name to sort the orders
+    When I search for 'substitution' order id under Pickups tab and 'tap' it
+    Then The order status should be 'Ready for Pickup'
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    And I tap on 'OK' button
 
   @Android @TCS15
   Scenario: Decline substitution order - order out of stock(2 items, 1 quantity each)
@@ -262,10 +261,9 @@ Feature: Android- Product detail and Task Management
     And I take the picture of receipt
     And I tap on 'Go To Pack' button
     And I tap on 'Finish Packing' button
-    And I tap on 'Pickups' button
+    When I tap on 'Pickups' button
     And I search by customer name to sort the orders
-    When I search for 'declineSubstitution' order id under Pickups tab and 'confirm' it
-    Then I validate 'declineSubstitution' order marked as 'Customer Action Needed'
+    Then I validate 'declineSubstitution' order marked as 'Customer Action Needed' under pickup tab
     Given I launch Curbside application
     And I am on Home Screen
     And I tap on 'Account' button
@@ -273,6 +271,7 @@ Feature: Android- Product detail and Task Management
     Then I review the order and 'decline' the substitution
     Given I launch Cap application
     And I am at CAP home screen
+    And I wait for Tasks to get loaded
     And I tap on 'Pickups' button
     And I search by customer name to sort the orders
     When I search for 'declineSubstitution' order id under Pickups tab and 'tap' it

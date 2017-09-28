@@ -171,8 +171,9 @@ public class MyOrders extends AbstractScreen {
             Steps.tapButton("REMOVE");
         else if (action.equalsIgnoreCase("accept")) {
             Steps.tapButton("Replace");
-            MobileDevice.getScreenshot(true);
-            MobileDevice.getScreenshot(true);
+            UIElement.byXpath("//android.widget.LinearLayout" +
+                    "[@resource-id='com.curbside.nCurbside:id/container_substitution_item' and @index='0']")
+                    .waitFor(5).tap();
         }
         Steps.tapButton("Proceed");
         footerTabsScreen.btnMyAccount.waitFor(2);
