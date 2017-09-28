@@ -49,7 +49,6 @@ public class HomeCap extends AbstractScreenCap {
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
         footerTabsCap.btnTasks.tap();
-
         if(Properties.getVariable(orderIdAlias) == null)
             Assert.fail("Not able to store the order ID");
 
@@ -65,7 +64,7 @@ public class HomeCap extends AbstractScreenCap {
                 btnAllTasks.waitFor(1).tap();
                 totalTasks = Integer.parseInt(lblTotalTasks.getText().split("\\s")[0]);
                 if (totalTasks > 30)
-                    startingTask = totalTasks - 20;
+                    startingTask = totalTasks / 2;
                 UIElement nthTask = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + startingTask + "']");
                 nthTask.swipeUpSlow();
                 break;

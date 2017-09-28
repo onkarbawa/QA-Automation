@@ -34,6 +34,7 @@ public class PickUps extends AbstractScreenCap {
 
     @And("^I search for '(.*)' order id under (?:Pickups|Cancelled Pickups) tab and '(.*)' it$")
     public void iSearchPickupsOrder(String orderIdAlias, String actionPerformed) throws Throwable {
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
         lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
         lblOrderId.waitFor(2).swipeUpSlow();
 
@@ -45,20 +46,19 @@ public class PickUps extends AbstractScreenCap {
             Assert.fail("Code cannot perform this action");
     }
 
-    @And("^I validate '(.*)' order marked as '(.*)'$")
+    @And("^I validate '(.*)' order marked as '(.*)' under pickup tab$")
     public void iValidateOrderCaption(String orderIdAlias, String expectedOrderCaption) throws Throwable {
         Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
 
         lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
-        lblOrderId.swipeUpSlow();
+        lblOrderId.waitFor(2).swipeUpSlow();
+        Assert.assertTrue(lblOrderId.isDisplayed(), "Order is not present");
 
-        Assert.assertTrue(lblOrderId.isDisplayed(), "Order is not present under PickUps tab");
-
-        lblOrderCaption = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]" +
+        lblOrderCaption = UIElement.byXpath("//android.widget.LinearLayout[android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]]" +
                 "/../android.widget.TextView[@index ='4']");
         lblOrderCaption.swipeUpSlow();
-        Assert.assertTrue(lblOrderCaption.isDisplayed(), "Order status is not present");
 
+        Assert.assertTrue(lblOrderCaption.isDisplayed(), "Order is present but status is not displayed");
         Assert.assertEquals(lblOrderCaption.getText(), expectedOrderCaption, orderIdAlias + " order status is not same as " + expectedOrderCaption);
     }
 
@@ -74,7 +74,7 @@ public class PickUps extends AbstractScreenCap {
 
         String totalItems = lblItemsToPick.getText();
         int totalNoOfItems = Integer.parseInt(totalItems.substring(totalItems.indexOf("(") + 1, totalItems.lastIndexOf(")")));
-        Reporter.addStepLog("Pick the "+totalItems+" items below");
+        Reporter.addStepLog(totalItems);
 
         if (selectedOption.equalsIgnoreCase("all")) {
             for (int i = 1; i <= totalNoOfItems; i++) {
