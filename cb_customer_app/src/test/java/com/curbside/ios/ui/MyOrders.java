@@ -84,4 +84,25 @@ public class MyOrders extends AbstractScreen {
             Steps.tapButton("Done");
         }
     }
+
+    @And("^I changed the order item$")
+    public void iChangedTheOrderItem() throws Throwable {
+        if (yourInputNeeded.isDisplayed()) {
+            yourInputNeeded.tap();
+            UIElement.byName("Replace").waitFor(10).tap();
+            storeDetailsScreen.iSelectProductFromList("CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets");
+            UIElement.byName("Proceed").tap();
+            UIElement.byName("Proceed").waitForNot(7);
+        }
+    }
+
+    @And("^I decline the substitution order$")
+    public void iDeclineTheSubstitutionOrder() throws Throwable {
+        if (yourInputNeeded.isDisplayed()) {
+            yourInputNeeded.tap();
+            UIElement.byName("Remove").waitFor(10).tap();
+            UIElement.byName("Proceed").tap();
+            UIElement.byName("Proceed").waitForNot(7);
+        }
+    }
 }
