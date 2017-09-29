@@ -18,12 +18,12 @@ public class PickUps extends AbstractScreen{
     UIElement pickUpQty = UIElement.byXpath("//XCUIElementTypeStaticText[@name='QTY :']/following-sibling::XCUIElementTypeStaticText[1]");
     UIElement transferCompleteAlert = UIElement.byName("Transfer complete.");
 
-    @Then("^I should see '(.*)' orderId in Task tab with '(.*)'$")
-    public void iShouldSeeOrderIdInTaskTabWith(String orderAlias,String message) throws Throwable {
+    @Then("^I should see '(.*)' orderId in PickUp tab with '(.*)'$")
+    public void iShouldSeeOrderIdInPickUpTabWith(String orderAlias,String message) throws Throwable {
         footerTabsScreen.tapPickUp();
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-  //      UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'UAPAB13N')]").scrollTo().tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]").scrollTo().tap();
         Assert.assertEquals(alertMessage.getText(),message,"Attention message is not shown");
     }
 

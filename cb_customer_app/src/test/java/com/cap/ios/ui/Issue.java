@@ -14,8 +14,6 @@ import cucumber.api.java.nl.Stel;
 public class Issue extends AbstractScreen{
 
     UIElement insufficientQuantity = UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeTextField");
-    UIElement firstIssueBtn = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[@name='Issue']");
-    UIElement secondGotItBtn = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[2]//XCUIElementTypeButton[@name='Got It']");
 
     @And("^I turn '(.*)' '(.*)'$")
     public void iTurnONItemNotAvailable(String ONorOFF,String button) throws Throwable {
@@ -36,5 +34,10 @@ public class Issue extends AbstractScreen{
     public void iEnterInsufficientQuantity(String quantity) throws Throwable {
         insufficientQuantity.sendKeys(quantity,false);
         Steps.tapButton("Done");
+    }
+
+    @And("^I tap on (\\d+) '(.*)' button$")
+    public void iTapOnGotItButton(int i,String button) throws Throwable {
+        UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell["+i+"]//XCUIElementTypeButton[@name='"+button+"']").tap();
     }
 }

@@ -42,9 +42,9 @@ public class Tasks extends AbstractScreen {
     @Given("^I search for '(.*)' Order ID and claim it$")
     public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         btnAll.waitFor(10);
-//        String orderID = Properties.getVariable(orderAlias);
-//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'B49ESYMM')]");
+        String orderID = Properties.getVariable(orderAlias);
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]");
         for (int i = 1;i < 50;i++){
             if (orderNumber.isDisplayed()){
                 orderNumber.tap();
@@ -59,7 +59,7 @@ public class Tasks extends AbstractScreen {
             }
         }
 //        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'8QE8CSQM')]").scrollForCap(SwipeDirection.UP).tap();
-        btnClaim.tap();
+        btnClaim.waitFor(5).tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
     }
@@ -72,11 +72,11 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for '(.*)' OrderID$")
     public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
-     //   String orderID = Properties.getVariable(orderAlias);
+        String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
-     //   UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'B49ESYMM')]").scrollTo().tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]").scrollTo().tap();
     }
 
     @Then("^I should see product details as below for CAP$")

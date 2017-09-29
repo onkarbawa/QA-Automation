@@ -103,7 +103,7 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Done' button
     And I tap on 'Finish' button
     And I ckecked order is ready
-    Then I should see 'claimOrder' orderId in Task tab with 'Needs customer attention'
+    Then I should see 'claimOrder' orderId in PickUp tab with 'Needs customer attention'
 
 
   @iOS @TCS09
@@ -135,11 +135,11 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Finish' button
     And I ckecked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
-    And I should see 'insufficientQuantity' orderId in Task tab with 'Needs customer attention'
+    And I should see 'insufficientQuantity' orderId in PickUp tab with 'Needs customer attention'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
   @iOS @TCS12
-  Scenario: Verify that when we complete order it shows Ready message
+  Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
@@ -161,7 +161,7 @@ Feature: iOS- Product Details and Task Management
     Then I should see alert 'Transfer complete.'
 
   @iOS @TCS13
-  Scenario: Verify that when we complete order it shows Ready message
+  Scenario: Verify cancelled pickup order (1 item, 1 quantities)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
     And I search for 'cancelPickUpOrder' Order ID and claim it
