@@ -114,4 +114,13 @@ public class PickUps extends AbstractScreenCap {
         lblOrderStatus.waitFor(2);
         Assert.assertEquals(lblOrderStatus.getText(), expectedOrderStatus, "The order status is not same");
     }
+
+    @And("^I confirm '(.*)' order is not present under (?:Pickups|Cancelled Pickups) tab$")
+    public void iCheckPickupsOrder(String orderIdAlias) throws Throwable {
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
+        lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
+        lblOrderId.waitFor(2).swipeUpSlow(8);
+
+        Assert.assertFalse(lblOrderId.isDisplayed(), orderIdAlias + " order is present");
+    }
 }

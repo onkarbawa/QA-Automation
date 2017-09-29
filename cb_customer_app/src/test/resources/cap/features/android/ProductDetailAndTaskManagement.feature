@@ -173,7 +173,7 @@ Feature: Android- Product detail and Task Management
     And I search by customer name to sort the orders
     Then I search for 'insufficientQnty' order id under Pickups tab and 'confirm' it
 
-  @Android @TCS12
+  @Android @TCS12 @TCS16
   Scenario: Process standard order (1 item, 1 quantities)
     Given I am at CAP home screen
     And I search for 'standardOrder' Order Id under 'All' tab and 'Claim' it
@@ -192,6 +192,9 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
     And I tap on 'OK' button
+    And I tap on 'Pickups' button
+    When I search by customer name to sort the orders
+    Then I confirm 'standardOrder' order is not present under Pickups tab
 
   @Android @TCS13
   Scenario: Verify cancelled pickup order (1 item, 1 quantities)
