@@ -109,6 +109,7 @@ Feature: Android- Product detail and Task Management
   @Android
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application for the first time
+    And I am not signed in to the CAP
     And I have selected test environment for CAP
     And I am logged in to the CAP with "<account>", "<username>" and "<password>"
     Examples:
@@ -117,7 +118,7 @@ Feature: Android- Product detail and Task Management
 
   @Android @TCS06
   Scenario: Product detail screen
-    And I wait for Tasks to get loaded
+    Given I wait for Tasks to get loaded
     And I search for 'productDetail' Order Id under 'All' tab and 'tap' it
     When I click on a product from the order list
     Then I should see product details on the screen
