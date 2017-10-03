@@ -19,7 +19,6 @@ Feature: iOS- Product Details and Task Management
   Scenario: Order placed to check - Product detail & claim order screen
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -30,11 +29,9 @@ Feature: iOS- Product Details and Task Management
     And I go to the shop screen to add any product
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
     And I add 1 quantity of the product
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets' product from list
-#    And I select 2no product from 'CVS' store
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -45,7 +42,6 @@ Feature: iOS- Product Details and Task Management
     And I go to the shop screen to add any product
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -56,7 +52,6 @@ Feature: iOS- Product Details and Task Management
     And I go to the shop screen to add any product
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -67,23 +62,11 @@ Feature: iOS- Product Details and Task Management
     And I go to the shop screen to add any product
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'cancelPickUpOrder'
-
-    Scenario: Order placed to check - Order is not in Pickup functionality
-    And I go to the shop screen to add any product
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-#    And I select 1no product from 'CVS' store
-    And I add 1 quantity of the product
-    And I tap on 'Cart' icon in bottom menu
-    And I attempt to place an order
-    And I tap on Order In Progress
-    And I save Order Id of the product and named as 'notInPickUpOrder'
 
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application for the first time
@@ -149,14 +132,14 @@ Feature: iOS- Product Details and Task Management
     And I should see 'insufficientQuantity' orderId in PickUp tab with 'Needs customer attention'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
-  @iOS @TCS12
+  @iOS @TCS12 @TCS16
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
-    And I search for 'readyOrder' Order ID and claim it
+    And I search for 'readyPickUpOrder' Order ID and claim it
     And I tap on 'Mine' tab
-    And I search for 'readyOrder' OrderID
+    And I search for 'readyPickUpOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
@@ -165,11 +148,13 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Finish' button
     And I ckecked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
-    And I search for 'readyOrder' OrderID
+    And I search for 'readyPickUpOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
+    When I search by customer name to sort the orders
+    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
 
   @iOS @TCS13
   Scenario: Verify cancelled pickup order (1 item, 1 quantities)
@@ -192,24 +177,5 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Cancel - Customer No Show' button
     Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
 
-  @iOS @TCS16
-  Scenario: Verify that when we complete order it shows Ready message
-    Given I tap on 'Close' button
-    And I search for 'notInPickUpOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'notInPickUpOrder' OrderID
-    And I tap on 'Got It' button
-    And I scan Barcodes and tap on 'Show Barcodes' button
-    And I tap on 'Enter Receipt Total' and enter receipt total price
-    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
-    And I tap on 'Go To Pack' button
-    And I tap on 'Finish' button
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search for 'notInPickUpOrder' OrderID
-    And I tap on 'Packages Retrieved' button
-    And I tap on 'Begin Transfer' button
-    And I tap on 'Confirm' button
-    Then I should see alert 'Transfer complete.'
-    Then I confirm 'notInPickUpOrder' orderID is not present under Pickups tab
 
 

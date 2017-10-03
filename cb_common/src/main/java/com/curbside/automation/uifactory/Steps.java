@@ -87,12 +87,12 @@ public class Steps {
 		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
+		/*if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
 				&& appName.equalsIgnoreCase("Curbside")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
-		}
+		}*/
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
