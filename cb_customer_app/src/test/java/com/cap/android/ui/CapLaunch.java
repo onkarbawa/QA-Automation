@@ -65,10 +65,6 @@ public class CapLaunch extends AbstractScreenCap{
 
     @And("^I am logged in to the CAP with \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"$")
     public void mustBeLoggedIn(String accountName, String userName, String password) throws Throwable {
-
-        if( footerTabsCap.btnTasks.isDisplayed())
-            myAccount.iSignOutCap();
-
         this.iEnterCredentials(accountName, userName, password);
         Steps.tapButton("Login");
     }
