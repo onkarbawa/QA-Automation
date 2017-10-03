@@ -210,5 +210,6 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
-    Then I search in pickUp tab and should not see 'notInPickUpOrder' OrderID
+    Then I confirm 'notInPickUpOrder' orderID is not present under Pickups tab
+
 

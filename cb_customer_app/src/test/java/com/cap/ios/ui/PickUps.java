@@ -40,8 +40,8 @@ public class PickUps extends AbstractScreen{
         Steps.tapButton("OK");
     }
 
-    @Then("^I search in pickUp tab and should not see '(.*)' OrderID$")
-    public void iSearchInPickUpTabAndShouldNotSeeOrderID(String orderAlias) throws Throwable {
+    @Then("^I confirm '(.*)' orderID is not present under Pickups tab$")
+    public void iConfirmOrderIDIsNotPresent(String orderAlias) throws Throwable {
         String orderID = Properties.getVariable(orderAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
         try {
