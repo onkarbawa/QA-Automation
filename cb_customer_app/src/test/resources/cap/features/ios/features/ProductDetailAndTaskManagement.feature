@@ -74,6 +74,17 @@ Feature: iOS- Product Details and Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'cancelPickUpOrder'
 
+    Scenario: Order placed to check - Order is not in Pickup functionality
+    And I go to the shop screen to add any product
+    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+#    And I select 1no product from 'CVS' store
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'notInPickUpOrder'
+
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application for the first time
     And I have selected test environment for cap
@@ -181,23 +192,23 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Cancel - Customer No Show' button
     Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
 
-#  @iOS @TCS16
-#  Scenario: Verify that when we complete order it shows Ready message
-#    Given I tap on 'Close' button
-#    And I search for 'readyOrder' Order ID and claim it
-#    And I tap on 'Mine' tab
-#    And I search for 'readyOrder' OrderID
-#    And I tap on 'Got It' button
-#    And I scan Barcodes and tap on 'Show Barcodes' button
-#    And I tap on 'Enter Receipt Total' and enter receipt total price
-#    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
-#    And I tap on 'Go To Pack' button
-#    And I tap on 'Finish' button
-#    And I tap on 'Pickups' icon in bottom menu for cap
-#    And I search for 'readyOrder' OrderID
-#    And I tap on 'Packages Retrieved' button
-#    And I tap on 'Begin Transfer' button
-#    And I tap on 'Confirm' button
-#    Then I should see alert 'Transfer complete.'
-#    Then I search and should not see '' OrderID in pickUp tab
+  @iOS @TCS16
+  Scenario: Verify that when we complete order it shows Ready message
+    Given I tap on 'Close' button
+    And I search for 'notInPickUpOrder' Order ID and claim it
+    And I tap on 'Mine' tab
+    And I search for 'notInPickUpOrder' OrderID
+    And I tap on 'Got It' button
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I search for 'notInPickUpOrder' OrderID
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    Then I should see alert 'Transfer complete.'
+    Then I search in pickUp tab and should not see 'notInPickUpOrder' OrderID
 

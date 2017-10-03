@@ -2,10 +2,9 @@ package com.cap.ios.ui;
 
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -39,5 +38,46 @@ public class PickUps extends AbstractScreen{
     public void iShouldSeeMessage(String message) throws Throwable {
         Assert.assertEquals(transferCompleteAlert.getText(),message,"Transfer Complete message is not pop-up");
         Steps.tapButton("OK");
+    }
+
+    @Then("^I search in pickUp tab and should not see '(.*)' OrderID$")
+    public void iSearchInPickUpTabAndShouldNotSeeOrderID(String orderAlias) throws Throwable {
+        String orderID = Properties.getVariable(orderAlias);
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+        try {
+            for (int i = 1;i < 10;i++) {
+                if (orderNumber.isDisplayed()) {
+                    Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
+                    break;
+                }
+                else {
+                    if (orderNumber.isDisplayed()){
+                        Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
+                        break;
+                    }
+                    MobileDevice.swipe(180,50,180,550);
+                }
+            }
+        }catch (Exception e){
+            Assert.assertFalse(!(orderNumber.isDisplayed()),"Order is not in the pickUp list");
+        }
+
+        try {
+            for (int i = 1;i < 10;i++) {
+                if (orderNumber.isDisplayed()) {
+                    Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
+                    break;
+                }
+                else {
+                    if (orderNumber.isDisplayed()){
+                        Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
+                        break;
+                    }
+                    MobileDevice.swipe(180,550,180,50);
+                }
+            }
+        }catch (Exception e){
+            Assert.assertFalse(!(orderNumber.isDisplayed()),"Order is not in the pickUp list");
+        }
     }
 }
