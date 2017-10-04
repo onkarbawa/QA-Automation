@@ -19,6 +19,16 @@
             <class name="com.cap.ios.runners.ProductDetailAndTaskManagementTest"/>
         </classes>
     </test>
+    <test name="iOS- TaskManagement">
+        <classes>
+            <class name="com.cap.ios.runners.TaskManagementTest"/>
+        </classes>
+    </test>
+    <test name="iOS- MAP">
+        <classes>
+            <class name="com.cap.ios.runners.MapTest"/>
+        </classes>
+    </test>
     <test name="iOS- Offline Error-Message">
         <classes>
             <class name="com.cap.ios.runners.OfflineErrorMessageTest"/>

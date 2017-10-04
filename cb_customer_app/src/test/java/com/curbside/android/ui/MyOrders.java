@@ -162,4 +162,24 @@ public class MyOrders extends AbstractScreen {
 
     }
 
+    @And("I review the order and '(.*)' the substitution")
+    public void iDeclineSubstitution(String action) throws Throwable {
+
+        latestInputNeededOrder.waitFor(5).tap();
+        MobileDevice.getScreenshot(true);
+        if (action.equalsIgnoreCase("decline"))
+            Steps.tapButton("REMOVE");
+        else if (action.equalsIgnoreCase("accept")) {
+            Steps.tapButton("Replace");
+            UIElement.byXpath("//android.widget.LinearLayout" +
+                    "[@resource-id='com.curbside.nCurbside:id/container_substitution_item' and @index='0']")
+                    .waitFor(5).tap();
+        }
+        Steps.tapButton("Proceed");
+        footerTabsScreen.btnMyAccount.waitFor(2);
+        for (int i = 0; i < 4 && !footerTabsScreen.btnMyAccount.isDisplayed(); i++) {
+            AndroidDevice.goBack();
+            footerTabsScreen.btnMyAccount.waitFor(2);
+        }
+    }
 }

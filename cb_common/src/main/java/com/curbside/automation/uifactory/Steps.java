@@ -87,12 +87,12 @@ public class Steps {
 		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
+		/*if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
 				&& appName.equalsIgnoreCase("Curbside")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
-		}
+		}*/
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
@@ -116,8 +116,9 @@ public class Steps {
 			} catch (Exception e) {
 				// e.printStackTrace();
 			}
-		else
-			throw new NotImplementedException(
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+        } else
+            throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
 	}
 

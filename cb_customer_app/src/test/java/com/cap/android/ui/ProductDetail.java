@@ -16,6 +16,7 @@ public class ProductDetail extends AbstractScreenCap {
     UIElement lblSKU = UIElement.byId("com.curbside.nCap:id/tvSKUS");
     UIElement lblDescription = UIElement.byId("com.curbside.nCap:id/tvDescriptionHeader");
     UIElement lblOverview = UIElement.byId("com.curbside.nCap:id/tvOverviewHeader");
+    UIElement btnBack = UIElement.byId("com.curbside.nCap:id/imgBack");
 
     @And("^I should see product details on the screen$")
     public void iShouldSeeProductDetail() throws Throwable {
@@ -27,6 +28,6 @@ public class ProductDetail extends AbstractScreenCap {
         Assert.assertTrue(lblDescription.isDisplayed(), "Product Description is not displayed");
         lblOverview.swipeUpSlow();
         Assert.assertTrue(lblOverview.isDisplayed(), "Product Description is not displayed");
-
+        btnBack.tap();
     }
 }

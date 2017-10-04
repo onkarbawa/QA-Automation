@@ -3,7 +3,7 @@ package com.cap.android.ui;
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.SwipeDirection;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -26,6 +26,10 @@ public class HomeCap extends AbstractScreenCap {
             "/../parent::android.widget.RelativeLayout");
     UIElement btnMineTasks = UIElement.byId("com.curbside.nCap:id/rbMine");
     UIElement btnAllTasks = UIElement.byId("com.curbside.nCap:id/rbAll");
+    UIElement btnClose = UIElement.byId("com.curbside.nCap:id/tvClose");
+    UIElement btnCancelCross = UIElement.byId("com.curbside.nCap:id/imgIssueClose");
+    UIElement btnBack = UIElement.byId("com.curbside.nCap:id/imgBack");
+    UIElement lblOrderDetailScreenTitle = UIElement.byId("com.curbside.nCap:id/toolbarTitle");
 
 
 
@@ -34,9 +38,6 @@ public class HomeCap extends AbstractScreenCap {
         lblOrderId.waitFor(15);
         if (!lblOrderId.isDisplayed())
             lblOrderId.waitFor(10);
-
-        Properties.setVariable("claimOrder", "7QC8C96O");
-        Properties.setVariable("outOfStock", "93JMJJUB");
     }
 
     /**
@@ -47,26 +48,28 @@ public class HomeCap extends AbstractScreenCap {
      */
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
+        footerTabsCap.btnTasks.tap();
+        if(Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to store the order ID");
+
         int totalTasks ;
         int startingTask = 0;
         UIElement lblOrderId;
         UIElement btnClaim;
-
-        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
-
         tabName = tabName.toLowerCase();
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
 
         switch (tabName) {
             case "all":
-                btnAllTasks.tap();
+                btnAllTasks.waitFor(1).tap();
                 totalTasks = Integer.parseInt(lblTotalTasks.getText().split("\\s")[0]);
-                if (totalTasks > 18)
-                    startingTask = totalTasks - 17;
+                if (totalTasks > 30)
+                    startingTask = totalTasks / 2;
                 UIElement nthTask = UIElement.byXpath("//android.widget.RelativeLayout[@index='" + startingTask + "']");
                 nthTask.swipeUpSlow();
                 break;
             case "mine":
-                btnMineTasks.tap();
+                btnMineTasks.waitFor(1).tap();
                 footerTabsCap.btnTasks.tap();
                 break;
             default:
@@ -77,7 +80,6 @@ public class HomeCap extends AbstractScreenCap {
         lblOrderId = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]");
         lblOrderId.swipeUpSlow();
         Assert.assertTrue(lblOrderId.isDisplayed(), orderIdAlias + " order is not present");
-        MobileDevice.getScreenshot(true);
 
         if (action.equalsIgnoreCase("claim")) {
             btnClaim = UIElement.byXpath("//android.widget.TextView[contains(@text,'" + Properties.getVariable(orderIdAlias) + "')]" +
@@ -118,5 +120,38 @@ public class HomeCap extends AbstractScreenCap {
     public void iShouldSeeHomeScreen() throws Throwable {
         this.iWaitForTasksToLoad();
         Assert.assertTrue(btnMineTasks.isDisplayed(), "Home Screen not visible");
+    }
+
+    @And("^I am at CAP home screen$")
+    public void iAmAtHome() throws Throwable {
+
+        for (int i = 0; i < 5; i++) {
+
+            if (footerTabsCap.btnTasks.waitFor(1).isDisplayed())
+                return;
+
+            try {
+                btnClose.tap();
+            } catch (Exception e) {
+            }
+
+            try {
+                btnBack.tap();
+            } catch (Exception e) {
+            }
+
+            try {
+                btnCancelCross.tap();
+            } catch (Exception e) {
+            }
+            Steps.tapButton_optional("Close");
+        }
+        MobileDevice.getScreenshot(true);
+    }
+
+    @Then("^I should see order title as '(.*)'$")
+    public void iShouldSeeOrderHeading(String expectedTitle) throws Throwable {
+        lblOrderDetailScreenTitle.waitFor(3);
+        Assert.assertEquals(lblOrderDetailScreenTitle.getText(),expectedTitle,"Title on the Order Detail screen is not same");
     }
 }

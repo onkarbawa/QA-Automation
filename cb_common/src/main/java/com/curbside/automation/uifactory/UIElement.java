@@ -230,6 +230,15 @@ public class UIElement {
 		return this;
 	}
 
+    public UIElement swipeUpSlow(int noOfTimes) throws Throwable {
+        for (int i = 0; i < noOfTimes; i++) {
+            if (this.isDisplayed())
+                break;
+            MobileDevice.swipeUpSlowly();
+        }
+        return this;
+    }
+
 	public void touch() throws Throwable {
 		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(getElement()).perform();
 	}

@@ -20,7 +20,8 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
         footerTabsScreen.btnShop.tap();
-        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+       // UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(30).scrollTo(SwipeDirection.UP).tap();
+        UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(30).scrollTo(SwipeDirection.UP).tap();
         MobileDevice.getSource(true);
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
@@ -45,4 +46,10 @@ public class StoreDetails {
     public void iSelectProductFromList(String product) throws Throwable {
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+product+"')]").waitFor(20).scrollTo(SwipeDirection.UP).tap();
     }
+
+    @And("^I select (\\d+)no product from '(.*)' store$")
+    public void iSelectNoProductFromCVSStore(int number, String store) throws Throwable {
+       UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeOther[XCUIElementTypeButton[@name='Refine']]]/following-sibling::XCUIElementTypeCell["+number+"]//XCUIElementTypeImage").waitFor(20).scrollTo().tap();
+    }
+
 }

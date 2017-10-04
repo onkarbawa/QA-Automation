@@ -15,7 +15,7 @@ public class MoreTab extends AbstractScreen {
     UIElement btnCancelledPickUp = UIElement.byName("Cancelled Pickups");
     UIElement alertMessage = UIElement.byName("Pickup is Cancelled");
 
-    @Then("^I should see '(.*)' orderId in Cancelled pickups with '(.*)'$")
+    @Then("^I should see '(.*)' orderId in Cancelled pickups with message '(.*)'$")
     public void iShouldSeeParticularOrderInCancelledPickups(String orderAlias,String message) throws Throwable {
        footerTabsScreen.tapMore();
         footerTabsScreen.tapMore();
