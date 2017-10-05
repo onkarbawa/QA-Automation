@@ -3,6 +3,7 @@ package com.curbside.android.ui;
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.PlivoUtil;
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -20,7 +21,7 @@ public class SMSNotification {
 
     String GMTDate;
 
-    @And("^I check there is no latest SMS from Curbisde$")
+    @And("^I check there is no latest SMS from Curbside$")
     public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
 
         int previousMsgCount = PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
@@ -29,10 +30,12 @@ public class SMSNotification {
         Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
     }
 
-    @Then("^I should receive welcome SMS from Curbside app$")
+    @Then("^I should receive (?:welcome|order) SMS from Curbside app$")
     public void iCheckLatestSMS() throws Throwable {
         boolean msgReceived = false;
 
+        Thread.sleep(40000);
+        MobileDevice.getScreenshot(true);
         int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
         boolean status;
 

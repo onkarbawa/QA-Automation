@@ -61,7 +61,7 @@ public class SMSNotification extends AbstractScreen {
                         "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3")));
 
     }
-    @Then("^I should receive welcome SMS from Curbside$")
+    @Then("^I should receive (?:welcome|order) SMS from Curbside$")
     public void iCheckLatestSMS() throws Throwable {
         int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
         Assert.assertTrue(PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",

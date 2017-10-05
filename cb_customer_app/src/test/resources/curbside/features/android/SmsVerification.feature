@@ -28,5 +28,5 @@ Feature: Android- SMS verification flow
     And I check there is no latest SMS from Curbside
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
-    Then I should receive welcome SMS from Curbside app
+    Then I should receive order SMS from Curbside app
 
