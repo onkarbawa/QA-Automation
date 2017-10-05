@@ -16,10 +16,14 @@ public class MyOrders extends AbstractScreen {
 
     UIElement orderInProgress = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Order In Progress')]");
     UIElement myOrderTitle = UIElement.byName("My Orders");
-    UIElement orderID = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText");
+    UIElement orderID = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]" +
+            "/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText");
     //XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText
     //XCUIElementTypeTable//XCUIElementTypeCell[10]//XCUIElementTypeStaticText
-    UIElement latestOrderCancel = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Cancelled']]/following-sibling::XCUIElementTypeCell[1]");
+    UIElement latestOrderCancel = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[@name='Cancelled']]" +
+            "/following-sibling::XCUIElementTypeCell[1] | //XCUIElementTypeCollectionView/XCUIElementTypeOther[1]" +
+            "[XCUIElementTypeStaticText[@name='Cancelled']]/parent::XCUIElementTypeCollectionView/child::" +
+            "XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]");
     UIElement yourInputNeeded = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Your Input Needed')]");
 
     @And("^I tap on Order In Progress$")

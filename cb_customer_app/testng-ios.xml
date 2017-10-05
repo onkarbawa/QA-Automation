@@ -4,70 +4,70 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Applaunch">
-            <classes>
-                <class name="com.curbside.ios.runners.AppLaunchTest"/>
-            </classes>
-    </test>
-    <test name="iOS- Sign up">
-            <classes>
-                <class name="com.curbside.ios.runners.SignUpTest"/>
-            </classes>
-    </test>
-    <test name="iOS- Sign in">
-            <classes>
-                <class name="com.curbside.ios.runners.LoginTest"/>
-            </classes>
-    </test>
-    <test name="iOS- Store Selection">
-            <classes>
-                <class name="com.curbside.ios.runners.StoreSelection"/>
-            </classes>
-    </test>
-    <test name="iOS- Product Catelog">
-            <classes>
-                <class name="com.curbside.ios.runners.ProductCatalog"/>
-            </classes>
-    </test>
-    <test name="iOS- CartBuilding And Checkout">
-            <classes>
-                <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
-            </classes>
-    </test>
-    <test name="iOS- Delivery Promo code">
-            <classes>
-                <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
-            </classes>
-    </test>
+    <!--<test name="iOS- Applaunch">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.AppLaunchTest"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Sign up">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.SignUpTest"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Sign in">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.LoginTest"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Store Selection">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.StoreSelection"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Product Catelog">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.ProductCatalog"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- CartBuilding And Checkout">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Delivery Promo code">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.DeliveryPromoTest"/>-->
+            <!--</classes>-->
+    <!--</test>-->
     <test name="iOS- SMS flow">
         <classes>
             <class name="com.curbside.ios.runners.SMSTest"/>
         </classes>
     </test>
-    <test name="iOS- Mail flow">
-        <classes>
-            <class name="com.curbside.ios.runners.MailNotificationTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Order flow">
-        <classes>
-            <class name="com.curbside.ios.runners.OrderFlowTest"/>
-        </classes>
-    </test>
-    <test name="iOS- My Account">
-        <classes>
-            <class name="com.curbside.ios.runners.MyAccountTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Live Orders">
-        <classes>
-            <class name="com.curbside.ios.runners.LiveOrdersTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Applaunch1">
-        <classes>
-            <class name="com.curbside.ios.runners.AppLaunchTest1"/>
-        </classes>
-    </test>
+    <!--<test name="iOS- Mail flow">-->
+        <!--<classes>-->
+            <!--<class name="com.curbside.ios.runners.MailNotificationTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Order flow">-->
+        <!--<classes>-->
+            <!--<class name="com.curbside.ios.runners.OrderFlowTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- My Account">-->
+        <!--<classes>-->
+            <!--<class name="com.curbside.ios.runners.MyAccountTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Live Orders">-->
+        <!--<classes>-->
+            <!--<class name="com.curbside.ios.runners.LiveOrdersTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Applaunch1">-->
+        <!--<classes>-->
+            <!--<class name="com.curbside.ios.runners.AppLaunchTest1"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
 </suite>
