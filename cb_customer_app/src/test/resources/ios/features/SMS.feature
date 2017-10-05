@@ -25,4 +25,4 @@ Feature: iOS- SMS Flow
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
-    And I should receive welcome SMS from Curbside
+    And I should receive order SMS from Curbside
