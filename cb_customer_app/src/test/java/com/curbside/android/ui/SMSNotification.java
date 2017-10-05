@@ -36,7 +36,7 @@ public class SMSNotification {
         int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
         boolean status;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             Reporter.addStepLog("-------Checking for SMS (" + i + "/3) time-------");
             status = PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
                     "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "12815020030", previousMsgCount);
