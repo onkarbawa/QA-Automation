@@ -1,5 +1,6 @@
 package com.curbside.automation.common.utilities;
 
+import com.cucumber.listener.Reporter;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.plivo.helper.api.client.RestAPI;
@@ -104,8 +105,8 @@ public class PlivoUtil {
     }
 
 
-    public static int getInboundMsgCount(String authId, String authToken){
-        int total_count = 0 ;
+    public static int getInboundMsgCount(String authId, String authToken) {
+        int total_count = 0;
         RestAPI api = new RestAPI(authId, authToken, "v1");
 
         try {
@@ -130,31 +131,31 @@ public class PlivoUtil {
         return total_count;
     }
 
-    public static boolean isSmsReceived(String authId, String authToken, String expectedPhoneNumber, int previousMsgCount){
-        int total_count;
+    public static boolean isSmsReceived(String authId, String authToken, String expectedPhoneNumber, int previousMsgCount) {
+        int expectedMsgCount;
         String actualToNumber;
         boolean status;
 
-        total_count = getInboundMsgCount(authId, authToken);
+        expectedMsgCount = getInboundMsgCount(authId, authToken);
+        Reporter.addStepLog("Previous message count : " + previousMsgCount + " | Latest message count : " + expectedMsgCount);
         actualToNumber = getLatestMsgToNumber(authId, authToken);
-        if(!actualToNumber.equalsIgnoreCase(expectedPhoneNumber))
-            total_count = -2;
-        if(total_count == previousMsgCount+1)
+        Reporter.addStepLog("Expected latest toNumber : " + expectedPhoneNumber + " | Actual latest toNumber : " + actualToNumber);
+        if (!actualToNumber.equalsIgnoreCase(expectedPhoneNumber))
+            expectedMsgCount = -2;
+        if (expectedMsgCount == previousMsgCount + 1)
             status = true;
         else
             status = false;
 
-
         return status;
     }
 
-    public static String getDateAndTime(){
+    public static String getDateAndTime() {
         String DateAndTime;
         Calendar cal = Calendar.getInstance();
         Date currentTime = cal.getTime();
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        DateAndTime =  sdf.format(currentTime);
-
+        DateAndTime = sdf.format(currentTime);
         return DateAndTime;
     }
 
