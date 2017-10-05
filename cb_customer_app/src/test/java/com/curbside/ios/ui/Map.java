@@ -20,7 +20,7 @@ public class Map extends AbstractScreen {
 
     @Then("^I should see stores on map for '(.*)'$")
     public void iShouldSeeStoresOnMapForPaloAlto(String location) throws Throwable {
-        if (!(nearByStores.waitFor(15).getCount() > 0))
+        if (!(nearByStores.waitFor(25).getCount() > 0))
             Assert.fail("CVS stores are not displayed in the map");
 //		Assert.assertTrue(nearByStore.isDisplayed(),"store is not displayed near to the selected location");
 //		Assert.assertTrue(UIElement.byName("Palo Alto").waitFor(25).isDisplayed(), "Map is not displaying location " + location);

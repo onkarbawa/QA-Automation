@@ -82,7 +82,7 @@ public class ProductDetails extends AbstractScreen {
 		Assert.assertTrue(productImage.waitFor(15).isDisplayed(),"Product Image is not displayed");
 		Assert.assertTrue(productName.isDisplayed(),"Product name and price is not displayed");
 		Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
-		Assert.assertTrue(productSKU.scrollTo().isDisplayed(), "Product sku is not displayed");
+		Assert.assertTrue(productSKU.scrollTo(SwipeDirection.UP).isDisplayed(), "Product sku is not displayed");
 		productOverview.scrollTo(SwipeDirection.UP);
 		Assert.assertTrue(productOverview.isDisplayed(),"Product overview is not displayed");
 	}
