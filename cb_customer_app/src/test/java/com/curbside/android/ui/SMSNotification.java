@@ -33,14 +33,18 @@ public class SMSNotification {
     @Then("^I should receive (?:welcome|order) SMS from Curbside app$")
     public void iCheckLatestSMS() throws Throwable {
         boolean msgReceived = false;
-
-        Thread.sleep(40000);
-        MobileDevice.getScreenshot(true);
-        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
         boolean status;
 
+        for (int i = 0; i < 2; i++) {
+            Thread.sleep(40000);
+            MobileDevice.getScreenshot(false);
+            Thread.sleep(40000);
+            MobileDevice.getSource();
+        }
+        MobileDevice.getScreenshot(true);
+        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
         for (int i = 0; i < 3; i++) {
-            Reporter.addStepLog("-------Checking for SMS (" + i + "/3) time-------");
+            Reporter.addStepLog("-------Checking for SMS (" + (i + 1) + "/3) time-------");
             status = PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
                     "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "12815020030", previousMsgCount);
             if (status) {
@@ -48,7 +52,6 @@ public class SMSNotification {
                 break;
             }
         }
-
         Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
     }
 }
