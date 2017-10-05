@@ -11,7 +11,7 @@ Feature: Android- SMS verification flow
     And I tap on 'Account' button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
-    And I check there is no latest SMS from Curbisde
+    And I check there is no latest SMS from Curbside
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
@@ -25,7 +25,7 @@ Feature: Android- SMS verification flow
     And I select 1 product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' button
-    And I check there is no latest SMS from Curbisde
+    And I check there is no latest SMS from Curbside
     When I tap on Place order button
     Then I should see the successful placed order notification on the screen
     Then I should receive welcome SMS from Curbside app
