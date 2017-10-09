@@ -26,11 +26,7 @@ public class HomeCap extends AbstractScreenCap {
             "/../parent::android.widget.RelativeLayout");
     UIElement btnMineTasks = UIElement.byId("com.curbside.nCap:id/rbMine");
     UIElement btnAllTasks = UIElement.byId("com.curbside.nCap:id/rbAll");
-    UIElement btnClose = UIElement.byId("com.curbside.nCap:id/tvClose");
-    UIElement btnCancelCross = UIElement.byId("com.curbside.nCap:id/imgIssueClose");
-    UIElement btnBack = UIElement.byId("com.curbside.nCap:id/imgBack");
     UIElement lblOrderDetailScreenTitle = UIElement.byId("com.curbside.nCap:id/toolbarTitle");
-
 
 
     @And("^I wait for Tasks to get loaded$")
@@ -49,10 +45,10 @@ public class HomeCap extends AbstractScreenCap {
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
         footerTabsCap.btnTasks.tap();
-        if(Properties.getVariable(orderIdAlias) == null)
+        if (Properties.getVariable(orderIdAlias) == null)
             Assert.fail("Not able to store the order ID");
 
-        int totalTasks ;
+        int totalTasks;
         int startingTask = 0;
         UIElement lblOrderId;
         UIElement btnClaim;
@@ -93,8 +89,9 @@ public class HomeCap extends AbstractScreenCap {
         } else if (action.equalsIgnoreCase("tap")) {
             lblOrderId.tap();
             MobileDevice.getScreenshot(true);
+        } else if (action.equalsIgnoreCase("confirm")) {
+            Assert.assertTrue(lblOrderId.isDisplayed(), orderIdAlias + " Order is not present after confirming it again");
         }
-
     }
 
     @And("^I tap on Mine tab$")
@@ -122,36 +119,15 @@ public class HomeCap extends AbstractScreenCap {
         Assert.assertTrue(btnMineTasks.isDisplayed(), "Home Screen not visible");
     }
 
-    @And("^I am at CAP home screen$")
-    public void iAmAtHome() throws Throwable {
-
-        for (int i = 0; i < 5; i++) {
-
-            if (footerTabsCap.btnTasks.waitFor(1).isDisplayed())
-                return;
-
-            try {
-                btnClose.tap();
-            } catch (Exception e) {
-            }
-
-            try {
-                btnBack.tap();
-            } catch (Exception e) {
-            }
-
-            try {
-                btnCancelCross.tap();
-            } catch (Exception e) {
-            }
-            Steps.tapButton_optional("Close");
-        }
-        MobileDevice.getScreenshot(true);
-    }
-
     @Then("^I should see order title as '(.*)'$")
     public void iShouldSeeOrderHeading(String expectedTitle) throws Throwable {
         lblOrderDetailScreenTitle.waitFor(3);
-        Assert.assertEquals(lblOrderDetailScreenTitle.getText(),expectedTitle,"Title on the Order Detail screen is not same");
+        Assert.assertEquals(lblOrderDetailScreenTitle.getText(), expectedTitle, "Title on the Order Detail screen is not same");
+    }
+
+    @Then("^I should see '(.*)' symbol inside the order$")
+    public void iShouldSeeSymbol(String symbol) throws Throwable {
+        UIElement symbolImg = UIElement.byId("com.curbside.nCap:id/imgPickupRestrictions");
+        Assert.assertTrue(symbolImg.isDisplayed(), symbol + " symbol is not present");
     }
 }

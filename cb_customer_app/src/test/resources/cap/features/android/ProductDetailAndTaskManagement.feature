@@ -106,6 +106,17 @@ Feature: Android- Product detail and Task Management
     Then I should see the successful placed order notification on the screen
     And I save Order Id of the product and named as 'declineSubstitution'
 
+  @Android @TCS24
+  Scenario: Order placed to check - Process Hazmat order
+    And I search for 'Gilroy' location
+    And I select 'CVS' store and search for 'hairspray aerosol' product
+    And I select 1 product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' button
+    When I tap on Place order button
+    Then I should see the successful placed order notification on the screen
+    And I save Order Id of the product and named as 'hazmat'
+
   @Android
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application for the first time
@@ -284,3 +295,26 @@ Feature: Android- Product detail and Task Management
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
     And I tap on 'OK' button
+
+  @Android @TCS24
+  Scenario: Verify Hazmat order symbol
+    Given I am at CAP home screen
+    When I search for 'hazmat' Order Id under 'All' tab and 'confirm' it
+    Then I should see 'hazmat' order has 'hazmat' symbol under Tasks-All tab
+    When I search for 'hazmat' Order Id under 'All' tab and 'tap' it
+    Then I should see 'hazmat' symbol inside the order
+    And I tap on 'Claim' button
+    And I tap on 'Close' button
+    When I search for 'hazmat' Order Id under 'Mine' tab and 'confirm' it
+    Then I should see 'hazmat' order has 'hazmat' symbol under Tasks-Mine tab
+    And I look for 'hazmat' Order Id under 'Mine' tab and 'tap' it
+    And I tap on 'Got It' button
+    And I scan the barcode that is visible on my screen
+    And I pay and enter total price
+    And I take the picture of receipt
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish Packing' button
+    And I tap on 'Pickups' button
+    And I search by customer name to sort the orders
+    When I search for 'hazmat' order id under Pickups tab and 'confirm' it
+    Then I should see 'hazmat' order has 'hazmat' symbol under Pickups tab
