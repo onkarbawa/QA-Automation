@@ -2,9 +2,12 @@ package com.cap.ios.ui;
 
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.AndroidDevice;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -44,40 +47,22 @@ public class PickUps extends AbstractScreen{
     public void iConfirmOrderIDIsNotPresent(String orderAlias) throws Throwable {
         String orderID = Properties.getVariable(orderAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-        try {
-            for (int i = 1;i < 10;i++) {
-                if (orderNumber.isDisplayed()) {
-                    Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
-                    break;
-                }
-                else {
-                    if (orderNumber.isDisplayed()){
-                        Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
-                        break;
-                    }
-                    MobileDevice.swipe(180,50,180,550);
-                }
+        for (int i = 1;i < 7;i++) {
+            if (orderNumber.isDisplayed()) {
+                break;
             }
-        }catch (Exception e){
-            Assert.assertFalse(!(orderNumber.isDisplayed()),"Order is not in the pickUp list");
-        }
-
-        try {
-            for (int i = 1;i < 10;i++) {
-                if (orderNumber.isDisplayed()) {
-                    Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
-                    break;
-                }
-                else {
-                    if (orderNumber.isDisplayed()){
-                        Assert.assertFalse(orderNumber.isDisplayed(),"Order is still in the pickUp list");
-                        break;
-                    }
+            else {
                     MobileDevice.swipe(180,550,180,50);
                 }
-            }
-        }catch (Exception e){
-            Assert.assertFalse(!(orderNumber.isDisplayed()),"Order is not in the pickUp list");
         }
+        Assert.assertFalse(orderNumber.isDisplayed(),"Order is not in the pickUp list");
+    }
+
+    @And("^I search by customer name to sort the orders$")
+    public void iSearchCustomer() throws Throwable {
+        String fullName = "Test" + " " + "Data";
+        UIElement.byName("Search by customer name").sendKeys(fullName,false);
+        Steps.tapButton("Search");
+
     }
 }
