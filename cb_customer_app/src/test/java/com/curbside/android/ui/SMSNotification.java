@@ -22,7 +22,7 @@ public class SMSNotification {
     String GMTDate;
 
     @And("^I check there is no latest SMS from Curbside$")
-    public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
+    public void iCheckThereIsNoLatestSMSFromCurbside() throws Throwable {
 
         int previousMsgCount = PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
                 "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3");
