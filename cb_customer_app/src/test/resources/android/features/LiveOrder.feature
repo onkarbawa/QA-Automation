@@ -18,7 +18,7 @@ Feature: Android- Live order
     And I tap on Place order button
     And I tap on 'Sign Up' button
     And I tap on 'Sign Up with Email' button
-    And I check there is no latest SMS from Curbisde
+    And I check there is no latest SMS from Curbside
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
