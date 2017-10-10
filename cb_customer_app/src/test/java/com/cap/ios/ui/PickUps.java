@@ -2,10 +2,7 @@ package com.cap.ios.ui;
 
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.AndroidDevice;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -64,5 +61,16 @@ public class PickUps extends AbstractScreen{
         UIElement.byName("Search by customer name").sendKeys(fullName,false);
         Steps.tapButton("Search");
 
+    }
+
+    @Then("^I tap on '(.*)' icon and search for '(.*)' OrderID and verify that '(.*)' is present$")
+    public void iTapOnIconAndSearchForOrderIDAndVerifyThatHazmatSymbolIsPresent(String tabIcon, String orderAlias, String symbol) throws Throwable {
+        footerTabsScreen.iTapOnIconInBottomMenuForCap(tabIcon);
+        String orderID = Properties.getVariable(orderAlias);
+        UIElement iDSymbol = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]" +
+                "/following-sibling::XCUIElementTypeStaticText[1]");
+        Assert.assertEquals(iDSymbol.waitFor(3).getText(),"","");
+
+        iDSymbol.tap();
     }
 }

@@ -31,6 +31,7 @@ public class Tasks extends AbstractScreen {
     UIElement btnOK = UIElement.byName("OK");
 
     UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
+    UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
@@ -152,6 +153,22 @@ public class Tasks extends AbstractScreen {
                 }
             }
         }
+    }
+
+    @And("^I search for '(.*)' Order ID and verify that '(.*)' is present$")
+    public void iSearchForOrderIDAndVerifyThatHazmatSymbolIsPresent(String orderAlias, String symbol) throws Throwable {
+       iTapOnTab("Mine");
+       iTapOnTab("All");
+       String orderID = Properties.getVariable(orderAlias);
+       UIElement iDSymbol = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]" +
+               "/following-sibling::XCUIElementTypeStaticText[1]");
+       Assert.assertEquals(iDSymbol.scrollTo(SwipeDirection.UP).waitFor(3).getText(),"","");
+
+       iDSymbol.tap();
+       Assert.assertEquals(specialSymbol.waitFor(5).getText(),"");
+       btnClaim.waitFor(5).tap();
+       btnClaim.waitForNot(7);
+       Steps.tapButton("Close");
     }
 
 
