@@ -10,7 +10,7 @@ import org.testng.Assert;
 /**
  * Created by hitesh.grover on 09/10/17.
  */
-public class Common extends AbstractScreenCap {
+public class CommonCap extends AbstractScreenCap {
 
     UIElement btnClose = UIElement.byId("com.curbside.nCap:id/tvClose");
     UIElement btnCancelCross = UIElement.byId("com.curbside.nCap:id/imgIssueClose");
