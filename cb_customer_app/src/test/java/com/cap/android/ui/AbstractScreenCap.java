@@ -1,6 +1,5 @@
 package com.cap.android.ui;
 
-import com.curbside.android.ui.*;
 import com.curbside.automation.uifactory.Steps;
 
 /**
@@ -14,6 +13,7 @@ public class AbstractScreenCap {
   static Issue issue;
   static CapLaunch capLaunch;
   static HomeCap homeCap;
+  static CommonCap commonCap;
 
   static {
     commonSteps = new Steps();
@@ -22,5 +22,6 @@ public class AbstractScreenCap {
     issue = new Issue();
     capLaunch = new CapLaunch();
     homeCap = new HomeCap();
+    commonCap = new CommonCap();
   }
 }

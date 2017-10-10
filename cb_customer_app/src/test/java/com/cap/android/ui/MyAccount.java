@@ -28,7 +28,7 @@ public class MyAccount extends AbstractScreenCap{
         capLaunch.fieldPassword.waitFor(3);
         if(capLaunch.fieldPassword.isDisplayed())
             return;
-        homeCap.iAmAtHome();
+        commonCap.iAmAtHome();
         this.iSignOutCap();
     }
 }
