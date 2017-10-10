@@ -31,7 +31,12 @@ public class StoreDetails {
 
     @And("^I select (\\d+)no product from list$")
     public void iSelectNoProductFromList(int number) throws Throwable {
-        UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "]").waitFor(10).tap();
+        UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
+                "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
+                "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | //XCUIElementTypeOther[" +
+                "XCUIElementTypeSearchField[@name='Search All Stores']]/../../../../following-sibling::" +
+                "XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeCell[" + number +"]");
+        element.waitFor(10).tap();
         productDetailsScreen.productLocationAndPrice.waitFor(3);
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
         Properties.setVariable("productName"+Integer.toString(number),productDetailsScreen.productName.getText());
@@ -39,7 +44,8 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
-        UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        //XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::
     }
 
     @And("^I select '(.*)' product from list$")
