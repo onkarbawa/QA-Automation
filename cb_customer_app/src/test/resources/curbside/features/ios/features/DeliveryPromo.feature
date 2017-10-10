@@ -17,7 +17,7 @@ Feature: iOS - Delivery Promo code
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
-    And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
+    And I select the delivery address as:"4 Palo Alto Square, Palo Alto,California 94306"
     And I tap on back button
     And I store the value of 'Delivery Charges'
     And I tap on 'Enter Promo Code'
