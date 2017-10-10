@@ -188,7 +188,7 @@ Feature: iOS- Product Details and Task Management
     Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
 
   @iOS @TCS24
-  Scenario: Verify cancelled pickup order (1 item, 1 quantities)
+  Scenario: Verify Hazmat order Symbol
     Given I tap on 'Close' button
     And I search for 'hazmatOrder' Order ID and verify that 'Hazmat Symbol' is present
     And I tap on 'Mine' tab
