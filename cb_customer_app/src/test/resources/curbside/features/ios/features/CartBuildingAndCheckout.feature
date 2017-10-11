@@ -17,6 +17,12 @@ Feature: iOS- Cart Building And Checkout
     And I add 2 quantity of the product
     And I select 2no product from list
     And I add 1 quantity of the product
+#    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
+#    And I select 'Food Item' product from list
+#    And I add 2 quantity of the product
+#    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
+#    And I select 'Refrigerated food' product from list
+#    And I add 1 quantity of the product
     When I tap on 'Cart' icon in bottom menu
     Then I should see the 3 items in the cart
     Examples:

@@ -227,7 +227,8 @@ public class Cart extends AbstractScreen {
 
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
-		promoCodeDiscount.waitFor(15);
+		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
+		Thread.sleep(15000);
 		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
