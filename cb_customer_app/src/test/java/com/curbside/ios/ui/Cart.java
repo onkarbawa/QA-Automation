@@ -22,6 +22,7 @@ public class Cart extends AbstractScreen {
 	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[2]");
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
+	UIElement discountedCell = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Check the quantities in your cart')]]");
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
 	UIElement productaQuantityButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 
@@ -111,6 +112,18 @@ public class Cart extends AbstractScreen {
 				MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
+					System.out.println("-------------"+totalItems);
+					try {
+						if(discountedCell.isDisplayed()){
+							totalItems = totalItems - 1;
+						}else {
+							MobileDevice.swipe(180,575,180,50);
+							Thread.sleep(5000);
+							if(discountedCell.isDisplayed()) {
+								totalItems = totalItems - 1;
+							}
+						}
+					}catch (Exception e){}
 					if (totalItems > 3) {
 						for (int j = 0; j < totalItems - 3; j++) {
 							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();

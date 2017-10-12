@@ -55,7 +55,8 @@ public class Home extends AbstractScreen {
 	public void isDisplayed() throws Throwable {
 		try {
             System.out.println("Checking nearby---");
-            Assert.assertTrue(nearBy.isDisplayed());
+        //    Assert.assertTrue(nearBy.isDisplayed());
+			Assert.assertEquals(nearBy.getText(),"Near ");
 		} finally {
 			MobileDevice.getScreenshot(true);
 		}
