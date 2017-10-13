@@ -112,7 +112,6 @@ public class Cart extends AbstractScreen {
 				MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
-					System.out.println("-------------"+totalItems);
 					try {
 						if(discountedCell.isDisplayed()){
 							totalItems = totalItems - 1;
