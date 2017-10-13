@@ -19,6 +19,7 @@ public class Login extends AbstractScreen {
 	UIElement password = new UIElement(By.className("XCUIElementTypeSecureTextField"));
 	UIElement signIn = new UIElement(By.name("Sign In"));
 	UIElement signInWithEmail = new UIElement(By.name("Sign In with Email"));
+	UIElement signDismiss = UIElement.byName("Dismiss");
 
 	public Login() {
 		// TODO Auto-generated constructor stub
@@ -30,7 +31,11 @@ public class Login extends AbstractScreen {
 		password.sendKeys(passwordText);
 		try {
 			Steps.tapButton("Sign In");
-		}catch (Exception e){
+		}catch (Exception e){}
+		Thread.sleep(3000);
+		if (signDismiss.isDisplayed()){
+			signDismiss.tap();
+			Steps.tapButton("Sign In");
 		}
 	}
 
@@ -64,7 +69,9 @@ public class Login extends AbstractScreen {
 		try {
 			footerTabsScreen.btnMyAccount.tap();
 		}catch (Exception e){}
-		signIn.waitFor(2).tap();
+		try {
+			signIn.waitFor(2).tap();
+		}catch (Exception e){}
 		try {
 			signIn.tap();
 		}catch (Exception e){}

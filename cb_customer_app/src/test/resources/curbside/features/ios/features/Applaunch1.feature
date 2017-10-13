@@ -24,8 +24,10 @@ Feature: iOS- Application Launch 1
     And I go to Cart screen
     And I attempt to place an order
     And I should see checkout not allowed
-    And I set 'Location' permission as 'Always'
-    And I tap on 'Return to Curbside' button
+      And 'Location' preference is set as 'Always' for 'Curbside' app
+#    And I set 'Location' permission as 'Always'
+#    And I tap on 'Return to Curbside' button
+      And I launch Curbside application
     And I tap on 'Shop' icon in bottom menu
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -46,8 +48,10 @@ Feature: iOS- Application Launch 1
     And I go to Cart screen
     And I attempt to place an order
     And I should see checkout not allowed
-    When I turn 'ON' 'Background App Refresh' for 'Curbside'
-    And I tap on 'Return to Curbside' button
+    And I turn 'ON' Background App Refresh for 'Curbside' app
+#    When I turn 'ON' 'Background App Refresh' for 'Curbside'
+#    And I tap on 'Return to Curbside' button
+    And I launch Curbside application
     And I tap on 'Shop' icon in bottom menu
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order

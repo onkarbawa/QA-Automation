@@ -182,8 +182,9 @@ public class Cart extends AbstractScreen {
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
 		Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
 		MobileDevice.getScreenshot(true);
-		settings.tap();
-	//	UIElement.byName("Notifications").waitFor(5).tap();
+		UIElement.byName("Cancel").tap();
+		//settings.tap();
+	//*	UIElement.byName("Notifications").waitFor(5).tap();
 	}
 
 	@Then("^I should see checkout screen$")
