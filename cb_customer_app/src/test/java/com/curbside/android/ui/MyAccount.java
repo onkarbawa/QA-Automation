@@ -91,6 +91,7 @@ public class MyAccount extends AbstractScreen {
 
 	@Given("^I am not signed into application$")
 	public void ensureSignedOut() throws Throwable {
+		btnNavigateUp.tapOptional();
 		try {
 			if(!footerTabsScreen.btnMyAccount.waitFor(10).isDisplayed())
 			    homeScreen.open();
@@ -104,14 +105,8 @@ public class MyAccount extends AbstractScreen {
 			}
 		} catch (Exception e) {
 		}
-
-		try {
-			btnNavigateUp.tap();
-		} catch (Exception e) {
-		}
-
+        btnNavigateUp.tapOptional();
 		MobileDevice.getScreenshot(true);
-
 	}
 
 	@And("^I ensure that I am on Account page$")
