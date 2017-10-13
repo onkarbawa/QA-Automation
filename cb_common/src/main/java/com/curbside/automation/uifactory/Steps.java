@@ -87,12 +87,12 @@ public class Steps {
 		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		/*if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
+		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
 				&& appName.equalsIgnoreCase("Curbside")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
-		}*/
+		}
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
@@ -276,7 +276,7 @@ public class Steps {
 		String currentBackgroundRefreshValue = backgroundAppRefresh.getAttribute("value");
 		System.out.println("Current background refresh is " + currentBackgroundRefreshValue);
 
-		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("true") ? "ON" : "OFF";
+		currentBackgroundRefreshValue = currentBackgroundRefreshValue.equals("1") ? "ON" : "OFF";
 
 		if (!ONorOFF.equalsIgnoreCase(currentBackgroundRefreshValue))
 			backgroundAppRefresh.tap();
