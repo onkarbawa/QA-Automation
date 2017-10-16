@@ -25,7 +25,7 @@ public class ProductDetails extends AbstractScreen {
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[1]");
 	UIElement productLocationAndPrice = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[2]");
 	UIElement productDescription = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Description')]");
-	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Overview')]");
+	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Distributed')]");
 	UIElement productSKU = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'sku')]");
 
 	UIElement incrementProduct = UIElement.byName("Increment");
@@ -82,7 +82,7 @@ public class ProductDetails extends AbstractScreen {
 		Assert.assertTrue(productImage.waitFor(15).isDisplayed(),"Product Image is not displayed");
 		Assert.assertTrue(productName.isDisplayed(),"Product name and price is not displayed");
 		Assert.assertTrue(productDescription.isDisplayed(),"Product description is not displayed");
-		Assert.assertTrue(productSKU.scrollTo().isDisplayed(), "Product sku is not displayed");
+		Assert.assertTrue(productSKU.scrollTo(SwipeDirection.UP).isDisplayed(), "Product sku is not displayed");
 		productOverview.scrollTo(SwipeDirection.UP);
 		Assert.assertTrue(productOverview.isDisplayed(),"Product overview is not displayed");
 	}

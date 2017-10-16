@@ -4,19 +4,9 @@
     {
       "url": "http://127.0.0.1:4723/wd/hub",
       "platformName": "iOS",
-      "platformVersion": "10.3.3",
-      "deviceName": "CS iPhone 6",
-      "udid": "2b8a95e94acd09d09760ca744aac57a53b553742",
-      "usePrebuiltWDA": "true",
-      "showXcodeLog": "true",
-      "newCommandTimeOut": 120
-    },
-    {
-      "url": "http://127.0.0.1:4723/wd/hub",
-      "platformName": "iOS",
-      "platformVersion": "10.2",
-      "deviceName": "CS iPhone 6-2",
-      "udid": "b312373d75a68adf71a0c518a45c2c62e69cb579",
+      "platformVersion": "10.3.1",
+      "deviceName": "iPhone 6",
+      "udid": "3390494B-3ED0-49AE-8F4B-52DE74889A66",
       "usePrebuiltWDA": "true",
       "showXcodeLog": "true",
       "newCommandTimeOut": 120

@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -221,13 +222,22 @@ public class UIElement {
 	}
 
 	public UIElement swipeUpSlow() throws Throwable {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 40; i++) {
 			if (this.isDisplayed())
 				break;
 			MobileDevice.swipeUpSlowly();
 		}
 		return this;
 	}
+
+    public UIElement swipeUpSlow(int noOfTimes) throws Throwable {
+        for (int i = 0; i < noOfTimes; i++) {
+            if (this.isDisplayed())
+                break;
+            MobileDevice.swipeUpSlowly();
+        }
+        return this;
+    }
 
 	public void touch() throws Throwable {
 		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(getElement()).perform();
@@ -262,5 +272,9 @@ public class UIElement {
 	}
 	public int getY() throws Throwable {
 		return getLocation().getY();
+	}
+
+	public void longPress(int seconds) throws Throwable {
+		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).longPress(getElement(), Duration.ofSeconds(seconds)).release().perform();
 	}
 }

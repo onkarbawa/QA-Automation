@@ -24,7 +24,7 @@ public class GetMyOrder extends AbstractScreen {
             if (deliveryNotAvailable.isDisplayed()){
                 Steps.tapButton("OK");
                 addNewAddressButton.tap();
-                addressSearchField.waitFor(5).sendKeys("4 Palo Alto Square, Palo Alto,California 94306", false);
+                addressSearchField.waitFor(5).sendKeys(address, false);
 
                 addressSuggestions.waitFor(5).tap();
             }

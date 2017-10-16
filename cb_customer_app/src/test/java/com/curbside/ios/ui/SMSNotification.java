@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.PlivoUtil;
 import com.curbside.automation.uifactory.MobileDevice;
@@ -21,38 +22,6 @@ import java.util.TimeZone;
 public class SMSNotification extends AbstractScreen {
 
 
-    String GMTDate;
-
-//    @And("^I should see sms notification has been received$")
-//    public void iShouldSeeSmsNotificationHasBeenReceived() throws Throwable {
-//        Thread.sleep(10000);
-////        String previousMessageCount = Properties.getVariable("previousMessageCount");
-////        int previousMsgCount = Integer.parseInt(previousMessageCount);
-////        System.out.println(previousMsgCount +"previous count");
-////        Assert.assertNotEquals(previousMsgCount,currentMessageCount(),"Place-Order message is not received");
-//
-//
-//        int expectedCount = Integer.parseInt(Properties.getVariable("previousMessageCount")) + 1;
-//        int actualCount = PlivoUtil.getInboundMsgCount("12815020029", GMTDate, false);
-//        Assert.assertEquals(expectedCount, actualCount, "User has not received the SMS yet");
-//        System.out.println("expectedCount-"+expectedCount + "actualCount-"+actualCount);
-//    }
-
-//    @And("^I get the previous message count$")
-//    public void iGetPreviousMessageCount() throws Throwable {
-//
-//        final Calendar cal = Calendar.getInstance();
-//        final Date currentTime = cal.getTime();
-////        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-//        GMTDate = sdf.format(currentTime);
-//
-//        Properties.setVariable("GMTDate", GMTDate);
-//        Properties.setVariable("previousMessageCount",
-//                String.valueOf(PlivoUtil.getInboundMsgCount("12815020029", GMTDate, false)));
-//    }
-
     @And("^I check there is no latest SMS from Curbisde$")
     public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
 
@@ -61,12 +30,28 @@ public class SMSNotification extends AbstractScreen {
                         "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3")));
 
     }
-    @Then("^I should receive welcome SMS from Curbside$")
+    @Then("^I should receive (?:welcome|order) SMS from Curbside$")
     public void iCheckLatestSMS() throws Throwable {
-        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
-        Assert.assertTrue(PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
-                "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3","12815020029", previousMsgCount),
-                "User has not received the SMS yet");
+        boolean msgReceived = false;
+        boolean status;
+
+        for (int i = 0; i < 2; i++) {
+            Thread.sleep(40000);
+            MobileDevice.getScreenshot(false);
+            Thread.sleep(40000);
+            MobileDevice.getSource();
+        }
         MobileDevice.getScreenshot(true);
+        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
+        for (int i = 0; i < 3; i++) {
+            Reporter.addStepLog("-------Checking for SMS (" + (i + 1) + "/3) time-------");
+            status = PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
+                    "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "12815020029", previousMsgCount);
+            if (status) {
+                msgReceived = true;
+                break;
+            }
+        }
+        Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
     }
 }

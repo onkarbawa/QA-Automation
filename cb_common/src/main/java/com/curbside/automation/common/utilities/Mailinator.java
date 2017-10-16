@@ -1,5 +1,6 @@
 package com.curbside.automation.common.utilities;
 
+import com.curbside.automation.uifactory.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ public class Mailinator {
     static By btnDelete = By.xpath(".//*[@id='status_bar']/div[5]/span[3]/i[2]");
     static By lblMailsSubject = By.xpath(".//*[@id='inboxpane']//div[@class = 'all_message-min_text all_message-min_text-3']");
 
-    public static void setChromeDriver(String userID) throws InterruptedException {
+    public static void setChromeDriver(String userID) throws Throwable {
         String baseURL = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + userID + "#/#inboxpane";
         System.setProperty("webdriver.chrome.driver", "../chromedriver");
         driver = new ChromeDriver();
@@ -27,9 +28,10 @@ public class Mailinator {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(baseURL);
         Thread.sleep(1000);
+        DriverFactory.getDriver().getPageSource();
     }
 
-    public static boolean isMailReceived(String userID, String subjectLine) throws InterruptedException {
+    public static boolean isMailReceived(String userID, String subjectLine) throws Throwable {
         boolean isMailPresent = false;
         setChromeDriver(userID);
 
@@ -38,12 +40,13 @@ public class Mailinator {
             if (mailSubject.getText().equalsIgnoreCase(subjectLine))
                 isMailPresent = true;
         }
+        DriverFactory.getDriver().getPageSource();
         deleteMails();
         driver.quit();
         return isMailPresent;
     }
 
-    public static void deleteMails() throws InterruptedException {
+    public static void deleteMails() throws Throwable {
 
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
         if (noOfCheckboxes >= 5)
@@ -56,12 +59,13 @@ public class Mailinator {
                 driver.findElement(By.xpath(checkbox)).click();
                 Thread.sleep(1000);
             }
+            DriverFactory.getDriver().getPageSource();
             driver.findElement(btnDelete).click();
             Thread.sleep(1000);
         }
     }
 
-    public static void deleteMails(String userID) throws InterruptedException {
+    public static void deleteMails(String userID) throws Throwable {
 
         setChromeDriver(userID);
         int noOfCheckboxes = driver.findElements(mailCheckboxes).size();
@@ -75,10 +79,12 @@ public class Mailinator {
                 driver.findElement(By.xpath(checkbox)).click();
                 Thread.sleep(1000);
             }
+            DriverFactory.getDriver().getPageSource();
             driver.findElement(btnDelete).click();
             Thread.sleep(1000);
             driver.navigate().refresh();
             noOfCheckboxes = driver.findElements(mailCheckboxes).size();
+            DriverFactory.getDriver().getPageSource();
         }
         driver.quit();
         Assert.assertEquals(noOfCheckboxes, 0, "Not able to clear the Inbox");

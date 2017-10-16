@@ -18,9 +18,7 @@ import org.openqa.selenium.WebElement;
 import com.curbside.automation.devicefactory.DeviceStore;
 
 import java.io.File;
-import java.io.IOException;
 
-import static com.curbside.automation.common.BaseTest.driver;
 
 @SuppressWarnings("rawtypes")
 public class AndroidDevice extends MobileDevice {
@@ -45,6 +43,16 @@ public class AndroidDevice extends MobileDevice {
 			((AndroidDriver)DriverFactory.getDriver()).startActivity(activity);
 		} catch (Exception e) {
 		}
+//		try {
+//			String a= d.currentActivity();
+//			String p= d.getCurrentPackage();
+//			if(p.startsWith(packageName) || a.endsWith(activityName))
+//				return;
+//			else
+//				d.startActivity(new Activity(packageName, activityName));
+//		} catch (Exception e) {
+//			d.startActivity(new Activity(packageName, activityName));
+//		}
 	}
 	
 	public static void startApplication() throws Throwable {

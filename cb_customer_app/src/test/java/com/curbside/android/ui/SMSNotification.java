@@ -1,7 +1,9 @@
 package com.curbside.android.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.common.utilities.PlivoUtil;
+import com.curbside.automation.uifactory.MobileDevice;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -19,21 +21,37 @@ public class SMSNotification {
 
     String GMTDate;
 
-    @And("^I check there is no latest SMS from Curbisde$")
-    public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
+    @And("^I check there is no latest SMS from Curbside$")
+    public void iCheckThereIsNoLatestSMSFromCurbside() throws Throwable {
 
-        Properties.setVariable("msgCount",
-                String.valueOf(PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
-                        "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3")));
-
+        int previousMsgCount = PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
+                "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3");
+        Reporter.addStepLog("Message count before SMS : " + previousMsgCount);
+        Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
     }
 
-    @Then("^I should receive welcome SMS from Curbside app$")
+    @Then("^I should receive (?:welcome|order) SMS from Curbside app$")
     public void iCheckLatestSMS() throws Throwable {
-        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
-        Assert.assertTrue(PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
-                "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3","12815020030", previousMsgCount),
-                "User has not received the SMS yet");
+        boolean msgReceived = false;
+        boolean status;
 
+        for (int i = 0; i < 2; i++) {
+            Thread.sleep(40000);
+            MobileDevice.getScreenshot(false);
+            Thread.sleep(40000);
+            MobileDevice.getSource();
+        }
+        MobileDevice.getScreenshot(true);
+        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
+        for (int i = 0; i < 3; i++) {
+            Reporter.addStepLog("-------Checking for SMS (" + (i + 1) + "/3) time-------");
+            status = PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
+                    "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "12815020030", previousMsgCount);
+            if (status) {
+                msgReceived = true;
+                break;
+            }
+        }
+        Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
     }
 }

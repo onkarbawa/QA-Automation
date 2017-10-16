@@ -83,16 +83,6 @@ public class DriverFactory {
 		if (givePermissions)
 			deviceInfo.put("autoGrantPermissions", true);
 		
-		try {
-			if(deviceInfo.getString("url").contains("127.0.0.1")
-					&& deviceInfo.getString("platformName").equalsIgnoreCase("android"))
-			{
-				deviceInfo.put("url", AppiumService.getUrl());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 		return getDriver(deviceInfo);
 	}
 
@@ -125,6 +115,14 @@ public class DriverFactory {
 			deviceInfo = new JSONObject(DeviceStore.getDevice().toString());
 		}
 
+		try {
+			if(deviceInfo.getString("url").contains("127.0.0.1")
+					/*&& deviceInfo.getString("platformName").equalsIgnoreCase("android") */)
+				deviceInfo.put("url", AppiumService.getUrl());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		URL url = new URL(deviceInfo.get("url").toString());
 
 		DesiredCapabilities caps = new DesiredCapabilities();
@@ -151,6 +149,8 @@ public class DriverFactory {
 		
 		switch (platform.toLowerCase()) {
 		case "ios":
+			caps.setCapability("preventWDAAttachments", true);
+			caps.setCapability("clearSystemFiles", true);
 			setDriver(new AppiumDriver(url, caps));
 			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;

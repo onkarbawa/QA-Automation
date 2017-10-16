@@ -21,18 +21,26 @@ import org.testng.Assert;
 
 public class Home extends AbstractScreen {
 
-	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther[3]/XCUIElementTypeStaticText[1]");
+	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther//XCUIElementTypeStaticText[@name='Near '] " +
+            "| //XCUIElementTypeCell/../XCUIElementTypeOther[5]//XCUIElementTypeStaticText[@name='Near ']");
 	UIElement btnCancel = UIElement.byName("Cancel");
 	UIElement iconSearch = UIElement.byName("Search");
 	UIElement btnSearchKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Search']");
 	UIElement txtProductSearch = UIElement.byClass("UISearchBarTextField");
 	UIElement txtSearchNearBy = UIElement.byClass("XCUIElementTypeSearchField");
 
-	UIElement lnkCurrentLocation = UIElement.byXpath("//XCUIElementTypeStaticText[@label='Near ']/following-sibling::XCUIElementTypeButton");
+	UIElement lnkCurrentLocation = UIElement.byXpath("//XCUIElementTypeStaticText[@label='Near ']/following-sibling::XCUIElementTypeButton" +
+            "| //XCUIElementTypeCell/../XCUIElementTypeOther[5]//XCUIElementTypeStaticText[@name='Near ']/following-sibling::XCUIElementTypeButton");
 	UIElement cityZipSearchTextBox = UIElement.byAccessibilityId("City, Zip or Address");
 
-	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage");
-	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText");
+	UIElement productImage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther" +
+            "/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage | " +
+            "//XCUIElementTypeCell[XCUIElementTypeButton[@name='Departments ￼']]/following-sibling::XCUIElementTypeCell[1]" +
+            "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeStaticText[2]");
+	UIElement productName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Popular']/parent::XCUIElementTypeOther/" +
+            "following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeStaticText" +
+            " | //XCUIElementTypeCell[XCUIElementTypeButton[@name='Departments ￼']]/following-sibling::XCUIElementTypeCell[1]" +
+            "//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeStaticText[2]");
 	UIElement recentLocation = UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Recent Locations')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Palo Alto')]]");
 	UIElement checkEnvironment = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[8]//XCUIElementTypeStaticText");
 
@@ -46,7 +54,8 @@ public class Home extends AbstractScreen {
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
 		try {
-			Assert.assertTrue(nearBy.isDisplayed());
+            System.out.println("Checking nearby---");
+            Assert.assertTrue(nearBy.isDisplayed());
 		} finally {
 			MobileDevice.getScreenshot(true);
 		}
@@ -101,6 +110,7 @@ public class Home extends AbstractScreen {
 		}
 
 		loadingIcon.waitForNot(30);
+		welcomeScreen.skipIntro.tapOptional();
 	}
 
 	@Given("I search for '(.*)' product")
@@ -138,6 +148,39 @@ public class Home extends AbstractScreen {
 		homeScreen.open();
 	}
 
+	@And("^I have selected Experimental test environment$")
+	public void iHaveSelectedExperimentalTestEnvironment() throws Throwable {
+		homeScreen.open();
+
+		String envAPIKey = "_#csndc#env#s";
+		String envSearchKey= "_#csndc#str#eon";
+		if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
+			return;
+
+		iconSearch.tap();
+		txtSearchNearBy.waitFor(5).sendKeys(envAPIKey, false);
+		btnSearchKeyboard.tap();
+
+		//btnCancel.tapOptional();
+		loadingIcon.waitForNot(30);
+
+		iconSearch.tap();
+		txtSearchNearBy.waitFor(5).sendKeys(envSearchKey, false);
+		btnSearchKeyboard.tap();
+		loadingIcon.waitForNot(30);
+
+		MobileDevice.getScreenshot(true);
+		DriverFactory.setEnvironment(envAPIKey);
+//		footerTabsScreen.tapMyAccount();
+//		Steps.tapButton("Help");
+//		checkEnvironment.scrollTo();
+		MobileDevice.getScreenshot(true);
+		DriverFactory.closeApp();
+		DriverFactory.launchApp();
+//		DriverFactory.getDriver(false);
+		homeScreen.open();
+	}
+
 	@Given("I select '(.*)' retailer partner on stores screen")
 	public void selectRetailerPartner(String retailerPartner) throws Throwable {
 		UIElement.byAccessibilityId(retailerPartner).scrollTo().tap();
@@ -154,8 +197,10 @@ public class Home extends AbstractScreen {
 
 	@Given("I select 1st product from list")
 	public void select1stProduct() throws Throwable {
-		UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage").tap();
-		productDetailsScreen.btnAddtoCart.waitFor(5);
+	    UIElement firstProduct = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeImage | //XCUIElementTypeCell[XCUIElementTypeButton[@name='Departments ￼']]/" +
+                "following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeStaticText[2]");
+        firstProduct.tap();
+	    productDetailsScreen.btnAddtoCart.waitFor(5);
 	}
 
 	@Given("I select ('.*') retailer and add any product to cart")

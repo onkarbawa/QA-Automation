@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.eo.Do;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -36,7 +37,7 @@ public class Steps {
 		// DeviceStore.releaseDevice();
 
 		DriverFactory.getDriver(false);
-		
+
 		if (!MobileDevice.getBundleId().equals(DriverFactory.getBundleId())) {
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false);
@@ -48,7 +49,7 @@ public class Steps {
 			else
 				DriverFactory.launchApp();
 		}
-		
+
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -78,7 +79,7 @@ public class Steps {
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable {
 		AppStore.setAppName(appName);
-		
+
 		DriverFactory.releaseDriver();
 		DeviceStore.releaseDevice();
 
@@ -86,14 +87,16 @@ public class Steps {
 		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+		/*if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
+				&& appName.equalsIgnoreCase("Curbside")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
-		}
+		}*/
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
+		acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
 			DriverFactory.releaseDriver();
@@ -113,8 +116,9 @@ public class Steps {
 			} catch (Exception e) {
 				// e.printStackTrace();
 			}
-		else
-			throw new NotImplementedException(
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+        } else
+            throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
 	}
 
@@ -139,9 +143,9 @@ public class Steps {
 			}catch (Exception e){}
 		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
-			// UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
-				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
+//				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
+				UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 				for (int i = 0; i < 10; i++) {
 					if (!e.isDisplayed())
 						break;
@@ -338,5 +342,38 @@ public class Steps {
 			}
 		}catch (Exception e){}
 		MobileDevice.getScreenshot(true);
+	}
+
+	@Given("^I accept remote notifications alert$")
+	public void acceptRemoteNotificationAlert() throws Throwable {
+		logger.info("Accept remote notification alert");
+
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			new UIElement(By.name("OK")).tap();
+		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+		} else
+			throw new NotImplementedException(
+					"Method declineNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
+	}
+
+	@And("^I turn '(.*)' '(.*)' through Control Center$")
+	public void iTurnThroughControlCenter(String ONorOFF, String button) throws Throwable {
+		int height = UIElement.byClass("UIAWindow").getSize().getHeight();
+		int width = UIElement.byClass("UIAWindow").getSize().getWidth();
+
+		MobileDevice.swipe(width-100, height-5, width-100,0);
+
+		//UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
+		UIElement toggleButton = UIElement.byAccessibilityId(button);
+
+		String currentButtonValue = toggleButton.getAttribute("value");
+		System.out.println("Current toggle value is " + currentButtonValue);
+
+		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+
+		if(ONorOFF.equalsIgnoreCase(currentButtonValue))
+			toggleButton.tap();
+
+		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
 	}
 }

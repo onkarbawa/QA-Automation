@@ -60,32 +60,35 @@ public class DeviceStore {
 
 		// TODO- Wait when no device is available
 
-		if (lockedDevice.get() != null)
-			return (JSONObject) lockedDevice.get();
-
 		JSONObject deviceToReturn;
 		System.out.println("There are "  + iOSDeviceList.size() + " ios devices available");
 		System.out.println("There are "  + androidDeviceList.size() + " android devices available");
 		
-		switch (lockedPlatform.get().toLowerCase()) {
-		case "ios":
-			deviceToReturn = (JSONObject) iOSDeviceList.get(0);
-			break;
-		case "android":
-			deviceToReturn = (JSONObject) androidDeviceList.get(0);
-			break;
-		default:
-			throw new IllegalArgumentException("No Such platform");
+		if (lockedDevice.get() != null)
+			deviceToReturn = (JSONObject) lockedDevice.get();
+		else
+		{
+			switch (lockedPlatform.get().toLowerCase()) {
+			case "ios":
+				deviceToReturn = (JSONObject) iOSDeviceList.get(0);
+				break;
+			case "android":
+				deviceToReturn = (JSONObject) androidDeviceList.get(0);
+				break;
+			default:
+				throw new IllegalArgumentException("No Such platform");
+			}
 		}
-
+		
+		lockDevice(deviceToReturn);
+		
 		if(appName != null)
 		{
 			JSONObject app= AppStore.getApp(appName);
 			for (String k : app.keySet())
 				deviceToReturn.put(k, app.getString(k));
 		}
-
-		lockDevice(deviceToReturn);
+		
 		return deviceToReturn;
 	}
 
@@ -168,9 +171,12 @@ public class DeviceStore {
 
 	public static synchronized void setAppInstalled(String udid, String appName) {
 		if(!appInstalled.containsKey(udid))
-			appInstalled.put(udid, Arrays.asList(new String[]{appName}));
-
-		if(!appInstalled.get(udid).contains(appName))
+		{
+			List<String> installedApps= new ArrayList<>();
+			installedApps.add(appName);
+			appInstalled.put(udid, installedApps);
+		}
+		else
 			appInstalled.get(udid).add(appName);
 	}
 

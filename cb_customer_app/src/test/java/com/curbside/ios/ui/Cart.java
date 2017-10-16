@@ -1,10 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.SwipeDirection;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -230,7 +227,8 @@ public class Cart extends AbstractScreen {
 
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
-		promoCodeDiscount.waitFor(15);
+		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
+		Thread.sleep(15000);
 		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
@@ -410,5 +408,11 @@ public class Cart extends AbstractScreen {
 				break;
 			}
 		}
+	}
+
+	@And("^I go to the shop screen to add any product$")
+	public void iGoToTheShopScreenToAddAnyProduct() throws Throwable {
+		Steps.tapButton("Done");
+		footerTabsScreen.tapShop();
 	}
 }

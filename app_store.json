@@ -4,14 +4,27 @@
       "name" : "Curbside",
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
+      "newCommandTimeOut": "120",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    },
+    {
+      "name" : "CAP",
+      "app": "../CAP.apk",
+      "appPackage": "com.curbside.nCap",
+      "appActivity": "com.curbside.nCap.activity.MainActivity"
     }
   ],
   "iOS" : [
     {
       "name" : "Curbside",
-      "app" : "../Curbside.ipa",
-      "bundleId": "com.curbside.curbside"
+      "app" : "../ios_simulator_builds/Curbside.app",
+      "bundleId": "com.curbside.curbside",
+      "newCommandTimeOut": "120"
+    },
+    {
+      "name" : "CAP",
+      "app" : "../ios_simulator_builds/CAP.app",
+      "bundleId": "com.curbside.CAP"
     }
   ]
 }
