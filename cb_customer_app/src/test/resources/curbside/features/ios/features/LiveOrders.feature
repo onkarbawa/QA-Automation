@@ -8,7 +8,7 @@ Feature: iOS- End to End flow verification
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114962
-  Scenario: Verify First time User place end to end order
+  Scenario: End to End - Signup EMail, Signup SMS and Pickup order EMail verifications
     Given I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
     And I select 'Food Item' product from list
     And I add 2 quantity of the product
@@ -16,13 +16,15 @@ Feature: iOS- End to End flow verification
     And I attempt to place an order
     And I tap on 'Create An Account' button
     And I signup for a new account
+    And I check there is no latest SMS from Curbisde
+    And I should receive welcome SMS from Curbside
     Then I should receive 'Welcome' Email from Curbside app
     And I add credit card
     And I add loyality card information
     And I go to Cart screen
     And I check there is no latest SMS from Curbisde
     When I attempt to place an order
-    Then I should receive welcome SMS from Curbside
+    Then I should receive order SMS from Curbside
     Then I should receive 'Progress' Email from Curbside app
 
 
