@@ -55,7 +55,7 @@ public class MobileDevice {
 
 	public static String getDeviceId(JSONObject device) throws Throwable {
 		if (device.getString("platformName").equalsIgnoreCase("ios"))
-			return device.getString("udid");
+			return device.getString("deviceName");
 		else
 			return device.getString("deviceName");
 	}
