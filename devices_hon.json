@@ -6,6 +6,7 @@
       "platformName": "iOS",
       "platformVersion": "10.3",
       "deviceName": "iPhone 6",
+      "udid": "3390494B-3ED0-49AE-8F4B-52DE74889A66",
       "usePrebuiltWDA": true,
       "showXcodeLog": true
     }
