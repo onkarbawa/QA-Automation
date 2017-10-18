@@ -10,7 +10,7 @@ Feature: Android- Cart Building
     And I sign in into application using username "cartbuilding@test.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And My cart is empty
-    And I select 'CVS' store and search for 'cvs products' product
+    And I select 'CVS' store and search for 'cvs health hand' product
     And I select 1 product from list
     And I add 2 quantity of the product
     And I am at 'CVS' store and search for 'Rhinocort Allergy spray, 120 Spray' product
