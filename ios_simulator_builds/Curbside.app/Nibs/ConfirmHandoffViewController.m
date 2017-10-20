@@ -9,7 +9,6 @@
 #import "ConfirmHandoffViewController.h"
 #import "AppSession.h"
 #import "CurbsideExtras.h"
-#import "CSUserSession.h"
 #import "StoreTableViewCell.h"
 #import "CSPickup.h"
 #import "CSStoreCache.h"
@@ -20,6 +19,8 @@
 #import "CSPickupsAPIRequester.h"
 #import <Analytics/SEGAnalytics.h>
 #import "CSSiteArrivalTracker.h"
+#import "CSTracker.h"
+#import "CSUserSite.h"
 #import "CSDebugLogger.h"
 #import "CSPickup+AD.h"
 #import "MyOrderViewController.h"
@@ -215,11 +216,33 @@ typedef NS_ENUM(NSInteger, TableViewSection) {
         if (success) {
             if (action == CSHandOffActionTypeAccept) {
                 NSString *storeID = _pickup.storeID;
-                NSString *newPickupID = _pickup.adTrackToken;
-
                 // Add the tracked store.
-                CSUserSession *session = [CSUserSession currentSession];
-                [session startTripToSiteWithIdentifier:storeID trackToken:newPickupID];
+                CSTracker *tracker = [CSTracker sharedTracker];
+                CSUserSite *trackedUserSite;
+                NSSet *trackedStoreRegions = tracker.trackedSites;
+                for (CSUserSite *aUserSite in trackedStoreRegions) {
+                    if ([aUserSite.siteIdentifier isEqualToString:storeID]) {
+                        trackedUserSite = aUserSite;
+                        break;
+                    }
+                }
+                
+                NSString *newPickupID = _pickup.adTrackToken;
+                NSArray *updatedTrackTokens;
+                if (trackedUserSite) {
+                    NSMutableArray *origTokens = [trackedUserSite.trackTokens mutableCopy];
+                    [origTokens addObject:newPickupID];
+                    updatedTrackTokens = origTokens;
+                } else {
+                    updatedTrackTokens = @[newPickupID];
+                }
+                trackedUserSite = [[CSUserSite alloc] initWithSiteIdentifier:storeID trackTokens:updatedTrackTokens];
+                
+                NSError *addError;
+                if ([[CSTracker sharedTracker] startTrackingUserSite:trackedUserSite error:&addError])
+                    DLog(@"Successfully added store region : %@",trackedUserSite);
+                else
+                    DLog(@"Error : Adding storeRegion failed. Error - %@",addError);
             }
         }
     }];
