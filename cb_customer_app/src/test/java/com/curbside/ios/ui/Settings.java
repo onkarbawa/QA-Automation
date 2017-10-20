@@ -9,6 +9,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -47,8 +48,15 @@ public class Settings extends AbstractScreen {
 
 	@And("^I set '(.*)' permission as '(.*)'$")
 	public void iSetAs(String appName, String newValue) throws Throwable {
-		location.waitFor(20);
-		location.tap();
+		MobileDevice.getSource(true);
+		MobileDevice.getScreenshot(true);
+		//location.waitFor(20);
+		try {
+			location.tap();
+		}catch (Exception e){
+			MobileDevice.getSource(true);
+			MobileDevice.getScreenshot(true);
+		}
 		new UIElement(By.name(newValue)).tap();
 		MobileDevice.getScreenshot(true);
 	}
@@ -70,7 +78,9 @@ public class Settings extends AbstractScreen {
 
 	@And("^I verify that Location 'Never' is set$")
 	public void iVerifyThatLocationNeverIsSet() throws Throwable {
+		Thread.sleep(3000);
 		commonSteps.iTapOnBackButton();
+		Thread.sleep(3000);
 		Steps.tapButton("Location");
 		if (locationAlwaysDescription.isDisplayed()){
 			Steps.tapButton("Never");

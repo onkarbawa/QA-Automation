@@ -22,6 +22,7 @@ public class Cart extends AbstractScreen {
 	UIElement creditCardCell = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Place Order')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeButton[2]");
 	UIElement extracareCardCell = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeButton[3]");
 	UIElement deleteItem = UIElement.byName("Delete");
+	UIElement discountedCell = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Check the quantities in your cart')]]");
 	UIElement productItem = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell");
 	UIElement productaQuantityButton = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
 
@@ -111,6 +112,17 @@ public class Cart extends AbstractScreen {
 				MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
+					try {
+						if(discountedCell.isDisplayed()){
+							totalItems = totalItems - 1;
+						}else {
+							MobileDevice.swipe(180,575,180,50);
+							Thread.sleep(5000);
+							if(discountedCell.isDisplayed()) {
+								totalItems = totalItems - 1;
+							}
+						}
+					}catch (Exception e){}
 					if (totalItems > 3) {
 						for (int j = 0; j < totalItems - 3; j++) {
 							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
@@ -169,8 +181,9 @@ public class Cart extends AbstractScreen {
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
 		Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
 		MobileDevice.getScreenshot(true);
-		settings.tap();
-	//	UIElement.byName("Notifications").waitFor(5).tap();
+		UIElement.byName("Cancel").tap();
+		//settings.tap();
+	//*	UIElement.byName("Notifications").waitFor(5).tap();
 	}
 
 	@Then("^I should see checkout screen$")
@@ -228,7 +241,7 @@ public class Cart extends AbstractScreen {
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
 		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
