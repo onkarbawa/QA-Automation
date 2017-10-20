@@ -2,7 +2,7 @@
 Feature: iOS- Mail verification flow
 
   Scenario: Setting test environment
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected test environment
     And I am not signed into application
 
