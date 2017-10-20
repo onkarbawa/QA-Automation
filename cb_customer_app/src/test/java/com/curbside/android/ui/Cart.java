@@ -223,6 +223,7 @@ public class Cart extends AbstractScreen {
             actualDeliveryCharges = Double.parseDouble(Properties.getVariable("Delivery Charges").split("\\$")[1]);
 
         addPromoCodeLink.scrollTo(SwipeDirection.UP);
+        addPromoCodeLink.swipeUpSlow(8);
         Double totalItemPrice = Double.parseDouble(lblItemsTotalPrice.getText().split("\\$")[1]);
         Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
         Double actualEstimatedTotal = Double.parseDouble(lblEstimatedTotal.getText().split("\\$")[1]);
