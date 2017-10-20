@@ -112,7 +112,6 @@ public class Cart extends AbstractScreen {
 				MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
-					System.out.println("-------------"+totalItems);
 					try {
 						if(discountedCell.isDisplayed()){
 							totalItems = totalItems - 1;
@@ -242,7 +241,7 @@ public class Cart extends AbstractScreen {
 	@When("^I verify discount is applied$")
 	public void iVerifyDiscountIsApplied() throws Throwable {
 		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 		Double actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimateTax = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
