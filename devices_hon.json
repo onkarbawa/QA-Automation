@@ -5,7 +5,7 @@
       "url": "http://127.0.0.1:4723/wd/hub",
       "platformName": "iOS",
       "platformVersion": "10.3",
-      "deviceName": "iPhone 6",
+      "deviceName": "iPhone 6 Hon",
       "usePrebuiltWDA": true,
       "showXcodeLog": true
     }
