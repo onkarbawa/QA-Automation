@@ -27,7 +27,7 @@ public class Login extends AbstractScreen {
 
 	@And("^I enter '(.*)' and '(.*)'$")
 	public void signin(String emailText, String passwordText) throws Throwable {
-		email.waitFor(2).sendKeys(emailText);
+		email.waitFor(10).sendKeys(emailText);
 		password.sendKeys(passwordText);
 		try {
 			Steps.tapButton("Sign In");
