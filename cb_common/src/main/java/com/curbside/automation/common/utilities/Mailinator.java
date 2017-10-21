@@ -28,7 +28,6 @@ public class Mailinator {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(baseURL);
         DriverFactory.getDriver().getPageSource();
-        Thread.sleep(1000);
     }
 
     public static boolean isMailReceived(String userID, String subjectLine) throws Throwable {
