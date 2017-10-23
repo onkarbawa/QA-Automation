@@ -25,9 +25,10 @@ public class SMSNotification extends AbstractScreen {
     @And("^I check there is no latest SMS from Curbisde$")
     public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
 
-        Properties.setVariable("msgCount",
-                String.valueOf(PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
-                        "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3")));
+        int previousMsgCount = PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
+                "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3");
+        Reporter.addStepLog("Message count before SMS : " + previousMsgCount);
+        Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
 
     }
     @Then("^I should receive (?:welcome|order) SMS from Curbside$")

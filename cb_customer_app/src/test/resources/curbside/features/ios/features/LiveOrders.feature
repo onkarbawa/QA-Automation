@@ -15,8 +15,8 @@ Feature: iOS- End to End flow verification
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on 'Create An Account' button
-    And I signup for a new account
     And I check there is no latest SMS from Curbisde
+    And I signup for a new account
     And I should receive welcome SMS from Curbside
     Then I should receive 'Welcome' Email from Curbside app
     And I add credit card
