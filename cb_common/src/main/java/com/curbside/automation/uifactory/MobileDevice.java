@@ -95,6 +95,7 @@ public class MobileDevice {
 					.scrollTo(SwipeDirection.UP).tap();
 			try {
 				new UIElement(By.name("Location")).tap();
+				MobileDevice.getScreenshot(true);
 				new UIElement(By.name(newValue)).tap();
 			} catch (Exception e) {
 			}
