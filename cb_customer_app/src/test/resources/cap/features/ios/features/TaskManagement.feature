@@ -2,7 +2,7 @@
 Feature: iOS- Task Management
 
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen
@@ -35,7 +35,7 @@ Feature: iOS- Task Management
     And I save Order Id of the product and named as 'transferOrder'
 
   Scenario Outline: Setting test environment for CAP
-    Given I launch CAP application for the first time
+    Given I launch CAP application
     And I have selected test environment for cap
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login
@@ -56,15 +56,16 @@ Feature: iOS- Task Management
     Given I launch Curbside application
     And I changed the order item
 
-  Scenario Outline: Setting test environment for CAP
-    Given I launch CAP application for the first time
-    And I have selected test environment for cap
-    And I am not signed into application cap
-    And I enter "<account>", "<username>" and "<password>" for login
-    And I tap on 'Login' button
-    Examples:
-      | account  | username             | password |
-      | curbside | qaautomation_initium | curbside |
+  Scenario: Setting test environment for CAP
+    Given I launch CAP application
+    And I accept CAP notifications alerts
+#    And I have selected test environment for cap
+#    And I am not signed into application cap
+#    And I enter "<account>", "<username>" and "<password>" for login
+#    And I tap on 'Login' button
+#    Examples:
+#      | account  | username             | password |
+#      | curbside | qaautomation_initium | curbside |
 
   Scenario: Complete Order after Substitution of product
     And I search for 'substitutionOrder' Order ID and claim it
@@ -109,15 +110,16 @@ Feature: iOS- Task Management
     Given I launch Curbside application
     And I decline the substitution order
 
-  Scenario Outline: Setting test environment for CAP
-    Given I launch CAP application for the first time
-    And I have selected test environment for cap
-    And I am not signed into application cap
-    And I enter "<account>", "<username>" and "<password>" for login
-    And I tap on 'Login' button
-    Examples:
-      | account  | username             | password |
-      | curbside | qaautomation_initium | curbside |
+  Scenario: Setting test environment for CAP
+    Given I launch CAP application
+    And I accept CAP notifications alerts
+#    And I have selected test environment for cap
+#    And I am not signed into application cap
+#    And I enter "<account>", "<username>" and "<password>" for login
+#    And I tap on 'Login' button
+#    Examples:
+#      | account  | username             | password |
+#      | curbside | qaautomation_initium | curbside |
 
   Scenario: Complete Order after Transfer of product
 #    And I tap on 'Close' button
