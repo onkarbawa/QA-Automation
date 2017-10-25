@@ -21,3 +21,4 @@ Feature: iOS- Product Catalog
   Scenario: Verify products variant
     Given I add product in cart
     Then I saw added product in cart
+    And My cart is empty

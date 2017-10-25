@@ -3,7 +3,6 @@ package com.curbside.ios.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -49,6 +48,10 @@ public class Cart extends AbstractScreen {
 
 	UIElement promoCodeAlert = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']");
 	UIElement promoCodeMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Promo Code']/following-sibling::XCUIElementTypeStaticText");
+
+	UIElement productQuantityButton = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[@name='Estimated Total']]/preceding-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
+    UIElement cartEmpty = UIElement.byName("0 Carts");
+    UIElement cartTitleText = UIElement.byXpath("//XCUIElementTypeNavigationBar/XCUIElementTypeStaticText");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -98,7 +101,7 @@ public class Cart extends AbstractScreen {
 		Assert.assertEquals(getAddedProductUI(), Properties.getVariable("productName"),"Added product not shown in the cart");
 	}
 
-    @Given("^My cart is empty$")
+   /* @Given("^My cart is empty$")
     public void myCartIsEmpty() throws Throwable {
 		footerTabsScreen.btnCart.waitFor(15).tap();
 		footerTabsScreen.tapCart();
@@ -187,7 +190,7 @@ public class Cart extends AbstractScreen {
 				}
 			}
 		}
-	}
+	}*/
 
 	@Then("^I should see checkout not allowed$")
 	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
@@ -446,4 +449,38 @@ public class Cart extends AbstractScreen {
 		selectedStores.tap();
 		placeOrder();
 	}
+
+    @Given("^My cart is empty$")
+    public void myCartIsEmpty() throws Throwable {
+        footerTabsScreen.btnCart.waitFor(15).tap();
+        footerTabsScreen.tapCart();
+        if (selectedStores.waitFor(4).isDisplayed()) {
+            MobileDevice.getScreenshot(true);
+            int totalStores = selectedStores.getCount();
+            for (int i = 0; i < totalStores; i++) {
+                selectedStores.tap();
+                MobileDevice.getScreenshot(true);
+                if (creditCardCell.isDisplayed() || cartTitleText.getText().contains("Cart")) {
+                    estimatedTotal.scrollTo(SwipeDirection.UP);
+                    MobileDevice.getScreenshot(true);
+                    while (productQuantityButton.isDisplayed() && i < 20) {
+                        productQuantityButton.tap();
+                        UIElement.byName("Remove").tap();
+                        UIElement.byName("Remove").waitForNot(8);
+                        try {
+                            UIElement.byName("OK").tap();
+                        } catch (Exception e) {
+                        }
+                        MobileDevice.getScreenshot(true);
+                        if (!productQuantityButton.isDisplayed() || cartEmpty.isDisplayed())
+                            return;
+                    }
+                }
+                if (cartEmpty.isDisplayed())
+                    return;
+            }
+        }else {
+            MobileDevice.getScreenshot(true);
+        }
+    }
 }
