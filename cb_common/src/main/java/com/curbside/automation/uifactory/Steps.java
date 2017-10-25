@@ -369,9 +369,9 @@ public class Steps {
 		String currentButtonValue = toggleButton.getAttribute("value");
 		System.out.println("Current toggle value is " + currentButtonValue);
 
-		currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+		currentButtonValue = currentButtonValue.equals("1") ? "ON" : "OFF";
 
-		if(ONorOFF.equalsIgnoreCase(currentButtonValue))
+		if(!ONorOFF.equalsIgnoreCase(currentButtonValue))
 			toggleButton.tap();
 
 		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
