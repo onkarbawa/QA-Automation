@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
@@ -15,69 +16,68 @@ import org.openqa.selenium.support.FindBy;
  */
 public class FacebookLogin extends AbstractScreen {
 
-	UIElement btnCurbsideSignInWithFacebook = UIElement.byPredicate("label CONTAINS 'Sign In with Facebook'");
+    UIElement btnCurbsideSignInWithFacebook = UIElement.byPredicate("label CONTAINS 'Sign In with Facebook'");
 
-	UIElement btnLoginUsingEmail = UIElement.byAccessibilityId("Log In with Phone Number or Email Address");
-	UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
+    UIElement btnLoginUsingEmail = UIElement.byAccessibilityId("Log In with Phone Number or Email Address");
+    UIElement btnLoginWithFacebookApp = UIElement.byAccessibilityId("Log In with the Facebook App");
 
-	UIElement txtInBrowserUsername = UIElement.byClass("XCUIElementTypeTextField");
-	UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
-	//UIElement btnInBrowserLogin = UIElement.byName("Log In");
-	UIElement btnInBrowserLogin = UIElement.byPredicate("type ='XCUIElementTypeButton' AND label == 'Log In'");
-	UIElement btnInBrowserContinueAs = UIElement.byPredicate("label CONTAINS 'Continue'");
+    UIElement txtInBrowserUsername = UIElement.byClass("XCUIElementTypeTextField");
+    UIElement txtInBrowserPassword = UIElement.byClass("XCUIElementTypeSecureTextField");
+    //UIElement btnInBrowserLogin = UIElement.byName("Log In");
+    UIElement btnInBrowserLogin = UIElement.byPredicate("type ='XCUIElementTypeButton' AND label == 'Log In'");
+    UIElement btnInBrowserContinueAs = UIElement.byPredicate("label CONTAINS 'Continue'");
 
-	UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
-	UIElement signWithFacebook = new UIElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeButton[4]']"));
-	UIElement enterFacebookEmail = new UIElement(By.xpath("//XCUIElementTypeTextField[@name='username-field']"));
-	UIElement enterPassword = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[@name='password-field']"));
-	UIElement loginButton = new UIElement(By.xpath("//XCUIElementTypeButton[@name='login-button']"));
+    UIElement facebookapp = new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='Log In with the Facebook App']"));
+    UIElement signWithFacebook = new UIElement(By.xpath("//XCUIElementTypeOther/XCUIElementTypeButton[4]']"));
+    UIElement enterFacebookEmail = new UIElement(By.xpath("//XCUIElementTypeTextField[@name='username-field']"));
+    UIElement enterPassword = new UIElement(By.xpath("//XCUIElementTypeSecureTextField[@name='password-field']"));
+    UIElement loginButton = new UIElement(By.xpath("//XCUIElementTypeButton[@name='login-button']"));
 
-	public FacebookLogin() {
-		// TODO Auto-generated constructor stub
-	}
+    public FacebookLogin() {
+        // TODO Auto-generated constructor stub
+    }
 
-	@And("^I login to facebook in browser with '(.*)' and '(.*)'$")
-	public void i_login_via_browswr(String emailId, String password) throws Throwable {
-		Properties.setVariable("facebookEmail", emailId);
-		Properties.setVariable("facebookPassword", password);
-		Steps.tapButton("Sign In");
-		try {
-			btnCurbsideSignInWithFacebook.tap();
-		} catch (Exception e) {
-		}
+    @And("^I login to facebook in browser with '(.*)' and '(.*)'$")
+    public void i_login_via_browswr(String emailId, String password) throws Throwable {
+        Properties.setVariable("facebookEmail", emailId);
+        Properties.setVariable("facebookPassword", password);
+        Steps.tapButton("Sign In");
+        btnCurbsideSignInWithFacebook.tap();
+        btnInBrowserContinueAs.waitFor(25);
 
-		try {
-			btnInBrowserContinueAs.waitFor(15);
-		} catch (Exception e) {
-		}
+        if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserPassword.isDisplayed())) {
+            Steps.tapButton("Done");
+            btnCurbsideSignInWithFacebook.waitFor(2).tap();
+            Thread.sleep(20000);
+        }
 
-		if (!btnInBrowserContinueAs.isDisplayed()) {
-			//	btnLoginUsingEmail.tap();
-			//	txtInBrowserUsername.clearText();
-			if (!txtInBrowserPassword.isDisplayed()) {
-				txtInBrowserUsername.clearText();
-				txtInBrowserUsername.sendKeys(emailId, false);
-				btnInBrowserLogin.tap();
-			}else {
-				txtInBrowserUsername.clearText();
-				txtInBrowserUsername.sendKeys(emailId, false);
-			}
-			try {
-				txtInBrowserPassword.sendKeys(password, false);
-			}catch (Exception e){
-				txtInBrowserPassword.sendKeys(password, false);
-			}
+        if (!btnInBrowserContinueAs.isDisplayed()) {
+            //	btnLoginUsingEmail.tap();
+            //	txtInBrowserUsername.clearText();
+            if (!txtInBrowserPassword.isDisplayed()) {
+                txtInBrowserUsername.clearText();
+                txtInBrowserUsername.sendKeys(emailId, false);
+                btnInBrowserLogin.tap();
+            } else {
+                txtInBrowserUsername.clearText();
+                txtInBrowserUsername.sendKeys(emailId, false);
+            }
+            try {
+                txtInBrowserPassword.sendKeys(password, false);
+            } catch (Exception e) {
+                txtInBrowserPassword.sendKeys(password, false);
+            }
+            MobileDevice.getScreenshot(true);
+            btnInBrowserLogin.tap();
+        }else {
+            Reporter.addStepLog("Continue as displayed");
+            MobileDevice.getScreenshot(true);
+        }
 
-			MobileDevice.getScreenshot(true);
-			btnInBrowserLogin.tap();
-		}
-		
-		btnInBrowserContinueAs.waitFor(20).tap();
-		btnInBrowserContinueAs.waitForNot(25);
+        btnInBrowserContinueAs.waitFor(20).tap();
+        btnInBrowserContinueAs.waitForNot(25);
 
-			// Give 2 seconds for curbside to login
-			btnCurbsideSignInWithFacebook.waitForNot(20);
-			MobileDevice.getScreenshot(true);
-
-		}
+        // Give 2 seconds for curbside to login
+        btnCurbsideSignInWithFacebook.waitForNot(20);
+    }
 }

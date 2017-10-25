@@ -15,8 +15,8 @@ Feature: iOS- End to End flow verification
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on 'Create An Account' button
-    And I signup for a new account
     And I check there is no latest SMS from Curbisde
+    And I signup for a new account
     And I should receive welcome SMS from Curbside
     Then I should receive 'Welcome' Email from Curbside app
     And I add credit card
@@ -48,8 +48,8 @@ Feature: iOS- End to End flow verification
   @iOS @C114964
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
-    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
-    And I select 'Food Item' product from list
+    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'frozen-product'
+    And I select 'Frozen food' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
