@@ -52,10 +52,10 @@ public class Tasks extends AbstractScreen {
                 orderNumber.tap();
                 break;
             }else {
-                if (orderNumber.isDisplayed()){
-                    orderNumber.tap();
-                    break;
-                }
+//                if (orderNumber.isDisplayed()){
+//                    orderNumber.tap();
+//                    break;
+//                }
                 MobileDevice.swipe(180,550,180,50);
 
             }

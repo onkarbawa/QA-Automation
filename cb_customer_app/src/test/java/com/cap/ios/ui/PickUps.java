@@ -19,7 +19,7 @@ public class PickUps extends AbstractScreen{
 
     @Then("^I should see '(.*)' orderId in PickUp tab with '(.*)'$")
     public void iShouldSeeOrderIdInPickUpTabWith(String orderAlias,String message) throws Throwable {
-        footerTabsScreen.tapPickUp();
+        footerTabsScreen.btnPickUp.waitFor(15).tap();
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
 //        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]").scrollTo().tap();

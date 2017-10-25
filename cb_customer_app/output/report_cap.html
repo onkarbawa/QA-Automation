@@ -46,7 +46,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Sep 13, 2017 09:57:02 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Oct 25, 2017 09:59:41 AM</span>
 				</a>
 			</li>
 			<li>
@@ -73,7 +73,6 @@
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
-						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -86,15 +85,9 @@
 					<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@loginValidation</a></li>
-					<li><a href='#'>@Android</a></li>
-					<li><a href='#'>@TCS01</a></li>
-					<li><a href='#'>@TCS02</a></li>
-					<li><a href='#'>@TCS03</a></li>
-					<li><a href='#'>@myAccount</a></li>
-					<li><a href='#'>@TCS05</a></li>
-					<li><a href='#'>@productDetail</a></li>
-					<li><a href='#'>@TCS06</a></li>
+					<li><a href='#'>@taskManagementAndSpecialSymbol</a></li>
+					<li><a href='#'>@iOS</a></li>
+					<li><a href='#'>@TCS13</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -142,10 +135,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>2</span> feature(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> feature(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -157,10 +150,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>6</span> scenario(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='75%'><span class='strong'>3</span> scenario(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>3</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -172,10 +165,10 @@
 					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='52.778%'><span class='strong'>19</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='97.297%'><span class='strong'>36</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='8.333%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='38.889%'>14</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='2.703%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -189,33 +182,29 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Android- Error Message</span>
-						<span class='test-time'>Sep 13, 2017 09:57:02 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-name'>iOS- Task Management and Special Symbol</span>
+						<span class='test-time'>Oct 25, 2017 09:59:41 AM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='scenario node' test-id='2' status='pass'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Android</span>
-	</div>
-	<span class='duration right label'>0h 0m 56s+232ms</span>
+	<span class='duration right label'>0h 4m 27s+625ms</span>
 	<div class='desc'>
 		<b>Scenario</b>
-		<span class="desc-text">Setting test environment for CAP</span>
+		<span class="desc-text">Setting up user account with credit card</span>
 	</div>
 	<ul class='steps'>
 		<li test-id='3' class='node given pass' status='pass'>
 			
 			<b>Given</b>
 			
-			<span class="bdd-step-name">Given I launch Cap application for the first time</span>
+			<span class="bdd-step-name">Given I launch Curbside application for the first time</span>
 			<ul class='screenshots right'>
-				<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_3064125530469297290.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_7459668863686002571.png"><i class='material-icons'>panorama</i></a></li>
 			</ul>
-				<div class='pre'>Platform: Android; Version: 6.0; Model: Nexus 5; ID: ZX1D63G4CS;</div>
-				<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_6629605987291191720.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_4167019527118923771.xml'>page source</a></div>
 				<div class='pre'>passed</div>
 			
 		</li>
@@ -223,372 +212,189 @@
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I accept location access alert</span>
-			<ul class='screenshots right'>
-				<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_7947561733622033351.png"><i class='material-icons'>panorama</i></a></li>
-			</ul>
-				<div class='pre'>passed</div>
-				<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_4248886938245751160.xml'>page source</a></div>
-			
-		</li>
-	</ul>
-</div>
-<div class='scenariooutline node' test-id='5' status='pass'>
-	<span class='duration right label'>0h 0m 29s+233ms</span>
-	<div class='desc'>
-		<b>ScenarioOutline</b>
-		<span class="desc-text">Validating valid username</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='6' class='node scenario pass' status='pass'>
-			<div class='category-list'>
-				<span class='category label white-text'>@TCS01</span>
-				<span class='category label white-text'>@Android</span>
-				<span class='category label white-text'>@loginValidation</span>
-			</div>
-			
-			<b>Scenario</b>
-			
-			<span class="bdd-step-name">Validating valid username</span>
-			
-				<ul class='steps'>
-					<li test-id='7' class='node given pass' status='pass'><b>Given</b>
-						<span class="bdd-step-name">Given I enter "curbside", "" and "curbside" for login</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='8' class='node when pass' status='pass'><b>When</b>
-						<span class="bdd-step-name">When I tap on 'Login' button</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='9' class='node then pass' status='pass'><b>Then</b>
-						<span class="bdd-step-name">Then I should see this "Please enter a valid username" on the screen</span>
-						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_591025275489134208.png"><i class='material-icons'>panorama</i></a></li>
-						</ul>
-							<div class='pre'>passed</div>
-							<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_4803534713381624411.xml'>page source</a></div>
-					</li>
-				</ul>
-		</li>
-	</ul>
-</div>
-<div class='scenariooutline node' test-id='10' status='pass'>
-	<span class='duration right label'>0h 0m 36s+973ms</span>
-	<div class='desc'>
-		<b>ScenarioOutline</b>
-		<span class="desc-text">Validating password should be at least 7 characters</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='11' class='node scenario pass' status='pass'>
-			<div class='category-list'>
-				<span class='category label white-text'>@Android</span>
-				<span class='category label white-text'>@TCS02</span>
-				<span class='category label white-text'>@loginValidation</span>
-			</div>
-			
-			<b>Scenario</b>
-			
-			<span class="bdd-step-name">Validating password should be at least 7 characters</span>
-			
-				<ul class='steps'>
-					<li test-id='12' class='node given pass' status='pass'><b>Given</b>
-						<span class="bdd-step-name">Given I enter "cvs", "1234567" and "123456" for login</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='13' class='node when pass' status='pass'><b>When</b>
-						<span class="bdd-step-name">When I tap on 'Login' button</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='14' class='node then pass' status='pass'><b>Then</b>
-						<span class="bdd-step-name">Then I should see this "Password should be at least 7 characters" on the screen</span>
-						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_1427903800599797554.png"><i class='material-icons'>panorama</i></a></li>
-						</ul>
-							<div class='pre'>passed</div>
-							<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_9170148764592291490.xml'>page source</a></div>
-					</li>
-				</ul>
-		</li>
-	</ul>
-</div>
-<div class='scenariooutline node' test-id='15' status='pass'>
-	<span class='duration right label'>0h 0m 38s+35ms</span>
-	<div class='desc'>
-		<b>ScenarioOutline</b>
-		<span class="desc-text">Validating EmpId should be of 7 digits</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='16' class='node scenario pass' status='pass'>
-			<div class='category-list'>
-				<span class='category label white-text'>@TCS03</span>
-				<span class='category label white-text'>@Android</span>
-				<span class='category label white-text'>@loginValidation</span>
-			</div>
-			
-			<b>Scenario</b>
-			
-			<span class="bdd-step-name">Validating EmpId should be of 7 digits</span>
-			
-				<ul class='steps'>
-					<li test-id='17' class='node given pass' status='pass'><b>Given</b>
-						<span class="bdd-step-name">Given I enter "cvs", "123456" and "curbside" for login</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='18' class='node when pass' status='pass'><b>When</b>
-						<span class="bdd-step-name">When I tap on 'Login' button</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='19' class='node then pass' status='pass'><b>Then</b>
-						<span class="bdd-step-name">Then I should see this "Please enter 7-digit EMP ID ex. 0001234" on the screen</span>
-						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_112089756816717761.png"><i class='material-icons'>panorama</i></a></li>
-						</ul>
-							<div class='pre'>passed</div>
-							<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_8564825762502505877.xml'>page source</a></div>
-					</li>
-				</ul>
-		</li>
-	</ul>
-</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='20'>
-					<div class='test-heading'>
-						<span class='test-name'>Android- My Account</span>
-						<span class='test-time'>Sep 13, 2017 09:59:44 PM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='scenario node' test-id='21' status='pass'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Android</span>
-	</div>
-	<span class='duration right label'>0h 0m 48s+587ms</span>
-	<div class='desc'>
-		<b>Scenario</b>
-		<span class="desc-text">Setting test environment for CAP</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='22' class='node given pass' status='pass'>
-			
-			<b>Given</b>
-			
-			<span class="bdd-step-name">Given I launch Cap application</span>
-			<ul class='screenshots right'>
-				<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_2197331692821902469.png"><i class='material-icons'>panorama</i></a></li>
-			</ul>
-				<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_8885452711701187036.xml'>page source</a></div>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='23' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And I have selected test environment for CAP</span>
-			<ul class='screenshots right'>
-				<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_2685752587558495257.png"><i class='material-icons'>panorama</i></a></li>
-			</ul>
-				<div class='pre'>passed</div>
-				<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_5067796815914799361.xml'>page source</a></div>
-			
-		</li>
-	</ul>
-</div>
-<div class='scenariooutline node' test-id='24' status='pass'>
-	<span class='duration right label'>0h 0m 45s+297ms</span>
-	<div class='desc'>
-		<b>ScenarioOutline</b>
-		<span class="desc-text">Setting test environment for CAP</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='25' class='node scenario pass' status='pass'>
-			<div class='category-list'>
-				<span class='category label white-text'>@Android</span>
-				<span class='category label white-text'>@myAccount</span>
-				<span class='category label white-text'>@TCS05</span>
-			</div>
-			
-			<b>Scenario</b>
-			
-			<span class="bdd-step-name">Setting test environment for CAP</span>
-			
-				<ul class='steps'>
-					<li test-id='26' class='node given pass' status='pass'><b>Given</b>
-						<span class="bdd-step-name">Given I enter "curbside", "qaautomation_initium" and "curbside" for login</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='27' class='node when pass' status='pass'><b>When</b>
-						<span class="bdd-step-name">When I tap on 'Login' button</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='28' class='node then pass' status='pass'><b>Then</b>
-						<span class="bdd-step-name">Then I should see Home screen of CAP</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='29' class='node when pass' status='pass'><b>When</b>
-						<span class="bdd-step-name">When I Sign out from CAP</span>
-							<div class='pre'>passed</div>
-					</li>
-					<li test-id='30' class='node then pass' status='pass'><b>Then</b>
-						<span class="bdd-step-name">Then I should see Login Screen of CAP</span>
-						<ul class='screenshots right'>
-							<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_7245976766669983639.png"><i class='material-icons'>panorama</i></a></li>
-						</ul>
-							<div class='pre'>passed</div>
-							<div class='pre'><a href='/var/folders/z_/4bk3wtp50954zwr6754vrkv40000gn/T/src_8131496809260997838.xml'>page source</a></div>
-					</li>
-				</ul>
-		</li>
-	</ul>
-</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='31'>
-					<div class='test-heading'>
-						<span class='test-name'>Android- Product Detail</span>
-						<span class='test-time'>Sep 13, 2017 10:01:18 PM</span>
-						<span class='test-status right fail'>fail</span>
-					</div>
-					<div class='test-content hide'>
-<div class='scenario node' test-id='32' status='fail'>
-	<span class='duration right label'>0h 3m 35s+397ms</span>
-	<div class='desc'>
-		<b>Scenario</b>
-		<span class="desc-text">Standard Orders</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='33' class='node given fail' status='fail'>
-			
-			<b>Given</b>
-			
-			<span class="bdd-step-name">Given I launch Curbside application for the first time</span>
-			<ul class='screenshots right'>
-				<li><a data-featherlight="image" href="/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/output/screenshots/scrn_6274592214481464674.png"><i class='material-icons'>panorama</i></a></li>
-			</ul>
-				<div class='pre'>Platform: Android; Version: 6.0; Model: Nexus 5; ID: ZX1D63G4CS;</div>
-				<div class='pre'><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: UiAUtomator shut down unexpectedly (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 166.90 seconds
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, deviceScreenSize=1080x1920, networkConnectionEnabled=true, noReset=false, warnings={}, newCommandTimeOut=120, databaseEnabled=false, deviceName=01b8c0300d5cc4c3, fullReset=false, platform=LINUX, deviceUDID=01b8c0300d5cc4c3, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, desired={app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, noReset=false, newCommandTimeOut=120, platformName=Android, deviceName=ZX1D63G4CS, fullReset=false}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Nexus 5, platformName=Android, deviceManufacturer=LGE}]
-Session ID: 31570d65-1a38-4a1a-835d-06a08d0d7a8d
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.getPageSource(RemoteWebDriver.java:519)
-	at com.curbside.automation.uifactory.MobileDevice.getSource(MobileDevice.java:200)
-	at com.curbside.automation.uifactory.MobileDevice.getSource(MobileDevice.java:191)
-	at com.curbside.automation.uifactory.MobileDevice.getScreenshot(MobileDevice.java:223)
-	at com.curbside.automation.uifactory.Steps.launchApplicationClean(Steps.java:105)
-	at ✽.Given I launch Curbside application for the first time(src/test/resources/cap/features/android/ProductDetail.feature:5)
-</pre></div>
-			
-		</li>
-		<li test-id='34' class='node and skip' status='skip'>
-			
-			<b>And</b>
-			
 			<span class="bdd-step-name">And I have selected Experimental test environment</span>
-				<div class='pre'>undefined</div>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_1494030865306015752.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_1347793286637711321.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_5338722762109266476.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4621766194616183509.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_195485279159860001.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_9145241743307253494.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_5057767234707988178.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_7315608363822358076.xml'>page source</a></div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='35' class='node and skip' status='skip'>
+		<li test-id='5' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I sign in into application using username "capautomation@test.com" and password "1234567890"</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I am not signed into application</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4675066552847657976.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_5507861786206878911.xml'>page source</a></div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='36' class='node then skip' status='skip'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then I should be logged in to the application</span>
-				<div class='pre'>undefined</div>
-			
-		</li>
-		<li test-id='37' class='node and skip' status='skip'>
+		<li test-id='6' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And My cart is empty</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I am on 'Gilroy' location 'Stores' Screen</span>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='38' class='node and skip' status='skip'>
+		<li test-id='7' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I add any product to cart in 'Gilroy' location</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I tap on 'My Account' icon in bottom menu</span>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='39' class='node and skip' status='skip'>
+		<li test-id='8' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I cancel 'all' orders</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I tap on 'Create one now' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_1594428944280427583.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8047592666328126525.xml'>page source</a></div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='40' class='node and skip' status='skip'>
+		<li test-id='9' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I tap on 'Cart' button</span>
-				<div class='pre'>skipped</div>
+			<span class="bdd-step-name">And I tap on 'Create An Account' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_5415499944671064974.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_1652313275721505135.xml'>page source</a></div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='41' class='node and skip' status='skip'>
+		<li test-id='10' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I tap on Place order button</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I signup for a new account</span>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='42' class='node and skip' status='skip'>
+		<li test-id='11' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I should see the successful placed order notification on the screen</span>
-				<div class='pre'>undefined</div>
-			
-		</li>
-		<li test-id='43' class='node and skip' status='skip'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And I save Order Id of the product and named as 'productDetail'</span>
-				<div class='pre'>undefined</div>
+			<span class="bdd-step-name">And I add credit card information</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4798427852499072221.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_1300868785967094894.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4100045670044104721.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_8647933156678112370.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_7891891857759051835.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_1137096203975838436.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_6321821911300266243.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8823608196464577639.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_7530305773574081153.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_7731018733168867.xml'>page source</a></div>
 			
 		</li>
 	</ul>
 </div>
-<div class='scenariooutline node' test-id='44' status='fail'>
-	<span class='duration right label'>0h 0m 0s+22ms</span>
+<div class='scenario node' test-id='12' status='pass'>
+	<span class='duration right label'>0h 1m 48s+609ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Order placed to check - Cancel pickup functionality</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='13' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'</span>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8761566037506009510.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_5235129646329947706.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='14' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='15' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I add 1 quantity of the product</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='16' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Cart' icon in bottom menu</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='17' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I attempt to place an order</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_1472797697959859562.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8264933827060036094.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_1426213841327570462.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='18' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on Order In Progress</span>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_981825967068765168.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='19' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I save Order Id of the product and named as 'cancelPickUpOrder'</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_7239673281031816480.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'>passed</div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_7738853083467387356.xml'>page source</a></div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenariooutline node' test-id='20' status='pass'>
+	<span class='duration right label'>0h 1m 47s+901ms</span>
 	<div class='desc'>
 		<b>ScenarioOutline</b>
 		<span class="desc-text">Setting test environment for CAP</span>
 	</div>
 	<ul class='steps'>
-		<li test-id='45' class='node scenario fail' status='fail'>
+		<li test-id='21' class='node scenario pass' status='pass'>
 			<div class='category-list'>
-				<span class='category label white-text'>@productDetail</span>
+				<span class='category label white-text'>@taskManagementAndSpecialSymbol</span>
 			</div>
 			
 			<b>Scenario</b>
@@ -596,111 +402,237 @@ Session ID: 31570d65-1a38-4a1a-835d-06a08d0d7a8d
 			<span class="bdd-step-name">Setting test environment for CAP</span>
 			
 				<ul class='steps'>
-					<li test-id='46' class='node given fail' status='fail'><b>Given</b>
-						<span class="bdd-step-name">Given I launch Cap application</span>
-							<div class='pre'><pre>org.openqa.selenium.NoSuchSessionException: A session is either terminated or not started (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 7 milliseconds
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, deviceScreenSize=1080x1920, networkConnectionEnabled=true, noReset=false, warnings={}, newCommandTimeOut=120, databaseEnabled=false, deviceName=01b8c0300d5cc4c3, fullReset=false, platform=LINUX, deviceUDID=01b8c0300d5cc4c3, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, desired={app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, noReset=false, newCommandTimeOut=120, platformName=Android, deviceName=ZX1D63G4CS, fullReset=false}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Nexus 5, platformName=Android, deviceManufacturer=LGE}]
-Session ID: 31570d65-1a38-4a1a-835d-06a08d0d7a8d
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:533)
-	at com.curbside.automation.uifactory.DriverFactory.releaseDriver(DriverFactory.java:96)
-	at com.curbside.automation.uifactory.Steps.launchApplication(Steps.java:42)
-	at ✽.Given I launch Cap application(src/test/resources/cap/features/android/ProductDetail.feature:18)
-</pre></div>
+					<li test-id='22' class='node given pass' status='pass'><b>Given</b>
+						<span class="bdd-step-name">Given I launch CAP application for the first time</span>
+						<ul class='screenshots right'>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2647644971174616954.png"><i class='material-icons'>panorama</i></a></li>
+						</ul>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_9200415960055670662.xml'>page source</a></div>
+							<div class='pre'>passed</div>
 					</li>
-					<li test-id='47' class='node and skip' status='skip'><b>And</b>
-						<span class="bdd-step-name">And I have selected test environment for CAP</span>
-							<div class='pre'>skipped</div>
+					<li test-id='23' class='node and pass' status='pass'><b>And</b>
+						<span class="bdd-step-name">And I have selected test environment for cap</span>
+						<ul class='screenshots right'>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_520200692002396028.png"><i class='material-icons'>panorama</i></a></li>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2591591184750584932.png"><i class='material-icons'>panorama</i></a></li>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_6429473536920000356.png"><i class='material-icons'>panorama</i></a></li>
+						</ul>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_4267036898428109047.xml'>page source</a></div>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_6712063805309293273.xml'>page source</a></div>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_3289422823536327131.xml'>page source</a></div>
+							<div class='pre'>passed</div>
 					</li>
-					<li test-id='48' class='node and skip' status='skip'><b>And</b>
-						<span class="bdd-step-name">And I am logged in to the CAP with "curbside", "qaautomation_initium" and "curbside"</span>
-							<div class='pre'>undefined</div>
+					<li test-id='24' class='node and pass' status='pass'><b>And</b>
+						<span class="bdd-step-name">And I am not signed into application cap</span>
+							<div class='pre'>passed</div>
+					</li>
+					<li test-id='25' class='node and pass' status='pass'><b>And</b>
+						<span class="bdd-step-name">And I enter "curbside", "qaautomation_initium" and "curbside" for login</span>
+							<div class='pre'>passed</div>
+					</li>
+					<li test-id='26' class='node and pass' status='pass'><b>And</b>
+						<span class="bdd-step-name">And I tap on 'Login' button</span>
+						<ul class='screenshots right'>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_8956084205772725772.png"><i class='material-icons'>panorama</i></a></li>
+							<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_8031195118800995861.png"><i class='material-icons'>panorama</i></a></li>
+						</ul>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_2337018422819880201.xml'>page source</a></div>
+							<div class='pre'>passed</div>
+							<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_8792665597802178666.xml'>page source</a></div>
 					</li>
 				</ul>
 		</li>
 	</ul>
 </div>
-<div class='scenario node' test-id='49' status='fail'>
+<div class='scenario node' test-id='27' status='fail'>
 	<div class='category-list'>
-		<span class='category label white-text'>@Android</span>
-		<span class='category label white-text'>@TCS06</span>
+		<span class='category label white-text'>@iOS</span>
+		<span class='category label white-text'>@TCS13</span>
 	</div>
-	<span class='duration right label'>0h 0m 0s+29ms</span>
+	<span class='duration right label'>0h 3m 42s+526ms</span>
 	<div class='desc'>
 		<b>Scenario</b>
-		<span class="desc-text">Detail screen</span>
+		<span class="desc-text">Verify cancelled pickup order (1 item, 1 quantities)</span>
 	</div>
 	<ul class='steps'>
-		<li test-id='50' class='node and pass' status='pass'>
+		<li test-id='28' class='node given pass' status='pass'>
 			
-			<b>And</b>
+			<b>Given</b>
 			
-			<span class="bdd-step-name">And I wait for Tasks to get loaded</span>
+			<span class="bdd-step-name">Given I search for 'cancelPickUpOrder' Order ID and claim it</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2450407644295926219.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_7690976274455467098.xml'>page source</a></div>
 				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='51' class='node and fail' status='fail'>
+		<li test-id='29' class='node and pass' status='pass'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And I search for Order Id named as 'productDetail' and 'tap' it</span>
-				<div class='pre'><pre>org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor.doExecute(AppiumCommandExecutor.java:101)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:162)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:453)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
-	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at com.curbside.automation.uifactory.UIElement.getElement(UIElement.java:41)
-	at com.curbside.automation.uifactory.UIElement.getText(UIElement.java:64)
-	at com.cap.android.ui.HomeCap.iSearchForOrderId(HomeCap.java:42)
-	at ✽.And I search for Order Id named as 'productDetail' and 'tap' it(src/test/resources/cap/features/android/ProductDetail.feature:28)
-</pre></div>
+			<span class="bdd-step-name">And I tap on 'Mine' tab</span>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='52' class='node when skip' status='skip'>
+		<li test-id='30' class='node and pass' status='pass'>
 			
-			<b>When</b>
+			<b>And</b>
 			
-			<span class="bdd-step-name">When I click on a product from the order list</span>
-				<div class='pre'>skipped</div>
+			<span class="bdd-step-name">And I search for 'cancelPickUpOrder' OrderID</span>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='53' class='node then skip' status='skip'>
+		<li test-id='31' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Got It' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_7357425846621126486.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_140878528019081089.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='32' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I scan Barcodes and tap on 'Show Barcodes' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4666523593540261627.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_657883804491577115.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_3726456860339714876.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_9134686309154272002.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='33' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Enter Receipt Total' and enter receipt total price</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_474795837818507692.png"><i class='material-icons'>panorama</i></a></li>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2682068683830132178.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_1912023882493326631.xml'>page source</a></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_1891360742484625998.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='34' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Take Picture' button and 'Use Photo' to scan barcode</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='35' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Go To Pack' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4964676760423791625.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_2508034014299582030.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='36' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Finish' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_6604595344114861066.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_4758703443771988252.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='37' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I ckecked order is ready</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='38' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Pickups' icon in bottom menu for cap</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='39' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I search for 'cancelPickUpOrder' OrderID</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='40' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Cancel This Pickup' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_4308629253933270726.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_5975064720031135684.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='41' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Cancel Pickup' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_5033188966866646425.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_71736223413020457.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='42' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And I tap on 'Cancel - Customer No Show' button</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_2814363598231007491.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_9197466743965729518.xml'>page source</a></div>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='43' class='node then fail' status='fail'>
 			
 			<b>Then</b>
 			
-			<span class="bdd-step-name">Then I should see product details on the screen</span>
-				<div class='pre'>skipped</div>
+			<span class="bdd-step-name">Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'</span>
+			<ul class='screenshots right'>
+				<li><a data-featherlight="image" href="/Users/tft/Documents/Onkar/QA-Automation/cb_customer_app/output/screenshots/scrn_9136740424919301225.png"><i class='material-icons'>panorama</i></a></li>
+			</ul>
+				<div class='pre'><pre>java.lang.AssertionError: PickUp is not Cancelled expected [Cancelled Pickup] but found [null]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:130)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at com.cap.ios.ui.Tasks.iShouldSeeOrderIdInTaskUnder(Tasks.java:142)
+	at ✽.Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'(src/test/resources/cap/features/ios/features/TaskManagementAndSpecialSymbol.feature:61)
+</pre></div>
+				<div class='pre'><a href='/var/folders/s_/tb2d0lgj0zs20zcqm7zkzbk80000gn/T/src_6815987340716632900.xml'>page source</a></div>
 			
 		</li>
 	</ul>
@@ -759,64 +691,15 @@ Driver info: driver.version: AndroidDriver
 				
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@loginValidation</span>
+						<span class='category-name'>@taskManagementAndSpecialSymbol</span>
 						<span class='category-status right'>
-							<span class='label pass'>4</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 4</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 09:57:02 PM</td>
-										<td class='linked' test-id='1'>Android- Error Message</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:57:59 PM</td>
-										<td class='linked' test-id='6'>Android- Error Message.Validating valid username.Validating valid username</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:58:28 PM</td>
-										<td class='linked' test-id='11'>Android- Error Message.Validating password should be at least 7 characters.Validating password should be at least 7 characters</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:59:05 PM</td>
-										<td class='linked' test-id='16'>Android- Error Message.Validating EmpId should be of 7 digits.Validating EmpId should be of 7 digits</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@Android</span>
-						<span class='category-status right'>
-							<span class='label pass'>6</span>
+							<span class='label pass'>1</span>
 							<span class='label fail'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 6</span>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
 							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
@@ -832,253 +715,14 @@ Driver info: driver.version: AndroidDriver
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 13, 2017 09:57:02 PM</td>
-										<td class='linked' test-id='2'>Android- Error Message.Setting test environment for CAP</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:57:59 PM</td>
-										<td class='linked' test-id='6'>Android- Error Message.Validating valid username.Validating valid username</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:58:28 PM</td>
-										<td class='linked' test-id='11'>Android- Error Message.Validating password should be at least 7 characters.Validating password should be at least 7 characters</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:59:05 PM</td>
-										<td class='linked' test-id='16'>Android- Error Message.Validating EmpId should be of 7 digits.Validating EmpId should be of 7 digits</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 09:59:44 PM</td>
-										<td class='linked' test-id='21'>Android- My Account.Setting test environment for CAP</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 10:00:33 PM</td>
-										<td class='linked' test-id='25'>Android- My Account.Setting test environment for CAP.Setting test environment for CAP</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 10:04:54 PM</td>
-										<td class='linked' test-id='49'>Android- Product Detail.Detail screen</td>
-										<td><span class='test-status fail'>fail</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@TCS01</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 09:57:59 PM</td>
-										<td class='linked' test-id='6'>Android- Error Message.Validating valid username.Validating valid username</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@TCS02</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 09:58:28 PM</td>
-										<td class='linked' test-id='11'>Android- Error Message.Validating password should be at least 7 characters.Validating password should be at least 7 characters</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@TCS03</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 09:59:05 PM</td>
-										<td class='linked' test-id='16'>Android- Error Message.Validating EmpId should be of 7 digits.Validating EmpId should be of 7 digits</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@myAccount</span>
-						<span class='category-status right'>
-							<span class='label pass'>2</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 2</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 09:59:44 PM</td>
-										<td class='linked' test-id='20'>Android- My Account</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Sep 13, 2017 10:00:33 PM</td>
-										<td class='linked' test-id='25'>Android- My Account.Setting test environment for CAP.Setting test environment for CAP</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@TCS05</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 10:00:33 PM</td>
-										<td class='linked' test-id='25'>Android- My Account.Setting test environment for CAP.Setting test environment for CAP</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@productDetail</span>
-						<span class='category-status right'>
-							<span class='label fail'>2</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							
-							<span class='label red lighten-1 white-text'>Failed: 2</span>
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sep 13, 2017 10:01:18 PM</td>
-										<td class='linked' test-id='31'>Android- Product Detail</td>
+										<td>Oct 25, 2017 09:59:41 AM</td>
+										<td class='linked' test-id='1'>iOS- Task Management and Special Symbol</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
 									<tr>
-										<td>Sep 13, 2017 10:04:54 PM</td>
-										<td class='linked' test-id='45'>Android- Product Detail.Setting test environment for CAP.Setting test environment for CAP</td>
-										<td><span class='test-status fail'>fail</span></td>
+										<td>Oct 25, 2017 10:05:58 AM</td>
+										<td class='linked' test-id='21'>iOS- Task Management and Special Symbol.Setting test environment for CAP.Setting test environment for CAP</td>
+										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -1087,7 +731,7 @@ Driver info: driver.version: AndroidDriver
 				</li>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@TCS06</span>
+						<span class='category-name'>@iOS</span>
 						<span class='category-status right'>
 							<span class='label fail'>1</span>
 						</span>
@@ -1110,8 +754,42 @@ Driver info: driver.version: AndroidDriver
 								</thead>
 								<tbody>
 									<tr>
-										<td>Sep 13, 2017 10:04:54 PM</td>
-										<td class='linked' test-id='49'>Android- Product Detail.Detail screen</td>
+										<td>Oct 25, 2017 10:07:45 AM</td>
+										<td class='linked' test-id='27'>iOS- Task Management and Special Symbol.Verify cancelled pickup order (1 item, 1 quantities)</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@TCS13</span>
+						<span class='category-status right'>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Oct 25, 2017 10:07:45 AM</td>
+										<td class='linked' test-id='27'>iOS- Task Management and Special Symbol.Verify cancelled pickup order (1 item, 1 quantities)</td>
 										<td><span class='test-status fail'>fail</span></td>
 									</tr>
 								</tbody>
@@ -1158,7 +836,7 @@ Driver info: driver.version: AndroidDriver
 
                         <li class='exception displayed active'>
                             <div class='exception-heading'>
-                                <span class='exception-name'>org.openqa.selenium.WebDriverException</span>
+                                <span class='exception-name'>java.lang.AssertionError</span>
                                 <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
                             </div>
                             <div class='exception-content hide'>
@@ -1173,110 +851,16 @@ Driver info: driver.version: AndroidDriver
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Sep 13, 2017 10:01:18 PM</td>
-                                                        <td class='linked' test-id='33'>Android- Product Detail.Standard Orders.Given I launch Curbside application for the first time</td>
-                                                        <td><pre><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: UiAUtomator shut down unexpectedly (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 166.90 seconds
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, deviceScreenSize=1080x1920, networkConnectionEnabled=true, noReset=false, warnings={}, newCommandTimeOut=120, databaseEnabled=false, deviceName=01b8c0300d5cc4c3, fullReset=false, platform=LINUX, deviceUDID=01b8c0300d5cc4c3, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, desired={app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, noReset=false, newCommandTimeOut=120, platformName=Android, deviceName=ZX1D63G4CS, fullReset=false}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Nexus 5, platformName=Android, deviceManufacturer=LGE}]
-Session ID: 31570d65-1a38-4a1a-835d-06a08d0d7a8d
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.getPageSource(RemoteWebDriver.java:519)
-	at com.curbside.automation.uifactory.MobileDevice.getSource(MobileDevice.java:200)
-	at com.curbside.automation.uifactory.MobileDevice.getSource(MobileDevice.java:191)
-	at com.curbside.automation.uifactory.MobileDevice.getScreenshot(MobileDevice.java:223)
-	at com.curbside.automation.uifactory.Steps.launchApplicationClean(Steps.java:105)
-	at ✽.Given I launch Curbside application for the first time(src/test/resources/cap/features/android/ProductDetail.feature:5)
-</pre></pre></td>
-                                                    </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </li>
-                        <li class='exception displayed active'>
-                            <div class='exception-heading'>
-                                <span class='exception-name'>org.openqa.selenium.NoSuchSessionException</span>
-                                <span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
-                            </div>
-                            <div class='exception-content hide'>
-                                <div class='exception-tests'>
-                                    <table class='bordered table-results'>
-                                        <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>TestName</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                                    <tr>
-                                                        <td>Sep 13, 2017 10:04:54 PM</td>
-                                                        <td class='linked' test-id='46'>Android- Product Detail.Setting test environment for CAP.Setting test environment for CAP.Given I launch Cap application</td>
-                                                        <td><pre><pre>org.openqa.selenium.NoSuchSessionException: A session is either terminated or not started (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 7 milliseconds
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, deviceScreenSize=1080x1920, networkConnectionEnabled=true, noReset=false, warnings={}, newCommandTimeOut=120, databaseEnabled=false, deviceName=01b8c0300d5cc4c3, fullReset=false, platform=LINUX, deviceUDID=01b8c0300d5cc4c3, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, desired={app=/Users/tft/Documents/hitesh-repo/QA-Automation/cb_customer_app/../Curbside.apk, appPackage=com.curbside.nCurbside, appActivity=com.curbside.nCurbside.app.help.SplashScreenActivity, noReset=false, newCommandTimeOut=120, platformName=Android, deviceName=ZX1D63G4CS, fullReset=false}, platformVersion=6.0, webStorageEnabled=false, locationContextEnabled=false, takesScreenshot=true, javascriptEnabled=true, deviceModel=Nexus 5, platformName=Android, deviceManufacturer=LGE}]
-Session ID: 31570d65-1a38-4a1a-835d-06a08d0d7a8d
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:46)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:533)
-	at com.curbside.automation.uifactory.DriverFactory.releaseDriver(DriverFactory.java:96)
-	at com.curbside.automation.uifactory.Steps.launchApplication(Steps.java:42)
-	at ✽.Given I launch Cap application(src/test/resources/cap/features/android/ProductDetail.feature:18)
-</pre></pre></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sep 13, 2017 10:04:54 PM</td>
-                                                        <td class='linked' test-id='51'>Android- Product Detail.Detail screen.And I search for Order Id named as 'productDetail' and 'tap' it</td>
-                                                        <td><pre><pre>org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'tfts-MacBook-Air-2.local', ip: '2405:204:3018:2ee2:1c65:326:e72b:4588', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_121'
-Driver info: driver.version: AndroidDriver
-	at io.appium.java_client.remote.AppiumCommandExecutor.doExecute(AppiumCommandExecutor.java:101)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:162)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:453)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
-	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-	at org.openqa.selenium.By$ById.findElement(By.java:218)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at com.curbside.automation.uifactory.UIElement.getElement(UIElement.java:41)
-	at com.curbside.automation.uifactory.UIElement.getText(UIElement.java:64)
-	at com.cap.android.ui.HomeCap.iSearchForOrderId(HomeCap.java:42)
-	at ✽.And I search for Order Id named as 'productDetail' and 'tap' it(src/test/resources/cap/features/android/ProductDetail.feature:28)
+                                                        <td>Oct 25, 2017 10:10:20 AM</td>
+                                                        <td class='linked' test-id='43'>iOS- Task Management and Special Symbol.Verify cancelled pickup order (1 item, 1 quantities).Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'</td>
+                                                        <td><pre><pre>java.lang.AssertionError: PickUp is not Cancelled expected [Cancelled Pickup] but found [null]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:130)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at com.cap.ios.ui.Tasks.iShouldSeeOrderIdInTaskUnder(Tasks.java:142)
+	at ✽.Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'(src/test/resources/cap/features/ios/features/TaskManagementAndSpecialSymbol.feature:61)
 </pre></pre></td>
                                                     </tr>
                                         </tbody>
@@ -1303,37 +887,37 @@ Driver info: driver.version: AndroidDriver
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Features
-					<div class='panel-lead'>3</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Scenarios
-					<div class='panel-lead'>9</div>
+					<div class='panel-lead'>4</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>36</div>
+					<div class='panel-lead'>37</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Sep 13, 2017 09:57:02 PM</div>
+					<div class='panel-lead'>Oct 25, 2017 09:59:41 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Sep 13, 2017 10:04:54 PM</div>
+			 		<div class='panel-lead'>Oct 25, 2017 10:11:28 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>471,791ms</div>
+					<div class='panel-lead'>706,990ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -1348,55 +932,19 @@ Driver info: driver.version: AndroidDriver
 							<th>Others</th>
 						</tr>
 						<tr>
-							<td>@loginValidation</td>
-							<td>4</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@Android</td>
-							<td>6</td>
+							<td>@taskManagementAndSpecialSymbol</td>
+							<td>1</td>
 							<td>1</td>
 							<td>0</td>
 						</tr>
 						<tr>
-							<td>@TCS01</td>
+							<td>@iOS</td>
+							<td>0</td>
 							<td>1</td>
 							<td>0</td>
-							<td>0</td>
 						</tr>
 						<tr>
-							<td>@TCS02</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@TCS03</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@myAccount</td>
-							<td>2</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@TCS05</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@productDetail</td>
-							<td>0</td>
-							<td>2</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@TCS06</td>
+							<td>@TCS13</td>
 							<td>0</td>
 							<td>1</td>
 							<td>0</td>
@@ -1414,7 +962,7 @@ Driver info: driver.version: AndroidDriver
 
 		<script>
 			var statusGroup = {
-				passParent: 2,
+				passParent: 0,
 				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
@@ -1422,23 +970,23 @@ Driver info: driver.version: AndroidDriver
 				skipParent: 0,
 				exceptionsParent: 1,
 				
-				passChild: 6,
-				failChild: 3,
+				passChild: 3,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 3,
+				exceptionsChild: 1,
 				
-				passGrandChild: 19,
-				failGrandChild: 3,
+				passGrandChild: 36,
+				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 14,
+				skipGrandChild: 0,
 				infoGrandChild: 0,
-				exceptionsGrandChild: 17,
+				exceptionsGrandChild: 1,
 			};
 		</script>
 		
