@@ -33,7 +33,9 @@ public class StoreDetails {
     public void iSelectNoProductFromList(int number) throws Throwable {
         UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
                 "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
-                "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | //XCUIElementTypeOther[" +
+                "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | //XCUIElementTypeCell" +
+                "[XCUIElementTypeButton[@name='Refine']]/following-sibling::XCUIElementTypeCell[" + number +"]" +
+                " | //XCUIElementTypeOther[" +
                 "XCUIElementTypeSearchField[@name='Search All Stores']]/../../../../following-sibling::" +
                 "XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeCell[" + number +"]");
         element.waitFor(10).tap();

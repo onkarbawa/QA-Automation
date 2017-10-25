@@ -18,7 +18,7 @@ Feature: iOS- Application Launch 1
     And I saw email on MyAccount page
     And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS Health Indoor/Outdoor Allergy Relief' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order

@@ -123,7 +123,19 @@ public class Cart extends AbstractScreen {
 							}
 						}
 					}catch (Exception e){}
-					if (totalItems > 3) {
+					if (totalItems == 4) {
+						for (int j = 0; j < totalItems - 2; j++) {
+							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
+							UIElement.byName("Remove").tap();
+							UIElement.byName("Remove").waitForNot(8);
+							try {
+								UIElement.byName("OK").tap();
+							}catch (Exception e){}
+							MobileDevice.getScreenshot(true);
+							MobileDevice.getSource(true);
+						}
+					}
+					else if (totalItems > 3) {
 						for (int j = 0; j < totalItems - 3; j++) {
 							productaQuantityButton.scrollTo(SwipeDirection.UP).tap();
 							UIElement.byName("Remove").tap();
@@ -203,7 +215,7 @@ public class Cart extends AbstractScreen {
 	public double calculateProductTotalItemPrice() throws Throwable {
 		int totalItems = productItem.getCount();
         double totalPrice = 0;
-		for (int k = 0; k < totalItems-3; k++) {
+		for (int k = 0; k < totalItems-2; k++) {
 			String singleItemPrice = UIElement.byXpath("//XCUIElementTypeTable//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'item')]]/following-sibling::XCUIElementTypeCell[" + (k+1) + "]//XCUIElementTypeStaticText[3]").getText();
 			Double itemPrice = Double.parseDouble(singleItemPrice.split("\\$")[1]);
             totalPrice = totalPrice + itemPrice;
@@ -427,5 +439,11 @@ public class Cart extends AbstractScreen {
 	public void iGoToTheShopScreenToAddAnyProduct() throws Throwable {
 		Steps.tapButton("Done");
 		footerTabsScreen.tapShop();
+	}
+
+	@And("^I go for place order$")
+	public void iGoForPlaceOrder() throws Throwable {
+		selectedStores.tap();
+		placeOrder();
 	}
 }
