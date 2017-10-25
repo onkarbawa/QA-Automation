@@ -46,7 +46,7 @@ public class HomeCap extends AbstractScreenCap {
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
         footerTabsCap.btnTasks.tap();
         if (Properties.getVariable(orderIdAlias) == null)
-            Assert.fail("Not able to store the order ID");
+            Assert.fail("Not able to place the order from Curbside app");
 
         int totalTasks;
         int startingTask = 0;

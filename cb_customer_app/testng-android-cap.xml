@@ -14,14 +14,14 @@
             <class name="com.cap.android.runners.MyAccount"/>
         </classes>
     </test>
-    <test name="ProductDetailAndTaskManagement">
-        <classes>
-            <class name="com.cap.android.runners.ProductDetailAndTaskManagement"/>
-        </classes>
-    </test>
     <test name="Map">
         <classes>
             <class name="com.cap.android.runners.Map"/>
+        </classes>
+    </test>
+    <test name="ProductDetailAndTaskManagement">
+        <classes>
+            <class name="com.cap.android.runners.ProductDetailAndTaskManagement"/>
         </classes>
     </test>
 </suite>
