@@ -23,6 +23,7 @@ public class AppleDevice extends MobileDevice {
 	static UIElement back= UIElement.byName("Back");
 	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
 	static UIElement settingTitle = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Settings']");
+	static UIElement btnAllow = UIElement.byName("Allow");
 	
 	public AppleDevice() {
 	}
@@ -63,6 +64,9 @@ public class AppleDevice extends MobileDevice {
 				}
 			}
 		}
+
+		btnAllow.tapOptional();
+
 		settingGeneral.scrollTo().tap();;
 		settingReset.scrollTo().tap();
 		settingResetLocalAndPrivacy.tap();

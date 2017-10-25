@@ -121,7 +121,13 @@ public class UIElement {
 	}
 	
 	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
-		getElement().sendKeys(keySequence);
+		try{
+			getElement().sendKeys(keySequence);
+		}
+		catch (Exception e){
+			this.clearText();
+			getElement().sendKeys(keySequence);
+		}
 		
 		if (hideKeyboardAfterTyping)
 			MobileDevice.hideKeyboard();
