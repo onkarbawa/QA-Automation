@@ -24,8 +24,11 @@ public class Mailinator {
         String baseURL = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + userID + "#/#inboxpane";
         System.setProperty("webdriver.chrome.driver", "../chromedriver");
         driver = new ChromeDriver();
+        DriverFactory.getDriver().getPageSource();
         driver.manage().window().maximize();
+        DriverFactory.getDriver().getPageSource();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        DriverFactory.getDriver().getPageSource();
         driver.get(baseURL);
         DriverFactory.getDriver().getPageSource();
     }
