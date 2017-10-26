@@ -25,6 +25,11 @@
       "name" : "CAP",
       "app" : "../ios_simulator_builds/CAP.app",
       "bundleId": "com.curbside.CAP"
+    },
+    {
+      "name" : "CAP-CVS",
+      "app" : "../ios_simulator_builds/CAP-CVS/CAP.app",
+      "bundleId": "com.curbside.CAP"
     }
   ]
 }

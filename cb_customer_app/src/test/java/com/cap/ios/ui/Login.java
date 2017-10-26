@@ -77,7 +77,8 @@ public class Login extends AbstractScreen{
         loginScreen.acceptNotificationAlert();
 
         String envAPIKey = "cvs_9945";
-        if(footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(".s EE (cvs_9945)"))
+        if(footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(".s EE (cvs_9945)") ||
+                stagingVariable.getText().contains(".s SE (cvs_9945)"))
             return;
 //        if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
 //            return;
