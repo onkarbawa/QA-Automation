@@ -16,7 +16,7 @@
     <!--</test>-->
     <test name="iOS- Offline Error-Message">
         <classes>
-            <class name="com.cap.ios.runners.OfflineErrorMessageTest"/>
+            <class name="com.capcvs.ios.runners.OfflineErrorMessageTest"/>
         </classes>
     </test>
 </suite>
