@@ -258,11 +258,10 @@ public class Steps {
 		currentButtonValue = toggleButton.getAttribute("value");
 		System.out.println("Current toggle value is " + currentButtonValue);
 
-		MobileDevice.getScreenshot(true);
-		if(currentButtonValue.equals("false")){
+		if(currentButtonValue.equals("false") || currentButtonValue.equals("0")){
 			toggleButton.tap();
 		}
-
+		MobileDevice.getScreenshot(true);
 	}
 
 	@Given("^I turn '(.*)' Background App Refresh for '(.*)' app$")
