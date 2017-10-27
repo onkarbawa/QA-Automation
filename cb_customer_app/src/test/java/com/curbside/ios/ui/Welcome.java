@@ -39,6 +39,9 @@ public class Welcome extends AbstractScreen {
 
 	public void wait_for_app_launch() throws Throwable {
 		for (int i = 0; i < 10; i++) {
+			if (homeScreen.iconSearch.isDisplayed())
+				return;
+
 			if(skipIntro.isDisplayed() || btnGetStarted.isDisplayed()
 	    			|| footerTabsScreen.btnMyAccount.isDisplayed() || okWithMe.isDisplayed()
 	    			|| btnAllow.isDisplayed())

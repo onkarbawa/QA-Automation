@@ -68,6 +68,9 @@ public class Home extends AbstractScreen {
 		try {
 			for (int i = 0; i < 3; i++) {
 
+				if (homeScreen.iconSearch.isDisplayed())
+					return;
+
 				if(welcomeScreen.skipIntro.isDisplayed() || welcomeScreen.btnGetStarted.isDisplayed()
 						|| welcomeScreen.okWithMe.isDisplayed() || welcomeScreen.btnAllow.isDisplayed())
 				{
