@@ -34,7 +34,7 @@ public class StoreDetails {
         UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
                 "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
                 "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | //XCUIElementTypeCell" +
-                "[XCUIElementTypeButton[@name='Refine']]/following-sibling::XCUIElementTypeCell[" + number +"]" +
+                "[XCUIElementTypeButton[@name='Refine']]/following-sibling::XCUIElementTypeCell[" + number +"]/XCUIElementTypeStaticText[1]" +
                 " | //XCUIElementTypeOther[" +
                 "XCUIElementTypeSearchField[@name='Search All Stores']]/../../../../following-sibling::" +
                 "XCUIElementTypeCollectionView/XCUIElementTypeCell[1]//XCUIElementTypeCell[" + number +"]");
