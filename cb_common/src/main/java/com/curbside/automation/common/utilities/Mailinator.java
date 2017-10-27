@@ -21,10 +21,10 @@ public class Mailinator {
     static By lblMailsSubject = By.xpath(".//*[@id='inboxpane']//div[@class = 'all_message-min_text all_message-min_text-3']");
 
     public static void setChromeDriver(String userID) throws Throwable {
+        DriverFactory.getDriver().getPageSource();
         String baseURL = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + userID + "#/#inboxpane";
         System.setProperty("webdriver.chrome.driver", "../chromedriver");
         driver = new ChromeDriver();
-        DriverFactory.getDriver().getPageSource();
         driver.manage().window().maximize();
         DriverFactory.getDriver().getPageSource();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
