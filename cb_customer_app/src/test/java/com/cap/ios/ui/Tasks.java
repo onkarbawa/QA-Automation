@@ -139,7 +139,8 @@ public class Tasks extends AbstractScreen {
         iTapOnTab("All");
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-        Assert.assertEquals(cancelledPickUp.waitFor(5).getText(),message,"PickUp is not Cancelled");
+        cancelledPickUp.waitFor(10);
+        Assert.assertEquals(cancelledPickUp.getText(),message,"PickUp is not Cancelled");
     }
 
     @And("^I ckecked order is ready$")
