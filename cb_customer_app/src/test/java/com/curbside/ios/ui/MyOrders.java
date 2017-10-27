@@ -91,10 +91,13 @@ public class MyOrders extends AbstractScreen {
 
     @And("^I changed the order item$")
     public void iChangedTheOrderItem() throws Throwable {
+        yourInputNeeded.waitFor(10);
         if (yourInputNeeded.isDisplayed()) {
             yourInputNeeded.tap();
             UIElement.byName("Replace").waitFor(10).tap();
-            storeDetailsScreen.iSelectProductFromList("CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets");
+            MobileDevice.getScreenshot(true);
+            UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]").tap();
+           // storeDetailsScreen.iSelectProductFromList("CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets");
             UIElement.byName("Proceed").tap();
             UIElement.byName("Proceed").waitForNot(7);
         }
@@ -102,6 +105,7 @@ public class MyOrders extends AbstractScreen {
 
     @And("^I decline the substitution order$")
     public void iDeclineTheSubstitutionOrder() throws Throwable {
+        yourInputNeeded.waitFor(10);
         if (yourInputNeeded.isDisplayed()) {
             yourInputNeeded.tap();
             UIElement.byName("Remove").waitFor(10).tap();
