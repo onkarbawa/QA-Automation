@@ -2,7 +2,7 @@
 Feature: iOS- Task Management
 
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen

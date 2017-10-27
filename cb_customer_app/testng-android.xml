@@ -44,11 +44,6 @@
             <class name="com.curbside.android.runners.SmsVerificationTest"/>
         </classes>
     </test>
-    <test name="Mail Verification">
-        <classes>
-            <class name="com.curbside.android.runners.MailVerificationTest"/>
-        </classes>
-    </test>
     <test name="Order flow Verification">
         <classes>
             <class name="com.curbside.android.runners.OrderFlowTest"/>
@@ -57,6 +52,11 @@
     <test name="My Account - Credit and Loyalty card">
         <classes>
             <class name="com.curbside.android.runners.MyAccountTest"/>
+        </classes>
+    </test>
+    <test name="Mail Verification">
+        <classes>
+            <class name="com.curbside.android.runners.MailVerificationTest"/>
         </classes>
     </test>
     <test name="Live orders">
