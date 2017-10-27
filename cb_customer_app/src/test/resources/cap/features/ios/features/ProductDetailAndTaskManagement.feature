@@ -80,7 +80,7 @@ Feature: iOS- Product Details and Task Management
 #    And I save Order Id of the product and named as 'hazmatOrder'
 
   Scenario Outline: Setting test environment for CAP
-    Given I launch CAP application for the first time
+    Given I launch CAP application
     And I have selected test environment for cap
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login
