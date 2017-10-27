@@ -250,7 +250,7 @@ public class Steps {
 		String currentButtonValue = toggleButton.getAttribute("value");
 		System.out.println("Current toggle value is " + currentButtonValue);
 
-		if(currentButtonValue.equals("false")){
+		if (currentButtonValue.equals("false") || currentButtonValue.equals("0")) {
 			toggleButton.tap();
 		}
 		iTapOnBackButton();
