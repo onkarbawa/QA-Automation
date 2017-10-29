@@ -1,6 +1,9 @@
 package com.curbside.automation.common.utilities;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.DriverFactory;
+import com.curbside.automation.uifactory.UIElement;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
-
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -122,9 +125,11 @@ public class Utilities {
      * Wait for element to load
      * @param locator
      * @param timeout
+     * @throws Throwable 
      */
-    public void waitForElement(WebElement locator, int timeout)
+    public void waitForElement(WebElement locator, int timeout) throws Throwable
     {
+    	/*
         element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
         try {
@@ -132,16 +137,21 @@ public class Utilities {
         } catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
+    	
+    	new UIElement(locator).waitFor(timeout);
     }
 
     /**
      * Click on element when its ready to click
      * @param locator
      * @param timeout
+     * @throws Throwable 
      */
-    public void clickWhenReady(WebElement locator, int timeout)
-    {	element =null;
+    public void clickWhenReady(WebElement locator, int timeout) throws Throwable
+    {	
+    	/*
+    	element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
 
         try {
@@ -150,7 +160,9 @@ public class Utilities {
         } catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
+    	
+    	new UIElement(locator).waitFor(timeout).tap();
     }
 
     /**
@@ -172,10 +184,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.01);
                 endPoint = (int) (width * 0.9);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, 0).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, 0).release().perform();
                  }
                  else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
                  }
                  break;
             case Left:
@@ -183,10 +195,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.8);
                 endPoint = (int) (width * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
                 }
                 else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(1000).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
                 }
                 break;
             case Up:
@@ -194,16 +206,16 @@ public class Utilities {
                 startPoint = (int) (height * 0.45);
                 endPoint = (int) (height * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, startPoint - (2 * startPoint)).release().perform();
+                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, startPoint - (2 * startPoint)).release().perform();
                 }else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
+                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
                 }
                 break;
             case Down:
                 anchor = (int) (width * 0.5);
                 startPoint = (int) (height * 0.01);
                 endPoint = (int) (height * 0.8);
-                touchAction.press(anchor, startPoint).waitAction(1000).moveTo(0, endPoint).release().perform();
+                touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
                 break;
               default:
                   try {
