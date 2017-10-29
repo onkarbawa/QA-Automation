@@ -145,6 +145,7 @@ public class DeviceStore {
 
 		return deviceID.get();
 	}
+	public static Object getLockedDevice() throws Throwable {
 
 	public static String getApplicationPath() {
 		try {
