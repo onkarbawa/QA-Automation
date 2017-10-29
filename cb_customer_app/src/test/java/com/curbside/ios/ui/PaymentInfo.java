@@ -10,6 +10,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -65,7 +68,7 @@ public class PaymentInfo extends AbstractScreen {
 		int x = creditCardCell.getX();
 		int y = creditCardCell.getY();
 
-		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).waitAction(1000)
+		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).waitAction(Duration.ofSeconds(1))
 				.moveTo(-width, y+(height/2)).release().perform();
 //		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
 		btnDelete.waitFor(10);

@@ -1,9 +1,11 @@
 package com.curbside.automation.uifactory;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * @author kumar.anil
@@ -14,11 +16,13 @@ import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.*;
+import org.openqa.selenium.By.ByLinkText;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.curbside.automation.devicefactory.DeviceStore;
@@ -28,18 +32,73 @@ public class UIElement {
 	private final Logger logger = Logger.getLogger(UIElement.class);
 
 	By locator = null;
+	WebElement e= null;
+	String xpath= null;
 
 	public UIElement(By locator) {
 		this.locator = locator;
 	}
-
-	public WebElement getElement() throws Throwable {
-		try {
-			return DriverFactory.getDriver().findElement(locator);
-		} catch (Exception e) {
-			MobileDevice.hideKeyboard();
-			return DriverFactory.getDriver().findElement(locator);
+	
+	public UIElement(String type, String locator) {
+		switch (type.toLowerCase()) {
+		case "id":
+			this.xpath= "//*[@id='" + locator + "']";
+			this.locator= By.id(locator);
+			break;
+		case "name":
+			this.xpath= "//*[@name='" + locator + "']";
+			this.locator= By.name(locator);
+			break;
+		case "label":
+		case "accessibility":
+		case "accessibilityid":
+			this.xpath= "//*[@label='" + locator + "']";
+			this.locator= MobileBy.AccessibilityId(locator);
+			break;
+		case "class":
+			this.xpath= "//*[@class='" + locator + "']";
+			this.locator= MobileBy.className(locator);
+			break;
+		case "xpath":
+			this.xpath= locator;
+			this.locator= By.xpath(locator);
+			break;
+		case "predicate":
+			this.locator= MobileBy.iOSNsPredicateString(locator);
+			break;
+		case "css":
+			this.locator= By.cssSelector(locator);
+			break;
+		case "uiselector":
+			this.locator= MobileBy.AndroidUIAutomator(locator);
+			break;
+		default:
+			System.out.println("Unknown locator type " + type);
 		}
+	}
+	
+	public XmlElement getXmlElement(File xmlFile)
+	{
+		return new XmlElement(xmlFile, this.xpath);
+	}
+
+	public UIElement(WebElement e) {
+		this.e= e;
+	}
+
+	public WebElement getElement() throws Throwable  {
+		
+		if(e != null) return e;
+		
+		try {
+			this.e= DriverFactory.getDriver().findElement(locator);
+		} catch (Exception e) {
+			//MobileDevice.hideKeyboard();
+			//this.e= DriverFactory.getDriver().findElement(locator);
+			throw e;
+		}
+		
+		return e;
 	}
 	
 	public List<WebElement> getElements() throws Throwable {
@@ -163,12 +222,23 @@ public class UIElement {
 	 * @param timeout
 	 */
 	public UIElement waitFor(int timeout) throws Throwable {
+		/*
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.visibilityOfElementLocated(this.locator));
 		} catch (Exception e) {
 			logger.debug("Unable to wait for visibility of element due to: " + e.getMessage());
-		}
+		}*/
+		
+		long startTime= System.currentTimeMillis();
+		do {
+			try {
+				if(getElement().isDisplayed()) break;;
+			} catch (Exception e) {
+				continue;
+			}
+			
+		} while ((System.currentTimeMillis()- startTime) < timeout * 1000);
 
 		return this;
 	}
@@ -183,35 +253,35 @@ public class UIElement {
 	}
 
 	public static UIElement byXpath(String locator) {
-		return new UIElement(By.xpath(locator));
+		return new UIElement("xpath", locator);
 	}
 
 	public static UIElement byPredicate(String locator) {
-		return new UIElement(MobileBy.iOSNsPredicateString(locator));
+		return new UIElement("predicate", locator);
 	}
 
 	public static UIElement byCSS(String locator) {
-		return new UIElement(By.cssSelector(locator));
+		return new UIElement("css", locator);
 	}
 
 	public static UIElement byId(String locator) {
-		return new UIElement(By.id(locator));
+		return new UIElement("id", locator);
 	}
 
 	public static UIElement byUISelector(String locator) {
-		return new UIElement(MobileBy.AndroidUIAutomator(locator));
+		return new UIElement("uiselector", locator);
 	}
 
 	public static UIElement byName(String locator) {
-		return new UIElement(By.name(locator));
+		return new UIElement("name", locator);
 	}
 
 	public static UIElement byAccessibilityId(String locator) {
-		return new UIElement(MobileBy.AccessibilityId(locator));
+		return new UIElement("accessibility", locator);
 	}
 
 	public static UIElement byClass(String locator) {
-		return new UIElement(MobileBy.className(locator));
+		return new UIElement("class", locator);
 	}
 
 	public String getAttribute(String attrName) throws Throwable {
@@ -219,12 +289,23 @@ public class UIElement {
 	}
 
 	public void waitForNot(int timeout) throws Throwable {
+		long startTime= System.currentTimeMillis();
+		do {
+			try {
+				if(!getElement().isDisplayed()) return;
+			} catch (Exception e) {
+				return;
+			}
+			
+		} while ((System.currentTimeMillis()- startTime) < timeout * 1000);
+		
+		/*
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.invisibilityOfElementLocated(this.locator));
 		} catch (Exception e) {
 			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
-		}
+		}*/		
 	}
 
 	public UIElement swipeUpSlow() throws Throwable {

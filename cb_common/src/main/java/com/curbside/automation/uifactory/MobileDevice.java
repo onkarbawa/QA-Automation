@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,10 @@ public class MobileDevice {
 
 	public static String getDeviceId() throws Throwable {
 		return getDeviceId(DeviceStore.getDevice());
+	}
+	
+	public static void setDeviceId(String udid) throws Throwable {
+		((JSONObject)DeviceStore.getLockedDevice()).put("udid", udid);
 	}
 
 	public static String getDeviceId(JSONObject device) throws Throwable {
@@ -266,11 +271,11 @@ public class MobileDevice {
 		int endPoint = (int) (MobileDevice.getHeight() * 0.6);
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(1000)
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
 					.moveTo(0, startPoint - (2 * startPoint)).release().perform();
 
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(1000)
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
 					.moveTo(0, endPoint).release().perform();
 		}
 	}
