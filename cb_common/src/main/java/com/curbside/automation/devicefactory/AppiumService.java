@@ -1,10 +1,11 @@
 package com.curbside.automation.devicefactory;
 
 import java.io.File;
-import java.util.HashMap;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import io.appium.java_client.service.local.flags.IOSServerFlag;
 
 /**
  * @author kumar.anil
@@ -12,39 +13,40 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
  */
 
 public class AppiumService {
-	static HashMap<String, AppiumDriverLocalService> runningServices = new HashMap<>();
+	static ThreadLocal<AppiumDriverLocalService> runningService = new ThreadLocal<>();
+	
 	static final File nodeJsPath= new File("/Applications/Appium.app/Contents/???");
 
-	static String start(String deviceId) {
+	static String start() {
 		AppiumServiceBuilder b = new AppiumServiceBuilder();
-		b.usingAnyFreePort().withIPAddress("127.0.0.1");
+		b.usingAnyFreePort()
+		 .withIPAddress("127.0.0.1")
+		 .withArgument(GeneralServerFlag.LOG_TIMESTAMP)
+		 .withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+		
 		if(nodeJsPath.exists())
 		{
 			System.out.println("Using node at " + nodeJsPath.getAbsolutePath());
 			b.usingDriverExecutable(nodeJsPath);
 		}
 		b.build();
-		AppiumDriverLocalService appiumService = AppiumDriverLocalService.buildService(b);
-		appiumService.start();
-		runningServices.put(deviceId, appiumService);
-		return appiumService.getUrl().toString();
+		runningService.set(AppiumDriverLocalService.buildService(b));
+		runningService.get().start();
+		return runningService.get().getUrl().toString();
 	}
 
-	public static void stop(String deviceId) {
-		if (runningServices.containsKey(deviceId)) {
-			runningServices.get(deviceId).stop();
-			runningServices.remove(deviceId);
+	/*
+	public static void stop() {
+		if (runningService != null) {
+			runningService.stop();
+			runningService = null;
 		}
-	}
+	}*/
 
-	public static String getUrl(String deviceId) {
-		if (runningServices.containsKey(deviceId))
-			return runningServices.get(deviceId).getUrl().toString();
-		else
-			return start(deviceId);
-	}
-	
-	public static String getUrl() throws Throwable {
-		return getUrl(DeviceStore.getDeviceId());
+	public static synchronized String getUrl() {
+		if (runningService.get() == null)
+			start();
+		
+		return runningService.get().getUrl().toString();
 	}
 }
