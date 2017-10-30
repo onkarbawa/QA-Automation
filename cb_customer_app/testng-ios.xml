@@ -44,11 +44,6 @@
             <class name="com.curbside.ios.runners.SMSTest"/>
         </classes>
     </test>
-    <test name="iOS- Mail flow">
-        <classes>
-            <class name="com.curbside.ios.runners.MailNotificationTest"/>
-        </classes>
-    </test>
     <test name="iOS- Order flow">
         <classes>
             <class name="com.curbside.ios.runners.OrderFlowTest"/>
@@ -57,6 +52,11 @@
     <test name="iOS- My Account">
         <classes>
             <class name="com.curbside.ios.runners.MyAccountTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Mail flow">
+        <classes>
+            <class name="com.curbside.ios.runners.MailNotificationTest"/>
         </classes>
     </test>
     <test name="iOS- Live Orders">

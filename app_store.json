@@ -4,7 +4,6 @@
       "name" : "Curbside",
       "app": "../Curbside.apk",
       "appPackage": "com.curbside.nCurbside",
-      "newCommandTimeOut": "120",
       "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
     },
     {
@@ -19,7 +18,6 @@
       "name" : "Curbside",
       "app" : "../ios_simulator_builds/Curbside.app",
       "bundleId": "com.curbside.curbside",
-      "newCommandTimeOut": "120"
     },
     {
       "name" : "CAP",

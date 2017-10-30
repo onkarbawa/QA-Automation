@@ -13,6 +13,7 @@ Feature: iOS- Application Launch 1
 
   Scenario Outline: Place Order
     When I launch Curbside application
+    And I am on Home Screen
     Then I should see Location as 'Palo Alto'
     And I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
@@ -26,6 +27,7 @@ Feature: iOS- Application Launch 1
     And 'Location' preference is set as 'Always' for 'Curbside' app
     And I verify that Location 'Always' is set
     And I launch Curbside application
+    And I am on Home Screen
     And I tap on 'Shop' icon in bottom menu
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -39,6 +41,7 @@ Feature: iOS- Application Launch 1
     Given I turn 'OFF' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'OFF'
     And I launch Curbside application
+    And I am on Home Screen
     And My cart is empty
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
@@ -49,6 +52,7 @@ Feature: iOS- Application Launch 1
     And I turn 'ON' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'ON'
     And I launch Curbside application
+    And I am on Home Screen
     And I tap on 'Shop' icon in bottom menu
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
