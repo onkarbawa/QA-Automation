@@ -146,7 +146,8 @@ public class DriverFactory {
 			caps.setBrowserName("");
 
 		System.out.println("Requesting new session with capabilities as: \n" + caps.asMap());
-		
+		caps.setCapability("newCommandTimeout", 120000);
+
 		switch (platform.toLowerCase()) {
 		case "ios":
 			caps.setCapability("preventWDAAttachments", true);

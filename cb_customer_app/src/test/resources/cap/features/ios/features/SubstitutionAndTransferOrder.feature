@@ -2,7 +2,7 @@
 Feature: iOS- Task Management
 
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen
@@ -13,8 +13,8 @@ Feature: iOS- Task Management
     And I add credit card information
 
   Scenario: Order Placed to check - Substitution Order
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -23,11 +23,10 @@ Feature: iOS- Task Management
 
   Scenario: Order placed to check - Transfer Order
     And I go to the shop screen to add any product
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
     And I add 1 quantity of the product
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Indoor/Outdoor Allergy Relief Cetirizine Hydrochloride Tablets' product from list
+    And I select 2no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -59,13 +58,6 @@ Feature: iOS- Task Management
   Scenario: Setting test environment for CAP
     Given I launch CAP application
     And I accept CAP notifications alerts
-#    And I have selected test environment for cap
-#    And I am not signed into application cap
-#    And I enter "<account>", "<username>" and "<password>" for login
-#    And I tap on 'Login' button
-#    Examples:
-#      | account  | username             | password |
-#      | curbside | qaautomation_initium | curbside |
 
   Scenario: Complete Order after Substitution of product
     And I search for 'substitutionOrder' Order ID and claim it
@@ -113,16 +105,8 @@ Feature: iOS- Task Management
   Scenario: Setting test environment for CAP
     Given I launch CAP application
     And I accept CAP notifications alerts
-#    And I have selected test environment for cap
-#    And I am not signed into application cap
-#    And I enter "<account>", "<username>" and "<password>" for login
-#    And I tap on 'Login' button
-#    Examples:
-#      | account  | username             | password |
-#      | curbside | qaautomation_initium | curbside |
 
   Scenario: Complete Order after Transfer of product
-#    And I tap on 'Close' button
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search for 'transferOrder' OrderID
     And I tap on 'Packages Retrieved' button
