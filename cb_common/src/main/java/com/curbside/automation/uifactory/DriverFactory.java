@@ -1,5 +1,7 @@
 package com.curbside.automation.uifactory;
 
+import java.awt.image.BufferedImage;
+
 /**
  * @author kumar.anil
  *
@@ -12,6 +14,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -100,7 +104,16 @@ public class DriverFactory {
 		try {
 			if(deviceInfo.getString("url").contains("127.0.0.1")
 					/*&& deviceInfo.getString("platformName").equalsIgnoreCase("android")*/)
-				deviceInfo.put("url", AppiumService.getUrl());
+			{
+				try {
+					//Check if appium is running on given local port
+					URL url= new URL(deviceInfo.getString("url") + "/status");
+					url.getContent();
+				} catch (Exception e) {
+					//Start appium server programmatically if exception is thrown meaning appium is not already running
+					deviceInfo.put("url", AppiumService.getUrl());
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -154,19 +167,16 @@ public class DriverFactory {
 
 		driverInfo.set(((AppiumDriver) getDriver()).getCapabilities());
 		System.out.println("Actual device capabilities: \n" + driverInfo.get().asMap());
-		deviceSize.set(getDriver().manage().window().getSize());
-		//MobileDevice.setDeviceId(driverInfo.get().getCapability("udid").toString());
 		MobileDevice.logDeviceInfo();
-		
-		// System.out.println("Device screenshot captured at " +
-		// MobileDevice.takeScreenshot().getAbsolutePath());
-		// new ImageElement(new
-		// File("src/test/resources/ios/elements/DontAllow.png")).tap();
 	}
 
 	public static Dimension getSize() throws Throwable {
 		if(deviceSize.get() == null)
-			deviceSize.set(getDriver().manage().window().getSize());
+		{
+			File scrnshot= MobileDevice.getScreenshot(false);
+			BufferedImage bi= ImageIO.read(scrnshot);
+			deviceSize.set(new Dimension(bi.getWidth(), bi.getHeight()));
+		}
 		
 		return deviceSize.get();
 	}
