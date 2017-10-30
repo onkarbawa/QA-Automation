@@ -54,13 +54,9 @@ public class MobileDevice {
 		return getDeviceId(DeviceStore.getDevice());
 	}
 	
-	public static void setDeviceId(String udid) throws Throwable {
-		((JSONObject)DeviceStore.getLockedDevice()).put("udid", udid);
-	}
-
 	public static String getDeviceId(JSONObject device) throws Throwable {
 		if (device.getString("platformName").equalsIgnoreCase("ios"))
-			return device.getString("deviceName");
+			return device.getString("udid");
 		else
 			return device.getString("deviceName");
 	}
@@ -198,16 +194,16 @@ public class MobileDevice {
 	}
 
 	public static File getSource(boolean attachToReport) throws Throwable {
-		// if(DeviceStore.getPlatform().equalsIgnoreCase("android") &&
-		// !attachToReport)
-		// return null;
-
 		File outputFile = null;
 		String source = DriverFactory.getDriver().getPageSource();
+		
+		String pwd = System.getProperty("user.dir");
+		File screenshotPath = new File(pwd, "output/screenshots");
+		
 		if (source.startsWith("<html"))
-			outputFile = File.createTempFile("src_", ".html");
+			outputFile = File.createTempFile("src_", ".html", screenshotPath);
 		else
-			outputFile = File.createTempFile("src_", ".xml");
+			outputFile = File.createTempFile("src_", ".xml", screenshotPath);
 
 		FileUtils.write(outputFile, source);
 
@@ -226,13 +222,14 @@ public class MobileDevice {
 			FileUtils.copyFile(scrnshot, tmpFile);
 			Reporter.addScreenCaptureFromPath(tmpFile.getAbsolutePath());
 
+			/*
 			File srcFile = getSource();
 			if (srcFile != null) {
 				File tmpSrcFile = File.createTempFile("src_",
 						"." + FilenameUtils.getExtension(srcFile.getAbsolutePath()));
 				FileUtils.copyFile(srcFile, tmpSrcFile);
 				Reporter.addStepLog("<a href='" + tmpSrcFile.getAbsolutePath() + "'>page source</a>");
-			}
+			}*/
 
 			return tmpFile;
 		} else
@@ -309,6 +306,18 @@ public class MobileDevice {
 				break;
 			}
 		}
+	}
+	
+	public static void acceptAlert() throws Throwable {
+		DriverFactory.getDriver().switchTo().alert().accept();
+	}
+	
+	public static void dismissAlert() throws Throwable {
+		DriverFactory.getDriver().switchTo().alert().dismiss();;
+	}
+	
+	public static String getAlertText() throws Throwable {
+		return DriverFactory.getDriver().switchTo().alert().getText();
 	}
 
 	public static void hideKeyboard() {

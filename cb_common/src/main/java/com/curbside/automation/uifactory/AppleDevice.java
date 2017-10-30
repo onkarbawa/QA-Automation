@@ -23,29 +23,28 @@ public class AppleDevice extends MobileDevice {
 	static UIElement back= UIElement.byName("Back");
 	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
 	static UIElement settingTitle = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Settings']");
-	static UIElement btnAllow = UIElement.byName("Allow");
 	
 	public AppleDevice() {
 	}
 
 	public static void launchSettings() throws Throwable {
-
-		// Get current device
 		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
-		
+		launchSettings(device);
+	}
+	
+	public static void launchSettings(JSONObject device) throws Throwable {
 		device.remove("app");
 		device.remove("bundleId");
 		device.remove("ipa");
-
 		device.put("bundleId", IOSApps.Settings);
 		
-		DriverFactory.releaseDriver();
-		DriverFactory.getDriver(device);
+		DriverFactory.createInstance(device.getString("platformName"), device);
 	}
 	
 	public static void resetPermissions(String appName) throws Throwable {
 		
 		launchSettings();
+		
 		/*
 		settingGeneral.scrollTo(SwipeDirection.UP);
 		if(settingGeneral.isDisplayed()){
@@ -65,7 +64,9 @@ public class AppleDevice extends MobileDevice {
 			}
 		}
 
-		btnAllow.tapOptional();
+		try {
+			MobileDevice.acceptAlert();
+		} catch (Exception e) {}
 
 		settingGeneral.scrollTo().tap();;
 		settingReset.scrollTo().tap();
@@ -75,7 +76,6 @@ public class AppleDevice extends MobileDevice {
 			if(code != null && code != "")
 				passcode.sendKeys(code);
 		} catch (Exception e) {
-		//	e.printStackTrace();
 		}
 		
 		resetSetting.tap();

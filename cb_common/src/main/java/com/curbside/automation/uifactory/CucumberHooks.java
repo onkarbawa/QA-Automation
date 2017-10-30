@@ -13,11 +13,16 @@ public class CucumberHooks {
 	public void embedScreenshot(Scenario scenario) {
 
 		try {
+			/*
 			byte[] screenshot = MobileDevice.getScreenshotAsBytes();
 			scenario.embed(screenshot, "image/png");
 			
 			byte[] source = Files.readAllBytes(MobileDevice.getSource().toPath());
 			scenario.embed(source, "text/html");
+			*/
+			
+			MobileDevice.getScreenshot(true);
+			MobileDevice.getSource(true);
 			
 		} catch (Throwable e) {
 		}

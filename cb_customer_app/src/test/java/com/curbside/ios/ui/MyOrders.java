@@ -69,9 +69,9 @@ public class MyOrders extends AbstractScreen {
     public void iShouldSeeCancelOrderInMyOrdersScreen() throws Throwable {
         footerTabsScreen.btnMyAccount.waitFor(3).tap();
         Steps.tapButton("My Orders");
-        MobileDevice.getSource(true);
+        //MobileDevice.getSource(true);
         Assert.assertEquals(myOrderTitle.getText(),"My Orders");
-        MobileDevice.getSource(true);
+        //MobileDevice.getSource(true);
         latestOrderCancel.tap();
         cancelledOrderScreen.iShouldSeeInformationUnderCancelledOrderScreen();
     }

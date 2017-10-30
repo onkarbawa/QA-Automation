@@ -30,7 +30,7 @@ public class DeviceStore {
 	private static ThreadLocal<Object> lockedDevice = new ThreadLocal<>();
 	private static ThreadLocal<String> lockedPlatform = new ThreadLocal<>();
 	private static ThreadLocal<String> deviceID = new ThreadLocal<>();
-	private static HashMap<String, List<String>> appInstalled = new HashMap<>();
+	private static HashMap<Object, List<String>> appInstalled = new HashMap<>();
 	
 	static {
 		String pDeviceStore = System.getProperty("deviceStore");
@@ -44,10 +44,12 @@ public class DeviceStore {
 		JSONArray iOSDevices = (JSONArray) devices.get("iOS");
 
 		for (Object androidDevice : androidDevices) {
+			//((JSONObject)androidDevice).put("wdaLocalPort", ++wdaStartPort);
 			androidDeviceList.add(androidDevice);
 		}
 
 		for (Object iOSDevice : iOSDevices) {
+			//((JSONObject)iOSDevice).put("wdaLocalPort", ++wdaStartPort);
 			iOSDeviceList.add(iOSDevice);
 		}
 	}
@@ -61,8 +63,8 @@ public class DeviceStore {
 		// TODO- Wait when no device is available
 
 		JSONObject deviceToReturn;
-		System.out.println("There are "  + iOSDeviceList.size() + " ios devices available");
-		System.out.println("There are "  + androidDeviceList.size() + " android devices available");
+		//System.out.println("There are "  + iOSDeviceList.size() + " ios devices available");
+		//System.out.println("There are "  + androidDeviceList.size() + " android devices available");
 		
 		if (lockedDevice.get() != null)
 			deviceToReturn = (JSONObject) lockedDevice.get();
@@ -139,13 +141,23 @@ public class DeviceStore {
 		return iOSDeviceList.size();
 	}
 
+	/*
 	public static String getDeviceId() throws Throwable {
 		if (deviceID.get() == null)
 			deviceID.set(MobileDevice.getDeviceId());
 
 		return deviceID.get();
-	}
+	}*/
+	
+	/*
+	public static void setDeviceId(String deviceId) throws Throwable {
+		((JSONObject)DeviceStore.getLockedDevice()).put("udid", deviceId);
+		deviceID.set(deviceId);	
+	}*/
+	
 	public static Object getLockedDevice() throws Throwable {
+		return lockedDevice.get();
+	}
 
 	public static String getApplicationPath() {
 		try {
@@ -156,32 +168,32 @@ public class DeviceStore {
 	}
 
 	public static boolean isAppInstalled(String appName) throws Throwable {
-		return isAppInstalled(getDeviceId(), appName);
+		return isAppInstalled(DeviceStore.getLockedDevice(), appName);
 	}
 
 	public static boolean isAppInstalled() throws Throwable {
-		return isAppInstalled(getDeviceId(), AppStore.getAppName());
+		return isAppInstalled(DeviceStore.getLockedDevice(), AppStore.getAppName());
 	}
 
-	public static boolean isAppInstalled(String udid, String appName) {
-		if (appInstalled.containsKey(udid))
-			return appInstalled.get(udid).contains(appName);
+	public static boolean isAppInstalled(Object device, String appName) {
+		if (appInstalled.containsKey(device))
+			return appInstalled.get(device).contains(appName);
 		else
 			return false;
 	}
 
-	public static synchronized void setAppInstalled(String udid, String appName) {
-		if(!appInstalled.containsKey(udid))
+	public static synchronized void setAppInstalled(Object device, String appName) {
+		if(!appInstalled.containsKey(device))
 		{
 			List<String> installedApps= new ArrayList<>();
 			installedApps.add(appName);
-			appInstalled.put(udid, installedApps);
+			appInstalled.put(device, installedApps);
 		}
 		else
-			appInstalled.get(udid).add(appName);
+			appInstalled.get(device).add(appName);
 	}
 
 	public static synchronized void setAppInstalled(String appName) throws Throwable {
-		setAppInstalled(getDeviceId(), appName);
+		setAppInstalled(DeviceStore.getLockedDevice(), appName);
 	}
 }

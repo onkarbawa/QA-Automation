@@ -14,15 +14,14 @@ import io.appium.java_client.service.local.flags.IOSServerFlag;
 
 public class AppiumService {
 	static ThreadLocal<AppiumDriverLocalService> runningService = new ThreadLocal<>();
-	
+	//static AppiumDriverLocalService runningService = null;
 	static final File nodeJsPath= new File("/Applications/Appium.app/Contents/???");
 
 	static String start() {
 		AppiumServiceBuilder b = new AppiumServiceBuilder();
 		b.usingAnyFreePort()
 		 .withIPAddress("127.0.0.1")
-		 .withArgument(GeneralServerFlag.LOG_TIMESTAMP)
-		 .withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+		 .withArgument(GeneralServerFlag.LOG_TIMESTAMP);
 		
 		if(nodeJsPath.exists())
 		{
@@ -30,9 +29,16 @@ public class AppiumService {
 			b.usingDriverExecutable(nodeJsPath);
 		}
 		b.build();
+		
 		runningService.set(AppiumDriverLocalService.buildService(b));
 		runningService.get().start();
 		return runningService.get().getUrl().toString();
+		
+		/*
+		runningService= AppiumDriverLocalService.buildService(b);
+		runningService.start();
+		return runningService.getUrl().toString();
+		*/
 	}
 
 	/*
@@ -46,7 +52,12 @@ public class AppiumService {
 	public static synchronized String getUrl() {
 		if (runningService.get() == null)
 			start();
-		
 		return runningService.get().getUrl().toString();
+		
+		/*
+		if (runningService == null)
+			start();
+		return runningService.getUrl().toString();
+		*/
 	}
 }

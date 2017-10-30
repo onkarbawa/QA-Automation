@@ -3,6 +3,8 @@ package com.curbside.ios.ui;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.XmlElement;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -18,7 +20,8 @@ public class Welcome extends AbstractScreen {
 	UIElement skipIntro = new UIElement(By.name("Skip Intro"));
 	UIElement okWithMe = new UIElement(By.name("OK with me"));
 	UIElement btnGetStarted = UIElement.byAccessibilityId("Get Started");
-	UIElement btnAllow = UIElement.byName("Allow");
+	
+	UIElement thisPageElement = UIElement.byPredicate("label == 'Skip Intro' or label == 'OK with me' or label == 'Get Started'");
 
 	Steps steps = new Steps();
 
@@ -39,16 +42,17 @@ public class Welcome extends AbstractScreen {
 
 	public void wait_for_app_launch() throws Throwable {
 		for (int i = 0; i < 10; i++) {
-			if (homeScreen.iconSearch.isDisplayed())
-				return;
-
-			if(skipIntro.isDisplayed() || btnGetStarted.isDisplayed()
-	    			|| footerTabsScreen.btnMyAccount.isDisplayed() || okWithMe.isDisplayed()
-	    			|| btnAllow.isDisplayed())
-	    		break;
-	    	else
-	    		Thread.sleep(1000);
+			
+			try {
+				MobileDevice.getAlertText(); return;
+			} catch (Exception e) {}
+			
+			if (thisPageElement.isDisplayed())
+ 				return;
+			
+			Thread.sleep(100);
 		}
-	    MobileDevice.getScreenshot(true);
+	    
+		//MobileDevice.getScreenshot(true);
 	}
 }

@@ -31,9 +31,8 @@ public class Settings extends AbstractScreen {
     @Given("^'Location' preference is set as '(.*)' for '(.*)' app$")
     public void locationPreferenceIsSetAsForApp(String value, String appName) throws Throwable {
         try {
-            welcomeScreen.btnAllow.tapOptional();
-        } catch (Exception e) {
-        }
+            MobileDevice.acceptAlert();
+        } catch (Exception e) {}
         MobileDevice.setLocationPreference(appName, value);
     }
 

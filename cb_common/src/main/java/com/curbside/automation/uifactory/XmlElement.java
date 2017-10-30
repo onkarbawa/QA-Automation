@@ -8,6 +8,8 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.openqa.selenium.Point;
+
 /**
  * @author kumar.anil
  *
@@ -16,6 +18,10 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 
 public class XmlElement {
 
@@ -31,6 +37,12 @@ public class XmlElement {
 	{
 		this.xmlFile= xmlFile;
 		this.xPath= xPath;
+	}
+	
+	public XmlElement setPageSource(File xmlFile)
+	{
+		this.xmlFile= xmlFile;
+		return this;
 	}
 	
 	private NodeList getElements() throws Throwable  {
@@ -97,5 +109,18 @@ public class XmlElement {
 	
 	public int getY() throws Throwable {
 		return Integer.parseInt(getAttribute("y"));
+	}
+	
+	public Point getCenter() throws Throwable
+	{
+		int loc_x= getX() + getWidth()/2;
+		int loc_y= getY() + getHeight()/2;
+		return new Point(loc_x, loc_y);
+	}
+	
+	public void tap() throws Throwable
+	{
+		Point loc= getCenter();
+		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(loc.x, loc.y).perform();
 	}
 }

@@ -121,7 +121,7 @@ public class AndroidDevice extends MobileDevice {
     
     private static String getPMPrefix() throws Throwable
     {
-    	return getAdbLocation() + " -s " + DeviceStore.getDeviceId() + " shell pm ";
+    	return getAdbLocation() + " -s " + MobileDevice.getDeviceId() + " shell pm ";
     }
     
     private static String getAdbLocation() {

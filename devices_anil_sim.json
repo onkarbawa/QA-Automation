@@ -1,0 +1,30 @@
+{
+  "android" : [
+    {
+      "url" : "http://127.0.0.1:4725/wd/hub",
+      "platformName" : "android",
+      "deviceName": "emulator-5554",
+      "app": "../Curbside.apk",
+      "appPackage": "com.curbside.nCurbside",
+      "appActivity": "com.curbside.nCurbside.app.help.SplashScreenActivity"
+    }
+  ],
+  "iOS" : [
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.3",
+      "deviceName" : "iPhone 6",
+      "showXcodeLog" : false,
+      "udid" : ""
+    },
+    {
+      "url" : "http://127.0.0.1:4723/wd/hub",
+      "platformName" : "iOS",
+      "platformVersion" : "10.3",
+      "deviceName" : "iPhone 6s",
+      "showXcodeLog" : false,
+      "udid" : ""
+    }
+  ]
+}

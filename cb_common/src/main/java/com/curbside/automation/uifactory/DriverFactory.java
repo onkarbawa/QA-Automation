@@ -18,11 +18,14 @@ import org.json.JSONObject;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.net.PortProber;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.curbside.automation.appfactory.AppStore;
 import com.curbside.automation.devicefactory.AppiumService;
 import com.curbside.automation.devicefactory.DeviceStore;
+import com.curbside.automation.devicefactory.IOSApps;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -31,46 +34,27 @@ import io.appium.java_client.ios.IOSDriver;
 @SuppressWarnings("rawtypes")
 public class DriverFactory {
 	private static final Logger logger = Logger.getLogger(DriverFactory.class);
-	static HashMap<String, WebDriver> driverMap= new HashMap<>();
-	static HashMap<String, String> driverEnvironment= new HashMap<>();
+	static HashMap<Object, WebDriver> driverMap= new HashMap<>();
+	static HashMap<Object, String> driverEnvironment= new HashMap<>();
 	static ThreadLocal<Capabilities> driverInfo = new ThreadLocal<Capabilities>();
 	static ThreadLocal<Dimension> deviceSize = new ThreadLocal<Dimension>();
-
-	/**
-	 * This method must be called when creating a new driver instance
-	 * 
-	 * @param platform
-	 *            parameter should have been defined in TestNG suite file
-	 * @param additionalCaps
-	 *            Name Value pairs of additional capabilities that overwrites
-	 *            device info
-	 * @return @WebDriver
-	 * @throws Throwable
-	 */
-	public static WebDriver getDriver(JSONObject deviceInfo) throws Throwable {
-		//if (deviceInfo != null)
-		//	System.out.println(deviceInfo.toString());
-
-		if (!driverMap.containsKey(MobileDevice.getDeviceId(deviceInfo))) {
-			DriverFactory.createInstance(DeviceStore.getPlatform(), deviceInfo);
-		}
-		
-		return driverMap.get(MobileDevice.getDeviceId(deviceInfo));
+	
+	public static WebDriver getDriver(Object deviceInfo) throws Throwable {
+		return driverMap.get(DeviceStore.getLockedDevice());
 	}
 
 	public static WebDriver getDriver() throws Throwable {
-		return getDriver(new JSONObject(DeviceStore.getDevice().toString()));
+		return getDriver(DeviceStore.getLockedDevice());
 	}
 
-	public static WebDriver getDriver(boolean reinstall) throws Throwable {
-		return getDriver(reinstall, false);
+	public static WebDriver createDriver(boolean reinstall) throws Throwable {
+		return createDriver(reinstall, false);
 	}
 
-	public static WebDriver getDriver(boolean reinstall, boolean givePermissions) throws Throwable {
+	public static WebDriver createDriver(boolean reinstall, boolean givePermissions) throws Throwable {
 		JSONObject deviceInfo = new JSONObject(DeviceStore.getDevice().toString());
 
 		if (!reinstall && DeviceStore.isAppInstalled()) {
-			//No need to install application
 			deviceInfo.remove("app");
 			deviceInfo.remove("ipa");
 			deviceInfo.put("noReset", true);
@@ -83,7 +67,10 @@ public class DriverFactory {
 		if (givePermissions)
 			deviceInfo.put("autoGrantPermissions", true);
 		
-		return getDriver(deviceInfo);
+		createInstance(deviceInfo.getString("platformName"), deviceInfo);
+		
+		DeviceStore.setAppInstalled(AppStore.getAppName());
+		return getDriver();
 	}
 
 	/**
@@ -92,14 +79,14 @@ public class DriverFactory {
 	 * @throws Throwable 
 	 */
 	public static void releaseDriver() throws Throwable {
-		if (driverMap.containsKey(DeviceStore.getDeviceId())) {
-			driverMap.get(DeviceStore.getDeviceId()).quit();
-			driverMap.remove(DeviceStore.getDeviceId());
+		if (driverMap.containsKey(DeviceStore.getLockedDevice())) {
+			driverMap.get(DeviceStore.getLockedDevice()).quit();
+			driverMap.remove(DeviceStore.getLockedDevice());
 		}
 	}
 
 	private static void setDriver(WebDriver driver) throws Throwable {
-		driverMap.put(DeviceStore.getDeviceId(), driver);
+		driverMap.put(DeviceStore.getLockedDevice(), driver);
 	}
 
 	public static Map<String, ?> getDriverInfo() throws Throwable {
@@ -109,15 +96,10 @@ public class DriverFactory {
 		return driverInfo.get().asMap();
 	}
 
-	private static void createInstance(String platform, JSONObject deviceInfo) throws Throwable {
-		if (deviceInfo == null) {
-			System.out.println("Getting a new device from store");
-			deviceInfo = new JSONObject(DeviceStore.getDevice().toString());
-		}
-
+	public static synchronized void createInstance(String platform, JSONObject deviceInfo) throws Throwable {
 		try {
 			if(deviceInfo.getString("url").contains("127.0.0.1")
-					&& deviceInfo.getString("platformName").equalsIgnoreCase("android"))
+					/*&& deviceInfo.getString("platformName").equalsIgnoreCase("android")*/)
 				deviceInfo.put("url", AppiumService.getUrl());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,17 +108,16 @@ public class DriverFactory {
 		URL url = new URL(deviceInfo.get("url").toString());
 
 		DesiredCapabilities caps = new DesiredCapabilities();
-		//caps.setCapability("sendKeyStrategy", "grouped");
-
 		Iterator<?> keys = deviceInfo.keySet().iterator();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
+			Object keyValue= deviceInfo.get(key);
 
 			if (key.equalsIgnoreCase("url") || key.equalsIgnoreCase("passcode"))
 				continue;
 
-			if ((key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa")) &&
-					!deviceInfo.getString(key).equalsIgnoreCase("settings"))
+			if ((key.equalsIgnoreCase("app") || key.equalsIgnoreCase("ipa")) 
+					&& (keyValue.toString().endsWith(".ipa") || keyValue.toString().endsWith(".app")))
 				caps.setCapability(key, new File(deviceInfo.get(key).toString()).getAbsolutePath());
 			else
 				caps.setCapability(key, deviceInfo.get(key));
@@ -147,17 +128,26 @@ public class DriverFactory {
 
 		System.out.println("Requesting new session with capabilities as: \n" + caps.asMap());
 		caps.setCapability("newCommandTimeout", 120000);
-
+		
+		//Attach a free port
+		caps.setCapability("wdaLocalPort", PortProber.findFreePort());
+		
 		switch (platform.toLowerCase()) {
 		case "ios":
 			caps.setCapability("preventWDAAttachments", true);
 			caps.setCapability("clearSystemFiles", true);
-			setDriver(new AppiumDriver(url, caps));
-			UIElement.byAccessibilityId("Trust").tapOptional();
+			try {
+				setDriver(new AppiumDriver(url, caps));
+			} catch (Exception e) {
+				e.printStackTrace();
+				setDriver(new AppiumDriver(url, caps));
+			}
 			break;
+			
 		case "android":
 			setDriver(new AndroidDriver(url, caps));
 			break;
+			
 		default:
 			throw new Exception("Unknown platform: " + platform);
 		}
@@ -165,8 +155,9 @@ public class DriverFactory {
 		driverInfo.set(((AppiumDriver) getDriver()).getCapabilities());
 		System.out.println("Actual device capabilities: \n" + driverInfo.get().asMap());
 		deviceSize.set(getDriver().manage().window().getSize());
+		//MobileDevice.setDeviceId(driverInfo.get().getCapability("udid").toString());
 		MobileDevice.logDeviceInfo();
-
+		
 		// System.out.println("Device screenshot captured at " +
 		// MobileDevice.takeScreenshot().getAbsolutePath());
 		// new ImageElement(new
@@ -182,21 +173,20 @@ public class DriverFactory {
 	
 	public static String getEnvironment() throws Throwable
 	{
-		String deviceId= DeviceStore.getDeviceId();
-		if(driverEnvironment.containsKey(deviceId))
-			return driverEnvironment.get(deviceId);
+		if(driverEnvironment.containsKey(DeviceStore.getLockedDevice()))
+			return driverEnvironment.get(DeviceStore.getLockedDevice());
 		else
 			return "";
 	}
 	
 	public static void setEnvironment(String envName) throws Throwable
 	{
-		driverEnvironment.put(DeviceStore.getDeviceId(), envName);
+		driverEnvironment.put(DeviceStore.getLockedDevice(), envName);
 	}
 	
 	public static void clearEnvironment() throws Throwable
 	{
-		driverEnvironment.remove(DeviceStore.getDeviceId());
+		driverEnvironment.remove(DeviceStore.getLockedDevice());
 	}
 	
 	public static String getBundleId() throws Throwable {
@@ -217,5 +207,13 @@ public class DriverFactory {
 			((AppiumDriver)getDriver()).launchApp();
 		else
 			AndroidDevice.startApplication();
+	}
+
+	public static boolean isSessionRunning() throws Throwable {
+		Object lockedDevice= DeviceStore.getLockedDevice();
+		if(lockedDevice == null) 
+			return false;
+		else
+			return driverMap.containsKey(lockedDevice);
 	}
 }

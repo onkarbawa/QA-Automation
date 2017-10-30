@@ -1,7 +1,5 @@
 package com.curbside.automation.uifactory;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.eo.Do;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -33,23 +31,12 @@ public class Steps {
 	public void launchApplication(String appName) throws Throwable {
 		AppStore.setAppName(appName);
 		logger.info("Launching application without install");
-		// DriverFactory.releaseDriver();
-		// DeviceStore.releaseDevice();
 
-		DriverFactory.getDriver(false);
-
-		if (!MobileDevice.getBundleId().equals(DriverFactory.getBundleId())) {
-			DriverFactory.releaseDriver();
-			DriverFactory.getDriver(false);
-		}
-		else
-		{
-			if (DeviceStore.getPlatform().equalsIgnoreCase("android"))
-				AndroidDevice.startApplication();
-			else
-				DriverFactory.launchApp();
-		}
-
+		DriverFactory.releaseDriver();
+		
+		//lock a device
+		DeviceStore.getDevice();
+		DriverFactory.createDriver(false);
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -57,52 +44,38 @@ public class Steps {
 	public void launchApplicationWithPermissions(String appName) throws Throwable {
 		AppStore.setAppName(appName);
 		logger.info("Launching application with needed permissions");
-		// DriverFactory.releaseDriver();
-		// DeviceStore.releaseDevice();
-
-		DriverFactory.getDriver(false, true);
-		if (!MobileDevice.getBundleId().equals(DriverFactory.getBundleId())) {
-			DriverFactory.releaseDriver();
-			DriverFactory.getDriver(false, true);
-		}
-
+		
+		DriverFactory.releaseDriver();
+		
+		//lock a device
+		DeviceStore.getDevice();
+		DriverFactory.createDriver(false, true);
+		
 		if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
 			AndroidDevice.grantLocationPermission();
-			// ((AppiumDriver)DriverFactory.getDriver()).resetApp();
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			((AppiumDriver) DriverFactory.getDriver()).launchApp();
 		}
-
 		MobileDevice.getScreenshot(true);
 	}
 
 	@Given("^I launch (.*) application for the first time$")
 	public void launchApplicationClean(String appName) throws Throwable {
 		AppStore.setAppName(appName);
+		
+		DeviceStore.getDevice();
+		if (DeviceStore.getPlatform().equalsIgnoreCase("ios") && appName.equalsIgnoreCase("Curbside")) {
+			AppleDevice.resetPermissions(appName);
+		}
 
 		DriverFactory.releaseDriver();
-		DeviceStore.releaseDevice();
-
-		// Reset app permissions from mobile device
-		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
-				&& appName.equalsIgnoreCase("Curbside")) {
-			AppleDevice.resetPermissions(appName);
-			((AppiumDriver) DriverFactory.getDriver()).closeApp();
-			DriverFactory.releaseDriver();
-		}
-
 		logger.info("Launching " + appName + " application");
-		DriverFactory.getDriver(true);
+		DriverFactory.createDriver(true);
 		acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-			DriverFactory.releaseDriver();
-			DriverFactory.getDriver(false);
-		}
-
+		
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -112,7 +85,7 @@ public class Steps {
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			try {
-				new UIElement(By.name("Allow")).tap();
+				MobileDevice.acceptAlert();
 			} catch (Exception e) {
 				// e.printStackTrace();
 			}
@@ -126,7 +99,7 @@ public class Steps {
 		logger.info("Denying notification alert");
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			new UIElement(By.name("Don’t Allow")).tap();
+			MobileDevice.dismissAlert();
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
 		} else
 			throw new NotImplementedException(
@@ -139,12 +112,11 @@ public class Steps {
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 			try {
-				new UIElement(By.name("Allow")).tap();
+				MobileDevice.acceptAlert();
 			}catch (Exception e){}
 		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
 			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
-//				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
 				UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 				for (int i = 0; i < 10; i++) {
 					if (!e.isDisplayed())
@@ -161,7 +133,7 @@ public class Steps {
 		logger.info("Denying location alert");
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			new UIElement(By.name("Don’t Allow")).tap();
+			MobileDevice.dismissAlert();
 		else
 			throw new NotImplementedException(
 					"Method declineLocationAlert is not implemented for platform: " + DeviceStore.getPlatform());

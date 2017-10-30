@@ -68,7 +68,6 @@ public class WebDriverListener implements IInvokedMethodListener, ISuiteListener
 		{
 			suite.getXmlSuite().setThreadCount(DeviceStore.getIOSDeviceCount());
 		}
-		
 		if(platform.equalsIgnoreCase("android"))
 		{
 			suite.getXmlSuite().setThreadCount(DeviceStore.getAndroidDeviceCount());

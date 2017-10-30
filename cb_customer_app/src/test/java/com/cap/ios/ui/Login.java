@@ -27,7 +27,6 @@ public class Login extends AbstractScreen{
     UIElement storeID = UIElement.byClass("XCUIElementTypeTextField");
     UIElement btnReturnKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Return']");
 
-    UIElement btnAllow = UIElement.byName("Allow");
     UIElement btnOK = UIElement.byName("OK");
 
     UIElement btnStaging = UIElement.byName("Staging");
@@ -44,19 +43,13 @@ public class Login extends AbstractScreen{
     @Given("^I accept CAP notifications alerts$")
     public void acceptNotificationAlert() throws Throwable {
         for (int i = 0; i < 7; i++) {
-            if (btnAllow.isDisplayed()||btnOK.isDisplayed()){
-                try {
-                    try {
-                        new UIElement(By.name("Allow")).tap();
-                    } catch (Exception e) {
-                        new UIElement(By.name("OK")).tap();
-                    }
-                } catch (Exception e) {
-                }
-            }
-
+        	try {
+        		MobileDevice.acceptAlert();
+        		continue;
+			} catch (Exception e) {
+				return;
+			}
         }
-
     }
 
     @And("^I should see this \"([^\"]*)\" on the '(.*)' screen$")

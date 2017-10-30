@@ -91,14 +91,10 @@ public class UIElement {
 		if(e != null) return e;
 		
 		try {
-			this.e= DriverFactory.getDriver().findElement(locator);
+			return DriverFactory.getDriver().findElement(locator);
 		} catch (Exception e) {
-			//MobileDevice.hideKeyboard();
-			//this.e= DriverFactory.getDriver().findElement(locator);
 			throw e;
-		}
-		
-		return e;
+		}		
 	}
 	
 	public List<WebElement> getElements() throws Throwable {

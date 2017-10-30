@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.common.pages.Page;
 import com.curbside.automation.uifactory.DriverFactory;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
@@ -12,6 +13,10 @@ import cucumber.api.java.en.When;
 import com.curbside.automation.uifactory.UIElement;
 
 import cucumber.api.java.en.Then;
+
+import java.io.File;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 /**
@@ -21,8 +26,7 @@ import org.testng.Assert;
 
 public class Home extends AbstractScreen {
 
-	UIElement nearBy = UIElement.byXpath("//XCUIElementTypeOther//XCUIElementTypeStaticText[@name='Near '] " +
-            "| //XCUIElementTypeCell/../XCUIElementTypeOther[5]//XCUIElementTypeStaticText[@name='Near ']");
+	UIElement nearBy = UIElement.byPredicate("lable == 'Near '");;
 	UIElement btnCancel = UIElement.byName("Cancel");
 	UIElement iconSearch = UIElement.byName("Search");
 	UIElement btnSearchKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Search']");
@@ -53,39 +57,33 @@ public class Home extends AbstractScreen {
 
 	@Then("^I should see 'Nearby stores' landing page$")
 	public void isDisplayed() throws Throwable {
-		try {
-            System.out.println("Checking nearby---");
-        //    Assert.assertTrue(nearBy.isDisplayed());
-			Assert.assertEquals(nearBy.getText(),"Near ");
-		} finally {
-			MobileDevice.getScreenshot(true);
-		}
+		Assert.assertEquals(nearBy.getText(),"Near ");
 	}
 
 	@And("^I am on Home Screen$")
 	public void open() throws Throwable {
+
 		welcomeScreen.wait_for_app_launch();
+
 		try {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 10; i++) {
 
 				if (homeScreen.iconSearch.isDisplayed())
 					return;
-
-				if(welcomeScreen.skipIntro.isDisplayed() || welcomeScreen.btnGetStarted.isDisplayed()
-						|| welcomeScreen.okWithMe.isDisplayed() || welcomeScreen.btnAllow.isDisplayed())
-				{
-					welcomeScreen.btnAllow.tapOptional();
-					welcomeScreen.skipIntro.tapOptional();
-					welcomeScreen.btnGetStarted.tapOptional();
-					welcomeScreen.okWithMe.tapOptional();
-					commonSteps.acceptNotificationAlert();
-					commonSteps.acceptLocationAlert();
-				}
 				else
-					return;
+					try {
+						MobileDevice.acceptAlert();
+					} catch (Exception e) {
+					}
+
+				for (WebElement e : welcomeScreen.thisPageElement.getElements()) {
+					try {
+						e.click();
+					} catch (Exception e2) {}
+				}
 			}
 		} catch (Exception e) {
-			System.out.println("inCAtchblock"+e.getMessage());
+			System.out.println("inCAtchblock" + e.getMessage());
 		}
 	}
 
@@ -145,10 +143,13 @@ public class Home extends AbstractScreen {
 //		footerTabsScreen.tapMyAccount();
 //		Steps.tapButton("Help");
 //		checkEnvironment.scrollTo();
-		MobileDevice.getScreenshot(true);
-		DriverFactory.closeApp();
-		DriverFactory.launchApp();
+		//DriverFactory.closeApp();
+		//DriverFactory.launchApp();
 //		DriverFactory.getDriver(false);
+		
+		DriverFactory.releaseDriver();
+		DriverFactory.createDriver(false);
+		
 		homeScreen.open();
 	}
 
