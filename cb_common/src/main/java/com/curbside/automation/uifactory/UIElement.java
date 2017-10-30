@@ -123,10 +123,13 @@ public class UIElement {
 	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
 		try{
 			getElement().sendKeys(keySequence);
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 			this.clearText();
-			getElement().sendKeys(keySequence);
+			for (int i = 0; i < keySequence.length(); i++) {
+				char c = keySequence.charAt(i);
+				String s = new StringBuilder().append(c).toString();
+				getElement().sendKeys(s);
+			}
 		}
 		
 		if (hideKeyboardAfterTyping)
