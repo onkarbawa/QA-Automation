@@ -19,7 +19,7 @@
       "udid" : ""
     },
     {
-      "url" : "http://127.0.0.1:4723/wd/hub",
+      "url" : "http://127.0.0.1:4724/wd/hub",
       "platformName" : "iOS",
       "platformVersion" : "10.3",
       "deviceName" : "iPhone 6s",

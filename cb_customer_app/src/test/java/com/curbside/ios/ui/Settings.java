@@ -48,15 +48,12 @@ public class Settings extends AbstractScreen {
 
     @And("^I set '(.*)' permission as '(.*)'$")
     public void iSetAs(String appName, String newValue) throws Throwable {
-        MobileDevice.getSource(true);
-        MobileDevice.getScreenshot(true);
         //location.waitFor(20);
         try {
             location.tap();
         } catch (Exception e) {
-            MobileDevice.getSource(true);
-            MobileDevice.getScreenshot(true);
         }
+        
         new UIElement(By.name(newValue)).tap();
         MobileDevice.getScreenshot(true);
     }

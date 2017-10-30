@@ -68,15 +68,15 @@ public class Cart extends AbstractScreen {
 		//footerTabsScreen.btnCart.waitFor(3).tap();
 		if (placeOrder.isDisplayed()){
 			placeOrder.tap();
-			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
 		}
 		else {
 			placeOrder.scrollTo(SwipeDirection.UP);
 			placeOrder.tap();
-			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
 		}
+		
+		MobileDevice.getScreenshot(true);
+		//MobileDevice.getSource(true);
+		
 		placeOrder.waitForNot(10);
 	}
 
@@ -107,12 +107,12 @@ public class Cart extends AbstractScreen {
 		footerTabsScreen.tapCart();
 		if (selectedStores.waitFor(4).isDisplayed()) {
 			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
+			//MobileDevice.getSource(true);
 			int totalStores = selectedStores.getCount();
 			for (int i = 0; i < totalStores; i++) {
 				selectedStores.tap();
 				MobileDevice.getScreenshot(true);
-				MobileDevice.getSource(true);
+				//MobileDevice.getSource(true);
 				if (creditCardCell.isDisplayed()) {
 					int totalItems = productItem.getCount();
 					try {
@@ -144,7 +144,7 @@ public class Cart extends AbstractScreen {
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
 							MobileDevice.getScreenshot(true);
-							MobileDevice.getSource(true);
+							//MobileDevice.getSource(true);
 						}
 					} else {
 						for (int j = 0; j < totalItems - 2; j++) {
@@ -152,7 +152,7 @@ public class Cart extends AbstractScreen {
 							UIElement.byName("Remove").tap();
 							UIElement.byName("Remove").waitForNot(8);
 							MobileDevice.getScreenshot(true);
-							MobileDevice.getSource(true);
+							//MobileDevice.getSource(true);
 						}
 					}
 				}
@@ -160,7 +160,7 @@ public class Cart extends AbstractScreen {
 					int totalSelectedSubstores = substores.getCount();
 					if (totalSelectedSubstores > 4) {
 						MobileDevice.getScreenshot(true);
-						MobileDevice.getSource(true);
+						//MobileDevice.getSource(true);
 						String address = storeAddress.getText();
 						for (int j = 0; j < totalSelectedSubstores - 4; j++) {
 							Properties.setVariable("storeaddress",address);
@@ -271,11 +271,11 @@ public class Cart extends AbstractScreen {
 
 		if (UIElement.byName(code).isDisplayed()){
 			UIElement.byName(code).tap();
-			MobileDevice.getSource(true);
+			//MobileDevice.getSource(true);
 		}
 		else{
 			UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
-			MobileDevice.getSource(true);
+			//MobileDevice.getSource(true);
 		}
 
 		//UIElement.byName(code).scrollTo().tap();
@@ -295,7 +295,7 @@ public class Cart extends AbstractScreen {
 	public void iSelectCurbsidePickupAndDeliveryOption() throws Throwable {
 		curbsidePickUp.tap();
 		getMyOrderScreen.deliveryBy.tap();
-		MobileDevice.getSource(true);
+		//MobileDevice.getSource(true);
 	}
 
 	@Then("^I should see delivery promo code is applied and discount is given as per '(.*)'")

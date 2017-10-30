@@ -21,9 +21,10 @@ public class CucumberHooks {
 			scenario.embed(source, "text/html");
 			*/
 			
-			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
+			if(scenario.getStatus().equalsIgnoreCase("failed"))
+				MobileDevice.getSource(true);
 			
+			MobileDevice.getScreenshot(true);
 		} catch (Throwable e) {
 		}
 	}

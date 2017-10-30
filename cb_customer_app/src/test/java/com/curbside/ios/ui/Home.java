@@ -26,7 +26,7 @@ import org.testng.Assert;
 
 public class Home extends AbstractScreen {
 
-	UIElement nearBy = UIElement.byPredicate("lable == 'Near '");;
+	UIElement nearBy = UIElement.byAccessibilityId("Near ");
 	UIElement btnCancel = UIElement.byName("Cancel");
 	UIElement iconSearch = UIElement.byName("Search");
 	UIElement btnSearchKeyboard = UIElement.byXpath("//XCUIElementTypeKeyboard//XCUIElementTypeButton[@name='Search']");

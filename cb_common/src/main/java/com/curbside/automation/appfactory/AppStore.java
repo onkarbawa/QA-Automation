@@ -48,19 +48,19 @@ public class AppStore {
 		}
 	}
 	
-	public static synchronized String getAppName() throws Exception {
+	public static String getAppName() throws Exception {
 		return appInUse.get();
 	}
 	
-	public static synchronized void setAppName(String appName) throws Exception {
+	public static void setAppName(String appName) throws Exception {
 		appInUse.set(appName);
 	}
 	
-	public static synchronized JSONObject getApp() throws Exception{
+	public static JSONObject getApp() throws Exception{
 		return getApp(getAppName());
 	}
 
-	public static synchronized JSONObject getApp(String appName) throws Exception {
+	public static JSONObject getApp(String appName) throws Exception {
 		List<JSONObject> appList= new ArrayList<>();
 		
 		switch (DeviceStore.getPlatform().toLowerCase()) {

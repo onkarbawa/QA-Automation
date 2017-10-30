@@ -54,7 +54,7 @@ public class DeviceStore {
 		}
 	}
 
-	public static synchronized JSONObject getDevice() throws Exception{
+	public static JSONObject getDevice() throws Exception{
 		return getDevice(AppStore.getAppName());
 	}
 
@@ -109,7 +109,7 @@ public class DeviceStore {
 		}
 	}
 
-	public static synchronized void releaseDevice() {
+	public static void releaseDevice() {
 		if(lockedDevice.get() == null)
 			return;
 		

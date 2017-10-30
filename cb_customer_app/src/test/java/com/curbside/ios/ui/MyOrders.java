@@ -29,7 +29,7 @@ public class MyOrders extends AbstractScreen {
     @And("^I tap on Order In Progress$")
     public void iTapOnOrderInProgress() throws Throwable {
         orderInProgress.waitFor(5).tap();
-        MobileDevice.getSource(true);
+        //MobileDevice.getSource(true);
     }
 
     @When("^I tap on reason '(.*)' for cancelling$")

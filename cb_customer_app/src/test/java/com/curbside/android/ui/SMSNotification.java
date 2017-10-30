@@ -39,7 +39,7 @@ public class SMSNotification {
             Thread.sleep(40000);
             MobileDevice.getScreenshot(false);
             Thread.sleep(40000);
-            MobileDevice.getSource();
+            //MobileDevice.getSource();
         }
         MobileDevice.getScreenshot(true);
         int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));

@@ -22,11 +22,11 @@ public class StoreDetails {
         footerTabsScreen.btnShop.tap();
        // UIElement.byXpath("//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(30).scrollTo(SwipeDirection.UP).tap();
         UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(30).scrollTo(SwipeDirection.UP).tap();
-        MobileDevice.getSource(true);
+        //MobileDevice.getSource(true);
         searchBar.waitFor(10);
         searchBar.sendKeys(product,false);
         UIElement.byName("Search").tap();
-        MobileDevice.getSource(true);
+        //MobileDevice.getSource(true);
     }
 
     @And("^I select (\\d+)no product from list$")
