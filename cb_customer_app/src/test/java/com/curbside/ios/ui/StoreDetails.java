@@ -57,4 +57,15 @@ public class StoreDetails {
        UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeOther[XCUIElementTypeButton[@name='Refine']]]/following-sibling::XCUIElementTypeCell["+number+"]//XCUIElementTypeImage").waitFor(20).scrollTo().tap();
     }
 
+    @And("^I select (\\d+)no product and save product price named as'(.*)'$")
+    public void iSelectNoProductFromStoreProductList(int number, String price) throws Throwable {
+        UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
+                "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
+                "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | " +
+                "//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Departments')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell[" + number + "]");
+        element.waitFor(10).tap();
+        productDetailsScreen.productLocationAndPrice.waitFor(3);
+        Properties.setVariable(price, productDetailsScreen.getProductPrice());
+        //  Properties.setVariable("productName"+Integer.toString(number),productDetailsScreen.productName.getText());
+    }
 }

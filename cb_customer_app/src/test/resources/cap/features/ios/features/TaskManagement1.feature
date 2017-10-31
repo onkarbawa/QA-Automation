@@ -56,7 +56,7 @@ Feature: iOS- Task Management
     And I tap on 'Finish' button
     And I ckecked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
-    And I should see 'insufficientQuantity' orderId in PickUp tab with 'Needs customer attention'
+    And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Needs customer attention'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
   @iOS @TCS12 @TCS16

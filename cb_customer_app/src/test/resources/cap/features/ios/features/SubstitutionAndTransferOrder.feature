@@ -49,7 +49,7 @@ Feature: iOS- Task Management
     And I tap on 'Mine' tab
     And I search for 'substitutionOrder' OrderID
     And I mark all items as 'Item not Available'
-    And I should see 'substitutionOrder' orderId in PickUp tab with 'Needs customer attention'
+    And I should see 'substitutionOrder' orderId in PickUp tab with message 'Needs customer attention'
 
   Scenario: Customer Substitute Order
     Given I launch Curbside application
@@ -96,7 +96,7 @@ Feature: iOS- Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I ckecked order is ready
-    And I should see 'transferOrder' orderId in PickUp tab with 'Needs customer attention'
+    And I should see 'transferOrder' orderId in PickUp tab with message 'Needs customer attention'
 
   Scenario: Customer Decline to Substitute Order
     Given I launch Curbside application

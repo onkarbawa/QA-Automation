@@ -1,10 +1,13 @@
 package com.cap.ios.ui;
 
+import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by bawa.onkar
@@ -59,5 +62,24 @@ public class Payment extends AbstractScreen {
             Thread.sleep(7000);
             commonSteps.iTapOnBackButton();
         }
+    }
+
+    @And("^I enter receipt stored price for firstProduct named as '(.*)' and secondProduct named as '(.*)'$")
+    public void iEnterReceiptStoredPriceForFirstProductNamedAsAndSecondProductNamedAs(String firstProductPrice, String secondProductPrice) throws Throwable {
+        Double firstProduct = 0.00;
+        Double secondProduct = 0.00;
+
+        if (firstProductPrice != null) {
+            firstProduct = Double.valueOf(Properties.getVariable(firstProductPrice));
+        }
+        if (secondProductPrice != null) {
+            secondProduct = Double.valueOf(Properties.getVariable(secondProductPrice));
+        }
+        Double totalPrice = firstProduct + secondProduct;
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        UIElement.byClass("XCUIElementTypeTextField").sendKeys(String.valueOf(df.format(totalPrice)), true);
+        Steps.tapButton("Save");
     }
 }

@@ -4,19 +4,24 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener"/>
     </listeners>
-    <!--<test name="iOS- Error-Message">-->
-        <!--<classes>-->
-            <!--<class name="com.capcvs.ios.runners.ErrorMessageTest"/>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="iOS- My-Account">-->
-        <!--<classes>-->
-            <!--<class name="com.capcvs.ios.runners.MyAccountTest"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="iOS- Error-Message">
+        <classes>
+            <class name="com.capcvs.ios.runners.ErrorMessageTest"/>
+        </classes>
+    </test>
+    <test name="iOS- My-Account">
+        <classes>
+            <class name="com.capcvs.ios.runners.MyAccountTest"/>
+        </classes>
+    </test>
     <test name="iOS- iOS- MAP">
         <classes>
             <class name="com.capcvs.ios.runners.MapTest"/>
+        </classes>
+    </test>
+    <test name="iOS- iOS- TaskManagement">
+        <classes>
+            <class name="com.capcvs.ios.runners.TaskManagementTest"/>
         </classes>
     </test>
     <!--<test name="iOS- Offline Error-Message">-->
