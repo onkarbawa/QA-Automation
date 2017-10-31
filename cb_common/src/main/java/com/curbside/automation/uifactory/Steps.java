@@ -376,7 +376,7 @@ public class Steps {
 		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
 	}
 
-    @And("^I will try to set up device for IOS (.*) app$")
+    @And("^I will try to setup device for IOS (.*) app$")
     public void setupSetting(String appName) throws Throwable {
 
         if (!DeviceStore.getPlatform().equalsIgnoreCase("ios"))
