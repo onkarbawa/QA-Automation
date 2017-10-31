@@ -41,6 +41,7 @@ public class AppleDevice extends MobileDevice {
 		
 		DriverFactory.releaseDriver();
 		DriverFactory.getDriver(device);
+		settingTitle.waitFor(20);
 	}
 	
 	public static void resetPermissions(String appName) throws Throwable {
