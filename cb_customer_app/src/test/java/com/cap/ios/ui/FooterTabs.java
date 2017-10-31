@@ -1,5 +1,6 @@
 package com.cap.ios.ui;
 
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 
@@ -22,6 +23,7 @@ public class FooterTabs extends AbstractScreen{
     @And("^I tap on '(.*)' icon in bottom menu for cap$")
     public void iTapOnIconInBottomMenuForCap(String tabName) throws Throwable {
         UIElement.byAccessibilityId(tabName).tap();
+        MobileDevice.getScreenshot(true);
     }
 
     public void tapMyAccount() throws Throwable {
