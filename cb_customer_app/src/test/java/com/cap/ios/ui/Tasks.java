@@ -150,10 +150,12 @@ public class Tasks extends AbstractScreen {
                 if (btnOK.isDisplayed()){
                     btnOK.tap();
                     Steps.tapButton("Finish");
+                    MobileDevice.getScreenshot(true);
                 }else {
                     break;
                 }
             }
+            MobileDevice.getScreenshot(true);
         }
     }
 
