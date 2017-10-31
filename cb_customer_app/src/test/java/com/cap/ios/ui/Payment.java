@@ -12,7 +12,8 @@ import cucumber.api.java.en.And;
  */
 public class Payment extends AbstractScreen {
 
-    UIElement btnCamera = UIElement.byXpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextField");
+ //   UIElement btnCamera = UIElement.byXpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextField");
+    UIElement btnCamera =UIElement.byPredicate("value == 'Camera Roll'");
     UIElement firstPhoto = UIElement.byXpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther");
 
 
