@@ -48,7 +48,7 @@ public class FacebookLogin extends AbstractScreen {
         if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserPassword.isDisplayed())) {
             Steps.tapButton("Done");
             btnCurbsideSignInWithFacebook.waitFor(2).tap();
-            Thread.sleep(20000);
+            btnInBrowserContinueAs.waitFor(25);
         }
 
         if (!btnInBrowserContinueAs.isDisplayed()) {

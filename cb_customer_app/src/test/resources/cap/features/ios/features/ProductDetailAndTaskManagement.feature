@@ -1,6 +1,9 @@
 @productDetailsAndTaskManagement
 Feature: iOS- Product Details and Task Management
 
+  Scenario: Setting test environment
+    Given I will try to setup device for IOS Curbside app
+
   Scenario: Setting up user account with credit card
     Given I launch Curbside application for the first time
     And I have selected Experimental test environment
