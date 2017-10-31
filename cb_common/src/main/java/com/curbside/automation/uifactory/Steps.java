@@ -375,4 +375,33 @@ public class Steps {
 
 		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
 	}
+
+    @And("^I will try to set up device for IOS (.*) app$")
+    public void setupSetting(String appName) throws Throwable {
+
+        if (!DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+            return;
+
+        AppStore.setAppName(appName);
+        DriverFactory.releaseDriver();
+        DeviceStore.releaseDevice();
+
+        // Reset app permissions from mobile device
+        DeviceStore.getDevice();
+        DriverFactory.clearEnvironment();
+
+        try {
+            AppleDevice.launchSettings();
+            MobileDevice.getScreenshot(true);
+            ((AppiumDriver) DriverFactory.getDriver()).closeApp();
+        } catch (Exception e) {
+        }
+
+        DriverFactory.releaseDriver();
+        logger.info("Launching " + appName + " application");
+        DriverFactory.getDriver(true);
+        acceptNotificationAlert();
+        acceptNotificationAlert();
+        MobileDevice.getScreenshot(true);
+    }
 }
