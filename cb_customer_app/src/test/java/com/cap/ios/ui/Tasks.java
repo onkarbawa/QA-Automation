@@ -78,7 +78,22 @@ public class Tasks extends AbstractScreen {
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
 //        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'FCK6S2QH')]").scrollTo(SwipeDirection.UP).tap();
+      //  UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'FCK6S2QH')]").scrollTo(SwipeDirection.UP).tap();
+
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'FCK6S2QH')]");
+        for (int i = 1;i < 50;i++){
+            if (orderNumber.isDisplayed()){
+                orderNumber.tap();
+                break;
+            }else {
+//                if (orderNumber.isDisplayed()){
+//                    orderNumber.tap();
+//                    break;
+//                }
+                MobileDevice.swipe(180,550,180,50);
+
+            }
+        }
     }
 
     @Then("^I should see product details as below for CAP$")
