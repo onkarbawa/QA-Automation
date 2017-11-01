@@ -44,9 +44,9 @@ public class Tasks extends AbstractScreen {
     public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         footerTabsScreen.btnTask.waitFor(10).tap();
       //  btnAll.waitFor(10);
-        String orderID = Properties.getVariable(orderAlias);
-        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-    //    UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'DSGZEIUP')]");
+//        String orderID = Properties.getVariable(orderAlias);
+//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]");
         for (int i = 1;i < 50;i++){
             if (orderNumber.isDisplayed()){
                 orderNumber.tap();
@@ -74,11 +74,11 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for '(.*)' OrderID$")
     public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
-        String orderID = Properties.getVariable(orderAlias);
+//        String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'DSGZEIUP')]").scrollTo(SwipeDirection.UP).tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]").scrollTo(SwipeDirection.UP).tap();
     }
 
     @Then("^I should see product details as below for CAP$")

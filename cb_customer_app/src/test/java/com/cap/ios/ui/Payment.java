@@ -13,7 +13,9 @@ import cucumber.api.java.en.And;
 public class Payment extends AbstractScreen {
 
  //   UIElement btnCamera = UIElement.byXpath("//XCUIElementTypeCell[2]/XCUIElementTypeTextField");
-    UIElement btnCamera =UIElement.byPredicate("value == 'Camera Roll'");
+    UIElement btnCamera = UIElement.byPredicate("value == 'Camera Roll'");
+    UIElement cameraBtn = UIElement.byXpath("//XCUIElementTypeStaticText[@name='5'] | //XCUIElementTypeOther" +
+            "[XCUIElementTypeStaticText[@name='My Albums']]/preceding-sibling::XCUIElementTypeCell[1]/XCUIElementTypeTextField");
     UIElement firstPhoto = UIElement.byXpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther");
 
 
@@ -45,29 +47,31 @@ public class Payment extends AbstractScreen {
     public void iTapOnButtonAndUsePhotoToScanBarcode(String button1,String button2) throws Throwable {
         if (UIElement.byName(button1).isDisplayed()) {
             UIElement.byName(button1).tap();
-            MobileDevice.getScreenshot(true);
         }else {
             UIElement.byName(button1).scrollTo().tap();
-            MobileDevice.getScreenshot(true);
         }
+        MobileDevice.getScreenshot(true);
        // Steps.tapButton(button1);
         try {
             UIElement.byName("OK").tap();
             MobileDevice.getScreenshot(true);
         }catch (Exception e){}
         try {
+            try {
+                btnCamera.tap();
+            }catch (Exception e){
+                cameraBtn.tap();
+            }
+            firstPhoto.tap();
+            firstPhoto.waitForNot(10);
+            // Thread.sleep(7000);
+            commonSteps.iTapOnBackButton();
+        }catch (Exception e){
             Steps.tapButton("PhotoCapture");
             Steps.tapButton(button2);
             Thread.sleep(3000);
             Steps.tapButton("Cancel");
-            MobileDevice.getScreenshot(true);
-        }catch (Exception e){
-            btnCamera.tap();
-            firstPhoto.tap();
-            firstPhoto.waitForNot(10);
-           // Thread.sleep(7000);
-            commonSteps.iTapOnBackButton();
-            MobileDevice.getScreenshot(true);
         }
+        MobileDevice.getScreenshot(true);
     }
 }

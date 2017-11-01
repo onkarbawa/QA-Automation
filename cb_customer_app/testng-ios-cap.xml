@@ -4,41 +4,41 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Error-Message">
-            <classes>
-                <class name="com.cap.ios.runners.ErrorMessage"/>
-            </classes>
-    </test>
-    <test name="iOS- My-Account">
-        <classes>
-            <class name="com.cap.ios.runners.MyAccount"/>
-        </classes>
-    </test>
-    <test name="iOS- MAP">
-        <classes>
-            <class name="com.cap.ios.runners.MapTest"/>
-        </classes>
-    </test>
-    <test name="iOS- ProductDetail And TaskManagement">
-        <classes>
-            <class name="com.cap.ios.runners.ProductDetailAndTaskManagementTest"/>
-        </classes>
-    </test>
+    <!--<test name="iOS- Error-Message">-->
+            <!--<classes>-->
+                <!--<class name="com.cap.ios.runners.ErrorMessage"/>-->
+            <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- My-Account">-->
+        <!--<classes>-->
+            <!--<class name="com.cap.ios.runners.MyAccount"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- MAP">-->
+        <!--<classes>-->
+            <!--<class name="com.cap.ios.runners.MapTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- ProductDetail And TaskManagement">-->
+        <!--<classes>-->
+            <!--<class name="com.cap.ios.runners.ProductDetailAndTaskManagementTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
     <test name="iOS- TaskManagement1">
         <classes>
             <class name="com.cap.ios.runners.TaskManagement1Test"/>
         </classes>
     </test>
-    <test name="iOS- TaskManagement And Special Symbol">
-        <classes>
-            <class name="com.cap.ios.runners.TaskManagementAndSpecialSymbolTest"/>
-        </classes>
-    </test>
-    <test name="iOS- Substitution And Transfer Order">
-        <classes>
-            <class name="com.cap.ios.runners.SubstitutionAndTransferTest"/>
-        </classes>
-    </test>
+    <!--<test name="iOS- TaskManagement And Special Symbol">-->
+        <!--<classes>-->
+            <!--<class name="com.cap.ios.runners.TaskManagementAndSpecialSymbolTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="iOS- Substitution And Transfer Order">-->
+        <!--<classes>-->
+            <!--<class name="com.cap.ios.runners.SubstitutionAndTransferTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test name="iOS- Offline Error-Message">-->
         <!--<classes>-->
             <!--<class name="com.cap.ios.runners.OfflineErrorMessageTest"/>-->
