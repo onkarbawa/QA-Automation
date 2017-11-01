@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import com.cucumber.listener.Reporter;
 import org.json.JSONObject;
 
 
@@ -24,27 +25,34 @@ public class AppleDevice extends MobileDevice {
 	static UIElement passcode= UIElement.byAccessibilityId("Passcode");
 	static UIElement settingTitle = UIElement.byXpath("//XCUIElementTypeSearchField[@name='Settings']");
 	static UIElement btnAllow = UIElement.byName("Allow");
+	static UIElement settingUi = UIElement.byXpath("//XCUIElementTypeTable");
 	
 	public AppleDevice() {
 	}
 
-	public static void launchSettings() throws Throwable {
+    public static void launchSettings() throws Throwable {
 
-		// Get current device
-		JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
-		
-		device.remove("app");
-		device.remove("bundleId");
-		device.remove("ipa");
+        // Get current device
+        JSONObject device = new JSONObject(DeviceStore.getDevice().toString());
 
-		device.put("bundleId", IOSApps.Settings);
-		
-		DriverFactory.releaseDriver();
-		DriverFactory.getDriver(device);
-		settingTitle.waitFor(20);
-	}
-	
-	public static void resetPermissions(String appName) throws Throwable {
+        for (int i = 0; i < 2; ++i) {
+            device.remove("app");
+            device.remove("bundleId");
+            device.remove("ipa");
+            device.put("bundleId", IOSApps.Settings);
+            DriverFactory.releaseDriver();
+            DriverFactory.getDriver(device);
+            settingUi.waitFor(10);
+
+            if (!settingUi.isDisplayed() && (i == 0))
+                Reporter.addStepLog("Launching Setting app again");
+            else
+                ++i;
+        }
+        MobileDevice.getScreenshot(true);
+    }
+
+    public static void resetPermissions(String appName) throws Throwable {
 		
 		launchSettings();
 		/*
@@ -78,7 +86,7 @@ public class AppleDevice extends MobileDevice {
 		} catch (Exception e) {
 		//	e.printStackTrace();
 		}
-		
+		MobileDevice.getScreenshot(true);
 		resetSetting.tap();
 		back.waitFor(3).tap();
 	}

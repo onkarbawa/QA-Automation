@@ -242,7 +242,6 @@ public class Steps {
 		} else
 			throw new NotImplementedException("");
 
-		MobileDevice.getScreenshot(true);
 		UIElement.byName("Notifications").tap();
 		MobileDevice.getScreenshot(true);
 
