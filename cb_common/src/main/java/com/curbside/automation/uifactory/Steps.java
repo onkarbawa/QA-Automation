@@ -391,7 +391,6 @@ public class Steps {
 
         try {
             AppleDevice.launchSettings();
-            MobileDevice.getScreenshot(true);
             ((AppiumDriver) DriverFactory.getDriver()).closeApp();
         } catch (Exception e) {
         }
@@ -401,6 +400,5 @@ public class Steps {
         DriverFactory.getDriver(true);
         acceptNotificationAlert();
         acceptNotificationAlert();
-        MobileDevice.getScreenshot(true);
     }
 }
