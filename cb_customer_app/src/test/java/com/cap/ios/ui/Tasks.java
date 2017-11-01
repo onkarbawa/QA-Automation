@@ -44,23 +44,18 @@ public class Tasks extends AbstractScreen {
     public void iSearchForOrderIDAndClaimIt(String orderAlias) throws Throwable {
         footerTabsScreen.btnTask.waitFor(10).tap();
       //  btnAll.waitFor(10);
-//        String orderID = Properties.getVariable(orderAlias);
-//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]");
+        String orderID = Properties.getVariable(orderAlias);
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+   //     UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]");
         for (int i = 1;i < 50;i++){
             if (orderNumber.isDisplayed()){
                 orderNumber.tap();
                 break;
             }else {
-//                if (orderNumber.isDisplayed()){
-//                    orderNumber.tap();
-//                    break;
-//                }
                 MobileDevice.swipe(180,550,180,50);
 
             }
         }
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'8QE8CSQM')]").scrollForCap(SwipeDirection.UP).tap();
         btnClaim.waitFor(5).tap();
         btnClaim.waitForNot(7);
         Steps.tapButton("Close");
@@ -74,11 +69,22 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for '(.*)' OrderID$")
     public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
-//        String orderID = Properties.getVariable(orderAlias);
+        String orderID = Properties.getVariable(orderAlias);
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
 //        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]").scrollTo(SwipeDirection.UP).tap();
+    //    UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]").scrollTo(SwipeDirection.UP).tap();
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
+        //     UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'C8KJA6HK')]");
+        for (int i = 1;i < 50;i++){
+            if (orderNumber.isDisplayed()){
+                orderNumber.tap();
+                break;
+            }else {
+                MobileDevice.swipe(180,550,180,50);
+
+            }
+        }
     }
 
     @Then("^I should see product details as below for CAP$")
