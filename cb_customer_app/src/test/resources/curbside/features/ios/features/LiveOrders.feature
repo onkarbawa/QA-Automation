@@ -55,7 +55,5 @@ Feature: iOS- End to End flow verification
     And I select Curbside Pickup and delivery option
     And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
     And I tap on back button
-#    And I tap on 'Enter Promo Code'
-#    And I apply 'NF_DOLLAR_DS' promo code
     When I attempt to place an order
     Then I should receive 'Delivery-Order' Email from Curbside app

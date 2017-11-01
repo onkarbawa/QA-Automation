@@ -1,5 +1,5 @@
 @appLaunch
-Feature: iOS- Application Launch
+Feature: iOS- Curbside ApplicationLaunch
 
   Scenario: Setting test environment
     Given I will try to setup device for IOS Curbside app
