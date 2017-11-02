@@ -43,7 +43,7 @@ Feature: iOS- Task Management
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
-  @iOS @TCS10
+  @iOS @TCS10 @TCS13
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab
@@ -60,6 +60,12 @@ Feature: iOS- Task Management
     And I ckecked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
     Then I should see 'readyPickUpOrder' orderId in PickUp tab with message 'Ready for pickup'
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    Then I should see alert 'Transfer complete.'
+    When I search by customer name to sort the orders
+    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
 
   @iOS @TCS11
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
