@@ -30,7 +30,8 @@ public class Tasks extends AbstractScreen {
     UIElement btnIssue = UIElement.byName("Issue");
     UIElement btnOK = UIElement.byName("OK");
 
-    UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
+//    UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
+    UIElement cancelledPickUp = UIElement.byName("Cancelled Pickup");
     UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
 
     @Then("^I should see '(.*)' screen$")
