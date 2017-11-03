@@ -20,8 +20,8 @@ Feature: iOS- SMS Flow
   Scenario: Verify SMS is received after place order
     Given I add credit card information
     And I check there is no latest SMS from Curbisde
-    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
-    And I select 'Refrigerated food' product from list
+    And I select 'Mock Picking, at 260 Sheridan Ave' retailer
+    And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
