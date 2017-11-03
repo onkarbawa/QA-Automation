@@ -1,8 +1,8 @@
 @productDetailsAndTaskManagement
 Feature: iOS- Product Details and Task Management
 
-  Scenario: Setting test environment
-    Given I will try to setup device for IOS Curbside app
+  Scenario: Check BackGroundRefresh and Allow Notifications is ON
+    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
 
   Scenario: Setting up user account with credit card
     Given I launch Curbside application for the first time
