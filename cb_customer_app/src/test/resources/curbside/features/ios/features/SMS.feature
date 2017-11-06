@@ -4,7 +4,6 @@ Feature: iOS- SMS Flow
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
-    And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114977

@@ -9,11 +9,6 @@
                 <class name="com.curbside.ios.runners.AppLaunchTest"/>
             </classes>
     </test>
-    <test name="iOS- Sign in">
-        <classes>
-            <class name="com.curbside.ios.runners.LoginTest"/>
-        </classes>
-    </test>
     <test name="iOS- SMS flow">
         <classes>
             <class name="com.curbside.ios.runners.SMSTest"/>
@@ -62,6 +57,11 @@
     <test name="iOS- Live Orders">
         <classes>
             <class name="com.curbside.ios.runners.LiveOrdersTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Sign in">
+        <classes>
+            <class name="com.curbside.ios.runners.LoginTest"/>
         </classes>
     </test>
     <test name="iOS- Applaunch1">
