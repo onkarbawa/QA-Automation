@@ -1,8 +1,8 @@
 @appLaunch
-Feature: iOS- Application Launch
+Feature: iOS- Curbside ApplicationLaunch
 
-  Scenario: Setting test environment
-    Given I will try to setup device for IOS Curbside app
+#  Scenario: Setting test environment
+#    Given I will try to setup device for IOS Curbside app
 #    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
 
   @iOS @C114937

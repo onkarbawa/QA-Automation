@@ -1,5 +1,5 @@
 @loginValidation
-Feature: iOS- Error Message
+Feature: iOS- CAP ErrorMessage
 
   @iOS
   Scenario: First time Cap Launch

@@ -1,6 +1,7 @@
 @substitutionAndTransferOrder
 Feature: iOS- Task Management
 
+  @iOS
   Scenario: Setting up user account with credit card
     Given I launch Curbside application
     And I have selected Experimental test environment
@@ -12,6 +13,7 @@ Feature: iOS- Task Management
     And I signup for a new account
     And I add credit card information
 
+  @iOS @TCS014
   Scenario: Order Placed to check - Substitution Order
     And I select 'CVS' retailer
     And I select 1no product from list
@@ -21,6 +23,7 @@ Feature: iOS- Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'substitutionOrder'
 
+  @iOS @TCS015
   Scenario: Order placed to check - Transfer Order
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
@@ -33,6 +36,7 @@ Feature: iOS- Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'transferOrder'
 
+  @iOS
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application
     And I have selected test environment for cap
@@ -45,31 +49,29 @@ Feature: iOS- Task Management
 
   @iOS @TCS014
   Scenario: Substitution Order - All order out of stock (1 item, 1 quantity each)
-    Given I search for 'substitutionOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'substitutionOrder' OrderID
+#    Given I search for 'substitutionOrder' Order ID and claim it
+    Given I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
+#    And I tap on 'Mine' tab
+    Given I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
+#    And I search for 'substitutionOrder' OrderID
     And I mark all items as 'Item not Available'
     And I should see 'substitutionOrder' orderId in PickUp tab with 'Needs customer attention'
-
-  Scenario: Customer Substitute Order
     Given I launch Curbside application
     And I changed the order item
-
-  Scenario: Setting test environment for CAP
     Given I launch CAP application
     And I accept CAP notifications alerts
-
-  Scenario: Complete Order after Substitution of product
-    And I search for 'substitutionOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'substitutionOrder' OrderID
+#    And I search for 'substitutionOrder' Order ID and claim it
+    Given I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
+#    And I tap on 'Mine' tab
+#    And I search for 'substitutionOrder' OrderID
+    Given I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
-    And I ckecked order is ready
+    And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search for 'substitutionOrder' OrderID
     And I tap on 'Packages Retrieved' button
@@ -77,14 +79,15 @@ Feature: iOS- Task Management
     And I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
 
-
   @iOS @TCS015
   Scenario: Transfer Order - 1 item out of stock (2 items, 1 quantity each)
     Given I tap on 'Tasks' icon in bottom menu for cap
-    And I tap on 'All' tab
-    And I search for 'transferOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'transferOrder' OrderID
+    Given I tap on 'All' tab and search for 'transferOrder' OrderID and 'claim' it
+#    And I tap on 'All' tab
+#    And I search for 'transferOrder' Order ID and claim it
+    Given I tap on 'Mine' tab and search for 'transferOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'transferOrder' OrderID
     And I tap on 1 'Got It' button
     And I tap on 2 'Issue' button
     And I turn 'ON' 'Item not Available'
@@ -95,18 +98,12 @@ Feature: iOS- Task Management
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
-    And I ckecked order is ready
+    And I checked order is ready
     And I should see 'transferOrder' orderId in PickUp tab with 'Needs customer attention'
-
-  Scenario: Customer Decline to Substitute Order
     Given I launch Curbside application
     And I decline the substitution order
-
-  Scenario: Setting test environment for CAP
     Given I launch CAP application
     And I accept CAP notifications alerts
-
-  Scenario: Complete Order after Transfer of product
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search for 'transferOrder' OrderID
     And I tap on 'Packages Retrieved' button

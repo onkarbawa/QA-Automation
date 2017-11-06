@@ -266,20 +266,15 @@ public class Cart extends AbstractScreen {
 	//	UIElement.byName("Back").tap();
 	}
 
-    @Given("^I tap on '(.*)'$")
-    public void iTapOn(String code) throws Throwable {
-
-		if (UIElement.byName(code).isDisplayed()){
+	@Given("^I tap on '(.*)'$")
+	public void iTapOn(String code) throws Throwable {
+		if (UIElement.byName(code).isDisplayed()) {
 			UIElement.byName(code).tap();
-			MobileDevice.getSource(true);
-		}
-		else{
+		} else {
 			UIElement.byName(code).scrollTo(SwipeDirection.UP).tap();
-			MobileDevice.getSource(true);
 		}
-
-		//UIElement.byName(code).scrollTo().tap();
-    }
+		MobileDevice.getScreenshot(true);
+	}
 
 	@Then("^I should see '(.*)' dollar in the cart$")
 	public void iShouldSeeDollarInTheCart(String amount) throws Throwable {

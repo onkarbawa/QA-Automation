@@ -9,8 +9,8 @@ Feature: iOS- End to End flow verification
 
   @iOS @C114962
   Scenario: End to End - Signup EMail, Signup SMS and Pickup order EMail verifications
-    Given I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
-    And I select 'Food Item' product from list
+    Given I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -34,8 +34,8 @@ Feature: iOS- End to End flow verification
     And I Sign-in with 'live_order@mailinator.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
-    And I select 'Food Item' product from list
+    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I tap on 'Enter Promo Code'
@@ -48,14 +48,12 @@ Feature: iOS- End to End flow verification
   @iOS @C114964
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
-    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'frozen-product'
-    And I select 'Frozen food' product from list
+    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
     And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
     And I tap on back button
-#    And I tap on 'Enter Promo Code'
-#    And I apply 'NF_DOLLAR_DS' promo code
     When I attempt to place an order
     Then I should receive 'Delivery-Order' Email from Curbside app

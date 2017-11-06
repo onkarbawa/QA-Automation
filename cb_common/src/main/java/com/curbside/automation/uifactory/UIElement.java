@@ -124,6 +124,7 @@ public class UIElement {
 		try{
 			getElement().sendKeys(keySequence);
 		} catch (Exception e) {
+		    MobileDevice.getSource(false);
 			this.clearText();
 			for (int i = 0; i < keySequence.length(); i++) {
 				char c = keySequence.charAt(i);

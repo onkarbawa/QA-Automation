@@ -4,7 +4,6 @@ Feature: iOS- SMS Flow
   Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected test environment
-    And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114977
@@ -20,11 +19,8 @@ Feature: iOS- SMS Flow
   Scenario: Verify SMS is received after place order
     Given I add credit card information
     And I check there is no latest SMS from Curbisde
-#    And I select 'Westfield Valley Fair, at 2855 Stevens Creek Blvd' retailer and search for 'Salmon Oil'
-#    And I select 1no product from list
-#    And I add 1 quantity of the product
-    And I select 'Mock Picking, at 260 Sheridan Ave' retailer and search for 'Refrigrated Food'
-    And I select 'Refrigerated food' product from list
+    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order

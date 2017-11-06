@@ -9,14 +9,14 @@
                 <class name="com.curbside.ios.runners.AppLaunchTest"/>
             </classes>
     </test>
+    <test name="iOS- SMS flow">
+        <classes>
+            <class name="com.curbside.ios.runners.SMSTest"/>
+        </classes>
+    </test>
     <test name="iOS- Sign up">
             <classes>
                 <class name="com.curbside.ios.runners.SignUpTest"/>
-            </classes>
-    </test>
-    <test name="iOS- Sign in">
-            <classes>
-                <class name="com.curbside.ios.runners.LoginTest"/>
             </classes>
     </test>
     <test name="iOS- Store Selection">
@@ -39,11 +39,6 @@
                 <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
             </classes>
     </test>
-    <test name="iOS- SMS flow">
-        <classes>
-            <class name="com.curbside.ios.runners.SMSTest"/>
-        </classes>
-    </test>
     <test name="iOS- Order flow">
         <classes>
             <class name="com.curbside.ios.runners.OrderFlowTest"/>
@@ -62,6 +57,11 @@
     <test name="iOS- Live Orders">
         <classes>
             <class name="com.curbside.ios.runners.LiveOrdersTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Sign in">
+        <classes>
+            <class name="com.curbside.ios.runners.LoginTest"/>
         </classes>
     </test>
     <test name="iOS- Applaunch1">
