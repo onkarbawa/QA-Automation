@@ -10,6 +10,7 @@ import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 /**
  * Created by bawa.onkar on 7/3/17.
@@ -48,7 +49,11 @@ public class FacebookLogin extends AbstractScreen {
         MobileDevice.getScreenshot(true);
 
         if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserPassword.isDisplayed())) {
-            Steps.tapButton("Done");
+            try {
+                Steps.tapButton("Done");
+            } catch (Exception e) {
+                Assert.fail("Not able to locate any element on the screen");
+            }
             btnCurbsideSignInWithFacebook.waitFor(2).tap();
             btnInBrowserContinueAs.waitFor(25);
         }
