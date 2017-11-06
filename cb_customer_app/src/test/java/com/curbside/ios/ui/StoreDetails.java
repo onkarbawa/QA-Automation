@@ -34,7 +34,8 @@ public class StoreDetails {
         UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
                 "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
                 "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | " +
-                        "//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Departments')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell[" + number + "]");
+                        "//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Departments')]]/following-sibling" +
+                "::XCUIElementTypeCell[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell[" + number + "]");
         element.waitFor(10).tap();
         productDetailsScreen.productLocationAndPrice.waitFor(3);
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());

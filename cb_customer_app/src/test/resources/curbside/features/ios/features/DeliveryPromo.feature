@@ -12,8 +12,10 @@ Feature: iOS - Delivery Promo code
     Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
-    And I select 1no product from list
+#    And I select 'Mock, at 260 Sheridan Ave' retailer
+#    And I select 1no product from list
+    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
