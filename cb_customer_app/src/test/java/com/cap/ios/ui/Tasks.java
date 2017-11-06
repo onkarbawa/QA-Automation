@@ -31,13 +31,12 @@ public class Tasks extends AbstractScreen {
     UIElement btnAll = UIElement.byName("All");
     UIElement btnIssue = UIElement.byName("Issue");
     UIElement btnOK = UIElement.byName("OK");
-
-    UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeNavigationBar[XCUIElementTypeStaticText[@name='Cancelled Pickup']]");
+    UIElement cancelledPickUp = UIElement.byName("Cancelled Pickup");
     UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
-        UIElement screenName = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+screen+"')]");
+        UIElement screenName = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + screen + "')]");
         screenName.waitFor(10);
         Assert.assertTrue(screenName.getText().contains(screen));
     }
@@ -77,13 +76,17 @@ public class Tasks extends AbstractScreen {
 
     @And("^I tap on '(.*)' tab$")
     public void iTapOnTab(String button) throws Throwable {
-        UIElement btnTasks = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'"+button+"')]");
+        UIElement btnTasks = UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'" + button + "')]");
         btnTasks.waitFor(2).tap();
     }
 
     @And("^I search for '(.*)' OrderID$")
-    public void iSearchForSelectedOrder(String orderAlias) throws Throwable {
-        String orderID = Properties.getVariable(orderAlias);
+    public void iSearchForSelectedOrder(String orderIdAlias) throws Throwable {
+        if (Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to place the order from Curbside app");
+
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
+        String orderID = Properties.getVariable(orderIdAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]");
         for (int i = 1; i < 50; i++) {
             if (orderNumber.isDisplayed()) {
@@ -110,20 +113,6 @@ public class Tasks extends AbstractScreen {
         productDetailScreen.productOverview.scrollTo();
         Assert.assertEquals(productDetailScreen.productOverview.getText(), "Overview",
                 "Product overview is not displayed");
-    }
-
-    @And("^I should see claim product in Mine tab list with '(.*)' button$")
-    public void iShouldSeeClaimProductInMineTabListWithButton(String button) throws Throwable {
-        String orderID = Properties.getVariable("orderID");
-        footerTabsScreen.tapMyAccount();
-        footerTabsScreen.tapTask();
-
-        Assert.assertTrue(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]")
-                .scrollTo(SwipeDirection.UP).getText().contains(orderID),"Product is not in the Mine Tab");
-
-        Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]/following-sibling::XCUIElementTypeButton").getText(),
-                button,"Unclaim button is not present in list");
-
     }
 
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab")
@@ -159,13 +148,13 @@ public class Tasks extends AbstractScreen {
     }
 
     @Then("^I should see '(.*)' orderId in Tasks screen under '(.*)'")
-    public void iShouldSeeOrderIdInTaskUnder(String orderAlias,String message) throws Throwable {
+    public void iShouldSeeOrderIdInTaskUnder(String orderAlias, String message) throws Throwable {
         footerTabsScreen.btnTask.waitFor(7).tap();
         iTapOnTab("All");
         String orderID = Properties.getVariable(orderAlias);
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]").scrollTo().tap();
         cancelledPickUp.waitFor(10);
-        Assert.assertEquals(cancelledPickUp.getText(),message,"PickUp is not Cancelled");
+        Assert.assertEquals(cancelledPickUp.getText(), message, "PickUp is not Cancelled");
     }
 
     @And("^I checked order is ready$")
@@ -185,26 +174,17 @@ public class Tasks extends AbstractScreen {
 
     @And("^I search for '(.*)' Order ID and verify that '(.*)' is present$")
     public void iSearchForOrderIDAndVerifyThatHazmatSymbolIsPresent(String orderAlias, String symbol) throws Throwable {
-       iTapOnTab("Mine");
-       iTapOnTab("All");
-       String orderID = Properties.getVariable(orderAlias);
-       UIElement iDSymbol = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]" +
-               "/following-sibling::XCUIElementTypeStaticText[1]");
-       Assert.assertEquals(iDSymbol.scrollTo(SwipeDirection.UP).waitFor(3).getText(),"","");
-
-       iDSymbol.tap();
-       Assert.assertEquals(specialSymbol.waitFor(5).getText(),"");
-       btnClaim.waitFor(5).tap();
-       btnClaim.waitForNot(7);
-       Steps.tapButton("Close");
-    }
-
-
-    /*@Then("^I search and should not see '(.*)' OrderID in pickUp tab$")
-    public void iSearchAndShouldNotSeeInPickUpTab(String orderAlias) throws Throwable {
-        footerTabsScreen.tapTask();
+        iTapOnTab("Mine");
+        iTapOnTab("All");
         String orderID = Properties.getVariable(orderAlias);
-        Assert.
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-    }*/
+        UIElement iDSymbol = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]" +
+                "/following-sibling::XCUIElementTypeStaticText[1]");
+        Assert.assertEquals(iDSymbol.scrollTo(SwipeDirection.UP).waitFor(3).getText(), "", "");
+
+        iDSymbol.tap();
+        Assert.assertEquals(specialSymbol.waitFor(5).getText(), "");
+        btnClaim.waitFor(5).tap();
+        btnClaim.waitForNot(7);
+        Steps.tapButton("Close");
+    }
 }
