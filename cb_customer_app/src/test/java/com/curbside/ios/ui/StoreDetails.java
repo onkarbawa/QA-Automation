@@ -43,7 +43,14 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
-        UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        UIElement store = UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName + "')]");
+        store.waitFor(25);
+        if (store.isDisplayed()){
+            store.tap();
+        }else {
+            store.swipeUpSlow();
+        }
+     //   UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
         //XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::
     }
 
