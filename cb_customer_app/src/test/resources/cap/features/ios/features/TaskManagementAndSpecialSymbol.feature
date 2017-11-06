@@ -15,8 +15,10 @@ Feature: iOS- Task Management and Special Symbol
 
   @iOS @TCS13
   Scenario: Order placed to check - Cancel pickup functionality
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order

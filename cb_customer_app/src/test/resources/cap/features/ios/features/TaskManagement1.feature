@@ -15,8 +15,10 @@ Feature: iOS- Task Management
 
   @iOS @TCS11
   Scenario: Order placed to check - Insufficient Quantity
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -26,8 +28,10 @@ Feature: iOS- Task Management
   @iOS @TCS12 @TCS16
   Scenario: Order placed to check - Item ready for pickup
     And I go to the shop screen to add any product
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
