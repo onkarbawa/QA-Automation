@@ -40,23 +40,16 @@ public class StoreDetails {
         Properties.setVariable("product"+Integer.toString(number),productDetailsScreen.getProductPrice());
         Properties.setVariable("productName"+Integer.toString(number),productDetailsScreen.productName.getText());
     }
+
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
-        UIElement store = UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName + "')]");
-        store.waitFor(25);
-        if (store.isDisplayed()){
-            store.tap();
-        }else {
-            store.swipeUpSlow();
-        }
-     //   UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName +"')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
-        //XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@name,'Nearby Stores')]]/following-sibling::
+        UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName + "')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
     }
 
     @And("^I select '(.*)' product from list$")
     public void iSelectProductFromList(String product) throws Throwable {
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+product+"')]").waitFor(20).scrollTo(SwipeDirection.UP).tap();
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + product + "')]").waitFor(20).scrollTo(SwipeDirection.UP).tap();
     }
 
     @And("^I select (\\d+)no product from '(.*)' store$")
