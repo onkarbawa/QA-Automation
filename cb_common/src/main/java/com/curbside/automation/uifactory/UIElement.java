@@ -13,6 +13,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 
@@ -121,16 +122,20 @@ public class UIElement {
 	}
 	
 	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
-		try{
-			getElement().sendKeys(keySequence);
-		} catch (Exception e) {
-		    MobileDevice.getSource(false);
-			this.clearText();
-			for (int i = 0; i < keySequence.length(); i++) {
-				char c = keySequence.charAt(i);
-				String s = new StringBuilder().append(c).toString();
-				getElement().sendKeys(s);
+		try {
+			try {
+				getElement().sendKeys(keySequence);
+			} catch (Exception e) {
+				this.clearText();
+				getElement().clear();
+				for (int i = 0; i < keySequence.length(); i++) {
+					char c = keySequence.charAt(i);
+					String s = new StringBuilder().append(c).toString();
+					getElement().sendKeys(s);
+				}
 			}
+		} catch (Exception e) {
+			Assert.fail("Not able to enter data in text field");
 		}
 		
 		if (hideKeyboardAfterTyping)
