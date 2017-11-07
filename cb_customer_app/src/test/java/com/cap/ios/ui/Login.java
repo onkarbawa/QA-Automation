@@ -77,27 +77,22 @@ public class Login extends AbstractScreen{
         loginScreen.acceptNotificationAlert();
 
         String envAPIKey = "cvs_9945";
-        if(footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(".s EE (cvs_9945)") ||
-                stagingVariable.getText().contains(".s SE (cvs_9945)"))
+        if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains("(cvs_9945)"))
             return;
-//        if (DriverFactory.getEnvironment().equalsIgnoreCase(envAPIKey))
-//            return;
-
-        for (int i = 0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             stagingVariable.tapCenter();
         }
         stagingVariable.longPress(10);
         btnStaging.tap();
         storeID.clearText();
-        storeID.sendKeys(envAPIKey,false);
-      //  storeID.sendKeys(Keys.ENTER);
-   //     MobileCommand.hideKeyboardCommand("Return");
+        storeID.sendKeys(envAPIKey, false);
         btnReturnKeyboard.tap();
         Steps.tapButton("OK");
         storeID.waitForNot(20);
         try {
             Steps.tapButton("OK");
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         MobileDevice.getScreenshot(true);
         DriverFactory.setEnvironment(envAPIKey);
         DriverFactory.closeApp();
