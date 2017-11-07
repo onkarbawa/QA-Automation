@@ -13,7 +13,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 
@@ -23,6 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.curbside.automation.devicefactory.DeviceStore;
+import org.testng.Assert;
 
 public class UIElement {
 
