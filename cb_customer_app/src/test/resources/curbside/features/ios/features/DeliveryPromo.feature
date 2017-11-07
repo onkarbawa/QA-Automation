@@ -16,7 +16,7 @@ Feature: iOS - Delivery Promo code
 #    And I select 1no product from list
     And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
     And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-    And I add 2 quantity of the product
+    And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
     And I select the delivery address as:"4 Palo Alto Square, Palo Alto,California 94306"

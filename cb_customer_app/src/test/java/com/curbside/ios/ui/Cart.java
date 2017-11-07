@@ -8,6 +8,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import com.cucumber.listener.Reporter;
 
 import java.text.DecimalFormat;
 
@@ -52,6 +53,7 @@ public class Cart extends AbstractScreen {
 	UIElement productQuantityButton = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[@name='Estimated Total']]/preceding-sibling::XCUIElementTypeCell[1]/XCUIElementTypeButton");
     UIElement cartEmpty = UIElement.byName("0 Carts");
     UIElement cartTitleText = UIElement.byXpath("//XCUIElementTypeNavigationBar/XCUIElementTypeStaticText");
+    UIElement cartCheckoutFailed = UIElement.byName("Cart Checkout failed");
 
 	public String getAddedProductUI() throws Throwable {
 		return UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName") + "']").getText();
@@ -63,22 +65,24 @@ public class Cart extends AbstractScreen {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Given("I attempt to place an order")
-	public void placeOrder() throws Throwable {
-		//footerTabsScreen.btnCart.waitFor(3).tap();
-		if (placeOrder.isDisplayed()){
-			placeOrder.tap();
-			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
-		}
-		else {
-			placeOrder.scrollTo(SwipeDirection.UP);
-			placeOrder.tap();
-			MobileDevice.getScreenshot(true);
-			MobileDevice.getSource(true);
-		}
-		placeOrder.waitForNot(10);
-	}
+    @Given("I attempt to place an order")
+    public void placeOrder() throws Throwable {
+        //footerTabsScreen.btnCart.waitFor(3).tap();
+        if (placeOrder.isDisplayed()) {
+            placeOrder.tap();
+        } else {
+            placeOrder.scrollTo(SwipeDirection.UP);
+            placeOrder.tap();
+        }
+        MobileDevice.getScreenshot(true);
+        placeOrder.waitForNot(10);
+
+        if (cartCheckoutFailed.isDisplayed()) {
+            Reporter.addStepLog("Cart Checkout failed unable to process order");
+            Assert.fail("Cart Checkout failed unable to process order");
+            Steps.tapButton("OK");
+        }
+    }
 
 	@And("^I should see credit info on cart screen$")
 	public void iShouldSeeCreditInfoOnCartScreen() throws Throwable {
@@ -251,6 +255,7 @@ public class Cart extends AbstractScreen {
 		Properties.setVariable("promoCode",promo);
         promoCode.sendKeys(promo,false);
         UIElement.byName("Apply").tap();
+        promoCode.waitForNot(10);
     }
 
 	@When("^I verify discount is applied$")
