@@ -3,7 +3,7 @@ Feature: iOS- Login Feature
 
   Scenario: Setting test environment 
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
 
 #  @iOS @C114957
 #  Scenario: Verify New user should login in curbside app

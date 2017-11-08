@@ -18,7 +18,7 @@ import static com.curbside.ios.ui.AbstractScreen.productDetailsScreen;
 public class StoreDetails {
 
     UIElement searchBar = UIElement.byXpath("//XCUIElementTypeSearchField[contains(@name,'Search')]");
-    UIElement mockPickingStore = UIElement.byName("Mock Picking");
+    UIElement mockPickingStore = UIElement.byName("Mock Picking no Training");
 
     @And("^I select '(.*)' retailer and search for '(.*)'$")
     public void iSelectRetailerAndSearchFor(String storeName, String product) throws Throwable {
@@ -48,7 +48,9 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
+        MobileDevice.getScreenshot(true);
         UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName + "')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
+        MobileDevice.getScreenshot(true);
         if (storeName.contains("Mock")) {
             UIElement.byXpath("//XCUIElementTypeButton[contains(@name,'Sheridan Ave')]").tap();
             if (mockPickingStore.waitFor(3).isDisplayed()) {

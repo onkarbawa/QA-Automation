@@ -281,8 +281,8 @@ public class Cart extends AbstractScreen {
 		MobileDevice.getScreenshot(true);
 	}
 
-	@Then("^I should see '(.*)' dollar in the cart$")
-	public void iShouldSeeDollarInTheCart(String amount) throws Throwable {
+	@Then("^The price of the product should be same$")
+	public void iShouldSeeDollarInTheCart() throws Throwable {
 		//Assert.assertEquals(Properties.getVariable("product1"),amount,"Pricing value of particular product is not matched");
 		String singleItemPrice = UIElement.byXpath("//XCUIElementTypeCell//XCUIElementTypeStaticText[@name='" + Properties.getVariable("productName1") + "']/following-sibling::XCUIElementTypeStaticText[contains(@name,'ea')]").scrollTo(SwipeDirection.UP).getText();
 		String addedItemPrice = singleItemPrice.split("\\$")[1].split("\\s")[0];
@@ -310,7 +310,8 @@ public class Cart extends AbstractScreen {
 		else
 			actualDeliveryCharges = 0.00;
 
-		itemsTotalPrice.scrollTo(SwipeDirection.UP);
+		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
+		//itemsTotalPrice.scrollTo(SwipeDirection.UP);
 
 		Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);
@@ -370,7 +371,8 @@ public class Cart extends AbstractScreen {
 		Double actualDeliveryCharges = 0.00;
 		Double actualDiscount = 0.00;
 
-		itemsTotalPrice.scrollTo(SwipeDirection.UP);
+		UIElement.byName("Enter Promo Code").scrollTo(SwipeDirection.UP);
+		//itemsTotalPrice.scrollTo(SwipeDirection.UP);
 		actualDiscount = Double.parseDouble(promoCodeDiscount.getText().split("\\$")[1]);
 		Double totalItemPrice = Double.parseDouble(itemsTotalPrice.getText().split("\\$")[1]);
 		Double estimatedTaxPrice = Double.parseDouble(estimatedTax.getText().split("\\$")[1]);

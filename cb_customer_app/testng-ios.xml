@@ -34,11 +34,11 @@
                 <class name="com.curbside.ios.runners.CartBuildingAndCheckout"/>
             </classes>
     </test>
-    <!--<test name="iOS- Delivery Promo code">-->
-            <!--<classes>-->
-                <!--<class name="com.curbside.ios.runners.DeliveryPromoTest"/>-->
-            <!--</classes>-->
-    <!--</test>-->
+    <test name="iOS- Delivery Promo code">
+            <classes>
+                <class name="com.curbside.ios.runners.DeliveryPromoTest"/>
+            </classes>
+    </test>
     <test name="iOS- Order flow">
         <classes>
             <class name="com.curbside.ios.runners.OrderFlowTest"/>

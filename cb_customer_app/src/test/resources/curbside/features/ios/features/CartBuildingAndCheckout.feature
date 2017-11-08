@@ -3,7 +3,7 @@ Feature: iOS- Cart Building And Checkout
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
@@ -25,7 +25,7 @@ Feature: iOS- Cart Building And Checkout
 
   @iOS @C114947
   Scenario: Verify product pricing are correct
-    Then I should see '26.47' dollar in the cart
+    Then The price of the product should be same
 
   @iOS @C114946
   Scenario: Verify math and calculations are correct
