@@ -12,7 +12,7 @@ Feature: iOS- Cart Building And Checkout
     Given I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 'Mock' retailer
     And I select 1no product from list
     And I add 2 quantity of the product
     And I select 2no product from list
