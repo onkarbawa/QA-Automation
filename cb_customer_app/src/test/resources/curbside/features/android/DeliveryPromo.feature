@@ -8,7 +8,7 @@ Feature: Android - Delivery Promo code
   @Android @C114949
   Scenario Outline: Add delivery promo code
     Given I am not signed into application
-    And I sign in into application using username "promocodenew@test.com" and password "1234567890"
+    And I sign in into application using username "promocodes@test.com" and password "1234567890"
     And I am on 'Palo Alto' location 'Stores' Screen
     And I tap on 'Cart' button
     And I remove and add the product again to the cart
