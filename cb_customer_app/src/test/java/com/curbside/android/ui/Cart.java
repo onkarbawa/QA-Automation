@@ -320,6 +320,7 @@ public class Cart extends AbstractScreen {
 
     @And("^I remove and add the product again to the cart$")
     public void reAddTheProduct() throws Throwable {
+        MobileDevice.getScreenshot(true);
         productName.waitFor(2).tap();
         int itemQnty = Integer.parseInt(productDetailsScreen.productQnty.waitFor(8).getText());
         int i = 0;
