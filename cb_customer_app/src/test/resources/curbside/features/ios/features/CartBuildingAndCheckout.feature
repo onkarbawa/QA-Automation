@@ -3,7 +3,7 @@ Feature: iOS- Cart Building And Checkout
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
@@ -12,10 +12,13 @@ Feature: iOS- Cart Building And Checkout
     Given I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Refrigerated food'
+    And I select 'Refrigerated food' product from list
+#    And I select 1no product from list
     And I add 2 quantity of the product
-    And I select 2no product from list
+    And I select 'Mock' retailer and search for 'Refrigerated food'
+    And I select 'Frozen food' product from list
+#    And I select 2no product from list
     And I add 1 quantity of the product
     When I tap on 'Cart' icon in bottom menu
     Then I should see the 3 items in the cart
@@ -25,7 +28,7 @@ Feature: iOS- Cart Building And Checkout
 
   @iOS @C114947
   Scenario: Verify product pricing are correct
-    Then I should see '26.47' dollar in the cart
+    Then The price of the product should be same
 
   @iOS @C114946
   Scenario: Verify math and calculations are correct

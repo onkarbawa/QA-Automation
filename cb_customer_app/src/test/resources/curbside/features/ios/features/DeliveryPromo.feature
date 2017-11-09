@@ -3,7 +3,7 @@ Feature: iOS - Delivery Promo code
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
@@ -12,20 +12,23 @@ Feature: iOS - Delivery Promo code
     Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Refrigrated Food'
+    And I select 'Refrigerated food' product from list
+#    And I select 'Mock' retailer
+#    And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
     And I select the delivery address as:"4 Palo Alto Square, Palo Alto,California 94306"
     And I tap on back button
     And I store the value of 'Delivery Charges'
-    And I tap on 'Enter Promo Code'
+    Given I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
-    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
+    Then I should see repeat promo code is applied and discount is given as per '<Discount Type>'
     Examples:
-      |Promo Code   |Discount Type|
-      |NF_DOLLAR_DS_NEW  |  Dollar     |
+      |Promo Code       |Discount Type|
+      |UNLIMITED |   Unlimited   |
+
 
 #  @iOS @C114992
 #  Scenario Outline: Verify Delivery Promo - %
@@ -56,9 +59,9 @@ Feature: iOS - Delivery Promo code
 
   @iOS @C114949
   Scenario Outline: verify Repeat Promo codes
-    Given I tap on 'Enter Promo Code'
+    And I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
-    Then I should see repeat promo code is applied and discount is given as per '<Discount Type>'
+    Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
     Examples:
-      |Promo Code       |Discount Type|
-      |UNLIMITED |   Unlimited   |
+      |Promo Code   |Discount Type|
+      |NF_DOLLAR_DS_NEW  |  Dollar     |
