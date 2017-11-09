@@ -17,8 +17,6 @@ Feature: iOS- Task Management
   Scenario: Order placed to check - Insufficient Quantity
     And I select 'CVS' retailer
     And I select 1no product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -30,8 +28,6 @@ Feature: iOS- Task Management
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
     And I select 1no product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -51,11 +47,8 @@ Feature: iOS- Task Management
 
   @iOS @TCS11
   Scenario: Mark item Quantity not available (1 item, 2 quantities)
-#    Given I search for 'insufficientQuantity' Order ID and claim it
     Given I tap on 'All' tab and search for 'insufficientQuantity' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'insufficientQuantity' OrderID and 'confirm' it
-#    And I tap on 'Mine' tab
-#    And I search for 'insufficientQuantity' OrderID
     And I tap on 'Issue' button
     And I enter insufficient quantity '1'
     And I 'Go To Payment' screen
@@ -66,6 +59,7 @@ Feature: iOS- Task Management
     And I tap on 'Finish' button
     And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
     And I should see 'insufficientQuantity' orderId in PickUp tab with 'Needs customer attention'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
@@ -73,12 +67,8 @@ Feature: iOS- Task Management
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
-#    And I tap on 'All' tab
     And I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
-#    And I search for 'readyPickUpOrder' Order ID and claim it
-#    And I tap on 'Mine' tab
     And I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it
-#    And I search for 'readyPickUpOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
@@ -87,6 +77,7 @@ Feature: iOS- Task Management
     And I tap on 'Finish' button
     And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
     And I search for 'readyPickUpOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button

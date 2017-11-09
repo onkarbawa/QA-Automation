@@ -17,8 +17,6 @@ Feature: iOS- Task Management and Special Symbol
   Scenario: Order placed to check - Cancel pickup functionality
     And I select 'CVS' retailer
     And I select 1no product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -49,10 +47,7 @@ Feature: iOS- Task Management and Special Symbol
   @iOS @TCS13
   Scenario: Verify cancelled pickup order (1 item, 1 quantities)
     Given I tap on 'All' tab and search for 'cancelPickUpOrder' OrderID and 'claim' it
-#    Given I search for 'cancelPickUpOrder' Order ID and claim it
     And I tap on 'Mine' tab and search for 'cancelPickUpOrder' OrderID and 'confirm' it
-#    And I tap on 'Mine' tab
-#    And I search for 'cancelPickUpOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
@@ -61,6 +56,7 @@ Feature: iOS- Task Management and Special Symbol
     And I tap on 'Finish' button
     And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
     And I search for 'cancelPickUpOrder' OrderID
     And I tap on 'Cancel This Pickup' button
     And I tap on 'Cancel Pickup' button
