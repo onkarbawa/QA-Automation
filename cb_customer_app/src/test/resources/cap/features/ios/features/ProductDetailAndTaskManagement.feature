@@ -28,6 +28,7 @@ Feature: iOS- Product Details and Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'claimOrder'
 
+  @iOS @TCS09
   Scenario: Order placed to check - Item not available (one out of two)
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
