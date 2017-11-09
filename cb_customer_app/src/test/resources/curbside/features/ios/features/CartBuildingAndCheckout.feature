@@ -12,13 +12,10 @@ Feature: iOS- Cart Building And Checkout
     Given I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock' retailer and search for 'Refrigerated food'
-    And I select 'Refrigerated food' product from list
-#    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'food'
+    And I select 1 product 'Frozen food' from list
     And I add 2 quantity of the product
-    And I select 'Mock' retailer and search for 'Refrigerated food'
-    And I select 'Frozen food' product from list
-#    And I select 2no product from list
+    And I select 2 product 'Refrigerated food' from list
     And I add 1 quantity of the product
     When I tap on 'Cart' icon in bottom menu
     Then I should see the 3 items in the cart

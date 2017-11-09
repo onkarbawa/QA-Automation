@@ -3,7 +3,7 @@ Feature: iOS- SMS Flow
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114977
@@ -19,7 +19,7 @@ Feature: iOS- SMS Flow
   Scenario: Verify SMS is received after place order
     Given I add credit card information
     And I check there is no latest SMS from Curbisde
-    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 'Mock' retailer
     And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu

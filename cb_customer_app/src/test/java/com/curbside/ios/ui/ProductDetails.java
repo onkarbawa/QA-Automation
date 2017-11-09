@@ -25,7 +25,7 @@ public class ProductDetails extends AbstractScreen {
 	UIElement productName = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[1]");
 	UIElement productLocationAndPrice = UIElement.byXpath("//XCUIElementTypeScrollView/following-sibling::XCUIElementTypeStaticText[2]");
 	UIElement productDescription = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Description')]");
-	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Distributed')]");
+	UIElement productOverview = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'Overview')]");
 	UIElement productSKU = UIElement.byXpath("//XCUIElementTypeTextView[contains(@value,'sku')]");
 
 	UIElement incrementProduct = UIElement.byName("Increment");

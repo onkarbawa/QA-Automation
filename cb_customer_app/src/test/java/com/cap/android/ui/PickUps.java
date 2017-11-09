@@ -28,6 +28,7 @@ public class PickUps extends AbstractScreenCap {
     @And("^I search by customer name to sort the orders$")
     public void iSearchCustomer() throws Throwable {
         String fullName = Properties.getVariable("firstNameCredit") + " " + Properties.getVariable("lastNameCredit");
+        Reporter.addStepLog("Customer name : " + fullName);
         searchField.waitFor(3).sendKeys(fullName);
         AndroidDevice.pressEnter();
     }

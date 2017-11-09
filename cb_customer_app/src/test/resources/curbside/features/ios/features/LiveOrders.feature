@@ -3,13 +3,13 @@ Feature: iOS- End to End flow verification
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
   @iOS @C114962
   Scenario: End to End - Signup EMail, Signup SMS and Pickup order EMail verifications
-    Given I select 'Mock, at 260 Sheridan Ave' retailer
+    Given I select 'Mock' retailer
     And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
@@ -34,7 +34,7 @@ Feature: iOS- End to End flow verification
     And I Sign-in with 'live_order@mailinator.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 'Mock' retailer
     And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
@@ -48,7 +48,7 @@ Feature: iOS- End to End flow verification
   @iOS @C114964
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
-    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 'Mock' retailer
     And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu

@@ -3,7 +3,7 @@ Feature: iOS- Order flow verification
 
   Scenario: Setting test environment
     Given I launch Curbside application for the first time
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
@@ -12,7 +12,7 @@ Feature: iOS- Order flow verification
     Given I Sign-in with 'order_flow@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock, at 260 Sheridan Ave' retailer
+    And I select 'Mock' retailer
     And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu

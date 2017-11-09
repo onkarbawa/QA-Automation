@@ -15,8 +15,9 @@ Feature: iOS- Delivery Order Verify
 
   @iOS @TCS27
   Scenario: Order placed to check - Product detail & claim order screen
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option

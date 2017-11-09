@@ -7,15 +7,13 @@ Feature: iOS - Delivery Promo code
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
-  @iOS @C114991
-  Scenario Outline: Verify Delivery Promo - $
+  @iOS @C114949
+  Scenario Outline: Verify Repeat Promo code
     Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock' retailer and search for 'Refrigrated Food'
-    And I select 'Refrigerated food' product from list
-#    And I select 'Mock' retailer
-#    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
@@ -57,8 +55,8 @@ Feature: iOS - Delivery Promo code
 #      |Promo Code       |Discount Type|
 #      |NF_FIXED_DS|   Fixed   |
 
-  @iOS @C114949
-  Scenario Outline: verify Repeat Promo codes
+  @iOS @C114991
+  Scenario Outline: verify Delivery Promo - $
     And I tap on 'Enter Promo Code'
     When I apply '<Promo Code>' promo code
     Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
