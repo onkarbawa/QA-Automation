@@ -122,21 +122,28 @@ public class UIElement {
 	}
 	
 	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
-		try {
-			try {
-				getElement().sendKeys(keySequence);
-			} catch (Exception e) {
-				this.clearText();
-				getElement().clear();
-				for (int i = 0; i < keySequence.length(); i++) {
-					char c = keySequence.charAt(i);
-					String s = new StringBuilder().append(c).toString();
-					getElement().sendKeys(s);
-				}
-			}
-		} catch (Exception e) {
-			Assert.fail("Not able to enter data in text field");
-		}
+        try {
+            try {
+                try {
+                    getElement().sendKeys(keySequence);
+                } catch (Exception e) {
+                    this.clearText();
+                    getElement().clear();
+                    for (int i = 0; i < keySequence.length(); i++) {
+                        char c = keySequence.charAt(i);
+                        String s = new StringBuilder().append(c).toString();
+                        getElement().sendKeys(s);
+                    }
+                }
+            } catch (Exception e) {
+                MobileElement m = (MobileElement) getElement();
+                this.clearText();
+                getElement().clear();
+                m.setValue(keySequence);
+            }
+        } catch (Exception e) {
+            Assert.fail("Not able to enter the text");
+        }
 		
 		if (hideKeyboardAfterTyping)
 			MobileDevice.hideKeyboard();
