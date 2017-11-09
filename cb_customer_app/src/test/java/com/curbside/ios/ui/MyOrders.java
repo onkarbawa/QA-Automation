@@ -1,5 +1,6 @@
 package com.curbside.ios.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
@@ -63,6 +64,7 @@ public class MyOrders extends AbstractScreen {
             orderNo = orderNo.split("\\s")[1];
         }
         Properties.setVariable(orderName,orderNo);
+        Reporter.addStepLog("OrderID of Product is : " + orderNo);
     }
 
     @Then("^I should see cancel order in My Orders Screen$")

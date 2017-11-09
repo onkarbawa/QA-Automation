@@ -1,6 +1,7 @@
 @taskManagementAndSpecialSymbol
 Feature: iOS- Task Management and Special Symbol
 
+  @iOS
   Scenario: Setting up user account with credit card
     Given I launch Curbside application
     And I have selected Experimental test environment
@@ -12,9 +13,12 @@ Feature: iOS- Task Management and Special Symbol
     And I signup for a new account
     And I add credit card information
 
+  @iOS @TCS13
   Scenario: Order placed to check - Cancel pickup functionality
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -31,6 +35,7 @@ Feature: iOS- Task Management and Special Symbol
 #    And I tap on Order In Progress
 #    And I save Order Id of the product and named as 'hazmatOrder'
 
+  @iOS
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP application
     And I have selected test environment for cap
@@ -43,16 +48,18 @@ Feature: iOS- Task Management and Special Symbol
 
   @iOS @TCS13
   Scenario: Verify cancelled pickup order (1 item, 1 quantities)
-    Given I search for 'cancelPickUpOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'cancelPickUpOrder' OrderID
+    Given I tap on 'All' tab and search for 'cancelPickUpOrder' OrderID and 'claim' it
+#    Given I search for 'cancelPickUpOrder' Order ID and claim it
+    And I tap on 'Mine' tab and search for 'cancelPickUpOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'cancelPickUpOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter Receipt Total' and enter receipt total price
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
-    And I ckecked order is ready
+    And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search for 'cancelPickUpOrder' OrderID
     And I tap on 'Cancel This Pickup' button
