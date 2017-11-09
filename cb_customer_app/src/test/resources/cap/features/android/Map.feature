@@ -15,7 +15,7 @@ Feature: Android- Map verification
   Scenario: verify stores are visible on map - Normal view
     Given I wait for Tasks to get loaded
     And I tap on 'Pickups' button
-    When I tap on 'Map View' button
+    When I tap on 'Map' button
     Then I should see stores location on the map
 
   @Android @TCS20
