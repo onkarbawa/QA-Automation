@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         monochrome = true,
         features = "src/test/resources/capcvs/features/ios/ErrorMessage.feature",
-        plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report_cap_cvs.html"},
+        plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
         dryRun = false, strict= true,
