@@ -3,7 +3,7 @@ Feature: iOS- Login Feature
 
   Scenario: Setting test environment 
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
 
 #  @iOS @C114957
 #  Scenario: Verify New user should login in curbside app
@@ -27,7 +27,8 @@ Feature: iOS- Login Feature
 
   @iOS @C114955
   Scenario Outline: Verify Facebook user should login in curbside app
-    Given I am not signed into application
+    Given I launch Curbside application
+    And I am not signed into application
     And I login to facebook in browser with '<Email>' and '<Password>'
     Then I should be logged into application
 

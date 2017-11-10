@@ -238,6 +238,7 @@ public class Home extends AbstractScreen {
 	public void iAmOnLocationStoresScreen(String location) throws Throwable {
 		footerTabsScreen.tapShop();
 		searchForLocation(location);
+		MobileDevice.getScreenshot(true);
 	}
 
 	@And("^I select a store$")

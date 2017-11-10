@@ -45,11 +45,8 @@ Feature: iOS- Task Management
 
   @iOS @TCS10 @TCS13
   Scenario: Process standard order (1 item, 1 quantities)
-    Given I tap on 'Tasks' icon in bottom menu for cap
-    And I tap on 'All' tab
-    And I search for 'readyPickUpOrder' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'readyPickUpOrder' OrderID
+    Given I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter POS Total'
@@ -57,7 +54,7 @@ Feature: iOS- Task Management
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
-    And I ckecked order is ready
+    And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
     Then I should see 'readyPickUpOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
@@ -71,9 +68,7 @@ Feature: iOS- Task Management
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
-    And I tap on 'All' tab
-    And I search for 'outOfStock' Order ID and claim it
-    And I tap on 'Mine' tab
-    And I search for 'outOfStock' OrderID
+    And I tap on 'All' tab and search for 'outOfStock' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'outOfStock' OrderID and 'confirm' it
     And I mark all items as 'Item not Available'
     Then I should see 'outOfStock' orderId in Cancelled pickups with message 'Pickup is Cancelled'

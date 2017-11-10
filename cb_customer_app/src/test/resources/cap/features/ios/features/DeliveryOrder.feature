@@ -1,6 +1,7 @@
 @deliveryOrder
 Feature: iOS- Delivery Order Verify
 
+  @iOS
   Scenario: Setting up user account with credit card
     Given I launch Curbside application for the first time
     And I have selected Experimental test environment
@@ -12,13 +13,11 @@ Feature: iOS- Delivery Order Verify
     And I signup for a new account
     And I add credit card information
 
-#    And I Sign-in with 'gilroy_cvs@curbside.com' and 'curbside'
-#    And I saw email on MyAccount page
-#    And I checked there is any user attention message
-#    And My cart is empty
+  @iOS @TCS27
   Scenario: Order placed to check - Product detail & claim order screen
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option
@@ -39,7 +38,7 @@ Feature: iOS- Delivery Order Verify
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
-    And I ckecked order is ready
+    And I checked order is ready
     Then I tap on 'Pickups' icon and search for 'uberOrder' OrderID and verify that 'Uber Symbol' is present
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button

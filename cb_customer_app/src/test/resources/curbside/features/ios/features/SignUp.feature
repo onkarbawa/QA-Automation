@@ -4,7 +4,7 @@ Feature: iOS- Signup Flow
   Scenario: Setting test environment
 #    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     
   @iOS @C114954 @C114957
   Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
@@ -39,5 +39,4 @@ Feature: iOS- Signup Flow
     Then I should see ExtraCare Card info on Loyalty Cards screen
     When I go to Cart screen
     Then I should see loyalty card info on cart screen
-#    And I am not signed into application
 

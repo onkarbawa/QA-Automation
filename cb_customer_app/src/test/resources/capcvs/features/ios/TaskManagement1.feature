@@ -5,6 +5,10 @@ Feature: iOS- Task Management 1
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
+
+    And I tap on 'All' tab and search for 'outOfStock' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'outOfStock' OrderID and 'confirm' it
+
     And I tap on 'All' tab
     And I search for 'readyPickUpOrder' Order ID and claim it
     And I tap on 'Mine' tab

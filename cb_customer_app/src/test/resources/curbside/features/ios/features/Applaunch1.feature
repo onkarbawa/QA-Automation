@@ -3,7 +3,7 @@ Feature: iOS- Application Launch 1
 
   Scenario: Setting test environment
     Given I launch Curbside application
-    And I have selected test environment
+    And I have selected Experimental test environment
     And I am not signed into application
 
   @iOS @C114996
@@ -18,8 +18,10 @@ Feature: iOS- Application Launch 1
     And I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
@@ -43,8 +45,10 @@ Feature: iOS- Application Launch 1
     And I launch Curbside application
     And I am on Home Screen
     And My cart is empty
-    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'CVS' retailer
+    And I select 1no product from list
+#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order

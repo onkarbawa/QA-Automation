@@ -242,7 +242,6 @@ public class Steps {
 		} else
 			throw new NotImplementedException("");
 
-		MobileDevice.getScreenshot(true);
 		UIElement.byName("Notifications").tap();
 		MobileDevice.getScreenshot(true);
 
@@ -303,30 +302,30 @@ public class Steps {
 	}
 
 	@And("^I turn '(.*)' '(.*)' and '(.*)' for '(.*)' app$")
-	public void iTurnAndForCurbsideApp(String ONorOFF, String button1, String button2, String appName) throws Throwable {
-	//	logger.info("Turning " + ONorOFF + " background refresh for " + appName);
+	public void iTurnAndForCurbsideApp(String ONorOFF, String backGroundAppRefresh, String allowNotification, String appName) throws Throwable {
+		//	logger.info("Turning " + ONorOFF + " background refresh for " + appName);
 
 		AppleDevice.launchSettings();
 
-		if (!AppleDevice.settingTitle.isDisplayed()){
-			for (int i = 0;i < 7; i++){
-				if (UIElement.byName("Back").isDisplayed()){
+		if (!AppleDevice.settingTitle.isDisplayed()) {
+			for (int i = 0; i < 7; i++) {
+				if (UIElement.byName("Back").isDisplayed()) {
 					UIElement.byName("Back").tap();
-				}else {
+				} else {
 					break;
 				}
 			}
 		}
 		try {
 			UIElement.byXpath("//XCUIElementTypeCell[@name='" + appName + "']").scrollTo().tap();
-			String button = button1;
+			String switchBtn = backGroundAppRefresh;
 
 			for (int i = 0; i < 2; i++) {
-				UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + button + "']");
+				UIElement toggleButton = UIElement.byXpath("//XCUIElementTypeSwitch[@name='" + switchBtn + "']");
 				String currentButtonValue = toggleButton.getAttribute("value");
 				System.out.println("Current toggle value is " + currentButtonValue);
 
-				currentButtonValue = currentButtonValue.equals("true") ? "ON" : "OFF";
+				currentButtonValue = currentButtonValue.equals("1") ? "ON" : "OFF";
 
 				if (!ONorOFF.equalsIgnoreCase(currentButtonValue)) {
 					toggleButton.tap();
@@ -336,10 +335,11 @@ public class Steps {
 				}
 
 				UIElement.byName("Notifications").tap();
-				button = button2;
+				switchBtn = allowNotification;
 				MobileDevice.getScreenshot(true);
 			}
-		}catch (Exception e){}
+		} catch (Exception e) {
+		}
 		MobileDevice.getScreenshot(true);
 	}
 
@@ -375,4 +375,31 @@ public class Steps {
 
 		MobileDevice.tap(width/2,new Double(height*0.10).intValue());
 	}
+
+    @And("^I will try to setup device for IOS (.*) app$")
+    public void setupSetting(String appName) throws Throwable {
+
+        if (!DeviceStore.getPlatform().equalsIgnoreCase("ios"))
+            return;
+
+        AppStore.setAppName(appName);
+        DriverFactory.releaseDriver();
+        DeviceStore.releaseDevice();
+
+        // Reset app permissions from mobile device
+        DeviceStore.getDevice();
+        DriverFactory.clearEnvironment();
+
+        try {
+            AppleDevice.launchSettings();
+            ((AppiumDriver) DriverFactory.getDriver()).closeApp();
+        } catch (Exception e) {
+        }
+
+        DriverFactory.releaseDriver();
+        logger.info("Launching " + appName + " application");
+        DriverFactory.getDriver(true);
+        acceptNotificationAlert();
+        acceptNotificationAlert();
+    }
 }

@@ -1,6 +1,7 @@
 package com.cap.ios.ui;
 
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
@@ -22,8 +23,9 @@ public class PickUps extends AbstractScreen{
         footerTabsScreen.btnPickUp.waitFor(15).tap();
         String orderID = Properties.getVariable(orderAlias);
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]").scrollTo().tap();
-        Assert.assertEquals(alertMessage.getText(),message,"Alert message is not displayed");
+        MobileDevice.getScreenshot(true);
+        Assert.assertEquals(alertMessage.getText(),message,"Attention message is not shown");
+        MobileDevice.getScreenshot(true);
     }
 
     @Then("^I should see total Order quantity '(.*)' and updated order quantity '(.*)'$")
@@ -32,6 +34,7 @@ public class PickUps extends AbstractScreen{
        String updatedQty = pickUpQty.getText().split("\\s")[3];
        Assert.assertEquals(totalQty,totalQuantity,"Total quantity does not match with orignal total quantity");
        Assert.assertEquals(updatedQty,updatedQuantity,"Quantity does not match with updated quantity");
+       pickUpQty.waitForNot(10);
     }
 
     @Then("^I should see alert '(.*)'$")
@@ -57,7 +60,8 @@ public class PickUps extends AbstractScreen{
 
     @And("^I search by customer name to sort the orders$")
     public void iSearchCustomer() throws Throwable {
-        String fullName = "Test" + " " + "Data";
+        String fullName = Properties.getVariable("fNCredit") + " " + Properties.getVariable("lNCredit");
+        Reporter.addStepLog("Customer name : " + fullName);
         UIElement.byName("Search by customer name").sendKeys(fullName,false);
         Steps.tapButton("Search");
 
