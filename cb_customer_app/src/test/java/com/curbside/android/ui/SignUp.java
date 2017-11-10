@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.cucumber.listener.Reporter;
 import org.openqa.selenium.interactions.touch.TouchActions;
 
 import com.curbside.automation.common.configuration.Properties;
@@ -27,7 +28,10 @@ public class SignUp extends AbstractScreen {
         Properties.setVariable("signupEmail", emailId);
         Properties.setVariable("signupPassword", password);
         Properties.setVariable("signupPhoneNumber", phoneNumberText);
-        
+
+        Reporter.addStepLog("EmailID : " +emailId);
+        Reporter.addStepLog("Password : " +password);
+
         emailField.waitFor(3);
         /*
         new TouchActions(DriverFactory.getDriver())

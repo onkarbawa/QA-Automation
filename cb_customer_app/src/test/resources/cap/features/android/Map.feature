@@ -1,9 +1,9 @@
 @map
-Feature: Android- Map verification
+Feature: Android | CAP EE | Map verification
 
   @Android
   Scenario Outline: Setting test environment for CAP
-    Given I launch Cap application
+    Given I launch Cap application for the first time
     And I have selected test environment for CAP
     And I am not signed in to the CAP
     And I am logged in to the CAP with "<account>", "<username>" and "<password>"
