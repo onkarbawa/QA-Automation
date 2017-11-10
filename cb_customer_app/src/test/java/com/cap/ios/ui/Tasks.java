@@ -46,7 +46,7 @@ public class Tasks extends AbstractScreen {
       //  btnAll.waitFor(10);
         String orderID = Properties.getVariable(orderAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]");
+//        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'SWYIG3YA')]");
         for (int i = 1;i < 50;i++){
             if (orderNumber.isDisplayed()){
                 orderNumber.tap();
@@ -78,7 +78,7 @@ public class Tasks extends AbstractScreen {
      //   footerTabsScreen.tapMyAccount();
       //  footerTabsScreen.tapTask();
         UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo(SwipeDirection.UP).tap();
-//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'17ADM2MC')]").scrollTo().tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'SWYIG3YA')]").scrollTo(SwipeDirection.UP).tap();
     }
 
     @Then("^I should see product details as below for CAP$")

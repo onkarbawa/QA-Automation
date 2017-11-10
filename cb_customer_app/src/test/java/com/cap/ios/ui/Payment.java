@@ -1,6 +1,7 @@
 package com.cap.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
@@ -64,22 +65,26 @@ public class Payment extends AbstractScreen {
         }
     }
 
-    @And("^I enter receipt stored price for firstProduct named as '(.*)' and secondProduct named as '(.*)'$")
-    public void iEnterReceiptStoredPriceForFirstProductNamedAsAndSecondProductNamedAs(String firstProductPrice, String secondProductPrice) throws Throwable {
-        Double firstProduct = 0.00;
-        Double secondProduct = 0.00;
 
-        if (firstProductPrice != null) {
-            firstProduct = Double.valueOf(Properties.getVariable(firstProductPrice));
+    @And("^I enter receipt stored price for product '(.*)'$")
+    public void iEnterReceiptStoredPrice(String productPrice) throws Throwable {
+        Double firstProduct = 00.00;
+        Double secondProduct = 00.00;
+
+        if (productPrice + String.valueOf(1) != null) {
+            firstProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(1)));
+            System.out.println(firstProduct);
         }
-        if (secondProductPrice != null) {
-            secondProduct = Double.valueOf(Properties.getVariable(secondProductPrice));
+        if (productPrice + String.valueOf(2) != null) {
+            secondProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(2)));
         }
         Double totalPrice = firstProduct + secondProduct;
 
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("00.00");
 
-        UIElement.byClass("XCUIElementTypeTextField").sendKeys(String.valueOf(df.format(totalPrice)), true);
-        Steps.tapButton("Save");
+        UIElement.byClass("XCUIElementTypeTextField").sendCharacterByCharacter(String.valueOf(df.format(totalPrice)),
+                false);
+        MobileDevice.tap(250,330);
+        //Steps.tapButton("Save");
     }
 }

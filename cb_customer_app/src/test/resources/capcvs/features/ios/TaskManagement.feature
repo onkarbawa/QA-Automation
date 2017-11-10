@@ -24,7 +24,7 @@ Feature: iOS- Task Management
   Scenario: Order placed to check - Item not available (2line items with 1Qty)
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
-    And I select 1st product from list
+    And I select 1no product from list
     And I add 1 quantity of the product
     And I select 2no product from list
     And I add 1 quantity of the product
@@ -52,8 +52,8 @@ Feature: iOS- Task Management
     And I search for 'readyPickUpOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
-    And I tap on 'Enter Receipt Total'
-    And I enter receipt stored price for firstProduct named as 'readyOrder' and secondProduct named as ''
+    And I tap on 'Enter POS Total'
+    And I enter receipt stored price for product 'readyOrder'
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
