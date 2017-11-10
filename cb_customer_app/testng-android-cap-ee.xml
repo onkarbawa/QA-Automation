@@ -19,9 +19,14 @@
             <class name="com.cap.android.runners.Map"/>
         </classes>
     </test>
-    <test name="ProductDetailAndTaskManagement">
+    <test name="ProductAndTaskManagementCurbside">
         <classes>
-            <class name="com.cap.android.runners.ProductDetailAndTaskManagement"/>
+            <class name="com.cap.android.runners.ProductAndTaskManagementCurbside"/>
+        </classes>
+    </test>
+    <test name="ProductAndTaskManagementCAP">
+        <classes>
+            <class name="com.cap.android.runners.ProductAndTaskManagementCAP"/>
         </classes>
     </test>
 </suite>

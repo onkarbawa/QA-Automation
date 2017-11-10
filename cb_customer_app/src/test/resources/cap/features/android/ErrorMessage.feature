@@ -1,5 +1,5 @@
 @loginValidation
-Feature: Android- Error Message
+Feature: Android | CAP EE | Error Message
 
   @Android
   Scenario: Setting test environment for CAP
