@@ -1,6 +1,7 @@
 package com.cap.ios.ui;
 
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 import cucumber.api.PendingException;
@@ -59,7 +60,8 @@ public class PickUps extends AbstractScreen{
 
     @And("^I search by customer name to sort the orders$")
     public void iSearchCustomer() throws Throwable {
-        String fullName = "Test" + " " + "Data";
+        String fullName = Properties.getVariable("fNCredit") + " " + Properties.getVariable("lNCredit");
+        Reporter.addStepLog("Customer name : " + fullName);
         UIElement.byName("Search by customer name").sendKeys(fullName,false);
         Steps.tapButton("Search");
 

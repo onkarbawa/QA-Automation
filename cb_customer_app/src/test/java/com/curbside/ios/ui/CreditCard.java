@@ -1,6 +1,7 @@
 package com.curbside.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.common.utilities.Helpers;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
@@ -69,9 +70,15 @@ public class CreditCard extends AbstractScreen {
 	public void iAddCreditCardInformation() throws Throwable {
 		myAccountScreen.btnPaymentInfo.waitFor(20).tap();
 		Properties.setVariable("cardExpiryDate", "1120");
+
+		String fName = Helpers.getRandomFirstName();
+		String lName = Helpers.getRandomLastName();
+		Properties.setVariable("fNCredit", fName);
+		Properties.setVariable("lNCredit", lName);
+
 		Steps.tapButton("Add New Card");
-		firstName.sendKeys("Test",false);
-		lastName.sendKeys("Data",false);
+		firstName.sendKeys(fName,false);
+		lastName.sendKeys(lName,false);
 		cardNumber.sendKeys("6011111111111117",false);
 		expiryDate.sendKeys("1120",false);
 		securityCode.sendKeys("345",false);
