@@ -1,6 +1,7 @@
 @taskManagement
 Feature: iOS- Task Management
 
+  @iOS
   Scenario: Setting up user account with credit card
     Given I launch Curbside application for the first time
     And I have selected Experimental test environment
@@ -12,6 +13,7 @@ Feature: iOS- Task Management
     And I signup for a new account
     And I add credit card information
 
+  @iOS @TCS10 @TCS13
   Scenario: Order placed to check - Item ready for pickup
     And I select 'CVS' retailer
     And I select 1no product and save product price named as'readyOrder'
@@ -21,6 +23,7 @@ Feature: iOS- Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'readyPickUpOrder'
 
+  @iOS @TCS11
   Scenario: Order placed to check - Item not available (2line items with 1Qty)
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
@@ -33,8 +36,9 @@ Feature: iOS- Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'outOfStock'
 
+  @iOS
   Scenario Outline: Setting test environment for CAP-CVS
-    Given I launch CAP-CVS application
+    Given I launch CAP-CVS application for the first time
     And I have selected test environment for cap
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login
@@ -56,6 +60,7 @@ Feature: iOS- Task Management
     And I tap on 'Finish' button
     And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
     Then I should see 'readyPickUpOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
