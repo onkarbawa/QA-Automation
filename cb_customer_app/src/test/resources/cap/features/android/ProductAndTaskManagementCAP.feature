@@ -4,8 +4,8 @@ Feature: Android | CAP EE | Product & Task Management
   @Android
   Scenario Outline: Setting test environment for CAP
     Given I launch Cap application
-    And I am not signed in to the CAP
     And I have selected test environment for CAP
+    And I am not signed in to the CAP
     And I am logged in to the CAP with "<account>", "<username>" and "<password>"
     Examples:
       | account  | username             | password |

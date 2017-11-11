@@ -1,6 +1,7 @@
 package com.cap.android.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.testng.Assert;
@@ -17,5 +18,11 @@ public class Map extends AbstractScreenCap {
     public void iShouldSeeStores() throws Throwable {
         MobileDevice.getScreenshot(true);
         Assert.assertTrue(storeLocation.waitFor(20).isDisplayed(), "Stores are not visible on map");
+    }
+
+    @And("^I tap on Map button on visibility")
+    public void iTapOnMap() throws Throwable {
+        Steps.waitForButton("Map");
+        Steps.tapButton("Map");
     }
 }
