@@ -28,6 +28,11 @@
       "name" : "CAP-CVS",
       "app" : "../ios_simulator_builds/CAP-CVS/CAP.app",
       "bundleId": "com.curbside.CAP"
+    },
+    {
+      "name" : "CAP Sephora",
+      "app" : "../ios_simulator_builds/CAP-Sephora/CAP.app",
+      "bundleId": "com.curbside.CAP"
     }
   ]
 }

@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import com.cucumber.listener.Reporter;
 import cucumber.api.PendingException;
 import cucumber.api.java.eo.Do;
 import org.apache.commons.lang3.NotImplementedException;
@@ -49,8 +50,13 @@ public class Steps {
 			else
 				DriverFactory.launchApp();
 		}
-
-		MobileDevice.getScreenshot(true);
+		try {
+			MobileDevice.getScreenshot(true);
+		}catch (Exception e){
+			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
+				Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
+			}
+		}
 	}
 
 	@Given("^I launch (.*) application with required permissions$")

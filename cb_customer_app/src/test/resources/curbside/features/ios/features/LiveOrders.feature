@@ -34,8 +34,8 @@ Feature: iOS- End to End flow verification
     And I Sign-in with 'live_order@mailinator.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I tap on 'Enter Promo Code'
@@ -48,6 +48,7 @@ Feature: iOS- End to End flow verification
   @iOS @C114964
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
+    And My cart is empty
     And I select 'Mock' retailer
     And I select 1no product from list
     And I add 2 quantity of the product
