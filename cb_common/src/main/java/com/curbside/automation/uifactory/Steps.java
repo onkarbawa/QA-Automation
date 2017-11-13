@@ -54,8 +54,7 @@ public class Steps {
 			MobileDevice.getScreenshot(true);
 		}catch (Exception e){
 			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
-				launchApplication("Curbside");
-				Reporter.addStepLog("Relaunch Curbside");
+				Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
 			}
 		}
 	}
