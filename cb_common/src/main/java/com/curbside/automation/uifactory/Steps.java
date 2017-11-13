@@ -1,5 +1,6 @@
 package com.curbside.automation.uifactory;
 
+import com.cucumber.listener.Reporter;
 import cucumber.api.PendingException;
 import cucumber.api.java.eo.Do;
 import org.apache.commons.lang3.NotImplementedException;
@@ -54,6 +55,7 @@ public class Steps {
 		}catch (Exception e){
 			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
 				launchApplication("Curbside");
+				Reporter.addStepLog("Relaunch Curbside");
 			}
 		}
 	}
