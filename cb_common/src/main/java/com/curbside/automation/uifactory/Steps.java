@@ -49,8 +49,13 @@ public class Steps {
 			else
 				DriverFactory.launchApp();
 		}
-
-		MobileDevice.getScreenshot(true);
+		try {
+			MobileDevice.getScreenshot(true);
+		}catch (Exception e){
+			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
+				launchApplication("Curbside");
+			}
+		}
 	}
 
 	@Given("^I launch (.*) application with required permissions$")
