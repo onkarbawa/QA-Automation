@@ -45,9 +45,12 @@ public class HomeCap extends AbstractScreenCap {
     @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab and '(.*)' it$")
     public void iSearchForOrderId(String orderIdAlias, String tabName, String action) throws Throwable {
         footerTabsCap.btnTasks.tap();
-        if (Properties.getVariable(orderIdAlias) == null)
-            Assert.fail("Not able to place the order from Curbside app");
-
+        try {
+            if (Properties.getVariable(orderIdAlias) == null)
+                Assert.fail("Not able to place the order from Curbside app");
+        } catch (NullPointerException e) {
+            Assert.fail("Not able to store the Order ID in Properties class");
+        }
         int totalTasks;
         int startingTask = 0;
         UIElement lblOrderId;
