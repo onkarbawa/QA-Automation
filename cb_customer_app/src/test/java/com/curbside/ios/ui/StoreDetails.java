@@ -88,4 +88,16 @@ public class StoreDetails {
         Properties.setVariable("product" + Integer.toString(number), productDetailsScreen.getProductPrice());
         Properties.setVariable("productName" + Integer.toString(number), productDetailsScreen.productName.getText());
     }
+    @And("^I select (\\d+)no product and save product price named as'(.*)'$")
+    public void iSelectNoProductFromStoreProductList(int number, String priceName) throws Throwable {
+        UIElement element = UIElement.byXpath("//XCUIElementTypeCollectionView//XCUIElementTypeOther[" +
+                "XCUIElementTypeButton[contains(@name,'View All')]][1]/following-sibling::XCUIElementTypeCell[1]" +
+                "//XCUIElementTypeCollectionView//XCUIElementTypeCell[" + number + "] | " +
+                "//XCUIElementTypeCell[XCUIElementTypeButton[contains(@name,'Departments')]]/following-sibling::XCUIElementTypeCell[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell[" + number + "]");
+        element.waitFor(10).tap();
+        productDetailsScreen.productLocationAndPrice.waitFor(3);
+        Properties.setVariable(priceName + number, productDetailsScreen.getProductPrice());
+        System.out.println("name is :" + priceName + number);
+        System.out.println("price is :" + productDetailsScreen.getProductPrice());
+    }
 }

@@ -13,7 +13,7 @@ Feature: iOS- Task Management1
     And I signup for a new account
     And I add credit card information
 
-  @iOS @TCS014
+  @iOS @TCS016
   Scenario: Order Placed to check - Substitution Order
     And I select 'CVS' retailer
     And I select 1no product from list
@@ -23,7 +23,7 @@ Feature: iOS- Task Management1
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'substitutionOrder'
 
-  @iOS @TCS015
+  @iOS @TCS017
   Scenario: Order placed to check - Transfer Order
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
@@ -38,7 +38,7 @@ Feature: iOS- Task Management1
 
   @iOS
   Scenario Outline: Setting test environment for CAP
-    Given I launch CAP application
+    Given I launch CAP-CVS application
     And I have selected test environment for cap
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login
@@ -47,7 +47,7 @@ Feature: iOS- Task Management1
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
-  @iOS @TCS014
+  @iOS @TCS016
   Scenario: Substitution Order - All order out of stock (1 item, 1 quantity each)
     Given I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
@@ -74,7 +74,7 @@ Feature: iOS- Task Management1
     And I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
 
-  @iOS @TCS015
+  @iOS @TCS017
   Scenario: Transfer Order - 1 item out of stock (2 items, 1 quantity each)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'transferOrder' OrderID and 'claim' it

@@ -9,12 +9,13 @@ Feature: iOS- Offline Error Message
 
   @iOS @TCS04
   Scenario Outline: Verifying Offline error message on Airplane Mode
-  Given I enter "<account>", "<username>" and "<password>" for login
-  And I tap on 'Login' button
-  And I should see 'Tasks' screen
-  And I turn 'OFF' 'Airplane Mode' through Control Center
-  And I accept CAP notifications alerts
-  Then I should see this "<errorMessage>" on the 'Tasks' screen
-  Examples:
-  | account | username | password | errorMessage                            |
-  | curbside     | qaautomation_initium   | curbside | Offline - Not all features are available |
+    Given I enter "<account>", "<username>" and "<password>" for login
+    And I tap on 'Login' button
+    And I should see 'Tasks' screen
+    And I turn 'ON' 'Airplane Mode' through Control Center
+    And I accept CAP notifications alerts
+    Then I should see this "<errorMessage>" on the 'Tasks' screen
+    And I turn 'OFF' 'Airplane Mode' through Control Center
+    Examples:
+      | account  | username             | password | errorMessage                             |
+      | curbside | qaautomation_initium | curbside | Offline - Not all features are available |
