@@ -72,11 +72,16 @@ public class Login extends AbstractScreen{
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
     }
 
-    @And("^I have selected test environment for cap$")
-    public void iHaveSelectedTestEnvironmentForCap() throws Throwable {
+    @And("^I have selected test environment for (.*)")
+    public void iHaveSelectedTestEnvironmentForCap(String appName) throws Throwable {
         loginScreen.acceptNotificationAlert();
 
-        String envAPIKey = "cvs_9945";
+        String envAPIKey = null;
+        if (appName.equalsIgnoreCase("cap")) {
+            envAPIKey = "cvs_9945";
+        } else if (appName.equalsIgnoreCase("cap sephora")) {
+            envAPIKey = "sephora_0202";
+        }
         if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains("(cvs_9945)"))
             return;
         for (int i = 0; i < 4; i++) {
