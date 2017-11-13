@@ -299,4 +299,17 @@ public class UIElement {
 	public void longPress(int seconds) throws Throwable {
 		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).longPress(getElement(), Duration.ofSeconds(seconds)).release().perform();
 	}
+
+    public UIElement sendCharacterByCharacter(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
+            for (int i = 0; i < keySequence.length(); i++) {
+                char c = keySequence.charAt(i);
+                String s = new StringBuilder().append(c).toString();
+                getElement().sendKeys(s);
+            }
+
+        if (hideKeyboardAfterTyping)
+            MobileDevice.hideKeyboard();
+
+        return this;
+    }
 }

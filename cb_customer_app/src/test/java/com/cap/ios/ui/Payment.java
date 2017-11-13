@@ -1,11 +1,15 @@
 package com.cap.ios.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by bawa.onkar
@@ -76,5 +80,28 @@ public class Payment extends AbstractScreen {
             Steps.tapButton("Cancel");
         }
         MobileDevice.getScreenshot(true);
+    }
+
+
+    @And("^I enter receipt stored price for product '(.*)'$")
+    public void iEnterReceiptStoredPrice(String productPrice) throws Throwable {
+        Double firstProduct = 00.00;
+        Double secondProduct = 00.00;
+
+        if (productPrice + String.valueOf(1) != null) {
+            firstProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(1)));
+            System.out.println(firstProduct);
+        }
+        if (productPrice + String.valueOf(2) != null) {
+            secondProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(2)));
+        }
+        Double totalPrice = firstProduct + secondProduct;
+
+        DecimalFormat df = new DecimalFormat("00.00");
+
+        UIElement.byClass("XCUIElementTypeTextField").sendCharacterByCharacter(String.valueOf(df.format(totalPrice)),
+                false);
+        MobileDevice.tap(250,330);
+        //Steps.tapButton("Save");
     }
 }

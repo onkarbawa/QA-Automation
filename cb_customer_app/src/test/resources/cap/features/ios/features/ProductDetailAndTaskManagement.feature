@@ -69,7 +69,7 @@ Feature: iOS- Product Details and Task Management
     And I tap on 'Done' button
     And I tap on 'Finish' button
     And I checked order is ready
-    Then I should see 'claimOrder' orderId in PickUp tab with 'Needs customer attention'
+    Then I should see 'claimOrder' orderId in PickUp tab with message 'Needs customer attention'
 
   @iOS @TCS09
   Scenario: Mark all items out of stock (2 items, 1 quantity each)

@@ -18,7 +18,7 @@ public class PickUps extends AbstractScreen{
     UIElement pickUpQty = UIElement.byXpath("//XCUIElementTypeStaticText[@name='QTY :']/following-sibling::XCUIElementTypeStaticText[1]");
     UIElement transferCompleteAlert = UIElement.byName("Transfer complete.");
 
-    @Then("^I should see '(.*)' orderId in PickUp tab with '(.*)'$")
+    @Then("^I should see '(.*)' orderId in PickUp tab with message '(.*)'$")
     public void iShouldSeeOrderIdInPickUpTabWith(String orderAlias,String message) throws Throwable {
         footerTabsScreen.btnPickUp.waitFor(15).tap();
         String orderID = Properties.getVariable(orderAlias);
