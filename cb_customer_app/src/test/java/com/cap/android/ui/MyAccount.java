@@ -26,7 +26,8 @@ public class MyAccount extends AbstractScreenCap{
     @Given("^I am not signed in to the CAP$")
     public void iAmNotSignedIn() throws Throwable {
         capLaunch.fieldPassword.waitFor(3);
-        if(capLaunch.fieldPassword.isDisplayed())
+        UIElement btnAllow = UIElement.byUISelector("new UiSelector().text(\"Allow\")");
+        if (capLaunch.fieldPassword.isDisplayed() || btnAllow.isDisplayed())
             return;
         commonCap.iAmAtHome();
         this.iSignOutCap();

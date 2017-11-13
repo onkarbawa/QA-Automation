@@ -1,5 +1,5 @@
 @myAccount
-Feature: Android- My Account
+Feature: Android | CAP EE | My Account
 
   @Android
   Scenario: Setting test environment for CAP
