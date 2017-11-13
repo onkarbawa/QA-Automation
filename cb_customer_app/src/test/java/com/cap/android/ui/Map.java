@@ -23,6 +23,8 @@ public class Map extends AbstractScreenCap {
     @And("^I tap on Map button on visibility")
     public void iTapOnMap() throws Throwable {
         Steps.waitForButton("Map");
+        Steps.waitForButton("Map");
+        MobileDevice.getScreenshot(true);
         Steps.tapButton("Map");
     }
 }

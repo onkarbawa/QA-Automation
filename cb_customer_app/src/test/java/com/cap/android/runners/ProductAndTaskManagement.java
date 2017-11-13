@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/cap/features/android/ProductAndTaskManagementCurbside.feature",
+        features = "src/test/resources/cap/features/android/ProductAndTaskManagement.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = { "pretty","html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json" },
@@ -18,6 +18,6 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.android.ui", "com.curbside.automation.uifactory","com.cap.android.ui"})
 
 @Test
-public class ProductAndTaskManagementCurbside extends AbstractTestNGCucumberTests {
+public class ProductAndTaskManagement extends AbstractTestNGCucumberTests {
 
 }
