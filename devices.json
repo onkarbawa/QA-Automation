@@ -35,13 +35,13 @@
   ],
   "iOS" : [
     {
-      "url" : "http://127.0.0.1:4723/wd/hub",
-      "platformName" : "iOS",
-      "platformVersion" : "10.3.3",
-      "deviceName" : "TFT",
-      "showXcodeLog" : "false",
-      "udid" : "47BAEA6B-0F01-4E24-8178-3E2E8077BC5D",
-      "usePrebuiltWDA" :"true"
+      "url": "http://127.0.0.1:4723/wd/hub",
+      "platformName": "iOS",
+      "platformVersion": "10.3",
+      "deviceName": "iPhone 6",
+      "usePrebuiltWDA": true,
+      "showXcodeLog": true,
+      "newCommandTimeOut": 120
     }
   ]
 }
