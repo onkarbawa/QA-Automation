@@ -34,11 +34,6 @@
             <class name="com.curbside.android.runners.CartBuildingAndCheckout"/>
         </classes>
     </test>
-    <test name="Promo Code">
-        <classes>
-            <class name="com.curbside.android.runners.DeliveryPromoTest"/>
-        </classes>
-    </test>
     <test name="Sms Verification">
         <classes>
             <class name="com.curbside.android.runners.SmsVerificationTest"/>
@@ -62,6 +57,11 @@
     <test name="Live orders">
         <classes>
             <class name="com.curbside.android.runners.LiveOrderTest"/>
+        </classes>
+    </test>
+    <test name="Promo Code">
+        <classes>
+            <class name="com.curbside.android.runners.DeliveryPromoTest"/>
         </classes>
     </test>
 
