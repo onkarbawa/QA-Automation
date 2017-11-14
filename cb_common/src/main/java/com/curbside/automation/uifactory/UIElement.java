@@ -179,12 +179,23 @@ public class UIElement {
 	 * @param timeout
 	 */
 	public UIElement waitFor(int timeout) throws Throwable {
+		/*
 		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.visibilityOfElementLocated(this.locator));
 		} catch (Exception e) {
 			logger.debug("Unable to wait for visibility of element due to: " + e.getMessage());
-		}
+		}*/
+
+        long startTime= System.currentTimeMillis();
+        do {
+            try {
+                if(getElement().isDisplayed()) break;;
+            } catch (Exception e) {
+                continue;
+            }
+
+        } while ((System.currentTimeMillis()- startTime) < timeout * 1000);
 
 		return this;
 	}
@@ -235,13 +246,24 @@ public class UIElement {
 	}
 
 	public void waitForNot(int timeout) throws Throwable {
-		WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
+        long startTime= System.currentTimeMillis();
+        do {
+            try {
+                if(!getElement().isDisplayed()) return;
+            } catch (Exception e) {
+                return;
+            }
+
+        } while ((System.currentTimeMillis()- startTime) < timeout * 1000);
+
+        /*
+        WebDriverWait waitObj = new WebDriverWait(DriverFactory.getDriver(), timeout);
 		try {
 			waitObj.until(ExpectedConditions.invisibilityOfElementLocated(this.locator));
 		} catch (Exception e) {
 			logger.debug("Unable to wait for invisibility of element due to: " + e.getMessage());
-		}
-	}
+		}*/
+    }
 
 	public UIElement swipeUpSlow() throws Throwable {
 		for (int i = 0; i < 40; i++) {
