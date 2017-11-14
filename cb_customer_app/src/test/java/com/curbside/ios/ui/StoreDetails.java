@@ -57,6 +57,7 @@ public class StoreDetails {
     @And("^I select '(.*)' retailer$")
     public void iSelectRetailer(String storeName) throws Throwable {
         footerTabsScreen.tapShop();
+        footerTabsScreen.tapShop();
         MobileDevice.getScreenshot(true);
         UIElement.byXpath("//XCUIElementTypeCell[contains(@name,'" + storeName + "')]").waitFor(25).scrollTo(SwipeDirection.UP).tap();
         MobileDevice.getScreenshot(true);

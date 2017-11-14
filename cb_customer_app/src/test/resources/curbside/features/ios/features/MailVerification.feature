@@ -12,6 +12,7 @@ Feature: iOS- Mail verification flow
     And I tap on 'Create one now' button
     And I tap on 'Create An Account' button
     And I signup for a new account
+    And I should see my signup information under Account Info
     Then I should receive 'Welcome' Email from Curbside app
 
   @iOS @C114979
@@ -26,6 +27,7 @@ Feature: iOS- Mail verification flow
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
+    Then I should see checkout screen
     Then I should receive 'In-Progress Curbside Pickup' Email from Curbside app
 
   @iOS @C114983
@@ -39,4 +41,5 @@ Feature: iOS- Mail verification flow
     And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
     And I tap on back button
     And I attempt to place an order
+    Then I should see checkout screen
     Then I should receive 'In-Progress Delivery-Order' Email from Curbside app

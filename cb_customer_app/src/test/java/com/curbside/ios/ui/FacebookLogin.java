@@ -70,19 +70,13 @@ public class FacebookLogin extends AbstractScreen {
         if (!btnInBrowserContinueAs.isDisplayed()) {
             //	btnLoginUsingEmail.tap();
             //	txtInBrowserUsername.clearText();
-            if (!txtInBrowserPassword.isDisplayed()) {
-                txtInBrowserUsername.clearText();
-                txtInBrowserUsername.sendKeys(emailId, false);
+            txtInBrowserUsername.clearText();
+            txtInBrowserUsername.sendKeys(emailId, false);
+            if (!txtInBrowserPassword.isDisplayed() && txtInBrowserUsername.isDisplayed()) {
                 btnInBrowserLogin.tap();
-            } else {
-                txtInBrowserUsername.clearText();
-                txtInBrowserUsername.sendKeys(emailId, false);
+                txtInBrowserPassword.waitFor(12);
             }
-            try {
-                txtInBrowserPassword.sendKeys(password, false);
-            } catch (Exception e) {
-                txtInBrowserPassword.sendKeys(password, false);
-            }
+            txtInBrowserPassword.sendKeys(password, false);
             MobileDevice.getScreenshot(true);
             btnInBrowserLogin.tap();
         }else {

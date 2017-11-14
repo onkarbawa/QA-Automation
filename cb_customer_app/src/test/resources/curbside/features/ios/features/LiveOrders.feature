@@ -24,6 +24,7 @@ Feature: iOS- End to End flow verification
     And I go to Cart screen
     And I check there is no latest SMS from Curbisde
     When I attempt to place an order
+    Then I should see checkout screen
     Then I should receive order SMS from Curbside
     Then I should receive 'Progress' Email from Curbside app
 
@@ -43,6 +44,7 @@ Feature: iOS- End to End flow verification
     And I checked threshold value for Promo code
     And I verify discount is applied
     When I attempt to place an order
+    Then I should see checkout screen
     Then I should receive 'In-Progress' Email from Curbside app
 
   @iOS @C114964
@@ -57,4 +59,5 @@ Feature: iOS- End to End flow verification
     And I select the delivery address as:"4 Palo Alto Square,Palo Alto,CA"
     And I tap on back button
     When I attempt to place an order
+    Then I should see checkout screen
     Then I should receive 'Delivery-Order' Email from Curbside app
