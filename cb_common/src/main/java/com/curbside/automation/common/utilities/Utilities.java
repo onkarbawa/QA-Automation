@@ -123,8 +123,9 @@ public class Utilities {
      * @param locator
      * @param timeout
      */
-    public void waitForElement(WebElement locator, int timeout)
+    @Deprecated public void waitForElement(WebElement locator, int timeout)
     {
+        /*
         element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
         try {
@@ -132,7 +133,7 @@ public class Utilities {
         } catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
@@ -140,8 +141,9 @@ public class Utilities {
      * @param locator
      * @param timeout
      */
-    public void clickWhenReady(WebElement locator, int timeout)
-    {	element =null;
+    @Deprecated public void clickWhenReady(WebElement locator, int timeout)
+    {	/*
+        element =null;
         WebDriverWait waitObj = new WebDriverWait(driver,timeout);
 
         try {
@@ -150,7 +152,8 @@ public class Utilities {
         } catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
+
     }
 
     /**
