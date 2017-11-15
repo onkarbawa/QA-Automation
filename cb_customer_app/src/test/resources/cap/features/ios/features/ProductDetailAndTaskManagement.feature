@@ -54,7 +54,7 @@ Feature: iOS- Product Details and Task Management
   Scenario: Validating Claim button functionality
     Given I tap on 'All' tab and search for 'claimOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab
-    Then I look for 'claimOrder' Order Id under 'Mine' tab
+    Then I look for 'claimOrder' OrderId with 'Unclaim' button
 
   @iOS @TCS06
   Scenario: Verify that on Product Details screen

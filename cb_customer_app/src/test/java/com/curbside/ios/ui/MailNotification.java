@@ -15,6 +15,8 @@ public class MailNotification {
     public void iCheckLatestEmail(String emailType) throws Throwable {
         String emailID;
 
+        Thread.sleep(20000);
+
         switch (emailType.toLowerCase()) {
             case "welcome":
                 emailID = Properties.getVariable("signupEmail");

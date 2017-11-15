@@ -48,7 +48,7 @@ public class FacebookLogin extends AbstractScreen {
 
         MobileDevice.getScreenshot(true);
 
-        if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()){
+        if (!UIElement.byName("Done").isDisplayed()){
             commonSteps.launchApplication("Curbside");
             myAccountScreen.ensureSignedOut();
             Steps.tapButton("Sign In");

@@ -16,7 +16,8 @@ Feature: iOS- Task Management1
   @iOS @TCS016
   Scenario: Order Placed to check - Substitution Order
     And I select 'CVS' retailer
-    And I select 1no product from list
+    And I select 1no product and save product price named as'substitution'
+#    And I select 1no product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -27,7 +28,8 @@ Feature: iOS- Task Management1
   Scenario: Order placed to check - Transfer Order
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
-    And I select 1no product from list
+    And I select 1no product and save product price named as'transferOrderID'
+#    And I select 1no product from list
     And I add 1 quantity of the product
     And I select 2no product from list
     And I add 1 quantity of the product
@@ -61,7 +63,9 @@ Feature: iOS- Task Management1
     And I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
-    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Enter POS Total'
+    And I enter receipt stored price for product 'substitution'
+#    And I tap on 'Enter Receipt Total' and enter receipt total price
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
@@ -85,7 +89,9 @@ Feature: iOS- Task Management1
     And I tap on 'Done' button
     And I 'Go To Payment' screen
     And I scan Barcodes and tap on 'Show Barcodes' button
-    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Enter POS Total'
+    And I enter receipt stored price for product 'transferOrderID'
+#    And I tap on 'Enter Receipt Total' and enter receipt total price
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
