@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.appium.java_client.remote.IOSMobileCapabilityType;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.openqa.selenium.Capabilities;
@@ -152,6 +153,7 @@ public class DriverFactory {
 		case "ios":
 			caps.setCapability("preventWDAAttachments", true);
 			caps.setCapability("clearSystemFiles", true);
+			caps.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, 300000);
 			setDriver(new AppiumDriver(url, caps));
 			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;
@@ -213,8 +215,11 @@ public class DriverFactory {
 	}
 
 	public static void launchApp() throws Throwable {
-		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			((AppiumDriver)getDriver()).launchApp();
+		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+//			((AppiumDriver) getDriver()).launchApp();
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+		}
 		else
 			AndroidDevice.startApplication();
 	}
