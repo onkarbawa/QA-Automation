@@ -215,8 +215,11 @@ public class DriverFactory {
 	}
 
 	public static void launchApp() throws Throwable {
-		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			((AppiumDriver)getDriver()).launchApp();
+		if(DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+//			((AppiumDriver) getDriver()).launchApp();
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+		}
 		else
 			AndroidDevice.startApplication();
 	}
