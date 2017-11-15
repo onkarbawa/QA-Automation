@@ -153,7 +153,7 @@ public class DriverFactory {
 		case "ios":
 			caps.setCapability("preventWDAAttachments", true);
 			caps.setCapability("clearSystemFiles", true);
-			caps.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, 110000);
+			caps.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, 300000);
 			setDriver(new AppiumDriver(url, caps));
 			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;
