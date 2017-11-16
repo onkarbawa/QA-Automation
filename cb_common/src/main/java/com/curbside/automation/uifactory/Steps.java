@@ -82,8 +82,8 @@ public class Steps {
 		MobileDevice.getScreenshot(true);
 	}
 
-	@Given("^I launch (.*) application for the first time$")
-	public void launchApplicationClean(String appName) throws Throwable {
+	@Given("^I launch (.*) application for the (.*) time$")
+	public void launchApplicationClean(String appName, String nthTime) throws Throwable {
 		AppStore.setAppName(appName);
 
 		DriverFactory.releaseDriver();
@@ -94,7 +94,7 @@ public class Steps {
 		DriverFactory.clearEnvironment();
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
-				&& appName.equalsIgnoreCase("Curbside")) {
+				&& appName.equalsIgnoreCase("Curbside") && nthTime.equalsIgnoreCase("first")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
