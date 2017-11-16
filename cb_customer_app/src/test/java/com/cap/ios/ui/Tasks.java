@@ -112,8 +112,8 @@ public class Tasks extends AbstractScreen {
                 "Product overview is not displayed");
     }
 
-    @And("^I (?:search|look) for '(.*)' Order Id under '(.*)' tab")
-    public void iSearchForOrderId(String orderIdAlias, String tabName) throws Throwable {
+    @And("^I (?:search|look) for '(.*)' OrderId with '(.*)' button")
+    public void iSearchForOrderIdWith(String orderIdAlias, String btnName) throws Throwable {
         if (Properties.getVariable(orderIdAlias) == null)
             Assert.fail("Not able to place the order from Curbside app");
 
@@ -125,7 +125,7 @@ public class Tasks extends AbstractScreen {
                 .scrollTo(SwipeDirection.UP).getText().contains(orderID), "Product is not in the Mine Tab");
 
         Assert.assertEquals(UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]" +
-                "/following-sibling::XCUIElementTypeButton").getText(), "Unclaim",
+                "/following-sibling::XCUIElementTypeButton").getText(), btnName,
                 "Unclaim button is not present in list");
     }
 

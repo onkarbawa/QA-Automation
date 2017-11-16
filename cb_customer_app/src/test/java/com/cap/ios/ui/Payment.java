@@ -90,7 +90,6 @@ public class Payment extends AbstractScreen {
 
         if (productPrice + String.valueOf(1) != null) {
             firstProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(1)));
-            System.out.println(firstProduct);
         }
         if (productPrice + String.valueOf(2) != null) {
             secondProduct = Double.valueOf(Properties.getVariable(productPrice + String.valueOf(2)));

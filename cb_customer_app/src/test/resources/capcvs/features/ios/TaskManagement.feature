@@ -13,7 +13,7 @@ Feature: iOS- Task Management
     And I signup for a new account
     And I add credit card information
 
-  @iOS @TCS10 @TCS13
+  @iOS @TCS10 @TCS13 @TCS18
   Scenario: Order placed to check - Item ready for pickup
     And I select 'CVS' retailer
     And I select 1no product and save product price named as'readyOrder'
@@ -47,10 +47,15 @@ Feature: iOS- Task Management
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
+  @iOS @TCS18
+  Scenario: Validating Claim button functionality
+    Given I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
+    And I tap on 'Mine' tab
+    Then I look for 'readyPickUpOrder' OrderId with 'Release' button
+
   @iOS @TCS10 @TCS13
   Scenario: Process standard order (1 item, 1 quantities)
-    Given I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
-    And I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it
+    Given I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter POS Total'
