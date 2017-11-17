@@ -58,6 +58,7 @@ public class FacebookLogin extends AbstractScreen {
         }
 
         if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserUsername.isDisplayed())) {
+            Reporter.addStepLog("Facebook page reloading..");
             try {
                 Steps.tapButton("Done");
             } catch (Exception e) {
