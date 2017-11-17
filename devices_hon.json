@@ -8,8 +8,7 @@
       "deviceName": "iPhone 6 Hon",
       "usePrebuiltWDA": true,
       "showXcodeLog": true,
-      "newCommandTimeOut": 120,
-      "useNewWDA": false
+      "newCommandTimeOut": 120
     }
   ]
 }
