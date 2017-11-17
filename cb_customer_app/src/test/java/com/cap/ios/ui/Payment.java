@@ -103,4 +103,9 @@ public class Payment extends AbstractScreen {
         MobileDevice.tap(250,330);
         //Steps.tapButton("Save");
     }
+
+    @And("^I verify receipt image$")
+    public void iVerifyReceiptImage() throws Throwable {
+        UIElement.byName("OK").waitFor(20).tap();
+    }
 }
