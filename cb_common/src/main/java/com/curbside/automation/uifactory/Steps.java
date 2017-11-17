@@ -28,6 +28,7 @@ import io.appium.java_client.AppiumDriver;
 public class Steps {
 	UIElement backgroundAppRefresh = UIElement
 			.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
+	UIElement launchedApp = UIElement.byXpath("//XCUIElementTypeApplication[@name='Curbside']");
 	static Logger logger = Logger.getLogger(Steps.class);
 
 	@Given("^I launch (.*) application$")
@@ -52,10 +53,19 @@ public class Steps {
 		}
 		try {
 			MobileDevice.getScreenshot(true);
-		}catch (Exception e){
-			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
-				Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
+		} catch (Exception e) {
+			Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
+		}
+		if (appName.equalsIgnoreCase("Curbside") && DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			MobileDevice.getScreenshot(true);
+			for (int i = 0; i < 10; i++) {
+				if (launchedApp.isDisplayed())
+					return;
 			}
+			Reporter.addStepLog("Launching Curbside App again");
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+			MobileDevice.getScreenshot(true);
 		}
 	}
 
@@ -82,8 +92,8 @@ public class Steps {
 		MobileDevice.getScreenshot(true);
 	}
 
-	@Given("^I launch (.*) application for the first time$")
-	public void launchApplicationClean(String appName) throws Throwable {
+	@Given("^I launch (.*) application for the (.*) time$")
+	public void launchApplicationClean(String appName, String nthTime) throws Throwable {
 		AppStore.setAppName(appName);
 
 		DriverFactory.releaseDriver();
@@ -94,7 +104,7 @@ public class Steps {
 		DriverFactory.clearEnvironment();
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
-				&& appName.equalsIgnoreCase("Curbside")) {
+				&& appName.equalsIgnoreCase("Curbside") && nthTime.equalsIgnoreCase("first")) {
 			AppleDevice.resetPermissions(appName);
 			((AppiumDriver) DriverFactory.getDriver()).closeApp();
 			DriverFactory.releaseDriver();
