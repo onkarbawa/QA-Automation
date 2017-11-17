@@ -14,7 +14,7 @@ Feature: iOS- SMS Flow
     And I tap on 'Create An Account' button
     And I signup for a new account
     And I should see my signup information under Account Info
-    And I should receive welcome SMS from Curbside smsflow
+    And I should receive welcome SMS from Curbside
 
   @iOS @C114969
   Scenario: Verify SMS is received after place order
@@ -27,4 +27,4 @@ Feature: iOS- SMS Flow
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     Then I should see checkout screen
-    And I should receive order SMS from Curbside smsflow
+    And I should receive order SMS from Curbside

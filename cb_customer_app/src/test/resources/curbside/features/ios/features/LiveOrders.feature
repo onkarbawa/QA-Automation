@@ -17,7 +17,7 @@ Feature: iOS- End to End flow verification
     And I tap on 'Create An Account' button
     And I check there is no latest SMS from Curbisde
     And I signup for a new account
-    And I should receive welcome SMS from Curbside liveOrders
+    And I will receive welcome SMS from Curbside
     Then I should receive 'Welcome' Email from Curbside app
     And I add credit card
     And I add loyality card information
@@ -25,7 +25,7 @@ Feature: iOS- End to End flow verification
     And I check there is no latest SMS from Curbisde
     When I attempt to place an order
     Then I should see checkout screen
-    Then I should receive order SMS from Curbside liveOrders
+    Then I will receive order SMS from Curbside
     Then I should receive 'Progress' Email from Curbside app
 
 

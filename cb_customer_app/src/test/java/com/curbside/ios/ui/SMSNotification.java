@@ -33,8 +33,8 @@ public class SMSNotification extends AbstractScreen {
         Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
 
     }
-    @Then("^I should receive (?:welcome|order) SMS from Curbside (.*)$")
-    public void iCheckLatestSMS(String feature) throws Throwable {
+    @Then("^I (.*) receive (?:welcome|order) SMS from Curbside$")
+    public void iCheckLatestSMS(String condition) throws Throwable {
         boolean msgReceived = false;
         boolean status;
 
@@ -55,9 +55,10 @@ public class SMSNotification extends AbstractScreen {
                 break;
             }
         }
-        if (feature.equalsIgnoreCase("liveOrders")){
+        if (condition.equalsIgnoreCase("will"))
             softAssert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
-        }
-        Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
+        else if (condition.equalsIgnoreCase("should"))
+            Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
+        else Assert.fail("Please enter correct condition for assertion");
     }
 }
