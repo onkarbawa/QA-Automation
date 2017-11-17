@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
  */
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/capcvs/features/ios/TaskManagement.feature",
+        features = "src/test/resources/capcvs/features/ios/TaskManagement1.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = {"pretty", "html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json"},
@@ -17,7 +17,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.ios.ui", "com.cap.ios.ui", "com.capcvs.ios.ui", "com.curbside.automation.uifactory"})
 
 @Test
-public class TaskManagementTest extends AbstractTestNGCucumberTests {
+public class TaskManagement1Test extends AbstractTestNGCucumberTests {
 }
-
-

@@ -24,7 +24,12 @@ public class Mailinator {
         DriverFactory.getDriver().getPageSource();
         String baseURL = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + userID + "#/#inboxpane";
         System.setProperty("webdriver.chrome.driver", "../chromedriver");
-        driver = new ChromeDriver();
+        try {
+            driver = new ChromeDriver();
+        } catch (Exception e) {
+            DriverFactory.getDriver().getPageSource();
+            driver = new ChromeDriver();
+        }
         driver.manage().window().maximize();
         DriverFactory.getDriver().getPageSource();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -44,7 +49,11 @@ public class Mailinator {
         }
         DriverFactory.getDriver().getPageSource();
         deleteMails();
-        driver.quit();
+        try {
+            driver.close();
+        } catch (Exception e) {
+            driver.quit();
+        }
         return isMailPresent;
     }
 
