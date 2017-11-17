@@ -57,7 +57,7 @@ public class FacebookLogin extends AbstractScreen {
             Reporter.addStepLog("Relaunch Curbside");
         }
 
-        if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserPassword.isDisplayed())) {
+        if ((!btnInBrowserContinueAs.isDisplayed()) && (!txtInBrowserUsername.isDisplayed())) {
             try {
                 Steps.tapButton("Done");
             } catch (Exception e) {

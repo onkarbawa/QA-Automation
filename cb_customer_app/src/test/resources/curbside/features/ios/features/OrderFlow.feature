@@ -2,7 +2,7 @@
 Feature: iOS- Order flow verification
 
   Scenario: Setting test environment
-    Given I launch Curbside application for the second time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen

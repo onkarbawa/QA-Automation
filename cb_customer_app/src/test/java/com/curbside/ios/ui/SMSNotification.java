@@ -8,6 +8,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,6 +22,7 @@ import java.util.TimeZone;
  */
 public class SMSNotification extends AbstractScreen {
 
+    SoftAssert softAssert = new SoftAssert();
 
     @And("^I check there is no latest SMS from Curbisde$")
     public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
@@ -31,8 +33,8 @@ public class SMSNotification extends AbstractScreen {
         Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
 
     }
-    @Then("^I should receive (?:welcome|order) SMS from Curbside$")
-    public void iCheckLatestSMS() throws Throwable {
+    @Then("^I should receive (?:welcome|order) SMS from Curbside (.*)$")
+    public void iCheckLatestSMS(String feature) throws Throwable {
         boolean msgReceived = false;
         boolean status;
 
@@ -52,6 +54,9 @@ public class SMSNotification extends AbstractScreen {
                 msgReceived = true;
                 break;
             }
+        }
+        if (feature.equalsIgnoreCase("liveOrders")){
+            softAssert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
         }
         Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
     }
