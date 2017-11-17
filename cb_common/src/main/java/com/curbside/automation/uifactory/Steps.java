@@ -59,10 +59,12 @@ public class Steps {
 		if (appName.equalsIgnoreCase("Curbside") && DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
 			MobileDevice.getScreenshot(true);
 			for (int i = 0; i < 10; i++) {
-				if (launchedApp.isDisplayed())
+				if (launchedApp.waitFor(10).isDisplayed())
 					return;
 			}
 			Reporter.addStepLog("Launching Curbside App again");
+			launchedApp.waitFor(10);
+			MobileDevice.getScreenshot(true);
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false);
 			MobileDevice.getScreenshot(true);
