@@ -28,6 +28,7 @@ import io.appium.java_client.AppiumDriver;
 public class Steps {
 	UIElement backgroundAppRefresh = UIElement
 			.byXpath("//XCUIElementTypeSwitch[@name='" + "Background App Refresh" + "']");
+	UIElement launchedApp = UIElement.byXpath("//XCUIElementTypeApplication[@name='Curbside']");
 	static Logger logger = Logger.getLogger(Steps.class);
 
 	@Given("^I launch (.*) application$")
@@ -52,10 +53,19 @@ public class Steps {
 		}
 		try {
 			MobileDevice.getScreenshot(true);
-		}catch (Exception e){
-			if (!UIElement.byClass("XCUIElementTypeWindow").isDisplayed()) {
-				Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
+		} catch (Exception e) {
+			Reporter.addStepLog("Not able to launch the app : Failed at screenshot step");
+		}
+		if (appName.equalsIgnoreCase("Curbside") && DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			MobileDevice.getScreenshot(true);
+			for (int i = 0; i < 10; i++) {
+				if (launchedApp.isDisplayed())
+					return;
 			}
+			Reporter.addStepLog("Launching Curbside App again");
+			DriverFactory.releaseDriver();
+			DriverFactory.getDriver(false);
+			MobileDevice.getScreenshot(true);
 		}
 	}
 
