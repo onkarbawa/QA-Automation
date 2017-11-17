@@ -49,7 +49,11 @@ public class Mailinator {
         }
         DriverFactory.getDriver().getPageSource();
         deleteMails();
-        driver.quit();
+        try {
+            driver.close();
+        } catch (Exception e) {
+            driver.quit();
+        }
         return isMailPresent;
     }
 
