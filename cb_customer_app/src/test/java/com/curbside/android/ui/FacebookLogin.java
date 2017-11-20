@@ -23,6 +23,7 @@ public class FacebookLogin extends AbstractScreen {
     @And("^I enter '(.*)' and '(.*)' for facebook login$")
     public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
         try {
+            MobileDevice.getScreenshot(true);
             fbLogin(email, password);
         } catch (Exception e) {
             MobileDevice.getScreenshot(true);
@@ -50,6 +51,7 @@ public class FacebookLogin extends AbstractScreen {
         }
         Thread.sleep(3000);
         btnSignInWithFacebook.waitForNot(10);
+        MobileDevice.getScreenshot(true);
     }
 
 }

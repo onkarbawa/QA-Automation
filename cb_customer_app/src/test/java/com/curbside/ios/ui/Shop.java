@@ -12,13 +12,12 @@ public class Shop {
         // TODO Auto-generated constructor stub
     }
 
-    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'hr') or contains(@name,'min')] |" +
-            "//XCUIElementTypeSearchField/../../../preceding-sibling::XCUIElementTypeOther/XCUIElementTypeStaticText");
+    UIElement leadTime = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Delivery available')]");
 
     @Then("^I should see lead times to places as below$")
     public void iShouldSeeLeadTimesToPlacesAsBelow() throws Throwable {
         Assert.assertTrue(leadTime.waitFor(5).getText().contains("min") || leadTime.getText().contains("hr") ||
-                leadTime.isDisplayed(), "lead time is not displayed in retailer store");
+                leadTime.getText().contains("Delivery available"), "lead time is not displayed in retailer store");
 
     }
 }
