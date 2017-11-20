@@ -116,6 +116,7 @@ public class Steps {
 		DriverFactory.getDriver(true);
 		acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
+		//This will set the capabilities that is being used in launchApp method
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
 			DriverFactory.releaseDriver();
 			DriverFactory.getDriver(false);
@@ -235,14 +236,18 @@ public class Steps {
 
 	@Given("^I (?:tap|click) on '(.*)' button on '(.*)' .*")
 	public void tapButtonOnPage(String buttonName, String pageName) throws Throwable {
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
-			new UIElement(By.name(buttonName)).tap();
-		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
-		    if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
-                UIElement okButton = UIElement.byXpath("//*[@text='" + buttonName + "']");
-                okButton.waitFor(3);
-                okButton.tap();
-            }
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+			try {
+				UIElement.byName(buttonName).waitFor(5).tap();
+			} catch (Exception e) {
+				UIElement.byAccessibilityId(buttonName).waitFor(5).tap();
+			}
+		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			if (MobileDevice.getPlatformVersion().charAt(0) != '5') {
+				UIElement okButton = UIElement.byXpath("//*[@text='" + buttonName + "']");
+				okButton.waitFor(3);
+				okButton.tap();
+			}
 		}
 	}
 
