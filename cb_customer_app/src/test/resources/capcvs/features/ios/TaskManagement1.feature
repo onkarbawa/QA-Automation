@@ -1,5 +1,5 @@
 @taskManagement1
-Feature: iOS- Task Management - 1
+Feature: iOS | CAP-CVS | SE | Task Management - 1
 
   @iOS
   Scenario: Setting up user account with credit card
@@ -92,3 +92,4 @@ Feature: iOS- Task Management - 1
     And I verify receipt image
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Finish' button
+    Then I confirm 'cancelPickUpOrder' orderID is not present under Task tab

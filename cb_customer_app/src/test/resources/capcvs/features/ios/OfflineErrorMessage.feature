@@ -1,5 +1,5 @@
 @OfflineValidation
-Feature: iOS- Offline Error Message
+Feature: iOS | CAP-CVS | SE | Offline Error Message
 
   @iOS
   Scenario: First time Curbside Launch

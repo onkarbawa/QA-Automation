@@ -1,5 +1,5 @@
 @map
-Feature: iOS- Map
+Feature: iOS | CAP-CVS | SE | Map
 
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP-CVS application for the first time
