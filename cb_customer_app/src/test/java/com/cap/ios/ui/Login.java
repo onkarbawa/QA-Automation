@@ -77,12 +77,16 @@ public class Login extends AbstractScreen{
         loginScreen.acceptNotificationAlert();
 
         String envAPIKey = null;
+        String expectedStagingVariable = null;
+
         if (appName.equalsIgnoreCase("cap")) {
             envAPIKey = "cvs_9945";
+            expectedStagingVariable = "(cvs_9945)";
         } else if (appName.equalsIgnoreCase("cap sephora")) {
             envAPIKey = "sephora_0202";
+            expectedStagingVariable = "(sephora_0202)";
         }
-        if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains("(cvs_9945)"))
+        if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(expectedStagingVariable))
             return;
         for (int i = 0; i < 4; i++) {
             stagingVariable.tapCenter();

@@ -6,7 +6,7 @@
     </listeners>
     <test name="iOS- My-Account">
         <classes>
-            <class name="com.capsephora.ios.runners.MyAccount"/>
+            <class name="com.capsephora.ios.runners.Map"/>
         </classes>
     </test>
 </suite>
