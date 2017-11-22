@@ -6,211 +6,231 @@
 	<dict>
 		<key>ADStatusTableViewCell.nib</key>
 		<data>
-		0PIXHuPOtFg5nWj6nUzOhdUg/jM=
+		vOf7j9FPpOcYQBGy0CepfGQeGy8=
 		</data>
 		<key>AbandonedOrderViewController.nib</key>
 		<data>
-		PJtOABQtC6CHqaWtvwtVoDZG3hE=
+		5LR4JFNiV2llDIu8sghI7EHG0q0=
 		</data>
 		<key>AgeRestrictedTableViewCell.nib</key>
 		<data>
-		XSa6H0ZLI16ZZ4zRp39X3AdG8bw=
+		hPqriL/vc2avKWwGlg76q2C1nQk=
+		</data>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		W+DSCqHGD3W9T0yzJUSCQzb4ong=
+		</data>
+		<key>AppIcon20x20@2x~ipad.png</key>
+		<data>
+		W+DSCqHGD3W9T0yzJUSCQzb4ong=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		LT8v+/e4txWVyWpDHrPMC5T5AVw=
+		</data>
+		<key>AppIcon20x20~ipad.png</key>
+		<data>
+		vE7hhKtu18qWyrYWIAIrIJ2JBHA=
 		</data>
 		<key>AppIcon29x29@2x.png</key>
 		<data>
-		8S//UuxOY7r/yDtlLMb/iLiwrrU=
+		z+wG9W4DhZGDLkKs+332rutc2zM=
 		</data>
 		<key>AppIcon29x29@2x~ipad.png</key>
 		<data>
-		8S//UuxOY7r/yDtlLMb/iLiwrrU=
+		z+wG9W4DhZGDLkKs+332rutc2zM=
 		</data>
 		<key>AppIcon29x29@3x.png</key>
 		<data>
-		ljQ5prCSlgCL5NSnJ7v+xRCr/Gk=
+		UOaChdxTznhASzOuhP3FN8htTsI=
 		</data>
 		<key>AppIcon29x29~ipad.png</key>
 		<data>
-		+0UufklUds3Tjk0R+ligefj4FTo=
+		uFyYSFra9Sx9i4ahQym4gYLzR4Q=
 		</data>
 		<key>AppIcon40x40@2x.png</key>
 		<data>
-		5FEdKTgFECOP994rcekwRc8Z1Gw=
+		mMJ6QwxCQ4Km/ICFAzhXRmzap2A=
 		</data>
 		<key>AppIcon40x40@2x~ipad.png</key>
 		<data>
-		5FEdKTgFECOP994rcekwRc8Z1Gw=
+		mMJ6QwxCQ4Km/ICFAzhXRmzap2A=
 		</data>
 		<key>AppIcon40x40@3x.png</key>
 		<data>
-		NwNAOFQL0H5KYIfU1APoLIwtZNM=
+		yARo0ejIujPqU1hq7tEAlvWZx7A=
 		</data>
 		<key>AppIcon40x40~ipad.png</key>
 		<data>
-		MIrgHF5MeohPfyQhUQGL9luXnLA=
+		NGGTn0aLkuNZVDk5Zs8cm7ceSdo=
 		</data>
 		<key>AppIcon60x60@2x.png</key>
 		<data>
-		NwNAOFQL0H5KYIfU1APoLIwtZNM=
+		yARo0ejIujPqU1hq7tEAlvWZx7A=
 		</data>
 		<key>AppIcon60x60@3x.png</key>
 		<data>
-		rVfm9EasrTJwcXqQyV/+Gju0jso=
+		u9oP8vMFxHEn1yzEQoBFLg3vV0o=
 		</data>
 		<key>AppIcon76x76@2x~ipad.png</key>
 		<data>
-		dM4mnw5LXYv+DYIUDLEeoSeu+JQ=
+		H6QFtoUnj8B6hdETJFmAIj3/60M=
 		</data>
 		<key>AppIcon76x76~ipad.png</key>
 		<data>
-		ocHpT+vc5LZ0r0BtvvDnlb6Qzrg=
+		AOlzP59agQFp/zsaylh+GjIDjN0=
+		</data>
+		<key>AppIcon83.5x83.5@2x~ipad.png</key>
+		<data>
+		YbGWIMcY3q+vq2cm4PbMLQ/Tq6Q=
 		</data>
 		<key>ApplyORMDStickerTableViewCell.nib</key>
 		<data>
-		sSOhC7umSIm9Ndb6VlOc/pAfHTY=
+		b83XzohLB6IbmGJcI7HmA+YE67M=
 		</data>
 		<key>Assets.car</key>
 		<data>
-		E/MMG2Di9hmooxrDq0AAco74ujo=
+		ZANo2IrafPaTYcGYpcvty++tQVM=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		ojfC/5sSYygMdD5uHwVjNJJ5Ezk=
+		RDk/B7HlT9ZMh2G4+fcTmE+/wsg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/3WF-Jm-ipg-view-2Xc-p0-gqH.nib</key>
 		<data>
-		hu+QTm3YBPO7I+cvKnngBXJcRlM=
+		68WHguN5V6HiNb804D+Z3uMYUQw=
 		</data>
 		<key>Base.lproj/Main.storyboardc/5HB-8T-szJ-view-8Qg-g7-Nu7.nib</key>
 		<data>
-		EagJWcQg7przosnHaUv0Nq6Wpho=
+		8pkunW6v0ALQ6PQdLiL77w38FBE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/5gL-St-gAi-view-PoP-f5-gAW.nib</key>
 		<data>
-		PCX2FtSdyaUGKEJqMvnXyfHPc+I=
+		E85+LSVMUL4heL4TZfbgf/7qbYo=
 		</data>
 		<key>Base.lproj/Main.storyboardc/632-Nw-y8u-view-U4O-55-bwD.nib</key>
 		<data>
-		4Q8M5ZznhED6fP1ovl/k/yYGZPw=
+		grdfSC7AVBpyri+/j1xKv5gr3Gk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/88N-J2-fbg-view-6an-Yj-fPz.nib</key>
 		<data>
-		nU5lcVRFhwPFbeHxRr+/JysmcCU=
+		tkQXVlw3+6yG2UgnOp2iP1vSD70=
 		</data>
 		<key>Base.lproj/Main.storyboardc/9pv-A4-QxB-view-tsR-hK-woN.nib</key>
 		<data>
-		nr2GlzKG09aiH9FrrAaLQi5WTi8=
+		1SEKFF/rSy3Z5TmLa8GnkxnbFD0=
 		</data>
 		<key>Base.lproj/Main.storyboardc/DriverNC.nib</key>
 		<data>
-		Bh9r3RMz1VAJ1BXGAIL7Hui6M34=
+		+cQV7vD8ZEbOi7Z35Lpb1E/0pSM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		ouPOLEMGMZYDaTR4Cbg/a7BKTU8=
+		hOpcKr4pjVB3ri5iZFL2rzlqsVw=
 		</data>
 		<key>Base.lproj/Main.storyboardc/LegalViewController.nib</key>
 		<data>
-		6gDGWIxr3H8HpgAJHvDTSHzfhyE=
+		RexM/irnV1bLa0vKv1k5folABjs=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Mm5-33-mm2-view-6zt-ng-TAq.nib</key>
 		<data>
-		eVA0Ml7cKA3tXg5odwVMzpwSjfg=
+		o1IgQT1jA0QmAbtNE38S5l12R2I=
 		</data>
 		<key>Base.lproj/Main.storyboardc/PickupsViewController.nib</key>
 		<data>
-		yKo8B2OiKuG1J1CPXSIRVTjYjJo=
+		pk6WDtKjdZJlagHkscATuhiAT/E=
 		</data>
 		<key>Base.lproj/Main.storyboardc/QdV-qd-5Jk-view-P82-TA-cRa.nib</key>
 		<data>
-		stPfCxbAxDvA1AK1Vd3I3Hlq+bI=
+		L2/xzlW4eJeeKys7lj3bh6lHXIA=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UC6-KZ-aOn-view-GZt-Rh-Grf.nib</key>
 		<data>
-		7EeFVRA/iQrssDIFeztWake2v9M=
+		dzqhBycHyoF1TWlCAmJxx7ykvpM=
 		</data>
 		<key>Base.lproj/Main.storyboardc/UITabBarController-49e-Tb-3d3.nib</key>
 		<data>
-		xvatkiUuepQP5M24pWl3j4gHM2o=
+		vbFz1h3PxGoEsF+9YwxHQszjMUg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/customerMapViewVC.nib</key>
 		<data>
-		slxaVAHwgrmvHqWpVTLpzC47KxQ=
+		pbmgflevuuXGCnii/3V5vTF4d14=
 		</data>
 		<key>Base.lproj/Main.storyboardc/customerPickupsVC.nib</key>
 		<data>
-		VrjvPYdMYyUAbuLmawTq024MfC0=
+		aPi9z13cKtdSRQ3JX7qWvP0II2c=
 		</data>
 		<key>Base.lproj/Main.storyboardc/ejc-VE-2S3-view-Awo-vn-5m4.nib</key>
 		<data>
-		d2uXXqiSceOiZ1xNkaIbnFAwtTM=
+		TmTm8XLTa4vwDfGg2cmEeOsQ5go=
 		</data>
 		<key>Base.lproj/Main.storyboardc/gQm-4P-Eqc-view-Lbr-jL-xwa.nib</key>
 		<data>
-		//k+vLrpT6ewSB1FB2k0N7uhhOA=
+		b5i+Z8n7JJge1vskBCIm9DDOFqI=
 		</data>
 		<key>Base.lproj/Main.storyboardc/pickViewController.nib</key>
 		<data>
-		7zcid+AIIZVCdbEiU0JSwEmUECo=
+		MHS2T5FGb2cz8VZpDlsoNXxXGL0=
 		</data>
 		<key>Base.lproj/Main.storyboardc/storePickupListVC.nib</key>
 		<data>
-		e8oIBHGrGN0B7uJ7zFYpkfaBUhE=
+		6HjAxGy+tPqUnNd+p6IsUNhd3VU=
 		</data>
 		<key>CVSPaymentInstructionsTableViewCell.nib</key>
 		<data>
-		xafKf1xmnmIp2oFoWwV3lRg7hlo=
+		gV3Y4VKyrPRpHwuktrfQQ7bSRo4=
 		</data>
 		<key>CancelPickupTableViewCell.nib</key>
 		<data>
-		yk0DhZ9RnxbEswaDlxuJqkxz4BU=
+		3Jcdev9ILNWoPOguOkEgJL4wlCg=
 		</data>
 		<key>ClaimTakeOverTableViewCell.nib</key>
 		<data>
-		DhunRQbB0SQKH0F4RhZ3FBRDmyU=
+		xou2plkiQe/KcfQQDbBSOFMTXQQ=
 		</data>
 		<key>ColdStorageTableViewCell.nib</key>
 		<data>
-		Isfpu+3dPyLp0fT3r0eda7ptqAc=
+		hpFjt0R0hb00uePvn17WhioAO0s=
 		</data>
 		<key>CurbsideCustomerRequestAckViewController.nib</key>
 		<data>
-		0owssueDRxA/1ZD1nItOf4vDaOs=
+		q41a+LMBdVX9+yOOlU6PSRPPjlY=
 		</data>
 		<key>CustomerADAckNeededTableViewCell.nib</key>
 		<data>
-		ReTnkO+IYJ7ngHAqi9tyYjBZmQI=
+		YR1FXuzJwXue7aHYTPZt1MaQcMM=
 		</data>
 		<key>CustomerADAckedStatusTableViewCell.nib</key>
 		<data>
-		/+30G9x1tgN7Zd0bomSIOboC/rw=
+		D6AtEuJ3JBJQYq705p1mEpJ4HnE=
 		</data>
 		<key>CustomerADTableViewCell.nib</key>
 		<data>
-		8JgC8uU9NsvYcLD/ZWDyLSdQ2nI=
+		vZ4oihMFSlw7JKdelzg7GU9YoE8=
 		</data>
 		<key>CustomerADWaitingTableViewCell.nib</key>
 		<data>
-		+MYbt0IjD5xBuNSq3tevyniwlMg=
+		u3L4GNS0F85I82XgD7fHbLoEJx0=
 		</data>
 		<key>CustomerAttributeTableViewCell.nib</key>
 		<data>
-		ZUsxzfECvGa1YWvZ7TKxILfJGic=
+		dbU0cpWJ+aWJu0wXsi2qP1HT3b0=
 		</data>
 		<key>CustomerPickupDetailsViewController.nib</key>
 		<data>
-		MFRJipNRkyoe6kqZOe1WBhcH1CM=
+		Mr2FVkQEZlxZ0w32bNpzzN2XjK8=
 		</data>
 		<key>DebugViewController.nib</key>
 		<data>
-		b6XzR7pcYYva+s6s37DHr4U3BQw=
+		UN6RYfTq+XvTwdDrveHIvXfDftM=
 		</data>
 		<key>DeliveryCourierTableViewCell.nib</key>
 		<data>
-		nZdxXLGuo/hM34QKy2z0Gnf1I9w=
+		rSOCs1A4qsK4IWMd/g4LbGv68/Q=
 		</data>
 		<key>DeliveryPendingTableViewCell.nib</key>
 		<data>
-		GtrchSARQ1sTWgE2Jk9Tzhw/FGU=
+		yy9B1Sw8xIdGMw9MTc6NIG6hX3Y=
 		</data>
 		<key>DoorBell.mp3</key>
 		<data>
@@ -218,19 +238,19 @@
 		</data>
 		<key>FinishPackTableViewCell.nib</key>
 		<data>
-		0zCiBj9ut4SU+exFdtJxYCLWdHE=
+		J9tGDdOGNM4ch4n9JY5JzKjrhbs=
 		</data>
 		<key>GetPharmacyBagsTableViewCell.nib</key>
 		<data>
-		x71xwhUjRtrSF/fnMfZkhm3kIyE=
+		KjWHxeQv3Rm3edBm+kH/PJtGovM=
 		</data>
 		<key>GetStoreBagsTableViewCell.nib</key>
 		<data>
-		DcvEHn4twZV+njBeDuJtgibcz78=
+		s3oHpn3WpYeUs0BSzARTeS7UvGQ=
 		</data>
 		<key>GiftWrapTableViewCell.nib</key>
 		<data>
-		h2JyboHaZDLMys/O0QXHPyH1NJo=
+		drRhgkeS3K9E39c/ahzjlUNMLL4=
 		</data>
 		<key>GooglePlaces.bundle/Info.plist</key>
 		<data>
@@ -517,7 +537,7 @@
 		</dict>
 		<key>GooglePlaces.bundle/oss_licenses_places.txt.gz</key>
 		<data>
-		1hEGi1hhfXnMf0NNf1oqn03lhTs=
+		KGpTE45ipreTAv+QoxMYMRDXsCo=
 		</data>
 		<key>GooglePlaces.bundle/pl.lproj/GooglePlaces.strings</key>
 		<dict>
@@ -530,27 +550,27 @@
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-dark.png</key>
 		<data>
-		HCXmeRWTByP1fdRTUClloOklIzc=
+		mJs3KNjrHkAKFGwNneaI46AX/zc=
 		</data>
 		<key>GooglePlaces.bundle/powered-by-google-dark@2x.png</key>
 		<data>
-		Cax/r5EpD9X1OhSXTbSOIXoWqLA=
+		vhIl2uf3lW9Fx3KPl43duxYJi14=
 		</data>
 		<key>GooglePlaces.bundle/powered-by-google-dark@3x.png</key>
 		<data>
-		cIdH5JkXVe31jpvUQqppgNcSpAA=
+		FlwvnE0YZc+SRyddSz3jqr9wleE=
 		</data>
 		<key>GooglePlaces.bundle/powered-by-google-light.png</key>
 		<data>
-		gnT8JEtJ5ZLydRrwv1sXbgOqbuE=
+		jOR/7+G+Xw1KouRwRyLIbDjjkHQ=
 		</data>
 		<key>GooglePlaces.bundle/powered-by-google-light@2x.png</key>
 		<data>
-		lxukcFzJpT0KWYGA8ZpfmZEmZDw=
+		t7SLR2p+C3ERZscBezSxv/O9/Jo=
 		</data>
 		<key>GooglePlaces.bundle/powered-by-google-light@3x.png</key>
 		<data>
-		n0gMX8tEZstJpKJ0KnV5u5XgoaI=
+		Y+b9y9P7e1QmPTjtE4UphKQfMX4=
 		</data>
 		<key>GooglePlaces.bundle/pt.lproj/GooglePlaces.strings</key>
 		<dict>
@@ -599,27 +619,27 @@
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud.png</key>
 		<data>
-		3lokmqHSu4oUsj0agdJe7rlFIpQ=
+		PsRzptNM/AouDlDfPPDhXQQbevM=
 		</data>
 		<key>GooglePlaces.bundle/sad_cloud@2x.png</key>
 		<data>
-		0AaH9BEgObSFZITV5JnfoPXzCR0=
+		5z+xHVZtzmzb8faTbh8p63ksyQI=
 		</data>
 		<key>GooglePlaces.bundle/sad_cloud@3x.png</key>
 		<data>
-		LuiQ5Zc3To4R9V41plFCtKo+AmA=
+		BDS8meemU/ch8xTmgfeUVAZH80U=
 		</data>
 		<key>GooglePlaces.bundle/sad_cloud_dark.png</key>
 		<data>
-		nrvV9sUal1KvnS9o5twqf4dHJrM=
+		XcYF9swP4I5uAZ+rFbKkOaVKPSY=
 		</data>
 		<key>GooglePlaces.bundle/sad_cloud_dark@2x.png</key>
 		<data>
-		w/AgUZ14pX/qdzB5aJZwclFNkJ4=
+		xa7qRbWfj13G8pSATi7hdgHTSYA=
 		</data>
 		<key>GooglePlaces.bundle/sad_cloud_dark@3x.png</key>
 		<data>
-		WunZCZgf1/3b1jEsF6e/xzomZkk=
+		cnAKIjQbERFrX4T+O4dASAQ664c=
 		</data>
 		<key>GooglePlaces.bundle/sk.lproj/GooglePlaces.strings</key>
 		<dict>
@@ -704,39 +724,39 @@
 		</dict>
 		<key>Info.plist</key>
 		<data>
-		m2VQlh0O1NYXklajl6WCgq+0Q2k=
+		UzImCAjbNHlJe69lNK2SE24Zur4=
 		</data>
 		<key>IssueRefundTableViewCell.nib</key>
 		<data>
-		SfmQSCZ/7ewsZ65yQQmtsBpJjcA=
+		j1ZeprdhgmEP+066+Dp7hWc4J8c=
 		</data>
 		<key>LoginViewController.nib</key>
 		<data>
-		lhZoKkEL634ZEPU65R3RlBpecqc=
+		yLEcF+gat0wC5G9O5yuHMjk7Fq4=
 		</data>
 		<key>OrderActionTableViewCell.nib</key>
 		<data>
-		6Tz7wfV3QB+GJszcot5OHR+5ik8=
+		bJOu/+ZGry5NjJTvTIA9h3V08g4=
 		</data>
 		<key>OrderDetailCustomerTableViewCell.nib</key>
 		<data>
-		1gBXN/YkVK8Yi3E4YoChpiKYEB0=
+		q9c9PVgwoWMxK7VKPtiuBRhE5uY=
 		</data>
 		<key>OrderInfoSmallTableViewCell.nib</key>
 		<data>
-		/ci6k5xYz1tHg5JFdAWx8rjX2Es=
+		N14t3Fvmy+FTNyMRtGK4S0JRasc=
 		</data>
 		<key>OrderInfoTableViewCell.nib</key>
 		<data>
-		i5v1oTHuziXqM5+3uXL2MzD9e/w=
+		atzQxgP8F0jpIpqs+sw2ay8+Wd0=
 		</data>
 		<key>OrderSummaryTableViewCell.nib</key>
 		<data>
-		HLy8ZD28kLYk0RZVsRBHxePhgI0=
+		zZXkyoy1v/cxY3uSQhjNtaJ1ZPg=
 		</data>
 		<key>PackViewController.storyboardc/Hi2-XL-LXb-view-FWn-eZ-bJC.nib</key>
 		<data>
-		EV61I5lzTePg6LZ6nwRqWpyHO2g=
+		oOkOdMIAv2xo+tczsePyV5weCZI=
 		</data>
 		<key>PackViewController.storyboardc/Info.plist</key>
 		<data>
@@ -744,15 +764,15 @@
 		</data>
 		<key>PackViewController.storyboardc/UIViewController-Hi2-XL-LXb.nib</key>
 		<data>
-		22/qEv9afTYwYDvRS/SdP01hCI8=
+		yoEHfRliD2mPX7OOpmRZhnOd2iI=
 		</data>
 		<key>PayForTheOrderTableViewCell.nib</key>
 		<data>
-		hLsjNLMHbss16OuoSCviWBOhitg=
+		hc024zOmX2b3yNHWFK0L/rFMJL0=
 		</data>
 		<key>PayForTheOrderWithOverrideTableViewCell.nib</key>
 		<data>
-		iwuYqgdOx7Z8O/q07PRTR0hO0RE=
+		njYUxLU0dwhMBzPliri0E+tj1Uc=
 		</data>
 		<key>PayViewController.storyboardc/Info.plist</key>
 		<data>
@@ -760,27 +780,27 @@
 		</data>
 		<key>PayViewController.storyboardc/OBK-ma-aUA-view-Gf9-nH-LZ3.nib</key>
 		<data>
-		jze31cLWovsptF7m8ONxf3uCA8E=
+		jn6I5AU9fIOxHsSK/yNr9ZZwflA=
 		</data>
 		<key>PayViewController.storyboardc/UIViewController-OBK-ma-aUA.nib</key>
 		<data>
-		68Hki0AlFdwuIZywmQ9j4F4Ruus=
+		ruqoJo3XhWhmmRks5FAv8EOT4qE=
 		</data>
 		<key>PickPayRxViewController.nib</key>
 		<data>
-		OeuFjPXpSBdNnQCrIC/v9+BQRTM=
+		SGXbMsaE8adkhw/QFXRQRDrKQco=
 		</data>
 		<key>PickupCustomerSmallTableViewCell.nib</key>
 		<data>
-		6uCZv2P1ku1+pSi1zW/1TJXPN4I=
+		0YmBSvjU2HkMVVyBG62G4ijG5X4=
 		</data>
 		<key>PickupCustomerTableViewCell.nib</key>
 		<data>
-		VTdtCZ3TO0+224A6rjFWcIwjI0g=
+		nxqgpf9RqmmOiF04oKOuvU//0uw=
 		</data>
 		<key>PickupInfoTableViewCell.nib</key>
 		<data>
-		BAtAxUvD+N91H9/PBUoUfhS9DvM=
+		5eX5nOswrsCHTBvc/A3LqYdKNZI=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -788,15 +808,15 @@
 		</data>
 		<key>ProblemViewController.nib</key>
 		<data>
-		wBvmTg/5XfnpsiDHokCvjBj6eso=
+		kDVZyLOzWcucslAqswvNdo0T9fo=
 		</data>
 		<key>ProductDetailViewController.nib</key>
 		<data>
-		s3trKSDkI4V6ivlX/0KnSkMrQIA=
+		lQXrLqja1tOsWIs2c8e81oYwfqM=
 		</data>
 		<key>ProductTableViewCell.nib</key>
 		<data>
-		EFfG5sddbF9SJCTuFC+Y1GyyTbk=
+		/zzlVYwb43oTBr0q3yLAIfe4htY=
 		</data>
 		<key>ProximaNova-Reg.otf</key>
 		<data>
@@ -808,7 +828,7 @@
 		</data>
 		<key>ReUploadReceiptsViewController.nib</key>
 		<data>
-		cN66w2irFz/HANzeRVG2+ClTNcI=
+		wmoSLBTxDjXHKRR0gnIW6NTAmwc=
 		</data>
 		<key>ReceiptViewController.storyboardc/Info.plist</key>
 		<data>
@@ -816,11 +836,11 @@
 		</data>
 		<key>ReceiptViewController.storyboardc/ReceiptViewController.nib</key>
 		<data>
-		PhO/0Gqx9N7mW2uDvxirA6hdReY=
+		oXObUMtSdsH3N3w3zXBjfrsf+oo=
 		</data>
 		<key>ReceiptViewController.storyboardc/gfX-r3-OF0-view-xJc-R7-dIJ.nib</key>
 		<data>
-		Us0xfzE67acH7ZDXIOuCzhd7Ze4=
+		yyedzZbCClMAVE/EknNAyWG5ihc=
 		</data>
 		<key>ResetPasswordViewController.storyboardc/Info.plist</key>
 		<data>
@@ -828,47 +848,47 @@
 		</data>
 		<key>ResetPasswordViewController.storyboardc/UIViewController-v9f-FG-8Sz.nib</key>
 		<data>
-		+bJ/XwdjZJkAFojXJFGxMejXCNs=
+		Hc+xD2tkWhFb3MkZN30EEnI6iCE=
 		</data>
 		<key>ResetPasswordViewController.storyboardc/v9f-FG-8Sz-view-JTX-cu-rDR.nib</key>
 		<data>
-		ucDXS8ekWWMVUiUcFLRZ5xNRM1U=
+		er49wpuU+pPNjfpV3mtpiVKqV3c=
 		</data>
 		<key>RetailerProductViewController.nib</key>
 		<data>
-		4a2k6EWPda1VXl+Hcqa+rG4ik6c=
+		8z8UqEAvXHf1op9tvEy/Dx/ONKA=
 		</data>
 		<key>ReturnProductTableViewCell.nib</key>
 		<data>
-		HlUf15QHQVDS9eoCluoRPXoVzGs=
+		eX7fF3J8gSQ/1Y5f+ojCHxIHyWc=
 		</data>
 		<key>RxCustomerTableViewCell.nib</key>
 		<data>
-		AKc8tPfVz2mQ2vVW842iFIqNKYU=
+		cmV1JuOdyiuYj42bjQuB9ahOQ1k=
 		</data>
 		<key>RxHeaderTableViewCell.nib</key>
 		<data>
-		4k9ZwjwTrGmEsH9dA6r9HaMFMGQ=
+		4QcNWv6d/TsagQlYEIfo4+PwK9E=
 		</data>
 		<key>RxLineItemSpacerTableViewCell.nib</key>
 		<data>
-		Wi97zfGL+BrPa7C4rna8e7CY6Mg=
+		mH69n1ieG3Zp1hTa3AeihkM6658=
 		</data>
 		<key>RxLineItemTableViewCell.nib</key>
 		<data>
-		KZ5RPFZq5PfjqzaTnbJug9Jkc08=
+		LmPnDZfMeI4zPaqPWxCdDLfp5vw=
 		</data>
 		<key>RxNumOfBagsTableViewCell.nib</key>
 		<data>
-		yKHwB0sx+32mAQuKxUd6S3ipuKY=
+		abhl6Q1rPOp5QfTqkSd9ZI8458o=
 		</data>
 		<key>RxPatientInfoTableViewCell.nib</key>
 		<data>
-		1LfB6Q2PITuyZIL54q40BfrSjH8=
+		vUpoTdMPU92DWCggIcjDaNEpeRQ=
 		</data>
 		<key>RxPayTableViewCell.nib</key>
 		<data>
-		elbMbTstY1iPUEbqBjSVk2fvJmE=
+		7BXf3BduIXXi4mrh/pg2TTnqDZ8=
 		</data>
 		<key>SAMKeychain.bundle/en.lproj/SAMKeychain.strings</key>
 		<dict>
@@ -885,55 +905,55 @@
 		</data>
 		<key>SampleProductTableViewCell.nib</key>
 		<data>
-		n2pdVYfF2gCYMbeYRGfUqo5M+vA=
+		k8wSy8m0X/B8+7GCasBm2wfZCFE=
 		</data>
 		<key>ScanBarCodesTableViewCell.nib</key>
 		<data>
-		hovkJG2AJTVSyVaVVlnujxU5YKs=
+		EFHMzAsNIQNfOxyu6EU3zDrlYoo=
 		</data>
 		<key>ScanPickupPassTableViewCell.nib</key>
 		<data>
-		5NQD//W/37WxFKW5M4NXFQ/iYpc=
+		L5LpXqPVKGNm9iGYngXqqEJc7Pc=
 		</data>
 		<key>ScanProductsTableViewCell.nib</key>
 		<data>
-		onpBgYo3wqo6NCDfPu06ltR1Gck=
+		QSSlxHxlgdfuZ0BFG2muAOgtMMY=
 		</data>
 		<key>ScanReceiptTableViewCell.nib</key>
 		<data>
-		WiibOa3JHMOoA//J96Alw6hRk2g=
+		r3omwpqF0l2/pn2UAKP8XN4LfPA=
 		</data>
 		<key>SephoraConsultTableViewCell.nib</key>
 		<data>
-		QBcfiHUHiTzqqlELg7ERbpWwj00=
+		V9qrNSvzRFymsym1kuGOJw4FILU=
 		</data>
 		<key>SpacerTableViewCell.nib</key>
 		<data>
-		YHeLfCEUmZxeelAHfdZsbXjt874=
+		mr5pSeNv/2h1c3jzNeIY918pfDY=
 		</data>
 		<key>StoreNumOfBagsTableViewCell.nib</key>
 		<data>
-		G4CIfo/6hh327NHYgl/w4yBUafc=
+		F32F9aE9+Sqz+XgemNcWKO/FhI8=
 		</data>
 		<key>StorePickupTableViewCell.nib</key>
 		<data>
-		MZuXlaCUvzrF+Qv/36wFEMCUg00=
+		/wfFNhI076gOt6IMtfAxRyW557g=
 		</data>
 		<key>StorePickupWithHandoffTableViewCell.nib</key>
 		<data>
-		OGHhKPqbh2odV7NOAQ+uVEOsyDs=
+		/sXInBwFhxtc4VGHcFR0b/k9OXc=
 		</data>
 		<key>TaskTableViewCell.nib</key>
 		<data>
-		ZP8etzgPsZbmRuaM1PD0uPORYA8=
+		DK4/mYE1pkyzDOB6xj5dBz7jZwk=
 		</data>
 		<key>UnknownTaskTableViewCell.nib</key>
 		<data>
-		7/6T8vl5VWu+/WveyAZNhWiREro=
+		GbVdis2BjAQVEGRoqzW61XRXLhA=
 		</data>
 		<key>UnknownTaskViewController.nib</key>
 		<data>
-		QEGmXXI1vgTwV3kJrbVaeI6noiA=
+		Svk9RCpKRoy3DGjkYn9u2EbgqpY=
 		</data>
 		<key>alarm.caf</key>
 		<data>
@@ -982,572 +1002,627 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0PIXHuPOtFg5nWj6nUzOhdUg/jM=
+			vOf7j9FPpOcYQBGy0CepfGQeGy8=
 			</data>
 			<key>hash2</key>
 			<data>
-			NVeciG23sQbkN2OSRfrQYz+UvW9j6Kwy9NWXbPFzcqc=
+			4IgUD5ZLKY/SCv4uQg5TgZRb/2C1h5A/1kTp2PFm/uc=
 			</data>
 		</dict>
 		<key>AbandonedOrderViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PJtOABQtC6CHqaWtvwtVoDZG3hE=
+			5LR4JFNiV2llDIu8sghI7EHG0q0=
 			</data>
 			<key>hash2</key>
 			<data>
-			tNsD2iuGbtNPDcAtcaTF6UZ8i7O0BAiReWPakOtrjLM=
+			R6u6/ykpEpDurc9PLOJOvb0QjqruDnwcOIbdjHYGRsc=
 			</data>
 		</dict>
 		<key>AgeRestrictedTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XSa6H0ZLI16ZZ4zRp39X3AdG8bw=
+			hPqriL/vc2avKWwGlg76q2C1nQk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jcu+z2RLmbJCGnUyXjAA0W9zt0w6aM8OzVKxo7vt/0U=
+			9gCZTEhMKo75e+yopk5OT28A0DcrX4A6XtwYPWggOZs=
+			</data>
+		</dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			W+DSCqHGD3W9T0yzJUSCQzb4ong=
+			</data>
+			<key>hash2</key>
+			<data>
+			o6byG0Kmuk7QK6MvVsJ28LXVjsp81Kzo4V+9FKY1PuU=
+			</data>
+		</dict>
+		<key>AppIcon20x20@2x~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			W+DSCqHGD3W9T0yzJUSCQzb4ong=
+			</data>
+			<key>hash2</key>
+			<data>
+			o6byG0Kmuk7QK6MvVsJ28LXVjsp81Kzo4V+9FKY1PuU=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LT8v+/e4txWVyWpDHrPMC5T5AVw=
+			</data>
+			<key>hash2</key>
+			<data>
+			53BWSL9gKezntumxlWnLcyauPa1aRjQf0iAZdf1SPnw=
+			</data>
+		</dict>
+		<key>AppIcon20x20~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vE7hhKtu18qWyrYWIAIrIJ2JBHA=
+			</data>
+			<key>hash2</key>
+			<data>
+			TmHp6sc4GUZahwwCCeXZIL/qhrJ8dVfPI5e/TPSEyQ0=
 			</data>
 		</dict>
 		<key>AppIcon29x29@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8S//UuxOY7r/yDtlLMb/iLiwrrU=
+			z+wG9W4DhZGDLkKs+332rutc2zM=
 			</data>
 			<key>hash2</key>
 			<data>
-			97LYrnh1imqPLltaMLKleZFibARHzlq/l748T9SfhCU=
+			8FW2F08vIC4/aFPbSdFSPZsQCJWnFF/8lTpUshe5w7I=
 			</data>
 		</dict>
 		<key>AppIcon29x29@2x~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8S//UuxOY7r/yDtlLMb/iLiwrrU=
+			z+wG9W4DhZGDLkKs+332rutc2zM=
 			</data>
 			<key>hash2</key>
 			<data>
-			97LYrnh1imqPLltaMLKleZFibARHzlq/l748T9SfhCU=
+			8FW2F08vIC4/aFPbSdFSPZsQCJWnFF/8lTpUshe5w7I=
 			</data>
 		</dict>
 		<key>AppIcon29x29@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ljQ5prCSlgCL5NSnJ7v+xRCr/Gk=
+			UOaChdxTznhASzOuhP3FN8htTsI=
 			</data>
 			<key>hash2</key>
 			<data>
-			pyW6o3wcoeQT/iOlBOYnYWGBFGqokM77iNqGkKSrstM=
+			GweEfsta6mn0OY04R/Ujv97oTYqDZ+9vffqtvYQISkI=
 			</data>
 		</dict>
 		<key>AppIcon29x29~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+0UufklUds3Tjk0R+ligefj4FTo=
+			uFyYSFra9Sx9i4ahQym4gYLzR4Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			0AL5+QuiY6lLkppbTUzWkRPdHHO6RPiCt/SseBq0Kfg=
+			evS6mYIn4uPX0JOKN5Ebwde5G1RrSgU7CSCoX4Gvrpo=
 			</data>
 		</dict>
 		<key>AppIcon40x40@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5FEdKTgFECOP994rcekwRc8Z1Gw=
+			mMJ6QwxCQ4Km/ICFAzhXRmzap2A=
 			</data>
 			<key>hash2</key>
 			<data>
-			UEF/EIRXCxv3pJXKdtn/NxslhyMJdgGwfjEG8zZytS4=
+			lBLjyF1X1+5YqddgfDeYP77i6N05KPmK+qZGBZbkc1A=
 			</data>
 		</dict>
 		<key>AppIcon40x40@2x~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5FEdKTgFECOP994rcekwRc8Z1Gw=
+			mMJ6QwxCQ4Km/ICFAzhXRmzap2A=
 			</data>
 			<key>hash2</key>
 			<data>
-			UEF/EIRXCxv3pJXKdtn/NxslhyMJdgGwfjEG8zZytS4=
+			lBLjyF1X1+5YqddgfDeYP77i6N05KPmK+qZGBZbkc1A=
 			</data>
 		</dict>
 		<key>AppIcon40x40@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NwNAOFQL0H5KYIfU1APoLIwtZNM=
+			yARo0ejIujPqU1hq7tEAlvWZx7A=
 			</data>
 			<key>hash2</key>
 			<data>
-			P7MJSfsPF23FUEPS1XvhsNW1w6tTaitGnxSNpE9bLyE=
+			mcD3PdtDHETWfCDLWsRR7b4oyiahf9CVEimdXg0sP0M=
 			</data>
 		</dict>
 		<key>AppIcon40x40~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MIrgHF5MeohPfyQhUQGL9luXnLA=
+			NGGTn0aLkuNZVDk5Zs8cm7ceSdo=
 			</data>
 			<key>hash2</key>
 			<data>
-			IjHbxnPs8yCejUxsGXE16H90qvIt9L/x8gkvgCDTgvY=
+			rDDyLnuAHfLPsksMS9p9cDko3N8UUWFk/f3OqFduKFI=
 			</data>
 		</dict>
 		<key>AppIcon60x60@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NwNAOFQL0H5KYIfU1APoLIwtZNM=
+			yARo0ejIujPqU1hq7tEAlvWZx7A=
 			</data>
 			<key>hash2</key>
 			<data>
-			P7MJSfsPF23FUEPS1XvhsNW1w6tTaitGnxSNpE9bLyE=
+			mcD3PdtDHETWfCDLWsRR7b4oyiahf9CVEimdXg0sP0M=
 			</data>
 		</dict>
 		<key>AppIcon60x60@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rVfm9EasrTJwcXqQyV/+Gju0jso=
+			u9oP8vMFxHEn1yzEQoBFLg3vV0o=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZL51tlxr3tfHZfnJvDKw923VeyvQ0YGrOLBfIU6++8E=
+			cTt1zh1iqiGdr0JJjQYTZ8RW2FlKGc6vm+lOhel/Oqg=
 			</data>
 		</dict>
 		<key>AppIcon76x76@2x~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dM4mnw5LXYv+DYIUDLEeoSeu+JQ=
+			H6QFtoUnj8B6hdETJFmAIj3/60M=
 			</data>
 			<key>hash2</key>
 			<data>
-			rzIUNiLWcYV0xMJw1tB90/KyW8hk7kZRA2E7YJxzIfY=
+			NW744SGtPTBse3vae9vohQfP5pIsjQMuZ9XDOJen6F4=
 			</data>
 		</dict>
 		<key>AppIcon76x76~ipad.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ocHpT+vc5LZ0r0BtvvDnlb6Qzrg=
+			AOlzP59agQFp/zsaylh+GjIDjN0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Q8nXmgCbjn4+ROuSwWW4TZEE1cnBEQdBhw6J726TmSg=
+			jlKoer2Em7WJ6SocetI/iP4qy3CZJVO3JfZo5Jio69c=
+			</data>
+		</dict>
+		<key>AppIcon83.5x83.5@2x~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YbGWIMcY3q+vq2cm4PbMLQ/Tq6Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			msGv5xiPz4blIGIMZoxvACy1GmHGlya3IPhf2wvGEC8=
 			</data>
 		</dict>
 		<key>ApplyORMDStickerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sSOhC7umSIm9Ndb6VlOc/pAfHTY=
+			b83XzohLB6IbmGJcI7HmA+YE67M=
 			</data>
 			<key>hash2</key>
 			<data>
-			qmTVm/MmNRq4v98/+6ysD8deE8svLBocx6SdjvAUjV0=
+			dbv7qOs7Xq2c0VyyeXKbx5PP7RnuBYD2Gs+joYMC4tk=
 			</data>
 		</dict>
 		<key>Assets.car</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			E/MMG2Di9hmooxrDq0AAco74ujo=
+			ZANo2IrafPaTYcGYpcvty++tQVM=
 			</data>
 			<key>hash2</key>
 			<data>
-			WP/zf8javEjKBckiKUX5lNQQZgH6M6MuAoiINpg4aOU=
+			AhkgdBD2B2u/5cngQ783+xyJHWENDimezzDCVUgrsNc=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ojfC/5sSYygMdD5uHwVjNJJ5Ezk=
+			RDk/B7HlT9ZMh2G4+fcTmE+/wsg=
 			</data>
 			<key>hash2</key>
 			<data>
-			887d+Zsa6BCoJaIWEUCIE+GTYwlg1X7XeAWgCqWdiQw=
+			v83KRW6ijRiOHowrcWWYxCBnGCVy0gFMEBWLU1u7e2s=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/3WF-Jm-ipg-view-2Xc-p0-gqH.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hu+QTm3YBPO7I+cvKnngBXJcRlM=
+			68WHguN5V6HiNb804D+Z3uMYUQw=
 			</data>
 			<key>hash2</key>
 			<data>
-			KtIqfgUadfSNhWF32dtROfpvL9pt09erualoenOQdpw=
+			dDzvrg4O4jmiCHVeEr52YKTexV5bEt8aApkJwieNJOU=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/5HB-8T-szJ-view-8Qg-g7-Nu7.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EagJWcQg7przosnHaUv0Nq6Wpho=
+			8pkunW6v0ALQ6PQdLiL77w38FBE=
 			</data>
 			<key>hash2</key>
 			<data>
-			PdRxTbDSPg/t1+V53iQNPDLfaxyV2m4xnzmwmaUwVnM=
+			wM2MX7MEMB4k9EEoBQQND4/ysxMR4Ts291YAg3GBkSo=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/5gL-St-gAi-view-PoP-f5-gAW.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PCX2FtSdyaUGKEJqMvnXyfHPc+I=
+			E85+LSVMUL4heL4TZfbgf/7qbYo=
 			</data>
 			<key>hash2</key>
 			<data>
-			MU/ytm4S7XRI6pCWXARKpVsMQEddioiEtJd09pQDZZw=
+			l4t2KqFH5dWelPO3k1hH0kg1FLmjPgnIxCM6mB4iz3I=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/632-Nw-y8u-view-U4O-55-bwD.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4Q8M5ZznhED6fP1ovl/k/yYGZPw=
+			grdfSC7AVBpyri+/j1xKv5gr3Gk=
 			</data>
 			<key>hash2</key>
 			<data>
-			jAvwTMtIJ9xiAt1HBt3RY0uzSsgbzO00x7GdNNVXiTk=
+			gtlOzG63vPv7PF0/hJUid9wx4qT2bXUrmXGerPkeQZs=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/88N-J2-fbg-view-6an-Yj-fPz.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nU5lcVRFhwPFbeHxRr+/JysmcCU=
+			tkQXVlw3+6yG2UgnOp2iP1vSD70=
 			</data>
 			<key>hash2</key>
 			<data>
-			6xYi6zgOuAP0vbGIZYNpshBp+gvQlhqReJpXmf2CPrY=
+			dgzOn4PJaBEapaZzHoZiu0L1P7kTZJAZqkHS50FPj14=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/9pv-A4-QxB-view-tsR-hK-woN.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nr2GlzKG09aiH9FrrAaLQi5WTi8=
+			1SEKFF/rSy3Z5TmLa8GnkxnbFD0=
 			</data>
 			<key>hash2</key>
 			<data>
-			edolncTWwwki6CR1T4pu2D7+6wFZlzcJl5wFiqIsomA=
+			egII5d/XX6ov1Yth7F1GG2uk3perodwIcoF/vdhRhfc=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/DriverNC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Bh9r3RMz1VAJ1BXGAIL7Hui6M34=
+			+cQV7vD8ZEbOi7Z35Lpb1E/0pSM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z8tWBFt151jFzpTubMmjR7T4hsL3ptwveUjX5DB0EoQ=
+			F1qBFPeLV+QI5+W0UDtpA8y47O9lrKM/Vrfmlv3mwN8=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ouPOLEMGMZYDaTR4Cbg/a7BKTU8=
+			hOpcKr4pjVB3ri5iZFL2rzlqsVw=
 			</data>
 			<key>hash2</key>
 			<data>
-			+bTiij70Mg+y0jE5e6EoE2qY4P8uy6jmL+y5Ezv7lO8=
+			KeBzfBQE3Z412kmVNl367a9vefki4TQKh3n3WpCqroY=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/LegalViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6gDGWIxr3H8HpgAJHvDTSHzfhyE=
+			RexM/irnV1bLa0vKv1k5folABjs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ppAWjFwwp2ZJJiF6p1uAXBy/PSFPK3OVzDf64nHUVow=
+			Hor8DdwmaVQBxlGvJqBFZUMiQFkuIELGkLMazWo+th4=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Mm5-33-mm2-view-6zt-ng-TAq.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eVA0Ml7cKA3tXg5odwVMzpwSjfg=
+			o1IgQT1jA0QmAbtNE38S5l12R2I=
 			</data>
 			<key>hash2</key>
 			<data>
-			bbvWvDANx1dRYzz+S94h5e4mi+k+kuNb+1PAMlxqsNI=
+			EV/I6YeBuwl8GXiuSLOq3uTaE+7gIrxdgPJpXQSO3iI=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/PickupsViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yKo8B2OiKuG1J1CPXSIRVTjYjJo=
+			pk6WDtKjdZJlagHkscATuhiAT/E=
 			</data>
 			<key>hash2</key>
 			<data>
-			dxtoB5IdgIioyCOPzkBQHp9rIcnOkFUxLGtMIMa08Rs=
+			f6Rqzg6Y7KpmA8mSaBbUVXi3vo2ZH2JWC2hGbgLAOzg=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/QdV-qd-5Jk-view-P82-TA-cRa.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			stPfCxbAxDvA1AK1Vd3I3Hlq+bI=
+			L2/xzlW4eJeeKys7lj3bh6lHXIA=
 			</data>
 			<key>hash2</key>
 			<data>
-			q5EsWRsdqT47uQXHqSmODnUxiMOoekbo8iWexFu4iB4=
+			5eFBsgCwH6Tg5IWWrIJ07+L3H6kqmXVUqoQxdLaG9iM=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/UC6-KZ-aOn-view-GZt-Rh-Grf.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7EeFVRA/iQrssDIFeztWake2v9M=
+			dzqhBycHyoF1TWlCAmJxx7ykvpM=
 			</data>
 			<key>hash2</key>
 			<data>
-			QPy9rTSqr4ivQz5ul7ZkiodHwjRQWbBxkOEDr/6l3wM=
+			u6+SOfT0euKvNC5ZwEGzHXe0trmEiBIaL7ap34KPSgA=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/UITabBarController-49e-Tb-3d3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xvatkiUuepQP5M24pWl3j4gHM2o=
+			vbFz1h3PxGoEsF+9YwxHQszjMUg=
 			</data>
 			<key>hash2</key>
 			<data>
-			YYl+Fv+pLi26VhIBRPHWvkMKyAJ0XaY7QxjR4WCmZ6A=
+			qK2j9IeQIvxUnAUXurIsr1RSDi8AEAzw5aGyMLyZOeM=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/customerMapViewVC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			slxaVAHwgrmvHqWpVTLpzC47KxQ=
+			pbmgflevuuXGCnii/3V5vTF4d14=
 			</data>
 			<key>hash2</key>
 			<data>
-			KbpM4pb6HNlYLIA+x/d36w7Zy8/PCvHl3zcpIu6UpCM=
+			kPvh51XzToV1OOyBC+f1boYQLflV4kO6TiZLTQn7UnA=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/customerPickupsVC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VrjvPYdMYyUAbuLmawTq024MfC0=
+			aPi9z13cKtdSRQ3JX7qWvP0II2c=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Xb6FuA9FoBpc6uGxzMJqhPTOagDXDqD9RkiW0dUMyE=
+			C6SBizaOXU5WGAwWjQRI0nBWt5DldWQS0443Legk83g=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/ejc-VE-2S3-view-Awo-vn-5m4.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			d2uXXqiSceOiZ1xNkaIbnFAwtTM=
+			TmTm8XLTa4vwDfGg2cmEeOsQ5go=
 			</data>
 			<key>hash2</key>
 			<data>
-			KZ61fSPSbMj5/uUaZhPecF5hV/D8eLe/MO5UqzXGb9Y=
+			ETw2bb6Nk+dtno9UiIv4y0/ZdHzPdaWRHx4aj+3y/wk=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/gQm-4P-Eqc-view-Lbr-jL-xwa.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			//k+vLrpT6ewSB1FB2k0N7uhhOA=
+			b5i+Z8n7JJge1vskBCIm9DDOFqI=
 			</data>
 			<key>hash2</key>
 			<data>
-			qOEIYSQmeHfY1sdFPCU+TJkEwBcBLupj9THErua9AK4=
+			k7kKKtj4HA1HtWnYtBlPIteQQfniFmgxUrtxUPdjmcg=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/pickViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7zcid+AIIZVCdbEiU0JSwEmUECo=
+			MHS2T5FGb2cz8VZpDlsoNXxXGL0=
 			</data>
 			<key>hash2</key>
 			<data>
-			spLXOor93hHuE9/WGrU1p892ZZnX8V2pnXxtr8QGjgM=
+			yL0CjMjPoaT/sigL9ahOImk319kEu+L7DUBGE+OPnlE=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/storePickupListVC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e8oIBHGrGN0B7uJ7zFYpkfaBUhE=
+			6HjAxGy+tPqUnNd+p6IsUNhd3VU=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fz0eNvhbYo1N1MjUyh9U2LxXEEyj4im2Q0dR5iLDEVY=
+			ETEn+ZV5dluHAq1bKpw8jMTHsqQqXFEpzt1YqSlYbXU=
 			</data>
 		</dict>
 		<key>CVSPaymentInstructionsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xafKf1xmnmIp2oFoWwV3lRg7hlo=
+			gV3Y4VKyrPRpHwuktrfQQ7bSRo4=
 			</data>
 			<key>hash2</key>
 			<data>
-			z2OepTn+AvNqeVgWp+lAc5s6ltLTQyxYqWm1RzDxx+E=
+			c/trW5nomuiphKmWUkFJ4lY8ahFzUOGtL+nHUfvwJdc=
 			</data>
 		</dict>
 		<key>CancelPickupTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yk0DhZ9RnxbEswaDlxuJqkxz4BU=
+			3Jcdev9ILNWoPOguOkEgJL4wlCg=
 			</data>
 			<key>hash2</key>
 			<data>
-			kcxqZg2QrcRVQIJg7dPCvX9We9idwJxZMr3LITwp4E0=
+			UnUTUUodF6RtrEUiES6cS4QE2l1FoZ54aysaoeVJKJE=
 			</data>
 		</dict>
 		<key>ClaimTakeOverTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DhunRQbB0SQKH0F4RhZ3FBRDmyU=
+			xou2plkiQe/KcfQQDbBSOFMTXQQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			jxh/2sbTz0gMRvM+UP/mnMItr5DIM3wzJOezdEfijes=
+			mK9nCS4s8OXHGqCarddNc9L6ufG3lhWpn3kyHLVOB/8=
 			</data>
 		</dict>
 		<key>ColdStorageTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Isfpu+3dPyLp0fT3r0eda7ptqAc=
+			hpFjt0R0hb00uePvn17WhioAO0s=
 			</data>
 			<key>hash2</key>
 			<data>
-			BqsGswh/r4obqxzmsB+vww/+cMhvgrcKYcgQ48Vim/o=
+			SW0BltltMRLD9lzeSJPVKrzWO3GLXGI0AytdrIJVmEU=
 			</data>
 		</dict>
 		<key>CurbsideCustomerRequestAckViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0owssueDRxA/1ZD1nItOf4vDaOs=
+			q41a+LMBdVX9+yOOlU6PSRPPjlY=
 			</data>
 			<key>hash2</key>
 			<data>
-			6wTylY3ozNUNuSjD5Bo6RyEMkR2WM91lsJA5mJNEizU=
+			8wLgR3FWukfM+5+InENNjyfMs7ghz96GV4lJ3Fpc9nw=
 			</data>
 		</dict>
 		<key>CustomerADAckNeededTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ReTnkO+IYJ7ngHAqi9tyYjBZmQI=
+			YR1FXuzJwXue7aHYTPZt1MaQcMM=
 			</data>
 			<key>hash2</key>
 			<data>
-			rnvANyavr++6A+2wj66qDM0i+vtARAu8BMBJ9hVl3bM=
+			rhd4TNm4d4F/G6kP0evfj07Wlsuq6LEQAl3gkT9cMMg=
 			</data>
 		</dict>
 		<key>CustomerADAckedStatusTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/+30G9x1tgN7Zd0bomSIOboC/rw=
+			D6AtEuJ3JBJQYq705p1mEpJ4HnE=
 			</data>
 			<key>hash2</key>
 			<data>
-			4Tz2xEUj1LSaELXuhN0+4qIe3Fk5eUej2X0/bmfu26c=
+			6VRWV640bmI99d7+hfcrIWlEMVeMMveRw/RXnbaY2S8=
 			</data>
 		</dict>
 		<key>CustomerADTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8JgC8uU9NsvYcLD/ZWDyLSdQ2nI=
+			vZ4oihMFSlw7JKdelzg7GU9YoE8=
 			</data>
 			<key>hash2</key>
 			<data>
-			ryXENz3ywGm6aU4WVNfv9iknSyl0GfaPGtbtjGRZGn4=
+			UhQpd2x7grF5n/N/i1K3SdEvlzs+67yUAX/OR9vVD3w=
 			</data>
 		</dict>
 		<key>CustomerADWaitingTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+MYbt0IjD5xBuNSq3tevyniwlMg=
+			u3L4GNS0F85I82XgD7fHbLoEJx0=
 			</data>
 			<key>hash2</key>
 			<data>
-			B5viEd2WYwZb1BkJO7VOaYQREJnbCncoOVcooLBmgn8=
+			PMwP38rmpdnZdUetzEWEFE1QwbjgTwB/Px0k43b2zeo=
 			</data>
 		</dict>
 		<key>CustomerAttributeTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZUsxzfECvGa1YWvZ7TKxILfJGic=
+			dbU0cpWJ+aWJu0wXsi2qP1HT3b0=
 			</data>
 			<key>hash2</key>
 			<data>
-			cYtnnkLiR7vr/tODFGfL4UjsFuUVoR6jAYvTGIukRN0=
+			yMi70ztu1E0seJjk0Dg8TzKtSp38G5MLBDitgwd4+l8=
 			</data>
 		</dict>
 		<key>CustomerPickupDetailsViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MFRJipNRkyoe6kqZOe1WBhcH1CM=
+			Mr2FVkQEZlxZ0w32bNpzzN2XjK8=
 			</data>
 			<key>hash2</key>
 			<data>
-			AyXuc+Ptod2uqL8OtoQILr9Fp8V9EwLqhBfDlEOjNms=
+			0Xmp2EVT4XqXftP9gkTewnMNVq8GfXwARy3AE9XtD2E=
 			</data>
 		</dict>
 		<key>DebugViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			b6XzR7pcYYva+s6s37DHr4U3BQw=
+			UN6RYfTq+XvTwdDrveHIvXfDftM=
 			</data>
 			<key>hash2</key>
 			<data>
-			MISHB3+OcToYjXgABkDmNEzMjBiDI6O5Ujw9cgBqbjM=
+			yDcTWqO1u617rvnHSDV0dWgJOH7G0FjW/u7mMQxDIIY=
 			</data>
 		</dict>
 		<key>DeliveryCourierTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nZdxXLGuo/hM34QKy2z0Gnf1I9w=
+			rSOCs1A4qsK4IWMd/g4LbGv68/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			q9pfFtDwl71JDvCFqhzSdHFajjEcnKXt7Dr0W85NIuA=
+			kzNjVIgDIqgAJZ9vGP9DDP9C0byNLFLFZkLyzgcaScQ=
 			</data>
 		</dict>
 		<key>DeliveryPendingTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GtrchSARQ1sTWgE2Jk9Tzhw/FGU=
+			yy9B1Sw8xIdGMw9MTc6NIG6hX3Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			kMFSuQ3famNM+TApaXnZfehjTFMd0azn613RoaW/FQw=
+			EM+geKxdsbkOfIsOJReQpt6GtxNkuKnf8Mm2fGKix+4=
 			</data>
 		</dict>
 		<key>DoorBell.mp3</key>
@@ -1565,44 +1640,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0zCiBj9ut4SU+exFdtJxYCLWdHE=
+			J9tGDdOGNM4ch4n9JY5JzKjrhbs=
 			</data>
 			<key>hash2</key>
 			<data>
-			muKVW1YGVhP8V09L/KsfGzpJpnjhzLDj70EtbMJo4IQ=
+			dTNe7q7WToiO5YxyiNsEvB12P42CB0fJQrkxkRFRd+s=
 			</data>
 		</dict>
 		<key>GetPharmacyBagsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			x71xwhUjRtrSF/fnMfZkhm3kIyE=
+			KjWHxeQv3Rm3edBm+kH/PJtGovM=
 			</data>
 			<key>hash2</key>
 			<data>
-			fS+I77g6i2tue+cALdhfam8RMQ925afAsKBm28T1g/g=
+			LkHNYb7KBJ6Xys8lebhLFjN/jlbVNVj+MBgoBGcOiKg=
 			</data>
 		</dict>
 		<key>GetStoreBagsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DcvEHn4twZV+njBeDuJtgibcz78=
+			s3oHpn3WpYeUs0BSzARTeS7UvGQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			/5KWwlGJZU0XV1BvG7GxfXLMTAArbYSBi7hOKpgPJis=
+			kQnpGu2qOm1Z4EYPFSmEu/FyLY89nrzDGLkoCKxRElw=
 			</data>
 		</dict>
 		<key>GiftWrapTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			h2JyboHaZDLMys/O0QXHPyH1NJo=
+			drRhgkeS3K9E39c/ahzjlUNMLL4=
 			</data>
 			<key>hash2</key>
 			<data>
-			8OZKdHoTeBTdcBzYAkWtxicC6M4S0zZBqi9T5iQWwd0=
+			xkHK4vBEckwPV484kZVhhKqArvHxA102gMay+lgUFw4=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/Info.plist</key>
@@ -2023,11 +2098,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1hEGi1hhfXnMf0NNf1oqn03lhTs=
+			KGpTE45ipreTAv+QoxMYMRDXsCo=
 			</data>
 			<key>hash2</key>
 			<data>
-			mXbA5Ntloxw+UxOfNBKvPB4RwpmyO1cOBxSfHZCiIaQ=
+			RXC4PL6nzICFq525KDNwjmt5i8eMsqIyKCo9uoxB/G0=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/pl.lproj/GooglePlaces.strings</key>
@@ -2047,66 +2122,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HCXmeRWTByP1fdRTUClloOklIzc=
+			mJs3KNjrHkAKFGwNneaI46AX/zc=
 			</data>
 			<key>hash2</key>
 			<data>
-			yqOcbLBIXaoR4CVw0QbwbGBeY6NgWJ8eBbP3E94yl04=
+			jvZYKJzeDgzHqI5vQflYVATKC5KYukkC/zaEch4Mpd0=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-dark@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Cax/r5EpD9X1OhSXTbSOIXoWqLA=
+			vhIl2uf3lW9Fx3KPl43duxYJi14=
 			</data>
 			<key>hash2</key>
 			<data>
-			gqTaBD9HJFp2iVZKJB4TRa5zLfMXNfc+9lM6svOsXsE=
+			s0RHdq6qRaW4kvQ2FCcYLckJXV7bHC3Sd//OXBf1/ws=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-dark@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cIdH5JkXVe31jpvUQqppgNcSpAA=
+			FlwvnE0YZc+SRyddSz3jqr9wleE=
 			</data>
 			<key>hash2</key>
 			<data>
-			/AMmACkWwz2bXhSWjR3tezqSeUS6fuVVqWwp65/IhVc=
+			6Qm4Lo614Nls3pMfakkRFjSZCWfVRZJmloQ7EwU0vuw=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-light.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gnT8JEtJ5ZLydRrwv1sXbgOqbuE=
+			jOR/7+G+Xw1KouRwRyLIbDjjkHQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			rHXBYT30v0n/8iZiLJI9ydAJGqxSvweMSWGg/fpVYbc=
+			PqZnb77RuMzTiDj2mtLrBn0piXF/njpjHS+868aO+5U=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-light@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lxukcFzJpT0KWYGA8ZpfmZEmZDw=
+			t7SLR2p+C3ERZscBezSxv/O9/Jo=
 			</data>
 			<key>hash2</key>
 			<data>
-			AD0/1+F4QUJ/6eEQDwExoz4yPklM79AsrgmXIBjGuwU=
+			97VUOJI8R0HwYIx+V4v/P2PcunFmU9e+sLBTu4hZJXk=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/powered-by-google-light@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n0gMX8tEZstJpKJ0KnV5u5XgoaI=
+			Y+b9y9P7e1QmPTjtE4UphKQfMX4=
 			</data>
 			<key>hash2</key>
 			<data>
-			N3pO2hG0Le5+okE1X7eW5rZGCjfZt22wrjYvt/rsbCo=
+			KokBg4wqLB02up8HOQ2/hgNgGKd7mnlGI+cBVdev51E=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/pt.lproj/GooglePlaces.strings</key>
@@ -2178,66 +2253,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3lokmqHSu4oUsj0agdJe7rlFIpQ=
+			PsRzptNM/AouDlDfPPDhXQQbevM=
 			</data>
 			<key>hash2</key>
 			<data>
-			P37DlTadxT45+Z6W8C66QG0tizVmNfx+5RrDvnmxHN8=
+			dgwpBkxQHg1ZTUMN7q4FQIO1luJBpUQiqI8LKXlrWkc=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0AaH9BEgObSFZITV5JnfoPXzCR0=
+			5z+xHVZtzmzb8faTbh8p63ksyQI=
 			</data>
 			<key>hash2</key>
 			<data>
-			69+85SXgrONLBj5twNuYK7XBb7hUrs+gTjat1Lrz7sc=
+			KMbvAGHTlq7+dXgIzu8vsfBsz8uh1J3/8Vrbmonpi+4=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LuiQ5Zc3To4R9V41plFCtKo+AmA=
+			BDS8meemU/ch8xTmgfeUVAZH80U=
 			</data>
 			<key>hash2</key>
 			<data>
-			r1PMdJkJY+Rt5fCeQWCMbTll/yhPey6As41yAMS246A=
+			vbv7TRmlyWPLvgJx0gmmLrQ20rMxc89xxeepKIZ+SpI=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud_dark.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nrvV9sUal1KvnS9o5twqf4dHJrM=
+			XcYF9swP4I5uAZ+rFbKkOaVKPSY=
 			</data>
 			<key>hash2</key>
 			<data>
-			5Eq3uAE5+THsbOYqBAJ3JfgmiLx3FbvBnyeSwXm4Kf8=
+			hUco+sCawbJthy3FhUpM/eZd+uQXi4cAnP2OVej/U6Y=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud_dark@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			w/AgUZ14pX/qdzB5aJZwclFNkJ4=
+			xa7qRbWfj13G8pSATi7hdgHTSYA=
 			</data>
 			<key>hash2</key>
 			<data>
-			KcHX+Y8VtU159j+E9+CvZAZd/OqgCW1f5Kd27MlWFWk=
+			sOjFonV+gy9C7g3+kyWkrfQusoEkwJcbDwYEMJ979ac=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sad_cloud_dark@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WunZCZgf1/3b1jEsF6e/xzomZkk=
+			cnAKIjQbERFrX4T+O4dASAQ664c=
 			</data>
 			<key>hash2</key>
 			<data>
-			UhKi0lVnARRO2SljRuIHY3qQ3uShdc+2ENKjWfQVtqg=
+			hrt+khO959LhgecvMx8b5PbjcZbb7qzw8R1WyQGJRDQ=
 			</data>
 		</dict>
 		<key>GooglePlaces.bundle/sk.lproj/GooglePlaces.strings</key>
@@ -2361,88 +2436,88 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SfmQSCZ/7ewsZ65yQQmtsBpJjcA=
+			j1ZeprdhgmEP+066+Dp7hWc4J8c=
 			</data>
 			<key>hash2</key>
 			<data>
-			tnTxrM0CLyxc8dkpD6sSTXbPZpDsia2mWcLL8qw3ABo=
+			SFi3Wn1FF+XFHDjejXPRMILEXNUeynZRrnr+Mzvw87E=
 			</data>
 		</dict>
 		<key>LoginViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lhZoKkEL634ZEPU65R3RlBpecqc=
+			yLEcF+gat0wC5G9O5yuHMjk7Fq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			1cyVTEHnSBPFk4UQXirPDOCbe2z9mw5CaiwquSvxjP8=
+			lLayUi3hTeQ5Q7uu2GnffknqSkK7/7WqYSbutCKrU9A=
 			</data>
 		</dict>
 		<key>OrderActionTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6Tz7wfV3QB+GJszcot5OHR+5ik8=
+			bJOu/+ZGry5NjJTvTIA9h3V08g4=
 			</data>
 			<key>hash2</key>
 			<data>
-			+/utlR4ND3IsfhvhWc9Vx/0mcIUB+EHl7j+PCVlzIgc=
+			hUjJnMqLrmkajc21XgEMWurSRDh5NBZaOFOUNj4hyY8=
 			</data>
 		</dict>
 		<key>OrderDetailCustomerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1gBXN/YkVK8Yi3E4YoChpiKYEB0=
+			q9c9PVgwoWMxK7VKPtiuBRhE5uY=
 			</data>
 			<key>hash2</key>
 			<data>
-			/VZxB5AfEfiahLt1Yb2EhVFy3ZGFeq/TWXNv0rTk1TM=
+			YtTpNmBVYy7Q9ZZlIKHAaq6v37aR1h/nSD9a719Fl9I=
 			</data>
 		</dict>
 		<key>OrderInfoSmallTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/ci6k5xYz1tHg5JFdAWx8rjX2Es=
+			N14t3Fvmy+FTNyMRtGK4S0JRasc=
 			</data>
 			<key>hash2</key>
 			<data>
-			4eX7fcU0A55WQNpzXl+c6Ucgj9RJdRwkKxkiB3uEIkQ=
+			C8N+s0QFYCG1V4hI60Sd9flBCHFLPJSVU7h1Q5yAoDY=
 			</data>
 		</dict>
 		<key>OrderInfoTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i5v1oTHuziXqM5+3uXL2MzD9e/w=
+			atzQxgP8F0jpIpqs+sw2ay8+Wd0=
 			</data>
 			<key>hash2</key>
 			<data>
-			B9IuVhq8j6JCxQswEwnic+zl8CoZ9B2PRp4fKjwP7BE=
+			uw69b6TtJFSU0HAvpiLqslYeBMQ1MRmJmIQLMDGrvl8=
 			</data>
 		</dict>
 		<key>OrderSummaryTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HLy8ZD28kLYk0RZVsRBHxePhgI0=
+			zZXkyoy1v/cxY3uSQhjNtaJ1ZPg=
 			</data>
 			<key>hash2</key>
 			<data>
-			wlhl10s/0pynl5YAskCuRcvU+eOsjBGZxh9Hr+KUYHM=
+			+QKvkZULvoyOPX9C8k6enfoPml2QVio5Dp//mzRbbeI=
 			</data>
 		</dict>
 		<key>PackViewController.storyboardc/Hi2-XL-LXb-view-FWn-eZ-bJC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EV61I5lzTePg6LZ6nwRqWpyHO2g=
+			oOkOdMIAv2xo+tczsePyV5weCZI=
 			</data>
 			<key>hash2</key>
 			<data>
-			ixWtw0KYsnZm8W4xMVDn3Bv5bsUrwynyoHb3KXnWxRI=
+			M7zhWX8D4Wh8c6Ict4BBeSOFlfXCYX42EwzYyHbErBU=
 			</data>
 		</dict>
 		<key>PackViewController.storyboardc/Info.plist</key>
@@ -2460,33 +2535,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			22/qEv9afTYwYDvRS/SdP01hCI8=
+			yoEHfRliD2mPX7OOpmRZhnOd2iI=
 			</data>
 			<key>hash2</key>
 			<data>
-			UwRbQgIuzWAUjT6lnHkDiEMe8Tv78UnYbnAZrxJH6rQ=
+			GvfwNIBD1W2l6v1vEi9Xpiz/e5LjFOqV8cam5muJi6c=
 			</data>
 		</dict>
 		<key>PayForTheOrderTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hLsjNLMHbss16OuoSCviWBOhitg=
+			hc024zOmX2b3yNHWFK0L/rFMJL0=
 			</data>
 			<key>hash2</key>
 			<data>
-			VUUln27k2EHVgSH0EHQkJ31j+GVz8KbGYryisJFKbz8=
+			qfCRlSnrD/da0HnnF43cAR9SIgnWeiEphzTK4Havg5U=
 			</data>
 		</dict>
 		<key>PayForTheOrderWithOverrideTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iwuYqgdOx7Z8O/q07PRTR0hO0RE=
+			njYUxLU0dwhMBzPliri0E+tj1Uc=
 			</data>
 			<key>hash2</key>
 			<data>
-			K4zGX1y55kR6Bl8wKr/hKuddPO2H5ZNdwEvf+EJTDJU=
+			4KTeJoeq3bUxT5AUdv3iRNtX61ye3hkZ5/K6c7/irAg=
 			</data>
 		</dict>
 		<key>PayViewController.storyboardc/Info.plist</key>
@@ -2504,99 +2579,99 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jze31cLWovsptF7m8ONxf3uCA8E=
+			jn6I5AU9fIOxHsSK/yNr9ZZwflA=
 			</data>
 			<key>hash2</key>
 			<data>
-			h8GVAWe/hYT5p0K/o1EkLdSdVRn2DHf5NNk4ilbm95Q=
+			IjTNRGeB/6F2kBLidKVtIuf2dtDcHfYrgV1Ok/REsJs=
 			</data>
 		</dict>
 		<key>PayViewController.storyboardc/UIViewController-OBK-ma-aUA.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			68Hki0AlFdwuIZywmQ9j4F4Ruus=
+			ruqoJo3XhWhmmRks5FAv8EOT4qE=
 			</data>
 			<key>hash2</key>
 			<data>
-			7oZ507qeu/UTVLBUQIodIMCpu+gw7FvRxHRaLf1IGzg=
+			rhhd1/ZYX5B8dx+daYvWN2r3IO8fWqtl8QkZU00r/oE=
 			</data>
 		</dict>
 		<key>PickPayRxViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OeuFjPXpSBdNnQCrIC/v9+BQRTM=
+			SGXbMsaE8adkhw/QFXRQRDrKQco=
 			</data>
 			<key>hash2</key>
 			<data>
-			pdx9N0lw6PmrBe3sPfguB5aOaSJbeNFkRIFM4byaQPw=
+			Wyvu09kGgeTYsTk6D6TPRIR8Qmpsx2iNGqIJTS4tKCs=
 			</data>
 		</dict>
 		<key>PickupCustomerSmallTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6uCZv2P1ku1+pSi1zW/1TJXPN4I=
+			0YmBSvjU2HkMVVyBG62G4ijG5X4=
 			</data>
 			<key>hash2</key>
 			<data>
-			BSBPYAo/IFiubRVm/TMZYerLOVkhLR8X3lp3846xVAs=
+			rQ2Ff8AMaElXFNrC62WYVWd8p6ccl03yN1q+3UTLwYs=
 			</data>
 		</dict>
 		<key>PickupCustomerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VTdtCZ3TO0+224A6rjFWcIwjI0g=
+			nxqgpf9RqmmOiF04oKOuvU//0uw=
 			</data>
 			<key>hash2</key>
 			<data>
-			vUCDN/p0LBizXyV5Hqp8ddKRgau6DuOiMD88edbyJqA=
+			Ubl2QAADE3lvjSn86tkU38ggowtvk1j8nL3JQmt69wE=
 			</data>
 		</dict>
 		<key>PickupInfoTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BAtAxUvD+N91H9/PBUoUfhS9DvM=
+			5eX5nOswrsCHTBvc/A3LqYdKNZI=
 			</data>
 			<key>hash2</key>
 			<data>
-			4E676uJ17XdyoETPY/pru4T2jvVSUffVLGO0FqUX3/k=
+			mm1/XNuY4w4EQ19JR4TfHCixoIN0VfSw4QSZlyPjqb8=
 			</data>
 		</dict>
 		<key>ProblemViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wBvmTg/5XfnpsiDHokCvjBj6eso=
+			kDVZyLOzWcucslAqswvNdo0T9fo=
 			</data>
 			<key>hash2</key>
 			<data>
-			RbEPXFOjSxuEqC5la0KfiAZt5PYfEVQcgb1d5I0NAdE=
+			Uj9KrPSEp13RS8MGYJliHrSGbQOHZ2hSQfJIGaYp9Ms=
 			</data>
 		</dict>
 		<key>ProductDetailViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			s3trKSDkI4V6ivlX/0KnSkMrQIA=
+			lQXrLqja1tOsWIs2c8e81oYwfqM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Vz57/5tavU3tVz9IUQNPU6n/xviFDXTYDgeiAVS8HJo=
+			okWCAZzr6S97snTdGMyT1f89VBbs8wrV2QDbpqrYjS8=
 			</data>
 		</dict>
 		<key>ProductTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EFfG5sddbF9SJCTuFC+Y1GyyTbk=
+			/zzlVYwb43oTBr0q3yLAIfe4htY=
 			</data>
 			<key>hash2</key>
 			<data>
-			WFlqorx/iNUfrXUU7FZ2mi0mrT0z8mZGIKxDzGA7eZI=
+			nQdsXbDTmahe/gJPqHM0Z4FoOsIITldkEORYvOnJc+Y=
 			</data>
 		</dict>
 		<key>ProximaNova-Reg.otf</key>
@@ -2625,11 +2700,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cN66w2irFz/HANzeRVG2+ClTNcI=
+			wmoSLBTxDjXHKRR0gnIW6NTAmwc=
 			</data>
 			<key>hash2</key>
 			<data>
-			gMcb0s6bT2Dq30HeCbTfIRCHpZ5pA+QKz8FTDfXsOro=
+			lGLBe7HFbRcC8vFBAdaZD3MF3zEe76TDQM+FBNEefhI=
 			</data>
 		</dict>
 		<key>ReceiptViewController.storyboardc/Info.plist</key>
@@ -2647,22 +2722,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PhO/0Gqx9N7mW2uDvxirA6hdReY=
+			oXObUMtSdsH3N3w3zXBjfrsf+oo=
 			</data>
 			<key>hash2</key>
 			<data>
-			2rBZYaCWAXPOrffYIUpPhRbT6winvuuU5153L7aNtP8=
+			3/3vRHXJf9/YuMbA88BM3CM/BpZPymN/rFu21ec2EaI=
 			</data>
 		</dict>
 		<key>ReceiptViewController.storyboardc/gfX-r3-OF0-view-xJc-R7-dIJ.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Us0xfzE67acH7ZDXIOuCzhd7Ze4=
+			yyedzZbCClMAVE/EknNAyWG5ihc=
 			</data>
 			<key>hash2</key>
 			<data>
-			DRfy7yUndw/Lx4O02KttCQ9O1IzJqyRILupIDODgY30=
+			f0qcA87KgY+5g86s/O7kAdUpt0P48oZHRTX84bzL8B0=
 			</data>
 		</dict>
 		<key>ResetPasswordViewController.storyboardc/Info.plist</key>
@@ -2680,121 +2755,121 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+bJ/XwdjZJkAFojXJFGxMejXCNs=
+			Hc+xD2tkWhFb3MkZN30EEnI6iCE=
 			</data>
 			<key>hash2</key>
 			<data>
-			hUtzrga+lyOh4fu+Pibd+lLBTi4Uei2KTXHPpJM3zpE=
+			KtqvLyjHxdOz1hfa4NATkOJYs3O/NEtaJ4mSuzLIomk=
 			</data>
 		</dict>
 		<key>ResetPasswordViewController.storyboardc/v9f-FG-8Sz-view-JTX-cu-rDR.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ucDXS8ekWWMVUiUcFLRZ5xNRM1U=
+			er49wpuU+pPNjfpV3mtpiVKqV3c=
 			</data>
 			<key>hash2</key>
 			<data>
-			E0isyLGMi5rE64Lbx2KGPH37tcRorkJU8JOSAIN4m1A=
+			h2+1ndmtyA/85/HWvkemAUab23xXTi6AN+n1vE8JsEg=
 			</data>
 		</dict>
 		<key>RetailerProductViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4a2k6EWPda1VXl+Hcqa+rG4ik6c=
+			8z8UqEAvXHf1op9tvEy/Dx/ONKA=
 			</data>
 			<key>hash2</key>
 			<data>
-			SUcA5SMHlx0OuU3+v0q4Bi+rGoMRHVK7bHd8evSSWzc=
+			iCGlW9B7KvgbWyA9/Xdv7vvOJEBTJPXmowKMYObWQs4=
 			</data>
 		</dict>
 		<key>ReturnProductTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HlUf15QHQVDS9eoCluoRPXoVzGs=
+			eX7fF3J8gSQ/1Y5f+ojCHxIHyWc=
 			</data>
 			<key>hash2</key>
 			<data>
-			F0eSadDhFQwJ16oMugxyJdpaSAER0PUslwFG203ajXM=
+			IW8fJUOYsjjqlRyMjNQ51DD2E8iOsgVcsLgW1tqir9s=
 			</data>
 		</dict>
 		<key>RxCustomerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AKc8tPfVz2mQ2vVW842iFIqNKYU=
+			cmV1JuOdyiuYj42bjQuB9ahOQ1k=
 			</data>
 			<key>hash2</key>
 			<data>
-			JkxheEOIUP8vLkabFYjLrxePVClIb/NGmKjAn38c3fY=
+			kviVPLmOd4L8wswrFjgyj4iqLggJdtr8WulNUrqVN98=
 			</data>
 		</dict>
 		<key>RxHeaderTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4k9ZwjwTrGmEsH9dA6r9HaMFMGQ=
+			4QcNWv6d/TsagQlYEIfo4+PwK9E=
 			</data>
 			<key>hash2</key>
 			<data>
-			RpgMCVXnqfbmxaiBAk4Ke88T+NqWlO8vxGMqOzg66qU=
+			BtkfyDAdjtQwBRu2/P9IAgpJ70bzw/cQ4weJ+2GlSoQ=
 			</data>
 		</dict>
 		<key>RxLineItemSpacerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Wi97zfGL+BrPa7C4rna8e7CY6Mg=
+			mH69n1ieG3Zp1hTa3AeihkM6658=
 			</data>
 			<key>hash2</key>
 			<data>
-			0gygVZROmhtrnGHOICOBjSqjdHMW0Pm5uOfOZpNvXec=
+			HKrrTJvPNxNndsHOHqKp58QXGXQ9GFWeG9Vt8+wxwTU=
 			</data>
 		</dict>
 		<key>RxLineItemTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KZ5RPFZq5PfjqzaTnbJug9Jkc08=
+			LmPnDZfMeI4zPaqPWxCdDLfp5vw=
 			</data>
 			<key>hash2</key>
 			<data>
-			4IJ5/KADU+vT62um2BlUQCg7ihLM2JNLORzXr9vEKis=
+			1JsYZRPp2a3F5smVFTym7Bj7G/EpI3cQ7An507p3uQ4=
 			</data>
 		</dict>
 		<key>RxNumOfBagsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yKHwB0sx+32mAQuKxUd6S3ipuKY=
+			abhl6Q1rPOp5QfTqkSd9ZI8458o=
 			</data>
 			<key>hash2</key>
 			<data>
-			m4RrxovbtxGgzCZO6BjUtAkhXot0Af1G1XkfnYAh9/Q=
+			A1DTk/wlct+Lo7/+DK/IFGpuU+rG+8/cXadJdDcGRzI=
 			</data>
 		</dict>
 		<key>RxPatientInfoTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1LfB6Q2PITuyZIL54q40BfrSjH8=
+			vUpoTdMPU92DWCggIcjDaNEpeRQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Hlz9yii74GdTgIU6cQ1CBP8sOI2vy0Whrzj4gQ0SJVc=
+			pHnvEPJsreyuutm8Z6+dkIBaLQ68tSsXC0ILY5Uv7YM=
 			</data>
 		</dict>
 		<key>RxPayTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			elbMbTstY1iPUEbqBjSVk2fvJmE=
+			7BXf3BduIXXi4mrh/pg2TTnqDZ8=
 			</data>
 			<key>hash2</key>
 			<data>
-			zBMHQypBE9m//sZhXk+TrNHXUFFc7ECJiKgFXNgrq3Y=
+			kOUIHHZSimmRpQ3uN33lGi+YxALGCOjTDO48kaLHS/Q=
 			</data>
 		</dict>
 		<key>SAMKeychain.bundle/en.lproj/SAMKeychain.strings</key>
@@ -2825,143 +2900,143 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			n2pdVYfF2gCYMbeYRGfUqo5M+vA=
+			k8wSy8m0X/B8+7GCasBm2wfZCFE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Cln/0MMA6A73gyIzrEeDo8fBxAQnNwIHgXwCT3D417s=
+			nb1zQplRRWLmpleoqhiTxHdYd0/qP3020jJ2ezUBsKE=
 			</data>
 		</dict>
 		<key>ScanBarCodesTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hovkJG2AJTVSyVaVVlnujxU5YKs=
+			EFHMzAsNIQNfOxyu6EU3zDrlYoo=
 			</data>
 			<key>hash2</key>
 			<data>
-			vnAzRNFEjajXlzfpO1lKrUsLs8bxQdEHdkUeydz/ado=
+			/9HOX+CXEQTu2kY5lJuWBlr67Baawn/e+ju220ahf3E=
 			</data>
 		</dict>
 		<key>ScanPickupPassTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5NQD//W/37WxFKW5M4NXFQ/iYpc=
+			L5LpXqPVKGNm9iGYngXqqEJc7Pc=
 			</data>
 			<key>hash2</key>
 			<data>
-			IAYtU34rcO9zZLPxctEYP90FzCh28VzH0ehIzZzwO+0=
+			Vj0rsjxdrDwvGM4WeEMnbtI0DXyAdX3OSi9yVDSVIj8=
 			</data>
 		</dict>
 		<key>ScanProductsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			onpBgYo3wqo6NCDfPu06ltR1Gck=
+			QSSlxHxlgdfuZ0BFG2muAOgtMMY=
 			</data>
 			<key>hash2</key>
 			<data>
-			JRe3hzFYUyBZhOpexVY3vsXhchh3vR7lvBnCIZKqc48=
+			wqW+KSifJxqzDJyV4nSbW7YGsJ1kvg+ozghsOpcLW4o=
 			</data>
 		</dict>
 		<key>ScanReceiptTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WiibOa3JHMOoA//J96Alw6hRk2g=
+			r3omwpqF0l2/pn2UAKP8XN4LfPA=
 			</data>
 			<key>hash2</key>
 			<data>
-			pzFEo1XVr+sJXKnuPfAfPSACFmkR6qgcxyFj8YRNW/Y=
+			vKsadSZJXJHYUxZVC1ddQSKdnY4KysKIqn6mfzbFtWw=
 			</data>
 		</dict>
 		<key>SephoraConsultTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QBcfiHUHiTzqqlELg7ERbpWwj00=
+			V9qrNSvzRFymsym1kuGOJw4FILU=
 			</data>
 			<key>hash2</key>
 			<data>
-			/SPxjZk2nfcvMHBQk8HyqD8ai/SBL2X1e42PIAZWb2c=
+			1aH5pJ4LUvjYiw/qNNN53a5lpO/o4UG8jZixWmsUPF8=
 			</data>
 		</dict>
 		<key>SpacerTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YHeLfCEUmZxeelAHfdZsbXjt874=
+			mr5pSeNv/2h1c3jzNeIY918pfDY=
 			</data>
 			<key>hash2</key>
 			<data>
-			bhsxiFMT5FwPLbBpxImDURxcfiZZiFFX9GZdFsJrOCs=
+			cVfaHi7P5wcltLdYnPYcqpQ2iii6rTR35s03s3Ee+5M=
 			</data>
 		</dict>
 		<key>StoreNumOfBagsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			G4CIfo/6hh327NHYgl/w4yBUafc=
+			F32F9aE9+Sqz+XgemNcWKO/FhI8=
 			</data>
 			<key>hash2</key>
 			<data>
-			oJTKAFuzscN7gaa+q43U0Xi+p4M6pZb74n9zKHqFoO0=
+			IeOW1f40UMmCt4Y9c6kdM/ytdFHs8m/47YXD6F4hhwg=
 			</data>
 		</dict>
 		<key>StorePickupTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MZuXlaCUvzrF+Qv/36wFEMCUg00=
+			/wfFNhI076gOt6IMtfAxRyW557g=
 			</data>
 			<key>hash2</key>
 			<data>
-			kC1pqYfwZ7owKNsoH1gMsSoegdAjlbJUKzOo3F/fn9s=
+			kb7LISW2/90Eb+jnlS05ixEB5j3fi/0Ur8U0NLO6kOU=
 			</data>
 		</dict>
 		<key>StorePickupWithHandoffTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OGHhKPqbh2odV7NOAQ+uVEOsyDs=
+			/sXInBwFhxtc4VGHcFR0b/k9OXc=
 			</data>
 			<key>hash2</key>
 			<data>
-			a0tBBZkXkTLu185UD0MdPw2VFt6aQ6AkQaLnCZnP3kk=
+			1ruv3fR5qAgWh75rn64wCip/q3IyBkyv3/06UJGx+8c=
 			</data>
 		</dict>
 		<key>TaskTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZP8etzgPsZbmRuaM1PD0uPORYA8=
+			DK4/mYE1pkyzDOB6xj5dBz7jZwk=
 			</data>
 			<key>hash2</key>
 			<data>
-			BBuEOCd7V6XyHozeRT0hQbYqPY7xdvByNDk0wF1oc/w=
+			OnpBXJ7bf651nOlheDWDi70RKxn9R+lneTCLvkUgTDM=
 			</data>
 		</dict>
 		<key>UnknownTaskTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7/6T8vl5VWu+/WveyAZNhWiREro=
+			GbVdis2BjAQVEGRoqzW61XRXLhA=
 			</data>
 			<key>hash2</key>
 			<data>
-			GhXMcZNrDxdG/YJ7H5h12+OdbkI87ehkBnFoGt6g92k=
+			HeOlK6XdJmtDMmzUhn5WhptMeT8w+WpTznF0LNTOv9s=
 			</data>
 		</dict>
 		<key>UnknownTaskViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QEGmXXI1vgTwV3kJrbVaeI6noiA=
+			Svk9RCpKRoy3DGjkYn9u2EbgqpY=
 			</data>
 			<key>hash2</key>
 			<data>
-			p6wAhLxR+/wNm9B9OpOGe1TMZESvzGBFNIjq0VcFfyA=
+			7Y5sNgWbJJxMkeTAMeM1OITcr7MQIb8o5mv9/ajIhsM=
 			</data>
 		</dict>
 		<key>alarm.caf</key>
