@@ -3,7 +3,6 @@ package com.curbside.automation.uifactory;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author kumar.anil
@@ -14,14 +13,9 @@ import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.curbside.automation.devicefactory.DeviceStore;
 import org.testng.Assert;
 
 public class UIElement {
