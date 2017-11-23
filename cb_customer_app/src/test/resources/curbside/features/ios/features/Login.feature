@@ -1,7 +1,7 @@
 @login
 Feature: iOS- Login Feature
 
-  Scenario: Setting test environment 
+  Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected Experimental test environment
 
@@ -22,8 +22,8 @@ Feature: iOS- Login Feature
     And I enter '<Email>' and '<Password>'
     Then I saw email on MyAccount page
     Examples:
-      |             Email                  |     Password    |
-      |      fusic.test1@gmail.com         |     fusic@123   |
+      | Email                 | Password  |
+      | fusic.test1@gmail.com | fusic@123 |
 
   @iOS @C114955
   Scenario Outline: Verify Facebook user should login in curbside app
@@ -32,5 +32,5 @@ Feature: iOS- Login Feature
     Then I should be logged into application
 
     Examples:
-      |             Email                  |     Password    |
-      |      ustft123@gmail.com            |     Admin2642    |
+      | Email              | Password  |
+      | ustft123@gmail.com | Admin2642 |

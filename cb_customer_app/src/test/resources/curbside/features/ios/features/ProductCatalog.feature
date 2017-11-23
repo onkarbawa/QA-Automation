@@ -1,10 +1,10 @@
 @ProductCatalog
 Feature: iOS- Product Catalog
 
-  Scenario: Setting test environment 
+  Scenario: Setting test environment
     Given I launch Curbside application
     And I have selected Experimental test environment
-    
+
   @iOS @C114941
   Scenario: Verify products display in landing page
     Given I am on Home Screen

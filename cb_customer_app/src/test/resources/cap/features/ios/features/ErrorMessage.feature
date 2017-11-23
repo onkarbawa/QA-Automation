@@ -32,5 +32,5 @@ Feature: iOS- CAP ErrorMessage
     Then I should see this "<errorMessage>" on the 'Login' screen
     Examples:
       | account | username | password | errorMessage                             |
-      | cvs     | 1234567  | 123456   | Password should be at least 7 characters |
+      | cvs     | 123456  | 1234567   | Please enter 7-digit EMP ID ex. 0001234 |
 

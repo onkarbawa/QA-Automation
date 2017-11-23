@@ -20,8 +20,8 @@ Feature: iOS- Cart Building And Checkout
     When I tap on 'Cart' icon in bottom menu
     Then I should see the 3 items in the cart
     Examples:
-      |             Email                  |     Password    |
-      |      ioscart@exam.com              |     curbside    |
+      | Email            | Password |
+      | ioscart@exam.com | curbside |
 
   @iOS @C114947
   Scenario: Verify product pricing are correct

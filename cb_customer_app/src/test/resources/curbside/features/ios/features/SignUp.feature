@@ -5,7 +5,7 @@ Feature: iOS- Signup Flow
 #    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
     Given I launch Curbside application
     And I have selected Experimental test environment
-    
+
   @iOS @C114954 @C114957
   Scenario: Verify on SignUp user should see name, email or phone number in My Account screen
     Given I am not signed into application
@@ -27,8 +27,8 @@ Feature: iOS- Signup Flow
     Then I should see credit info on cart screen
 
     Examples:
-      | first_name | last_name | card_number      | card_expiry | card_cvv |card_address1 | card_address2 | card_city | card_state | card_zip |
-      | Test       | Data      | 6011111111111117 | 1120        | 345      |   TestData   |    Test data  |   Boston  |            |   56635  |
+      | first_name | last_name | card_number      | card_expiry | card_cvv | card_address1 | card_address2 | card_city | card_state | card_zip |
+      | Test       | Data      | 6011111111111117 | 1120        | 345      | TestData      | Test data     | Boston    |            | 56635    |
 
   @iOS @C114959
   Scenario: Add loyalty card
