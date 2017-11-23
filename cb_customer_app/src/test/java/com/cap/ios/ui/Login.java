@@ -38,6 +38,7 @@ public class Login extends AbstractScreen{
         accountName.sendKeys(account, false);
         userName.clearText();
         userName.sendKeys(user, false);
+        password.clearText();
         password.sendKeys(pass, false);
     }
 
