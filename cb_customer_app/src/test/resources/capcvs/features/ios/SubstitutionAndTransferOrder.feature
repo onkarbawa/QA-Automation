@@ -1,5 +1,5 @@
 @substitutionAndTransferOrder
-Feature: iOS- Task Management1
+Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
 
   @iOS
   Scenario: Setting up user account with credit card

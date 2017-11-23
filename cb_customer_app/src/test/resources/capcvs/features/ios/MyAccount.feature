@@ -1,5 +1,5 @@
 @myAccount
-Feature: iOS- Login and Logout
+Feature: iOS | CAP-CVS | SE | Login and Logout
 
   @iOS
   Scenario: Setting test environment

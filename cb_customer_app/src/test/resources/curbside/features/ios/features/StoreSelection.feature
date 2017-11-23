@@ -15,7 +15,7 @@ Feature: iOS- Store Selection
   Scenario: Verify store location is displayed in map
     And I tap on 'Map' icon in bottom menu
     Then I should see stores on map for 'Palo Alto'
-    
+
   @iOS @C114999
   Scenario: Verify store lead time is displayed
     When I select 'CVS, at 855 El Camino Real' retailer

@@ -2,16 +2,13 @@ package com.cap.ios.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
-import com.curbside.automation.uifactory.SwipeDirection;
-import com.curbside.automation.uifactory.UIElement;
+import com.curbside.automation.uifactory.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
-import java.util.List;
 
 /**
  * Created by bawa.onkar
@@ -95,8 +92,8 @@ public class Tasks extends AbstractScreen {
 //        }
     }
 
-    @Then("^I should see product details as below for CAP$")
-    public void iShouldSeeProductDetailsAsBelowForCAP() throws Throwable {
+    @Then("^I should see product details as below for (.*)$")
+    public void iShouldSeeProductDetailsAsBelowForCAP(String appName) throws Throwable {
         productDetailScreen.firstProduct.tap();
         Assert.assertTrue(productDetailScreen.productName.waitFor(15).isDisplayed(),
                 "Product name is not displayed");

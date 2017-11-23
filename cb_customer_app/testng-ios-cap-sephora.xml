@@ -9,4 +9,14 @@
             <class name="com.capsephora.ios.runners.MyAccount"/>
         </classes>
     </test>
+    <test name="iOS- Map">
+        <classes>
+            <class name="com.capsephora.ios.runners.Map"/>
+        </classes>
+    </test>
+    <test name="iOS- Error Message">
+        <classes>
+            <class name="com.capsephora.ios.runners.ErrorMessage"/>
+        </classes>
+    </test>
 </suite>

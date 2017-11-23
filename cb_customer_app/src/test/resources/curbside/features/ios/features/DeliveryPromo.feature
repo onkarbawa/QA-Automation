@@ -24,8 +24,8 @@ Feature: iOS - Delivery Promo code
     When I apply '<Promo Code>' promo code
     Then I should see repeat promo code is applied and discount is given as per '<Discount Type>'
     Examples:
-      |Promo Code       |Discount Type|
-      |UNLIMITED |   Unlimited   |
+      | Promo Code | Discount Type |
+      | UNLIMITED  | Unlimited     |
 
 
 #  @iOS @C114992
@@ -61,5 +61,5 @@ Feature: iOS - Delivery Promo code
     When I apply '<Promo Code>' promo code
     Then I should see delivery promo code is applied and discount is given as per '<Discount Type>'
     Examples:
-      |Promo Code   |Discount Type|
-      |NF_DOLLAR_DS_NEW  |  Dollar     |
+      | Promo Code       | Discount Type |
+      | NF_DOLLAR_DS_NEW | Dollar        |

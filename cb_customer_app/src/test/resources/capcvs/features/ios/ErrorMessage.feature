@@ -1,5 +1,5 @@
 @loginValidation
-Feature: iOS- Error Message
+Feature: iOS | CAP-CVS | SE | Error Message
 
   @iOS
   Scenario: First time CapCvs Launch

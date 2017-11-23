@@ -4,6 +4,7 @@ Feature: Android- Live order
   @Android @C114962
   Scenario Outline: End to End - Signup EMail, Signup SMS and Pickup order EMail verifications
     Given I launch Curbside application for the first time
+    And I wait for application to be launched
     And I swipe left 2 times on intro page
     And I tap on 'Get Started' button
     And I tap on 'OK' button on 'location access' page

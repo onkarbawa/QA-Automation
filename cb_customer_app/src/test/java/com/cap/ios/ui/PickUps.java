@@ -3,8 +3,9 @@ package com.cap.ios.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.*;
-import cucumber.api.PendingException;
+import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
+import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
@@ -43,19 +44,23 @@ public class PickUps extends AbstractScreen{
         Steps.tapButton("OK");
     }
 
-    @Then("^I confirm '(.*)' orderID is not present under Pickups tab$")
-    public void iConfirmOrderIDIsNotPresent(String orderAlias) throws Throwable {
-        String orderID = Properties.getVariable(orderAlias);
-        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]");
-        for (int i = 1;i < 7;i++) {
+    @Then("^I confirm '(.*)' orderID is not present under (.*) tab$")
+    public void iConfirmOrderIDIsNotPresent(String orderIdAlias, String footerTabName) throws Throwable {
+        if (Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to place the order from Curbside app");
+
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
+
+        String orderID = Properties.getVariable(orderIdAlias);
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]");
+        for (int i = 1; i < 7; i++) {
             if (orderNumber.isDisplayed()) {
                 break;
+            } else {
+                MobileDevice.swipe(180, 550, 180, 50);
             }
-            else {
-                    MobileDevice.swipe(180,550,180,50);
-                }
         }
-        Assert.assertFalse(orderNumber.isDisplayed(),"Order is not in the pickUp list");
+        Assert.assertFalse(orderNumber.isDisplayed(), "Order is in the" + footerTabName + "list");
     }
 
     @And("^I search by customer name to sort the orders$")
