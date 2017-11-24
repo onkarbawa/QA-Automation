@@ -23,7 +23,7 @@ Feature: Android- Live order
     And I enter fresh details of EmailID, PhoneNumber and Password on Signup screen
     When I tap on Create Account button
     Then I should see my given information under Account Info
-    Then I should receive welcome SMS from Curbside app
+    Then I will receive welcome SMS from Curbside app
     And I tap on PaymentInfo button on Account page
     And I should receive 'Welcome' email on 'signup' EmailID
     And I tap on Add New Card button on Payment info page
