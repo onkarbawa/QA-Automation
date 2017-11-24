@@ -24,7 +24,7 @@ public class SMSNotification extends AbstractScreen {
 
     SoftAssert softAssert = new SoftAssert();
 
-    @And("^I check there is no latest SMS from Curbisde$")
+    @And("^I check there is no latest SMS from Curbside$")
     public void iCheckThereIsNoLatestSMSFromCurbisde() throws Throwable {
         String startDateAndTime = PlivoUtil.getDateAndTime();
         Properties.setVariable("startTime", startDateAndTime);
