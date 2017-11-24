@@ -2,7 +2,7 @@
 Feature: IOS | CAP Sephora | MAP
 
   Scenario Outline: Setting test environment for CAP
-    Given I launch CAP Sephora application for the first time
+    Given I launch CAP Sephora application
     And I have selected test environment for CAP Sephora
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login

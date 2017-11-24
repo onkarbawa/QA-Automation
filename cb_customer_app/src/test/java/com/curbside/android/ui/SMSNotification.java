@@ -23,35 +23,25 @@ public class SMSNotification {
 
     @And("^I check there is no latest SMS from Curbside$")
     public void iCheckThereIsNoLatestSMSFromCurbside() throws Throwable {
-
-        int previousMsgCount = PlivoUtil.getInboundMsgCount("MAMZQ1YWQWZDGYY2E5YT",
-                "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3");
-        Reporter.addStepLog("Message count before SMS : " + previousMsgCount);
-        Properties.setVariable("msgCount", String.valueOf(previousMsgCount));
+        String startDateAndTime = PlivoUtil.getDateAndTime();
+        Properties.setVariable("startTime", startDateAndTime);
+        Reporter.addStepLog("Will search for message after " + startDateAndTime + " time stamp");
     }
 
     @Then("^I should receive (?:welcome|order) SMS from Curbside app$")
     public void iCheckLatestSMS() throws Throwable {
-        boolean msgReceived = false;
+        boolean msgReceived ;
+        String startDateAndTime = Properties.getVariable("startTime");
         boolean status;
 
         for (int i = 0; i < 2; i++) {
             Thread.sleep(40000);
-            MobileDevice.getScreenshot(false);
+            MobileDevice.getSource();
             Thread.sleep(40000);
             MobileDevice.getSource();
         }
         MobileDevice.getScreenshot(true);
-        int previousMsgCount = Integer.parseInt(Properties.getVariable("msgCount"));
-        for (int i = 0; i < 3; i++) {
-            Reporter.addStepLog("-------Checking for SMS (" + (i + 1) + "/3) time-------");
-            status = PlivoUtil.isSmsReceived("MAMZQ1YWQWZDGYY2E5YT",
-                    "YjQ3NjY5ZWFjZWJiM2EwNzBmYjQzNzE2YTNlM2Q3", "12815020030", previousMsgCount);
-            if (status) {
-                msgReceived = true;
-                break;
-            }
-        }
-        Assert.assertTrue(msgReceived, "Checked for SMS 3 times but not able to receive the SMS yet");
+        msgReceived = PlivoUtil.iSearchForSMS("12815020030", startDateAndTime);
+        Assert.assertTrue(msgReceived, "Checked for SMS not able to receive the SMS yet");
     }
 }
