@@ -8,6 +8,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,7 +20,7 @@ import java.util.TimeZone;
  */
 public class SMSNotification {
 
-    String GMTDate;
+    SoftAssert softAssert = new SoftAssert();
 
     @And("^I check there is no latest SMS from Curbside$")
     public void iCheckThereIsNoLatestSMSFromCurbside() throws Throwable {
@@ -28,8 +29,8 @@ public class SMSNotification {
         Reporter.addStepLog("Will search for message after " + startDateAndTime + " time stamp");
     }
 
-    @Then("^I should receive (?:welcome|order) SMS from Curbside app$")
-    public void iCheckLatestSMS() throws Throwable {
+    @Then("^I (.*) receive (?:welcome|order) SMS from Curbside app$")
+    public void iCheckLatestSMS(String condition) throws Throwable {
         boolean msgReceived ;
         String startDateAndTime = Properties.getVariable("startTime");
         boolean status;
@@ -42,6 +43,11 @@ public class SMSNotification {
         }
         MobileDevice.getScreenshot(true);
         msgReceived = PlivoUtil.iSearchForSMS("12815020030", startDateAndTime);
-        Assert.assertTrue(msgReceived, "Checked for SMS not able to receive the SMS yet");
+
+        if (condition.equalsIgnoreCase("will"))
+            softAssert.assertTrue(msgReceived, "Checked for SMS not able to receive the SMS yet");
+        else if (condition.equalsIgnoreCase("should"))
+            Assert.assertTrue(msgReceived, "Checked for SMS not able to receive the SMS yet");
+        else Assert.fail("Please enter correct condition for assertion");
     }
 }
