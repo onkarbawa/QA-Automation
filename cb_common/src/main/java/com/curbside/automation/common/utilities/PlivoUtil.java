@@ -85,7 +85,7 @@ public class PlivoUtil {
     public static String getLatestMsgToNumber(String authId, String authToken) {
         String msgToNumber = null;
         MessageFactory msgFactory;
-        RestAPI api = new RestAPI(authId, authToken, "v1");
+        RestAPI api;
         try {
             LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
             parameters.put("limit", "1");
@@ -96,11 +96,13 @@ public class PlivoUtil {
 
             // Setting filter
             try {
+                api = new RestAPI(authId, authToken, "v1");
                 msgFactory = api.getMessages(parameters);
                 msgToNumber = msgFactory.messageList.get(0).toNumber;
             } catch (Exception e) {
                 parameters.remove("message_time__gte");
                 parameters.put("message_time_gte", getDateAndTime());
+                api = new RestAPI(authId, authToken, "v1");
                 msgFactory = api.getMessages(parameters);
                 msgToNumber = msgFactory.messageList.get(0).toNumber;
             }
@@ -117,7 +119,7 @@ public class PlivoUtil {
         int total_count = 0;
         String response;
         JsonObject convertedObject;
-        RestAPI api = new RestAPI(authId, authToken, "v1");
+        RestAPI api;
 
         try {
             LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
@@ -128,6 +130,7 @@ public class PlivoUtil {
             parameters.put("message_time__gte", getDateAndTime());
 
             try {
+                api = new RestAPI(authId, authToken, "v1");
                 response = api.request("GET", "/Message/", parameters);
                 convertedObject = new Gson().fromJson(response, JsonObject.class);
                 total_count = Integer.parseInt(convertedObject.get("meta")
@@ -137,6 +140,7 @@ public class PlivoUtil {
             } catch (Exception e) {
                 parameters.remove("message_time__gte");
                 parameters.put("message_time_gte", getDateAndTime());
+                api = new RestAPI(authId, authToken, "v1");
                 response = api.request("GET", "/Message/", parameters);
                 convertedObject = new Gson().fromJson(response, JsonObject.class);
                 total_count = Integer.parseInt(convertedObject.get("meta")
