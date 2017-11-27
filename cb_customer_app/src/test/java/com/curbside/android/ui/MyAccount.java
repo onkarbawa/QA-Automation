@@ -68,7 +68,7 @@ public class MyAccount extends AbstractScreen {
 
 	@Then("^I should see email as '(.*)' on Account Info page$")
 	public void verifyEmail(String in) throws Throwable {
-		Assert.assertEquals(viewEmailId.getText(), in, "Email doesn't match");
+		Assert.assertEquals(viewEmailId.waitFor(10).getText(), in, "Email doesn't match");
 	}
 
 	@Then("^I should see name as '(.*)' on Account Info page$")
