@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 /**
  * Created by bawa.onkar
  */
+
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/capcvs/features/ios/SubstitutionAndTransferOrder.feature",
+        features = "src/test/resources/capcvs/features/ios/DeliveryOrder.feature",
         plugin = {"json:target/cucumber-report.json", "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"},
         format = {"pretty", "html: cucumber-html-reports",
                 "json: cucumber-html-reports/cucumber.json"},
@@ -17,5 +18,5 @@ import org.testng.annotations.Test;
         glue = {"com.curbside.ios.ui", "com.cap.ios.ui", "com.capcvs.ios.ui", "com.curbside.automation.uifactory"})
 
 @Test
-public class SubstitutionAndTransferOrederTest extends AbstractTestNGCucumberTests {
+public class DeliveryOrderTest extends AbstractTestNGCucumberTests {
 }
