@@ -19,4 +19,9 @@
             <class name="com.capsephora.ios.runners.ErrorMessage"/>
         </classes>
     </test>
+    <test name="iOS- TaskManagement">
+        <classes>
+            <class name="com.capsephora.ios.runners.TaskManagement"/>
+        </classes>
+    </test>
 </suite>

@@ -35,18 +35,21 @@ public class Tasks extends AbstractScreen {
 
     @Given("^I tap on '(.*)' tab and search for '(.*)' OrderID and '(.*)' it$")
     public void iSearchForOrderIDAndClaimIt(String tabName, String orderIdAlias, String action) throws Throwable {
+        if (Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to place the order from Curbside app");
         footerTabsScreen.btnTask.waitFor(10).tap();
 
-        switch (tabName) {
+        switch (tabName.toLowerCase()) {
             case "all":
                 iTapOnTab("All");
                 break;
             case "mine":
                 iTapOnTab("Mine");
                 break;
+            default:
+                Assert.fail("This not a valid tab name");
         }
-        if (Properties.getVariable(orderIdAlias) == null)
-            Assert.fail("Not able to place the order from Curbside app");
+
 
         Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
         String orderID = Properties.getVariable(orderIdAlias);
