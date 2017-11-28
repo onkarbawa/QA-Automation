@@ -34,7 +34,7 @@ Feature: IOS | Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'standardOrder'
 
-  @iOS @TCS14
+  @iOS @TCS15
   Scenario: Order placed to check - Item ready for pickup
     And I go to the shop screen to add any product
     And I select 'Sephora' retailer
@@ -49,7 +49,7 @@ Feature: IOS | Task Management
 
   @iOS
   Scenario Outline: Setting test environment for CAP
-    Given I launch CAP Sephora application for the first time
+    Given I launch CAP Sephora application
     And I have selected test environment for CAP Sephora
     And I am not signed into application cap
     And I enter "<account>", "<username>" and "<password>" for login
