@@ -24,7 +24,8 @@ public class Tasks extends AbstractScreen {
     UIElement btnIssue = UIElement.byName("Issue");
     UIElement btnOK = UIElement.byName("OK");
     UIElement cancelledPickUp = UIElement.byName("Cancelled Pickup");
-    UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
+    UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains" +
+            "(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
 
     @Then("^I should see '(.*)' screen$")
     public void iShouldSeeScreen(String screen) throws Throwable {
@@ -170,10 +171,14 @@ public class Tasks extends AbstractScreen {
     }
 
     @And("^I search for '(.*)' Order ID and verify that '(.*)' is present$")
-    public void iSearchForOrderIDAndVerifyThatHazmatSymbolIsPresent(String orderAlias, String symbol) throws Throwable {
+    public void iSearchForOrderIDAndVerifyThatHazmatSymbolIsPresent(String orderIdAlias, String symbol) throws Throwable {
         iTapOnTab("Mine");
         iTapOnTab("All");
-        String orderID = Properties.getVariable(orderAlias);
+        if (Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to place the order from Curbside app");
+
+        Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
+        String orderID = Properties.getVariable(orderIdAlias);
         UIElement iDSymbol = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]" +
                 "/following-sibling::XCUIElementTypeStaticText[1]");
         Assert.assertEquals(iDSymbol.scrollTo(SwipeDirection.UP).waitFor(3).getText(), "", "");
