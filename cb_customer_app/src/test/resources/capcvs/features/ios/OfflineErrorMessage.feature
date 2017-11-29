@@ -3,7 +3,7 @@ Feature: iOS | CAP-CVS | SE | Offline Error Message
 
   @iOS
   Scenario: First time Curbside Launch
-    Given I launch CAP-CVS application for the first time
+    Given I launch CAP-CVS application
     And I have selected test environment for cap
     And I am not signed into application cap
 

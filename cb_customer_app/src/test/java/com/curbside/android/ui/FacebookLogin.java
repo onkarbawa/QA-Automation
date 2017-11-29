@@ -1,5 +1,6 @@
 package com.curbside.android.ui;
 
+import com.cucumber.listener.Reporter;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
@@ -24,13 +25,14 @@ public class FacebookLogin extends AbstractScreen {
     @And("^I enter '(.*)' and '(.*)' for facebook login$")
     public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
         try {
-            MobileDevice.getScreenshot(true);
             Steps.tapButton_optional("Sign in with Facebook");
             MobileDevice.getScreenshot(true);
             fbLogin(email, password);
         } catch (Exception e) {
-            MobileDevice.getScreenshot(true);
+            Reporter.addStepLog("Trying to Login again");
             cancel.tap();
+            Steps.tapButton_optional("Sign in with Facebook");
+            MobileDevice.getScreenshot(true);
             fbLogin(email, password);
         }
     }
@@ -46,6 +48,7 @@ public class FacebookLogin extends AbstractScreen {
         } catch (Exception e) {
             passwordFieldUI.sendKeys(password, true);
         }
+        MobileDevice.getScreenshot(true);
         logInButton.tap();
         continueButton.waitFor(20);
         for (int i = 0; i < 10; i++) {

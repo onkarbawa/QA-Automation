@@ -58,8 +58,9 @@ Feature: iOS- Delivery Order Verify
   @iOS @TCS28
   Scenario: Verify Uber delivery flow
     Given I search for 'uberOrder' Order ID and verify that 'uber symbol' is present
-    And I tap on 'Mine' tab
-    And I search for 'uberOrder' OrderID
+    And I tap on 'Mine' tab and search for 'uberOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'uberOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter POS Total'
@@ -81,8 +82,9 @@ Feature: iOS- Delivery Order Verify
   Scenario: Verify Hazmat Uber flow
     Given I tap on 'Tasks' icon in bottom menu for cap
     Given I search for 'hazmatUberOrder' Order ID and verify that 'hazmat symbol' is present
-    And I tap on 'Mine' tab
-    And I search for 'hazmatUberOrder' OrderID
+    And I tap on 'Mine' tab and search for 'hazmatUberOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'hazmatUberOrder' OrderID
     And I tap on 'Got It' button
     And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Enter POS Total'
