@@ -26,7 +26,7 @@ Feature: IOS | CAP Sephora | Substitution And Transfer Order
   @iOS @TCS017
   Scenario: Order placed to check - Decline substitution Order
     And I go to the shop screen to add any product
-    And I select 'CVS' retailer
+    And I select 'Sephora' retailer
     And I select 1no product from list
     And I add 1 quantity of the product
     And I select 2no product from list
@@ -69,6 +69,8 @@ Feature: IOS | CAP Sephora | Substitution And Transfer Order
     And I search for 'substitutionOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
+    And I sign the customer's signature
+    And I tap on 'Done Signing' button
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
 
@@ -97,5 +99,7 @@ Feature: IOS | CAP Sephora | Substitution And Transfer Order
     And I search for 'transferOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
+    And I sign the customer's signature
+    And I tap on 'Done Signing' button
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'

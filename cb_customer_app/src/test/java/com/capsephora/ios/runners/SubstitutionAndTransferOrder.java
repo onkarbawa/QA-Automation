@@ -17,5 +17,5 @@ import org.testng.annotations.Test;
         glue = {"com.cap.ios.ui","com.capsephora.ios.ui", "com.curbside.automation.uifactory", "com.curbside.ios.ui"})
 
 @Test
-public class SubstitutionAndTransferOreder extends AbstractTestNGCucumberTests {
+public class SubstitutionAndTransferOrder extends AbstractTestNGCucumberTests {
 }

@@ -26,7 +26,7 @@
     </test>
     <test name="iOS- Substitution And Transfer Order">
         <classes>
-            <class name="com.capsephora.ios.runners.SubstitutionAndTransferOreder"/>
+            <class name="com.capsephora.ios.runners.SubstitutionAndTransferOrder"/>
         </classes>
     </test>
 </suite>
