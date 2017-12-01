@@ -21,7 +21,7 @@ Feature: iOS | CAP-CVS | SE | Special Symbol
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
     And I tap on Order In Progress
-    And I save Order Id of the product and named as 'hazmatOrder'
+    And I save Order Id of the product and named as 'ageRestrictionOrder'
 
   @iOS @TCS31
   Scenario: Order placed to check - Process Hazmat order (exclamation mark with triangle)
@@ -33,6 +33,28 @@ Feature: iOS | CAP-CVS | SE | Special Symbol
     And I attempt to place an order
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'hazmatOrder'
+
+  @iOS @TCS32
+  Scenario: Order placed to check - Process Cold Chain - (fridge icon)
+    And I go to the shop screen to add any product
+    And I select 'CVS' retailer and search for 'Hairspray Aerosol'
+    And I select 'Aussie Mega Aerosol Hairspray' product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'coldChainOrder'
+
+  @iOS @TCS33
+  Scenario: Order placed to check - Process frozen item (snowflake icon)
+    And I go to the shop screen to add any product
+    And I select 'CVS' retailer and search for 'Hairspray Aerosol'
+    And I select 'Aussie Mega Aerosol Hairspray' product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'frozenOrder'
 
   @iOS
   Scenario Outline: Setting test environment for CAP
@@ -85,6 +107,54 @@ Feature: iOS | CAP-CVS | SE | Special Symbol
     And I tap on 'Finish' button
     And I checked order is ready
     Then I tap on 'Pickups' icon and search for 'hazmatOrder' OrderID and verify that 'Hazmat Symbol' is present
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    Then I should see alert 'Transfer complete.'
+
+    #### TO DO (wait for Special Symbol Logos)
+
+   @iOS @TCS32
+  Scenario: Verify Process Cold Chain - (fridge icon)
+    Given I tap on 'Tasks' icon in bottom menu for cap
+    And I search for 'coldChainOrder' Order ID and verify that 'fridge Symbol' is present
+    And I tap on 'Mine' tab and search for 'coldChainOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'hazmatOrder' OrderID
+    And I tap on 'Got It' button
+    And I scan Barcodes and tap on 'Show Barcodes' button
+#    And I tap on 'Enter POS Total'
+#    And I enter receipt stored price for product 'hazmatOrderPrice'
+    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    Then I tap on 'Pickups' icon and search for 'coldChainOrder' OrderID and verify that 'fridge Symbol' is present
+    And I tap on 'Packages Retrieved' button
+    And I tap on 'Begin Transfer' button
+    And I tap on 'Confirm' button
+    Then I should see alert 'Transfer complete.'
+
+    #### TO DO (wait for Special Symbol Logos)
+
+  @iOS @TCS33 @TCS34
+  Scenario: Verify Process frozen item (snowflake icon)
+    Given I tap on 'Tasks' icon in bottom menu for cap
+    And I search for 'frozenOrder' Order ID and verify that 'snowflake Symbol' is present
+    And I tap on 'Mine' tab and search for 'frozenOrder' OrderID and 'confirm' it
+#    And I tap on 'Mine' tab
+#    And I search for 'hazmatOrder' OrderID
+    And I tap on 'Got It' button
+    And I scan Barcodes and tap on 'Show Barcodes' button
+#    And I tap on 'Enter POS Total'
+#    And I enter receipt stored price for product 'hazmatOrderPrice'
+    And I tap on 'Enter Receipt Total' and enter receipt total price
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    Then I tap on 'Pickups' icon and search for 'frozenOrder' OrderID and verify that 'snowflake Symbol' is present
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
