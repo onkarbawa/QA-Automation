@@ -24,4 +24,9 @@
             <class name="com.capsephora.ios.runners.TaskManagement"/>
         </classes>
     </test>
+    <test name="iOS- Substitution And Transfer Order">
+        <classes>
+            <class name="com.capsephora.ios.runners.SubstitutionAndTransferOreder"/>
+        </classes>
+    </test>
 </suite>
