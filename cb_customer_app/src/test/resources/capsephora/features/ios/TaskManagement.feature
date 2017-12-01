@@ -65,7 +65,7 @@ Feature: IOS | Task Management
     When I tap on 'Mine' tab
     Then I look for 'claimOrder' OrderId with 'Unclaim' button
 
-  @iOS @TCS14
+  @iOS @TCS14 @TCS19
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'standardOrder' OrderID and 'claim' it
@@ -85,6 +85,8 @@ Feature: IOS | Task Management
     And I tap on 'Done Signing' button
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
+    When I search by customer name to sort the orders
+    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
 
   @iOS @TCS15
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
