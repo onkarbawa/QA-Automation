@@ -54,7 +54,7 @@ Feature: iOS- Task Management1
     And I mark all items as 'Item not Available'
     And I should see 'substitutionOrder' orderId in PickUp tab with message 'Needs customer attention'
     And I launch Curbside application
-    And I changed the order item
+    And I accept the substitution order
     And I launch CAP application
     And I accept CAP notifications alerts
     And I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
