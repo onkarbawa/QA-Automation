@@ -48,6 +48,7 @@ public class FacebookLogin extends AbstractScreen {
         } catch (Exception e) {
             passwordFieldUI.sendKeys(password, true);
         }
+        MobileDevice.hideKeyboard();
         MobileDevice.getScreenshot(true);
         logInButton.tap();
         continueButton.waitFor(20);

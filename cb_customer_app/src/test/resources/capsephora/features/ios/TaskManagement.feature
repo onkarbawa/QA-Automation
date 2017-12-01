@@ -59,32 +59,34 @@ Feature: IOS | Task Management
       | curbside | qaautomation_initium | curbside |
 
   @iOS @TCS13
-  Scenario: Mark item Quantity not available (1 item, 2 quantities)
+  Scenario: Validating Claim button functionality
     Given I tap on 'All' tab and search for 'claimOrder' OrderID and 'claim' it
     Then I look for 'claimOrder' OrderId with 'Unclaim' button
     When I tap on 'Mine' tab
     Then I look for 'claimOrder' OrderId with 'Unclaim' button
 
-  @iOS @TCS14
+  @iOS @TCS14 @TCS19
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'standardOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'standardOrder' OrderID and 'tap' it
     And I tap on 'Got It' button
-#    And I scan Barcodes and tap on 'Show Barcodes' button   // Mail sent to Seejo to confirm this step
+    And I scan Barcodes and tap on 'Show Barcodes' button
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
-    And I search for 'claimOrder' OrderID
+    And I search for 'standardOrder' OrderID
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I sign the customer's signature
     And I tap on 'Done Signing' button
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
+    When I search by customer name to sort the orders
+    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
 
   @iOS @TCS15
   Scenario: Mark all items out of stock (2 items, 1 quantity each)

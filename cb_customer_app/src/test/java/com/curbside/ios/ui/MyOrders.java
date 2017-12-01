@@ -91,7 +91,7 @@ public class MyOrders extends AbstractScreen {
         }
     }
 
-    @And("^I changed the order item$")
+    @And("^I accept the substitution order$")
     public void iChangedTheOrderItem() throws Throwable {
         yourInputNeeded.waitFor(10);
         if (yourInputNeeded.isDisplayed()) {

@@ -14,7 +14,7 @@ Feature: iOS- Task Management1
     And I add credit card information
 
   @iOS @TCS014
-  Scenario: Order Placed to check - Substitution Order
+  Scenario: Order placed to check - Accept substitution order
     And I select 'CVS' retailer
     And I select 1no product from list
     And I add 1 quantity of the product
@@ -24,7 +24,7 @@ Feature: iOS- Task Management1
     And I save Order Id of the product and named as 'substitutionOrder'
 
   @iOS @TCS015
-  Scenario: Order placed to check - Transfer Order
+  Scenario: Order placed to check - Decline substitution order
     And I go to the shop screen to add any product
     And I select 'CVS' retailer
     And I select 1no product from list
@@ -48,13 +48,13 @@ Feature: iOS- Task Management1
       | curbside | qaautomation_initium | curbside |
 
   @iOS @TCS014
-  Scenario: Substitution Order - All order out of stock (1 item, 1 quantity each)
+  Scenario: Accept substitution order - order out of stock(1 items, 1 quantity)
     Given I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
     And I mark all items as 'Item not Available'
     And I should see 'substitutionOrder' orderId in PickUp tab with message 'Needs customer attention'
     And I launch Curbside application
-    And I changed the order item
+    And I accept the substitution order
     And I launch CAP application
     And I accept CAP notifications alerts
     And I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
@@ -75,7 +75,7 @@ Feature: iOS- Task Management1
     Then I should see alert 'Transfer complete.'
 
   @iOS @TCS015
-  Scenario: Transfer Order - 1 item out of stock (2 items, 1 quantity each)
+  Scenario: Decline substitution order - order out of stock(2 items, 1 quantity each)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'transferOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'transferOrder' OrderID and 'confirm' it
