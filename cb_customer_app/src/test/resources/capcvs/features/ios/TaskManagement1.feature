@@ -65,7 +65,7 @@ Feature: iOS | CAP-CVS | SE | Task Management - 1
     And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
-  @iOS @TCS21
+  @iOS @TCS21 @TCS37
   Scenario: Verify cancelled pickup order drop out of tasks screen(1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
