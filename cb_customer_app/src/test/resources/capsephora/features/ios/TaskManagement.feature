@@ -57,6 +57,30 @@ Feature: IOS | Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'insufficientQuantity'
 
+  @iOS @TCS22
+  Scenario: Order placed to check - Higher price update
+    And I go to the shop screen to add any product
+    And I select 'Sephora' retailer
+    And I select 1no product from list
+    And I store the product price and name it 'actualPrice1'
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'priceUpdate1'
+
+  @iOS @TCS22
+  Scenario: Order placed to check - Lower price update
+    And I go to the shop screen to add any product
+    And I select 'Sephora' retailer
+    And I select 1no product from list
+    And I store the product price and name it 'actualPrice2'
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'priceUpdate2'
+
   @iOS
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP Sephora application
@@ -107,7 +131,7 @@ Feature: IOS | Task Management
     And I mark all items as 'Item not Available'
     Then I should see 'outOfStock' orderId in Cancelled pickups with message 'Pickup is Cancelled'
 
-    @iOS @TCS20
+  @iOS @TCS20
   Scenario: Insufficient Quantity - item Quantity not available (1 item, 2 quantities)
     Given I tap on 'All' tab and search for 'insufficientQuantity' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'insufficientQuantity' OrderID and 'confirm' it
@@ -123,3 +147,39 @@ Feature: IOS | Task Management
     And I search by customer name to sort the orders
     And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
     Then I should see total Order quantity '2' and updated order quantity '1'
+
+  @iOS @TCS22
+  Scenario: Change line item pricing - updated price is higher
+    Given I tap on 'Close' button if displayed
+    And I tap on 'All' tab and search for 'priceUpdate1' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'priceUpdate1' OrderID and 'confirm' it
+    And I tap on 'Issue' button
+    And I update the latest 'higher' amount of the item as compare to original named as 'actualPrice1'
+    And I tap on 'Done' button
+    And I 'Go To Payment' screen
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
+    And I should see 'priceUpdate1' orderId in PickUp tab with message 'Needs customer attention'
+
+  @iOS @TCS22
+  Scenario: Change line item pricing - updated price is lower
+    Given I tap on 'Close' button if displayed
+    And I tap on 'All' tab and search for 'priceUpdate2' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'priceUpdate2' OrderID and 'confirm' it
+    And I tap on 'Issue' button
+    And I update the latest 'lower' amount of the item as compare to original named as 'actualPrice2'
+    And I tap on 'Done' button
+    And I 'Go To Payment' screen
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
+    And I should see 'priceUpdate2' orderId in PickUp tab with message 'Ready for pickup'
