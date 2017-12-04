@@ -47,6 +47,16 @@ Feature: IOS | Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'outOfStock'
 
+  @iOS @TCS20
+  Scenario: Order placed to check - Insufficient Quantity
+    And I select 'Sephora' retailer
+    And I select 2no product from list
+    And I add 2 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'insufficientQuantity'
+
   @iOS
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP Sephora application
@@ -96,3 +106,20 @@ Feature: IOS | Task Management
     And I tap on 'Mine' tab and search for 'outOfStock' OrderID and 'confirm' it
     And I mark all items as 'Item not Available'
     Then I should see 'outOfStock' orderId in Cancelled pickups with message 'Pickup is Cancelled'
+
+    @iOS @TCS20
+  Scenario: Insufficient Quantity - item Quantity not available (1 item, 2 quantities)
+    Given I tap on 'All' tab and search for 'insufficientQuantity' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'insufficientQuantity' OrderID and 'confirm' it
+    And I tap on 'Issue' button
+    And I enter insufficient quantity '1'
+    And I 'Go To Payment' screen
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
+    And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
+    Then I should see total Order quantity '2' and updated order quantity '1'
