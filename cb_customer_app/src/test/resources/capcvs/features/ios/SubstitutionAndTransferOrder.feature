@@ -70,9 +70,9 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
-    And I search for 'substitutionOrder' OrderID
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
+#    And I search for 'substitutionOrder' OrderID
     Then I should see 'substitutionOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
@@ -102,9 +102,9 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     And I decline the substitution order
     And I launch CAP application
     And I accept CAP notifications alerts
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
-    And I search for 'transferOrder' OrderID
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
+#    And I search for 'transferOrder' OrderID
     Then I should see 'transferOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button

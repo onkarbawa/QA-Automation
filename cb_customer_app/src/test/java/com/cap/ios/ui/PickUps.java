@@ -15,17 +15,21 @@ import org.testng.Assert;
  */
 public class PickUps extends AbstractScreen{
 
-    UIElement alertMessage = UIElement.byName("Needs customer attention");
+//    UIElement alertMessage = UIElement.byName("Needs customer attention");
+    UIElement alertMessage = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText");
     UIElement pickUpQty = UIElement.byXpath("//XCUIElementTypeStaticText[@name='QTY :']/following-sibling::XCUIElementTypeStaticText[1]");
     UIElement transferCompleteAlert = UIElement.byName("Transfer complete.");
 
     @Then("^I should see '(.*)' orderId in PickUp tab with message '(.*)'$")
-    public void iShouldSeeOrderIdInPickUpTabWith(String orderAlias,String message) throws Throwable {
+    public void iShouldSeeOrderIdInPickUpTabWith(String orderIdAlias, String message) throws Throwable {
         footerTabsScreen.btnPickUp.waitFor(15).tap();
-        String orderID = Properties.getVariable(orderAlias);
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'"+orderID+"')]").scrollTo().tap();
+        iSearchCustomerNameToSortOrder();
+        if (Properties.getVariable(orderIdAlias) == null)
+            Assert.fail("Not able to place the order from Curbside app");
+        String orderID = Properties.getVariable(orderIdAlias);
+        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]").scrollTo().tap();
         MobileDevice.getScreenshot(true);
-        Assert.assertEquals(alertMessage.getText(),message,"Attention message is not shown");
+        Assert.assertEquals(alertMessage.getText(), message, "Attention message is not shown");
         MobileDevice.getScreenshot(true);
     }
 
@@ -64,7 +68,7 @@ public class PickUps extends AbstractScreen{
     }
 
     @And("^I search by customer name to sort the orders$")
-    public void iSearchCustomer() throws Throwable {
+    public void iSearchCustomerNameToSortOrder() throws Throwable {
         String fullName = Properties.getVariable("fNCredit") + " " + Properties.getVariable("lNCredit");
         Reporter.addStepLog("Customer name : " + fullName);
         UIElement.byName("Search by customer name").sendKeys(fullName,false);
