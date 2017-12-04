@@ -69,6 +69,7 @@ Feature: iOS- Task Management1
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
     And I search for 'substitutionOrder' OrderID
+    Then I should see 'substitutionOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
@@ -98,6 +99,7 @@ Feature: iOS- Task Management1
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
     And I search for 'transferOrder' OrderID
+    Then I should see 'transferOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button

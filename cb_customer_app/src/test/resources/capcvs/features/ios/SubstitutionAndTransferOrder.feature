@@ -54,7 +54,7 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     Given I tap on 'All' tab and search for 'substitutionOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'substitutionOrder' OrderID and 'confirm' it
     And I mark all items as 'Item not Available'
-    And I should see 'substitutionOrder' orderId in PickUp tab with message 'Needs customer attention'
+    And I should see 'substitutionOrder' orderId in PickUp tab with message 'Customer Action Needed'
     And I launch Curbside application
     And I accept the substitution order
     And I launch CAP application
@@ -73,6 +73,7 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
     And I search for 'substitutionOrder' OrderID
+    Then I should see 'substitutionOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
@@ -96,7 +97,7 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I should see 'transferOrder' orderId in PickUp tab with message 'Needs customer attention'
+    And I should see 'transferOrder' orderId in PickUp tab with message 'Customer Action Needed'
     And I launch Curbside application
     And I decline the substitution order
     And I launch CAP application
@@ -104,6 +105,7 @@ Feature: iOS | CAP-CVS | SE | Substitution and TransferOrder
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
     And I search for 'transferOrder' OrderID
+    Then I should see 'transferOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button
     And I tap on 'Confirm' button
