@@ -14,14 +14,44 @@
             <class name="com.capcvs.ios.runners.MyAccountTest"/>
         </classes>
     </test>
-    <test name="iOS- iOS- MAP">
+    <test name="iOS- MAP">
         <classes>
             <class name="com.capcvs.ios.runners.MapTest"/>
         </classes>
     </test>
-    <test name="iOS- iOS- TaskManagement">
+    <test name="iOS- Order Details">
+        <classes>
+            <class name="com.capcvs.ios.runners.OrderDetailsTest"/>
+        </classes>
+    </test>
+    <test name="iOS- TaskManagement">
         <classes>
             <class name="com.capcvs.ios.runners.TaskManagementTest"/>
+        </classes>
+    </test>
+    <test name="iOS- TaskManagement1">
+        <classes>
+            <class name="com.capcvs.ios.runners.TaskManagement1Test"/>
+        </classes>
+    </test>
+    <test name="iOS- Substitution and Transfer Order">
+        <classes>
+            <class name="com.capcvs.ios.runners.SubstitutionAndTransferOrderTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Special Symbols">
+        <classes>
+            <class name="com.capcvs.ios.runners.SpecialSymbolTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Delivery Order">
+        <classes>
+            <class name="com.capcvs.ios.runners.DeliveryOrderTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Delivery Order">
+        <classes>
+            <class name="com.capcvs.ios.runners."/>
         </classes>
     </test>
     <!--<test name="iOS- Offline Error-Message">-->

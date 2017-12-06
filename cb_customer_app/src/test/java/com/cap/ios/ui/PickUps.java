@@ -19,6 +19,7 @@ public class PickUps extends AbstractScreen{
     UIElement alertMessage = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText");
     UIElement pickUpQty = UIElement.byXpath("//XCUIElementTypeStaticText[@name='QTY :']/following-sibling::XCUIElementTypeStaticText[1]");
     UIElement transferCompleteAlert = UIElement.byName("Transfer complete.");
+    UIElement searchByCustomerName = UIElement.byName("Search by customer name");
 
     @Then("^I should see '(.*)' orderId in PickUp tab with message '(.*)'$")
     public void iShouldSeeOrderIdInPickUpTabWith(String orderIdAlias, String message) throws Throwable {
@@ -71,7 +72,7 @@ public class PickUps extends AbstractScreen{
     public void iSearchCustomerNameToSortOrder() throws Throwable {
         String fullName = Properties.getVariable("fNCredit") + " " + Properties.getVariable("lNCredit");
         Reporter.addStepLog("Customer name : " + fullName);
-        UIElement.byName("Search by customer name").sendKeys(fullName,false);
+        searchByCustomerName.waitFor(15).sendKeys(fullName,false);
         Steps.tapButton("Search");
 
     }
