@@ -143,8 +143,8 @@ Feature: IOS | Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
     And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
@@ -162,8 +162,8 @@ Feature: IOS | Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
     And I should see 'priceUpdate1' orderId in PickUp tab with message 'Needs customer attention'
 
   @iOS @TCS22
