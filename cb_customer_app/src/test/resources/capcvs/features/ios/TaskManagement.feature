@@ -47,7 +47,7 @@ Feature: iOS | CAP-CVS | SE | Task Management
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
-  @iOS @TCS10 @TCS13
+  @iOS @TCS10 @TCS13 @TCS39
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it

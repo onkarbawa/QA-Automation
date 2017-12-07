@@ -49,6 +49,19 @@ public class PickUps extends AbstractScreen{
         Steps.tapButton("OK");
     }
 
+    public void scrollToElement(UIElement orderNumber) throws Throwable {
+        int totalTasks = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell").getCount();
+        UIElement lastTask = UIElement.byXpath("//XCUIElementTypeTable/XCUIElementTypeCell[" + String.valueOf(totalTasks - 1) + "]");
+
+        for (int i = 1; i < totalTasks; i++) {
+            if (lastTask.isDisplayed() || orderNumber.isDisplayed()) {
+                break;
+            } else {
+                MobileDevice.swipe(180, 550, 180, 50);
+            }
+        }
+    }
+
     @Then("^I confirm '(.*)' orderID is not present under (.*) tab$")
     public void iConfirmOrderIDIsNotPresent(String orderIdAlias, String footerTabName) throws Throwable {
         if (Properties.getVariable(orderIdAlias) == null)
