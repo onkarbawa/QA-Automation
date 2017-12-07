@@ -81,6 +81,17 @@ Feature: IOS | Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'priceUpdate2'
 
+    @iOS @TCS23
+  Scenario: Order placed to check - process cancelled pickups
+    And I go to the shop screen to add any product
+    And I select 'Sephora' retailer
+    And I select 1no product from list
+    And I add 1 quantity of the product
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    And I tap on Order In Progress
+    And I save Order Id of the product and named as 'cancelPickUpOrder'
+
   @iOS
   Scenario Outline: Setting test environment for CAP
     Given I launch CAP Sephora application
@@ -143,8 +154,6 @@ Feature: IOS | Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-#    And I tap on 'Pickups' icon in bottom menu for cap
-#    And I search by customer name to sort the orders
     And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
@@ -162,8 +171,6 @@ Feature: IOS | Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-#    And I tap on 'Pickups' icon in bottom menu for cap
-#    And I search by customer name to sort the orders
     And I should see 'priceUpdate1' orderId in PickUp tab with message 'Needs customer attention'
 
   @iOS @TCS22
@@ -183,3 +190,29 @@ Feature: IOS | Task Management
     And I tap on 'Pickups' icon in bottom menu for cap
     And I search by customer name to sort the orders
     And I should see 'priceUpdate2' orderId in PickUp tab with message 'Ready for pickup'
+
+  @iOS @TCS23
+  Scenario: Verify cancelled pickup order drop out of tasks screen(1 item, 1 quantities)
+    Given I tap on 'Close' button if displayed
+    And I tap on 'Tasks' icon in bottom menu for cap
+    And I tap on 'All' tab and search for 'cancelPickUpOrder' OrderID and 'claim' it
+    And I tap on 'Mine' tab and search for 'cancelPickUpOrder' OrderID and 'confirm' it
+    And I tap on 'Got It' button
+    And I scan Barcodes and tap on 'Show Barcodes' button
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Go To Pack' button
+    And I tap on 'Finish' button
+    And I checked order is ready
+    And I tap on 'Pickups' icon in bottom menu for cap
+    And I search by customer name to sort the orders
+    And I search for 'cancelPickUpOrder' OrderID
+    And I tap on 'Cancel This Pickup' button
+    And I tap on 'Cancel Pickup' button
+    And I tap on 'Cancel - Customer No Show' button
+    Then I should see 'cancelPickUpOrder' orderId on Tasks screen as 'Cancelled Pickup'
+    And I tap on 'Claim' button
+    And I tap on 'View original purchase receipt >' button
+    And I verify receipt image
+    And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
+    And I tap on 'Finish' button
+    Then I confirm 'cancelPickUpOrder' orderID is not present under Task tab

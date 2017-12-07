@@ -145,7 +145,7 @@ public class Tasks extends AbstractScreen {
         }
     }
 
-    @Then("^I should see '(.*)' orderId in Tasks screen under '(.*)'")
+    @Then("^I should see '(.*)' orderId on Tasks screen as '(.*)'")
     public void iShouldSeeOrderIdInTaskUnder(String orderAlias, String message) throws Throwable {
         footerTabsScreen.btnTask.waitFor(7).tap();
         iTapOnTab("All");

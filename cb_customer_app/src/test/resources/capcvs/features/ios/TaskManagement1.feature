@@ -86,7 +86,7 @@ Feature: iOS | CAP-CVS | SE | Task Management - 1
     And I tap on 'Cancel This Pickup' button
     And I tap on 'Cancel Pickup' button
     And I tap on 'Cancel - Customer No Show' button
-    Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
+    Then I should see 'cancelPickUpOrder' orderId on Tasks screen as 'Cancelled Pickup'
     And I tap on 'Claim' button
     And I tap on 'View original purchase receipt >' button
     And I verify receipt image
