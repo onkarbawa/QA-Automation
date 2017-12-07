@@ -81,7 +81,7 @@ Feature: IOS | Task Management
     And I tap on Order In Progress
     And I save Order Id of the product and named as 'priceUpdate2'
 
-    @iOS @TCS23
+  @iOS @TCS23
   Scenario: Order placed to check - process cancelled pickups
     And I go to the shop screen to add any product
     And I select 'Sephora' retailer
@@ -211,7 +211,7 @@ Feature: IOS | Task Management
     And I tap on 'Cancel - Customer No Show' button
     Then I should see 'cancelPickUpOrder' orderId on Tasks screen as 'Cancelled Pickup'
     And I tap on 'Claim' button
-    And I tap on 'View original purchase receipt >' button
+    And I tap on View Original receipt button
     And I verify receipt image
     And I tap on 'Take Picture' button and 'Use Photo' to scan barcode
     And I tap on 'Finish' button

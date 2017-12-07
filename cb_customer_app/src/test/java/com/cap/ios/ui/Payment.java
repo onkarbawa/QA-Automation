@@ -8,6 +8,7 @@ import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import org.openqa.selenium.By;
 
 import java.text.DecimalFormat;
 
@@ -71,13 +72,14 @@ public class Payment extends AbstractScreen {
             }
             firstPhoto.tap();
             firstPhoto.waitForNot(10);
-            // Thread.sleep(7000);
             commonSteps.iTapOnBackButton();
         } catch (Exception e) {
-            Steps.tapButton("PhotoCapture");
-            Steps.tapButton(btnUsePhoto);
-            Thread.sleep(3000);
-            Steps.tapButton("Cancel");
+            if (!new UIElement(By.name("Finish")).isDisplayed()) {
+                Steps.tapButton("PhotoCapture");
+                Steps.tapButton(btnUsePhoto);
+                Thread.sleep(3000);
+                Steps.tapButton("Cancel");
+            }
         }
         MobileDevice.getScreenshot(true);
     }
