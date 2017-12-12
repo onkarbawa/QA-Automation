@@ -37,7 +37,7 @@
     {
       "name" : "mCAP",
       "app" : "../ios_simulator_builds/mCAP.app",
-      "bundleId": "com.curbside.CAP"
+      "bundleId": "com.curbside.mCAP"
     }
   ]
 }
