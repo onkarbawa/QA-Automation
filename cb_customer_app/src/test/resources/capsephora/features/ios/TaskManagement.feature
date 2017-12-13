@@ -110,6 +110,14 @@ Feature: IOS | Task Management
     When I tap on 'Mine' tab
     Then I look for 'claimOrder' OrderId with 'Unclaim' button
 
+  @iOS @TCS31
+  Scenario: Verify that on Product Details screen
+    And I tap on 'Mine' tab and search for 'claimOrder' OrderID and 'confirm' it
+    Then I should see product details as below for CAP
+    And I tap on back button
+    And I tap on 'Close' button
+
+
   @iOS @TCS14 @TCS19
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'Tasks' icon in bottom menu for cap
