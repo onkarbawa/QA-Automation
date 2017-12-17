@@ -15,7 +15,7 @@ public class FacebookLogin extends AbstractScreen {
     UIElement passwordField = UIElement.byXpath("//android.widget.EditText[@password='true']");
     UIElement logInButton = UIElement.byAccessibilityId("Log In ");
     UIElement btnNext = UIElement.byAccessibilityId("Next ");
-    UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue \")");
+    UIElement continueButton = UIElement.byUISelector("new UiSelector().description(\"Continue\")");
     UIElement loadingIcon = UIElement.byUISelector("new UiSelector().text(\"Loading...\")");
     UIElement btnSignInWithFacebook = UIElement.byUISelector("new UiSelector().text(\"" + "Sign in with Facebook" + "\")");
     UIElement passwordFieldUI = UIElement.byUISelector("new UiSelector().description(\"Facebook Password\")");
