@@ -26,11 +26,10 @@ public class FacebookLogin extends AbstractScreen {
     public void iEnterAndForFacebookLogin(String email, String password) throws Throwable {
         try {
             Steps.tapButton_optional("Sign in with Facebook");
-            MobileDevice.getScreenshot(true);
             fbLogin(email, password);
         } catch (Exception e) {
             Reporter.addStepLog("Trying to Login again");
-            cancel.tap();
+            cancel.tapOptional();
             Steps.tapButton_optional("Sign in with Facebook");
             MobileDevice.getScreenshot(true);
             fbLogin(email, password);
@@ -49,8 +48,8 @@ public class FacebookLogin extends AbstractScreen {
             passwordFieldUI.sendKeys(password, true);
         }
         MobileDevice.hideKeyboard();
-        MobileDevice.getScreenshot(true);
         logInButton.tap();
+        Thread.sleep(4000);
         continueButton.waitFor(20);
         for (int i = 0; i < 10; i++) {
             if (continueButton.isDisplayed())
