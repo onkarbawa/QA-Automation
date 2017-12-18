@@ -4,6 +4,7 @@ import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 

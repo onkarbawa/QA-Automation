@@ -29,4 +29,9 @@
             <class name="com.capsephora.ios.runners.SubstitutionAndTransferOrder"/>
         </classes>
     </test>
+    <test name="iOS- Delivery Order">
+        <classes>
+            <class name="com.capsephora.ios.runners.DeliverOrderTest"/>
+        </classes>
+    </test>
 </suite>
