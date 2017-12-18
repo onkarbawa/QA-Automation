@@ -47,7 +47,7 @@ Feature: iOS | CAP-CVS | SE | Task Management
       | account  | username             | password |
       | curbside | qaautomation_initium | curbside |
 
-  @iOS @TCS10 @TCS13
+  @iOS @TCS10 @TCS13 @TCS39
   Scenario: Process standard order (1 item, 1 quantities)
     Given I tap on 'All' tab and search for 'readyPickUpOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'readyPickUpOrder' OrderID and 'confirm' it
@@ -59,8 +59,8 @@ Feature: iOS | CAP-CVS | SE | Task Management
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
     Then I should see 'readyPickUpOrder' orderId in PickUp tab with message 'Ready for pickup'
     And I tap on 'Packages Retrieved' button
     And I tap on 'Begin Transfer' button

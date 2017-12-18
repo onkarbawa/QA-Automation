@@ -100,4 +100,10 @@ public class StoreDetails {
         System.out.println("name is :" + priceName + number);
         System.out.println("price is :" + productDetailsScreen.getProductPrice());
     }
+
+    @And("I store the product price and name it '(.*)'")
+    public void iStoreProductPrice(String nameAlias) throws Throwable {
+        Properties.setVariable(nameAlias, productDetailsScreen.getProductPrice());
+        Reporter.addStepLog("Price " + productDetailsScreen.getProductPrice() + " is stored in the variable : " + nameAlias);
+    }
 }

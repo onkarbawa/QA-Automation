@@ -1,7 +1,8 @@
 @applicationLaunch
 Feature: Android- Application Launch
 
-	Curbside tutorial is prompted when app is launched first time and verify tutorial flow
+  Scenario: Setting up the environment | Remove CAP
+    Given I launch Cap application
 
   @Android @C114937
   Scenario: Tapping 'Get Started' button should take you to Store Selection Page
@@ -23,7 +24,7 @@ Feature: Android- Application Launch
     And I tap on 'OK' button on 'location access' page
     When I accept location access alert
     Then I should see 'Nearby stores' landing page
-    
+
   @Android @C114998
   Scenario: Verify Disable location services functionality
     Given 'Location' preference is set as 'OFF' for 'Curbside' app

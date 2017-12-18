@@ -61,7 +61,7 @@ Feature: iOS- Task Management and Special Symbol
     And I tap on 'Cancel This Pickup' button
     And I tap on 'Cancel Pickup' button
     And I tap on 'Cancel - Customer No Show' button
-    Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
+    Then I should see 'cancelPickUpOrder' orderId on Tasks screen as 'Cancelled Pickup'
 
 #  @iOS @TCS24
 #  Scenario: Verify Hazmat order Symbol

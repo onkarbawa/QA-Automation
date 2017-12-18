@@ -33,6 +33,11 @@
       "name" : "CAP Sephora",
       "app" : "../ios_simulator_builds/CAP-Sephora/CAP.app",
       "bundleId": "com.curbside.CAP"
+    },
+    {
+      "name" : "mCAP",
+      "app" : "../ios_simulator_builds/mCAP.app",
+      "bundleId": "com.curbside.mCAP"
     }
   ]
 }

@@ -19,6 +19,7 @@ public class AbstractScreen {
     static Issue issueScreen;
     static MoreTab moreTabScreen;
     static Payment paymentScreen;
+    static PickUps pickUpsScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -32,5 +33,6 @@ public class AbstractScreen {
         issueScreen = new Issue();
         moreTabScreen = new MoreTab();
         paymentScreen = new Payment();
+        pickUpsScreen = new PickUps();
     }
 }

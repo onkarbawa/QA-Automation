@@ -24,7 +24,7 @@ Feature: IOS | CAP Sephora | Substitution And Transfer Order
     And I save Order Id of the product and named as 'substitutionOrder'
 
   @iOS @TCS017
-  Scenario: Order placed to check - Decline substitution Order
+  Scenario: Order placed to check - Partial decline substitution Order
     And I go to the shop screen to add any product
     And I select 'Sephora' retailer
     And I select 1no product from list
@@ -75,7 +75,7 @@ Feature: IOS | CAP Sephora | Substitution And Transfer Order
     Then I should see alert 'Transfer complete.'
 
   @iOS @TCS017
-  Scenario: Substitution Order Declined - 1 item out of stock (2 items, 1 quantity each)
+  Scenario: Partial substitution order declined - 1 item out of stock (2 items, 1 quantity each)
     Given I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'transferOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'transferOrder' OrderID and 'confirm' it

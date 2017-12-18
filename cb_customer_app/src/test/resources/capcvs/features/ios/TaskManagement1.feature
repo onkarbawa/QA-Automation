@@ -60,12 +60,12 @@ Feature: iOS | CAP-CVS | SE | Task Management - 1
     And I tap on 'Go To Pack' button
     And I tap on 'Finish' button
     And I checked order is ready
-    And I tap on 'Pickups' icon in bottom menu for cap
-    And I search by customer name to sort the orders
+#    And I tap on 'Pickups' icon in bottom menu for cap
+#    And I search by customer name to sort the orders
     And I should see 'insufficientQuantity' orderId in PickUp tab with message 'Customer Action Needed'
     Then I should see total Order quantity '2' and updated order quantity '1'
 
-  @iOS @TCS21
+  @iOS @TCS21 @TCS37
   Scenario: Verify cancelled pickup order drop out of tasks screen(1 item, 1 quantities)
     Given I tap on 'Close' button
     And I tap on 'Tasks' icon in bottom menu for cap
@@ -86,7 +86,7 @@ Feature: iOS | CAP-CVS | SE | Task Management - 1
     And I tap on 'Cancel This Pickup' button
     And I tap on 'Cancel Pickup' button
     And I tap on 'Cancel - Customer No Show' button
-    Then I should see 'cancelPickUpOrder' orderId in Tasks screen under 'Cancelled Pickup'
+    Then I should see 'cancelPickUpOrder' orderId on Tasks screen as 'Cancelled Pickup'
     And I tap on 'Claim' button
     And I tap on 'View original purchase receipt >' button
     And I verify receipt image

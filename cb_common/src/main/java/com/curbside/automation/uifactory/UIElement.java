@@ -9,6 +9,7 @@ import java.util.List;
  *
  */
 
+import com.curbside.automation.devicefactory.DeviceStore;
 import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -114,34 +115,38 @@ public class UIElement {
 	public UIElement setText(String text) throws Throwable {
 		return setText(text, true);
 	}
-	
+
 	public UIElement sendKeys(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
-        try {
-            try {
-                try {
-                    getElement().sendKeys(keySequence);
-                } catch (Exception e) {
-                    this.clearText();
-                    getElement().clear();
-                    for (int i = 0; i < keySequence.length(); i++) {
-                        char c = keySequence.charAt(i);
-                        String s = new StringBuilder().append(c).toString();
-                        getElement().sendKeys(s);
-                    }
-                }
-            } catch (Exception e) {
-                MobileElement m = (MobileElement) getElement();
-                this.clearText();
-                getElement().clear();
-                m.setValue(keySequence);
-            }
-        } catch (Exception e) {
-            Assert.fail("Not able to enter the text");
-        }
-		
+		try {
+			try {
+				try {
+					getElement().sendKeys(keySequence);
+				} catch (Exception e) {
+					this.clearText();
+					getElement().clear();
+					if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+						getElement().sendKeys(keySequence);
+					} else {
+						for (int i = 0; i < keySequence.length(); i++) {
+							char c = keySequence.charAt(i);
+							String s = new StringBuilder().append(c).toString();
+							getElement().sendKeys(s);
+						}
+					}
+				}
+			} catch (Exception e) {
+				MobileElement m = (MobileElement) getElement();
+				this.clearText();
+				getElement().clear();
+				m.setValue(keySequence);
+			}
+		} catch (Exception e) {
+			Assert.fail("Not able to enter the text");
+		}
+
 		if (hideKeyboardAfterTyping)
 			MobileDevice.hideKeyboard();
-		
+
 		return this;
 	}
 	
