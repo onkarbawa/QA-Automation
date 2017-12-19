@@ -2,6 +2,7 @@ package com.capsephora.ios.ui;
 
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.testng.Assert;
@@ -14,7 +15,6 @@ public class Issue {
 
     @And("I update the latest '(.*)' amount of the item as compare to original named as '(.*)'")
     public void priceUpdate(String amountDiff, String storedPriceAlias) throws Throwable {
-        Reporter.addStepLog("");
         if (Properties.getVariable(storedPriceAlias) == null)
             Assert.fail("Not able to store the price of the product !!");
         Double price = Double.parseDouble(Properties.getVariable(storedPriceAlias));
@@ -26,6 +26,8 @@ public class Issue {
         } else {
             Assert.fail("Please enter correct input !! Amount difference is Higher or Lower ?");
         }
+        Reporter.addStepLog("Updated price : "+price);
         updatePrice.sendKeys(String.valueOf(price));
+        MobileDevice.getScreenshot(true);
     }
 }
