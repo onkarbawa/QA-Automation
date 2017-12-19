@@ -24,7 +24,7 @@ Feature: IOS | Task Management
     And I save Order Id of the product and named as 'claimOrder'
 
   @iOS @TCS14
-  Scenario: Order placed to check - Item ready for pickup
+  Scenario: Order placed to check - Process standard order
     And I go to the shop screen to add any product
     And I select 'Sephora' retailer
     And I select 1no product from list
@@ -35,7 +35,7 @@ Feature: IOS | Task Management
     And I save Order Id of the product and named as 'standardOrder'
 
   @iOS @TCS15
-  Scenario: Order placed to check - Item ready for pickup
+  Scenario: Order placed to check - All item out of stock
     And I go to the shop screen to add any product
     And I select 'Sephora' retailer
     And I select 1no product from list
