@@ -38,6 +38,11 @@
       "name" : "mCAP",
       "app" : "../ios_simulator_builds/mCAP.app",
       "bundleId": "com.curbside.mCAP"
+    },
+    {
+      "name" : "ARRIVE Console",
+      "app" : "../ios_simulator_builds/ARRIVEConsole.app",
+      "bundleId": "com.curbside.ArriveConsoleDemo"
     }
   ]
 }
