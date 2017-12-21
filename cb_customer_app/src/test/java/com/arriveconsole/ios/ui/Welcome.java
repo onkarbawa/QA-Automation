@@ -1,6 +1,7 @@
 package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.testng.Assert;
@@ -16,5 +17,6 @@ public class Welcome extends AbstractScreen {
     public void iConfirmThatCurrentSiteIsSelected() throws Throwable {
         Properties.setVariable("selectedSite", currentSite.getText());
         Assert.assertTrue(currentSite.isDisplayed(), "Current site is not selected");
+        MobileDevice.getScreenshot(true);
     }
 }
