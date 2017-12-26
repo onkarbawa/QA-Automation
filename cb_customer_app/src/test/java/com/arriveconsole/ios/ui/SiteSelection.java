@@ -1,7 +1,6 @@
 package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.WebElement;
@@ -18,15 +17,23 @@ public class SiteSelection {
     @And("^I select a different site from list$")
     public void iSelectADifferentSiteFromList() throws Throwable {
         int totalSites = newSiteSelection.getCount();
+        final int[] selectedElement = {0};
         if (totalSites > 1) {
-            List<WebElement> list = newSiteSelection.getElements();
-            for (WebElement element : list) {
-                if (!Objects.equals(element.getText(), Properties.getVariable("selectedSite"))) {
-                    element.click();
-                    MobileDevice.getScreenshot(true);
-                    break;
+            List<WebElement> siteList = newSiteSelection.getElements();
+            siteList.stream().forEach((WebElement element) -> {
+                if (Objects.equals(element.getText(), Properties.getVariable("selectedSite"))) {
+                    selectedElement[0] = siteList.indexOf(element) + 1;
+                    return;
                 }
+            });
+            int selectElement = selectedElement[0];
+            if (selectedElement[0] == totalSites) {
+                UIElement.byXpath("//XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]").tap();
+            } else {
+                UIElement.byXpath("//XCUIElementTypeCell[" + (selectElement + 1) + "]/XCUIElementTypeStaticText[1]").tap();
             }
+        } else {
+            //To Do Later
         }
     }
 }
