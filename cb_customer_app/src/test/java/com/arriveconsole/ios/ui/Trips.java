@@ -17,6 +17,8 @@ public class Trips extends AbstractScreen {
     UIElement btnHome = UIElement.byName("ic home");
     UIElement btnChangeSite = UIElement.byName("Change Site");
     UIElement btnMap = UIElement.byName("mapIcon");
+    UIElement alertMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Change Site?']/following-sibling::" +
+            "XCUIElementTypeStaticText");
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
@@ -36,6 +38,13 @@ public class Trips extends AbstractScreen {
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
         btnHome.tap();
         btnChangeSite.tap();
+        MobileDevice.getScreenshot(true);
+    }
+
+    @Then("^I saw alert message$")
+    public void iSawAlertMessage() throws Throwable {
+        Assert.assertEquals(alertMessage.getText(), "Tracking for the current site will stop, and the app will " +
+                "no longer receive updates until you select another site.", "Alert message is not displayed");
         MobileDevice.getScreenshot(true);
     }
 }
