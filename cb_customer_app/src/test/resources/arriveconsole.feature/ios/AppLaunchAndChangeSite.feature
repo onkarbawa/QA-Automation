@@ -1,4 +1,4 @@
-@appLaunch
+@appLaunchAndChangeSite
 Feature: iOS | ArriveConsole | AppLaunchAndChangeSite
 
   @iOS @TCS01
