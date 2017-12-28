@@ -10,6 +10,7 @@ public class AbstractScreen {
     static Welcome welcomeScreen;
     static Steps commonSteps;
     static Trips tripsScreen;
+    static SiteSelection siteSelection;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -17,6 +18,7 @@ public class AbstractScreen {
         welcomeScreen = new Welcome();
         commonSteps = new Steps();
         tripsScreen = new Trips();
+        siteSelection = new SiteSelection();
     }
 
     void waitForScreenToLoad() throws Throwable {

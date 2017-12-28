@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * Created by bawa.onkar.
  */
-public class SiteSelection {
+public class SiteSelection extends AbstractScreen {
     UIElement newSiteSelection = UIElement.byXpath("//XCUIElementTypeCell/XCUIElementTypeStaticText[1]");
 
     @And("^I select a different site from list$")

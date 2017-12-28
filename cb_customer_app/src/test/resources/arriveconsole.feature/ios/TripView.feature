@@ -5,7 +5,12 @@ Feature: iOS | ArriveConsole | Trip View
   Scenario: Verify details are shown when open a trip
     Given I launch ARRIVE Console application
     And I accept notifications alert
-    And I confirm that current site is selected
-    When I tap on 'View Trips' button
-    Then I saw site header name and current open trips without map
-    And I am on arriveConsole home screen
+    And I select site which have open trips
+    When I tap on trip
+    Then I saw open trip details
+
+  @iOS @TCS04
+  Scenario: Verify details are shown when open a trip
+    Given I launch ARRIVE Console application
+    And I accept notifications alert
+    And I select site which have open trips
