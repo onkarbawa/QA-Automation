@@ -11,6 +11,12 @@
       "app": "../CAP.apk",
       "appPackage": "com.curbside.nCap",
       "appActivity": "com.curbside.nCap.activity.MainActivity"
+    },
+    {
+      "name" : "ARRIVE Console",
+      "app" : "../app-arriveConsole-release.apk",
+      "appPackage": "com.curbside.arriveconsole",
+      "appActivity": "com.curbside.arriveconsole.activity.MainActivity"
     }
   ],
   "iOS" : [
