@@ -11,6 +11,7 @@ public class AbstractScreen {
     static Steps commonSteps;
     static Trips tripsScreen;
     static SiteSelection siteSelection;
+    static DebugMode debugModeScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -19,6 +20,7 @@ public class AbstractScreen {
         commonSteps = new Steps();
         tripsScreen = new Trips();
         siteSelection = new SiteSelection();
+        debugModeScreen = new DebugMode();
     }
 
     void waitForScreenToLoad() throws Throwable {

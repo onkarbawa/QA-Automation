@@ -4,10 +4,15 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Applaunch">
+    <test name="iOS- Applaunch And ChangeSite">
             <classes>
                 <class name="com.arriveconsole.ios.runners.AppLaunchTest"/>
             </classes>
+    </test>
+    <test name="iOS- Trip View And OverRide">
+        <classes>
+            <class name="com.arriveconsole.ios.runners.TripViewAndOverrideTest"/>
+        </classes>
     </test>
 
 </suite>
