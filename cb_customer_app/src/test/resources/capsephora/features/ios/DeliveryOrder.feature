@@ -3,7 +3,7 @@ Feature: IOS | CAP Sephora | Delivery Order
 
   @iOS
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Walnut Creek' location 'Stores' Screen
