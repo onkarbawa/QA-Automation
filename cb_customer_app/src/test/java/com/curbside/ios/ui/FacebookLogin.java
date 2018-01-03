@@ -16,7 +16,7 @@ public class FacebookLogin extends AbstractScreen {
     UIElement btnCurbsideSignInWithFacebook = UIElement.byPredicate("label CONTAINS 'Sign In with Facebook'");
 
     UIElement txtInBrowserUsername = UIElement.byClass("XCUIElementTypeTextField");
-    UIElement txtInBrowserPassword = UIElement.byPredicate("value CONTAINS 'Facebook password'");
+    UIElement txtInBrowserPassword = UIElement.byPredicate("value CONTAINS 'assword'");
     UIElement btnInBrowserLogin = UIElement.byPredicate("type ='XCUIElementTypeButton' AND label == 'Log In'");
     UIElement btnInBrowserContinueAs = UIElement.byPredicate("label CONTAINS 'Continue'");
 
