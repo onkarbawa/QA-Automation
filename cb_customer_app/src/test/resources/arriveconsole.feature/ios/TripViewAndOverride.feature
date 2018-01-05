@@ -6,7 +6,7 @@ Feature: iOS | ArriveConsole | Trip View and OverRide
     Given I launch ARRIVE Console application
     And I accept notifications alert
     And I select site which have open trips
-    When I tap on trip
+    When I tap on open trip
     Then I saw open trip details
     And I am on arriveConsole home screen
 

@@ -4,8 +4,10 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 /**
@@ -67,5 +69,10 @@ public class Trips extends AbstractScreen {
                 Steps.tapButton("View Trips");
             }
         }
+    }
+
+    @When("^I tap on open trip$")
+    public void iTapOnOpenTrip() throws Throwable {
+        openTrips.tap();
     }
 }
