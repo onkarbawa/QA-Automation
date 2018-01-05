@@ -14,7 +14,7 @@
     },
     {
       "name" : "ARRIVE Console",
-      "app" : "../app-arriveConsole-release.apk",
+      "app" : "../ArriveConsole.apk",
       "appPackage": "com.curbside.arriveconsole",
       "appActivity": "com.curbside.arriveconsole.activity.MainActivity"
     }
