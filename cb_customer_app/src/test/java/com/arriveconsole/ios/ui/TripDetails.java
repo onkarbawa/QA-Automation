@@ -3,6 +3,7 @@ package com.arriveconsole.ios.ui;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 
@@ -16,6 +17,8 @@ public class TripDetails extends AbstractScreen{
     UIElement txtCompleteTrip = UIElement.byName("Complete Trip");
     UIElement btnCancelTrip = UIElement.byName("cancelWhite");
     UIElement txtCancelTrip = UIElement.byName("Cancel Trip");
+    UIElement alertCancel = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Trip?')]/following-sibling::" +
+            "XCUIElementTypeStaticText");
 
     @Then("^I saw open trip details$")
     public void iSawOpenTripDetails() throws Throwable {
@@ -23,5 +26,16 @@ public class TripDetails extends AbstractScreen{
                 btnCompleteTrip.isDisplayed() && txtCompleteTrip.isDisplayed() && btnCancelTrip.isDisplayed() &&
                 txtCancelTrip.isDisplayed(),"All Trip details are not shown on screen");
         Steps.tapButton("Trips");
+    }
+
+    @And("^I tap on cancel trip button$")
+    public void iTapOnCancelTripButton() throws Throwable {
+        btnCancelTrip.tap();
+    }
+
+    @Then("^I saw cancel alert message$")
+    public void iSawCancelAlertMessage() throws Throwable {
+        Assert.assertEquals(alertCancel.getText(),"Cancel the trip if it was not finished successfully. It will" +
+                " be removed from the list of open trips.","Alert message is not displayed");
     }
 }
