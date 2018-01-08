@@ -17,6 +17,12 @@
       "app" : "../ArriveConsole.apk",
       "appPackage": "com.curbside.arriveconsole",
       "appActivity": "com.curbside.arriveconsole.activity.MainActivity"
+    },
+    {
+      "name" : "ARRIVE Console Tester",
+      "app" : "../ArriveConsoleTester.apk",
+      "appPackage": "com.curbside.pietracker",
+      "appActivity": "com.curbside.pietracker.MainActivity"
     }
   ],
   "iOS" : [

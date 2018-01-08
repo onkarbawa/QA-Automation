@@ -114,7 +114,8 @@ public class Steps {
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
-		acceptNotificationAlert();
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+			acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
 		//This will set the capabilities that is being used in launchApp method
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
@@ -136,6 +137,14 @@ public class Steps {
 				// e.printStackTrace();
 			}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
+			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
+				UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
+				for (int i = 0; i < 10; i++) {
+					if (!e.isDisplayed())
+						break;
+					e.touch();
+				}
+			}
         } else
             throw new NotImplementedException(
 					"Method acceptNotificationAlert is not implemented for platform: " + DeviceStore.getPlatform());
