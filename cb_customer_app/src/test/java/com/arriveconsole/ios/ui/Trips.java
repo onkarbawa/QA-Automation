@@ -4,7 +4,6 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,6 +21,7 @@ public class Trips extends AbstractScreen {
     UIElement btnMap = UIElement.byName("mapIcon");
     UIElement alertMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Change Site?']/following-sibling::" +
             "XCUIElementTypeStaticText");
+    UIElement firstOpenTrip = UIElement.byXpath("//XCUIElementTypeCell[1]/XCUIElementTypeStaticText[5]");
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
@@ -73,6 +73,15 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
-        openTrips.tap();
+        Properties.setVariable("firstOpenTrip", firstOpenTrip.getText());
+        firstOpenTrip.tap();
+    }
+
+    @Then("^I saw cancelled trip removed from the list$")
+    public void iSawCancelledTripRemovedFromTheList() throws Throwable {
+        siteName.waitFor(8);
+        Assert.assertFalse(UIElement.byXpath("//XCUIElementTypeCell[1]/XCUIElementTypeStaticText[@name='" +
+                Properties.getVariable("firstOpenTrip") + "']").isDisplayed(), "Cancelled Trip is not " +
+                "removed from the list");
     }
 }

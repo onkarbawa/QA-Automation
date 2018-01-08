@@ -28,14 +28,23 @@ public class TripDetails extends AbstractScreen{
         Steps.tapButton("Trips");
     }
 
-    @And("^I tap on cancel trip button$")
-    public void iTapOnCancelTripButton() throws Throwable {
-        btnCancelTrip.tap();
+    @And("^I tap on (.*) trip button$")
+    public void iTapOnCancelTripButton(String actionBtn) throws Throwable {
+        if (actionBtn.equalsIgnoreCase("cancel")) {
+            btnCancelTrip.tap();
+        }
+        else {
+            btnCompleteTrip.tap();
+        }
     }
 
-    @Then("^I saw cancel alert message$")
-    public void iSawCancelAlertMessage() throws Throwable {
-        Assert.assertEquals(alertCancel.getText(),"Cancel the trip if it was not finished successfully. It will" +
-                " be removed from the list of open trips.","Alert message is not displayed");
+    @Then("^I saw (.*) alert message$")
+    public void iSawCancelAlertMessage(String actionMsg) throws Throwable {
+        if (actionMsg.equalsIgnoreCase("cancel")) {
+            Assert.assertEquals(alertCancel.getText(), "Cancel the trip if it was not finished successfully. It will" +
+                    " be removed from the list of open trips.", "Alert message is not displayed");
+        }else {
+
+        }
     }
 }
