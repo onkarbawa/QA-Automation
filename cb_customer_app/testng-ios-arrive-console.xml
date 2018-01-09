@@ -14,5 +14,10 @@
             <class name="com.arriveconsole.ios.runners.TripViewAndOverrideTest"/>
         </classes>
     </test>
+    <test name="iOS- Messaging">
+        <classes>
+            <class name="com.arriveconsole.ios.runners.MessagingTest"/>
+        </classes>
+    </test>
 
 </suite>

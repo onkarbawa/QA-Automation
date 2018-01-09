@@ -6,6 +6,7 @@ import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 /**
@@ -20,6 +21,7 @@ public class Trips extends AbstractScreen {
     UIElement btnMap = UIElement.byName("mapIcon");
     UIElement alertMessage = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Change Site?']/following-sibling::" +
             "XCUIElementTypeStaticText");
+    UIElement firstOpenTrip = UIElement.byXpath("//XCUIElementTypeCell[1]/XCUIElementTypeStaticText[5]");
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
@@ -37,9 +39,13 @@ public class Trips extends AbstractScreen {
 
     @And("^I am on arriveConsole home screen$")
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
-        btnHome.tap();
-        btnChangeSite.tap();
-        MobileDevice.getScreenshot(true);
+        try {
+            btnHome.tap();
+            btnChangeSite.tap();
+            MobileDevice.getScreenshot(true);
+        }catch (Exception e){
+
+        }
     }
 
     @Then("^I saw alert message$")
@@ -67,5 +73,25 @@ public class Trips extends AbstractScreen {
                 Steps.tapButton("View Trips");
             }
         }
+    }
+
+    @When("^I tap on open trip$")
+    public void iTapOnOpenTrip() throws Throwable {
+        if (UIElement.byName("IN TRANSIT").isDisplayed()){
+            Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
+                    "/XCUIElementTypeStaticText[6]").getText());
+        }else {
+            Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
+                    "/XCUIElementTypeStaticText[5]").getText());
+        }
+        firstOpenTrip.tap();
+    }
+
+    @Then("^I saw cancelled trip removed from the list$")
+    public void iSawCancelledTripRemovedFromTheList() throws Throwable {
+        siteName.waitFor(8);
+        Assert.assertFalse(UIElement.byXpath("//XCUIElementTypeCell[1]/XCUIElementTypeStaticText[@name='" +
+                Properties.getVariable("firstOpenTrip") + "']").isDisplayed(), "Cancelled Trip is not " +
+                "removed from the list");
     }
 }
