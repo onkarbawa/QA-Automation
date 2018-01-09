@@ -49,6 +49,11 @@
       "name" : "ARRIVE Console",
       "app" : "../ios_simulator_builds/ARRIVEConsole.app",
       "bundleId": "com.curbside.ArriveConsoleDemo"
+    },
+    {
+      "name" : "ARRIVEConsoleTester",
+      "app" : "../ios_simulator_builds/ARRIVEConsoleTester.app",
+      "bundleId": "com.curbside.ARRIVEConsoleTestApp"
     }
   ]
 }

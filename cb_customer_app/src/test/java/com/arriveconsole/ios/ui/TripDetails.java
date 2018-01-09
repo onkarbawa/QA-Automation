@@ -2,7 +2,6 @@ package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
@@ -17,7 +16,7 @@ public class TripDetails extends AbstractScreen{
     UIElement txtCompleteTrip = UIElement.byName("Complete Trip");
     UIElement btnCancelTrip = UIElement.byName("cancelWhite");
     UIElement txtCancelTrip = UIElement.byName("Cancel Trip");
-    UIElement alertCancel = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Trip?')]/following-sibling::" +
+    UIElement alertPopUp = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Trip?')]/following-sibling::" +
             "XCUIElementTypeStaticText");
 
     @Then("^I saw open trip details$")
@@ -41,10 +40,11 @@ public class TripDetails extends AbstractScreen{
     @Then("^I saw (.*) alert message$")
     public void iSawCancelAlertMessage(String actionMsg) throws Throwable {
         if (actionMsg.equalsIgnoreCase("cancel")) {
-            Assert.assertEquals(alertCancel.getText(), "Cancel the trip if it was not finished successfully. It will" +
+            Assert.assertEquals(alertPopUp.getText(), "Cancel the trip if it was not finished successfully. It will" +
                     " be removed from the list of open trips.", "Alert message is not displayed");
         }else {
-
+            Assert.assertEquals(alertPopUp.getText(), "Complete the trip if the customer was met successfully." +
+                    " The trip will be removed from the list of open trips.", "Alert message is not displayed");
         }
     }
 }

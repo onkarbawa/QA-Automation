@@ -4,9 +4,10 @@ Feature: iOS | ArriveConsole | AppLaunchAndChangeSite
   @iOS @TCS01
   Scenario: Verify current site name and open trips are displayed without map
     Given I launch ARRIVE Console application for the first time
-    And I accept notifications alert
+    And I accept notifications alert message
     And I confirm that current site is selected
-    When I tap on 'View Trips' button
+    And I tap on 'View Trips' button
+    When I add open trips for arriveConsole app
     Then I saw site header name and current open trips without map
     And I am on arriveConsole home screen
 

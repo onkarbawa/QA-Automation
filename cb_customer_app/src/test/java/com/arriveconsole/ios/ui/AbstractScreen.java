@@ -13,6 +13,7 @@ public class AbstractScreen {
     static SiteSelection siteSelection;
     static DebugMode debugModeScreen;
     static TripDetails tripDetailsScreen;
+    static ArriveConsoleTester arriveConsoleTesterScreen;
 
     static UIElement loadingIcon = UIElement.byAccessibilityId("In progress");
 
@@ -23,6 +24,7 @@ public class AbstractScreen {
         siteSelection = new SiteSelection();
         debugModeScreen = new DebugMode();
         tripDetailsScreen = new TripDetails();
+        arriveConsoleTesterScreen = new ArriveConsoleTester();
     }
 
     void waitForScreenToLoad() throws Throwable {

@@ -39,9 +39,13 @@ public class Trips extends AbstractScreen {
 
     @And("^I am on arriveConsole home screen$")
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
-        btnHome.tap();
-        btnChangeSite.tap();
-        MobileDevice.getScreenshot(true);
+        try {
+            btnHome.tap();
+            btnChangeSite.tap();
+            MobileDevice.getScreenshot(true);
+        }catch (Exception e){
+
+        }
     }
 
     @Then("^I saw alert message$")
@@ -73,7 +77,13 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
-        Properties.setVariable("firstOpenTrip", firstOpenTrip.getText());
+        if (UIElement.byName("IN TRANSIT").isDisplayed()){
+            Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
+                    "/XCUIElementTypeStaticText[6]").getText());
+        }else {
+            Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
+                    "/XCUIElementTypeStaticText[5]").getText());
+        }
         firstOpenTrip.tap();
     }
 
