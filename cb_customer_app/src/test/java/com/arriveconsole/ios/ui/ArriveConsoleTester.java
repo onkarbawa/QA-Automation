@@ -2,6 +2,9 @@ package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.uifactory.UIElement;
 
+/**
+ * Created by bawa.onkar.
+ */
 public class ArriveConsoleTester extends AbstractScreen {
     UIElement txtBxName = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Name :']/following-sibling::" +
             "XCUIElementTypeTextField[1]");

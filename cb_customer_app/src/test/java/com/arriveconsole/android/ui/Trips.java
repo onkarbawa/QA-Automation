@@ -5,8 +5,10 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -23,6 +25,7 @@ public class Trips extends AbstractScreen {
     UIElement btnHome = UIElement.byXpath("//android.widget.ImageView[@resource-id='com.curbside.arriveconsole:id/imgMap']/../android.widget.ImageButton");
     UIElement btnCancelAll = UIElement.byId("com.curbside.arriveconsole:id/bCancelAll");
     UIElement btnChangeSite = UIElement.byId("android:id/button1");
+    UIElement alertMessage = UIElement.byId("android:id/message");
 
 
     @Then("^I saw site header name and current open trips (.*) map$")
@@ -63,5 +66,22 @@ public class Trips extends AbstractScreen {
             commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
             arriveTester.iStartSampleTrip(1);
         }
+    }
+
+    @When("^I tap on home button$")
+    public void iTapOnHomeButton() throws Throwable {
+        btnHome.tap();
+    }
+
+    @Then("^I saw alert message$")
+    public void iSawAlertMessage() throws Throwable {
+        Assert.assertEquals(alertMessage.waitFor(4).getText(), "Tracking for the current site will stop, and the app will " +
+                "no longer receive updates until you select another site.", "Alert message is not displayed");
+        MobileDevice.getScreenshot(true);
+    }
+
+    @And("^I tap on change site button$")
+    public void iTapOnChangeSiteButton() throws Throwable {
+        btnChangeSite.waitFor(2).tap();
     }
 }
