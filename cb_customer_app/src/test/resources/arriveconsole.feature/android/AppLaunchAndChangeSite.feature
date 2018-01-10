@@ -3,9 +3,7 @@ Feature: Android | ArriveConsole | AppLaunchAndChangeSite
 
   Scenario: Setting up the environment | Remove Previous trips
     Given I launch ARRIVE Console application for the first time
-    And I remove all previous trips
-    And I launch ARRIVE Console Tester application for the first time
-    And I generate 2 sample trips
+    And I generate trips if not present
 
   @android @TCS01
   Scenario: Verify current site name and open trips are displayed without map

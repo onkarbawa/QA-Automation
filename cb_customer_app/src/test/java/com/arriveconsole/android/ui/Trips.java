@@ -47,20 +47,20 @@ public class Trips extends AbstractScreen {
         MobileDevice.getScreenshot(true);
     }
 
-    @And("I remove all previous trips")
+    @And("I generate trips if not present")
     public void iRemoveTrips() throws Throwable {
-        int i = 0;
+        int openTripsCount = 0;
         commonSteps.acceptNotificationAlert();
         welcomeScreen.iConfirmThatCurrentSiteIsSelected();
         Steps.tapButton("VIEW TRIPS");
         openTrips.waitFor(10);
-        while (openTrips.isDisplayed() && i < 10) {
-            openTrips.tap();
-            btnCancelAll.waitFor(2).tap();
-            Steps.waitForButton("YES, CANCEL TRIP");
-            Steps.tapButton("YES, CANCEL TRIP");
-            Thread.sleep(3000);
-            ++i;
+        openTripsCount = openTrips.getCount();
+        if (openTripsCount < 1) {
+            commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
+            arriveTester.iStartSampleTrip(2);
+        } else if (openTripsCount < 2) {
+            commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
+            arriveTester.iStartSampleTrip(1);
         }
     }
 }
