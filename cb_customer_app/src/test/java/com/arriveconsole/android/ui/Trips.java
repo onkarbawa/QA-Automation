@@ -48,7 +48,7 @@ public class Trips extends AbstractScreen {
     }
 
     @And("I generate trips if not present")
-    public void iRemoveTrips() throws Throwable {
+    public void iAddTrips() throws Throwable {
         int openTripsCount = 0;
         commonSteps.acceptNotificationAlert();
         welcomeScreen.iConfirmThatCurrentSiteIsSelected();
