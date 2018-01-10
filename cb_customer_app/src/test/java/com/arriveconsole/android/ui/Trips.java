@@ -53,9 +53,10 @@ public class Trips extends AbstractScreen {
         commonSteps.acceptNotificationAlert();
         welcomeScreen.iConfirmThatCurrentSiteIsSelected();
         Steps.tapButton("VIEW TRIPS");
-        openTrips.waitFor(10);
-        openTripsCount = openTrips.getCount();
-        if (openTripsCount < 1) {
+        openTripsCount = openTrips.waitFor(10).getCount();
+        if (openTripsCount >= 2) {
+            return;
+        } else if (openTripsCount < 1) {
             commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
             arriveTester.iStartSampleTrip(2);
         } else if (openTripsCount < 2) {
