@@ -5,8 +5,10 @@ import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -23,6 +25,7 @@ public class Trips extends AbstractScreen {
     UIElement btnHome = UIElement.byXpath("//android.widget.ImageView[@resource-id='com.curbside.arriveconsole:id/imgMap']/../android.widget.ImageButton");
     UIElement btnCancelAll = UIElement.byId("com.curbside.arriveconsole:id/bCancelAll");
     UIElement btnChangeSite = UIElement.byId("android:id/button1");
+    UIElement alertMessage = UIElement.byId("android:id/message");
 
 
     @Then("^I saw site header name and current open trips (.*) map$")
@@ -47,20 +50,68 @@ public class Trips extends AbstractScreen {
         MobileDevice.getScreenshot(true);
     }
 
-    @And("I remove all previous trips")
-    public void iRemoveTrips() throws Throwable {
-        int i = 0;
+    @And("I generate trips if not present")
+    public void iAddTrips() throws Throwable {
+        int openTripsCount = 0;
         commonSteps.acceptNotificationAlert();
         welcomeScreen.iConfirmThatCurrentSiteIsSelected();
         Steps.tapButton("VIEW TRIPS");
-        openTrips.waitFor(10);
-        while (openTrips.isDisplayed() && i < 10) {
-            openTrips.tap();
-            btnCancelAll.waitFor(2).tap();
-            Steps.waitForButton("YES, CANCEL TRIP");
-            Steps.tapButton("YES, CANCEL TRIP");
-            Thread.sleep(3000);
-            ++i;
+        openTripsCount = openTrips.waitFor(10).getCount();
+        if (openTripsCount >= 2) {
+            return;
+        } else if (openTripsCount < 1) {
+            commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
+            arriveTester.iStartSampleTrip(2);
+        } else if (openTripsCount < 2) {
+            commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
+            arriveTester.iStartSampleTrip(1);
         }
+    }
+
+    @When("^I tap on home button$")
+    public void iTapOnHomeButton() throws Throwable {
+        btnHome.tap();
+    }
+
+    @Then("^I saw alert message$")
+    public void iSawAlertMessage() throws Throwable {
+        Assert.assertEquals(alertMessage.waitFor(4).getText(), "Tracking for the current site will stop, and the app will " +
+                "no longer receive updates until you select another site.", "Alert message is not displayed");
+        MobileDevice.getScreenshot(true);
+    }
+
+    @And("^I tap on change site button$")
+    public void iTapOnChangeSiteButton() throws Throwable {
+        btnChangeSite.waitFor(2).tap();
+    }
+
+    @And("^I select site which have open trips$")
+    public void iSelectSiteWhichHaveOpenTrips() throws Throwable {
+        welcomeScreen.lblCurrentSite.waitFor(50);
+        Steps.tapButton("VIEW TRIPS");
+        try {
+            openTrips.waitFor(7);
+        } catch (Exception e) {
+        }
+        int i = 0;
+        while (true) {
+            if (openTrips.getCount() >= 1) {
+                break;
+            } else {
+                iAmOnArriveConsoleHomeScreen();
+                welcomeScreen.iConfirmThatCurrentSiteIsSelected();
+                Steps.tapButton("CHOOSE A DIFFERENT SITE");
+                siteSelectionScreen.iSelectADifferentSiteFromList();
+                if (i > 4){
+                    break;
+                }
+            }
+            i++;
+        }
+    }
+
+    @When("^I tap on open trip$")
+    public void iTapOnOpenTrip() throws Throwable {
+        openTrips.tap();
     }
 }

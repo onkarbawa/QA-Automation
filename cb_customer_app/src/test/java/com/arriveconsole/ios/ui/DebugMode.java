@@ -8,6 +8,9 @@ import org.testng.Assert;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Created by bawa.onkar.
+ */
 public class DebugMode extends AbstractScreen {
 
     UIElement totalSites = UIElement.byXpath("//XCUIElementTypeMap/following-sibling::" +

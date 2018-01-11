@@ -10,10 +10,16 @@ public class AbstractScreen {
     static Welcome welcomeScreen;
     static Steps commonSteps;
     static Trips tripsScreen;
+    static ArriveTester arriveTester;
+    static SiteSelection siteSelectionScreen;
+    static TripDetails tripDetailsScreen;
 
     static {
         welcomeScreen = new Welcome();
         commonSteps = new Steps();
         tripsScreen = new Trips();
+        arriveTester = new ArriveTester();
+        siteSelectionScreen = new SiteSelection();
+        tripDetailsScreen = new TripDetails();
     }
 }
