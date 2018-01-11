@@ -12,6 +12,7 @@ public class AbstractScreen {
     static Trips tripsScreen;
     static ArriveTester arriveTester;
     static SiteSelection siteSelectionScreen;
+    static TripDetails tripDetailsScreen;
 
     static {
         welcomeScreen = new Welcome();
@@ -19,5 +20,6 @@ public class AbstractScreen {
         tripsScreen = new Trips();
         arriveTester = new ArriveTester();
         siteSelectionScreen = new SiteSelection();
+        tripDetailsScreen = new TripDetails();
     }
 }

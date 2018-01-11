@@ -84,4 +84,34 @@ public class Trips extends AbstractScreen {
     public void iTapOnChangeSiteButton() throws Throwable {
         btnChangeSite.waitFor(2).tap();
     }
+
+    @And("^I select site which have open trips$")
+    public void iSelectSiteWhichHaveOpenTrips() throws Throwable {
+        welcomeScreen.lblCurrentSite.waitFor(50);
+        Steps.tapButton("VIEW TRIPS");
+        try {
+            openTrips.waitFor(7);
+        } catch (Exception e) {
+        }
+        int i = 0;
+        while (true) {
+            if (openTrips.getCount() >= 1) {
+                break;
+            } else {
+                iAmOnArriveConsoleHomeScreen();
+                welcomeScreen.iConfirmThatCurrentSiteIsSelected();
+                Steps.tapButton("CHOOSE A DIFFERENT SITE");
+                siteSelectionScreen.iSelectADifferentSiteFromList();
+                if (i > 4){
+                    break;
+                }
+            }
+            i++;
+        }
+    }
+
+    @When("^I tap on open trip$")
+    public void iTapOnOpenTrip() throws Throwable {
+        openTrips.tap();
+    }
 }

@@ -43,7 +43,7 @@ public class Trips extends AbstractScreen {
             btnHome.tap();
             btnChangeSite.tap();
             MobileDevice.getScreenshot(true);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -62,6 +62,7 @@ public class Trips extends AbstractScreen {
             openTrips.waitFor(7);
         } catch (Exception e) {
         }
+        int i = 0;
         while (true) {
             if (openTrips.getCount() >= 1) {
                 break;
@@ -71,16 +72,20 @@ public class Trips extends AbstractScreen {
                 Steps.tapButton("Choose a Different Site");
                 siteSelection.iSelectADifferentSiteFromList();
                 Steps.tapButton("View Trips");
+                if (i > 4) {
+                    break;
+                }
             }
+            i++;
         }
     }
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
-        if (UIElement.byName("IN TRANSIT").isDisplayed()){
+        if (UIElement.byName("IN TRANSIT").isDisplayed()) {
             Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
                     "/XCUIElementTypeStaticText[6]").getText());
-        }else {
+        } else {
             Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
                     "/XCUIElementTypeStaticText[5]").getText());
         }

@@ -11,7 +11,7 @@ import org.testng.Assert;
 /**
  * Created by hitesh.grover on 08/01/18.
  */
-public class Welcome {
+public class Welcome extends AbstractScreen {
 
     UIElement lblCurrentSite = UIElement.byId("com.curbside.arriveconsole:id/tvSiteId");
 
