@@ -112,6 +112,17 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
+        Properties.setVariable("firstOpenTrip", openTrips.getText());
         openTrips.tap();
+    }
+
+    @Then("^I saw cancelled trip removed from the list$")
+    public void iSawCancelledTripRemovedFromTheList() throws Throwable {
+        siteName.waitFor(10);
+        UIElement.byXpath("//android.widget.TextView[@text='" +
+                Properties.getVariable("firstOpenTrip") + "']").waitForNot(8);
+        Assert.assertFalse(UIElement.byXpath("//android.widget.TextView[@text='" +
+                Properties.getVariable("firstOpenTrip") + "']").waitFor(2).isDisplayed(), "Cancelled Trip is not " +
+                "removed from the list");
     }
 }
