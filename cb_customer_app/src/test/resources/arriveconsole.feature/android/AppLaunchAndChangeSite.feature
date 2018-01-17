@@ -29,6 +29,5 @@ Feature: Android | ArriveConsole | AppLaunchAndChangeSite
     Then I confirm that after site switched move back to the same site
     And I tap on 'CHOOSE A DIFFERENT SITE' button
     And I select a different site from list
-    And I am on arriveConsole home screen
 
 
