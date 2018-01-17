@@ -36,7 +36,7 @@ public class Trips extends AbstractScreen {
         if (selection.equalsIgnoreCase("without")) {
             Assert.assertFalse(mapPin.waitFor(5).isDisplayed(), "Map view is displayed");
         } else if (selection.equalsIgnoreCase("with")) {
-            btnMap.tap();
+            btnMap.waitFor(10).tap();
             Assert.assertTrue(mapPin.waitFor(10).isDisplayed(), "Map view is not displayed");
         } else
             Assert.fail("Please use (with | without) option only");

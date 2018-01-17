@@ -1,6 +1,7 @@
 package com.curbside.automation.uifactory;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -266,11 +267,11 @@ public class MobileDevice {
 		int endPoint = (int) (MobileDevice.getHeight() * 0.6);
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(1000)
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1000))
 					.moveTo(0, startPoint - (2 * startPoint)).release().perform();
 
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(1000)
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1000))
 					.moveTo(0, endPoint).release().perform();
 		}
 	}
@@ -329,5 +330,17 @@ public class MobileDevice {
 			return DeviceStore.getDevice().getString("appPackage");
 		
 		return null;
+	}
+
+	public static void acceptAlert() throws Throwable {
+		DriverFactory.getDriver().switchTo().alert().accept();
+	}
+
+	public static void dismissAlert() throws Throwable {
+		DriverFactory.getDriver().switchTo().alert().dismiss();;
+	}
+
+	public static String getAlertText() throws Throwable {
+		return DriverFactory.getDriver().switchTo().alert().getText();
 	}
 }
