@@ -7,6 +7,8 @@ import cucumber.api.java.en.And;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 
+import java.time.Duration;
+
 /**
  * Created by hitesh.grover
  */
@@ -26,10 +28,10 @@ public class CustomerSignature {
             int width = signatureBlankSpace.getWidth();
             int height = signatureBlankSpace.getHeight();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(1000)
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1000))
                     .moveTo(-width, startY + (height / 2)).release().perform();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(1000)
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1000))
                     .moveTo(-width, 0).release().perform();
 
             ++noOfDraws;

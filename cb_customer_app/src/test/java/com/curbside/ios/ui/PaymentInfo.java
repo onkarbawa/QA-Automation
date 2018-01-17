@@ -13,6 +13,8 @@ import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 /**
  * Created by bawa.onkar on 06/07/17.
  */
@@ -65,7 +67,7 @@ public class PaymentInfo extends AbstractScreen {
 		int x = creditCardCell.getX();
 		int y = creditCardCell.getY();
 
-		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).waitAction(1000)
+		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).waitAction(Duration.ofSeconds(1000))
 				.moveTo(-width, y+(height/2)).release().perform();
 //		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
 		btnDelete.waitFor(10);

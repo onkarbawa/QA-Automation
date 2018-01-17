@@ -132,7 +132,7 @@ public class Steps {
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
 			try {
-				new UIElement(By.name("Allow")).tap();
+				MobileDevice.acceptAlert();
 			} catch (Exception e) {
 				// e.printStackTrace();
 			}
@@ -172,7 +172,6 @@ public class Steps {
 		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){
 			if(MobileDevice.getPlatformVersion().charAt(0) != '5') {
-//				UIElement e = UIElement.byId("com.android.packageinstaller:id/permission_allow_button").waitFor(10);
 				UIElement e = UIElement.byUISelector("new UiSelector().text(\"Allow\")").waitFor(10);
 				for (int i = 0; i < 10; i++) {
 					if (!e.isDisplayed())
