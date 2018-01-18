@@ -1,7 +1,7 @@
 @applicationLaunch
 Feature: Android | ArriveConsole | AppLaunchAndChangeSite
 
-  Scenario: Setting up the environment | Remove Previous trips
+  Scenario: Setting up the environment | Arrive Console
     Given I launch ARRIVE Console application for the first time
     And I generate trips if not present
 

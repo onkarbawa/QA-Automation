@@ -17,9 +17,7 @@ public class Welcome extends AbstractScreen {
 
     @And("^I confirm that current site is selected$")
     public void iConfirmThatCurrentSiteIsSelected() throws Throwable {
-        Properties.setVariable("selectedSite", lblCurrentSite.waitFor(10).getText());
-        Reporter.addStepLog("Default site on Arrive app is " + Properties.getVariable("selectedSite"));
-        Assert.assertTrue(lblCurrentSite.isDisplayed(), "Current site is not selected");
+        Assert.assertTrue(lblCurrentSite.waitFor(10).isDisplayed(), "There is no default site that is present for this location");
         MobileDevice.getScreenshot(true);
     }
 
@@ -28,5 +26,10 @@ public class Welcome extends AbstractScreen {
         Assert.assertEquals(lblCurrentSite.waitFor(10).getText(), Properties.getVariable("selectedSite"),
                 "Same site name is not displayed");
         MobileDevice.getScreenshot(true);
+    }
+
+    public void setDefaultSite() throws Throwable {
+        Properties.setVariable("selectedSite", lblCurrentSite.waitFor(10).getText());
+        Reporter.addStepLog("Trips will be generated for " + Properties.getVariable("selectedSite") + " site");
     }
 }
