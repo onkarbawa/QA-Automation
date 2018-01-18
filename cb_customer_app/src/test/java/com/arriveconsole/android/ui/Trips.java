@@ -46,6 +46,8 @@ public class Trips extends AbstractScreen {
     @And("^I am on arriveConsole home screen$")
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
         btnHome.tap();
+        if (!btnChangeSite.waitFor(2).isDisplayed())
+            btnHome.tap();
         btnChangeSite.waitFor(2).tap();
         MobileDevice.getScreenshot(true);
     }
