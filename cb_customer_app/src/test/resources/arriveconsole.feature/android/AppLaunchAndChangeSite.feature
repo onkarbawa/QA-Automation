@@ -10,6 +10,11 @@ Feature: Android | ArriveConsole | AppLaunchAndChangeSite
     Given I launch ARRIVE Console application
     Then I saw site header name and current open trips without map
 
+  @android @TCS04
+  Scenario: Verify details are shown when open a trip
+    When I tap on open trip
+    Then I saw open trip details
+
   @android @TCS02
   Scenario: Verify current site name and open trips are displayed with map
     Given I am on arriveConsole home screen
