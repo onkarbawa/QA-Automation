@@ -37,6 +37,8 @@ public class Trips extends AbstractScreen {
             Assert.assertFalse(mapPin.waitFor(5).isDisplayed(), "Map view is displayed");
         } else if (selection.equalsIgnoreCase("with")) {
             btnMap.waitFor(10).tap();
+            if (!mapPin.waitFor(10).isDisplayed())
+                btnMap.tap();
             Assert.assertTrue(mapPin.waitFor(10).isDisplayed(), "Map view is not displayed");
         } else
             Assert.fail("Please use (with | without) option only");
@@ -45,6 +47,8 @@ public class Trips extends AbstractScreen {
 
     @And("^I am on arriveConsole home screen$")
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
+        if (tripDetailsScreen.btnCompleteTrip.isDisplayed())
+            tripDetailsScreen.btnBack.tap();
         btnHome.tap();
         if (!btnChangeSite.waitFor(2).isDisplayed())
             btnHome.tap();
