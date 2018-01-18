@@ -30,9 +30,13 @@ public class Trips extends AbstractScreen {
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
+        Reporter.addStepLog("Trips are in " + Properties.getVariable("selectedSite") + " site");
+        Reporter.addStepLog("Present working site :" + siteName.getText());
+
         Assert.assertEquals(siteName.getText(), Properties.getVariable("selectedSite"), "Current site " +
                 "name is not displayed");
         Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "Open trips is not displayed");
+
         if (selection.equalsIgnoreCase("without")) {
             Assert.assertFalse(mapPin.waitFor(5).isDisplayed(), "Map view is displayed");
         } else if (selection.equalsIgnoreCase("with")) {
@@ -47,19 +51,23 @@ public class Trips extends AbstractScreen {
 
     @And("^I am on arriveConsole home screen$")
     public void iAmOnArriveConsoleHomeScreen() throws Throwable {
+        if (welcomeScreen.lblCurrentSite.waitFor(10).isDisplayed())
+            return;
         if (tripDetailsScreen.btnCompleteTrip.isDisplayed())
-            tripDetailsScreen.btnBack.tap();
-        btnHome.tap();
+            tripDetailsScreen.btnBack.tapOptional();
+        btnHome.tapOptional();
         if (!btnChangeSite.waitFor(2).isDisplayed())
             btnHome.tap();
         btnChangeSite.waitFor(2).tap();
+        btnChangeSite.tapOptional();
         MobileDevice.getScreenshot(true);
     }
 
     @And("I generate trips if not present")
     public void iAddTrips() throws Throwable {
-        int openTripsCount = 0;
+        int openTripsCount;
         commonSteps.acceptNotificationAlert();
+        welcomeScreen.setDefaultSite();
         welcomeScreen.iConfirmThatCurrentSiteIsSelected();
         Steps.tapButton("VIEW TRIPS");
         openTripsCount = openTrips.waitFor(10).getCount();
@@ -108,7 +116,7 @@ public class Trips extends AbstractScreen {
                 welcomeScreen.iConfirmThatCurrentSiteIsSelected();
                 Steps.tapButton("CHOOSE A DIFFERENT SITE");
                 siteSelectionScreen.iSelectADifferentSiteFromList();
-                if (i > 4){
+                if (i > 4) {
                     break;
                 }
             }
@@ -122,11 +130,11 @@ public class Trips extends AbstractScreen {
         openTrips.tap();
     }
 
-    @Then("^I saw cancelled trip removed from the list$")
+    @Then("^I saw trip removed from the list$")
     public void iSawCancelledTripRemovedFromTheList() throws Throwable {
         siteName.waitFor(10);
         UIElement.byXpath("//android.widget.TextView[@text='" +
-                Properties.getVariable("firstOpenTrip") + "']").waitForNot(8);
+                Properties.getVariable("firstOpenTrip") + "']").waitForNot(10);
         Assert.assertFalse(UIElement.byXpath("//android.widget.TextView[@text='" +
                 Properties.getVariable("firstOpenTrip") + "']").waitFor(2).isDisplayed(), "Cancelled Trip is not " +
                 "removed from the list");
