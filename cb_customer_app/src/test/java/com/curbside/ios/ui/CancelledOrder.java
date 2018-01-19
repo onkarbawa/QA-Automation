@@ -15,7 +15,7 @@ import org.testng.Assert;
  */
 public class CancelledOrder extends AbstractScreen {
 
-    UIElement cancelOrderTitle = UIElement.byName("Cancelled Order");
+    UIElement cancelOrderTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Cancelled Order']");
     UIElement orderID = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Order ID']/following-sibling::XCUIElementTypeStaticText[6]");
 
     @Then("^I should see cancel order information under Cancelled Order screen$")

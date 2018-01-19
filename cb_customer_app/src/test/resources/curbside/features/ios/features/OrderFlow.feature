@@ -12,8 +12,8 @@ Feature: iOS- Order flow verification
     Given I Sign-in with 'order_flow@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order

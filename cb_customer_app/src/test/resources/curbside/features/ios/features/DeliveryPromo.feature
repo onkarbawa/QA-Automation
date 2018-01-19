@@ -9,7 +9,7 @@ Feature: iOS - Delivery Promo code
 
   @iOS @C114949
   Scenario Outline: Verify Repeat Promo code
-    Given I Sign-in with 'delivery_promo@curbside.com' and 'curbside'
+    Given I Sign-in with 'deliverypromo@curbside.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
     And I select 'Mock' retailer and search for 'Food'

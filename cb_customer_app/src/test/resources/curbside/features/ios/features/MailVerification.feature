@@ -22,8 +22,10 @@ Feature: iOS- Mail verification flow
     And I Sign-in with 'palo_alto@mailinator.com' and 'curbside'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'Mock' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
+#    And I select 'Mock' retailer
+#    And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I attempt to place an order
@@ -33,8 +35,10 @@ Feature: iOS- Mail verification flow
   @iOS @C114983
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
-    And I select 'Mock' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
+#    And I select 'Mock' retailer
+#    And I select 1no product from list
     And I add 2 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I select Curbside Pickup and delivery option

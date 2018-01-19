@@ -16,7 +16,7 @@ import org.testng.Assert;
 public class MyOrders extends AbstractScreen {
 
     UIElement orderInProgress = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'Order In Progress')]");
-    UIElement myOrderTitle = UIElement.byName("My Orders");
+    UIElement myOrderTitle = UIElement.byXpath("//XCUIElementTypeStaticText[@name='My Orders']");
     UIElement orderID = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]" +
             "/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText");
     //XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@name,'Payment ...')]]/following-sibling::XCUIElementTypeCell[1]//XCUIElementTypeStaticText
