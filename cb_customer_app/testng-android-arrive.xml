@@ -9,11 +9,6 @@
             <class name="com.arriveconsole.android.runners.AppLaunchTest"/>
         </classes>
     </test>
-    <test name="android- Trip View And OverRide">
-        <classes>
-            <class name="com.arriveconsole.android.runners.TripViewAndOverrideTest"/>
-        </classes>
-    </test>
     <test name="android- Message">
         <classes>
             <class name="com.arriveconsole.android.runners.MessageTest"/>

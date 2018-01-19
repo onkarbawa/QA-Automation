@@ -1,7 +1,7 @@
 @applicationLaunch
 Feature: Android | ArriveConsole | AppLaunchAndChangeSite
 
-  Scenario: Setting up the environment | Remove Previous trips
+  Scenario: Setting up the environment | Arrive Console
     Given I launch ARRIVE Console application for the first time
     And I generate trips if not present
 
@@ -9,6 +9,11 @@ Feature: Android | ArriveConsole | AppLaunchAndChangeSite
   Scenario: Verify current site name and open trips are displayed without map
     Given I launch ARRIVE Console application
     Then I saw site header name and current open trips without map
+
+  @android @TCS04
+  Scenario: Verify details are shown when open a trip
+    When I tap on open trip
+    Then I saw open trip details
 
   @android @TCS02
   Scenario: Verify current site name and open trips are displayed with map
