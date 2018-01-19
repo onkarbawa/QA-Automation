@@ -167,7 +167,8 @@ public class Steps {
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 			try {
-				new UIElement(By.name("Allow")).tap();
+				MobileDevice.acceptAlert();
+				//new UIElement(By.name("Allow")).tap();
 			}catch (Exception e){}
 		}
 		else if (DeviceStore.getPlatform().equalsIgnoreCase("android")){

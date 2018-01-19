@@ -8,13 +8,10 @@ import com.curbside.automation.uifactory.SwipeDirection;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 
-import static com.curbside.ios.ui.AbstractScreen.footerTabsScreen;
-import static com.curbside.ios.ui.AbstractScreen.productDetailsScreen;
-
 /**
  * Created by bawa.onkar on 20/07/17.
  */
-public class StoreDetails {
+public class StoreDetails extends AbstractScreen{
 
     UIElement searchBar = UIElement.byXpath("//XCUIElementTypeSearchField[contains(@name,'Search')]");
     UIElement mockPickingStore = UIElement.byName("Mock Picking no Training");
