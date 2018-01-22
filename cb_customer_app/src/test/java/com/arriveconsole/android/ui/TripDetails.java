@@ -17,8 +17,7 @@ public class TripDetails extends AbstractScreen {
     UIElement btnCancelTrip = UIElement.byId("com.curbside.arriveconsole:id/bCancelAll");
     UIElement txtCancelTrip = UIElement.byUISelector("new UiSelector().text(\"CANCEL ALL\")");
     UIElement alertPopUp = UIElement.byId("android:id/message");
-    UIElement btnBack = UIElement.byXpath("//android.view.ViewGroup[android.widget.ImageView" +
-            "[@resource-id='com.curbside.arriveconsole:id/imgMap']]/android.widget.ImageButton");
+    UIElement btnBack = UIElement.byXpath("//android.widget.ImageView[@resource-id='com.curbside.arriveconsole:id/imgMap']/../android.widget.ImageButton");
     UIElement lblCustomerStatus = UIElement.byId("com.curbside.arriveconsole:id/tvSiteCustomerStatus");
 
     @Then("^I saw open trip details$")
