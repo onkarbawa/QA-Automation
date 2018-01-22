@@ -8,7 +8,6 @@ Feature: Android | ArriveConsole | Messaging
 
   @android @TCS08
   Scenario: Verify while tap on cancel Trip button Trip cancel pop-up message is displayed
-    Given I launch ARRIVE Console application
     Then I saw site header name and current open trips without map
     And I tap on open trip
     When I tap on cancel trip button
