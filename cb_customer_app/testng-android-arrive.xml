@@ -14,4 +14,9 @@
             <class name="com.arriveconsole.android.runners.MessageTest"/>
         </classes>
     </test>
+    <test name="android- Trip View">
+        <classes>
+            <class name="com.arriveconsole.android.runners.TripView"/>
+        </classes>
+    </test>
 </suite>

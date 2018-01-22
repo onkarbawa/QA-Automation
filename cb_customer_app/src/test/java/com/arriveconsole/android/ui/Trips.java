@@ -80,6 +80,7 @@ public class Trips extends AbstractScreen {
             commonSteps.launchApplicationClean("ARRIVE Console Tester", "first");
             arriveTester.iStartSampleTrip(1);
         }
+        commonSteps.launchApplication("ARRIVE Console");
     }
 
     @When("^I tap on home button$")
@@ -138,5 +139,15 @@ public class Trips extends AbstractScreen {
         Assert.assertFalse(UIElement.byXpath("//android.widget.TextView[@text='" +
                 Properties.getVariable("firstOpenTrip") + "']").waitFor(2).isDisplayed(), "Cancelled Trip is not " +
                 "removed from the list");
+    }
+
+    @And("^I generate (\\d+) trip for (.*) site$")
+    public void iAddTrips(int noOfTrips, String siteName) throws Throwable {
+        if (openTrips.waitFor(10).getCount() > 0)
+            return;
+        commonSteps.launchApplication("ARRIVE Console Tester");
+        Properties.setVariable("selectedSite", siteName);
+        arriveTester.iStartSampleTrip(1);
+        commonSteps.launchApplication("ARRIVE Console");
     }
 }

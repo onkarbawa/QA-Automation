@@ -3,6 +3,7 @@ package com.arriveconsole.android.ui;
 import com.cucumber.listener.Reporter;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -31,5 +32,22 @@ public class Welcome extends AbstractScreen {
     public void setDefaultSite() throws Throwable {
         Properties.setVariable("selectedSite", lblCurrentSite.waitFor(10).getText());
         Reporter.addStepLog("Trips will be generated for " + Properties.getVariable("selectedSite") + " site");
+    }
+
+    @And("^I am on (.*) site$")
+    public void iAmAtSite(String siteName) throws Throwable {
+        commonSteps.acceptNotificationAlert();
+        if (tripsScreen.siteName.waitFor(10).isDisplayed()) {
+            if (tripsScreen.siteName.getText().equalsIgnoreCase(siteName))
+                return;
+        }
+        if (!(lblCurrentSite.isDisplayed()) && tripsScreen.btnHome.isDisplayed()) {
+            tripsScreen.iAmOnArriveConsoleHomeScreen();
+        }
+        Steps.waitForButton("CHOOSE A DIFFERENT SITE");
+        Steps.tapButton("CHOOSE A DIFFERENT SITE");
+        Steps.tapButton(siteName);
+        MobileDevice.getScreenshot(true);
+        Assert.assertEquals(tripsScreen.siteName.waitFor(10).getText(), siteName, "Not able to switch site");
     }
 }
