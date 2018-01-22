@@ -20,8 +20,8 @@ Feature: iOS- SMS Flow
   Scenario: Verify SMS is received after place order
     Given I tap on 'My Account' icon in bottom menu
     And I add credit card information
-    And I select 'Mock' retailer
-    And I select 1no product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 1 quantity of the product
     And I tap on 'Cart' icon in bottom menu
     And I check there is no latest SMS from Curbside
