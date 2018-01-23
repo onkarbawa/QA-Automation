@@ -29,7 +29,7 @@
     {
       "name" : "Curbside",
       "app" : "../ios_simulator_builds/Curbside.app",
-      "bundleId": "com.curbside.curbside",
+      "bundleId": "com.curbside.curbside"
     },
     {
       "name" : "CAP",

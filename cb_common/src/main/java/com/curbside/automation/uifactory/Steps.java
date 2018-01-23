@@ -1,16 +1,8 @@
 package com.curbside.automation.uifactory;
 
 import com.cucumber.listener.Reporter;
-import cucumber.api.PendingException;
-import cucumber.api.java.eo.Do;
-import org.apache.commons.lang3.NotImplementedException;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.testng.Assert;
-
 import com.curbside.automation.appfactory.AppStore;
 import com.curbside.automation.devicefactory.DeviceStore;
-
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
@@ -18,6 +10,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.appium.java_client.AppiumDriver;
+import org.apache.commons.lang3.NotImplementedException;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 
 /**
  * @author kumar.anil
@@ -269,8 +265,11 @@ public class Steps {
 			AppleDevice.launchSettings();
 			new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
 
-//			Assert.assertEquals(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName
-//					+ "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
+			UIElement.byName("" + preferenceName + "").tap();
+			UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + expectedValue + "']").tap();
+			iTapOnBackButton();
+			Assert.assertEquals(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName
+					+ "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
 		} else
 			throw new NotImplementedException("");
 
