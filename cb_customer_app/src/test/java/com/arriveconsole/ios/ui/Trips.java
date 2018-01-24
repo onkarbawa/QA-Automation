@@ -28,7 +28,7 @@ public class Trips extends AbstractScreen {
         Steps.tapButton_optional("OK");
         Assert.assertEquals(siteName.getText(), Properties.getVariable("selectedSite"), "Current site " +
                 "name is not displayed");
-        Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "Open trips is not displayed");
+        Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "Open trips are not displayed");
         if (selection.equalsIgnoreCase("without")) {
             Assert.assertFalse(mapPin.isDisplayed(), "Map view is displayed");
         } else {
