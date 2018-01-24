@@ -14,7 +14,7 @@ Feature: iOS- Curbside ApplicationLaunch
     And I tap on 'OK with me' button on 'location access' page
     When I accept location access alert
     Then I should see 'Nearby stores' landing page
-    And 'Location' preference should be set as 'Always' for 'Curbside' app
+    And 'Location' preference should be set as 'While Using' for 'Curbside' app
 
   @iOS @C114936
   Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
