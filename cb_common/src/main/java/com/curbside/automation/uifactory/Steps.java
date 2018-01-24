@@ -264,12 +264,11 @@ public class Steps {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 			AppleDevice.launchSettings();
 			new UIElement(By.xpath("//XCUIElementTypeCell[@name='" + appName + "']")).scrollTo().tap();
-
-			UIElement.byName("" + preferenceName + "").tap();
-			UIElement.byXpath("//XCUIElementTypeStaticText[@name='" + expectedValue + "']").tap();
-			iTapOnBackButton();
 			Assert.assertEquals(new UIElement(By.xpath("//XCUIElementTypeStaticText[@name='" + preferenceName
 					+ "']/following-sibling::XCUIElementTypeStaticText")).getText(), expectedValue);
+			UIElement.byName("" + preferenceName + "").tap();
+			UIElement.byXpath("//XCUIElementTypeStaticText[@name='Always']").tap();
+			iTapOnBackButton();
 		} else
 			throw new NotImplementedException("");
 

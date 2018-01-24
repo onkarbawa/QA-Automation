@@ -25,6 +25,7 @@ public class Trips extends AbstractScreen {
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
+        Steps.tapButton_optional("OK");
         Assert.assertEquals(siteName.getText(), Properties.getVariable("selectedSite"), "Current site " +
                 "name is not displayed");
         Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "Open trips is not displayed");
@@ -82,6 +83,7 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
+        Steps.tapButton_optional("OK");
         if (UIElement.byName("IN TRANSIT").isDisplayed()) {
             Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
                     "/XCUIElementTypeStaticText[6]").getText());
