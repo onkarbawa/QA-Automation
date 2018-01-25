@@ -9,14 +9,14 @@
                 <class name="com.arriveconsole.ios.runners.AppLaunchTest"/>
             </classes>
     </test>
-    <test name="iOS- Trip View And OverRide">
-        <classes>
-            <class name="com.arriveconsole.ios.runners.TripViewAndOverrideTest"/>
-        </classes>
-    </test>
     <test name="iOS- Messaging">
         <classes>
             <class name="com.arriveconsole.ios.runners.MessagingTest"/>
+        </classes>
+    </test>
+    <test name="iOS- Trip View And OverRide">
+        <classes>
+            <class name="com.arriveconsole.ios.runners.TripViewAndOverrideTest"/>
         </classes>
     </test>
 

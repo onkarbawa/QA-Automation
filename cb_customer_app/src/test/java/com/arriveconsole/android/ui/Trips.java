@@ -127,7 +127,7 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
-        Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "There are no open trips on this site");
+        Assert.assertTrue(openTrips.waitFor(10).isDisplayed(), "There are no open trips on this site");
         Properties.setVariable("firstOpenTrip", openTrips.getText());
         openTrips.tap();
     }

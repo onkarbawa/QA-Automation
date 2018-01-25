@@ -1,5 +1,8 @@
 package com.arriveconsole.ios.ui;
 
+import com.curbside.automation.common.configuration.Properties;
+import com.curbside.automation.common.utilities.Helpers;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 
 /**
@@ -15,4 +18,17 @@ public class ArriveConsoleTester extends AbstractScreen {
     UIElement txtBxSiteId = UIElement.byXpath("//XCUIElementTypeStaticText[@name='Site ID :']/following-sibling::" +
             "XCUIElementTypeTextField[1]");
 
+    public void iStartSampleTrip(int noOfTrips) throws Throwable {
+        for (int i = 0; i < noOfTrips; i++) {
+            commonSteps.launchApplicationClean("ARRIVEConsoleTester", "first");
+            commonSteps.acceptLocationAlert();
+            String randomText = "iOSTest" + Helpers.getRandomFirstName();
+            arriveConsoleTesterScreen.txtBxName.sendKeys(randomText, false);
+            arriveConsoleTesterScreen.txtBxTracking.sendKeys(randomText, false);
+            arriveConsoleTesterScreen.txtBxToken.sendKeys(randomText, false);
+            arriveConsoleTesterScreen.txtBxSiteId.sendKeys(Properties.getVariable("selectedSite"),
+                    false);
+            Steps.tapButton("Start Tracking");
+        }
+    }
 }
