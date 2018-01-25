@@ -51,6 +51,7 @@ Feature: iOS- End to End flow verification
   Scenario: Verify Mail subject - We're Prepping Your Curbside Pickup Order (With Delivery Promo Code)
     Given I am on Shop Screen
     And My cart is empty
+    And I am on Shop Screen
     And I select 'Mock' retailer and search for 'Food'
     And I select 'Frozen food' product from list
     And I add 2 quantity of the product

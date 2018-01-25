@@ -1,7 +1,6 @@
 package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.common.utilities.Helpers;
 import com.curbside.automation.uifactory.MobileDevice;
 import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
@@ -26,6 +25,7 @@ public class Trips extends AbstractScreen {
 
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
+        Steps.tapButton_optional("OK");
         Assert.assertEquals(siteName.waitFor(5).getText(), Properties.getVariable("selectedSite"), "Current site " +
                 "name is not displayed");
         Assert.assertTrue(openTrips.waitFor(10).isDisplayed(), "Open trips are not displayed");
@@ -83,6 +83,7 @@ public class Trips extends AbstractScreen {
 
     @When("^I tap on open trip$")
     public void iTapOnOpenTrip() throws Throwable {
+        Steps.tapButton_optional("OK");
         if (UIElement.byName("IN TRANSIT").isDisplayed()) {
             Properties.setVariable("firstOpenTrip", UIElement.byXpath("//XCUIElementTypeCell[1]" +
                     "/XCUIElementTypeStaticText[6]").getText());
