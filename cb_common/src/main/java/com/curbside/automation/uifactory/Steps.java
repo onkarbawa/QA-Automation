@@ -204,15 +204,14 @@ public class Steps {
 
 	@Given("^I (?:tap|click) on '(.*)' button$")
 	public static void tapButton(String buttonName) throws Throwable {
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
 			try {
 				UIElement.byName(buttonName).waitFor(5).tap();
-				MobileDevice.getScreenshot(true);
 			} catch (Exception e) {
 				UIElement.byAccessibilityId(buttonName).waitFor(5).tap();
-				MobileDevice.getScreenshot(true);
 			}
-		else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
+			MobileDevice.getScreenshot(true);
+		} else if (DeviceStore.getPlatform().equalsIgnoreCase("Android")) {
 			UIElement.byUISelector("new UiSelector().text(\"" + buttonName + "\")").waitFor(5).tap();
 		}
 	}
