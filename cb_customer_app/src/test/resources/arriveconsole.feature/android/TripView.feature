@@ -10,3 +10,8 @@ Feature: Android | ArriveConsole | TripView
   Scenario: Verify details are shown when open a trip
     When I tap on open trip
     Then I saw open trip details
+    And I tap on open trip
+    And I tap on cancel trip button
+    And I saw cancel alert message
+    When I tap on 'YES, CANCEL TRIP' button
+    Then I saw trip removed from the list

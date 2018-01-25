@@ -26,9 +26,9 @@ public class Trips extends AbstractScreen {
     @Then("^I saw site header name and current open trips (.*) map$")
     public void iSawSiteHeaderNameAndCurrentOpenTrips(String selection) throws Throwable {
         Steps.tapButton_optional("OK");
-        Assert.assertEquals(siteName.getText(), Properties.getVariable("selectedSite"), "Current site " +
+        Assert.assertEquals(siteName.waitFor(5).getText(), Properties.getVariable("selectedSite"), "Current site " +
                 "name is not displayed");
-        Assert.assertTrue(openTrips.waitFor(5).isDisplayed(), "Open trips are not displayed");
+        Assert.assertTrue(openTrips.waitFor(10).isDisplayed(), "Open trips are not displayed");
         if (selection.equalsIgnoreCase("without")) {
             Assert.assertFalse(mapPin.isDisplayed(), "Map view is displayed");
         } else {

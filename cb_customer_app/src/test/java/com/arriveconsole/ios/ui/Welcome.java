@@ -20,8 +20,8 @@ public class Welcome extends AbstractScreen {
 
     @And("^I confirm that current site is selected$")
     public void iConfirmThatCurrentSiteIsSelected() throws Throwable {
+        Assert.assertTrue(currentSite.waitFor(10).isDisplayed(), "Current site is not selected");
         Properties.setVariable("selectedSite", currentSite.getText());
-        Assert.assertTrue(currentSite.isDisplayed(), "Current site is not selected");
         MobileDevice.getScreenshot(true);
     }
 
@@ -54,34 +54,15 @@ public class Welcome extends AbstractScreen {
 
     @And("^I add open trips for arriveConsole app$")
     public void iAddOpenTripsForArriveConsoleApp() throws Throwable {
-        int tripsCount = 0;
-       // Steps.tapButton("View Trips");
-        try {
-            tripsCount = tripsScreen.openTrips.waitFor(7).getCount();
-        } catch (Exception e) {
-        }
+        int tripsCount;
+        tripsCount = tripsScreen.openTrips.waitFor(10).getCount();
         if (tripsCount >= 2) {
             return;
-        } else {
-            int loopCount = 0;
-            if (tripsCount == 1) {
-                loopCount = 1;
-            } else if (tripsCount == 0) {
-                loopCount = 2;
-            }
-            for (int i = 0; i < loopCount; i++) {
-                commonSteps.launchApplicationClean("ARRIVEConsoleTester", "first");
-                commonSteps.acceptLocationAlert();
-                String randomText = "iOSTest" + Helpers.getRandomFirstName();
-                arriveConsoleTesterScreen.txtBxName.sendKeys(randomText, false);
-                arriveConsoleTesterScreen.txtBxTracking.sendKeys(randomText, false);
-                arriveConsoleTesterScreen.txtBxToken.sendKeys(randomText, false);
-                arriveConsoleTesterScreen.txtBxSiteId.sendKeys(Properties.getVariable("selectedSite"),
-                        false);
-                Steps.tapButton("Start Tracking");
-            }
-            commonSteps.launchApplication("ARRIVE Console");
+        } else if (tripsCount < 1) {
+            arriveConsoleTesterScreen.iStartSampleTrip(2);
+        } else if (tripsCount < 2) {
+            arriveConsoleTesterScreen.iStartSampleTrip(1);
         }
-
+        commonSteps.launchApplication("ARRIVE Console");
     }
 }
