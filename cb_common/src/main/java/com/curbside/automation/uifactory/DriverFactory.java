@@ -117,8 +117,7 @@ public class DriverFactory {
 		}
 
 		try {
-			if(deviceInfo.getString("url").contains("127.0.0.1")
-					&& deviceInfo.getString("platformName").equalsIgnoreCase("android"))
+			if(deviceInfo.getString("url").contains("127.0.0.1"))
 				deviceInfo.put("url", AppiumService.getUrl());
 		} catch (Exception e) {
 			e.printStackTrace();
