@@ -2,7 +2,7 @@
 Feature: iOS- Application Launch 1
 
   Scenario: Setting test environment
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
 
