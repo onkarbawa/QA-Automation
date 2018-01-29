@@ -196,11 +196,17 @@ public class Cart extends AbstractScreen {
 		}
 	}*/
 
-	@Then("^I should see checkout not allowed$")
-	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
-		Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
+	@Then("^I should see checkout not allowed for (.*)$")
+	public void iShouldSeeCheckoutNotAllowed(String condition) throws Throwable {
+		if (condition.equalsIgnoreCase("Location")){
+			Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
+			UIElement.byName("Cancel").tap();
+		}else {
+			Assert.assertEquals(popUpHeading.getText(),"Enable Background App Refresh");
+			UIElement.byName("OK").tap();
+		}
 		MobileDevice.getScreenshot(true);
-		UIElement.byName("Cancel").tap();
+
 		//settings.tap();
 	//*	UIElement.byName("Notifications").waitFor(5).tap();
 	}

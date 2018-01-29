@@ -2,7 +2,7 @@
 Feature: iOS- Application Launch 1
 
   Scenario: Setting test environment
-    Given I launch Curbside application
+    Given I launch Curbside application for the first time
     And I have selected Experimental test environment
     And I am not signed into application
 
@@ -27,7 +27,7 @@ Feature: iOS- Application Launch 1
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed
+    And I should see checkout not allowed for location
     And 'Location' preference is set as 'Always' for 'Curbside' app
     And I verify that Location 'Always' is set
     And I launch Curbside application
@@ -56,7 +56,7 @@ Feature: iOS- Application Launch 1
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed
+    And I should see checkout not allowed for disableBackground
     And I turn 'ON' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'ON'
     And I launch Curbside application
