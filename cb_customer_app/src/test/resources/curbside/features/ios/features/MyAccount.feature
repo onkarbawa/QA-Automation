@@ -2,7 +2,7 @@
 Feature: iOS- Account flow Cards verification
 
   Scenario: Setting test environment
-    Given I launch Curbside application
+    Given I launch Curbside application for the first time
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
