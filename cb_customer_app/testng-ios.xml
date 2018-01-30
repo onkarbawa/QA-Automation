@@ -4,11 +4,11 @@
     <listeners>
         <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
     </listeners>
-    <test name="iOS- Applaunch">
-            <classes>
-                <class name="com.curbside.ios.runners.AppLaunchTest"/>
-            </classes>
-    </test>
+    <!--<test name="iOS- Applaunch">-->
+            <!--<classes>-->
+                <!--<class name="com.curbside.ios.runners.AppLaunchTest"/>-->
+            <!--</classes>-->
+    <!--</test>-->
     <!--<test name="iOS- SMS flow">-->
         <!--<classes>-->
             <!--<class name="com.curbside.ios.runners.SMSTest"/>-->
