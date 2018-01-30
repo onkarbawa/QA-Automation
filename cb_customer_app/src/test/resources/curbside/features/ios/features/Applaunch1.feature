@@ -48,10 +48,10 @@ Feature: iOS- Application Launch 1
     And I launch Curbside application
     And I am on Home Screen
     And My cart is empty
-    And I checked 'Enable Background App Refresh' notification
 #    And I select 'CVS' retailer
 #    And I select 1no product from list
     And I select 'Mock' retailer and search for 'Food'
+    And I checked 'Enable Background App Refresh' notification
     And I select 'Frozen food' product from list
 #    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
 #    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
