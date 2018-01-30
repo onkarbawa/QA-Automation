@@ -3,6 +3,7 @@ package com.curbside.ios.ui;
 import com.curbside.automation.common.configuration.Properties;
 import com.curbside.automation.uifactory.*;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -196,15 +197,15 @@ public class Cart extends AbstractScreen {
 		}
 	}*/
 
-	@Then("^I should see checkout not allowed for (.*)$")
-	public void iShouldSeeCheckoutNotAllowed(String condition) throws Throwable {
-		if (condition.equalsIgnoreCase("Location")){
+	@Then("^I should see checkout not allowed$")
+	public void iShouldSeeCheckoutNotAllowed() throws Throwable {
+//		if (condition.equalsIgnoreCase("Location")){
 			Assert.assertEquals(popUpHeading.getText(),"Please Turn on the Following in Settings");
 			UIElement.byName("Cancel").tap();
-		}else {
-			Assert.assertEquals(popUpHeading.getText(),"Enable Background App Refresh");
-			UIElement.byName("OK").tap();
-		}
+//		}else {
+//			Assert.assertEquals(popUpHeading.getText(),"Enable Background App Refresh");
+//			UIElement.byName("OK").tap();
+//		}
 		MobileDevice.getScreenshot(true);
 
 		//settings.tap();
@@ -491,4 +492,9 @@ public class Cart extends AbstractScreen {
             MobileDevice.getScreenshot(true);
         }
     }
+
+	@And("^I checked '(.*)' notification$")
+	public void iCheckedNotification(String msgWarning) throws Throwable {
+		UIElement.byName("OK").tap();
+	}
 }

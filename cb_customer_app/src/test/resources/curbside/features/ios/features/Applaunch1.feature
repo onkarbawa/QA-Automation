@@ -27,7 +27,7 @@ Feature: iOS- Application Launch 1
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed for location
+    And I should see checkout not allowed
     And 'Location' preference is set as 'Always' for 'Curbside' app
     And I verify that Location 'Always' is set
     And I launch Curbside application
@@ -40,29 +40,30 @@ Feature: iOS- Application Launch 1
       | Email              | Password  |
       | applaunch@exam.com | applaunch |
 
-  @iOS @C114997
-  Scenario: Verify Disable background application refresh functionality
-    Given I turn 'OFF' Background App Refresh for 'Curbside' app
-    And I verify that Background App Refresh is 'OFF'
-    And I launch Curbside application
-    And I am on Home Screen
-    And My cart is empty
-#    And I select 'CVS' retailer
-#    And I select 1no product from list
-    And I select 'Mock' retailer and search for 'Food'
-    And I select 'Frozen food' product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
-    And I add 1 quantity of the product
-    And I go to Cart screen
-    And I attempt to place an order
-    And I should see checkout not allowed for disableBackground
-    And I turn 'ON' Background App Refresh for 'Curbside' app
-    And I verify that Background App Refresh is 'ON'
-    And I launch Curbside application
-    And I am on Home Screen
-    And I tap on 'Shop' icon in bottom menu
-    And I tap on 'Cart' icon in bottom menu
-    And I attempt to place an order
-    Then I should see checkout screen
+#  @iOS @C114997
+#  Scenario: Verify Disable background application refresh functionality
+#    Given I turn 'OFF' Background App Refresh for 'Curbside' app
+#    And I verify that Background App Refresh is 'OFF'
+#    And I launch Curbside application
+#    And I am on Home Screen
+#    And My cart is empty
+#    And I checked 'Enable Background App Refresh' notification
+##    And I select 'CVS' retailer
+##    And I select 1no product from list
+#    And I select 'Mock' retailer and search for 'Food'
+#    And I select 'Frozen food' product from list
+##    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
+##    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+#    And I add 1 quantity of the product
+#    And I go to Cart screen
+#    And I attempt to place an order
+#    And I should see checkout not allowed
+#    And I turn 'ON' Background App Refresh for 'Curbside' app
+#    And I verify that Background App Refresh is 'ON'
+#    And I launch Curbside application
+#    And I am on Home Screen
+#    And I tap on 'Shop' icon in bottom menu
+#    And I tap on 'Cart' icon in bottom menu
+#    And I attempt to place an order
+#    Then I should see checkout screen
 
