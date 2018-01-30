@@ -10,6 +10,7 @@
 #import "AppSession.h"
 #import "CurbsideExtras.h"
 #import "CSUserSession.h"
+#import "StoreTableViewCell.h"
 #import "CSPickup.h"
 #import "CSStoreCache.h"
 #import "AppExtras.h"
