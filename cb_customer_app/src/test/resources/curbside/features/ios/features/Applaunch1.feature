@@ -51,14 +51,13 @@ Feature: iOS- Application Launch 1
 #    And I select 'CVS' retailer
 #    And I select 1no product from list
     And I select 'Mock' retailer and search for 'Food'
-    And I checked 'Enable Background App Refresh' notification
     And I select 'Frozen food' product from list
 #    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
 #    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed for background
+    And I should see checkout not allowed
     And I turn 'ON' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'ON'
     And I launch Curbside application
