@@ -7,36 +7,32 @@ Feature: iOS- Application Launch 1
     And I am not signed into application
     And I am on 'Palo Alto' location 'Stores' Screen
 
-#  @iOS @C114996
-#  Scenario: Verify Disable location services functionality
-#    Given 'Location' preference is set as 'Never' for 'Curbside' app
-#    And I verify that Location 'Never' is set
+  @iOS @C114996
+  Scenario: Verify Disable location services functionality
+    Given 'Location' preference is set as 'Never' for 'Curbside' app
+    And I verify that Location 'Never' is set
 
   Scenario Outline: Place Order
-#    When I launch Curbside application
-#    And I am on Home Screen
-#    Then I should see Location as 'Palo Alto'
+    When I launch Curbside application
+    And I am on Home Screen
+    Then I should see Location as 'Palo Alto'
     And I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
-#    And My cart is empty
-#    And I select 'Mock' retailer and search for 'Food'
-#    And I select 'Frozen food' product from list
-##    And I select 'CVS' retailer
-##    And I select 1no product from list
-##    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-##    And I select 'CVS Health Indoor/Outdoor Allergy Relief' product from list
-#    And I add 1 quantity of the product
-#    And I go to Cart screen
-#    And I attempt to place an order
-#    And I should see checkout not allowed
-#    And 'Location' preference is set as 'Always' for 'Curbside' app
-#    And I verify that Location 'Always' is set
-#    And I launch Curbside application
-#    And I am on Home Screen
-#    And I tap on 'Shop' icon in bottom menu
-#    And I tap on 'Cart' icon in bottom menu
-#    And I attempt to place an order
-#    Then I should see checkout screen
+    And My cart is empty
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
+    And I add 1 quantity of the product
+    And I go to Cart screen
+    And I attempt to place an order
+    And I should see checkout not allowed
+    And 'Location' preference is set as 'Always' for 'Curbside' app
+    And I verify that Location 'Always' is set
+    And I launch Curbside application
+    And I am on Home Screen
+    And I tap on 'Shop' icon in bottom menu
+    And I tap on 'Cart' icon in bottom menu
+    And I attempt to place an order
+    Then I should see checkout screen
     Examples:
       | Email              | Password  |
       | applaunch@exam.com | applaunch |
@@ -48,12 +44,9 @@ Feature: iOS- Application Launch 1
     And I launch Curbside application
     And I am on Home Screen
     And My cart is empty
-#    And I select 'CVS' retailer
-#    And I select 1no product from list
+    And I select 'Palo Alto' from list
     And I select 'Mock' retailer and search for 'Food'
     And I select 'Frozen food' product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
