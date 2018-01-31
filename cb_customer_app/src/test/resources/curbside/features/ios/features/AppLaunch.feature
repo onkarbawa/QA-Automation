@@ -16,14 +16,14 @@ Feature: iOS- Curbside ApplicationLaunch
     Then I should see 'Nearby stores' landing page
     And 'Location' preference should be set as 'While Using' for 'Curbside' app
 
-  @iOS @C114936
-  Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
-    Given I launch Curbside application
-    And I am on Home Screen
-    And I tap on 'Help' button
-    When I tap on 'Skip Intro' button
-    Then I should see 'Nearby stores' landing page
-    When I tap on 'Help' button
-    And I swipe left 2 times
-    When I tap on 'Get Started' button
-    Then I should see 'Nearby stores' landing page
+#  @iOS @C114936
+#  Scenario: Verify tap on 'Skip Intro' button should take you back to the Store Selection Screen
+#    Given I launch Curbside application
+#    And I am on Home Screen
+#    And I tap on 'Help' button
+#    When I tap on 'Skip Intro' button
+#    Then I should see 'Nearby stores' landing page
+#    When I tap on 'Help' button
+#    And I swipe left 2 times
+#    When I tap on 'Get Started' button
+#    Then I should see 'Nearby stores' landing page

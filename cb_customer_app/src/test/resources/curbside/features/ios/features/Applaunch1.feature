@@ -18,14 +18,12 @@ Feature: iOS- Application Launch 1
     And I Sign-in with '<Email>' and '<Password>'
     And I saw email on MyAccount page
     And My cart is empty
-    And I select 'CVS' retailer
-    And I select 1no product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief' product from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed
+    And I should see checkout not allowed for location
     And 'Location' preference is set as 'Always' for 'Curbside' app
     And I verify that Location 'Always' is set
     And I launch Curbside application
@@ -45,14 +43,13 @@ Feature: iOS- Application Launch 1
     And I launch Curbside application
     And I am on Home Screen
     And My cart is empty
-    And I select 'CVS' retailer
-    And I select 1no product from list
-#    And I select 'CVS' retailer and search for 'CVS Indoor/Outdoor Allergy Relief'
-#    And I select 'CVS Health Indoor/Outdoor Allergy Relief Tablets' product from list
+    And I select 'Palo Alto' from list
+    And I select 'Mock' retailer and search for 'Food'
+    And I select 'Frozen food' product from list
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed
+    And I should see checkout not allowed for disableBackground
     And I turn 'ON' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'ON'
     And I launch Curbside application
