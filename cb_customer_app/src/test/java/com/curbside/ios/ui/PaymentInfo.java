@@ -67,7 +67,7 @@ public class PaymentInfo extends AbstractScreen {
 		int y = creditCardCell.getY();
 
 		new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(x+width, y+(height/2)).
-				waitAction(Duration.ofSeconds(3)).moveTo(-width, y+(height/2)).release().perform();
+				waitAction(Duration.ofSeconds(2)).moveTo(-width, y+(height/2)).release().perform();
 //		MobileDevice.swipe((x+(width/2)),y+(height/2),x,y+(height/2));
 		MobileDevice.getScreenshot(true);
 		btnDelete.waitFor(10);
