@@ -106,16 +106,19 @@ public class Steps {
 		DeviceStore.getDevice();
 		DriverFactory.clearEnvironment();
 
-		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
-				&& appName.equalsIgnoreCase("Curbside") && nthTime.equalsIgnoreCase("first")) {
-			AppleDevice.resetPermissions(appName);
-			((AppiumDriver) DriverFactory.getDriver()).closeApp();
-			DriverFactory.releaseDriver();
-		}
+        if (DeviceStore.getPlatform().equalsIgnoreCase("ios")
+                && nthTime.equalsIgnoreCase("first")
+                && (appName.equalsIgnoreCase("Curbside")
+                || appName.equalsIgnoreCase("CAP Sephora"))) {
+            AppleDevice.resetPermissions(appName);
+            ((AppiumDriver) DriverFactory.getDriver()).closeApp();
+            DriverFactory.releaseDriver();
+        }
 
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
-		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS"))
+		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")
+				&& appName.equalsIgnoreCase("Curbside"))
 			acceptNotificationAlert();
 		DeviceStore.setAppInstalled(appName);
 		//This will set the capabilities that is being used in launchApp method
@@ -246,6 +249,11 @@ public class Steps {
 	@Given("^I (?:tap|click) on '(.*)' button on '(.*)' .*")
 	public void tapButtonOnPage(String buttonName, String pageName) throws Throwable {
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")) {
+			if (buttonName.equalsIgnoreCase("Allow")) {
+				Thread.sleep(1000);
+				MobileDevice.acceptAlert();
+				return;
+			}
 			try {
 				UIElement.byName(buttonName).waitFor(5).tap();
 			} catch (Exception e) {
