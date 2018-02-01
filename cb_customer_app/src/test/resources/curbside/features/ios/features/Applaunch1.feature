@@ -23,7 +23,7 @@ Feature: iOS- Application Launch 1
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed for location
+    And I should see checkout not allowed
     And 'Location' preference is set as 'Always' for 'Curbside' app
     And I verify that Location 'Always' is set
     And I launch Curbside application
@@ -49,7 +49,7 @@ Feature: iOS- Application Launch 1
     And I add 1 quantity of the product
     And I go to Cart screen
     And I attempt to place an order
-    And I should see checkout not allowed for disableBackground
+    And I should see checkout not allowed
     And I turn 'ON' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'ON'
     And I launch Curbside application
