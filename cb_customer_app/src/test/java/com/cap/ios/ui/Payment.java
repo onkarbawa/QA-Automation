@@ -60,15 +60,15 @@ public class Payment extends AbstractScreen {
         MobileDevice.getScreenshot(true);
         // Steps.tapButton(button1);
         try {
-            UIElement.byName("OK").tap();
+            UIElement.byName("OK").waitFor(4).tap();
             MobileDevice.getScreenshot(true);
         } catch (Exception e) {
         }
         try {
             try {
-                cameraBtn.tap();
+                cameraBtn.waitFor(10).tap();
             } catch (Exception e) {
-                btnCamera.tap();
+                btnCamera.waitFor(10).tap();
             }
             firstPhoto.tap();
             firstPhoto.waitForNot(10);
