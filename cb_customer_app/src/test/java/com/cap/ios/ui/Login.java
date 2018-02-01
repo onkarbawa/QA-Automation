@@ -48,7 +48,7 @@ public class Login extends AbstractScreen{
             if (btnAllow.isDisplayed()||btnOK.isDisplayed()){
                 try {
                     try {
-                        new UIElement(By.name("Allow")).tap();
+                        MobileDevice.acceptAlert();
                     } catch (Exception e) {
                         new UIElement(By.name("OK")).tap();
                     }

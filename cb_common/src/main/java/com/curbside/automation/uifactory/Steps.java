@@ -65,6 +65,11 @@ public class Steps {
 			DriverFactory.getDriver(false);
 			MobileDevice.getScreenshot(true);
 		}
+		if (appName.equalsIgnoreCase("Curbside") && DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			if(UIElement.byName("Close").isDisplayed()){
+				UIElement.byName("Close").tap();
+			}
+		}
 	}
 
 	@Given("^I launch (.*) application with required permissions$")
@@ -367,6 +372,9 @@ public class Steps {
 				switchBtn = allowNotification;
 				MobileDevice.getScreenshot(true);
 			}
+			iTapOnBackButton();
+			UIElement.byName("Location").tap();
+			UIElement.byXpath("//XCUIElementTypeStaticText[@name='Always']").tap();
 		} catch (Exception e) {
 		}
 		MobileDevice.getScreenshot(true);

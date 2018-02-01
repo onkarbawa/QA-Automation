@@ -1,12 +1,14 @@
 @productDetailsAndTaskManagement
 Feature: iOS- Product Details and Task Management
 
-  Scenario: Check BackGroundRefresh and Allow Notifications is ON
-    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
+#  Scenario: Check BackGroundRefresh and Allow Notifications is ON
+#    Given I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
 
   @iOS
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application for the Ist time
+    And I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
+    And I launch Curbside application
     And I have selected Experimental test environment
     And I am not signed into application
     And I am on 'Gilroy' location 'Stores' Screen
