@@ -75,6 +75,8 @@ public class AppleDevice extends MobileDevice {
 		}
 
 		btnAllow.tapOptional();
+		Steps steps = new Steps();
+		steps.acceptNotificationAlert();
 
 		settingGeneral.scrollTo().tap();;
 		settingReset.scrollTo().tap();
