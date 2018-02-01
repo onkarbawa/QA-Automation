@@ -367,6 +367,9 @@ public class Steps {
 				switchBtn = allowNotification;
 				MobileDevice.getScreenshot(true);
 			}
+			iTapOnBackButton();
+			UIElement.byName("Location").tap();
+			UIElement.byXpath("//XCUIElementTypeStaticText[@name='Always']").tap();
 		} catch (Exception e) {
 		}
 		MobileDevice.getScreenshot(true);
