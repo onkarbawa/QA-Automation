@@ -65,6 +65,11 @@ public class Steps {
 			DriverFactory.getDriver(false);
 			MobileDevice.getScreenshot(true);
 		}
+		if (appName.equalsIgnoreCase("Curbside") && DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
+			if(UIElement.byName("Close").isDisplayed()){
+				UIElement.byName("Close").tap();
+			}
+		}
 	}
 
 	@Given("^I launch (.*) application with required permissions$")
