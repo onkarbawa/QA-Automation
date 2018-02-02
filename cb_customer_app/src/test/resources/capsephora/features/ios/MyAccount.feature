@@ -8,7 +8,7 @@ Feature: IOS | CAP Sephora | Install | Login & Logout
     And I tap on 'Allow' button on 'Location Services' popup
     And I tap on 'OK' button on 'Remote Notification' popup
     And I tap on 'OK' button on 'Remote Notification' popup
-    When I tap on 'OK' button on 'Remote Notification' popup
+    And I tap on 'OK' button if displayed
     Then I should see 'Curbside Console' screen
 
   @iOS @TCS02
