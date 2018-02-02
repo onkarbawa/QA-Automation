@@ -74,11 +74,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		AHjPPQx4zNJllgOP1Pv6nhOrByI=
+		AmQaHjoJTn6ys9+ekywQiNqLwdY=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		t/iLiIhxXr+qjyMhcWc2WUpOQpQ=
+		Y2UMBbNvWJ1ofu3ckCiR2hP8Tgw=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -86,11 +86,11 @@
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		d9aTH8PybPMnxM83eMX5swetQ/4=
+		0jrrQoI7pkaygzuicRlj5om8hnQ=
 		</data>
 		<key>DebugViewController.nib</key>
 		<data>
-		cdJKnv7OT86uSHLuHRZBfDcAk/g=
+		0AiS/XnmTYZ2ktz0SmQKOaj3W+k=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
@@ -158,15 +158,15 @@
 		</data>
 		<key>HomeViewController.storyboardc/UIViewController-ZIy-98-W0h.nib</key>
 		<data>
-		r3VOC3nFwLvHgaTXBlJrqniq+4c=
+		WR2vD1mqt4p+Fbok+K866hAuRzg=
 		</data>
 		<key>HomeViewController.storyboardc/ZIy-98-W0h-view-R8n-ci-CMw.nib</key>
 		<data>
-		NTTs5CyUnZfVPRyaNSl+4my6Gv4=
+		k2SCDTprDkKiIqefTRYJKlkFMUQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		D9WQZlwhsKu+EhzFp3XfZWt2cpI=
+		kVkVK4WJMLWfrEWJEmSc6e/ApOY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -187,7 +187,7 @@
 		</dict>
 		<key>TripTableViewCell.nib</key>
 		<data>
-		c/aWzJ6xo9/lPWrC+aYhJbEWikI=
+		EZcHGIc541ICXZNU5NxLBQg1uzw=
 		</data>
 		<key>alarm.caf</key>
 		<data>
@@ -211,7 +211,7 @@
 		</data>
 		<key>scratch.nib</key>
 		<data>
-		Dticx0TZEjf8eboUqRAcgKz/ZPk=
+		vwkN5SjUXr8ZViszSrcKnLuhC2M=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -407,22 +407,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AHjPPQx4zNJllgOP1Pv6nhOrByI=
+			AmQaHjoJTn6ys9+ekywQiNqLwdY=
 			</data>
 			<key>hash2</key>
 			<data>
-			UH1TLTgASya5nPYymS9yBdV4VHc3LcKEkgXFNidHzOA=
+			gRFMCvqQ2UThpkN4If0/V6PPdFwoUJT8TMW5X5YSn6E=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			t/iLiIhxXr+qjyMhcWc2WUpOQpQ=
+			Y2UMBbNvWJ1ofu3ckCiR2hP8Tgw=
 			</data>
 			<key>hash2</key>
 			<data>
-			EMkONkvBUbN4/jileMiEad5HrqADk8h/Im7mCuUjA90=
+			SNqKcpLQsMIdjvosB9lx1erbzaY9wXZ075m/FYDjrzM=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -440,22 +440,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			d9aTH8PybPMnxM83eMX5swetQ/4=
+			0jrrQoI7pkaygzuicRlj5om8hnQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			tM85H5cAY8bYR9SZ3mqoDMx/cayyeev4/M+TRTlvd4Q=
+			jwBHvVfy9E0aYU3+G4if1bmOJfjd3HNirUeuOzyQ700=
 			</data>
 		</dict>
 		<key>DebugViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cdJKnv7OT86uSHLuHRZBfDcAk/g=
+			0AiS/XnmTYZ2ktz0SmQKOaj3W+k=
 			</data>
 			<key>hash2</key>
 			<data>
-			OslpVIfc/XLdtuNweu5OB7FJFRmh1AhFlI1Fh20ZkT8=
+			DqbS5lgazLNnzqLsHaVC87LHJbDpPB3oUoVvbLeIwTs=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
@@ -638,22 +638,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			r3VOC3nFwLvHgaTXBlJrqniq+4c=
+			WR2vD1mqt4p+Fbok+K866hAuRzg=
 			</data>
 			<key>hash2</key>
 			<data>
-			fySm4GwrmEwyuZLIfbxKf0SAakD2bzWIHlFgIiB6S6g=
+			vyWaCD3ajaJaTv/y+zNDhHXIuLkBhIw8iHws07o+ymo=
 			</data>
 		</dict>
 		<key>HomeViewController.storyboardc/ZIy-98-W0h-view-R8n-ci-CMw.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NTTs5CyUnZfVPRyaNSl+4my6Gv4=
+			k2SCDTprDkKiIqefTRYJKlkFMUQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			nBxGXxoBLh4WHi8ClqJs5Rz0+PsPFphgv+gjZE352g8=
+			rqlyBO5BTYbY80BDFGNN4gfP8hN9ukxwcZADiapR3Lk=
 			</data>
 		</dict>
 		<key>ReleaseNotes.txt</key>
@@ -684,11 +684,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c/aWzJ6xo9/lPWrC+aYhJbEWikI=
+			EZcHGIc541ICXZNU5NxLBQg1uzw=
 			</data>
 			<key>hash2</key>
 			<data>
-			7HlzjzXvppnp39AyLva4k1E9rlkIovrDjKY87WQLfvk=
+			d8ZAgUfvApt8rtSK9lzOHQ4HxuzM/X0G0n+2XwQEvNc=
 			</data>
 		</dict>
 		<key>alarm.caf</key>
@@ -750,11 +750,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Dticx0TZEjf8eboUqRAcgKz/ZPk=
+			vwkN5SjUXr8ZViszSrcKnLuhC2M=
 			</data>
 			<key>hash2</key>
 			<data>
-			V0TlFq8QN6w/0SH16HTzGx3YyDt3EPBUJab8nOaD0Nw=
+			Ssi+MYq8M9ha+sMz2E1cyxz7esJNweypY51T8ccWoIQ=
 			</data>
 		</dict>
 	</dict>
