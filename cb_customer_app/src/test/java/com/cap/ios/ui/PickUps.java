@@ -46,7 +46,8 @@ public class PickUps extends AbstractScreen{
     @Then("^I should see alert '(.*)'$")
     public void iShouldSeeMessage(String message) throws Throwable {
         Assert.assertEquals(transferCompleteAlert.getText(),message,"Transfer Complete message is not pop-up");
-        Steps.tapButton("OK");
+        MobileDevice.acceptAlert();
+        //Steps.tapButton("OK");
     }
 
     public void scrollToElement(UIElement orderNumber) throws Throwable {
