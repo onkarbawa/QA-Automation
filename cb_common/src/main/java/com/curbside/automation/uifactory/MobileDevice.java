@@ -267,11 +267,11 @@ public class MobileDevice {
 		int endPoint = (int) (MobileDevice.getHeight() * 0.6);
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1000))
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
 					.moveTo(0, startPoint - (2 * startPoint)).release().perform();
 
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1000))
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
 					.moveTo(0, endPoint).release().perform();
 		}
 	}

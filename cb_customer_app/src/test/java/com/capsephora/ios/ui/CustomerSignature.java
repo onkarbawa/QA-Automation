@@ -28,10 +28,10 @@ public class CustomerSignature {
             int width = signatureBlankSpace.getWidth();
             int height = signatureBlankSpace.getHeight();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1000))
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1))
                     .moveTo(-width, startY + (height / 2)).release().perform();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1000))
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1))
                     .moveTo(-width, 0).release().perform();
 
             ++noOfDraws;
