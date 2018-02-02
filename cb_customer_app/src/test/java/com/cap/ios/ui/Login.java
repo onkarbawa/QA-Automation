@@ -44,8 +44,8 @@ public class Login extends AbstractScreen{
 
     @Given("^I accept CAP notifications alerts$")
     public void acceptNotificationAlert() throws Throwable {
-        for (int i = 0; i < 7; i++) {
-            if (btnAllow.isDisplayed()||btnOK.isDisplayed()){
+        for (int i = 0; i < 3; i++) {
+//            if (btnAllow.isDisplayed()||btnOK.isDisplayed()){
                 try {
                     try {
                         MobileDevice.acceptAlert();
@@ -54,7 +54,7 @@ public class Login extends AbstractScreen{
                     }
                 } catch (Exception e) {
                 }
-            }
+//            }
 
         }
 
