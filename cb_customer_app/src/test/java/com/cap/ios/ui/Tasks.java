@@ -23,7 +23,7 @@ public class Tasks extends AbstractScreen {
     UIElement btnAll = UIElement.byName("All");
     UIElement btnIssue = UIElement.byName("Issue");
     UIElement btnOK = UIElement.byName("OK");
-    UIElement cancelledPickUp = UIElement.byName("Cancelled Pickup");
+    UIElement cancelledPickUp = UIElement.byXpath("//XCUIElementTypeButton[@name='Close']/preceding-sibling::XCUIElementTypeStaticText[1]");
     UIElement specialSymbol = UIElement.byXpath("//XCUIElementTypeCell[XCUIElementTypeStaticText[contains" +
             "(@name,'Items to Pick')]]/following-sibling::XCUIElementTypeCell[XCUIElementTypeStaticText[1]]");
 
@@ -55,15 +55,15 @@ public class Tasks extends AbstractScreen {
         Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
         String orderID = Properties.getVariable(orderIdAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]");
-        orderNumber.scrollTo().tap();
-//        for (int i = 1; i < 50; i++) {
-//            if (orderNumber.isDisplayed()) {
-//                orderNumber.tap();
-//                break;
-//            } else {
-//                MobileDevice.swipe(180, 550, 180, 50);
-//            }
-//        }
+      //  orderNumber.scrollTo().tap();
+        for (int i = 1; i < 50; i++) {
+            if (orderNumber.isDisplayed()) {
+                orderNumber.tap();
+                break;
+            } else {
+                MobileDevice.swipe(180, 550, 180, 50);
+            }
+        }
         if (action.equalsIgnoreCase("claim")) {
             btnClaim.waitFor(5).tap();
             btnClaim.waitForNot(7);
@@ -150,7 +150,16 @@ public class Tasks extends AbstractScreen {
         footerTabsScreen.btnTask.waitFor(7).tap();
         iTapOnTab("All");
         String orderID = Properties.getVariable(orderAlias);
-        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]").scrollTo().tap();
+//        UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]").scrollTo().tap();
+        UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]");
+        for (int i = 1; i < 50; i++) {
+            if (orderNumber.isDisplayed()) {
+                orderNumber.tap();
+                break;
+            } else {
+                MobileDevice.swipe(180, 550, 180, 50);
+            }
+        }
         cancelledPickUp.waitFor(10);
         Assert.assertEquals(cancelledPickUp.getText(), message, "PickUp is not Cancelled");
     }
