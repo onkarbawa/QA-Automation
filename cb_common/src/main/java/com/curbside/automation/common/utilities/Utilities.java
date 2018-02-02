@@ -176,10 +176,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.01);
                 endPoint = (int) (width * 0.9);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1000)).moveTo(endPoint, 0).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, 0).release().perform();
                  }
                  else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1000)).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
                  }
                  break;
             case Left:
@@ -187,10 +187,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.8);
                 endPoint = (int) (width * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1000)).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
                 }
                 else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1000)).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
                 }
                 break;
             case Up:
@@ -198,16 +198,16 @@ public class Utilities {
                 startPoint = (int) (height * 0.45);
                 endPoint = (int) (height * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1000)).moveTo(0, startPoint - (2 * startPoint)).release().perform();
+                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, startPoint - (2 * startPoint)).release().perform();
                 }else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1000)).moveTo(0, endPoint).release().perform();
+                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
                 }
                 break;
             case Down:
                 anchor = (int) (width * 0.5);
                 startPoint = (int) (height * 0.01);
                 endPoint = (int) (height * 0.8);
-                touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1000)).moveTo(0, endPoint).release().perform();
+                touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
                 break;
               default:
                   try {

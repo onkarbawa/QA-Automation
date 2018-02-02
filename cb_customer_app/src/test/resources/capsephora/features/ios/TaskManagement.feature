@@ -3,8 +3,10 @@ Feature: IOS | Task Management
 
   @iOS
   Scenario: Setting up user account with credit card
-    Given I launch Curbside application for the first time
+    Given I launch Curbside application for the Ist time
     And I have selected Experimental test environment
+    And I turn 'ON' 'Background App Refresh' and 'Allow Notifications' for 'Curbside' app
+    And I launch Curbside application
     And I am not signed into application
     And I am on 'Walnut Creek' location 'Stores' Screen
     And I tap on 'My Account' icon in bottom menu
@@ -114,13 +116,12 @@ Feature: IOS | Task Management
   Scenario: Verify that on Product Details screen
     And I tap on 'Mine' tab and search for 'claimOrder' OrderID and 'confirm' it
     Then I should see product details as below for CAP
-    And I tap on back button
-    And I tap on 'Close' button
-
 
   @iOS @TCS14 @TCS19
   Scenario: Process standard order (1 item, 1 quantities)
-    Given I tap on 'Tasks' icon in bottom menu for cap
+    Given I tap on back button
+    And I tap on 'Close' button
+    And I tap on 'Tasks' icon in bottom menu for cap
     And I tap on 'All' tab and search for 'standardOrder' OrderID and 'claim' it
     And I tap on 'Mine' tab and search for 'standardOrder' OrderID and 'tap' it
     And I tap on 'Got It' button
@@ -139,7 +140,7 @@ Feature: IOS | Task Management
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
     When I search by customer name to sort the orders
-    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
+    Then I confirm 'standardOrder' orderID is not present under Pickups tab
 
   @iOS @TCS15
   Scenario: Mark all items out of stock (2 items, 1 quantity each)

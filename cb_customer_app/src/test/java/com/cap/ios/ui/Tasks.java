@@ -55,15 +55,15 @@ public class Tasks extends AbstractScreen {
         Reporter.addStepLog("OrderID in Curbside : " + Properties.getVariable(orderIdAlias));
         String orderID = Properties.getVariable(orderIdAlias);
         UIElement orderNumber = UIElement.byXpath("//XCUIElementTypeStaticText[contains(@name,'" + orderID + "')]");
-        orderNumber.scrollTo().tap();
-//        for (int i = 1; i < 50; i++) {
-//            if (orderNumber.isDisplayed()) {
-//                orderNumber.tap();
-//                break;
-//            } else {
-//                MobileDevice.swipe(180, 550, 180, 50);
-//            }
-//        }
+//        orderNumber.scrollTo().tap();
+        for (int i = 1; i < 50; i++) {
+            if (orderNumber.isDisplayed()) {
+                orderNumber.tap();
+                break;
+            } else {
+                MobileDevice.swipe(180, 550, 180, 50);
+            }
+        }
         if (action.equalsIgnoreCase("claim")) {
             btnClaim.waitFor(5).tap();
             btnClaim.waitForNot(7);
