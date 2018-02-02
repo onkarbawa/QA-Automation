@@ -1,6 +1,7 @@
 package com.cap.ios.ui;
 
 import com.curbside.automation.uifactory.MobileDevice;
+import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 

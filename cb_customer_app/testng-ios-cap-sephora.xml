@@ -29,14 +29,14 @@
             <class name="com.capsephora.ios.runners.SubstitutionAndTransferOrder"/>
         </classes>
     </test>
-    <test name="iOS- Delivery Order">
-        <classes>
-            <class name="com.capsephora.ios.runners.DeliverOrderTest"/>
-        </classes>
-    </test>
     <test name="iOS- Performance">
         <classes>
             <class name="com.capsephora.ios.runners.Performance"/>
         </classes>
     </test>
+    <!--<test name="iOS- Delivery Order">-->
+        <!--<classes>-->
+            <!--<class name="com.capsephora.ios.runners.DeliverOrderTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>
