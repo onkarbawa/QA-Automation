@@ -15,9 +15,11 @@ import org.testng.Assert;
 public class Welcome extends AbstractScreen {
 
     UIElement lblCurrentSite = UIElement.byId("com.curbside.arriveconsole:id/tvSiteId");
+    UIElement lblGettingLocation = UIElement.byId("com.curbside.arriveconsole:id/tvGetLocation");
 
     @And("^I confirm that current site is selected$")
     public void iConfirmThatCurrentSiteIsSelected() throws Throwable {
+        lblGettingLocation.waitForNot(40);
         Assert.assertTrue(lblCurrentSite.waitFor(10).isDisplayed(), "There is no default site that is present for this location");
         MobileDevice.getScreenshot(true);
     }
@@ -30,6 +32,7 @@ public class Welcome extends AbstractScreen {
     }
 
     public void setDefaultSite() throws Throwable {
+        lblGettingLocation.waitForNot(40);
         Properties.setVariable("selectedSite", lblCurrentSite.waitFor(10).getText());
         Reporter.addStepLog("Trips will be generated for " + Properties.getVariable("selectedSite") + " site");
     }
