@@ -140,7 +140,7 @@ Feature: IOS | Task Management
     When I tap on 'Confirm' button
     Then I should see alert 'Transfer complete.'
     When I search by customer name to sort the orders
-    Then I confirm 'readyPickUpOrder' orderID is not present under Pickups tab
+    Then I confirm 'standardOrder' orderID is not present under Pickups tab
 
   @iOS @TCS15
   Scenario: Mark all items out of stock (2 items, 1 quantity each)
