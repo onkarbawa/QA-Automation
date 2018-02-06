@@ -21,7 +21,7 @@ public class ArriveConsoleTester extends AbstractScreen {
     public void iStartSampleTrip(int noOfTrips) throws Throwable {
         for (int i = 0; i < noOfTrips; i++) {
             commonSteps.launchApplicationClean("ARRIVEConsoleTester", "first");
-            commonSteps.acceptLocationAlert();
+            welcomeScreen.iAcceptNotificationsAlertMessage();
             String randomText = "iOSTest" + Helpers.getRandomFirstName();
             arriveConsoleTesterScreen.txtBxName.sendKeys(randomText, false);
             arriveConsoleTesterScreen.txtBxTracking.sendKeys(randomText, false);
