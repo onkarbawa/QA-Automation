@@ -1,9 +1,7 @@
 package com.arriveconsole.ios.ui;
 
 import com.curbside.automation.common.configuration.Properties;
-import com.curbside.automation.common.utilities.Helpers;
 import com.curbside.automation.uifactory.MobileDevice;
-import com.curbside.automation.uifactory.Steps;
 import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -48,8 +46,9 @@ public class Welcome extends AbstractScreen {
 
     @And("^I accept notifications alert message$")
     public void iAcceptNotificationsAlertMessage() throws Throwable {
-        commonSteps.acceptNotificationAlert();
-        commonSteps.acceptNotificationAlert();
+        for (int i = 0; i < 4; i++) {
+            commonSteps.acceptNotificationAlert();
+        }
     }
 
     @And("^I add open trips for arriveConsole app$")
