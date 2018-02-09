@@ -41,6 +41,7 @@ Feature: iOS- Application Launch 1
     Given I turn 'OFF' Background App Refresh for 'Curbside' app
     And I verify that Background App Refresh is 'OFF'
     And I launch Curbside application
+    And I 'Close' the pop-up if displayed
     And I am on Home Screen
     And My cart is empty
     And I select 'Palo Alto' from list

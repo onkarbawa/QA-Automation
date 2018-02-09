@@ -51,4 +51,11 @@ public class Welcome extends AbstractScreen {
 		}
 	    MobileDevice.getScreenshot(true);
 	}
+
+	@And("^I '(.*)' the pop-up if displayed$")
+	public void iCloseIfPopUpIsDisplayed(String btnClose) throws Throwable {
+		if (UIElement.byName("" + btnClose + "").isDisplayed()) {
+			UIElement.byName("" + btnClose + "").tap();
+		}
+	}
 }
