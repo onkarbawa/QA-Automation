@@ -29,8 +29,6 @@ public class ArriveTester extends AbstractScreen {
     }
 
     public void iSelectSite(String siteName) throws Throwable {
-        if (siteDropDown.waitFor(4).getText().equalsIgnoreCase(siteName))
-            return;
         siteDropDown.tap();
         UIElement selectSite = UIElement.byXpath("//android.widget.CheckedTextView[@text='" + siteName + "']");
         selectSite.waitFor(2).tap();
