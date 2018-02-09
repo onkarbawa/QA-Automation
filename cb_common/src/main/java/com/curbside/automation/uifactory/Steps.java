@@ -118,8 +118,10 @@ public class Steps {
 		logger.info("Launching " + appName + " application");
 		DriverFactory.getDriver(true);
 		if (DeviceStore.getPlatform().equalsIgnoreCase("iOS")
-				&& appName.equalsIgnoreCase("Curbside"))
+				&& appName.equalsIgnoreCase("Curbside")
+				&& appName.equalsIgnoreCase("ARRIVE Console"))
 			acceptNotificationAlert();
+
 		DeviceStore.setAppInstalled(appName);
 		//This will set the capabilities that is being used in launchApp method
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {

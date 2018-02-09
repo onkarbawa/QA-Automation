@@ -48,7 +48,7 @@ public class Welcome extends AbstractScreen {
     public void iAcceptNotificationsAlertMessage() throws Throwable {
         for (int i = 0; i < 4; i++) {
             commonSteps.acceptNotificationAlert();
-            UIElement.byName("Allow").tapOptional();
+            UIElement.byName("Allow").waitFor(2).tapOptional();
         }
     }
 
