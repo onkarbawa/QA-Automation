@@ -142,13 +142,14 @@ public class Trips extends AbstractScreen {
                 "removed from the list");
     }
 
-    @And("^I generate (\\d+) trip for (.*) site$")
+    @And("^I generate (\\d+) trip for (.*) site if not present$")
     public void iAddTrips(int noOfTrips, String siteName) throws Throwable {
-        if (openTrips.waitFor(10).getCount() > 0)
+        int noOfOpenTripsPresent = openTrips.waitFor(10).getCount();
+        if (noOfOpenTripsPresent >= noOfTrips )
             return;
         commonSteps.launchApplication("ARRIVE Console Tester");
         Properties.setVariable("selectedSite", siteName);
-        arriveTester.iStartSampleTrip(1);
+        arriveTester.iStartSampleTrip(noOfTrips);
         MobileDevice.getScreenshot(true);
         commonSteps.launchApplication("ARRIVE Console");
     }
