@@ -33,24 +33,24 @@ public class CapLaunch extends AbstractScreenCap{
         fieldPassword.sendKeys(password, true);
     }
 
-    @And("^I have selected test environment for CAP$")
-    public void iSelectCapEnv() throws Throwable {
-        commonSteps.acceptLocationAlert();
-
-        if( footerTabsCap.btnTasks.isDisplayed() || lblReleaseVersion.getText().contains(".s EE (cvs_9945)"))
-            return;
-
-        for (int i = 0; i < 4; i++) {
-            btnVersionNumber.tap();
-        }
-        btnVersionNumber.longPress(4);
-        btnStaging.waitFor(2).tap();
-        fieldStoreId.sendKeys("cvs_9945", true);
-        btnOK.tap();
-        btnpopUpOK.tap();
-        DriverFactory.closeApp();
-        DriverFactory.launchApp();
-    }
+//    @And("^I have selected test environment for CAP$")
+//    public void iSelectCapEnv() throws Throwable {
+//        commonSteps.acceptLocationAlert();
+//
+//        if( footerTabsCap.btnTasks.isDisplayed() || lblReleaseVersion.getText().contains(".s EE (cvs_9945)"))
+//            return;
+//
+//        for (int i = 0; i < 4; i++) {
+//            btnVersionNumber.tap();
+//        }
+//        btnVersionNumber.longPress(4);
+//        btnStaging.waitFor(2).tap();
+//        fieldStoreId.sendKeys("cvs_9945", true);
+//        btnOK.tap();
+//        btnpopUpOK.tap();
+//        DriverFactory.closeApp();
+//        DriverFactory.launchApp();
+//    }
 
     @And("^I should see this \"([^\"]*)\" on the screen$")
     public void iShouldSeeErrorMsg(String expectedErrorMsg) throws Throwable {

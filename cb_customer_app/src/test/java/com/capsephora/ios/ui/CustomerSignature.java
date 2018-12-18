@@ -6,6 +6,8 @@ import com.curbside.automation.uifactory.UIElement;
 import cucumber.api.java.en.And;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 
 import java.time.Duration;
 
@@ -28,11 +30,11 @@ public class CustomerSignature {
             int width = signatureBlankSpace.getWidth();
             int height = signatureBlankSpace.getHeight();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1))
-                    .moveTo(-width, startY + (height / 2)).release().perform();
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(PointOption.point(startX + (width / 2), startY + (height / 2))).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                    .moveTo(PointOption.point(-width, startY + (height / 2))).release().perform();
 
-            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(startX + (width / 2), startY + (height / 2)).waitAction(Duration.ofSeconds(1))
-                    .moveTo(-width, 0).release().perform();
+            new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(PointOption.point(startX + (width / 2), startY + (height / 2))).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+                    .moveTo(PointOption.point(-width, 0)).release().perform();
 
             ++noOfDraws;
         }

@@ -1,7 +1,7 @@
 {
   "android" : [
     {
-      "url" : "http://127.0.0.1:4723/wd/hub",
+      "url" : "http://0.0.0.0:4723/wd/hub",
       "platformName" : "android",
       "deviceName": "emulator-5554",
       "newCommandTimeOut": 120
@@ -9,13 +9,15 @@
   ],
   "iOS" : [
     {
-      "url": "http://127.0.0.1:4723/wd/hub",
+      "url": "http://0.0.0.1:4723/wd/hub",
       "platformName": "iOS",
       "platformVersion": "10.3",
-      "deviceName": "iPhone 6",
+      "deviceName": "Pratiksha Ojha",
       "usePrebuiltWDA": true,
       "showXcodeLog": true,
-      "newCommandTimeOut": 120
+      "newCommandTimeOut": 120,
+      "nativeWebTap" : true,
+      "udid" : "0ddb226173711460741617d2d10e0dcd734755d9"
     }
   ]
 }

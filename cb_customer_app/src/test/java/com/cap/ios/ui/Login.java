@@ -73,43 +73,43 @@ public class Login extends AbstractScreen{
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Got different error message");
     }
 
-    @And("^I have selected test environment for (.*)")
-    public void iHaveSelectedTestEnvironmentForCap(String appName) throws Throwable {
-        loginScreen.acceptNotificationAlert();
-
-        String envAPIKey = null;
-        String expectedStagingVariable = null;
-
-        if (appName.equalsIgnoreCase("cap")) {
-            envAPIKey = "cvs_9945";
-            expectedStagingVariable = "(cvs_9945)";
-        } else if (appName.equalsIgnoreCase("cap sephora")) {
-            envAPIKey = "sephora_0202";
-            expectedStagingVariable = "(sephora_0202)";
-        }
-        if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(expectedStagingVariable))
-            return;
-        for (int i = 0; i < 4; i++) {
-            stagingVariable.tapCenter();
-        }
-        stagingVariable.longPress(10);
-        btnStaging.tap();
-        storeID.clearText();
-        storeID.sendKeys(envAPIKey, false);
-        btnReturnKeyboard.tap();
-        Steps.tapButton("OK");
-        storeID.waitForNot(20);
-        try {
-            Steps.tapButton("OK");
-        } catch (Exception e) {
-        }
-        MobileDevice.getScreenshot(true);
-        DriverFactory.setEnvironment(envAPIKey);
-        DriverFactory.closeApp();
-        DriverFactory.launchApp();
-
-        loginScreen.acceptNotificationAlert();
-    }
+//    @And("^I have selected test environment for (.*)")
+//    public void iHaveSelectedTestEnvironmentForCap(String appName) throws Throwable {
+//        loginScreen.acceptNotificationAlert();
+//
+//        String envAPIKey = null;
+//        String expectedStagingVariable = null;
+//
+//        if (appName.equalsIgnoreCase("cap")) {
+//            envAPIKey = "cvs_9945";
+//            expectedStagingVariable = "(cvs_9945)";
+//        } else if (appName.equalsIgnoreCase("cap sephora")) {
+//            envAPIKey = "sephora_0202";
+//            expectedStagingVariable = "(sephora_0202)";
+//        }
+//        if (footerTabsScreen.btnTask.isDisplayed() || stagingVariable.getText().contains(expectedStagingVariable))
+//            return;
+//        for (int i = 0; i < 4; i++) {
+//            stagingVariable.tapCenter();
+//        }
+//        stagingVariable.longPress(10);
+//        btnStaging.tap();
+//        storeID.clearText();
+//        storeID.sendKeys(envAPIKey, false);
+//        btnReturnKeyboard.tap();
+//        Steps.tapButton("OK");
+//        storeID.waitForNot(20);
+//        try {
+//            Steps.tapButton("OK");
+//        } catch (Exception e) {
+//        }
+//        MobileDevice.getScreenshot(true);
+//        DriverFactory.setEnvironment(envAPIKey);
+//        DriverFactory.closeApp();
+//        DriverFactory.launchApp();
+//
+//        loginScreen.acceptNotificationAlert();
+//    }
 }
 
 

@@ -12,6 +12,8 @@ import com.curbside.automation.common.utilities.Utilities;
 import com.curbside.automation.devicefactory.AndroidApps;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.NotImplementedException;
@@ -153,7 +155,7 @@ public class MobileDevice {
 			int xOffset = endx - startx;
 			int yOffset = endy - starty;
 
-			new TouchAction((AppiumDriver) DriverFactory.getDriver()).press(startx, starty).moveTo(xOffset, yOffset)
+			new TouchAction((AppiumDriver) DriverFactory.getDriver()).press(PointOption.point(startx, starty)).moveTo(PointOption.point(xOffset, yOffset))
 					.release().perform();
 		}
 
@@ -240,7 +242,7 @@ public class MobileDevice {
 	}
 
 	public static void tap(int x, int y) throws Throwable {
-		new TouchAction((AppiumDriver) DriverFactory.getDriver()).press(x, y).release().perform();
+		new TouchAction((AppiumDriver) DriverFactory.getDriver()).press(PointOption.point(x, y)).release().perform();
 	}
 
 	public static void resetPermissions(String appName) throws Throwable {
@@ -267,12 +269,12 @@ public class MobileDevice {
 		int endPoint = (int) (MobileDevice.getHeight() * 0.6);
 
 		if (DeviceStore.getPlatform().equalsIgnoreCase("ios")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
-					.moveTo(0, startPoint - (2 * startPoint)).release().perform();
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(PointOption.point(anchor, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+					.moveTo(PointOption.point(0, startPoint - (2 * startPoint))).release().perform();
 
 		} else if (DeviceStore.getPlatform().equalsIgnoreCase("android")) {
-			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(anchor, startPoint).waitAction(Duration.ofSeconds(1))
-					.moveTo(0, endPoint).release().perform();
+			new TouchAction((PerformsTouchActions) DriverFactory.getDriver()).press(PointOption.point(anchor, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+					.moveTo(PointOption.point(0, endPoint)).release().perform();
 		}
 	}
 

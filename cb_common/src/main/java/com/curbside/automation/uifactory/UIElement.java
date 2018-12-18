@@ -10,6 +10,9 @@ import java.util.List;
  */
 
 import com.curbside.automation.devicefactory.DeviceStore;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 import org.apache.log4j.Logger;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -283,13 +286,13 @@ public class UIElement {
     }
 
 	public void touch() throws Throwable {
-		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(getElement()).perform();
+		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(TapOptions.tapOptions().withElement(ElementOption.element(getElement()))).perform();
 	}
 
 	public void tapCenter() throws Throwable {
 		MobileElement m = (MobileElement) getElement();
 		Point p = m.getCenter();
-		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(p.x, p.y).perform();
+		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).tap(PointOption.point(p.x, p.y)).perform();
 	}
 
 	public int getCount() throws Throwable {
@@ -317,9 +320,9 @@ public class UIElement {
 		return getLocation().getY();
 	}
 
-	public void longPress(int seconds) throws Throwable {
+	/*public void longPress(int seconds) throws Throwable {
 		new TouchAction((AppiumDriver) (DriverFactory.getDriver())).longPress(getElement(), Duration.ofSeconds(seconds)).release().perform();
-	}
+	}*/
 
     public UIElement sendCharacterByCharacter(String keySequence, boolean hideKeyboardAfterTyping) throws Throwable {
             for (int i = 0; i < keySequence.length(); i++) {

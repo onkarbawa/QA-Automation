@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="iOS Smoke Test Suite" verbose="1" parallel="tests" thread-count="1">
+    <parameter name="platform" value="iOS"/>
+    <listeners>
+        <listener class-name="com.curbside.automation.uifactory.WebDriverListener" />
+    </listeners>
+    <test name="iOS- proxyChange">
+        <classes>
+            <class name="com.proxyChange.iOS.runner.ProxyChangeTest"/>
+        </classes>
+    </test>
+</suite>

@@ -23,7 +23,14 @@
       "app" : "../ArriveConsoleTester.apk",
       "appPackage": "com.curbside.pietracker",
       "appActivity": "com.curbside.pietracker.MainActivity"
+    },
+    {
+      "name" : "NAMSHI",
+      "app" : "../namshi.apk",
+      "appPackage": "com.namshi.android",
+      "appActivity": "com.namshi.android.main.BaseMainActivity"
     }
+
   ],
   "iOS" : [
     {
@@ -60,6 +67,14 @@
       "name" : "ARRIVEConsoleTester",
       "app" : "../ios_simulator_builds/ARRIVEConsoleTester.app",
       "bundleId": "com.curbside.ARRIVEConsoleTestApp"
+    },
+    {
+      "name" : "Setting",
+      "bundleId": "com.apple.Preferences"
+    },
+    {
+      "name" : "Safari",
+      "bundleId": "com.apple.mobilesafari"
     }
   ]
 }

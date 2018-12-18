@@ -30,13 +30,13 @@ public class Welcome extends AbstractScreen {
         MobileDevice.getScreenshot(true);
     }
 
-    @And("^I switch application to debug mode$")
-    public void iSwitchApplicationToDebugMode() throws Throwable {
-        for (int i = 0; i < 4; i++) {
-            stagingVariable.tapCenter();
-        }
-        stagingVariable.longPress(10);
-    }
+//    @And("^I switch application to debug mode$")
+//    public void iSwitchApplicationToDebugMode() throws Throwable {
+//        for (int i = 0; i < 4; i++) {
+//            stagingVariable.tapCenter();
+//        }
+//        stagingVariable.longPress(10);
+//    }
 
     @And("^I checked selected site is shown on bottom of the screen$")
     public void iCheckSelectedSiteIsShownOnBottomOfTheScreen() throws Throwable {

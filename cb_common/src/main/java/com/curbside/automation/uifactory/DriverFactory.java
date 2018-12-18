@@ -14,11 +14,17 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.appium.java_client.remote.IOSMobileCapabilityType;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -154,6 +160,20 @@ public class DriverFactory {
 			caps.setCapability("preventWDAAttachments", true);
 			caps.setCapability("clearSystemFiles", true);
 			caps.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, 300000);
+
+			/*// Import Code
+			BrowserMobProxyServer proxy = new BrowserMobProxyServer();
+			proxy.start(0);
+			int port = proxy.getPort();
+			System.out.println("Port No: " + port);
+			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+
+			caps.setCapability(CapabilityType.PROXY, seleniumProxy);
+			//driver = new ChromeDriver(capabilities);
+			proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+			proxy.newHar("gomovieshub.sc/browse-word/a/");*/
+
+
 			setDriver(new AppiumDriver(url, caps));
 			UIElement.byAccessibilityId("Trust").tapOptional();
 			break;

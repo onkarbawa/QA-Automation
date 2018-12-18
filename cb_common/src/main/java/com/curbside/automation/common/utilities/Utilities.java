@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
@@ -176,10 +178,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.01);
                 endPoint = (int) (width * 0.9);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, 0).release().perform();
+                    touchAction.press(PointOption.point(startPoint, anchor)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(endPoint, 0)).release().perform();
                  }
                  else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(PointOption.point(startPoint, anchor)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(endPoint, anchor)).release().perform();
                  }
                  break;
             case Left:
@@ -187,10 +189,10 @@ public class Utilities {
                 startPoint = (int) (width * 0.8);
                 endPoint = (int) (width * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo((startPoint - (2 * startPoint)), 0).release().perform();
+                    touchAction.press(PointOption.point(startPoint, anchor)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point((startPoint - (2 * startPoint)), 0)).release().perform();
                 }
                 else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(startPoint, anchor).waitAction(Duration.ofSeconds(1)).moveTo(endPoint, anchor).release().perform();
+                    touchAction.press(PointOption.point(startPoint, anchor)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(endPoint, anchor)).release().perform();
                 }
                 break;
             case Up:
@@ -198,16 +200,16 @@ public class Utilities {
                 startPoint = (int) (height * 0.45);
                 endPoint = (int) (height * 0.01);
                 if (platform.equalsIgnoreCase("iOS")) {
-                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, startPoint - (2 * startPoint)).release().perform();
+                    touchAction.press(PointOption.point(anchor, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(0, startPoint - (2 * startPoint))).release().perform();
                 }else if (platform.equalsIgnoreCase("Android")){
-                    touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
+                    touchAction.press(PointOption.point(anchor, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(0, endPoint)).release().perform();
                 }
                 break;
             case Down:
                 anchor = (int) (width * 0.5);
                 startPoint = (int) (height * 0.01);
                 endPoint = (int) (height * 0.8);
-                touchAction.press(anchor, startPoint).waitAction(Duration.ofSeconds(1)).moveTo(0, endPoint).release().perform();
+                touchAction.press(PointOption.point(anchor, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(0, endPoint)).release().perform();
                 break;
               default:
                   try {
@@ -219,10 +221,10 @@ public class Utilities {
         }
     }
 
-    public void setTouchAction(WebElement element){
-        TouchAction touchAction = new TouchAction(driver);
-        touchAction.press(element);
-    }
+//    public void setTouchAction(WebElement element){
+//        TouchAction touchAction = new TouchAction(driver);
+//        touchAction.press(element);
+//    }
 
     public String getRandomEmail(){
         return "test"+ System.currentTimeMillis() +"@example.com";
